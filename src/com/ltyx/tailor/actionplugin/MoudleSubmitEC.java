@@ -18,138 +18,138 @@ public class MoudleSubmitEC extends ZCActionPluginBase {
 
 	public boolean doJobs() {
 
-		// uskin_code_type:USKIN/PBCÇø·Ö¿Í¹©ÃæÁÏ
+		// uskin_code_type:USKIN/PBCåŒºåˆ†å®¢ä¾›é¢æ–™
 
 		ZCHttpParam param = new ZCHttpParam();
 
-		// ÉÌÆ·ÊıÁ¿
+		// å•†å“æ•°é‡
 		param.addParam("quantity", "1");
-		// ×Ü½ğ¶î
+		// æ€»é‡‘é¢
 		param.addParam("total_amount", getString("prices"));
-		// ÅäËÍID
+		// é…é€ID
 		param.addParam("shipping_dlytype", "");
-		// ÊÇ·ñ¿ª·¢Æ±£ºtrueÎª¿ª·¢Æ±£¬falseÎª²»¿ª·¢
+		// æ˜¯å¦å¼€å‘ç¥¨ï¼štrueä¸ºå¼€å‘ç¥¨ï¼Œfalseä¸ºä¸å¼€å‘
 		param.addParam("is_tax", "");
-		// ·¢Æ±Ì§Í·
+		// å‘ç¥¨æŠ¬å¤´
 		param.addParam("tax_title", "");
-		// ·¢Æ±ÄÚÈİ£º1Îª·ş×°£¬2ÉÌÆ·Ã÷Ï¸
+		// å‘ç¥¨å†…å®¹ï¼š1ä¸ºæœè£…ï¼Œ2å•†å“æ˜ç»†
 		param.addParam("tax_content", "");
-		// ·¢Æ±ÀàĞÍ£º 1¸öÈË£¬2ÆóÒµ
+		// å‘ç¥¨ç±»å‹ï¼š 1ä¸ªäººï¼Œ2ä¼ä¸š
 		param.addParam("tax_type", "");
-		// ÊÕ»õÈËĞÕÃû
+		// æ”¶è´§äººå§“å
 		param.addParam("consignee_name", getString("customer_name"));
-		// ÊÕ»õÈËÏêÏ¸µØÖ·
+		// æ”¶è´§äººè¯¦ç»†åœ°å€
 		param.addParam("consignee_addr", getString("customer_address"));
-		// ÊÕ»õÈËÊÖ»ú
+		// æ”¶è´§äººæ‰‹æœº
 		param.addParam("consignee_mobile", getString("customer_tel"));
-		// »áÔ±ÊÖ»úºÅ/»áÔ±ÓÊÏä/»áÔ±Ãû
+		// ä¼šå‘˜æ‰‹æœºå·/ä¼šå‘˜é‚®ç®±/ä¼šå‘˜å
 		param.addParam("member_mobile", getString("customer_tel"));
-		// ±»Á¿ÈËĞÕÃû
+		// è¢«é‡äººå§“å
 		param.addParam("customer_name", getString("customer_name") + "4j0u0n8y9i00726" + getString("customer_tel_target"));
-		// ±»Á¿ÈËÊÖ»ú
+		// è¢«é‡äººæ‰‹æœº
 		param.addParam("customer_mobile", getString("customer_tel"));
-		// ²Ù×÷ÈËid
+		// æ“ä½œäººid
 		param.addParam("operator_id", getString("operator_id"));
-		// °ü×°
+		// åŒ…è£…
 		param.addParam("gift_box_ids", getString("YX_09"));
-		// Á¿Ìå±¸×¢
+		// é‡ä½“å¤‡æ³¨
 		param.addParam("measurement_remark", "");
-		// ÌØÌå±¸×¢
+		// ç‰¹ä½“å¤‡æ³¨
 		param.addParam("special_remark", getString("customer_tips"));
-		// ¶©µ¥¸½ÑÔ
+		// è®¢å•é™„è¨€
 		if ("PBC".equals(getString("uskin_code_type"))) {
-			param.addParam("memo", getString("customer_tips") + " ÃæÁÏÓÃÁ¿£º" + getString("uskin_code_length") + // ÃæÁÏÓÃÁ¿
-					" ÃæÁÏÑÕÉ«£º" + getString("uskin_code_color") + // ÃæÁÏÑÕÉ«
-					" ÃæÁÏ»¨ĞÍ£º" + getString("uskin_code_pattern")// ¶©µ¥»¨ĞÍ
+			param.addParam("memo", getString("customer_tips") + " é¢æ–™ç”¨é‡ï¼š" + getString("uskin_code_length") + // é¢æ–™ç”¨é‡
+					" é¢æ–™é¢œè‰²ï¼š" + getString("uskin_code_color") + // é¢æ–™é¢œè‰²
+					" é¢æ–™èŠ±å‹ï¼š" + getString("uskin_code_pattern")// è®¢å•èŠ±å‹
 			);
 		} else {
-			param.addParam("memo", getString("customer_tips"));// ¶©µ¥¸½ÑÔ
+			param.addParam("memo", getString("customer_tips"));// è®¢å•é™„è¨€
 		}
-		// USKIN±àÂë
+		// USKINç¼–ç 
 		param.addParam("bn", getString("uskin_code"));
-		// ÍÆ¼ö¿îÊ½ID
+		// æ¨èæ¬¾å¼ID
 		param.addParam("design_style_id", getString("design_style_id"));
-		// Á¿ÌåÌåÊı¾İÀàĞÍ
+		// é‡ä½“ä½“æ•°æ®ç±»å‹
 		param.addParam("data_type", getString("measure_type"));
-		// Éí¸ß £¨ÔİÊ±²»ÓÃ£¬¿ÉÖÃ¿Õ£©
+		// èº«é«˜ ï¼ˆæš‚æ—¶ä¸ç”¨ï¼Œå¯ç½®ç©ºï¼‰
 		param.addParam("height", getString("height"));
-		// ÌåÖØ £¨ÔİÊ±²»ÓÃ£¬¿ÉÖÃ¿Õ£©
+		// ä½“é‡ ï¼ˆæš‚æ—¶ä¸ç”¨ï¼Œå¯ç½®ç©ºï¼‰
 		param.addParam("weight", getString("weight"));
-		// ÁìÎ§
+		// é¢†å›´
 		param.addParam("neck_around", getString("ling_wei"));
-		// ĞØÎ§
+		// èƒ¸å›´
 		param.addParam("chest_around", getString("xiong_wei"));
-		// ÖĞÑüÎ§
+		// ä¸­è…°å›´
 		param.addParam("mid_waist_around", getString("yao_wei"));
-		// ÑüÎ§
+		// è…°å›´
 		param.addParam("waist_around", getString("yao_wei"));
-		// ÍÎÎ§
+		// è‡€å›´
 		param.addParam("hip_around", getString("dibian"));
-		// ºóÒÂ³¤
+		// åè¡£é•¿
 		param.addParam("back_length", getString("houshen_chang"));
-		// ºóÒÂ³¤|Íâ´©
+		// åè¡£é•¿|å¤–ç©¿
 		param.addParam("outside_back_length", getString("houshen_chang"));
-		// ¼ç¿í
+		// è‚©å®½
 		param.addParam("shoulder_width", getString("jian_kuan"));
-		// ³¤Ğä³¤
+		// é•¿è¢–é•¿
 		param.addParam("long_sleeve_length", getString("xiu_chang_zuo"));
-		// ×óÍóÎ§
+		// å·¦è…•å›´
 		param.addParam("left_wrist_around", getString("xiutouchang_zuo"));
-		// ÓÒÍóÎ§
+		// å³è…•å›´
 		param.addParam("right_wrist_around", getString("xiutouchang_you"));
-		// ±ÛÎ§
+		// è‡‚å›´
 		param.addParam("bicep_around", getString("xiu_fei"));
-		// Ğ¡±ÛÎ§
+		// å°è‡‚å›´
 		param.addParam("forearm_around", getString("xiuzhou_fei"));
-		// Ç°Éí³¤
+		// å‰èº«é•¿
 		param.addParam("front_length", getString("qianshen_chang"));
-		// ĞØ¿í
+		// èƒ¸å®½
 		param.addParam("chest_width", getString("qianxiong_kuan"));
-		// ºó±³¿í
+		// åèƒŒå®½
 		param.addParam("back_width", getString("houbei_kuan"));
-		// ¶ÌĞä³¤
+		// çŸ­è¢–é•¿
 		param.addParam("short_sleeve_length", getString("duanxiu_chang"));
-		// ¶ÌĞä¿ÚÎ§
+		// çŸ­è¢–å£å›´
 		param.addParam("short_sleeve_opening_around", getString("duanxiu_kouwei_zuo"));
-		// ĞØ¸ß£¨ÔİÊ±²»ÓÃ£¬¿ÉÖÃ¿Õ£©
+		// èƒ¸é«˜ï¼ˆæš‚æ—¶ä¸ç”¨ï¼Œå¯ç½®ç©ºï¼‰
 		param.addParam("chest_height", getString("chest_height"));
-		// ĞØ¾à£¨ÔİÊ±²»ÓÃ£¬¿ÉÖÃ¿Õ£©
+		// èƒ¸è·ï¼ˆæš‚æ—¶ä¸ç”¨ï¼Œå¯ç½®ç©ºï¼‰
 		param.addParam("chest_distance", getString("chest_distance"));
-		// ´îÅäÃû³ÆÀı2015SS-001
+		// æ­é…åç§°ä¾‹2015SS-001
 		param.addParam("style_name", getString("style_name"));
-		// ¿îÊ½ÀàĞÍ0»ù±¾¿î£¬1ÍÆ¼ö¿î£¬2×ÔÓÉ´îÅä
+		// æ¬¾å¼ç±»å‹0åŸºæœ¬æ¬¾ï¼Œ1æ¨èæ¬¾ï¼Œ2è‡ªç”±æ­é…
 		param.addParam("style_type", getString("style_type"));
-		// ¿íËÉ¶È£º24ĞŞÉí£¬25ÊæÊÊ ¿íËÉ¶È
+		// å®½æ¾åº¦ï¼š24ä¿®èº«ï¼Œ25èˆ’é€‚ å®½æ¾åº¦
 		param.addParam("easy_ids", "25");
-		// ³¤¶ÌĞä£º26³¤Ğä£¬27¶ÌĞä
+		// é•¿çŸ­è¢–ï¼š26é•¿è¢–ï¼Œ27çŸ­è¢–
 		param.addParam("sleeve_ids", getString("tailor_type"));
-		// Á¿Ìå¡¢·ş×°ÀàĞÍ
+		// é‡ä½“ã€æœè£…ç±»å‹
 		param.addParam("garment_type", getString("garment_type"));
-		// ÁìĞÍ¿îÊ½
+		// é¢†å‹æ¬¾å¼
 		param.addParam("collocation_ids_collar", getString("LZX_01"));
-		// Ğä¿Ú¿îÊ½
+		// è¢–å£æ¬¾å¼
 		param.addParam("collocation_ids_cuff", getString("LZX_02"));
-		// ÃÅ½ó¿îÊ½
+		// é—¨è¥Ÿæ¬¾å¼
 		param.addParam("collocation_ids_frontfly", getString("LZX_03"));
-		// ¿Ú´ü¿îÊ½
+		// å£è¢‹æ¬¾å¼
 		param.addParam("position_ids_10", getString("LZX_04"));
-		// ºó±³¿îÊ½----------------------------------------------------------------------------------------
+		// åèƒŒæ¬¾å¼----------------------------------------------------------------------------------------
 		param.addParam("back_style", getString("LZX_17"));
-		// Å¦¿Û¿îÊ½
+		// çº½æ‰£æ¬¾å¼
 		param.addParam("position_ids_11", getString("kouzi"));
-		// Áì³Å¿îÊ½
+		// é¢†æ’‘æ¬¾å¼
 		param.addParam("position_ids_12", getString("lingcheng"));
-		// Áì±ê¿îÊ½
+		// é¢†æ ‡æ¬¾å¼
 		param.addParam("position_ids_9", getString("YX_08"));
-		// Ã÷Ïß----------------------------------------------------------------------------------------
+		// æ˜çº¿----------------------------------------------------------------------------------------
 		param.addParam("open_wiring", getString("mingxian"));
-		// ²à·ì¹¤ÒÕ----------------------------------------------------------------------------------------
+		// ä¾§ç¼å·¥è‰º----------------------------------------------------------------------------------------
 		param.addParam("side_sewing_process", getString("cefeng"));
-		// Ç¶Ìõ----------------------------------------------------------------------------------------
+		// åµŒæ¡----------------------------------------------------------------------------------------
 		param.addParam("piping", getString("qiantiao"));
-		// ³Ä²¼----------------------------------------------------------------------------------------
+		// è¡¬å¸ƒ----------------------------------------------------------------------------------------
 		param.addParam("interlining", getString("chenbu"));
-		// ÅäÉ«----------------------------------------------------------------------------------------
+		// é…è‰²----------------------------------------------------------------------------------------
 		{
 			String peise = "";
 			for (String temp_peise_weizhi : getStrings("peise_weizhi")) {
@@ -157,18 +157,18 @@ public class MoudleSubmitEC extends ZCActionPluginBase {
 			}
 			param.addParam("other_fabric", peise);
 		}
-		// Ğå×ÖÎ»ÖÃ
+		// ç»£å­—ä½ç½®
 		param.addParam("embroidery_ids_3", getString("LZX_13_FOR_CHAR"));
-		// Ğå×Ö×ÖÌå
+		// ç»£å­—å­—ä½“
 		param.addParam("embroidery_ids_2", getString("LZX_11_CHAR_TYPE"));
-		// Ğå×ÖÎÄ×Ö
+		// ç»£å­—æ–‡å­—
 		param.addParam("embroidery_ids_words", getString("LZX_11_CHAR_WORD"));
-		// ´ÌĞå´óĞ¡----------------------------------------------------------------------------------------
+		// åˆºç»£å¤§å°----------------------------------------------------------------------------------------
 		param.addParam("embroidery_size", getString("LZX_11_CHAR_SIZE"));
-		// ´ÌĞåÑÕÉ«----------------------------------------------------------------------------------------
+		// åˆºç»£é¢œè‰²----------------------------------------------------------------------------------------
 		param.addParam("embroidery_color", getString("LZX_11_CHAR_COLOR"));
 
-		// Ä£ÄâµØÖ·"http://61.50.122.58:8029/CtrlCenter/LTYX/Tailor/SubTailorEC.action"
+		// æ¨¡æ‹Ÿåœ°å€"http://61.50.122.58:8029/CtrlCenter/LTYX/Tailor/SubTailorEC.action"
 
 		String httpResp = CCHttpReq.sendGet(URLConfigHelper.Url_SubTailor, param);
 		Log.Nano.tag("Save Resp From EC", httpResp);
@@ -181,13 +181,13 @@ public class MoudleSubmitEC extends ZCActionPluginBase {
 			jsonHttpResp = JSONObject.fromObject(httpResp);
 			jsonERRCODE = jsonHttpResp.getString("ERRCODE");
 			jsonERRDESC = jsonHttpResp.getString("ERRDESC");
-			jsonData = "EC´íÎóÂë£º" + jsonERRCODE + " EC´íÎóÃèÊö£º" + jsonERRDESC;
+			jsonData = "ECé”™è¯¯ç ï¼š" + jsonERRCODE + " ECé”™è¯¯æè¿°ï¼š" + jsonERRDESC;
 		} catch (Exception e) {
 			// TODO: handle exception
-			Log.Nano.tag("EC·şÎñÆ÷ÏìÓ¦´íÎó", httpResp);
+			Log.Nano.tag("ECæœåŠ¡å™¨å“åº”é”™è¯¯", httpResp);
 			jsonERRCODE = "0";
 			jsonERRDESC = "fail";
-			jsonData = "EC·şÎñÆ÷ÏìÓ¦´íÎó";
+			jsonData = "ECæœåŠ¡å™¨å“åº”é”™è¯¯";
 		}
 
 		if ("0".equals(jsonERRCODE) && "succ".equals(jsonERRDESC)) {

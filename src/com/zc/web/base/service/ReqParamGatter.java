@@ -19,11 +19,11 @@ public class ReqParamGatter {
 				for (String temp_input_value : input_values) {
 					return_value += string2int(temp_input_value);
 				}
-				Log.Nano.tag("ÇëÇó¶¯×÷²ÎÊı" + key, "³öÏÖ" + input_values.length + "¸öÑ¡Ïî", input_values.toString());
+				Log.Nano.tag("è¯·æ±‚åŠ¨ä½œå‚æ•°" + key, "å‡ºç°" + input_values.length + "ä¸ªé€‰é¡¹", input_values.toString());
 			}
 		} else {
 			return_value = 0;
-			Log.Nano.tag("ÇëÇó¶¯×÷²ÎÊı" + key, "ÇëÇó¶¯×÷ÖĞÎ´°üº¬¸Ã²ÎÊı");
+			Log.Nano.tag("è¯·æ±‚åŠ¨ä½œå‚æ•°" + key, "è¯·æ±‚åŠ¨ä½œä¸­æœªåŒ…å«è¯¥å‚æ•°");
 		}
 
 		return return_value;
@@ -43,11 +43,11 @@ public class ReqParamGatter {
 				for (String temp_input_value : input_values) {
 					return_value += string2double(temp_input_value);
 				}
-				Log.Nano.tag("ÇëÇó¶¯×÷²ÎÊı" + key, "³öÏÖ" + input_values.length + "¸öÑ¡Ïî", input_values.toString());
+				Log.Nano.tag("è¯·æ±‚åŠ¨ä½œå‚æ•°" + key, "å‡ºç°" + input_values.length + "ä¸ªé€‰é¡¹", input_values.toString());
 			}
 		} else {
 			return_value = 0;
-			Log.Nano.tag("ÇëÇó¶¯×÷²ÎÊı" + key, "ÇëÇó¶¯×÷ÖĞÎ´°üº¬¸Ã²ÎÊı");
+			Log.Nano.tag("è¯·æ±‚åŠ¨ä½œå‚æ•°" + key, "è¯·æ±‚åŠ¨ä½œä¸­æœªåŒ…å«è¯¥å‚æ•°");
 		}
 
 		return return_value;
@@ -68,11 +68,11 @@ public class ReqParamGatter {
 				for (String temp_input_value : input_values) {
 					return_value += temp_input_value.trim() + ",";
 				}
-				Log.Nano.tag("ÇëÇó¶¯×÷²ÎÊı" + key, "³öÏÖ" + input_values.length + "¸öÑ¡Ïî", return_value);
+				Log.Nano.tag("è¯·æ±‚åŠ¨ä½œå‚æ•°" + key, "å‡ºç°" + input_values.length + "ä¸ªé€‰é¡¹", return_value);
 			}
 		} else {
 			return_value = "";
-			Log.Nano.tag("ÇëÇó¶¯×÷²ÎÊı" + key, "ÇëÇó¶¯×÷ÖĞÎ´°üº¬¸Ã²ÎÊı");
+			Log.Nano.tag("è¯·æ±‚åŠ¨ä½œå‚æ•°" + key, "è¯·æ±‚åŠ¨ä½œä¸­æœªåŒ…å«è¯¥å‚æ•°");
 		}
 
 		return return_value;
@@ -90,10 +90,10 @@ public class ReqParamGatter {
 			for (int i = 0; i < input_values.length; i++) {
 				return_value[i] = input_values[i].toString().trim();
 			}
-			Log.Nano.tag("ÇëÇó¶¯×÷²ÎÊı" + key, "³öÏÖ" + input_values.length + "¸öÑ¡Ïî", return_value.toString());
+			Log.Nano.tag("è¯·æ±‚åŠ¨ä½œå‚æ•°" + key, "å‡ºç°" + input_values.length + "ä¸ªé€‰é¡¹", return_value.toString());
 		} else {
 			return_value = new String[] { "" };
-			Log.Nano.tag("ÇëÇó¶¯×÷²ÎÊı" + key, "ÇëÇó¶¯×÷ÖĞÎ´°üº¬¸Ã²ÎÊı");
+			Log.Nano.tag("è¯·æ±‚åŠ¨ä½œå‚æ•°" + key, "è¯·æ±‚åŠ¨ä½œä¸­æœªåŒ…å«è¯¥å‚æ•°");
 		}
 
 		return return_value;
@@ -108,8 +108,8 @@ public class ReqParamGatter {
 		double numDouble = 0d;
 		try {
 			java.text.DecimalFormat myformat = new java.text.DecimalFormat("#0.00");
-			numDouble = Double.parseDouble(numString.trim());// ×°»»ÎªdoubleÀàĞÍ
-			numDouble = Double.parseDouble(myformat.format(numDouble));// ±£Áô2ÎªĞ¡Êı
+			numDouble = Double.parseDouble(numString.trim());// è£…æ¢ä¸ºdoubleç±»å‹
+			numDouble = Double.parseDouble(myformat.format(numDouble));// ä¿ç•™2ä¸ºå°æ•°
 		} catch (Exception e) {
 			// TODO: handle exception
 			numDouble = 0;

@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 
 public class CCReqManager {
 	/**
-	 * ´òÓ¡ÇëÇóÖĞµÄËùÓĞheader
-	 * 
+	 * æ‰“å°è¯·æ±‚ä¸­çš„æ‰€æœ‰header
+	 *
 	 * @param request
 	 * @return
 	 */
@@ -30,7 +30,7 @@ public class CCReqManager {
 		Map<String, List<String>> map = connection.getHeaderFields();
 
 		Log.Pro.start();
-		Log.Pro.whiteLine(reqName + " µÄ " + " header");
+		Log.Pro.whiteLine(reqName + " çš„ " + " header");
 		Log.Pro.whiteCut();
 		for (String key : map.keySet()) {
 			Log.Pro.whiteLine(key + "--->" + map.get(key));
@@ -40,8 +40,8 @@ public class CCReqManager {
 	}
 
 	/**
-	 * ´òÓ¡ÇëÇóÖĞµÄËùÓĞÌá½»Êı¾İ
-	 * 
+	 * æ‰“å°è¯·æ±‚ä¸­çš„æ‰€æœ‰æäº¤æ•°æ®
+	 *
 	 * @param request
 	 * @return
 	 */
@@ -78,7 +78,7 @@ public class CCReqManager {
 		Set<Map.Entry<String, String>> set = map.entrySet();
 
 		Log.Pro.start();
-		Log.Pro.whiteLine("ÇëÇó²ÎÊı");
+		Log.Pro.whiteLine("è¯·æ±‚å‚æ•°");
 		Log.Pro.whiteCut();
 		for (Map.Entry<String, String> entry : set) {
 			Log.Pro.whiteLine(entry.getKey() + ":" + entry.getValue());
@@ -88,16 +88,16 @@ public class CCReqManager {
 	}
 
 	/**
-	 * »ñÈ¡ÓÃ»§ÕæÊµIPµØÖ·£¬²»Ê¹ÓÃrequest.getRemoteAddr();µÄÔ­ÒòÊÇÓĞ¿ÉÄÜÓÃ»§Ê¹ÓÃÁË´úÀíÈí¼ş·½Ê½±ÜÃâÕæÊµIPµØÖ·,
-	 * 
-	 * ¿ÉÊÇ£¬Èç¹ûÍ¨¹ıÁË¶à¼¶·´Ïò´úÀíµÄ»°£¬X-Forwarded-ForµÄÖµ²¢²»Ö¹Ò»¸ö£¬¶øÊÇÒ»´®IPÖµ£¬¾¿¾¹ÄÄ¸ö²ÅÊÇÕæÕıµÄÓÃ»§¶ËµÄÕæÊµIPÄØ£¿
-	 * ´ğ°¸ÊÇÈ¡X-Forwarded-ForÖĞµÚÒ»¸ö·ÇunknownµÄÓĞĞ§IP×Ö·û´®¡£
-	 * 
-	 * Èç£ºX-Forwarded-For£º192.168.1.110, 192.168.1.120, 192.168.1.130,
+	 * è·å–ç”¨æˆ·çœŸå®IPåœ°å€ï¼Œä¸ä½¿ç”¨request.getRemoteAddr();çš„åŸå› æ˜¯æœ‰å¯èƒ½ç”¨æˆ·ä½¿ç”¨äº†ä»£ç†è½¯ä»¶æ–¹å¼é¿å…çœŸå®IPåœ°å€,
+	 *
+	 * å¯æ˜¯ï¼Œå¦‚æœé€šè¿‡äº†å¤šçº§åå‘ä»£ç†çš„è¯ï¼ŒX-Forwarded-Forçš„å€¼å¹¶ä¸æ­¢ä¸€ä¸ªï¼Œè€Œæ˜¯ä¸€ä¸²IPå€¼ï¼Œç©¶ç«Ÿå“ªä¸ªæ‰æ˜¯çœŸæ­£çš„ç”¨æˆ·ç«¯çš„çœŸå®IPå‘¢ï¼Ÿ
+	 * ç­”æ¡ˆæ˜¯å–X-Forwarded-Forä¸­ç¬¬ä¸€ä¸ªéunknownçš„æœ‰æ•ˆIPå­—ç¬¦ä¸²ã€‚
+	 *
+	 * å¦‚ï¼šX-Forwarded-Forï¼š192.168.1.110, 192.168.1.120, 192.168.1.130,
 	 * 192.168.1.100
-	 * 
-	 * ÓÃ»§ÕæÊµIPÎª£º 192.168.1.110
-	 * 
+	 *
+	 * ç”¨æˆ·çœŸå®IPä¸ºï¼š 192.168.1.110
+	 *
 	 * @param request
 	 * @return
 	 */

@@ -70,30 +70,30 @@ public class Log {
 
 	private static void logHead() {
 
-		System.out.print("©°");
+		System.out.print("â”Œ");
 		for (int i = 0; i < lineLen - 2 + 6; i++) {
-			System.out.print("©¤");
+			System.out.print("â”€");
 		}
 
 		if (style == STYLE_CLOSE) {
-			System.out.println("©´");
+			System.out.println("â”");
 		} else {
-			System.out.println("©¤");
+			System.out.println("â”€");
 		}
 
 	}
 
 	private static void logCut() {
 
-		System.out.print("©À");
+		System.out.print("â”œ");
 		for (int i = 0; i < lineLen - 2 + 6; i++) {
-			System.out.print("©¤");
+			System.out.print("â”€");
 		}
 
 		if (style == STYLE_CLOSE) {
-			System.out.println("©È");
+			System.out.println("â”¤");
 		} else {
-			System.out.println("©¤");
+			System.out.println("â”€");
 		}
 
 	}
@@ -105,7 +105,7 @@ public class Log {
 		int lineTail = msgLen % lineLen;
 
 		for (int i = 0; i < lineCont; i++) {
-			System.out.print("©¦  ");
+			System.out.print("â”‚  ");
 			if (i == lineCont - 1) {
 				System.out.print(s.substring(i * lineLen, i * lineLen + lineTail));
 				for (int j = 0; j < lineLen - 6 - lineTail + 6; j++) {
@@ -116,7 +116,7 @@ public class Log {
 			}
 
 			if (style == STYLE_CLOSE) {
-				System.out.println("  ©¦");
+				System.out.println("  â”‚");
 			} else {
 				System.out.println(" ");
 			}
@@ -126,15 +126,15 @@ public class Log {
 
 	private static void logFoot() {
 
-		System.out.print("©¸");
+		System.out.print("â””");
 		for (int i = 0; i < lineLen - 2 + 6; i++) {
-			System.out.print("©¤");
+			System.out.print("â”€");
 		}
 
 		if (style == STYLE_CLOSE) {
-			System.out.println("©¼");
+			System.out.println("â”˜");
 		} else {
-			System.out.println("©¤");
+			System.out.println("â”€");
 		}
 
 	}

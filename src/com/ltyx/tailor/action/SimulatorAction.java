@@ -14,8 +14,8 @@ import com.zc.web.base.service.Log;
 public class SimulatorAction extends ActionSupport {
 
 	/**
-	 * ¸ÃActionÓÃÓÚ»ñÈ¡ÌîĞ´±íµ¥
-	 * 
+	 * è¯¥Actionç”¨äºè·å–å¡«å†™è¡¨å•
+	 *
 	 */
 	private static final long serialVersionUID = 10087L;
 
@@ -36,10 +36,10 @@ public class SimulatorAction extends ActionSupport {
 			JsonObject result = new JsonObject();
 			JsonObject data = new JsonObject();
 
-			if (!"ºè°²¡¤Adrian".equals(name)) {
+			if (!"é¸¿å®‰Â·Adrian".equals(name)) {
 
 				JsonObject user = new JsonObject();
-				user.addProperty("ec_user_name", "ºè°²¡¤Adrian¿Í»§¾­Àí");
+				user.addProperty("ec_user_name", "é¸¿å®‰Â·Adrianå®¢æˆ·ç»ç†");
 				user.addProperty("ec_user_id", "100");
 				user.addProperty("ec_user_rank", "0");
 
@@ -49,10 +49,10 @@ public class SimulatorAction extends ActionSupport {
 				result.addProperty("ERRDESC", "succ");
 				result.add("data", data);
 
-			} else if ("ºè°²¡¤Adria".equals(name)) {
+			} else if ("é¸¿å®‰Â·Adria".equals(name)) {
 
 				JsonObject user = new JsonObject();
-				user.addProperty("ec_user_name", "ºè°²¡¤Adrian¶¨ÖÆ¹ËÎÊ");
+				user.addProperty("ec_user_name", "é¸¿å®‰Â·Adrianå®šåˆ¶é¡¾é—®");
 				user.addProperty("ec_user_id", "200");
 				user.addProperty("ec_user_rank", "11");
 
@@ -62,10 +62,10 @@ public class SimulatorAction extends ActionSupport {
 				result.addProperty("ERRDESC", "succ");
 				result.add("data", data);
 
-			} else if ("ºè°²¡¤Adri".equals(name)) {
+			} else if ("é¸¿å®‰Â·Adri".equals(name)) {
 
 				JsonObject user = new JsonObject();
-				user.addProperty("ec_user_name", "ºè°²¡¤Adrian¶¨ÖÆµê");
+				user.addProperty("ec_user_name", "é¸¿å®‰Â·Adrianå®šåˆ¶åº—");
 				user.addProperty("ec_user_id", "300");
 				user.addProperty("ec_user_rank", "21");
 
@@ -78,12 +78,12 @@ public class SimulatorAction extends ActionSupport {
 			} else {
 
 				result.addProperty("ERRCODE", "1");
-				result.addProperty("ERRDESC", "ÕË»§²»´æÔÚ");
+				result.addProperty("ERRDESC", "è´¦æˆ·ä¸å­˜åœ¨");
 				result.add("data", data);
 
 			}
 
-			Log.Nano.tag("·ÂÕæEC·şÎñÆ÷ ÏìÓ¦Êı¾İ", result.toString());
+			Log.Nano.tag("ä»¿çœŸECæœåŠ¡å™¨ å“åº”æ•°æ®", result.toString());
 
 			out.print(result.toString());
 			out.flush();
@@ -124,7 +124,7 @@ public class SimulatorAction extends ActionSupport {
 			result.addProperty("ERRDESC", "succ");
 			result.add("data", data);
 
-			Log.Nano.tag("·ÂÕæEC·şÎñÆ÷ ÏìÓ¦Êı¾İ", result.toString());
+			Log.Nano.tag("ä»¿çœŸECæœåŠ¡å™¨ å“åº”æ•°æ®", result.toString());
 
 			out.print(result.toString());
 			out.flush();
@@ -165,7 +165,7 @@ public class SimulatorAction extends ActionSupport {
 			result.addProperty("ERRDESC", "succ");
 			result.add("data", data);
 
-			Log.Nano.tag("·ÂÕæEC·şÎñÆ÷ ÏìÓ¦Êı¾İ", result.toString());
+			Log.Nano.tag("ä»¿çœŸECæœåŠ¡å™¨ å“åº”æ•°æ®", result.toString());
 
 			out.print(result.toString());
 			out.flush();

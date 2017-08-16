@@ -21,8 +21,8 @@ public class ZCHttpParam {
 	}
 
 	/**
-	 * Çå¿Õ²ÎÊıĞÅÏ¢
-	 * 
+	 * æ¸…ç©ºå‚æ•°ä¿¡æ¯
+	 *
 	 * */
 	public void wipeParam() {
 
@@ -31,8 +31,8 @@ public class ZCHttpParam {
 	}
 
 	/**
-	 * »ñÈ¡Æ´½ÓºÃµÄ²ÎÊı£¬²ÉÈ¡µäĞÍµÄ&Æ´½Ó·½Ê½
-	 * 
+	 * è·å–æ‹¼æ¥å¥½çš„å‚æ•°ï¼Œé‡‡å–å…¸å‹çš„&æ‹¼æ¥æ–¹å¼
+	 *
 	 * */
 	public void addParam(String key, String value) {
 
@@ -44,8 +44,8 @@ public class ZCHttpParam {
 	}
 
 	/**
-	 * »ñÈ¡Æ´½ÓºÃµÄ²ÎÊı£¬²ÉÈ¡µäĞÍµÄ&Æ´½Ó·½Ê½£¬POSTÕıÎÄºÍGETºó×º¾ù¿ÉÊ¹ÓÃ
-	 * 
+	 * è·å–æ‹¼æ¥å¥½çš„å‚æ•°ï¼Œé‡‡å–å…¸å‹çš„&æ‹¼æ¥æ–¹å¼ï¼ŒPOSTæ­£æ–‡å’ŒGETåç¼€å‡å¯ä½¿ç”¨
+	 *
 	 * */
 	public String getParam() {
 
@@ -60,7 +60,7 @@ public class ZCHttpParam {
 
 	}
 
-	// Ë½ÓĞ±àÂë·½·¨£¬ÔÚadd·½·¨ÖĞ¼´±»µ÷ÓÃ
+	// ç§æœ‰ç¼–ç æ–¹æ³•ï¼Œåœ¨addæ–¹æ³•ä¸­å³è¢«è°ƒç”¨
 	private static String Encode(String input) {
 
 		String output = null;
@@ -77,7 +77,7 @@ public class ZCHttpParam {
 
 	}
 
-	// Ë½ÓĞ½âÂë·½·¨£¬Î´ÆôÓÃ
+	// ç§æœ‰è§£ç æ–¹æ³•ï¼Œæœªå¯ç”¨
 	// private static String Decode(String input) {
 	//
 	// String output = null;

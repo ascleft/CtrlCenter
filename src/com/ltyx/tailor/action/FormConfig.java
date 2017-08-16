@@ -4,82 +4,82 @@ public class FormConfig {
 
 	public static String get_list_LZX_01() {
 
-		String list = "<optgroup label=\"°Ë×ÖÁì\">" //
-				+ "<option value=\"LZX-01-01G\">´ó°Ë×ÖÁì¸ß</option>" //
-				+ "<option value=\"LZX-01-01Z\">´ó°Ë×ÖÁìÖĞ</option>" //
-				+ "<option value=\"LZX-01-01A\">´ó°Ë×ÖÁì°«</option>" //
-				+ "<option value=\"LZX-01-02G\">ÖĞ°Ë×ÖÁì¸ß</option>" //
-				+ "<option value=\"LZX-01-02Z\">ÖĞ°Ë×ÖÁìÖĞ</option>" //
-				+ "<option value=\"LZX-01-02A\">ÖĞ°Ë×ÖÁì°«</option>" //
-				+ "<option value=\"LZX-01-02S\">Ê±ÉĞ°Ë×ÖÁì</option>" //
+		String list = "<optgroup label=\"å…«å­—é¢†\">" //
+				+ "<option value=\"LZX-01-01G\">å¤§å…«å­—é¢†é«˜</option>" //
+				+ "<option value=\"LZX-01-01Z\">å¤§å…«å­—é¢†ä¸­</option>" //
+				+ "<option value=\"LZX-01-01A\">å¤§å…«å­—é¢†çŸ®</option>" //
+				+ "<option value=\"LZX-01-02G\">ä¸­å…«å­—é¢†é«˜</option>" //
+				+ "<option value=\"LZX-01-02Z\">ä¸­å…«å­—é¢†ä¸­</option>" //
+				+ "<option value=\"LZX-01-02A\">ä¸­å…«å­—é¢†çŸ®</option>" //
+				+ "<option value=\"LZX-01-02S\">æ—¶å°šå…«å­—é¢†</option>" //
 				+ "</optgroup>" //
-				+ "<optgroup label=\"¼âÁì\">" //
-				+ "<option value=\"LZX-01-03G\">Õı×°¼âÁì</option>" //
-				+ "<option value=\"LZX-01-03Z\">Õı×°¼âÁì</option>" //
-				+ "<option value=\"LZX-01-03A\">Õı×°¼âÁì</option>" //
-				+ "<option value=\"LZX-01-03S\">Ê±ÉĞĞ¡¼âÁì</option>" //
-				+ "<option value=\"LZX-01-07G\">¼âÁìÃ÷¿Û¸ß</option>" //
-				+ "<option value=\"LZX-01-07Z\">¼âÁìÃ÷¿ÛÖĞ</option>" //
-				+ "<option value=\"LZX-01-07A\">¼âÁìÃ÷¿Û°«</option>" //
+				+ "<optgroup label=\"å°–é¢†\">" //
+				+ "<option value=\"LZX-01-03G\">æ­£è£…å°–é¢†</option>" //
+				+ "<option value=\"LZX-01-03Z\">æ­£è£…å°–é¢†</option>" //
+				+ "<option value=\"LZX-01-03A\">æ­£è£…å°–é¢†</option>" //
+				+ "<option value=\"LZX-01-03S\">æ—¶å°šå°å°–é¢†</option>" //
+				+ "<option value=\"LZX-01-07G\">å°–é¢†æ˜æ‰£é«˜</option>" //
+				+ "<option value=\"LZX-01-07Z\">å°–é¢†æ˜æ‰£ä¸­</option>" //
+				+ "<option value=\"LZX-01-07A\">å°–é¢†æ˜æ‰£çŸ®</option>" //
 				+ "</optgroup>" //
-				+ "<optgroup label=\"·½Áì\">" //
-				+ "<option value=\"LZX-01-04G\">·½Áì¸ß</option>" //
-				+ "<option value=\"LZX-01-04Z\">·½ÁìÖĞ</option>" //
-				+ "<option value=\"LZX-01-04A\">·½Áì°«</option>" //
-				+ "<option value=\"LZX-01-04S\">Ê±ÉĞĞ¡·½Áì</option>" //
-				+ "<option value=\"LZX-01-14S\">Ê±ÉĞĞ¡·½ÁìÃ÷¿Û</option>" //
+				+ "<optgroup label=\"æ–¹é¢†\">" //
+				+ "<option value=\"LZX-01-04G\">æ–¹é¢†é«˜</option>" //
+				+ "<option value=\"LZX-01-04Z\">æ–¹é¢†ä¸­</option>" //
+				+ "<option value=\"LZX-01-04A\">æ–¹é¢†çŸ®</option>" //
+				+ "<option value=\"LZX-01-04S\">æ—¶å°šå°æ–¹é¢†</option>" //
+				+ "<option value=\"LZX-01-14S\">æ—¶å°šå°æ–¹é¢†æ˜æ‰£</option>" //
 				+ "</optgroup>" //
-				+ "<optgroup label=\"Ò»×ÖÁì\">" //
-				+ "<option value=\"LZX-01-05G\">´óÒ»×ÖÁì¸ß</option>" //
-				+ "<option value=\"LZX-01-05Z\">´óÒ»×ÖÁìÖĞ</option>" //
-				+ "<option value=\"LZX-01-05A\">´óÒ»×ÖÁì°«</option>" //
-				+ "<option value=\"LZX-01-06G\">ÖĞÒ»×ÖÁì¸ß</option>" //
-				+ "<option value=\"LZX-01-06Z\">ÖĞÒ»×ÖÁìÖĞ</option>" //
-				+ "<option value=\"LZX-01-06A\">ÖĞÒ»×ÖÁì°«</option>" //
-				+ "<option value=\"LZX-01-06S\">Ğ¡Ò»×ÖÁì</option>" //
+				+ "<optgroup label=\"ä¸€å­—é¢†\">" //
+				+ "<option value=\"LZX-01-05G\">å¤§ä¸€å­—é¢†é«˜</option>" //
+				+ "<option value=\"LZX-01-05Z\">å¤§ä¸€å­—é¢†ä¸­</option>" //
+				+ "<option value=\"LZX-01-05A\">å¤§ä¸€å­—é¢†çŸ®</option>" //
+				+ "<option value=\"LZX-01-06G\">ä¸­ä¸€å­—é¢†é«˜</option>" //
+				+ "<option value=\"LZX-01-06Z\">ä¸­ä¸€å­—é¢†ä¸­</option>" //
+				+ "<option value=\"LZX-01-06A\">ä¸­ä¸€å­—é¢†çŸ®</option>" //
+				+ "<option value=\"LZX-01-06S\">å°ä¸€å­—é¢†</option>" //
 				+ "</optgroup>" //
-				+ "<optgroup label=\"Á¢Áì\">" //
-				+ "<option value=\"LZX-01-10G\">Ö±½ÇÁ¢Áì¸ß</option>" //
-				+ "<option value=\"LZX-01-10Z\">Ö±½ÇÁ¢ÁìÖĞ</option>" //
-				+ "<option value=\"LZX-01-10A\">Ö±½ÇÁ¢Áì°«</option>" //
-				+ "<option value=\"LZX-01-11G\">Ô²½ÇÁ¢Áì¸ß</option>" //
-				+ "<option value=\"LZX-01-11Z\">Ô²½ÇÁ¢ÁìÖĞ</option>" //
-				+ "<option value=\"LZX-01-11A\">Ô²½ÇÁ¢Áì°«</option>" //
-				+ "<option value=\"LZX-01-13G\">¿ª¿ÚÖ±½ÇÁ¢Áì¸ß</option>" //
-				+ "<option value=\"LZX-01-13Z\">¿ª¿ÚÖ±½ÇÁ¢ÁìÖĞ</option>" //
-				+ "<option value=\"LZX-01-13A\">¿ª¿ÚÖ±½ÇÁ¢Áì°«</option>" //
+				+ "<optgroup label=\"ç«‹é¢†\">" //
+				+ "<option value=\"LZX-01-10G\">ç›´è§’ç«‹é¢†é«˜</option>" //
+				+ "<option value=\"LZX-01-10Z\">ç›´è§’ç«‹é¢†ä¸­</option>" //
+				+ "<option value=\"LZX-01-10A\">ç›´è§’ç«‹é¢†çŸ®</option>" //
+				+ "<option value=\"LZX-01-11G\">åœ†è§’ç«‹é¢†é«˜</option>" //
+				+ "<option value=\"LZX-01-11Z\">åœ†è§’ç«‹é¢†ä¸­</option>" //
+				+ "<option value=\"LZX-01-11A\">åœ†è§’ç«‹é¢†çŸ®</option>" //
+				+ "<option value=\"LZX-01-13G\">å¼€å£ç›´è§’ç«‹é¢†é«˜</option>" //
+				+ "<option value=\"LZX-01-13Z\">å¼€å£ç›´è§’ç«‹é¢†ä¸­</option>" //
+				+ "<option value=\"LZX-01-13A\">å¼€å£ç›´è§’ç«‹é¢†çŸ®</option>" //
 				+ "</optgroup>" //
-				+ "<optgroup label=\"ÆäËû\">" //
-				+ "<option value=\"LZX-01-08G\">Ê±ÉĞÔ²½ÇÁì¸ß</option>" //
-				+ "<option value=\"LZX-01-08Z\">Ê±ÉĞÔ²½ÇÁìÖĞ</option>" //
-				+ "<option value=\"LZX-01-09G\">Àñ·şÁì¸ß</option>" //
-				+ "<option value=\"LZX-01-09Z\">Àñ·şÁìÖĞ</option>" //
-				+ "<option value=\"LZX-01-09A\">Àñ·şÁì°«</option>" //
-				+ "<option value=\"LZX-01-15S\">Ê±ÉĞµ×ÁìË«¿Û</option>" //
+				+ "<optgroup label=\"å…¶ä»–\">" //
+				+ "<option value=\"LZX-01-08G\">æ—¶å°šåœ†è§’é¢†é«˜</option>" //
+				+ "<option value=\"LZX-01-08Z\">æ—¶å°šåœ†è§’é¢†ä¸­</option>" //
+				+ "<option value=\"LZX-01-09G\">ç¤¼æœé¢†é«˜</option>" //
+				+ "<option value=\"LZX-01-09Z\">ç¤¼æœé¢†ä¸­</option>" //
+				+ "<option value=\"LZX-01-09A\">ç¤¼æœé¢†çŸ®</option>" //
+				+ "<option value=\"LZX-01-15S\">æ—¶å°šåº•é¢†åŒæ‰£</option>" //
 				+ "</optgroup>" //
-				+ "<optgroup label=\"ÆäËûÁìĞÍ\">" //
-				+ "<option value=\"LZX-01-16G\">¼âÁì°µ¿Û¸ß</option>" //
-				+ "<option value=\"LZX-01-16Z\">¼âÁì°µ¿ÛÖĞ</option>" //
-				+ "<option value=\"LZX-01-16A\">¼âÁì°µ¿Û°«</option>" //
-				+ "<option value=\"LZX-01-17G\">×°ÊÎÏßÁì¸ß</option>" //
-				+ "<option value=\"LZX-01-17Z\">×°ÊÎÏßÁìÖĞ</option>" //
-				+ "<option value=\"LZX-01-17A\">×°ÊÎÏßÁì°«</option>" //
-				+ "<option value=\"LZX-01-18G\">Æ´½ÓÁì1¸ß</option>" //
-				+ "<option value=\"LZX-01-18Z\">Æ´½ÓÁì1ÖĞ</option>" //
-				+ "<option value=\"LZX-01-18A\">Æ´½ÓÁì1°«</option>" //
-				+ "<option value=\"LZX-01-19G\">Æ´½ÓÁì2¸ß</option>" //
-				+ "<option value=\"LZX-01-19Z\">Æ´½ÓÁì2ÖĞ</option>" //
-				+ "<option value=\"LZX-01-19A\">Æ´½ÓÁì2°«</option>" //
-				+ "<option value=\"LZX-01-20G\">Æ´½ÓÁì3¸ß</option>" //
-				+ "<option value=\"LZX-01-20Z\">Æ´½ÓÁì3ÖĞ</option>" //
-				+ "<option value=\"LZX-01-20A\">Æ´½ÓÁì3°«</option>" //
-				+ "<option value=\"LZX-01-21G\">ÖĞ°ËÁì°µ¿Û¸ß</option>" //
-				+ "<option value=\"LZX-01-21Z\">ÖĞ°ËÁì°µ¿ÛÖĞ</option>" //
-				+ "<option value=\"LZX-01-21A\">ÖĞ°ËÁì°µ¿Û°«</option>" //
-				+ "<option value=\"LZX-01-22G\">·½Áì°µ¿Û¸ß</option>" //
-				+ "<option value=\"LZX-01-22Z\">·½Áì°µ¿ÛÖĞ</option>" //
-				+ "<option value=\"LZX-01-22A\">·½Áì°µ¿Û°«</option>" //
-				+ "<option value=\"LZX-01-23Z\">Ğ¡·½ÁìÈı½ÇÕë</option>" //
+				+ "<optgroup label=\"å…¶ä»–é¢†å‹\">" //
+				+ "<option value=\"LZX-01-16G\">å°–é¢†æš—æ‰£é«˜</option>" //
+				+ "<option value=\"LZX-01-16Z\">å°–é¢†æš—æ‰£ä¸­</option>" //
+				+ "<option value=\"LZX-01-16A\">å°–é¢†æš—æ‰£çŸ®</option>" //
+				+ "<option value=\"LZX-01-17G\">è£…é¥°çº¿é¢†é«˜</option>" //
+				+ "<option value=\"LZX-01-17Z\">è£…é¥°çº¿é¢†ä¸­</option>" //
+				+ "<option value=\"LZX-01-17A\">è£…é¥°çº¿é¢†çŸ®</option>" //
+				+ "<option value=\"LZX-01-18G\">æ‹¼æ¥é¢†1é«˜</option>" //
+				+ "<option value=\"LZX-01-18Z\">æ‹¼æ¥é¢†1ä¸­</option>" //
+				+ "<option value=\"LZX-01-18A\">æ‹¼æ¥é¢†1çŸ®</option>" //
+				+ "<option value=\"LZX-01-19G\">æ‹¼æ¥é¢†2é«˜</option>" //
+				+ "<option value=\"LZX-01-19Z\">æ‹¼æ¥é¢†2ä¸­</option>" //
+				+ "<option value=\"LZX-01-19A\">æ‹¼æ¥é¢†2çŸ®</option>" //
+				+ "<option value=\"LZX-01-20G\">æ‹¼æ¥é¢†3é«˜</option>" //
+				+ "<option value=\"LZX-01-20Z\">æ‹¼æ¥é¢†3ä¸­</option>" //
+				+ "<option value=\"LZX-01-20A\">æ‹¼æ¥é¢†3çŸ®</option>" //
+				+ "<option value=\"LZX-01-21G\">ä¸­å…«é¢†æš—æ‰£é«˜</option>" //
+				+ "<option value=\"LZX-01-21Z\">ä¸­å…«é¢†æš—æ‰£ä¸­</option>" //
+				+ "<option value=\"LZX-01-21A\">ä¸­å…«é¢†æš—æ‰£çŸ®</option>" //
+				+ "<option value=\"LZX-01-22G\">æ–¹é¢†æš—æ‰£é«˜</option>" //
+				+ "<option value=\"LZX-01-22Z\">æ–¹é¢†æš—æ‰£ä¸­</option>" //
+				+ "<option value=\"LZX-01-22A\">æ–¹é¢†æš—æ‰£çŸ®</option>" //
+				+ "<option value=\"LZX-01-23Z\">å°æ–¹é¢†ä¸‰è§’é’ˆ</option>" //
 				+ "</optgroup>";
 
 		return list;
@@ -87,38 +87,38 @@ public class FormConfig {
 
 	public static String get_list_LZX_02() {
 
-		String list = "<optgroup label=\"µ¥¿Û\">"//
-				+ "<option value=\"LZX-02-01\">Áù½Çµ¥¿Û</option>"//
-				+ "<option value=\"LZX-02-02\">Ô²½Çµ¥¿Û</option>"//
-				+ "<option value=\"LZX-02-03\">Ö±½Çµ¥¿Û</option>"//
+		String list = "<optgroup label=\"å•æ‰£\">"//
+				+ "<option value=\"LZX-02-01\">å…­è§’å•æ‰£</option>"//
+				+ "<option value=\"LZX-02-02\">åœ†è§’å•æ‰£</option>"//
+				+ "<option value=\"LZX-02-03\">ç›´è§’å•æ‰£</option>"//
 				+ "</optgroup>"//
-				+ "<optgroup label=\"Á½¿Û\">"//
-				+ "<option value=\"LZX-02-04\">Áù½ÇÁ½¿Û</option>"//
-				+ "<option value=\"LZX-02-05\">Ô²½ÇÁ½¿Û</option>"//
-				+ "<option value=\"LZX-02-06\">Ö±½ÇÁ½¿Û</option>"//
+				+ "<optgroup label=\"ä¸¤æ‰£\">"//
+				+ "<option value=\"LZX-02-04\">å…­è§’ä¸¤æ‰£</option>"//
+				+ "<option value=\"LZX-02-05\">åœ†è§’ä¸¤æ‰£</option>"//
+				+ "<option value=\"LZX-02-06\">ç›´è§’ä¸¤æ‰£</option>"//
 				+ "</optgroup>"//
-				+ "<optgroup label=\"Àñ·ş\">"//
-				+ "<option value=\"LZX-02-07\">Àñ·şÖ±½Ç</option>"//
-				+ "<option value=\"LZX-02-08\">Àñ·şÔ²½Ç</option>"//
+				+ "<optgroup label=\"ç¤¼æœ\">"//
+				+ "<option value=\"LZX-02-07\">ç¤¼æœç›´è§’</option>"//
+				+ "<option value=\"LZX-02-08\">ç¤¼æœåœ†è§’</option>"//
 				+ "</optgroup>"//
-				+ "<optgroup label=\"ÆäËû\">"//
-				+ "<option value=\"LZX-02-09\">»¡ĞÎµ¥¿Û</option>"//
-				+ "<option value=\"LZX-02-10\">´óÔ²½Ç</option>"//
+				+ "<optgroup label=\"å…¶ä»–\">"//
+				+ "<option value=\"LZX-02-09\">å¼§å½¢å•æ‰£</option>"//
+				+ "<option value=\"LZX-02-10\">å¤§åœ†è§’</option>"//
 				+ "</optgroup>"//
-				+ "<optgroup label=\"°ëĞä\">"//
-				+ "<option value=\"LZX-02-51\">ÄÚ·­±ß</option>"//
-				+ "<option value=\"LZX-02-52\">Íâ·­±ß</option>"//
-				+ "<option value=\"LZX-02-53\">ÄÚÌù</option>"//
+				+ "<optgroup label=\"åŠè¢–\">"//
+				+ "<option value=\"LZX-02-51\">å†…ç¿»è¾¹</option>"//
+				+ "<option value=\"LZX-02-52\">å¤–ç¿»è¾¹</option>"//
+				+ "<option value=\"LZX-02-53\">å†…è´´</option>"//
 				+ "</optgroup>"//
-				+ "<optgroup label=\"ÆäËûĞäÍ·\">"//
-				+ "<option value=\"LZX-02-11\">Áù½ÇÌùÌõ</option>"//
-				+ "<option value=\"LZX-02-12\">Áù½Ç´óÆ´²¼</option>"//
-				+ "<option value=\"LZX-02-13\">Áù½Ç×°ÊÎÏß</option>"//
-				+ "<option value=\"LZX-02-14\">Áù½Ç¼ĞÑÀ×Ó</option>"//
-				+ "<option value=\"LZX-02-15\">Áù½ÇĞ¡Æ´²¼</option>"//
-				+ "<option value=\"LZX-02-16\">Ö±½ÇÆ´²¼</option>"//
-				+ "<option value=\"LZX-02-54\">ĞäÍ·Ê½</option>"//
-				+ "<option value=\"LZX-02-55\">ÍâÌù·­±ß</option>"//
+				+ "<optgroup label=\"å…¶ä»–è¢–å¤´\">"//
+				+ "<option value=\"LZX-02-11\">å…­è§’è´´æ¡</option>"//
+				+ "<option value=\"LZX-02-12\">å…­è§’å¤§æ‹¼å¸ƒ</option>"//
+				+ "<option value=\"LZX-02-13\">å…­è§’è£…é¥°çº¿</option>"//
+				+ "<option value=\"LZX-02-14\">å…­è§’å¤¹ç‰™å­</option>"//
+				+ "<option value=\"LZX-02-15\">å…­è§’å°æ‹¼å¸ƒ</option>"//
+				+ "<option value=\"LZX-02-16\">ç›´è§’æ‹¼å¸ƒ</option>"//
+				+ "<option value=\"LZX-02-54\">è¢–å¤´å¼</option>"//
+				+ "<option value=\"LZX-02-55\">å¤–è´´ç¿»è¾¹</option>"//
 				+ "</optgroup>";
 
 		return list;
@@ -126,19 +126,19 @@ public class FormConfig {
 
 	public static String get_list_LZX_03() {
 
-		String list = "<optgroup label=\"»ù´¡ÃÅ½ó\">"//
-				+ "<option value=\"LZX-03-01\">ÌùÃÅ½ó3.5</option>"//
-				+ "<option value=\"LZX-03-02\">¿íÌùÃÅ½ó</option>"//
-				+ "<option value=\"LZX-03-03\">Õ­ÌùÃÅ½ó</option>"//
-				+ "<option value=\"LZX-03-04\">ÄÚ¿ÛÃÅ½ó</option>"//
-				+ "<option value=\"LZX-03-05\">°µÃÅ½ó</option>"//
-				+ "<option value=\"LZX-03-06\">¼ĞÃ÷ÃÅ½ó</option>"//
-				+ "<option value=\"LZX-03-07\">¼Ğ°µÃÅ½ó</option>"//
+		String list = "<optgroup label=\"åŸºç¡€é—¨è¥Ÿ\">"//
+				+ "<option value=\"LZX-03-01\">è´´é—¨è¥Ÿ3.5</option>"//
+				+ "<option value=\"LZX-03-02\">å®½è´´é—¨è¥Ÿ</option>"//
+				+ "<option value=\"LZX-03-03\">çª„è´´é—¨è¥Ÿ</option>"//
+				+ "<option value=\"LZX-03-04\">å†…æ‰£é—¨è¥Ÿ</option>"//
+				+ "<option value=\"LZX-03-05\">æš—é—¨è¥Ÿ</option>"//
+				+ "<option value=\"LZX-03-06\">å¤¹æ˜é—¨è¥Ÿ</option>"//
+				+ "<option value=\"LZX-03-07\">å¤¹æš—é—¨è¥Ÿ</option>"//
 				+ "</optgroup>"//
-				+ "<optgroup label=\"ÆäËûÃÅ½ó\">"//
-				+ "<option value=\"LZX-03-08\">°µÃÅ½ó</option>"//
-				+ "<option value=\"LZX-03-09\">ÅäÉ«ÃÅ½ó1</option>"//
-				+ "<option value=\"LZX-03-10\">ÅäÉ«ÃÅ½ó2</option>"//
+				+ "<optgroup label=\"å…¶ä»–é—¨è¥Ÿ\">"//
+				+ "<option value=\"LZX-03-08\">æš—é—¨è¥Ÿ</option>"//
+				+ "<option value=\"LZX-03-09\">é…è‰²é—¨è¥Ÿ1</option>"//
+				+ "<option value=\"LZX-03-10\">é…è‰²é—¨è¥Ÿ2</option>"//
 				+ "</optgroup>";
 
 		return list;
@@ -146,18 +146,18 @@ public class FormConfig {
 
 	public static String get_list_LZX_04() {
 
-		String list = "<optgroup label=\"»ù´¡¿Ú´ü\">"//
-				+ "<option value=\"\">²»Ê¹ÓÃ¿Ú´ü</option>"//
-				+ "<option value=\"LZX-04-01\">Èı½Ç´ü</option>"//
-				+ "<option value=\"LZX-04-02\">Ô²´ü</option>"//
-				+ "<option value=\"LZX-04-03\">Áù½Ç´ü</option>"//
-				+ "<option value=\"LZX-04-04\">VĞÍÎÑ±ß´ü</option>"//
-				+ "<option value=\"LZX-04-05\">Ë«Ã÷Ïß´ü</option>"//
+		String list = "<optgroup label=\"åŸºç¡€å£è¢‹\">"//
+				+ "<option value=\"\">ä¸ä½¿ç”¨å£è¢‹</option>"//
+				+ "<option value=\"LZX-04-01\">ä¸‰è§’è¢‹</option>"//
+				+ "<option value=\"LZX-04-02\">åœ†è¢‹</option>"//
+				+ "<option value=\"LZX-04-03\">å…­è§’è¢‹</option>"//
+				+ "<option value=\"LZX-04-04\">Vå‹çªè¾¹è¢‹</option>"//
+				+ "<option value=\"LZX-04-05\">åŒæ˜çº¿è¢‹</option>"//
 				+ "</optgroup>"//
-				+ "<optgroup label=\"ÆäËû¿Ú´ü\">"//
-				+ "<option value=\"LZX-04-06\">Èı½Ç¸Ç´ü</option>"//
-				+ "<option value=\"LZX-04-07\">Ô²ĞÍ¸Ç´ü</option>"//
-				+ "<option value=\"LZX-04-08\">Áù½Ç¸Ç´ü</option>"//
+				+ "<optgroup label=\"å…¶ä»–å£è¢‹\">"//
+				+ "<option value=\"LZX-04-06\">ä¸‰è§’ç›–è¢‹</option>"//
+				+ "<option value=\"LZX-04-07\">åœ†å‹ç›–è¢‹</option>"//
+				+ "<option value=\"LZX-04-08\">å…­è§’ç›–è¢‹</option>"//
 				+ "</optgroup>";
 
 		return list;
@@ -165,19 +165,19 @@ public class FormConfig {
 
 	public static String get_list_LZX_08() {
 
-		String list = "<option value=\"YX-08-00\">ÎŞÁì±ê</option>"//
-				+ "<option value=\"YX-08-01\">¾±ºóÖ÷ßé</option>"//
-				+ "<option value=\"YX-08-02\">ÓÒÃÅ½óÏÂ°Ú</option>";
+		String list = "<option value=\"YX-08-00\">æ— é¢†æ ‡</option>"//
+				+ "<option value=\"YX-08-01\">é¢ˆåä¸»å”›</option>"//
+				+ "<option value=\"YX-08-02\">å³é—¨è¥Ÿä¸‹æ‘†</option>";
 
 		return list;
 	}
 
 	public static String get_list_LZX_120() {
 
-		String list = "<optgroup label=\"»ù´¡ĞäñŞ\">"//
-				+ "<option value=\"LZX-120-00\">Ğä¿ÚÎŞñŞ</option>"//
-				+ "<option value=\"LZX-120-01\">Ğä¿Úµ¥ñŞ</option>"//
-				+ "<option value=\"LZX-120-02\">Ğä¿ÚË«ñŞ</option>"//
+		String list = "<optgroup label=\"åŸºç¡€è¢–è¤¶\">"//
+				+ "<option value=\"LZX-120-00\">è¢–å£æ— è¤¶</option>"//
+				+ "<option value=\"LZX-120-01\">è¢–å£å•è¤¶</option>"//
+				+ "<option value=\"LZX-120-02\">è¢–å£åŒè¤¶</option>"//
 				+ "</optgroup>";
 
 		return list;
@@ -185,10 +185,10 @@ public class FormConfig {
 
 	public static String get_list_LZX_06() {
 
-		String list = "<optgroup label=\"»ù´¡ÏÂ°Ú\">"//
-				+ "<option value=\"LZX-06-01\">Ğ¡Ô²°Ú</option>"//
-				+ "<option value=\"LZX-06-02\">Ô²°Ú</option>"//
-				+ "<option value=\"LZX-06-03\">Ö±°Ú</option>"//
+		String list = "<optgroup label=\"åŸºç¡€ä¸‹æ‘†\">"//
+				+ "<option value=\"LZX-06-01\">å°åœ†æ‘†</option>"//
+				+ "<option value=\"LZX-06-02\">åœ†æ‘†</option>"//
+				+ "<option value=\"LZX-06-03\">ç›´æ‘†</option>"//
 				+ "</optgroup>";
 
 		return list;
@@ -196,11 +196,11 @@ public class FormConfig {
 
 	public static String get_list_LZX_17() {
 
-		String list = "<optgroup label=\"»ù´¡ºóÆ¬¿îÊ½\">"//
-				+ "<option value=\"LZX-17-01\">ÎŞñŞ²»ÊÕÊ¡</option>"//
-				+ "<option value=\"LZX-17-02\">ÎŞñŞÊÕË«Ê¡</option>"//
-				+ "<option value=\"LZX-17-03\">±ßñŞ²»ÊÕÊ¡</option>"//
-				+ "<option value=\"LZX-17-04\">ÖĞñŞ²»ÊÕÊ¡</option>"//
+		String list = "<optgroup label=\"åŸºç¡€åç‰‡æ¬¾å¼\">"//
+				+ "<option value=\"LZX-17-01\">æ— è¤¶ä¸æ”¶çœ</option>"//
+				+ "<option value=\"LZX-17-02\">æ— è¤¶æ”¶åŒçœ</option>"//
+				+ "<option value=\"LZX-17-03\">è¾¹è¤¶ä¸æ”¶çœ</option>"//
+				+ "<option value=\"LZX-17-04\">ä¸­è¤¶ä¸æ”¶çœ</option>"//
 				+ "</optgroup>";
 
 		return list;
@@ -208,11 +208,11 @@ public class FormConfig {
 
 	public static String get_list_LZX_26() {
 
-		String list = "<optgroup label=\"»ù´¡²à·ìµ×°ÚÌù²¼\">"//
-				+ "<option value=\"LZX-26-01\">½£ĞÍ</option>"//
-				+ "<option value=\"LZX-26-02\">·½ĞÎ</option>"//
-				+ "<option value=\"LZX-26-03\">Èı½Ç</option>"//
-				+ "<option value=\"LZX-26-04\">ÄÚÈı½Ç</option>"//
+		String list = "<optgroup label=\"åŸºç¡€ä¾§ç¼åº•æ‘†è´´å¸ƒ\">"//
+				+ "<option value=\"LZX-26-01\">å‰‘å‹</option>"//
+				+ "<option value=\"LZX-26-02\">æ–¹å½¢</option>"//
+				+ "<option value=\"LZX-26-03\">ä¸‰è§’</option>"//
+				+ "<option value=\"LZX-26-04\">å†…ä¸‰è§’</option>"//
 				+ "</optgroup>";
 
 		return list;
@@ -220,44 +220,44 @@ public class FormConfig {
 
 	public static String get_list_LZX_13() {
 
-		String list = "<option value=\"LZX-13-01\">´ü¿Ú</option>"//
-				+ "<option value=\"LZX-13-02\">×óĞØ</option>"//
-				+ "<option value=\"LZX-13-03\">ÓÒĞØ</option>"//
-				+ "<option value=\"LZX-13-04\">×óĞäÍ·Íâ</option>"//
-				+ "<option value=\"LZX-13-05\">ÓÒĞäÍ·Íâ</option>"//
-				+ "<option value=\"LZX-13-06\">×óĞäÍ·²à</option>"//
-				+ "<option value=\"LZX-13-07\">ÓÒĞäÍ·²à</option>"//
-				+ "<option value=\"LZX-13-08\">Àñ·ş×óĞä¿ÚÖĞ</option>"//
-				+ "<option value=\"LZX-13-09\">Àñ·şÓÒĞä¿ÚÖĞ</option>"//
-				+ "<option value=\"LZX-13-10\">×óĞäÖĞ</option>"//
-				+ "<option value=\"LZX-13-11\">ÓÒĞäÖĞ</option>"//
-				+ "<option value=\"LZX-13-12\">×ó¶ÌĞäÖĞ</option>"//
-				+ "<option value=\"LZX-13-13\">ÓÒ¶ÌĞäÖĞ</option>"//
-				+ "<option value=\"LZX-13-14\">×ó´óÉí</option>"//
-				+ "<option value=\"LZX-13-15\">ÓÒ´óÉí</option>"//
-				+ "<option value=\"LZX-13-16\">×óÏÂ°Ú</option>"//
-				+ "<option value=\"LZX-13-17\">ÓÒÏÂ°Ú</option>"//
-				+ "<option value=\"LZX-13-18\">µ×ÁìÀïÖĞ</option>"//
-				+ "<option value=\"LZX-13-19\">µ×ÁìÃæ×ó</option>"//
-				+ "<option value=\"LZX-13-20\">µ×ÁìÃæÓÒ</option>"//
-				+ "<option value=\"LZX-13-21\">µ×ÁìÃæÖĞ</option>"//
-				+ "<option value=\"LZX-13-22\">·­ÁìÃæ×ó</option>"//
-				+ "<option value=\"LZX-13-23\">·­ÁìÃæÓÒ</option>"//
-				+ "<option value=\"LZX-13-24\">×ó¹ı¼çÃæÖĞ</option>"//
-				+ "<option value=\"LZX-13-25\">ÓÒ¹ı¼çÃæÖĞ</option>"//
-				+ "<option value=\"LZX-13-26\">ºó¹ı¼çÃæÖĞ</option>"//
-				+ "<option value=\"LZX-13-27\">ÓÒÃÅ½óÉÏ</option>"//
-				+ "<option value=\"LZX-13-28\">×óĞäÀï</option>";
+		String list = "<option value=\"LZX-13-01\">è¢‹å£</option>"//
+				+ "<option value=\"LZX-13-02\">å·¦èƒ¸</option>"//
+				+ "<option value=\"LZX-13-03\">å³èƒ¸</option>"//
+				+ "<option value=\"LZX-13-04\">å·¦è¢–å¤´å¤–</option>"//
+				+ "<option value=\"LZX-13-05\">å³è¢–å¤´å¤–</option>"//
+				+ "<option value=\"LZX-13-06\">å·¦è¢–å¤´ä¾§</option>"//
+				+ "<option value=\"LZX-13-07\">å³è¢–å¤´ä¾§</option>"//
+				+ "<option value=\"LZX-13-08\">ç¤¼æœå·¦è¢–å£ä¸­</option>"//
+				+ "<option value=\"LZX-13-09\">ç¤¼æœå³è¢–å£ä¸­</option>"//
+				+ "<option value=\"LZX-13-10\">å·¦è¢–ä¸­</option>"//
+				+ "<option value=\"LZX-13-11\">å³è¢–ä¸­</option>"//
+				+ "<option value=\"LZX-13-12\">å·¦çŸ­è¢–ä¸­</option>"//
+				+ "<option value=\"LZX-13-13\">å³çŸ­è¢–ä¸­</option>"//
+				+ "<option value=\"LZX-13-14\">å·¦å¤§èº«</option>"//
+				+ "<option value=\"LZX-13-15\">å³å¤§èº«</option>"//
+				+ "<option value=\"LZX-13-16\">å·¦ä¸‹æ‘†</option>"//
+				+ "<option value=\"LZX-13-17\">å³ä¸‹æ‘†</option>"//
+				+ "<option value=\"LZX-13-18\">åº•é¢†é‡Œä¸­</option>"//
+				+ "<option value=\"LZX-13-19\">åº•é¢†é¢å·¦</option>"//
+				+ "<option value=\"LZX-13-20\">åº•é¢†é¢å³</option>"//
+				+ "<option value=\"LZX-13-21\">åº•é¢†é¢ä¸­</option>"//
+				+ "<option value=\"LZX-13-22\">ç¿»é¢†é¢å·¦</option>"//
+				+ "<option value=\"LZX-13-23\">ç¿»é¢†é¢å³</option>"//
+				+ "<option value=\"LZX-13-24\">å·¦è¿‡è‚©é¢ä¸­</option>"//
+				+ "<option value=\"LZX-13-25\">å³è¿‡è‚©é¢ä¸­</option>"//
+				+ "<option value=\"LZX-13-26\">åè¿‡è‚©é¢ä¸­</option>"//
+				+ "<option value=\"LZX-13-27\">å³é—¨è¥Ÿä¸Š</option>"//
+				+ "<option value=\"LZX-13-28\">å·¦è¢–é‡Œ</option>";
 
 		return list;
 	}
 
 	public static String get_list_zhidai() {
 
-		String list = "<optgroup label=\"Ä¬ÈÏ\">"//
-				+ "<option value=\"default\">²»Ê¹ÓÃÖ¯´ø</option>"//
+		String list = "<optgroup label=\"é»˜è®¤\">"//
+				+ "<option value=\"default\">ä¸ä½¿ç”¨ç»‡å¸¦</option>"//
 				+ "</optgroup>"//
-				+ "<optgroup label=\"ßó±ßÖ¯´ø\">"//
+				+ "<optgroup label=\"å”§è¾¹ç»‡å¸¦\">"//
 				+ "<option value=\"white\">white</option>"//
 				+ "<option value=\"pms2120\">pms2120</option>"//
 				+ "<option value=\"pms300\">pms300</option>"//
@@ -277,7 +277,7 @@ public class FormConfig {
 				+ "<option value=\"pms7540\">pms7540</option>"//
 				+ "<option value=\"black6\">black6</option>"//
 				+ "</optgroup>"//
-				+ "<optgroup label=\"¾»É«Ö¯´ø\">"//
+				+ "<optgroup label=\"å‡€è‰²ç»‡å¸¦\">"//
 				+ "<option value=\"ZD001\">ZD001</option>"//
 				+ "<option value=\"ZD002\">ZD002</option>"//
 				+ "<option value=\"ZD003\">ZD003</option>"//
@@ -295,7 +295,7 @@ public class FormConfig {
 				+ "<option value=\"ZD015\">ZD015</option>"//
 				+ "<option value=\"ZD016\">ZD016</option>"//
 				+ "</optgroup>"//
-				+ "<optgroup label=\"»¨É´Ö¯´ø\">"//
+				+ "<optgroup label=\"èŠ±çº±ç»‡å¸¦\">"//
 				+ "<option value=\"ZD017\">ZD017</option>"//
 				+ "<option value=\"ZD018\">ZD018</option>"//
 				+ "<option value=\"ZD019\">ZD019</option>"//
@@ -305,7 +305,7 @@ public class FormConfig {
 				+ "<option value=\"ZD023\">ZD023</option>"//
 				+ "<option value=\"ZD024\">ZD024</option>"//
 				+ "</optgroup>"//
-				+ "<optgroup label=\"ÌõÎÆÖ¯´ø\">"//
+				+ "<optgroup label=\"æ¡çº¹ç»‡å¸¦\">"//
 				+ "<option value=\"ZD025\">ZD025</option>"//
 				+ "<option value=\"ZD026\">ZD026</option>"//
 				+ "<option value=\"ZD027\">ZD027</option>"//
@@ -314,7 +314,7 @@ public class FormConfig {
 				+ "<option value=\"ZD030\">ZD030</option>"//
 				+ "<option value=\"ZD037\">ZD037</option>"//
 				+ "</optgroup>"//
-				+ "<optgroup label=\"Ìá»¨¡¢¿íÌõÖ¯´ø\">"//
+				+ "<optgroup label=\"æèŠ±ã€å®½æ¡ç»‡å¸¦\">"//
 				+ "<option value=\"ZD031\">ZD031</option>"//
 				+ "<option value=\"ZD032\">ZD032</option>"//
 				+ "<option value=\"ZD033\">ZD033</option>"//
@@ -331,7 +331,7 @@ public class FormConfig {
 
 	public static String get_list_color() {
 
-		String list = "<option value=\"defult\">Ä¬ÈÏ</option>"//
+		String list = "<option value=\"defult\">é»˜è®¤</option>"//
 				+ "<option value=\"U0000\">U0000</option>"//
 				+ "<option value=\"U0100\">U0100</option>"//
 				+ "<option value=\"U0200\">U0200</option>"//
@@ -438,7 +438,7 @@ public class FormConfig {
 
 	public static String get_list_kouzi() {
 
-		String list = "<option value=\"defult\">Ä¬ÈÏ</option>"//
+		String list = "<option value=\"defult\">é»˜è®¤</option>"//
 				+ "<option value=\"KB001\">KB001</option>"//
 				+ "<option value=\"KB002\">KB002</option>"//
 				+ "<option value=\"KB003\">KB003</option>"//
@@ -463,15 +463,15 @@ public class FormConfig {
 				+ "<option value=\"KC007\">KC007</option>"//
 				+ "<option value=\"KC008\">KC008</option>"//
 				+ "<option value=\"KC009\">KC009</option>"//
-				+ "<option value=\"YX-05-10\">¼âÎ²ÂİÅèĞÎ¿Û£¨²»´øLOGO£©KH001</option>"//
-				+ "<option value=\"YX-05-05\">Ô²»¡²èµú±´¿ÛKH002</option>"//
-				+ "<option value=\"YX-05-01\">¼âÎ²ÂİË«Ô²¿ÛKH003</option>"//
-				+ "<option value=\"YX-05-03\">¼âÎ²ÂİÔ²»¡¿ÛKH004</option>"//
-				+ "<option value=\"YX-05-06\">Ë«¿ÛÑÛ²èµú±´¿ÛKH005</option>"//
-				+ "<option value=\"YX-05-04\">ºÚµûÆ½ĞÍ¿ÛKH006</option>"//
-				+ "<option value=\"YX-05-09\">Ï¸Õ­±ß°×µû±´¿ÛKH007</option>"//
-				+ "<option value=\"YX-05-07\">Ô²±ß°×µû±´¿ÛKH008</option>"//
-				+ "<option value=\"YX-05-08\">¿í±ßÆ½ĞÍ°×µû±´¿ÛKH009</option>"//
+				+ "<option value=\"YX-05-10\">å°–å°¾èºç›†å½¢æ‰£ï¼ˆä¸å¸¦LOGOï¼‰KH001</option>"//
+				+ "<option value=\"YX-05-05\">åœ†å¼§èŒ¶ç¢Ÿè´æ‰£KH002</option>"//
+				+ "<option value=\"YX-05-01\">å°–å°¾èºåŒåœ†æ‰£KH003</option>"//
+				+ "<option value=\"YX-05-03\">å°–å°¾èºåœ†å¼§æ‰£KH004</option>"//
+				+ "<option value=\"YX-05-06\">åŒæ‰£çœ¼èŒ¶ç¢Ÿè´æ‰£KH005</option>"//
+				+ "<option value=\"YX-05-04\">é»‘è¶å¹³å‹æ‰£KH006</option>"//
+				+ "<option value=\"YX-05-09\">ç»†çª„è¾¹ç™½è¶è´æ‰£KH007</option>"//
+				+ "<option value=\"YX-05-07\">åœ†è¾¹ç™½è¶è´æ‰£KH008</option>"//
+				+ "<option value=\"YX-05-08\">å®½è¾¹å¹³å‹ç™½è¶è´æ‰£KH009</option>"//
 				+ "<option value=\"KJ001\">KJ001</option>"//
 				+ "<option value=\"KJ002\">KJ002</option>"//
 				+ "<option value=\"KJ003\">KJ003</option>"//
@@ -528,68 +528,68 @@ public class FormConfig {
 				+ "<option value=\"KY004\">KY004</option>"//
 				+ "<option value=\"KY005\">KY005</option>"//
 				+ "<option value=\"KY006\">KY006</option>"//
-				+ "<option value=\"YX-05-00\">Ä¬ÈÏÅ¦¿Û</option>"//
-				+ "<option value=\"YX-05-02\">Î²ÂİÅèĞÎ¿Û£¨´øLOGO£©ÀàKH001</option>";
+				+ "<option value=\"YX-05-00\">é»˜è®¤çº½æ‰£</option>"//
+				+ "<option value=\"YX-05-02\">å°¾èºç›†å½¢æ‰£ï¼ˆå¸¦LOGOï¼‰ç±»KH001</option>";
 
 		return list;
 	}
 
 	public static String get_list_shenxing() {
 
-		String list = "<option value=\"J\">½ôÉí</option>"//
-				+ "<option value=\"X\">ĞŞÉí</option>"//
-				+ "<option value=\"H\">ºÏÉí</option>"//
-				+ "<option value=\"K\">¿íËÉ</option>";
+		String list = "<option value=\"J\">ç´§èº«</option>"//
+				+ "<option value=\"X\">ä¿®èº«</option>"//
+				+ "<option value=\"H\">åˆèº«</option>"//
+				+ "<option value=\"K\">å®½æ¾</option>";
 		return list;
 	}
 
 	public static String get_list_lingcheng() {
 
-		String list = "<option value=\"7\">ÍâÖÃ»ÆÍ­Áì³Å</option>"//
-				+ "<option value=\"28\">ÍâÖÃ²»Ğâ¸ÖÁì³Å</option>"//
-				+ "<option value=\"29\">ÄÚÖÃÊ÷Ö¬Áì³Å</option>"//
-				+ "<option value=\"30\">ÎŞÁì³Å</option>";
+		String list = "<option value=\"7\">å¤–ç½®é»„é“œé¢†æ’‘</option>"//
+				+ "<option value=\"28\">å¤–ç½®ä¸é”ˆé’¢é¢†æ’‘</option>"//
+				+ "<option value=\"29\">å†…ç½®æ ‘è„‚é¢†æ’‘</option>"//
+				+ "<option value=\"30\">æ— é¢†æ’‘</option>";
 		return list;
 	}
 
 	public static String get_list_mingxian() {
 
-		String list = "<option value=\"111\">0.5CMÃ÷Ïß¿í</option>"//
-				+ "<option value=\"112\">0.3CMÃ÷Ïß¿í</option>"//
-				+ "<option value=\"113\">0.1CMÃ÷Ïß¿í</option>";
+		String list = "<option value=\"111\">0.5CMæ˜çº¿å®½</option>"//
+				+ "<option value=\"112\">0.3CMæ˜çº¿å®½</option>"//
+				+ "<option value=\"113\">0.1CMæ˜çº¿å®½</option>";
 		return list;
 	}
 
 	public static String get_list_cefeng() {
 
-		String list = "<option value=\"115\">Å£ÍÈºÏÉí</option>"//
-				+ "<option value=\"116\">0.3ÊÖ¹¤°ü·ì</option>";
+		String list = "<option value=\"115\">ç‰›è…¿åˆèº«</option>"//
+				+ "<option value=\"116\">0.3æ‰‹å·¥åŒ…ç¼</option>";
 		return list;
 	}
 
 	public static String get_list_qiantiao() {
 
-		String list = "<option value=\"99\">²»¼ÓÇ¶Ìõ</option>";
+		String list = "<option value=\"99\">ä¸åŠ åµŒæ¡</option>";
 		return list;
 	}
 
 	public static String get_list_chenbu() {
 
-		String list = "<option value=\"271\">Ä¬ÈÏ³Ä²¼</option>";
+		String list = "<option value=\"271\">é»˜è®¤è¡¬å¸ƒ</option>";
 		return list;
 	}
 
 	public static String get_list_weizhi_zhidai() {
 
-		String list = "<option value=\"Î´Ìá¹©1\">Î´Ìá¹©1</option>" //
-				+ "<option value=\"Î´Ìá¹©2\">Î´Ìá¹©2</option>";
+		String list = "<option value=\"æœªæä¾›1\">æœªæä¾›1</option>" //
+				+ "<option value=\"æœªæä¾›2\">æœªæä¾›2</option>";
 		return list;
 	}
 
 	public static String get_list_weizhi_peise() {
 
-		String list = "<option value=\"Î´Ìá¹©1\">Î´Ìá¹©1</option>" //
-				+ "<option value=\"Î´Ìá¹©2\">Î´Ìá¹©2</option>";
+		String list = "<option value=\"æœªæä¾›1\">æœªæä¾›1</option>" //
+				+ "<option value=\"æœªæä¾›2\">æœªæä¾›2</option>";
 		return list;
 	}
 

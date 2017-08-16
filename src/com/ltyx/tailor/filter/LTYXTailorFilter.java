@@ -22,7 +22,7 @@ public class LTYXTailorFilter extends ZCHttpFilter {
 		// TODO Auto-generated method stub
 
 		SystemInitHelper.init();
-		Log.Nano.tag("Â³Ì©ÓÅÏË³ÄÉÀ¶©µ¥ĞÅÏ¢ÊÕ¼¯ÏµÍ³", "com.ltyx.tailor.filter", "LTYXTailorFilter", "³õÊ¼»¯Íê³É");
+		Log.Nano.tag("é²æ³°ä¼˜çº¤è¡¬è¡«è®¢å•ä¿¡æ¯æ”¶é›†ç³»ç»Ÿ", "com.ltyx.tailor.filter", "LTYXTailorFilter", "åˆå§‹åŒ–å®Œæˆ");
 
 	}
 
@@ -37,7 +37,7 @@ public class LTYXTailorFilter extends ZCHttpFilter {
 
 		if ("null".equals(isOnline) || "0".equals(isOnline) || "".equals(isOnline) || "null".equals(ec_user_id) || "".equals(ec_user_id)) {
 			response.sendRedirect("/CtrlCenter/LTYX/Tailor/LoginPage.action");
-			Log.Nano.TagByLine("Â³Ì©ÓÅÏË³ÄÉÀ¶©µ¥ĞÅÏ¢ÊÕ¼¯ÏµÍ³", "µÇÂ¼ÑéÖ¤ ¹ıÂË", "isOnline:" + isOnline, "ec_user_id:" + ec_user_id, "Î´µÇÂ¼ ÒÑÖØ¶¨Ïò");
+			Log.Nano.TagByLine("é²æ³°ä¼˜çº¤è¡¬è¡«è®¢å•ä¿¡æ¯æ”¶é›†ç³»ç»Ÿ", "ç™»å½•éªŒè¯ è¿‡æ»¤", "isOnline:" + isOnline, "ec_user_id:" + ec_user_id, "æœªç™»å½• å·²é‡å®šå‘");
 		} else {
 			filterChain.doFilter((HttpServletRequest) request, (HttpServletResponse) response);
 		}
@@ -47,6 +47,6 @@ public class LTYXTailorFilter extends ZCHttpFilter {
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-		Log.Nano.tag("Â³Ì©ÓÅÏË³ÄÉÀ¶©µ¥ĞÅÏ¢ÊÕ¼¯ÏµÍ³", "com.ltyx.tailor.filter", "LTYXTailorFilter", "Ïú»Ù");
+		Log.Nano.tag("é²æ³°ä¼˜çº¤è¡¬è¡«è®¢å•ä¿¡æ¯æ”¶é›†ç³»ç»Ÿ", "com.ltyx.tailor.filter", "LTYXTailorFilter", "é”€æ¯");
 	}
 }

@@ -11,11 +11,11 @@ import com.zc.web.base.service.Log;
 
 public abstract class ZCBaseServlet extends HttpServlet {
 	/**
-	 * Â³Ì©ÓÅÏË »ù´¡ HttpServletÀà
+	 * é²æ³°ä¼˜çº¤ åŸºç¡€ HttpServletç±»
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public String CLASSNAME = "»ù´¡Servlet";
+	public String CLASSNAME = "åŸºç¡€Servlet";
 
 	public int ERRCODE = 0;
 	public String ERRDESC = "";

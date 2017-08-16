@@ -18,31 +18,31 @@ import com.zc.web.base.service.URLConfigHelper;
 public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 
 	/**
-	 * ¸ÃActionÓÃÓÚ»ñÈ¡ÌîĞ´±íµ¥
-	 * 
+	 * è¯¥Actionç”¨äºè·å–å¡«å†™è¡¨å•
+	 *
 	 */
 	private static final long serialVersionUID = 10087L;
-	// ¶©µ¥
+	// è®¢å•
 	String order_keys[] = new String[] { "customer_name", "customer_tel", "customer_email", "customer_address", "customer_tips", "operator_id", "operator_name", "uskin_code" };
-	// ³ÉÒÂ³ß´ç
+	// æˆè¡£å°ºå¯¸
 	String measure_keys[] = new String[] { "ling_wei", "xiong_wei", "yao_wei", "du_wei", "dibian", "houshen_chang", "jian_kuan", "jian_kuan_qian", "xiu_chang_zuo",
 			"xiu_chang_you", "xiutouchang_zuo", "xiutouchang_you", "xiu_fei", "xiuzhou_fei", "qianshen_chang", "qianxiong_kuan", "houbei_kuan", "duanxiu_chang",
 			"duanxiu_kouwei_zuo", "duanxiu_kouwei_you" };
-	// ¹¤ÒÕ
-	String tech_LZX_01_keys[] = new String[] { "LZX_01", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// ÁìĞÍ
-	String tech_LZX_02_keys[] = new String[] { "LZX_02", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// ĞäÍ·
-	String tech_LZX_03_keys[] = new String[] { "LZX_03", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// ÃÅ½ó
-	String tech_LZX_04_keys[] = new String[] { "LZX_04", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// ¿Ú´ü
-	String tech_LZX_120_keys[] = new String[] { "LZX_120", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// ĞäñŞ
-	String tech_LZX_06_keys[] = new String[] { "LZX_06", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// ÏÂ°Ú»¡¶È
-	String tech_LZX_17_keys[] = new String[] { "LZX_17", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// ºóÆ¬¿îÊ½
-	String tech_LZX_26_keys[] = new String[] { "LZX_26", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// ²à·ìµ×°ÚÌù²¼
-	// ´ÌĞå
-	String LZX_11_CHAR[] = new String[] { "LZX_11_CHAR_TYPE", "sequence", "name", "LZX_11_CHAR_COLOR", "LZX_13_FOR_CHAR", "LZX_11_CHAR_WORD", "tips" };// ´ÌĞåÎÄ×Ö
-	String LZX_11_PIC[] = new String[] { "LZX_11_PIC_TYPE", "sequence", "name", "LZX_11_PIC_COLOR", "LZX_13_FOR_PIC", "LZX_11_PIC_NUM", "tips" };// ´ÌĞåÍ¼°¸
+	// å·¥è‰º
+	String tech_LZX_01_keys[] = new String[] { "LZX_01", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// é¢†å‹
+	String tech_LZX_02_keys[] = new String[] { "LZX_02", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// è¢–å¤´
+	String tech_LZX_03_keys[] = new String[] { "LZX_03", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// é—¨è¥Ÿ
+	String tech_LZX_04_keys[] = new String[] { "LZX_04", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// å£è¢‹
+	String tech_LZX_120_keys[] = new String[] { "LZX_120", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// è¢–è¤¶
+	String tech_LZX_06_keys[] = new String[] { "LZX_06", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// ä¸‹æ‘†å¼§åº¦
+	String tech_LZX_17_keys[] = new String[] { "LZX_17", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// åç‰‡æ¬¾å¼
+	String tech_LZX_26_keys[] = new String[] { "LZX_26", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// ä¾§ç¼åº•æ‘†è´´å¸ƒ
+	// åˆºç»£
+	String LZX_11_CHAR[] = new String[] { "LZX_11_CHAR_TYPE", "sequence", "name", "LZX_11_CHAR_COLOR", "LZX_13_FOR_CHAR", "LZX_11_CHAR_WORD", "tips" };// åˆºç»£æ–‡å­—
+	String LZX_11_PIC[] = new String[] { "LZX_11_PIC_TYPE", "sequence", "name", "LZX_11_PIC_COLOR", "LZX_13_FOR_PIC", "LZX_11_PIC_NUM", "tips" };// åˆºç»£å›¾æ¡ˆ
 
 	public String submit() {
-		Log.Nano.tag("Ìá½»³ÄÉÀĞÅÏ¢¶©µ¥", "¿ªÊ¼");
+		Log.Nano.tag("æäº¤è¡¬è¡«ä¿¡æ¯è®¢å•", "å¼€å§‹");
 
 		init(true);
 
@@ -66,15 +66,15 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 					ERRDESC = "succ";
 					JSONObject datacontent = new JSONObject();
 					datacontent.put("CONTENT", getCSV());
-					datacontent.put("NAME", "Â³Ì©ÓÅÏËÖÇÄÜÏÂµ¥ÏµÍ³" + TimeHelper.getTimeMS());
+					datacontent.put("NAME", "é²æ³°ä¼˜çº¤æ™ºèƒ½ä¸‹å•ç³»ç»Ÿ" + TimeHelper.getTimeMS());
 					data = datacontent.toString();
 				}
 			}
 		}
 
-		writeResp("Ìá½»³ÄÉÀĞÅÏ¢¶©µ¥");
+		writeResp("æäº¤è¡¬è¡«ä¿¡æ¯è®¢å•");
 
-		Log.Nano.tag("Ìá½»³ÄÉÀĞÅÏ¢¶©µ¥", "½áÊø");
+		Log.Nano.tag("æäº¤è¡¬è¡«ä¿¡æ¯è®¢å•", "ç»“æŸ");
 
 		return null;
 
@@ -89,13 +89,13 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 			if ("PBC".equals(uskin_code_type) && uskin_code.length() < 5) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "ÇëÌîĞ´ÕıÈ·µÄ¿Í¹©ÃæÁÏÔËµ¥ºÅ";
+				data = "è¯·å¡«å†™æ­£ç¡®çš„å®¢ä¾›é¢æ–™è¿å•å·";
 				return false;
 			}
 			if ("USKIN".equals(uskin_code_type) && uskin_code.length() < 5) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "ÇëÌîĞ´ÕıÈ·µÄUSKIN±àÂë";
+				data = "è¯·å¡«å†™æ­£ç¡®çš„USKINç¼–ç ";
 				return false;
 			}
 
@@ -107,14 +107,14 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 			if (("man".equals(garment_type) || "woman".equals(garment_type)) && style_name.length() < 3) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "ÇëÌîĞ´ÕıÈ·µÄÉè¼ÆÊ¦ÍÆ¼ö¿î±àÂë»òÃû³Æ";
+				data = "è¯·å¡«å†™æ­£ç¡®çš„è®¾è®¡å¸ˆæ¨èæ¬¾ç¼–ç æˆ–åç§°";
 				return false;
 			}
 
 			if ("other".equals(garment_type) && style_name.length() < 3) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "ÇëÌîĞ´ÕıÈ·µÄÉÌÆ·±àÂë";
+				data = "è¯·å¡«å†™æ­£ç¡®çš„å•†å“ç¼–ç ";
 				return false;
 			}
 		}
@@ -124,7 +124,7 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 				if (customer_tel.length() != 11) {
 					ERRCODE = "0";
 					ERRDESC = "fail";
-					data = "ÇëÌîĞ´ÕıÈ·µÄÊÖ»úºÅÂë";
+					data = "è¯·å¡«å†™æ­£ç¡®çš„æ‰‹æœºå·ç ";
 					return false;
 				}
 			}
@@ -133,7 +133,7 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 			if (customer_name.length() < 2) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "ÇëÌîĞ´¿Í»§ĞÕÃû";
+				data = "è¯·å¡«å†™å®¢æˆ·å§“å";
 				return false;
 			}
 
@@ -141,26 +141,26 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 			if (customer_tel_target.length() != 11) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "ÇëÌîĞ´ÕıÈ·µÄ±»Á¿ÌåÈËÊÖ»úºÅ";
+				data = "è¯·å¡«å†™æ­£ç¡®çš„è¢«é‡ä½“äººæ‰‹æœºå·";
 				return false;
 			}
 
 		}
 
 		{
-			String uskin_code_type = getReqParamValue("uskin_code_type");// 0»ù±¾¿î£¬1ÍÆ¼ö¿î£¬2×ÔÓÉ´îÅä
+			String uskin_code_type = getReqParamValue("uskin_code_type");// 0åŸºæœ¬æ¬¾ï¼Œ1æ¨èæ¬¾ï¼Œ2è‡ªç”±æ­é…
 			String uskin_code_length = getReqParamValue("uskin_code_length");
 			String uskin_code_color = getReqParamValue("uskin_code_color");
 			if ("PBC".equals(uskin_code_type) && uskin_code_length.length() < 1) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "ÇëÌîĞ´¿Í¹©ÃæÁÏÓÃÁ¿£¨Ã×£©";
+				data = "è¯·å¡«å†™å®¢ä¾›é¢æ–™ç”¨é‡ï¼ˆç±³ï¼‰";
 				return false;
 			}
 			if ("PBC".equals(uskin_code_type) && uskin_code_color.length() < 1) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "ÇëÌîĞ´¿Í¹©ÃæÁÏÑÕÉ«ÃèÊö";
+				data = "è¯·å¡«å†™å®¢ä¾›é¢æ–™é¢œè‰²æè¿°";
 				return false;
 			}
 			Log.Nano.tag("uskin_code_type", uskin_code_type);
@@ -174,7 +174,7 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 			if ("27".equals(tailor_type) && (duanxiu_chang.length() == 0 || duanxiu_kouwei_zuo.length() == 0 || duanxiu_kouwei_you.length() == 0)) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "Çë²¹È«¶ÌĞä³¤¼°×óÓÒ¶ÌĞä¿ÚÎ§ĞÅÏ¢";
+				data = "è¯·è¡¥å…¨çŸ­è¢–é•¿åŠå·¦å³çŸ­è¢–å£å›´ä¿¡æ¯";
 				return false;
 			}
 		}
@@ -189,28 +189,28 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 					&& (xiu_chang_zuo.length() == 0 || xiu_chang_you.length() == 0 || xiutouchang_zuo.length() == 0 || xiutouchang_you.length() == 0 || xiuzhou_fei.length() == 0)) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "Çë²¹È«×óÓÒĞä³¤¡¢ĞäÍ·³¤¼°ĞäÖâ·ÊĞÅÏ¢";
+				data = "è¯·è¡¥å…¨å·¦å³è¢–é•¿ã€è¢–å¤´é•¿åŠè¢–è‚˜è‚¥ä¿¡æ¯";
 				return false;
 			}
 		}
 
 		{
 			ArrayList<String[]> al_key_toast = new ArrayList<String[]>();
-			// ³ÉÒÂ³ß´ç
-			al_key_toast.add(new String[] { "ling_wei", "ÇëÌîĞ´ÁìÎ§ĞÅÏ¢" });
-			al_key_toast.add(new String[] { "xiong_wei", "ÇëÌîĞ´ĞØÎ§ĞÅÏ¢" });
-			al_key_toast.add(new String[] { "yao_wei", "ÇëÌîĞ´ÑüÎ§ĞÅÏ¢" });
-			// al_key_toast.add(new String[] { "du_wei", "ÇëÌîĞ´¶ÇÎ§ĞÅÏ¢" });
-			al_key_toast.add(new String[] { "dibian", "ÇëÌîĞ´µ×±ßĞÅÏ¢" });
-			al_key_toast.add(new String[] { "houshen_chang", "ÇëÌîĞ´ºóÉí³¤ĞÅÏ¢" });
-			al_key_toast.add(new String[] { "jian_kuan", "ÇëÌîĞ´¼ç¿íĞÅÏ¢" });
-			// al_key_toast.add(new String[] { "jian_kuan_qian", "ÇëÌîĞ´Ç°¼ç¿íĞÅÏ¢" });
-			al_key_toast.add(new String[] { "xiu_fei", "ÇëÌîĞ´Ğä·ÊĞÅÏ¢" });
-			al_key_toast.add(new String[] { "qianshen_chang", "ÇëÌîĞ´Ç°Éí³¤ĞÅÏ¢" });
-			al_key_toast.add(new String[] { "qianxiong_kuan", "ÇëÌîĞ´Ç°ĞØ¿íĞÅÏ¢" });
-			al_key_toast.add(new String[] { "houbei_kuan", "ÇëÌîĞ´ºó±³¿íĞÅÏ¢" });
+			// æˆè¡£å°ºå¯¸
+			al_key_toast.add(new String[] { "ling_wei", "è¯·å¡«å†™é¢†å›´ä¿¡æ¯" });
+			al_key_toast.add(new String[] { "xiong_wei", "è¯·å¡«å†™èƒ¸å›´ä¿¡æ¯" });
+			al_key_toast.add(new String[] { "yao_wei", "è¯·å¡«å†™è…°å›´ä¿¡æ¯" });
+			// al_key_toast.add(new String[] { "du_wei", "è¯·å¡«å†™è‚šå›´ä¿¡æ¯" });
+			al_key_toast.add(new String[] { "dibian", "è¯·å¡«å†™åº•è¾¹ä¿¡æ¯" });
+			al_key_toast.add(new String[] { "houshen_chang", "è¯·å¡«å†™åèº«é•¿ä¿¡æ¯" });
+			al_key_toast.add(new String[] { "jian_kuan", "è¯·å¡«å†™è‚©å®½ä¿¡æ¯" });
+			// al_key_toast.add(new String[] { "jian_kuan_qian", "è¯·å¡«å†™å‰è‚©å®½ä¿¡æ¯" });
+			al_key_toast.add(new String[] { "xiu_fei", "è¯·å¡«å†™è¢–è‚¥ä¿¡æ¯" });
+			al_key_toast.add(new String[] { "qianshen_chang", "è¯·å¡«å†™å‰èº«é•¿ä¿¡æ¯" });
+			al_key_toast.add(new String[] { "qianxiong_kuan", "è¯·å¡«å†™å‰èƒ¸å®½ä¿¡æ¯" });
+			al_key_toast.add(new String[] { "houbei_kuan", "è¯·å¡«å†™åèƒŒå®½ä¿¡æ¯" });
 
-			al_key_toast.add(new String[] { "prices", "ÇëÌîĞ´±¨¼Û" });
+			al_key_toast.add(new String[] { "prices", "è¯·å¡«å†™æŠ¥ä»·" });
 
 			for (String[] temp_key : al_key_toast) {
 				if (getReqParamValue(temp_key[0]).length() == 0) {
@@ -229,7 +229,7 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 			if ("1".equals(LZX_11_FOR_CHAR_SWITCH) && LZX_11_CHAR_WORD.length() == 0) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "µ±Ç°Ñ¡ÔñÎªÊ¹ÓÃÎÄ×Ö´ÌĞå£¬Çë²¹È«´ÌĞåÄÚÈİ¡£";
+				data = "å½“å‰é€‰æ‹©ä¸ºä½¿ç”¨æ–‡å­—åˆºç»£ï¼Œè¯·è¡¥å…¨åˆºç»£å†…å®¹ã€‚";
 				return false;
 			}
 		}
@@ -240,82 +240,82 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 	public boolean saveEC() {
 		ZCHttpParam param = new ZCHttpParam();
 
-		param.addParam("bn", getReqParamValue("uskin_code")); // USKIN±àÂë
-		param.addParam("quantity", "1"); // ÉÌÆ·ÊıÁ¿
-		param.addParam("total_amount", getReqParamValue("prices")); // ×Ü½ğ¶î ×Ü½ğ¶î
+		param.addParam("bn", getReqParamValue("uskin_code")); // USKINç¼–ç 
+		param.addParam("quantity", "1"); // å•†å“æ•°é‡
+		param.addParam("total_amount", getReqParamValue("prices")); // æ€»é‡‘é¢ æ€»é‡‘é¢
 		if ("PBC".equals(getReqParamValue("uskin_code_type"))) {
-			param.addParam("memo", getReqParamValue("customer_tips") + // ¶©µ¥¸½ÑÔ
-					" ÃæÁÏÓÃÁ¿£º" + getReqParamValue("uskin_code_length") + // ÃæÁÏÓÃÁ¿
-					" ÃæÁÏÑÕÉ«£º" + getReqParamValue("uskin_code_color") + // ÃæÁÏÑÕÉ«
-					" ÃæÁÏ»¨ĞÍ£º" + getReqParamValue("uskin_code_pattern")// ¶©µ¥»¨ĞÍ
+			param.addParam("memo", getReqParamValue("customer_tips") + // è®¢å•é™„è¨€
+					" é¢æ–™ç”¨é‡ï¼š" + getReqParamValue("uskin_code_length") + // é¢æ–™ç”¨é‡
+					" é¢æ–™é¢œè‰²ï¼š" + getReqParamValue("uskin_code_color") + // é¢æ–™é¢œè‰²
+					" é¢æ–™èŠ±å‹ï¼š" + getReqParamValue("uskin_code_pattern")// è®¢å•èŠ±å‹
 			);
 		} else {
-			param.addParam("memo", getReqParamValue("customer_tips"));// ¶©µ¥¸½ÑÔ
+			param.addParam("memo", getReqParamValue("customer_tips"));// è®¢å•é™„è¨€
 		}
-		param.addParam("shipping_dlytype", ""); // ÅäËÍID
-		param.addParam("is_tax", ""); // ÊÇ·ñ¿ª·¢Æ±£ºtrue Îª¿ª·¢Æ±£¬falseÎª²»¿ª·¢Æ± ÊÇ·ñ¿ª·¢Æ±£º
-		param.addParam("tax_title", ""); // ·¢Æ±Ì§Í· ·¢Æ±Ì§Í·
-		param.addParam("tax_content", ""); // ·¢Æ±ÄÚÈİ1Îª·ş×°£¬2ÉÌÆ·Ã÷Ï¸
-		param.addParam("tax_type", ""); // ·¢Æ±ÀàĞÍ£º ·¢Æ±ÀàĞÍ 1¸öÈË£¬2ÆóÒµ
-		param.addParam("consignee_name", getReqParamValue("customer_name")); // ÊÕ»õÈËĞÕÃû
-		param.addParam("consignee_addr", getReqParamValue("customer_address")); // ÊÕ»õÈËÏêÏ¸µØÖ·
-		param.addParam("consignee_mobile", getReqParamValue("customer_tel")); // ÊÕ»õÈËÊÖ»ú
-		param.addParam("design_style_id", getReqParamValue("design_style_id")); // ÍÆ¼ö¿îÊ½ID
-		param.addParam("embroidery_ids_3", getReqParamValue("LZX_13_FOR_CHAR")); // Ğå×ÖÎ»ÖÃ
-		param.addParam("embroidery_ids_2", getReqParamValue("LZX_11_CHAR_TYPE")); // Ğå×Ö×ÖÌå
-		param.addParam("embroidery_ids_words", getReqParamValue("LZX_11_CHAR_WORD")); // Ğå×ÖÎÄ×Ö
-		param.addParam("type_ids_collar", getReqParamValue("LZX_01")); // ÁìĞÍ
-		param.addParam("type_ids_cuff", getReqParamValue("LZX_02")); // Ğä¿Ú
-		param.addParam("type_ids_frontfly", getReqParamValue("LZX_03")); // ÃÅ½ó
-		param.addParam("style_name", getReqParamValue("style_name")); // ´îÅäÃû³ÆÀı2015SS-001
-		param.addParam("style_id", ""); // »ù´¡¿îÊ½ID »ù´¡¿îÊ½ID£¬Àı£º2015SS-001µÄIDÊÇ13
-		param.addParam("style_type", getReqParamValue("style_type")); // ¿îÊ½ÀàĞÍ0»ù±¾¿î£¬1ÍÆ¼ö¿î£¬2×ÔÓÉ´îÅä
-		param.addParam("easy_ids", "25"); // ¿íËÉ¶È£º24ĞŞÉí£¬25ÊæÊÊ ¿íËÉ¶È
-		param.addParam("sleeve_ids", getReqParamValue("tailor_type")); // ³¤¶ÌĞä£º26³¤Ğä£¬27¶ÌĞä
-		param.addParam("collocation_ids_collar", getReqParamValue("LZX_01")); // ÁìĞÍ¿îÊ½
-		param.addParam("collocation_ids_cuff", getReqParamValue("LZX_02")); // Ğä¿Ú¿îÊ½
-		param.addParam("collocation_ids_frontfly", getReqParamValue("LZX_03")); // ÃÅ½ó¿îÊ½
-		param.addParam("position_ids_10", getReqParamValue("LZX_04")); // ¿Ú´ü¿îÊ½
-		param.addParam("position_ids_11", ""); // Å¦¿Û¿îÊ½ Å¦¿Û¿îÊ½
-		param.addParam("position_ids_12", "30"); // Áì³Å¿îÊ½ Áì³Å¿îÊ½
-		param.addParam("position_ids_9", ""); // Áì±ê¿îÊ½ Áì±ê¿îÊ½
-		param.addParam("data_type", getReqParamValue("measure_type")); // Á¿ÌåÌåÊı¾İÀàĞÍ£º
-		param.addParam("customer_name", getReqParamValue("customer_name") + "4j0u0n8y9i00726" + getReqParamValue("customer_tel_target")); // ±»Á¿ÈËĞÕÃû
-		param.addParam("customer_mobile", getReqParamValue("customer_tel")); // ±»Á¿ÈËÊÖ»ú
-		param.addParam("height", getReqParamValue("height")); // Éí¸ß £¨ÔİÊ±²»ÓÃ£¬¿ÉÖÃ¿Õ£©
-																// Éí¸ß
-		param.addParam("weight", getReqParamValue("weight")); // ÌåÖØ £¨ÔİÊ±²»ÓÃ£¬¿ÉÖÃ¿Õ£©
-																// ÌåÖØ
-		param.addParam("neck_around", getReqParamValue("ling_wei")); // ÁìÎ§
-		param.addParam("chest_around", getReqParamValue("xiong_wei")); // ĞØÎ§
-		param.addParam("mid_waist_around", getReqParamValue("yao_wei")); // ÖĞÑüÎ§
-		param.addParam("waist_around", getReqParamValue("yao_wei")); // ÑüÎ§
-		param.addParam("hip_around", getReqParamValue("dibian")); // ÍÎÎ§ ÍÎÎ§
-		param.addParam("back_length", getReqParamValue("houshen_chang")); // ºóÒÂ³¤
-		param.addParam("outside_back_length", getReqParamValue("houshen_chang")); // ºóÒÂ³¤|Íâ´©
-		param.addParam("shoulder_width", getReqParamValue("jian_kuan")); // ¼ç¿í
-		param.addParam("long_sleeve_length", getReqParamValue("xiu_chang_zuo")); // ³¤Ğä³¤
-		param.addParam("left_wrist_around", getReqParamValue("xiutouchang_zuo")); // ×óÍóÎ§
-		param.addParam("right_wrist_around", getReqParamValue("xiutouchang_you")); // ÓÒÍóÎ§
-		param.addParam("bicep_around", getReqParamValue("xiu_fei")); // ±ÛÎ§
-		param.addParam("forearm_around", getReqParamValue("xiuzhou_fei")); // Ğ¡±ÛÎ§
-		param.addParam("front_length", getReqParamValue("qianshen_chang")); // Ç°Éí³¤
-		param.addParam("chest_width", getReqParamValue("qianxiong_kuan")); // ĞØ¿í
-		param.addParam("back_width", getReqParamValue("houbei_kuan")); // ºó±³¿í
-		param.addParam("short_sleeve_length", getReqParamValue("duanxiu_chang")); // ¶ÌĞä³¤
-		param.addParam("short_sleeve_opening_around", getReqParamValue("duanxiu_kouwei_zuo")); // ¶ÌĞä¿ÚÎ§
-		param.addParam("chest_height", getReqParamValue("chest_height")); // ĞØ¸ß
-																			// £¨ÔİÊ±²»ÓÃ£¬¿ÉÖÃ¿Õ£©
-																			// ĞØ¸ß
-		param.addParam("chest_distance", getReqParamValue("chest_distance")); // ĞØ¾à
-																				// £¨ÔİÊ±²»ÓÃ£¬¿ÉÖÃ¿Õ£©
-																				// ĞØ¾à
-		param.addParam("measurement_remark", ""); // Á¿Ìå±¸×¢
-		param.addParam("special_remark", getReqParamValue("customer_tips")); // ÌØÌå±¸×¢
-		param.addParam("member_mobile", getReqParamValue("customer_tel")); // »áÔ±ÊÖ»úºÅ/»áÔ±ÓÊÏä/»áÔ±Ãû
-		param.addParam("operator_id", getReqParamValue("operator_id")); // ²Ù×÷ÈËid
-		param.addParam("gift_box_ids", getReqParamValue("YX_09")); // °ü×°
-		param.addParam("garment_type", getReqParamValue("garment_type")); // Á¿Ìå¡¢·ş×°ÀàĞÍ
+		param.addParam("shipping_dlytype", ""); // é…é€ID
+		param.addParam("is_tax", ""); // æ˜¯å¦å¼€å‘ç¥¨ï¼štrue ä¸ºå¼€å‘ç¥¨ï¼Œfalseä¸ºä¸å¼€å‘ç¥¨ æ˜¯å¦å¼€å‘ç¥¨ï¼š
+		param.addParam("tax_title", ""); // å‘ç¥¨æŠ¬å¤´ å‘ç¥¨æŠ¬å¤´
+		param.addParam("tax_content", ""); // å‘ç¥¨å†…å®¹1ä¸ºæœè£…ï¼Œ2å•†å“æ˜ç»†
+		param.addParam("tax_type", ""); // å‘ç¥¨ç±»å‹ï¼š å‘ç¥¨ç±»å‹ 1ä¸ªäººï¼Œ2ä¼ä¸š
+		param.addParam("consignee_name", getReqParamValue("customer_name")); // æ”¶è´§äººå§“å
+		param.addParam("consignee_addr", getReqParamValue("customer_address")); // æ”¶è´§äººè¯¦ç»†åœ°å€
+		param.addParam("consignee_mobile", getReqParamValue("customer_tel")); // æ”¶è´§äººæ‰‹æœº
+		param.addParam("design_style_id", getReqParamValue("design_style_id")); // æ¨èæ¬¾å¼ID
+		param.addParam("embroidery_ids_3", getReqParamValue("LZX_13_FOR_CHAR")); // ç»£å­—ä½ç½®
+		param.addParam("embroidery_ids_2", getReqParamValue("LZX_11_CHAR_TYPE")); // ç»£å­—å­—ä½“
+		param.addParam("embroidery_ids_words", getReqParamValue("LZX_11_CHAR_WORD")); // ç»£å­—æ–‡å­—
+		param.addParam("type_ids_collar", getReqParamValue("LZX_01")); // é¢†å‹
+		param.addParam("type_ids_cuff", getReqParamValue("LZX_02")); // è¢–å£
+		param.addParam("type_ids_frontfly", getReqParamValue("LZX_03")); // é—¨è¥Ÿ
+		param.addParam("style_name", getReqParamValue("style_name")); // æ­é…åç§°ä¾‹2015SS-001
+		param.addParam("style_id", ""); // åŸºç¡€æ¬¾å¼ID åŸºç¡€æ¬¾å¼IDï¼Œä¾‹ï¼š2015SS-001çš„IDæ˜¯13
+		param.addParam("style_type", getReqParamValue("style_type")); // æ¬¾å¼ç±»å‹0åŸºæœ¬æ¬¾ï¼Œ1æ¨èæ¬¾ï¼Œ2è‡ªç”±æ­é…
+		param.addParam("easy_ids", "25"); // å®½æ¾åº¦ï¼š24ä¿®èº«ï¼Œ25èˆ’é€‚ å®½æ¾åº¦
+		param.addParam("sleeve_ids", getReqParamValue("tailor_type")); // é•¿çŸ­è¢–ï¼š26é•¿è¢–ï¼Œ27çŸ­è¢–
+		param.addParam("collocation_ids_collar", getReqParamValue("LZX_01")); // é¢†å‹æ¬¾å¼
+		param.addParam("collocation_ids_cuff", getReqParamValue("LZX_02")); // è¢–å£æ¬¾å¼
+		param.addParam("collocation_ids_frontfly", getReqParamValue("LZX_03")); // é—¨è¥Ÿæ¬¾å¼
+		param.addParam("position_ids_10", getReqParamValue("LZX_04")); // å£è¢‹æ¬¾å¼
+		param.addParam("position_ids_11", ""); // çº½æ‰£æ¬¾å¼ çº½æ‰£æ¬¾å¼
+		param.addParam("position_ids_12", "30"); // é¢†æ’‘æ¬¾å¼ é¢†æ’‘æ¬¾å¼
+		param.addParam("position_ids_9", ""); // é¢†æ ‡æ¬¾å¼ é¢†æ ‡æ¬¾å¼
+		param.addParam("data_type", getReqParamValue("measure_type")); // é‡ä½“ä½“æ•°æ®ç±»å‹ï¼š
+		param.addParam("customer_name", getReqParamValue("customer_name") + "4j0u0n8y9i00726" + getReqParamValue("customer_tel_target")); // è¢«é‡äººå§“å
+		param.addParam("customer_mobile", getReqParamValue("customer_tel")); // è¢«é‡äººæ‰‹æœº
+		param.addParam("height", getReqParamValue("height")); // èº«é«˜ ï¼ˆæš‚æ—¶ä¸ç”¨ï¼Œå¯ç½®ç©ºï¼‰
+		// èº«é«˜
+		param.addParam("weight", getReqParamValue("weight")); // ä½“é‡ ï¼ˆæš‚æ—¶ä¸ç”¨ï¼Œå¯ç½®ç©ºï¼‰
+		// ä½“é‡
+		param.addParam("neck_around", getReqParamValue("ling_wei")); // é¢†å›´
+		param.addParam("chest_around", getReqParamValue("xiong_wei")); // èƒ¸å›´
+		param.addParam("mid_waist_around", getReqParamValue("yao_wei")); // ä¸­è…°å›´
+		param.addParam("waist_around", getReqParamValue("yao_wei")); // è…°å›´
+		param.addParam("hip_around", getReqParamValue("dibian")); // è‡€å›´ è‡€å›´
+		param.addParam("back_length", getReqParamValue("houshen_chang")); // åè¡£é•¿
+		param.addParam("outside_back_length", getReqParamValue("houshen_chang")); // åè¡£é•¿|å¤–ç©¿
+		param.addParam("shoulder_width", getReqParamValue("jian_kuan")); // è‚©å®½
+		param.addParam("long_sleeve_length", getReqParamValue("xiu_chang_zuo")); // é•¿è¢–é•¿
+		param.addParam("left_wrist_around", getReqParamValue("xiutouchang_zuo")); // å·¦è…•å›´
+		param.addParam("right_wrist_around", getReqParamValue("xiutouchang_you")); // å³è…•å›´
+		param.addParam("bicep_around", getReqParamValue("xiu_fei")); // è‡‚å›´
+		param.addParam("forearm_around", getReqParamValue("xiuzhou_fei")); // å°è‡‚å›´
+		param.addParam("front_length", getReqParamValue("qianshen_chang")); // å‰èº«é•¿
+		param.addParam("chest_width", getReqParamValue("qianxiong_kuan")); // èƒ¸å®½
+		param.addParam("back_width", getReqParamValue("houbei_kuan")); // åèƒŒå®½
+		param.addParam("short_sleeve_length", getReqParamValue("duanxiu_chang")); // çŸ­è¢–é•¿
+		param.addParam("short_sleeve_opening_around", getReqParamValue("duanxiu_kouwei_zuo")); // çŸ­è¢–å£å›´
+		param.addParam("chest_height", getReqParamValue("chest_height")); // èƒ¸é«˜
+		// ï¼ˆæš‚æ—¶ä¸ç”¨ï¼Œå¯ç½®ç©ºï¼‰
+		// èƒ¸é«˜
+		param.addParam("chest_distance", getReqParamValue("chest_distance")); // èƒ¸è·
+		// ï¼ˆæš‚æ—¶ä¸ç”¨ï¼Œå¯ç½®ç©ºï¼‰
+		// èƒ¸è·
+		param.addParam("measurement_remark", ""); // é‡ä½“å¤‡æ³¨
+		param.addParam("special_remark", getReqParamValue("customer_tips")); // ç‰¹ä½“å¤‡æ³¨
+		param.addParam("member_mobile", getReqParamValue("customer_tel")); // ä¼šå‘˜æ‰‹æœºå·/ä¼šå‘˜é‚®ç®±/ä¼šå‘˜å
+		param.addParam("operator_id", getReqParamValue("operator_id")); // æ“ä½œäººid
+		param.addParam("gift_box_ids", getReqParamValue("YX_09")); // åŒ…è£…
+		param.addParam("garment_type", getReqParamValue("garment_type")); // é‡ä½“ã€æœè£…ç±»å‹
 
 		// String httpResp =
 		// CCHttpReq.sendGet("http://61.50.122.58:8029/CtrlCenter/LTYX/Tailor/SubTailorEC.action",
@@ -332,7 +332,7 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 		} else {
 			ERRCODE = "0";
 			ERRDESC = "fail";
-			data = "EC´íÎóÂë£º" + jsonERRCODE + " EC´íÎóÃèÊö£º" + jsonERRDESC;
+			data = "ECé”™è¯¯ç ï¼š" + jsonERRCODE + " ECé”™è¯¯æè¿°ï¼š" + jsonERRDESC;
 			return false;
 		}
 
@@ -348,34 +348,34 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 			String sql_insert_order = getSqlInsertOrder(order_keys);
 			PreparedStatement pstmt = (PreparedStatement) DBconn.prepareStatement(sql_insert_order);
 			pstmt.executeUpdate();
-			ResultSet rs = (ResultSet) pstmt.getGeneratedKeys(); // »ñÈ¡½á¹û
+			ResultSet rs = (ResultSet) pstmt.getGeneratedKeys(); // è·å–ç»“æœ
 			if (rs.next()) {
-				autoIncKey = rs.getString(1);// »ñÈ¡×ÔÔöID
+				autoIncKey = rs.getString(1);// è·å–è‡ªå¢ID
 
-				// ³ÉÒÂ³ß´ç
+				// æˆè¡£å°ºå¯¸
 				pstmt.executeUpdate(getSqlInsertMeasure(measure_keys, autoIncKey));
 
-				// ¹¤ÒÕĞÅÏ¢
-				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_01_keys, autoIncKey, 1, "ÁìĞÍ"));
-				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_02_keys, autoIncKey, 2, "ĞäÍ·"));
-				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_03_keys, autoIncKey, 3, "ÃÅ½ó"));
-				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_04_keys, autoIncKey, 4, "¿Ú´ü"));
-				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_120_keys, autoIncKey, 5, "ĞäñŞ"));
-				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_06_keys, autoIncKey, 6, "ÏÂ°Ú»¡¶È"));
-				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_17_keys, autoIncKey, 7, "ºóÆ¬¿îÊ½"));
-				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_26_keys, autoIncKey, 8, "²à·ìµ×°ÚÌù²¼"));
+				// å·¥è‰ºä¿¡æ¯
+				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_01_keys, autoIncKey, 1, "é¢†å‹"));
+				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_02_keys, autoIncKey, 2, "è¢–å¤´"));
+				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_03_keys, autoIncKey, 3, "é—¨è¥Ÿ"));
+				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_04_keys, autoIncKey, 4, "å£è¢‹"));
+				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_120_keys, autoIncKey, 5, "è¢–è¤¶"));
+				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_06_keys, autoIncKey, 6, "ä¸‹æ‘†å¼§åº¦"));
+				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_17_keys, autoIncKey, 7, "åç‰‡æ¬¾å¼"));
+				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_26_keys, autoIncKey, 8, "ä¾§ç¼åº•æ‘†è´´å¸ƒ"));
 
-				// ´ÌĞåĞÅÏ¢
+				// åˆºç»£ä¿¡æ¯
 				if ("1".equals(getReqParamValue("LZX_11_FOR_CHAR_SWITCH"))) {
-					pstmt.executeUpdate(getSqlInsertTech(LZX_11_CHAR, autoIncKey, 11, "´ÌĞåÎÄ×Ö"));
+					pstmt.executeUpdate(getSqlInsertTech(LZX_11_CHAR, autoIncKey, 11, "åˆºç»£æ–‡å­—"));
 				}
 				if ("1".equals(getReqParamValue("LZX_11_FOR_PIC_SWITCH"))) {
-					pstmt.executeUpdate(getSqlInsertTech(LZX_11_PIC, autoIncKey, 12, "´ÌĞåÍ¼°¸"));
+					pstmt.executeUpdate(getSqlInsertTech(LZX_11_PIC, autoIncKey, 12, "åˆºç»£å›¾æ¡ˆ"));
 				}
 
 			} else {
 				// throw an exception from here
-				Log.err("ÎŞ·¨²åÈë¶©µ¥£ºÎŞ·¨²¶»ñ×ÔÔöID");
+				Log.err("æ— æ³•æ’å…¥è®¢å•ï¼šæ— æ³•æ•è·è‡ªå¢ID");
 			}
 
 		} catch (SQLException e) {
@@ -469,11 +469,11 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 				for (String temp_input_value : input_values) {
 					return_value += temp_input_value.trim() + ",";
 				}
-				Log.Nano.tag(key, "³öÏÖ¶àÑ¡Ñ¡Ïî", return_value);
+				Log.Nano.tag(key, "å‡ºç°å¤šé€‰é€‰é¡¹", return_value);
 			}
 		} else {
 			return_value = "";
-			Log.Nano.tag(key, "ÇëÇó¶¯×÷ÖĞÎ´°üº¬¸Ã²ÎÊı");
+			Log.Nano.tag(key, "è¯·æ±‚åŠ¨ä½œä¸­æœªåŒ…å«è¯¥å‚æ•°");
 		}
 
 		return return_value;
@@ -507,61 +507,61 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 		String csvTitle_2 = "";
 		String csvBody_2 = "";
 
-		csvTitle_1 += "¿Í»§ĞÕÃû" + ",";
+		csvTitle_1 += "å®¢æˆ·å§“å" + ",";
 		csvBody_1 += getReqParamValue("customer_name") + ",";
-		csvTitle_1 += "¶¨ÖÆµêÃû³Æ" + ",";
+		csvTitle_1 += "å®šåˆ¶åº—åç§°" + ",";
 		csvBody_1 += getReqParamValue("") + ",";
-		csvTitle_1 += "¶¨ÖÆµê±àºÅ" + ",";
+		csvTitle_1 += "å®šåˆ¶åº—ç¼–å·" + ",";
 		csvBody_1 += getReqParamValue("") + ",";
-		csvTitle_1 += "ÊÕ»õµØÖ·" + ",";
+		csvTitle_1 += "æ”¶è´§åœ°å€" + ",";
 		csvBody_1 += getReqParamValue("customer_address") + ",";
-		csvTitle_1 += "ÊÕ»õÈË" + ",";
+		csvTitle_1 += "æ”¶è´§äºº" + ",";
 		csvBody_1 += getReqParamValue("") + ",";
-		csvTitle_1 += "ÊÕ»õÁªÏµ·½Ê½" + ",";
+		csvTitle_1 += "æ”¶è´§è”ç³»æ–¹å¼" + ",";
 		csvBody_1 += getReqParamValue("") + ",";
-		csvTitle_1 += "Á¿ÌåÄÚÈİ" + ",";
+		csvTitle_1 += "é‡ä½“å†…å®¹" + ",";
 		csvBody_1 += getReqParamValue("") + ",";
-		csvTitle_1 += "Éí¸ß" + ",";
+		csvTitle_1 += "èº«é«˜" + ",";
 		csvBody_1 += getReqParamValue("shengao") + ",";
-		csvTitle_1 += "ÌåÖØ" + ",";
+		csvTitle_1 += "ä½“é‡" + ",";
 		csvBody_1 += getReqParamValue("tizhong") + ",";
-		csvTitle_1 += "ÁìÎ§" + ",";
+		csvTitle_1 += "é¢†å›´" + ",";
 		csvBody_1 += getReqParamValue("ling_wei") + ",";
-		csvTitle_1 += "ĞØÎ§" + ",";
+		csvTitle_1 += "èƒ¸å›´" + ",";
 		csvBody_1 += getReqParamValue("xiong_wei") + ",";
-		csvTitle_1 += "ÑüÎ§" + ",";
+		csvTitle_1 += "è…°å›´" + ",";
 		csvBody_1 += getReqParamValue("yao_wei") + ",";
-		csvTitle_1 += "¶ÇÎ§" + ",";
+		csvTitle_1 += "è‚šå›´" + ",";
 		csvBody_1 += getReqParamValue("du_wei") + ",";
-		csvTitle_1 += "µ×±ß" + ",";
+		csvTitle_1 += "åº•è¾¹" + ",";
 		csvBody_1 += getReqParamValue("dibian") + ",";
-		csvTitle_1 += "ºóÒÂ³¤" + ",";
+		csvTitle_1 += "åè¡£é•¿" + ",";
 		csvBody_1 += getReqParamValue("houshen_chang") + ",";
-		csvTitle_1 += "¼ç¿í" + ",";
+		csvTitle_1 += "è‚©å®½" + ",";
 		csvBody_1 += getReqParamValue("jian_kuan") + ",";
-		csvTitle_1 += "³¤Ğä³¤" + ",";
+		csvTitle_1 += "é•¿è¢–é•¿" + ",";
 		csvBody_1 += getReqParamValue("xiu_chang_zuo") + ",";
-		csvTitle_1 += "×óÍóÎ§" + ",";
+		csvTitle_1 += "å·¦è…•å›´" + ",";
 		csvBody_1 += getReqParamValue("xiutouchang_zuo") + ",";
-		csvTitle_1 += "ÓÒÍóÎ§" + ",";
+		csvTitle_1 += "å³è…•å›´" + ",";
 		csvBody_1 += getReqParamValue("xiutouchang_you") + ",";
-		csvTitle_1 += "Ğä·Ê" + ",";
+		csvTitle_1 += "è¢–è‚¥" + ",";
 		csvBody_1 += getReqParamValue("xiu_fei") + ",";
-		csvTitle_1 += "Ğ¡±ÛÎ§" + ",";
+		csvTitle_1 += "å°è‡‚å›´" + ",";
 		csvBody_1 += getReqParamValue("xiuzhou_fei") + ",";
-		csvTitle_1 += "Ç°Éí³¤" + ",";
+		csvTitle_1 += "å‰èº«é•¿" + ",";
 		csvBody_1 += getReqParamValue("qianshen_chang") + ",";
-		csvTitle_1 += "Ç°ĞØ¿í" + ",";
+		csvTitle_1 += "å‰èƒ¸å®½" + ",";
 		csvBody_1 += getReqParamValue("qianxiong_kuan") + ",";
-		csvTitle_1 += "ºó±³¿í" + ",";
+		csvTitle_1 += "åèƒŒå®½" + ",";
 		csvBody_1 += getReqParamValue("houbei_kuan") + ",";
-		csvTitle_1 += "¶ÌĞä³¤" + ",";
+		csvTitle_1 += "çŸ­è¢–é•¿" + ",";
 		csvBody_1 += getReqParamValue("duanxiu_chang") + ",";
-		csvTitle_1 += "¶ÌĞä¿Ú" + ",";
+		csvTitle_1 += "çŸ­è¢–å£" + ",";
 		csvBody_1 += getReqParamValue("duanxiu_kouwei_zuo") + ",";
-		csvTitle_1 += "ºÅÒÂ³ßÂë" + ",";
+		csvTitle_1 += "å·è¡£å°ºç " + ",";
 		csvBody_1 += getReqParamValue("") + ",";
-		csvTitle_1 += "¿Í¹©ÃæÁÏ¿ìµİµ¥ºÅ" + ",";
+		csvTitle_1 += "å®¢ä¾›é¢æ–™å¿«é€’å•å·" + ",";
 
 		csvBody_1_1 += ",";
 		csvBody_1_1 += ",";
@@ -571,7 +571,7 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 		csvBody_1_1 += ",";
 		csvBody_1_1 += ",";
 		csvBody_1_1 += ",";
-		csvBody_1_1 += "DPºó³ÉÒÂ³ß´ç" + ",";
+		csvBody_1_1 += "DPåæˆè¡£å°ºå¯¸" + ",";
 		csvBody_1_1 += ",";
 		csvBody_1_1 += ",";
 		csvBody_1_1 += ",";
@@ -600,7 +600,7 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 		csvBody_1_2 += ",";
 		csvBody_1_2 += ",";
 		csvBody_1_2 += ",";
-		csvBody_1_2 += "ÃæÁÏËõÂÊ" + ",";
+		csvBody_1_2 += "é¢æ–™ç¼©ç‡" + ",";
 		csvBody_1_2 += ",";
 		csvBody_1_2 += ",";
 		csvBody_1_2 += ",";
@@ -629,7 +629,7 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 		csvBody_1_3 += ",";
 		csvBody_1_3 += ",";
 		csvBody_1_3 += ",";
-		csvBody_1_3 += "DPÇ°³ß´ç" + ",";
+		csvBody_1_3 += "DPå‰å°ºå¯¸" + ",";
 		csvBody_1_3 += ",";
 		csvBody_1_3 += ",";
 		csvBody_1_3 += ",";
@@ -658,7 +658,7 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 		csvBody_1_4 += ",";
 		csvBody_1_4 += ",";
 		csvBody_1_4 += ",";
-		csvBody_1_4 += "²Î¿¼³ß´ç" + ",";
+		csvBody_1_4 += "å‚è€ƒå°ºå¯¸" + ",";
 		csvBody_1_4 += ",";
 		csvBody_1_4 += ",";
 		csvBody_1_4 += ",";
@@ -687,7 +687,7 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 		csvBody_1_5 += ",";
 		csvBody_1_5 += ",";
 		csvBody_1_5 += ",";
-		csvBody_1_5 += "µ÷ÕûÊı¾İ" + ",";
+		csvBody_1_5 += "è°ƒæ•´æ•°æ®" + ",";
 		csvBody_1_5 += ",";
 		csvBody_1_5 += ",";
 		csvBody_1_5 += ",";
@@ -708,61 +708,61 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 		csvBody_1_5 += ",";
 		csvBody_1_5 += ",";
 
-		csvTitle_2 += "¶©µ¥±àºÅ" + ",";
+		csvTitle_2 += "è®¢å•ç¼–å·" + ",";
 		csvBody_2 += getReqParamValue("") + ",";
-		csvTitle_2 += "¿ìµİ·½Ê½" + ",";
+		csvTitle_2 += "å¿«é€’æ–¹å¼" + ",";
 		csvBody_2 += getReqParamValue("") + ",";
-		csvTitle_2 += "ÓÅÏËÃæÁÏ" + ",";
+		csvTitle_2 += "ä¼˜çº¤é¢æ–™" + ",";
 		csvBody_2 += getReqParamValue("uskin_code") + ",";
-		csvTitle_2 += "¿Í¹©ÃæÁÏ±àºÅ" + ",";
+		csvTitle_2 += "å®¢ä¾›é¢æ–™ç¼–å·" + ",";
 		csvBody_2 += getReqParamValue("") + ",";
-		csvTitle_2 += "ÅäÉ«ÃæÁÏ" + ",";
+		csvTitle_2 += "é…è‰²é¢æ–™" + ",";
 		csvBody_2 += getReqParamValue("") + ",";
-		csvTitle_2 += "ÅäÉ«²¿Î»" + ",";
+		csvTitle_2 += "é…è‰²éƒ¨ä½" + ",";
 		csvBody_2 += getReqParamValue("") + ",";
-		csvTitle_2 += "ÉíĞÍ" + ",";
+		csvTitle_2 += "èº«å‹" + ",";
 		csvBody_2 += getReqParamValue("") + ",";
-		csvTitle_2 += "ºó±³¿îÊ½" + ",";
+		csvTitle_2 += "åèƒŒæ¬¾å¼" + ",";
 		csvBody_2 += getReqParamValue("LZX_17") + ",";
-		csvTitle_2 += "³¤¶ÌĞä" + ",";
+		csvTitle_2 += "é•¿çŸ­è¢–" + ",";
 		csvBody_2 += getReqParamValue("tailor_type") + ",";
-		csvTitle_2 += "ÁìĞÍ" + ",";
+		csvTitle_2 += "é¢†å‹" + ",";
 		csvBody_2 += getReqParamValue("LZX_01") + ",";
-		csvTitle_2 += "Áì²åÆ¬" + ",";
+		csvTitle_2 += "é¢†æ’ç‰‡" + ",";
 		csvBody_2 += getReqParamValue("") + ",";
-		csvTitle_2 += "ĞäÍ·" + ",";
+		csvTitle_2 += "è¢–å¤´" + ",";
 		csvBody_2 += getReqParamValue("LZX_02") + ",";
-		csvTitle_2 += "ÃÅ½ó" + ",";
+		csvTitle_2 += "é—¨è¥Ÿ" + ",";
 		csvBody_2 += getReqParamValue("LZX_03") + ",";
-		csvTitle_2 += "¿Ú´ü" + ",";
+		csvTitle_2 += "å£è¢‹" + ",";
 		csvBody_2 += getReqParamValue("LZX_04") + ",";
-		csvTitle_2 += "Å¦¿Û" + ",";
+		csvTitle_2 += "çº½æ‰£" + ",";
 		csvBody_2 += getReqParamValue("kouzi") + ",";
-		csvTitle_2 += "Ö÷ßé" + ",";
+		csvTitle_2 += "ä¸»å”›" + ",";
 		csvBody_2 += getReqParamValue("YX_08") + ",";
-		csvTitle_2 += "Ã÷Ïß¿í" + ",";
+		csvTitle_2 += "æ˜çº¿å®½" + ",";
 		csvBody_2 += getReqParamValue("") + ",";
-		csvTitle_2 += "²à·ì¹¤ÒÕ" + ",";
+		csvTitle_2 += "ä¾§ç¼å·¥è‰º" + ",";
 		csvBody_2 += getReqParamValue("") + ",";
-		csvTitle_2 += "Ç¶Ìõ" + ",";
+		csvTitle_2 += "åµŒæ¡" + ",";
 		csvBody_2 += getReqParamValue("") + ",";
-		csvTitle_2 += "³Ä²¼" + ",";
+		csvTitle_2 += "è¡¬å¸ƒ" + ",";
 		csvBody_2 += getReqParamValue("") + ",";
-		csvTitle_2 += "´ÌĞå×ÖÌå" + ",";
+		csvTitle_2 += "åˆºç»£å­—ä½“" + ",";
 		csvBody_2 += getReqParamValue("LZX_11_CHAR_TYPE") + ",";
-		csvTitle_2 += "´ÌĞå´óĞ¡" + ",";
+		csvTitle_2 += "åˆºç»£å¤§å°" + ",";
 		csvBody_2 += getReqParamValue("") + ",";
-		csvTitle_2 += "´ÌĞåÎ»ÖÃ" + ",";
+		csvTitle_2 += "åˆºç»£ä½ç½®" + ",";
 		csvBody_2 += getReqParamValue("LZX_13_FOR_CHAR") + ",";
-		csvTitle_2 += "´ÌĞåÄÚÈİ" + ",";
+		csvTitle_2 += "åˆºç»£å†…å®¹" + ",";
 		csvBody_2 += getReqParamValue("LZX_11_CHAR_WORD") + ",";
-		csvTitle_2 += "´ÌĞåÑÕÉ«" + ",";
+		csvTitle_2 += "åˆºç»£é¢œè‰²" + ",";
 		csvBody_2 += getReqParamValue("") + ",";
-		csvTitle_2 += "Ï´ßé³É·Ö" + ",";
+		csvTitle_2 += "æ´—å”›æˆåˆ†" + ",";
 		csvBody_2 += getReqParamValue("") + ",";
-		csvTitle_2 += "°ü×°" + ",";
+		csvTitle_2 += "åŒ…è£…" + ",";
 		csvBody_2 += getReqParamValue("YX_09") + ",";
-		csvTitle_2 += "¿ìµİ·½Ê½" + ",";
+		csvTitle_2 += "å¿«é€’æ–¹å¼" + ",";
 		csvBody_2 += getReqParamValue("") + ",";
 
 		return csvTitle_1 + "\n" + csvBody_1 + "\n" + csvBody_1_1 + "\n" + csvBody_1_2 + "\n" + csvBody_1_3 + "\n" + csvBody_1_4 + "\n" + csvBody_1_5 + "\n" + csvTitle_2 + "\n"

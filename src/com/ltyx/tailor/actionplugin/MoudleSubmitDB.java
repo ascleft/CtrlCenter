@@ -13,25 +13,25 @@ import com.zc.web.base.service.TimeHelper;
 
 public class MoudleSubmitDB extends ZCActionPluginBase {
 
-	// 订单
+	// 璁㈠崟
 	private String order_keys[] = new String[] { "customer_name", "customer_tel", "customer_email", "customer_address", "customer_tips", "operator_id", "operator_name",
 			"uskin_code" };
-	// 成衣尺寸
+	// 鎴愯。灏哄
 	private String measure_keys[] = new String[] { "ling_wei", "xiong_wei", "yao_wei", "du_wei", "dibian", "houshen_chang", "jian_kuan", "jian_kuan_qian", "xiu_chang_zuo",
 			"xiu_chang_you", "xiutouchang_zuo", "xiutouchang_you", "xiu_fei", "xiuzhou_fei", "qianshen_chang", "qianxiong_kuan", "houbei_kuan", "duanxiu_chang",
 			"duanxiu_kouwei_zuo", "duanxiu_kouwei_you" };
-	// 工艺
-	private String tech_LZX_01_keys[] = new String[] { "LZX_01", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// 领型
-	private String tech_LZX_02_keys[] = new String[] { "LZX_02", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// 袖头
-	private String tech_LZX_03_keys[] = new String[] { "LZX_03", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// 门襟
-	private String tech_LZX_04_keys[] = new String[] { "LZX_04", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// 口袋
-	private String tech_LZX_120_keys[] = new String[] { "LZX_120", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// 袖褶
-	private String tech_LZX_06_keys[] = new String[] { "LZX_06", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// 下摆弧度
-	private String tech_LZX_17_keys[] = new String[] { "LZX_17", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// 后片款式
-	private String tech_LZX_26_keys[] = new String[] { "LZX_26", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// 侧缝底摆贴布
-	// 刺绣
-	private String LZX_11_CHAR[] = new String[] { "LZX_11_CHAR_TYPE", "sequence", "name", "LZX_11_CHAR_COLOR", "LZX_13_FOR_CHAR", "LZX_11_CHAR_WORD", "tips" };// 刺绣文字
-	private String LZX_11_PIC[] = new String[] { "LZX_11_PIC_TYPE", "sequence", "name", "LZX_11_PIC_COLOR", "LZX_13_FOR_PIC", "LZX_11_PIC_NUM", "tips" };// 刺绣图案
+	// 宸ヨ壓
+	private String tech_LZX_01_keys[] = new String[] { "LZX_01", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// 棰嗗瀷
+	private String tech_LZX_02_keys[] = new String[] { "LZX_02", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// 琚栧ご
+	private String tech_LZX_03_keys[] = new String[] { "LZX_03", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// 闂ㄨ
+	private String tech_LZX_04_keys[] = new String[] { "LZX_04", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// 鍙ｈ
+	private String tech_LZX_120_keys[] = new String[] { "LZX_120", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// 琚栬ざ
+	private String tech_LZX_06_keys[] = new String[] { "LZX_06", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// 涓嬫憜寮у害
+	private String tech_LZX_17_keys[] = new String[] { "LZX_17", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// 鍚庣墖娆惧紡
+	private String tech_LZX_26_keys[] = new String[] { "LZX_26", "sequence", "name", "property_1", "property_2", "property_3", "tips" };// 渚х紳搴曟憜璐村竷
+	// 鍒虹唬
+	private String LZX_11_CHAR[] = new String[] { "LZX_11_CHAR_TYPE", "sequence", "name", "LZX_11_CHAR_COLOR", "LZX_13_FOR_CHAR", "LZX_11_CHAR_WORD", "tips" };// 鍒虹唬鏂囧瓧
+	private String LZX_11_PIC[] = new String[] { "LZX_11_PIC_TYPE", "sequence", "name", "LZX_11_PIC_COLOR", "LZX_13_FOR_PIC", "LZX_11_PIC_NUM", "tips" };// 鍒虹唬鍥炬
 
 	public MoudleSubmitDB(HttpServletRequest req) {
 		this.req = req;
@@ -50,34 +50,34 @@ public class MoudleSubmitDB extends ZCActionPluginBase {
 			String sql_insert_order = getSqlInsertOrder(order_keys);
 			PreparedStatement pstmt = (PreparedStatement) DBconn.prepareStatement(sql_insert_order);
 			pstmt.executeUpdate();
-			ResultSet rs = (ResultSet) pstmt.getGeneratedKeys(); // 获取结果
+			ResultSet rs = (ResultSet) pstmt.getGeneratedKeys(); // 鑾峰彇缁撴灉
 			if (rs.next()) {
-				autoIncKey = rs.getString(1);// 获取自增ID
+				autoIncKey = rs.getString(1);// 鑾峰彇鑷ID
 
-				// 成衣尺寸
+				// 鎴愯。灏哄
 				pstmt.executeUpdate(getSqlInsertMeasure(measure_keys, autoIncKey));
 
-				// 工艺信息
-				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_01_keys, autoIncKey, 1, "领型"));
-				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_02_keys, autoIncKey, 2, "袖头"));
-				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_03_keys, autoIncKey, 3, "门襟"));
-				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_04_keys, autoIncKey, 4, "口袋"));
-				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_120_keys, autoIncKey, 5, "袖褶"));
-				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_06_keys, autoIncKey, 6, "下摆弧度"));
-				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_17_keys, autoIncKey, 7, "后片款式"));
-				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_26_keys, autoIncKey, 8, "侧缝底摆贴布"));
+				// 宸ヨ壓淇℃伅
+				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_01_keys, autoIncKey, 1, "棰嗗瀷"));
+				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_02_keys, autoIncKey, 2, "琚栧ご"));
+				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_03_keys, autoIncKey, 3, "闂ㄨ"));
+				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_04_keys, autoIncKey, 4, "鍙ｈ"));
+				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_120_keys, autoIncKey, 5, "琚栬ざ"));
+				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_06_keys, autoIncKey, 6, "涓嬫憜寮у害"));
+				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_17_keys, autoIncKey, 7, "鍚庣墖娆惧紡"));
+				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_26_keys, autoIncKey, 8, "渚х紳搴曟憜璐村竷"));
 
-				// 刺绣信息
+				// 鍒虹唬淇℃伅
 				if ("1".equals(getString("LZX_11_FOR_CHAR_SWITCH"))) {
-					pstmt.executeUpdate(getSqlInsertTech(LZX_11_CHAR, autoIncKey, 11, "刺绣文字"));
+					pstmt.executeUpdate(getSqlInsertTech(LZX_11_CHAR, autoIncKey, 11, "鍒虹唬鏂囧瓧"));
 				}
 				if ("1".equals(getString("LZX_11_FOR_PIC_SWITCH"))) {
-					pstmt.executeUpdate(getSqlInsertTech(LZX_11_PIC, autoIncKey, 12, "刺绣图案"));
+					pstmt.executeUpdate(getSqlInsertTech(LZX_11_PIC, autoIncKey, 12, "鍒虹唬鍥炬"));
 				}
 
 			} else {
 				// throw an exception from here
-				Log.err("无法插入订单：无法捕获自增ID");
+				Log.err("鏃犳硶鎻掑叆璁㈠崟锛氭棤娉曟崟鑾疯嚜澧濱D");
 			}
 
 			actionState = true;

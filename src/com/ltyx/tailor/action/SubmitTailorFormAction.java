@@ -3,6 +3,7 @@ package com.ltyx.tailor.action;
 import com.ltyx.tailor.actionplugin.MoudleCalCSV;
 import com.ltyx.tailor.actionplugin.MoudleCheckMeasure;
 import com.ltyx.tailor.actionplugin.MoudleCheckOther;
+import com.ltyx.tailor.actionplugin.MoudleSubmitDB;
 import com.ltyx.tailor.actionplugin.MoudleSubmitEC;
 import com.zc.web.base.doman.ZCActionSupport;
 import com.zc.web.base.service.CCReqManager;
@@ -11,13 +12,13 @@ import com.zc.web.base.service.Log;
 public class SubmitTailorFormAction extends ZCActionSupport {
 
 	/**
-	 * ¸ÃActionÓÃÓÚ»ñÈ¡ÌîĞ´±íµ¥
-	 * 
+	 * è¯¥Actionç”¨äºè·å–å¡«å†™è¡¨å•
+	 *
 	 */
 	private static final long serialVersionUID = 10087L;
 
 	public String submit() {
-		Log.Nano.tag("Ìá½»³ÄÉÀĞÅÏ¢¶©µ¥", "¿ªÊ¼");
+		Log.Nano.tag("æäº¤è¡¬è¡«ä¿¡æ¯è®¢å•", "å¼€å§‹");
 
 		init(true);
 
@@ -25,9 +26,9 @@ public class SubmitTailorFormAction extends ZCActionSupport {
 
 		doJobs();
 
-		writeResp("Ìá½»³ÄÉÀĞÅÏ¢¶©µ¥");
+		writeResp("æäº¤è¡¬è¡«ä¿¡æ¯è®¢å•");
 
-		Log.Nano.tag("Ìá½»³ÄÉÀĞÅÏ¢¶©µ¥", "½áÊø");
+		Log.Nano.tag("æäº¤è¡¬è¡«ä¿¡æ¯è®¢å•", "ç»“æŸ");
 
 		return null;
 
@@ -44,7 +45,7 @@ public class SubmitTailorFormAction extends ZCActionSupport {
 				return false;
 			}
 		}
-		Log.Nano.tag("³ÄÉÀÌá½»ĞÅÏ¢½ø¶È", "MoudleCheckOther", "ÒÑÍê³É");
+		Log.Nano.tag("è¡¬è¡«æäº¤ä¿¡æ¯è¿›åº¦", "MoudleCheckOther", "å·²å®Œæˆ");
 
 		{
 			MoudleCheckMeasure checkMeasure = new MoudleCheckMeasure(request);
@@ -55,7 +56,7 @@ public class SubmitTailorFormAction extends ZCActionSupport {
 				return false;
 			}
 		}
-		Log.Nano.tag("³ÄÉÀÌá½»ĞÅÏ¢½ø¶È", "MoudleCheckMeasure", "ÒÑÍê³É");
+		Log.Nano.tag("è¡¬è¡«æäº¤ä¿¡æ¯è¿›åº¦", "MoudleCheckMeasure", "å·²å®Œæˆ");
 
 		{
 			MoudleSubmitEC submitEC = new MoudleSubmitEC(request);
@@ -66,7 +67,7 @@ public class SubmitTailorFormAction extends ZCActionSupport {
 				return false;
 			}
 		}
-		Log.Nano.tag("³ÄÉÀÌá½»ĞÅÏ¢½ø¶È", "MoudleSubmitEC", "ÒÑÍê³É");
+		Log.Nano.tag("è¡¬è¡«æäº¤ä¿¡æ¯è¿›åº¦", "MoudleSubmitEC", "å·²å®Œæˆ");
 
 //		{
 //			MoudleSubmitDB submitDB = new MoudleSubmitDB(request);
@@ -77,7 +78,7 @@ public class SubmitTailorFormAction extends ZCActionSupport {
 //				return false;
 //			}
 //		}
-//		Log.Nano.tag("³ÄÉÀÌá½»ĞÅÏ¢½ø¶È", "MoudleSubmitDB", "ÒÑÍê³É");
+//		Log.Nano.tag("è¡¬è¡«æäº¤ä¿¡æ¯è¿›åº¦", "MoudleSubmitDB", "å·²å®Œæˆ");
 
 		{
 			MoudleCalCSV calCSV = new MoudleCalCSV(request);
@@ -88,7 +89,7 @@ public class SubmitTailorFormAction extends ZCActionSupport {
 				return true;
 			}
 		}
-		Log.Nano.tag("³ÄÉÀÌá½»ĞÅÏ¢½ø¶È", "MoudleCalCSV", "ÒÑÍê³É");
+		Log.Nano.tag("è¡¬è¡«æäº¤ä¿¡æ¯è¿›åº¦", "MoudleCalCSV", "å·²å®Œæˆ");
 
 		return true;
 	}

@@ -5,8 +5,8 @@ import com.zc.web.base.doman.ZCActionSupport;
 public class GetTailorFormAction extends ZCActionSupport {
 
 	/**
-	 * 该Action用于获取填写表单
-	 * 
+	 * 璇ction鐢ㄤ簬鑾峰彇濉啓琛ㄥ崟
+	 *
 	 */
 	private static final long serialVersionUID = 10087L;
 

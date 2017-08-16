@@ -12,15 +12,15 @@ import com.zc.web.base.service.ReqParamGatter;
 
 public abstract class ZCActionPluginBase {
 
-	// ·µ»ØÏìÓ¦»ù±¾ÄÚÈİ
+	// è¿”å›å“åº”åŸºæœ¬å†…å®¹
 	protected String ERRCODE = null;
 	protected String ERRDESC = null;
 	protected String data = null;
 
-	// ÍøÂçÁ¬½Ó
+	// ç½‘ç»œè¿æ¥
 	protected HttpServletRequest req = null;
 
-	// ³éÏó¶¯×÷£¬ÓÃÓÚÊµÏÖ²å¼şµÄÒµÎñÂß¼­
+	// æŠ½è±¡åŠ¨ä½œï¼Œç”¨äºå®ç°æ’ä»¶çš„ä¸šåŠ¡é€»è¾‘
 	abstract public boolean doJobs();
 
 	public String getERRCODE() {
@@ -35,30 +35,30 @@ public abstract class ZCActionPluginBase {
 		return data;
 	}
 
-	// ÊÜ±£»¤·½·¨£¬ÓÃÓÚ»ñÈ¡Á¬½ÓÖĞ´æÔÚµÄ¼üÖµ¶Ô
+	// å—ä¿æŠ¤æ–¹æ³•ï¼Œç”¨äºè·å–è¿æ¥ä¸­å­˜åœ¨çš„é”®å€¼å¯¹
 	protected int getInt(String key) {
 		return ReqParamGatter.getParamInt(req, key);
 	}
 
-	// ÊÜ±£»¤·½·¨£¬ÓÃÓÚ»ñÈ¡Á¬½ÓÖĞ´æÔÚµÄ¼üÖµ¶Ô
+	// å—ä¿æŠ¤æ–¹æ³•ï¼Œç”¨äºè·å–è¿æ¥ä¸­å­˜åœ¨çš„é”®å€¼å¯¹
 	protected double getDouble(String key) {
 		return ReqParamGatter.getParamDouble(req, key);
 	}
 
-	// ÊÜ±£»¤·½·¨£¬ÓÃÓÚ»ñÈ¡Á¬½ÓÖĞ´æÔÚµÄ¼üÖµ¶Ô
+	// å—ä¿æŠ¤æ–¹æ³•ï¼Œç”¨äºè·å–è¿æ¥ä¸­å­˜åœ¨çš„é”®å€¼å¯¹
 	protected String getString(String key) {
 		return ReqParamGatter.getParamString(req, key);
 	}
 
-	// ÊÜ±£»¤·½·¨£¬ÓÃÓÚ»ñÈ¡Á¬½ÓÖĞ´æÔÚµÄ¼üÖµ¶Ô
+	// å—ä¿æŠ¤æ–¹æ³•ï¼Œç”¨äºè·å–è¿æ¥ä¸­å­˜åœ¨çš„é”®å€¼å¯¹
 	protected String[] getStrings(String key) {
 		return ReqParamGatter.getParamStrings(req, key);
 	}
 
-	// Êı¾İ¿âÁ¬½Ó
+	// æ•°æ®åº“è¿æ¥
 	protected Connection DBconn = null;
 
-	// ´´½¨Êı¾İ¿âÁ¬½Ó
+	// åˆ›å»ºæ•°æ®åº“è¿æ¥
 	protected void creatDBConn() {
 
 		try {
@@ -72,10 +72,10 @@ public abstract class ZCActionPluginBase {
 			DBconn = (Connection) DriverManager.getConnection(url, username, password);
 
 		} catch (ClassNotFoundException e) {
-			Log.i("ÕÒ²»µ½Çı¶¯³ÌĞòÀà £¬¼ÓÔØÇı¶¯Ê§°Ü£¡");
+			Log.i("æ‰¾ä¸åˆ°é©±åŠ¨ç¨‹åºç±» ï¼ŒåŠ è½½é©±åŠ¨å¤±è´¥ï¼");
 			e.printStackTrace();
 		} catch (SQLException se) {
-			Log.i("Êı¾İ¿âÁ¬½ÓÊ§°Ü£¡");
+			Log.i("æ•°æ®åº“è¿æ¥å¤±è´¥ï¼");
 			se.printStackTrace();
 		}
 	}

@@ -16,7 +16,7 @@ public class ParamTestServlet extends ZCBaseServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * ²ÎÊı¹ıÂËÆ÷£¬ÓÃÓÚ¼ì²âÇëÇóÄÚÈİÊÇ·ñÕıÈ·£¬ÏêÇé½«ÔÚ¿ØÖÆÌ¨ÖĞ½øĞĞÊä³ö´òÓ¡
+	 * å‚æ•°è¿‡æ»¤å™¨ï¼Œç”¨äºæ£€æµ‹è¯·æ±‚å†…å®¹æ˜¯å¦æ­£ç¡®ï¼Œè¯¦æƒ…å°†åœ¨æ§åˆ¶å°ä¸­è¿›è¡Œè¾“å‡ºæ‰“å°
 	 */
 
 	public void doExeRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,12 +38,12 @@ public class ParamTestServlet extends ZCBaseServlet {
 		}
 
 		switch (ERRCODE) {
-		case 0:
-			ERRDESC = "³É¹¦";
-			break;
-		default:
-			ERRDESC = "ÔËĞĞÊ±Òì³£";
-			break;
+			case 0:
+				ERRDESC = "æˆåŠŸ";
+				break;
+			default:
+				ERRDESC = "è¿è¡Œæ—¶å¼‚å¸¸";
+				break;
 		}
 
 		resp.setContentType("text/html;charset=utf-8");

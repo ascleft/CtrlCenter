@@ -11,29 +11,29 @@ import com.zc.web.base.service.URLConfigHelper;
 public class LoginAction extends ZCActionSupport {
 
 	/**
-	 * µÇÂ¼Action
-	 * 
-	 * sessionÖĞµÄuserÎªÓÃ»§ĞÅÏ¢£¬roleÖĞ0Îª×î¸ßÈ¨ÏŞ
-	 * 
-	 * sessionÖĞµÄisOnline£º1ÎªÒÑ¾­µÇÂ¼£¬0ÎªÎ´µÇÂ¼¡£
+	 * ç™»å½•Action
+	 *
+	 * sessionä¸­çš„userä¸ºç”¨æˆ·ä¿¡æ¯ï¼Œroleä¸­0ä¸ºæœ€é«˜æƒé™
+	 *
+	 * sessionä¸­çš„isOnlineï¼š1ä¸ºå·²ç»ç™»å½•ï¼Œ0ä¸ºæœªç™»å½•ã€‚
 	 */
 	private static final long serialVersionUID = 10086L;
 
 	/**
-	 * ×¢Ïú½Ó¿Ú
-	 * 
+	 * æ³¨é”€æ¥å£
+	 *
 	 */
 	public String loginPage() {
 		return "succ";
 	}
 
 	/**
-	 * µÇÂ¼½Ó¿Ú
-	 * 
+	 * ç™»å½•æ¥å£
+	 *
 	 */
 	public String login() {
 
-		Log.Nano.tag("µÇÂ¼½Ó¿Ú", "¿ªÊ¼");
+		Log.Nano.tag("ç™»å½•æ¥å£", "å¼€å§‹");
 
 		init(true);
 
@@ -43,25 +43,25 @@ public class LoginAction extends ZCActionSupport {
 
 		if (null == role) {
 
-			Log.Nano.tag("µÇÂ¼½Ó¿ÚÊı¾İÈ±Ê§ from Web", "name:" + name, "pwd:" + pwd, "role:" + role);
+			Log.Nano.tag("ç™»å½•æ¥å£æ•°æ®ç¼ºå¤± from Web", "name:" + name, "pwd:" + pwd, "role:" + role);
 
 			ERRCODE = "1";
 			ERRDESC = "fail";
-			data = "Èõ¼¦£¬ÉÙÌØÃ´µ÷Ï·½Ó¿Ú";
+			data = "å¼±é¸¡ï¼Œå°‘ç‰¹ä¹ˆè°ƒæˆæ¥å£";
 
-			writeResp("µÇÂ¼½Ó¿Ú resp to Web");
+			writeResp("ç™»å½•æ¥å£ resp to Web");
 
 			return null;
 
 		} else if (null == name || null == pwd) {
 
-			Log.Nano.tag("µÇÂ¼½Ó¿ÚÊı¾İÈ±Ê§ from Web", "name:" + name, "pwd:" + pwd, "role:" + role);
+			Log.Nano.tag("ç™»å½•æ¥å£æ•°æ®ç¼ºå¤± from Web", "name:" + name, "pwd:" + pwd, "role:" + role);
 
 			ERRCODE = "1";
 			ERRDESC = "fail";
-			data = "ÇëÊäÈëÍêÕûµÄÓÃ»§ÃûºÍÃÜÂë";
+			data = "è¯·è¾“å…¥å®Œæ•´çš„ç”¨æˆ·åå’Œå¯†ç ";
 
-			writeResp("µÇÂ¼½Ó¿Ú resp to Web");
+			writeResp("ç™»å½•æ¥å£ resp to Web");
 
 			return null;
 
@@ -82,7 +82,7 @@ public class LoginAction extends ZCActionSupport {
 			String ec_user_name;
 			String ec_user_role;
 
-			Log.Nano.tag("µÇÂ¼½Ó¿Ú from EC", httpResp);
+			Log.Nano.tag("ç™»å½•æ¥å£ from EC", httpResp);
 
 			JSONObject jsonHttpResp = JSONObject.fromObject(httpResp);
 			String jsonERRCODE = jsonHttpResp.getString("ERRCODE");
@@ -113,11 +113,11 @@ public class LoginAction extends ZCActionSupport {
 
 				ERRCODE = "0";
 				ERRDESC = "succ";
-				data = "EC´íÎóÂë£º" + jsonERRCODE + " EC´íÎóÃèÊö£º" + jsonERRDESC;
+				data = "ECé”™è¯¯ç ï¼š" + jsonERRCODE + " ECé”™è¯¯æè¿°ï¼š" + jsonERRDESC;
 
 			}
 
-			writeResp("µÇÂ¼½Ó¿Ú resp to Web");
+			writeResp("ç™»å½•æ¥å£ resp to Web");
 
 			return null;
 		}
@@ -125,8 +125,8 @@ public class LoginAction extends ZCActionSupport {
 	}
 
 	/**
-	 * ×¢Ïú½Ó¿Ú
-	 * 
+	 * æ³¨é”€æ¥å£
+	 *
 	 */
 	public String logout() {
 		init(true);
@@ -134,16 +134,16 @@ public class LoginAction extends ZCActionSupport {
 		session.setAttribute("ec_user_id", null);
 		session.setAttribute("ec_user_name", null);
 		session.setAttribute("ec_user_role", null);
-		Log.Nano.tag("×¢Ïú", "Íê³É");
+		Log.Nano.tag("æ³¨é”€", "å®Œæˆ");
 		return "succ";
 	}
 
 	private String getMenuList() {
-		String menuList = "<li><a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/Pro.action\">¸ß¼¶Ä£Ê½</a></li>"//
-				+ "<li><a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/Design.action\">Éè¼ÆÊ¦ÍÆ¼ö¿î</a></li>"//
-				+ "<li><a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/Advisor.action\">¶¨ÖÆ¹ËÎÊ</a></li>" //
-				+ "<li><a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/Other.action\">ÆäËûÉÌÆ·</a></li>" //
-				+ "<li><a href=\"/CtrlCenter/UcsPlus/GetSearchPage.action\">¿â´æ²éÑ¯</a></li>";
+		String menuList = "<li><a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/Pro.action\">é«˜çº§æ¨¡å¼</a></li>"//
+				+ "<li><a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/Design.action\">è®¾è®¡å¸ˆæ¨èæ¬¾</a></li>"//
+				+ "<li><a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/Advisor.action\">å®šåˆ¶é¡¾é—®</a></li>" //
+				+ "<li><a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/Other.action\">å…¶ä»–å•†å“</a></li>" //
+				+ "<li><a href=\"/CtrlCenter/UcsPlus/GetSearchPage.action\">åº“å­˜æŸ¥è¯¢</a></li>";
 		return menuList;
 
 	}

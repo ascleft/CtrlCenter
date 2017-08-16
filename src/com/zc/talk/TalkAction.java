@@ -12,8 +12,8 @@ public class TalkAction extends ZCActionSupport {
 	private static final long serialVersionUID = 10086L;
 
 	/**
-	 * »ñÈ¡Ò³Ãæ
-	 * 
+	 * è·å–é¡µé¢
+	 *
 	 */
 	public String getPage() {
 		return "succ";
@@ -21,8 +21,8 @@ public class TalkAction extends ZCActionSupport {
 	}
 
 	/**
-	 * ÁÄÌì½Ó¿Ú
-	 * 
+	 * èŠå¤©æ¥å£
+	 *
 	 */
 	public String talk() {
 
@@ -34,11 +34,11 @@ public class TalkAction extends ZCActionSupport {
 
 		if ("".equals(tell)) {
 
-			Log.Nano.tag("ÁÄÌì½Ó¿Ú  from Web", "tell:" + tell);
+			Log.Nano.tag("èŠå¤©æ¥å£  from Web", "tell:" + tell);
 
 			ERRCODE = "1";
 			ERRDESC = "fail";
-			data = "Èõ¼¦£¬ÉÙÌØÃ´µ÷Ï·½Ó¿Ú";
+			data = "å¼±é¸¡ï¼Œå°‘ç‰¹ä¹ˆè°ƒæˆæ¥å£";
 
 			writeResp();
 
@@ -65,9 +65,9 @@ public class TalkAction extends ZCActionSupport {
 
 				ERRCODE = "1";
 				ERRDESC = "fail";
-				data = "ÉÏÓÎ·şÎñÆ÷Òì³£";
+				data = "ä¸Šæ¸¸æœåŠ¡å™¨å¼‚å¸¸";
 
-				Log.Nano.TagByLine("Talk", "½Ó¿ÚÊı¾İÒì³£", content);
+				Log.Nano.TagByLine("Talk", "æ¥å£æ•°æ®å¼‚å¸¸", content);
 
 			}
 

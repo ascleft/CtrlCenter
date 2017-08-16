@@ -9,8 +9,8 @@ public class VersionHelper {
 	private static String VERSION;
 
 	public static void init() {
-		CORE = "Seed7¸Ä07" + "¼ÆËãºËĞÄ";
-		NAME = "Seed7" + "Êı¾İÕûºÏÆ½Ì¨";
+		CORE = "Seed7æ”¹07" + "è®¡ç®—æ ¸å¿ƒ";
+		NAME = "Seed7" + "æ•°æ®æ•´åˆå¹³å°";
 		VERSION = TimeHelper.getDateYMD() + " " + "beta";
 		showVersion();
 	}

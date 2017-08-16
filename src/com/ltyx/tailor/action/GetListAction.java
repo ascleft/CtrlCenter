@@ -12,8 +12,8 @@ import com.zc.web.base.doman.ZCActionSupport;
 public class GetListAction extends ZCActionSupport {
 
 	/**
-	 * ¸ÃActionÓÃÓÚ»ñÈ¡ÌîĞ´±íµ¥
-	 * 
+	 * è¯¥Actionç”¨äºè·å–å¡«å†™è¡¨å•
+	 *
 	 */
 	private static final long serialVersionUID = 10087L;
 
@@ -92,7 +92,7 @@ public class GetListAction extends ZCActionSupport {
 
 			PreparedStatement pstmt = (PreparedStatement) DBconn.prepareStatement(sql_get_count);
 			pstmt.executeQuery();
-			ResultSet rs = (ResultSet) pstmt.getResultSet(); // »ñÈ¡½á¹û
+			ResultSet rs = (ResultSet) pstmt.getResultSet(); // è·å–ç»“æœ
 			while (rs.next()) {
 
 				JSONObject item = new JSONObject();
@@ -121,7 +121,7 @@ public class GetListAction extends ZCActionSupport {
 
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "Êı¾İ¿âÎŞÏà¹Ø¼ÇÂ¼¡£";
+				data = "æ•°æ®åº“æ— ç›¸å…³è®°å½•ã€‚";
 			}
 
 		} catch (SQLException e) {
@@ -129,7 +129,7 @@ public class GetListAction extends ZCActionSupport {
 
 			ERRCODE = "1";
 			ERRDESC = "fail";
-			data = "Êı¾İ¿âÒì³££¬ÇëÉÔºòÖØÊÔ¡£";
+			data = "æ•°æ®åº“å¼‚å¸¸ï¼Œè¯·ç¨å€™é‡è¯•ã€‚";
 
 		} finally {
 			try {

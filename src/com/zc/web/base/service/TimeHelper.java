@@ -7,7 +7,7 @@ import java.util.Date;
 public class TimeHelper {
 
 	/*
-	 * ½«Ê±¼ä´Á×ª»»ÎªÊ±¼ä
+	 * å°†æ—¶é—´æˆ³è½¬æ¢ä¸ºæ—¶é—´
 	 */
 	public static String getDate() {
 
@@ -19,7 +19,7 @@ public class TimeHelper {
 	}
 
 	/*
-	 * ½«Ê±¼ä´Á×ª»»ÎªÊ±¼ä
+	 * å°†æ—¶é—´æˆ³è½¬æ¢ä¸ºæ—¶é—´
 	 */
 	public static String getTime() {
 
@@ -31,7 +31,7 @@ public class TimeHelper {
 	}
 
 	/*
-	 * ½«Ê±¼ä´Á×ª»»ÎªÊ±¼ä
+	 * å°†æ—¶é—´æˆ³è½¬æ¢ä¸ºæ—¶é—´
 	 */
 
 	public static String getTimeMS() {
@@ -44,7 +44,7 @@ public class TimeHelper {
 	}
 
 	/*
-	 * ½«Ê±¼ä´Á×ª»»ÎªÊ±¼ä
+	 * å°†æ—¶é—´æˆ³è½¬æ¢ä¸ºæ—¶é—´
 	 */
 
 	public static String getDateYMD() {
@@ -57,7 +57,7 @@ public class TimeHelper {
 	}
 
 	/*
-	 * ½«Ê±¼ä×ª»»ÎªÊ±¼ä´Á
+	 * å°†æ—¶é—´è½¬æ¢ä¸ºæ—¶é—´æˆ³
 	 */
 	public static String dateToStamp(String s) throws ParseException {
 		String res;
@@ -69,9 +69,9 @@ public class TimeHelper {
 	}
 
 	/*
-	 * linux ×ªÊ±¼ä´Á¸ñÊ½
-	 * 
-	 * Àı Èç"yyyy-MM-dd HH:mm:ss"
+	 * linux è½¬æ—¶é—´æˆ³æ ¼å¼
+	 *
+	 * ä¾‹ å¦‚"yyyy-MM-dd HH:mm:ss"
 	 */
 	public String TimeStamp2Date(String timestampString, String formats) {
 		Long timestamp = Long.parseLong(timestampString) * 1000;

@@ -22,25 +22,25 @@ public class MoudleCheckMeasure extends ZCActionPluginBase {
 		if (maleBodyMeasure == null) {
 			init();
 		}
-		// µ±³ß´çÀàĞÍÖ¸¶¨Îª¡°needless¡±Ê±Ö±½ÓÌø¹ıĞ£Ñé²å¼ş
+		// å½“å°ºå¯¸ç±»å‹æŒ‡å®šä¸ºâ€œneedlessâ€æ—¶ç›´æ¥è·³è¿‡æ ¡éªŒæ’ä»¶
 		if ("needless".equals(getString("measure_type"))) {
 			return true;
 		}
-		// ÄĞĞÔ±ØÌîÄÚÈİĞ£Ñé
+		// ç”·æ€§å¿…å¡«å†…å®¹æ ¡éªŒ
 		if (!check_maleMeasure()) {
 			return false;
 		}
-		// Ë³ÀûÖ´ĞĞ·µ»Ø
+		// é¡ºåˆ©æ‰§è¡Œè¿”å›
 		return true;
 	}
 
 	private boolean check_maleMeasure() {
 		for (String key : maleBodyMeasure.keySet()) {
 			if (!maleBodyMeasure.get(key).check(getInt(key))) {
-				Log.Nano.TagByLine(maleBodyMeasure.get(key) + "Î´Í¨¹ı", "web-key:" + key, "web-value:" + getString(key), "±¾µØ×ªĞÍÖµ:" + getInt(key), "¸ß¾«¶È×ªĞÍ:" + getDouble(key));
+				Log.Nano.TagByLine(maleBodyMeasure.get(key) + "æœªé€šè¿‡", "web-key:" + key, "web-value:" + getString(key), "æœ¬åœ°è½¬å‹å€¼:" + getInt(key), "é«˜ç²¾åº¦è½¬å‹:" + getDouble(key));
 				return false;
 			}
-//			Log.Nano.TagByLine(maleBodyMeasure.get(key) + "Í¨¹ı", "web-key:" + key, "web-value:" + getString(key), "±¾µØ×ªĞÍÖµ:" + getInt(key), "¸ß¾«¶È×ªĞÍ:" + getDouble(key));
+//			Log.Nano.TagByLine(maleBodyMeasure.get(key) + "é€šè¿‡", "web-key:" + key, "web-value:" + getString(key), "æœ¬åœ°è½¬å‹å€¼:" + getInt(key), "é«˜ç²¾åº¦è½¬å‹:" + getDouble(key));
 
 		}
 		return true;
@@ -48,18 +48,18 @@ public class MoudleCheckMeasure extends ZCActionPluginBase {
 
 	private void init() {
 		maleBodyMeasure = new HashMap<String, Cell>();
-		maleBodyMeasure.put("ling_wei", new Cell(true, "ÁìÎ§", 0, 100));
-		maleBodyMeasure.put("xiong_wei", new Cell(true, "ĞØÎ§", 0, 100));
-		maleBodyMeasure.put("yao_wei", new Cell(true, "ÑüÎ§", 0, 100));
-		maleBodyMeasure.put("du_wei", new Cell(false, "¶ÇÎ§", 0, 100));
-		maleBodyMeasure.put("dibian", new Cell(true, "µ×±ß", 0, 100));
-		maleBodyMeasure.put("houshen_chang", new Cell(true, "ºóÉí³¤", 0, 100));
-		maleBodyMeasure.put("jian_kuan", new Cell(true, "¼ç¿í", 0, 100));
-		maleBodyMeasure.put("jian_kuan_qian", new Cell(false, "Ç°¼ç¿í", 0, 100));
-		maleBodyMeasure.put("xiu_fei", new Cell(true, "Ğä·Ê", 0, 100));
-		maleBodyMeasure.put("qianshen_chang", new Cell(false, "Ç°Éí³¤", 0, 100));
-		maleBodyMeasure.put("qianxiong_kuan", new Cell(false, "Ç°ĞØ¿í", 0, 100));
-		maleBodyMeasure.put("houbei_kuan", new Cell(false, "ºó±³¿í", 0, 100));
+		maleBodyMeasure.put("ling_wei", new Cell(true, "é¢†å›´", 0, 100));
+		maleBodyMeasure.put("xiong_wei", new Cell(true, "èƒ¸å›´", 0, 100));
+		maleBodyMeasure.put("yao_wei", new Cell(true, "è…°å›´", 0, 100));
+		maleBodyMeasure.put("du_wei", new Cell(false, "è‚šå›´", 0, 100));
+		maleBodyMeasure.put("dibian", new Cell(true, "åº•è¾¹", 0, 100));
+		maleBodyMeasure.put("houshen_chang", new Cell(true, "åèº«é•¿", 0, 100));
+		maleBodyMeasure.put("jian_kuan", new Cell(true, "è‚©å®½", 0, 100));
+		maleBodyMeasure.put("jian_kuan_qian", new Cell(false, "å‰è‚©å®½", 0, 100));
+		maleBodyMeasure.put("xiu_fei", new Cell(true, "è¢–è‚¥", 0, 100));
+		maleBodyMeasure.put("qianshen_chang", new Cell(false, "å‰èº«é•¿", 0, 100));
+		maleBodyMeasure.put("qianxiong_kuan", new Cell(false, "å‰èƒ¸å®½", 0, 100));
+		maleBodyMeasure.put("houbei_kuan", new Cell(false, "åèƒŒå®½", 0, 100));
 	}
 
 	class Cell {
@@ -81,19 +81,19 @@ public class MoudleCheckMeasure extends ZCActionPluginBase {
 				if (input == 0) {
 					ERRCODE = "0";
 					ERRDESC = "fail";
-					data = "µ±Ç°" + name + "Îª±ØÌîÄÚÈİ£¬ÇÒ²»µÃÎªÁã" + "," + "ÇëÖØĞÂÌîĞ´";
+					data = "å½“å‰" + name + "ä¸ºå¿…å¡«å†…å®¹ï¼Œä¸”ä¸å¾—ä¸ºé›¶" + "," + "è¯·é‡æ–°å¡«å†™";
 					return false;
 				}
 				if (input < Min) {
 					ERRCODE = "0";
 					ERRDESC = "fail";
-					data = "µ±Ç°" + name + "Îª" + input + "£¬" + "ÒÑ¾­µÍÓÚÏÂÏŞ" + Min + "£¬" + "ÇëÖØĞÂÌîĞ´";
+					data = "å½“å‰" + name + "ä¸º" + input + "ï¼Œ" + "å·²ç»ä½äºä¸‹é™" + Min + "ï¼Œ" + "è¯·é‡æ–°å¡«å†™";
 					return false;
 				}
 				if (input > Max) {
 					ERRCODE = "0";
 					ERRDESC = "fail";
-					data = "µ±Ç°" + name + "Îª" + input + "£¬" + "ÒÑ¾­³¬¹ıÉÏÏŞ" + Max + "£¬" + "ÇëÖØĞÂÌîĞ´";
+					data = "å½“å‰" + name + "ä¸º" + input + "ï¼Œ" + "å·²ç»è¶…è¿‡ä¸Šé™" + Max + "ï¼Œ" + "è¯·é‡æ–°å¡«å†™";
 					return false;
 				}
 				return true;

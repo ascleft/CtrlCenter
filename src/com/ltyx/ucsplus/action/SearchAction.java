@@ -11,25 +11,25 @@ import com.zc.web.base.service.Log;
 public class SearchAction extends ZCActionSupport {
 
 	/**
-	 * µÇÂ¼Action
-	 * 
-	 * sessionÖĞµÄuserÎªÓÃ»§ĞÅÏ¢£¬roleÖĞ0Îª×î¸ßÈ¨ÏŞ
-	 * 
-	 * sessionÖĞµÄisOnline£º1ÎªÒÑ¾­µÇÂ¼£¬0ÎªÎ´µÇÂ¼¡£
+	 * ç™»å½•Action
+	 *
+	 * sessionä¸­çš„userä¸ºç”¨æˆ·ä¿¡æ¯ï¼Œroleä¸­0ä¸ºæœ€é«˜æƒé™
+	 *
+	 * sessionä¸­çš„isOnlineï¼š1ä¸ºå·²ç»ç™»å½•ï¼Œ0ä¸ºæœªç™»å½•ã€‚
 	 */
 	private static final long serialVersionUID = 10086L;
 
 	/**
-	 * »ñÈ¡ËÑË÷Ò³Ãæ
-	 * 
+	 * è·å–æœç´¢é¡µé¢
+	 *
 	 */
 	public String getPage() {
 		return "succ";
 	}
 
 	/**
-	 * ËÑË÷
-	 * 
+	 * æœç´¢
+	 *
 	 */
 	public String search() {
 
@@ -45,15 +45,15 @@ public class SearchAction extends ZCActionSupport {
 
 		if (null == storeroom || "".equals(storeroom)) {
 
-			Log.Nano.TagByLine("¼´Ê±¿â´æ½Ó¿Ú from Web", "name:", name, "storeroom:", storeroom);
+			Log.Nano.TagByLine("å³æ—¶åº“å­˜æ¥å£ from Web", "name:", name, "storeroom:", storeroom);
 
 			Log.i(storeroom);
 
 			ERRCODE = "1";
 			ERRDESC = "fail";
-			data = "Èõ¼¦£¬ÉÙÌØÃ´µ÷Ï·½Ó¿Ú";
+			data = "å¼±é¸¡ï¼Œå°‘ç‰¹ä¹ˆè°ƒæˆæ¥å£";
 
-			writeResp("¼´Ê±¿â´æ½Ó¿Ú resp to Web");
+			writeResp("å³æ—¶åº“å­˜æ¥å£ resp to Web");
 
 			return null;
 
@@ -63,9 +63,9 @@ public class SearchAction extends ZCActionSupport {
 
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "ÇëÊäÈëÃæÁÏ±àºÅ";
+				data = "è¯·è¾“å…¥é¢æ–™ç¼–å·";
 
-				writeResp("¼´Ê±¿â´æ½Ó¿Ú resp to Web");
+				writeResp("å³æ—¶åº“å­˜æ¥å£ resp to Web");
 
 				return null;
 
@@ -79,22 +79,22 @@ public class SearchAction extends ZCActionSupport {
 
 					ERRCODE = "0";
 					ERRDESC = "fail";
-					data = "µ±Ç°Éí·İÎŞÈ¨²éÑ¯¸ÃÃæÁÏ";
+					data = "å½“å‰èº«ä»½æ— æƒæŸ¥è¯¢è¯¥é¢æ–™";
 
-					writeResp("¼´Ê±¿â´æ½Ó¿Ú resp to Web");
+					writeResp("å³æ—¶åº“å­˜æ¥å£ resp to Web");
 
 					return null;
 				}
 			}
 
 			if ("0".equals(storeroom)) {
-				// Log.Nano.tag("¼´Ê±¿â´æ½Ó¿Ú from K3", "Â³Ì©²Ö¿â");
+				// Log.Nano.tag("å³æ—¶åº“å­˜æ¥å£ from K3", "é²æ³°ä»“åº“");
 				filter = "FMATERIALNUMBER LIKE '%" + name + "%' OR FMATERIALNAME LIKE '%" + name + "%' OR FUSKIN LIKE '%" + name + "%'";
 			} else if ("1".equals(storeroom)) {
-				// Log.Nano.tag("¼´Ê±¿â´æ½Ó¿Ú from K3", "ÖÇÄÜÖÆÔì");
+				// Log.Nano.tag("å³æ—¶åº“å­˜æ¥å£ from K3", "æ™ºèƒ½åˆ¶é€ ");
 				filter = "(FMATERIALNUMBER LIKE '%" + name + "%' OR FMATERIALNAME LIKE '%" + name + "%' OR FUSKIN LIKE '%" + name + "%') AND FSTOCKNUMBER='MLCK028'";
 			} else {
-				// Log.Nano.tag("¼´Ê±¿â´æ½Ó¿Ú from K3", "¿Í¹©¿â´æ");
+				// Log.Nano.tag("å³æ—¶åº“å­˜æ¥å£ from K3", "å®¢ä¾›åº“å­˜");
 				filter = "(FMATERIALNUMBER LIKE '%" + name + "%' OR FMATERIALNAME LIKE '%" + name + "%' OR FUSKIN LIKE '%" + name + "%') AND FSTOCKNUMBER='MLCK040'";
 			}
 
@@ -119,7 +119,7 @@ public class SearchAction extends ZCActionSupport {
 				if (jsonData.toString().length() < 3) {
 					ERRCODE = "0";
 					ERRDESC = "fail";
-					data = "²Ö¿âÖĞÃ»ÓĞ¸ÃÃæÁÏ¿â´æ";
+					data = "ä»“åº“ä¸­æ²¡æœ‰è¯¥é¢æ–™åº“å­˜";
 				} else {
 					ERRCODE = "0";
 					ERRDESC = "succ";
@@ -130,7 +130,7 @@ public class SearchAction extends ZCActionSupport {
 
 				ERRCODE = "1";
 				ERRDESC = "fail";
-				data = "K3·şÎñÆ÷Òì³£ £¬K3´íÎóÂë£º" + jsonERRCODE + " £¬K3´íÎóÃèÊö" + jsonERRDESC;
+				data = "K3æœåŠ¡å™¨å¼‚å¸¸ ï¼ŒK3é”™è¯¯ç ï¼š" + jsonERRCODE + " ï¼ŒK3é”™è¯¯æè¿°" + jsonERRDESC;
 
 			}
 

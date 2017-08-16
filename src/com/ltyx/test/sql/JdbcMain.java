@@ -24,7 +24,7 @@ public class JdbcMain {
 	public static void init() {
 
 		try {
-			// ¼ÓÔØMySqlµÄÇı¶¯Àà
+			// åŠ è½½MySqlçš„é©±åŠ¨ç±»
 			Class.forName("com.mysql.jdbc.Driver");
 
 			String url = "jdbc:mysql://localhost:3306/ctrlcenter";
@@ -37,16 +37,16 @@ public class JdbcMain {
 
 			test();
 		} catch (ClassNotFoundException e) {
-			Log.i("ÕÒ²»µ½Çı¶¯³ÌĞòÀà £¬¼ÓÔØÇı¶¯Ê§°Ü£¡");
+			Log.i("æ‰¾ä¸åˆ°é©±åŠ¨ç¨‹åºç±» ï¼ŒåŠ è½½é©±åŠ¨å¤±è´¥ï¼");
 			e.printStackTrace();
 		} catch (SQLException se) {
-			Log.i("Êı¾İ¿âÁ¬½ÓÊ§°Ü£¡");
+			Log.i("æ•°æ®åº“è¿æ¥å¤±è´¥ï¼");
 			se.printStackTrace();
 		}
 	}
 
 	public static void test() {
-		
+
 		// String sql = "insert into user (name) values('jaskon')";
 		// PreparedStatement pstmt = (PreparedStatement)
 		// conn.prepareStatement(sql);
@@ -122,7 +122,7 @@ public class JdbcMain {
 	}
 
 	public static PushPayload buildPushObject_all_all_alert() {
-		return PushPayload.newBuilder().setPlatform(Platform.android()).setAudience(Audience.tag("10086")).setMessage(Message.content("ÍÆËÍÏûÏ¢ÕıÎÄ")).build();
+		return PushPayload.newBuilder().setPlatform(Platform.android()).setAudience(Audience.tag("10086")).setMessage(Message.content("æ¨é€æ¶ˆæ¯æ­£æ–‡")).build();
 	}
 
 }

@@ -9,16 +9,16 @@ public class WordAction extends ZCActionSupport {
 	private static final long serialVersionUID = 10086L;
 
 	/**
-	 * »ñÈ¡Ò³Ãæ
-	 * 
+	 * è·å–é¡µé¢
+	 *
 	 */
 	public String getPage() {
 		return "succ";
 	}
 
 	/**
-	 * »ñÈ¡Ëæ»ú¶ÌÓï½Ó¿Ú
-	 * 
+	 * è·å–éšæœºçŸ­è¯­æ¥å£
+	 *
 	 */
 	public String randomWord() {
 
@@ -29,30 +29,30 @@ public class WordAction extends ZCActionSupport {
 		Random random = new Random();
 		int i = random.nextInt(8);
 		switch (i) {
-		case 0:
-			dataTemp = "ÀÏ×Ó°µÁµÄãºÜ¾ÃÁË";
-			break;
-		case 1:
-			dataTemp = "ÀÏ×ÓÈÌÄãºÜ¾ÃÁË";
-			break;
-		case 2:
-			dataTemp = "¶Ô²»ÆğÄãÊÇ¸öºÃÈË";
-			break;
-		case 3:
-			dataTemp = "½ñÌìÀ­¶Ç×ÓÎÒÒªÇë¼Ù";
-			break;
-		case 4:
-			dataTemp = "½ñÌì·¢ÉÕÎÒÒªÇë¼Ù";
-			break;
-		case 5:
-			dataTemp = "ÊåÊå£¬ÎÒ²»Ô¼";
-			break;
-		case 6:
-			dataTemp = "°¢ÒÌ£¬ÎÒ²»Ô¼";
-			break;
-		default:
-			dataTemp = "Ì§ÆğÆ¨¹É°ÉÉÙÄê£¬ÈÃÎÒÃÇ¾öÒ»ËÀÕ½";
-			break;
+			case 0:
+				dataTemp = "è€å­æš—æ‹ä½ å¾ˆä¹…äº†";
+				break;
+			case 1:
+				dataTemp = "è€å­å¿ä½ å¾ˆä¹…äº†";
+				break;
+			case 2:
+				dataTemp = "å¯¹ä¸èµ·ä½ æ˜¯ä¸ªå¥½äºº";
+				break;
+			case 3:
+				dataTemp = "ä»Šå¤©æ‹‰è‚šå­æˆ‘è¦è¯·å‡";
+				break;
+			case 4:
+				dataTemp = "ä»Šå¤©å‘çƒ§æˆ‘è¦è¯·å‡";
+				break;
+			case 5:
+				dataTemp = "å”å”ï¼Œæˆ‘ä¸çº¦";
+				break;
+			case 6:
+				dataTemp = "é˜¿å§¨ï¼Œæˆ‘ä¸çº¦";
+				break;
+			default:
+				dataTemp = "æŠ¬èµ·å±è‚¡å§å°‘å¹´ï¼Œè®©æˆ‘ä»¬å†³ä¸€æ­»æˆ˜";
+				break;
 		}
 
 		ERRCODE = "0";

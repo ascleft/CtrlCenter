@@ -26,10 +26,10 @@ public class SeedLogManager {
 			conn = (Connection) DriverManager.getConnection(url, username, password);
 
 		} catch (ClassNotFoundException e) {
-			Log.i("找不到驱动程序类 ，加载驱动失败！");
+			Log.i("鎵句笉鍒伴┍鍔ㄧ▼搴忕被 锛屽姞杞介┍鍔ㄥけ璐ワ紒");
 			e.printStackTrace();
 		} catch (SQLException se) {
-			Log.i("数据库连接失败！");
+			Log.i("鏁版嵁搴撹繛鎺ュけ璐ワ紒");
 			se.printStackTrace();
 		}
 	}

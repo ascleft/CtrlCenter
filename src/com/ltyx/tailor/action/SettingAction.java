@@ -7,8 +7,8 @@ import com.zc.web.base.service.URLConfigHelper;
 public class SettingAction extends ZCActionSupport {
 
 	/**
-	 * ¸ÃActionÓÃÓÚ»ñÈ¡ÌîĞ´±íµ¥
-	 * 
+	 * è¯¥Actionç”¨äºè·å–å¡«å†™è¡¨å•
+	 *
 	 */
 	private static final long serialVersionUID = 10087L;
 
@@ -27,18 +27,18 @@ public class SettingAction extends ZCActionSupport {
 		ERRCODE = "0";
 		ERRDESC = "succ";
 		data = "";
-		data += "µ±Ç°µÇÂ¼µØÖ·:" + URLConfigHelper.Url_LoginEC;
+		data += "å½“å‰ç™»å½•åœ°å€:" + URLConfigHelper.Url_LoginEC;
 		data += "<br />";
-		data += "µ±Ç°Ìá½»µØÖ·:" + URLConfigHelper.Url_SubTailor;
+		data += "å½“å‰æäº¤åœ°å€:" + URLConfigHelper.Url_SubTailor;
 		data += "<br />";
-		data += "µ±Ç°Êı¾İ¿â:" + DBConfigHelper.NAME;
+		data += "å½“å‰æ•°æ®åº“:" + DBConfigHelper.NAME;
 		data += "<br />";
 		if ("jycsFactal150428!".equals(DBConfigHelper.PWD)) {
-			data += "µ±Ç°Êı¾İ¿âÃÜÂë:" + "ÕıÊ½¿â";
+			data += "å½“å‰æ•°æ®åº“å¯†ç :" + "æ­£å¼åº“";
 		} else if ("junyi000726".equals(DBConfigHelper.PWD)) {
-			data += "µ±Ç°Êı¾İ¿âÃÜÂë:" + "²âÊÔ¿â";
+			data += "å½“å‰æ•°æ®åº“å¯†ç :" + "æµ‹è¯•åº“";
 		} else {
-			data += "µ±Ç°Êı¾İ¿âÃÜÂë:" + "ß÷ß÷ß÷£¿£¿£¿";
+			data += "å½“å‰æ•°æ®åº“å¯†ç :" + "å–µå–µå–µï¼Ÿï¼Ÿï¼Ÿ";
 		}
 
 		writeResp();
@@ -65,7 +65,7 @@ public class SettingAction extends ZCActionSupport {
 		} else {
 			ERRCODE = "1";
 			ERRDESC = "fail";
-			data = "ÊÚÈ¨Âë´íÎó";
+			data = "æˆæƒç é”™è¯¯";
 		}
 
 		writeResp();

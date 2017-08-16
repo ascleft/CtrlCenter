@@ -14,7 +14,7 @@ public class MoudleCheckOther extends ZCActionPluginBase {
 	@Override
 	public boolean doJobs() {
 		// TODO Auto-generated method stub
-		
+
 		{
 			String uskin_code_type = getString("uskin_code_type");
 			String uskin_code = getString("uskin_code");
@@ -22,18 +22,18 @@ public class MoudleCheckOther extends ZCActionPluginBase {
 			if ("PBC".equals(uskin_code_type) && uskin_code.length() < 5) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "ÇëÌîÐ´ÕýÈ·µÄ¿Í¹©ÃæÁÏÔËµ¥ºÅ";
+				data = "è¯·å¡«å†™æ­£ç¡®çš„å®¢ä¾›é¢æ–™è¿å•å·";
 				return false;
 			}
 			if ("USKIN".equals(uskin_code_type) && uskin_code.length() < 5) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "ÇëÌîÐ´ÕýÈ·µÄUSKIN±àÂë";
+				data = "è¯·å¡«å†™æ­£ç¡®çš„USKINç¼–ç ";
 				return false;
 			}
 
 		}
-		
+
 		{
 			String garment_type = getString("garment_type");
 			String style_name = getString("style_name");
@@ -41,25 +41,25 @@ public class MoudleCheckOther extends ZCActionPluginBase {
 			if (("man".equals(garment_type) || "woman".equals(garment_type)) && style_name.length() < 1) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "ÇëÌîÐ´ÕýÈ·µÄÉè¼ÆÊ¦ÍÆ¼ö¿î±àÂë»òÃû³Æ";
+				data = "è¯·å¡«å†™æ­£ç¡®çš„è®¾è®¡å¸ˆæŽ¨èæ¬¾ç¼–ç æˆ–åç§°";
 				return false;
 			}
 
 			if ("other".equals(garment_type) && style_name.length() < 3) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "ÇëÌîÐ´ÕýÈ·µÄÉÌÆ·±àÂë";
+				data = "è¯·å¡«å†™æ­£ç¡®çš„å•†å“ç¼–ç ";
 				return false;
 			}
 		}
-		
+
 		{
 			String customer_tel = getString("customer_tel");
 			if (customer_tel.indexOf("@") == -1) {
 				if (customer_tel.length() != 11) {
 					ERRCODE = "0";
 					ERRDESC = "fail";
-					data = "ÇëÌîÐ´ÕýÈ·µÄÊÖ»úºÅÂë";
+					data = "è¯·å¡«å†™æ­£ç¡®çš„æ‰‹æœºå·ç ";
 					return false;
 				}
 			}
@@ -68,7 +68,7 @@ public class MoudleCheckOther extends ZCActionPluginBase {
 			if (customer_name.length() < 2) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "ÇëÌîÐ´¿Í»§ÐÕÃû";
+				data = "è¯·å¡«å†™å®¢æˆ·å§“å";
 				return false;
 			}
 
@@ -76,26 +76,26 @@ public class MoudleCheckOther extends ZCActionPluginBase {
 			if (customer_tel_target.length() != 11) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "ÇëÌîÐ´ÕýÈ·µÄ±»Á¿ÌåÈËÊÖ»úºÅ";
+				data = "è¯·å¡«å†™æ­£ç¡®çš„è¢«é‡ä½“äººæ‰‹æœºå·";
 				return false;
 			}
 
 		}
 
 		{
-			String uskin_code_type = getString("uskin_code_type");// 0»ù±¾¿î£¬1ÍÆ¼ö¿î£¬2×ÔÓÉ´îÅä
+			String uskin_code_type = getString("uskin_code_type");// 0åŸºæœ¬æ¬¾ï¼Œ1æŽ¨èæ¬¾ï¼Œ2è‡ªç”±æ­é…
 			String uskin_code_length = getString("uskin_code_length");
 			String uskin_code_color = getString("uskin_code_color");
 			if ("PBC".equals(uskin_code_type) && uskin_code_length.length() < 1) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "ÇëÌîÐ´¿Í¹©ÃæÁÏÓÃÁ¿£¨Ã×£©";
+				data = "è¯·å¡«å†™å®¢ä¾›é¢æ–™ç”¨é‡ï¼ˆç±³ï¼‰";
 				return false;
 			}
 			if ("PBC".equals(uskin_code_type) && uskin_code_color.length() < 1) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "ÇëÌîÐ´¿Í¹©ÃæÁÏÑÕÉ«ÃèÊö";
+				data = "è¯·å¡«å†™å®¢ä¾›é¢æ–™é¢œè‰²æè¿°";
 				return false;
 			}
 			Log.Nano.tag("uskin_code_type", uskin_code_type);
@@ -109,11 +109,11 @@ public class MoudleCheckOther extends ZCActionPluginBase {
 			if ("27".equals(tailor_type) && (duanxiu_chang.length() == 0 || duanxiu_kouwei_zuo.length() == 0 || duanxiu_kouwei_you.length() == 0)) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "Çë²¹È«¶ÌÐä³¤¼°×óÓÒ¶ÌÐä¿ÚÎ§ÐÅÏ¢";
+				data = "è¯·è¡¥å…¨çŸ­è¢–é•¿åŠå·¦å³çŸ­è¢–å£å›´ä¿¡æ¯";
 				return false;
 			}
 		}
-		
+
 		{
 			String tailor_type = getString("tailor_type");
 			String xiu_chang_zuo = getString("xiu_chang_zuo");
@@ -125,7 +125,7 @@ public class MoudleCheckOther extends ZCActionPluginBase {
 					&& (xiu_chang_zuo.length() == 0 || xiu_chang_you.length() == 0 || xiutouchang_zuo.length() == 0 || xiutouchang_you.length() == 0 || xiuzhou_fei.length() == 0)) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "Çë²¹È«×óÓÒÐä³¤¡¢ÐäÍ·³¤¼°ÐäÖâ·ÊÐÅÏ¢";
+				data = "è¯·è¡¥å…¨å·¦å³è¢–é•¿ã€è¢–å¤´é•¿åŠè¢–è‚˜è‚¥ä¿¡æ¯";
 				return false;
 			}
 		}
