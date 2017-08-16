@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<!--衬衫下单工具 系统 登录 -->
+	<package name="TailorLoginAction" namespace="/LTYX/Tailor" extends="struts-default">
+		<default-action-ref name="User">
+		</default-action-ref>
+
+		<!--获取登录页面 -->
+		<action name="LoginPage" class="com.ltyx.tailor.action.LoginAction" method="loginPage">
+			<result name="succ">/html/TailorInfo/Login.jsp</result>
+		</action>
+
+		<!--登录接口 -->
+		<action name="Login" class="com.ltyx.tailor.action.LoginAction" method="login">
+		</action>
+
+		<!--注销接口 -->
+		<action name="Logout" class="com.ltyx.tailor.action.LoginAction" method="logout">
+			<result name="succ">/html/TailorInfo/Login.jsp</result>
+		</action>
+
+		<!-- 模拟ec登录接口 -->
+		<action name="LoginEC" class="com.ltyx.tailor.action.SimulatorAction" method="login">
+		</action>
+		<!-- 模拟ec提交接口 -->
+		<action name="SubTailorEC" class="com.ltyx.tailor.action.SimulatorAction" method="addCart">
+		</action>
+
+	</package>
+
+	<!--衬衫下单工具 下单模块 -->
+	<package name="TailorFormAction" namespace="/LTYX/Tailor/TailorForm" extends="struts-default">
+		<default-action-ref name="User">
+		</default-action-ref>
+
+		<!-- 获取订单信息表单 专业版 -->
+		<action name="Pro" class="com.ltyx.tailor.action.GetTailorFormAction" method="getForm">
+			<result name="succ">/html/TailorInfo/FormTailorPro.jsp</result>
+		</action>
+
+		<!-- 获取订单信息表单 专业版 客供 -->
+		<action name="ProPBC" class="com.ltyx.tailor.action.GetTailorFormAction" method="getFormWithCode">
+			<result name="succ">/html/TailorInfo/FormTailorProPBC.jsp</result>
+		</action>
+
+		<!-- 获取订单信息表单 设计师推荐款 -->
+		<action name="Design" class="com.ltyx.tailor.action.GetTailorFormAction" method="getForm">
+			<result name="succ">/html/TailorInfo/FormTailorDesign.jsp</result>
+		</action>
+
+		<!-- 获取订单信息表单 定制顾问 -->
+		<action name="Advisor" class="com.ltyx.tailor.action.GetTailorFormAction" method="getForm">
+			<result name="succ">/html/TailorInfo/FormTailorAdvisor.jsp</result>
+		</action>
+		
+		<!-- 获取订单信息表单 定制顾问 -->
+		<action name="Other" class="com.ltyx.tailor.action.GetTailorFormAction" method="getForm">
+			<result name="succ">/html/TailorInfo/FormTailorOther.jsp</result>
+		</action>
+
+		<!-- 提交成衬衫订单 -->
+		<action name="SubmitTailorForm" class="com.ltyx.tailor.action.SubmitTailorFormAction" method="submit">
+		</action>
+
+		<!-- 获取系统设置页面 -->
+		<action name="GetSettingPage" class="com.ltyx.tailor.action.SettingAction" method="getPage">
+			<result name="succ">/html/TailorInfo/Setting.jsp</result>
+		</action>
+
+		<!-- 获取当前服务器状态 -->
+		<action name="GetState" class="com.ltyx.tailor.action.SettingAction" method="getState">
+		</action>
+
+		<!-- 设置 -->
+		<action name="Setting" class="com.ltyx.tailor.action.SettingAction" method="setting">
+		</action>
+
+	</package>
+
+	<!--衬衫下单工具 订单查询模块 -->
+	<package name="LTYXTailorListAction" namespace="/LTYX/Tailor/List" extends="struts-default">
+
+		<!-- 获取列表查询页 -->
+		<action name="GetListPage" class="com.ltyx.tailor.action.GetListAction" method="getPage">
+			<result name="succ">/html/TailorInfo/OrderList.jsp</result>
+		</action>
+
+		<!-- 获取总页数 -->
+		<action name="GetPageCount" class="com.ltyx.tailor.action.GetListAction" method="getPageCount">
+		</action>
+
+		<!-- 查询 -->
+		<action name="GetList" class="com.ltyx.tailor.action.GetListAction" method="getList">
+		</action>
+
+	</package>
+
+	<!--衬衫下单工具 即时库存模块 -->
+	<package name="UcsAction" namespace="/UcsPlus" extends="struts-default">
+
+		<!-- 获取即时库存搜索页 -->
+		<action name="GetSearchPage" class="com.ltyx.ucsplus.action.SearchAction" method="getPage">
+			<result name="succ">/html/TailorInfo/Search.jsp</result>
+		</action>
+
+		<!--搜索 -->
+		<action name="Search" class="com.ltyx.ucsplus.action.SearchAction" method="search">
+		</action>
+
+	</package>
+
+	<!--衬衫下单工具 对外接口 -->
+	<package name="OpenAPI" namespace="/LTYX/OpenAPI" extends="struts-default">
+
+		<!-- 提交成衬衫订单 -->
+		<action name="SubmitTailorForm" class="com.ltyx.tailor.action.SubmitTailorFormAction" method="submit">
+		</action>
+
+	</package>
+
+	<!--附加 小程序 -->
+	<package name="TalkAction" namespace="/Talk" extends="struts-default">
+
+		<!-- 获取聊天页 -->
+		<action name="GetTalkPage" class="com.zc.talk.TalkAction" method="getPage">
+			<result name="succ">/html/Talk/Talk.jsp</result>
+		</action>
+
+		<!-- 聊天 -->
+		<action name="Talk" class="com.zc.talk.TalkAction" method="talk">
+		</action>
+
+		<!-- 获取随机短语页面 -->
+		<action name="GetRandomWordPage" class="com.zc.talk.WordAction" method="getPage">
+			<result name="succ">/html/Talk/Word.jsp</result>
+		</action>
+
+		<!-- 获取随机短语页面 -->
+		<action name="GetRandomWord" class="com.zc.talk.WordAction" method="randomWord">
+		</action>
+
+	</package>
+
+
+</struts>    

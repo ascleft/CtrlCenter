@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="TailorFormAction" location="87,418" size="370,284">
+    <action name="Pro" location="42,39" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="tailorform.jsp" />
+      </result>
+    </action>
+    <action name="SubmitTailorForm" location="38,226" size="150,40" />
+  </package>
+  <webResource name="login.jsp" path="/html/TailorInfo/login.jsp" location="777,39" size="150,55" />
+  <webResource name="tailorform.jsp" path="/html/TailorInfo/tailorform.jsp" location="748,370" size="150,55" />
+  <package name="TailorLoginAction" location="95,10" size="174,361">
+    <action name="LoginPage" location="15,23" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="login.jsp" />
+      </result>
+    </action>
+    <action name="Login" location="14,114" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="tailorform.jsp" />
+      </result>
+    </action>
+    <action name="Logout" location="13,213" size="150,40" />
+    <action name="LoginEC" location="12,312" size="150,40" />
+  </package>
+</Struts2Diagram>
+
