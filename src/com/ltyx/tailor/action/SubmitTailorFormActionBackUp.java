@@ -9,7 +9,7 @@ import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.ResultSet;
 import com.zc.web.base.doman.ZCActionSupport;
 import com.zc.web.base.doman.ZCHttpParam;
-import com.zc.web.base.service.CCHttpReq;
+import com.zc.web.base.service.ZCHttpReq;
 import com.zc.web.base.service.CCReqManager;
 import com.zc.web.base.service.Log;
 import com.zc.web.base.service.TimeHelper;
@@ -320,7 +320,7 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 		// String httpResp =
 		// CCHttpReq.sendGet("http://61.50.122.58:8029/CtrlCenter/LTYX/Tailor/SubTailorEC.action",
 		// param);
-		String httpResp = CCHttpReq.sendGet(URLConfigHelper.Url_SubTailor, param);
+		String httpResp = ZCHttpReq.sendGet(URLConfigHelper.Url_SubTailor, param);
 		Log.Nano.tag("Save Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp = JSONObject.fromObject(httpResp);

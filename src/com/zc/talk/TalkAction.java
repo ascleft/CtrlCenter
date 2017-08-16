@@ -4,7 +4,7 @@ import net.sf.json.JSONObject;
 
 import com.zc.web.base.doman.ZCActionSupport;
 import com.zc.web.base.doman.ZCHttpParam;
-import com.zc.web.base.service.CCHttpReq;
+import com.zc.web.base.service.ZCHttpReq;
 import com.zc.web.base.service.Log;
 
 public class TalkAction extends ZCActionSupport {
@@ -49,7 +49,7 @@ public class TalkAction extends ZCActionSupport {
 			param.addParam("appid", "0");
 			param.addParam("msg", tell);
 
-			String httpResp = CCHttpReq.sendGet("http://api.qingyunke.com/api.php", param);
+			String httpResp = ZCHttpReq.sendGet("http://api.qingyunke.com/api.php", param);
 
 			JSONObject jsonHttpResp = JSONObject.fromObject(httpResp);
 			String result = jsonHttpResp.getString("result");

@@ -4,7 +4,7 @@ import net.sf.json.JSONObject;
 
 import com.zc.web.base.doman.ZCActionSupport;
 import com.zc.web.base.doman.ZCHttpParam;
-import com.zc.web.base.service.CCHttpReq;
+import com.zc.web.base.service.ZCHttpReq;
 import com.zc.web.base.service.Log;
 import com.zc.web.base.service.URLConfigHelper;
 
@@ -75,7 +75,7 @@ public class LoginAction extends ZCActionSupport {
 			// String httpResp =
 			// CCHttpReq.sendGet("http://61.50.122.58:8029/CtrlCenter/LTYX/Tailor/LoginEC.action",
 			// param);
-			String httpResp = CCHttpReq.sendGet(URLConfigHelper.Url_LoginEC, param);
+			String httpResp = ZCHttpReq.sendGet(URLConfigHelper.Url_LoginEC, param);
 
 			String isOnline;
 			String ec_user_id;

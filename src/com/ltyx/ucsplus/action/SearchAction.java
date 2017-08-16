@@ -5,7 +5,7 @@ import net.sf.json.JSONObject;
 
 import com.zc.web.base.doman.ZCActionSupport;
 import com.zc.web.base.doman.ZCHttpParam;
-import com.zc.web.base.service.CCHttpReq;
+import com.zc.web.base.service.ZCHttpReq;
 import com.zc.web.base.service.Log;
 
 public class SearchAction extends ZCActionSupport {
@@ -104,7 +104,7 @@ public class SearchAction extends ZCActionSupport {
 			param.addParam("businessObjectTypeId", businessObjectTypeId);
 			param.addParam("filter", filter);
 
-			String httpResp = CCHttpReq.sendGet("http://www.lttcerp.com:88/k3cloud/Services/LUTAIWebService.asmx/K3CloudSendDataToUtailor", param);
+			String httpResp = ZCHttpReq.sendGet("http://www.lttcerp.com:88/k3cloud/Services/LUTAIWebService.asmx/K3CloudSendDataToUtailor", param);
 
 			httpResp = httpResp.substring(103, httpResp.length() - 9);
 

@@ -6,7 +6,7 @@ import net.sf.json.JSONObject;
 
 import com.zc.web.base.doman.ZCActionPluginBase;
 import com.zc.web.base.doman.ZCHttpParam;
-import com.zc.web.base.service.CCHttpReq;
+import com.zc.web.base.service.ZCHttpReq;
 import com.zc.web.base.service.Log;
 import com.zc.web.base.service.URLConfigHelper;
 
@@ -170,7 +170,7 @@ public class MoudleSubmitEC extends ZCActionPluginBase {
 
 		// 模拟地址"http://61.50.122.58:8029/CtrlCenter/LTYX/Tailor/SubTailorEC.action"
 
-		String httpResp = CCHttpReq.sendGet(URLConfigHelper.Url_SubTailor, param);
+		String httpResp = ZCHttpReq.sendGet(URLConfigHelper.Url_SubTailor, param);
 		Log.Nano.tag("Save Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp;

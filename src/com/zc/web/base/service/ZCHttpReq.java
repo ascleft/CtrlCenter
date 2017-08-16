@@ -9,7 +9,7 @@ import java.net.URLConnection;
 
 import com.zc.web.base.doman.ZCHttpParam;
 
-public class CCHttpReq {
+public class ZCHttpReq {
 	/**
 	 * 向指定URL发送GET方法的请求
 	 *
