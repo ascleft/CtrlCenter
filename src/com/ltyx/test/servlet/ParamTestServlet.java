@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
 import com.zc.web.base.doman.ZCBaseServlet;
-import com.zc.web.base.service.CCReqManager;
+import com.zc.web.base.service.ZCReqManager;
 import com.zc.web.base.service.Log;
 
 public class ParamTestServlet extends ZCBaseServlet {
@@ -29,7 +29,7 @@ public class ParamTestServlet extends ZCBaseServlet {
 			System.out.println("servlet---->" + req.getContentType());
 
 			Log.i(req.toString());
-			CCReqManager.showParams(req);
+			ZCReqManager.showParams(req);
 
 		} catch (Exception e) {
 			// TODO: handle exception

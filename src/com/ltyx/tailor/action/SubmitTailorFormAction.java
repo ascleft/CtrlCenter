@@ -6,7 +6,7 @@ import com.ltyx.tailor.actionplugin.MoudleCheckOther;
 import com.ltyx.tailor.actionplugin.MoudleSubmitDB;
 import com.ltyx.tailor.actionplugin.MoudleSubmitEC;
 import com.zc.web.base.doman.ZCActionSupport;
-import com.zc.web.base.service.CCReqManager;
+import com.zc.web.base.service.ZCReqManager;
 import com.zc.web.base.service.Log;
 
 public class SubmitTailorFormAction extends ZCActionSupport {
@@ -23,7 +23,7 @@ public class SubmitTailorFormAction extends ZCActionSupport {
 
 		init(true);
 
-		CCReqManager.showParams(request);
+		ZCReqManager.showParams(request);
 
 		doJobs();
 

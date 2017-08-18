@@ -10,7 +10,7 @@ import com.mysql.jdbc.ResultSet;
 import com.zc.web.base.doman.ZCActionSupport;
 import com.zc.web.base.doman.ZCHttpParam;
 import com.zc.web.base.service.ZCHttpReq;
-import com.zc.web.base.service.CCReqManager;
+import com.zc.web.base.service.ZCReqManager;
 import com.zc.web.base.service.Log;
 import com.zc.web.base.service.TimeHelper;
 import com.zc.web.base.service.URLConfigHelper;
@@ -46,7 +46,7 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 
 		init(true);
 
-		CCReqManager.showParams(request);
+		ZCReqManager.showParams(request);
 
 		boolean CI_SUCC = checkInput();
 		System.out.println("CI_SUCC " + CI_SUCC);
