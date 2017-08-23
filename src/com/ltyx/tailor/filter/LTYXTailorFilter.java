@@ -10,12 +10,11 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.zc.web.base.doman.ZCHttpFilter;
+import com.zc.web.base.doman.ZCBaseHttpFilter;
 import com.zc.web.base.service.Log;
 import com.zc.web.base.service.SystemInitHelper;
-import com.zc.web.base.service.VersionHelper;
 
-public class LTYXTailorFilter extends ZCHttpFilter {
+public class LTYXTailorFilter extends ZCBaseHttpFilter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {

@@ -8,11 +8,11 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import com.zc.web.base.doman.ZCHttpFilter;
+import com.zc.web.base.doman.ZCBaseHttpFilter;
 import com.zc.web.base.service.Log;
 import com.zc.web.base.service.VersionHelper;
 
-public class LTYXMainHttpFilter extends ZCHttpFilter {
+public class LTYXMainHttpFilter extends ZCBaseHttpFilter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {

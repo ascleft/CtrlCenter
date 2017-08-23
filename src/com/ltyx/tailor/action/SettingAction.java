@@ -1,10 +1,10 @@
 package com.ltyx.tailor.action;
 
-import com.zc.web.base.doman.ZCActionSupport;
+import com.zc.web.base.doman.ZCBaseActionSupport;
 import com.zc.web.base.service.DBConfigHelper;
 import com.zc.web.base.service.URLConfigHelper;
 
-public class SettingAction extends ZCActionSupport {
+public class SettingAction extends ZCBaseActionSupport {
 
 	/**
 	 * 该Action用于获取填写表单
@@ -51,9 +51,9 @@ public class SettingAction extends ZCActionSupport {
 
 		init(true);
 
-		String url = getReqParamValue("url");
-		String DBpwd = getReqParamValue("dbpwd");
-		String pwd = getReqParamValue("pwd");
+		String url = getReqParamString("url");
+		String DBpwd = getReqParamString("dbpwd");
+		String pwd = getReqParamString("pwd");
 
 		if ("4008900726".equals(pwd)) {
 			URLConfigHelper.customUrl(url);
@@ -65,7 +65,7 @@ public class SettingAction extends ZCActionSupport {
 		} else {
 			ERRCODE = "1";
 			ERRDESC = "fail";
-			data = "授权码错误";
+			data = "授权码错误，别瞎鸡巴乱搞。";
 		}
 
 		writeResp();

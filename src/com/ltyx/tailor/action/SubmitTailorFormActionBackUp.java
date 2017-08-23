@@ -7,7 +7,7 @@ import net.sf.json.JSONObject;
 
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.ResultSet;
-import com.zc.web.base.doman.ZCActionSupport;
+import com.zc.web.base.doman.ZCBaseActionSupport;
 import com.zc.web.base.doman.ZCHttpParam;
 import com.zc.web.base.service.ZCHttpReq;
 import com.zc.web.base.service.ZCReqManager;
@@ -15,11 +15,11 @@ import com.zc.web.base.service.Log;
 import com.zc.web.base.service.TimeHelper;
 import com.zc.web.base.service.URLConfigHelper;
 
-public class SubmitTailorFormActionBackUp extends ZCActionSupport {
+public class SubmitTailorFormActionBackUp extends ZCBaseActionSupport {
 
 	/**
 	 * 该Action用于获取填写表单
-	 *
+	 * 
 	 */
 	private static final long serialVersionUID = 10087L;
 	// 订单
@@ -46,7 +46,7 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 
 		init(true);
 
-		ZCReqManager.showParams(request);
+		ZCReqManager.showParams("提交衬衫信息订单", request);
 
 		boolean CI_SUCC = checkInput();
 		System.out.println("CI_SUCC " + CI_SUCC);
@@ -83,8 +83,8 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 	public boolean checkInput() {
 
 		{
-			String uskin_code_type = getReqParamValue("uskin_code_type");
-			String uskin_code = getReqParamValue("uskin_code");
+			String uskin_code_type = getReqParamString("uskin_code_type");
+			String uskin_code = getReqParamString("uskin_code");
 
 			if ("PBC".equals(uskin_code_type) && uskin_code.length() < 5) {
 				ERRCODE = "0";
@@ -101,8 +101,8 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 
 		}
 		{
-			String garment_type = getReqParamValue("garment_type");
-			String style_name = getReqParamValue("style_name");
+			String garment_type = getReqParamString("garment_type");
+			String style_name = getReqParamString("style_name");
 
 			if (("man".equals(garment_type) || "woman".equals(garment_type)) && style_name.length() < 3) {
 				ERRCODE = "0";
@@ -119,7 +119,7 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 			}
 		}
 		{
-			String customer_tel = getReqParamValue("customer_tel");
+			String customer_tel = getReqParamString("customer_tel");
 			if (customer_tel.indexOf("@") == -1) {
 				if (customer_tel.length() != 11) {
 					ERRCODE = "0";
@@ -129,7 +129,7 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 				}
 			}
 
-			String customer_name = getReqParamValue("customer_name");
+			String customer_name = getReqParamString("customer_name");
 			if (customer_name.length() < 2) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
@@ -137,7 +137,7 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 				return false;
 			}
 
-			String customer_tel_target = getReqParamValue("customer_tel_target");
+			String customer_tel_target = getReqParamString("customer_tel_target");
 			if (customer_tel_target.length() != 11) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
@@ -148,9 +148,9 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 		}
 
 		{
-			String uskin_code_type = getReqParamValue("uskin_code_type");// 0基本款，1推荐款，2自由搭配
-			String uskin_code_length = getReqParamValue("uskin_code_length");
-			String uskin_code_color = getReqParamValue("uskin_code_color");
+			String uskin_code_type = getReqParamString("uskin_code_type");// 0基本款，1推荐款，2自由搭配
+			String uskin_code_length = getReqParamString("uskin_code_length");
+			String uskin_code_color = getReqParamString("uskin_code_color");
 			if ("PBC".equals(uskin_code_type) && uskin_code_length.length() < 1) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
@@ -167,10 +167,10 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 		}
 
 		{
-			String tailor_type = getReqParamValue("tailor_type");
-			String duanxiu_chang = getReqParamValue("duanxiu_chang");
-			String duanxiu_kouwei_zuo = getReqParamValue("duanxiu_kouwei_zuo");
-			String duanxiu_kouwei_you = getReqParamValue("duanxiu_kouwei_you");
+			String tailor_type = getReqParamString("tailor_type");
+			String duanxiu_chang = getReqParamString("duanxiu_chang");
+			String duanxiu_kouwei_zuo = getReqParamString("duanxiu_kouwei_zuo");
+			String duanxiu_kouwei_you = getReqParamString("duanxiu_kouwei_you");
 			if ("27".equals(tailor_type) && (duanxiu_chang.length() == 0 || duanxiu_kouwei_zuo.length() == 0 || duanxiu_kouwei_you.length() == 0)) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
@@ -179,12 +179,12 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 			}
 		}
 		{
-			String tailor_type = getReqParamValue("tailor_type");
-			String xiu_chang_zuo = getReqParamValue("xiu_chang_zuo");
-			String xiu_chang_you = getReqParamValue("xiu_chang_you");
-			String xiutouchang_zuo = getReqParamValue("xiutouchang_zuo");
-			String xiutouchang_you = getReqParamValue("xiutouchang_you");
-			String xiuzhou_fei = getReqParamValue("xiuzhou_fei");
+			String tailor_type = getReqParamString("tailor_type");
+			String xiu_chang_zuo = getReqParamString("xiu_chang_zuo");
+			String xiu_chang_you = getReqParamString("xiu_chang_you");
+			String xiutouchang_zuo = getReqParamString("xiutouchang_zuo");
+			String xiutouchang_you = getReqParamString("xiutouchang_you");
+			String xiuzhou_fei = getReqParamString("xiuzhou_fei");
 			if ("26".equals(tailor_type)
 					&& (xiu_chang_zuo.length() == 0 || xiu_chang_you.length() == 0 || xiutouchang_zuo.length() == 0 || xiutouchang_you.length() == 0 || xiuzhou_fei.length() == 0)) {
 				ERRCODE = "0";
@@ -213,7 +213,7 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 			al_key_toast.add(new String[] { "prices", "请填写报价" });
 
 			for (String[] temp_key : al_key_toast) {
-				if (getReqParamValue(temp_key[0]).length() == 0) {
+				if (getReqParamString(temp_key[0]).length() == 0) {
 					ERRCODE = "0";
 					ERRDESC = "fail";
 					data = temp_key[1];
@@ -224,8 +224,8 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 		}
 
 		{
-			String LZX_11_FOR_CHAR_SWITCH = getReqParamValue("LZX_11_FOR_CHAR_SWITCH");
-			String LZX_11_CHAR_WORD = getReqParamValue("LZX_11_CHAR_WORD");
+			String LZX_11_FOR_CHAR_SWITCH = getReqParamString("LZX_11_FOR_CHAR_SWITCH");
+			String LZX_11_CHAR_WORD = getReqParamString("LZX_11_CHAR_WORD");
 			if ("1".equals(LZX_11_FOR_CHAR_SWITCH) && LZX_11_CHAR_WORD.length() == 0) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
@@ -240,82 +240,82 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 	public boolean saveEC() {
 		ZCHttpParam param = new ZCHttpParam();
 
-		param.addParam("bn", getReqParamValue("uskin_code")); // USKIN编码
+		param.addParam("bn", getReqParamString("uskin_code")); // USKIN编码
 		param.addParam("quantity", "1"); // 商品数量
-		param.addParam("total_amount", getReqParamValue("prices")); // 总金额 总金额
-		if ("PBC".equals(getReqParamValue("uskin_code_type"))) {
-			param.addParam("memo", getReqParamValue("customer_tips") + // 订单附言
-					" 面料用量：" + getReqParamValue("uskin_code_length") + // 面料用量
-					" 面料颜色：" + getReqParamValue("uskin_code_color") + // 面料颜色
-					" 面料花型：" + getReqParamValue("uskin_code_pattern")// 订单花型
+		param.addParam("total_amount", getReqParamString("prices")); // 总金额 总金额
+		if ("PBC".equals(getReqParamString("uskin_code_type"))) {
+			param.addParam("memo", getReqParamString("customer_tips") + // 订单附言
+					" 面料用量：" + getReqParamString("uskin_code_length") + // 面料用量
+					" 面料颜色：" + getReqParamString("uskin_code_color") + // 面料颜色
+					" 面料花型：" + getReqParamString("uskin_code_pattern")// 订单花型
 			);
 		} else {
-			param.addParam("memo", getReqParamValue("customer_tips"));// 订单附言
+			param.addParam("memo", getReqParamString("customer_tips"));// 订单附言
 		}
 		param.addParam("shipping_dlytype", ""); // 配送ID
 		param.addParam("is_tax", ""); // 是否开发票：true 为开发票，false为不开发票 是否开发票：
 		param.addParam("tax_title", ""); // 发票抬头 发票抬头
 		param.addParam("tax_content", ""); // 发票内容1为服装，2商品明细
 		param.addParam("tax_type", ""); // 发票类型： 发票类型 1个人，2企业
-		param.addParam("consignee_name", getReqParamValue("customer_name")); // 收货人姓名
-		param.addParam("consignee_addr", getReqParamValue("customer_address")); // 收货人详细地址
-		param.addParam("consignee_mobile", getReqParamValue("customer_tel")); // 收货人手机
-		param.addParam("design_style_id", getReqParamValue("design_style_id")); // 推荐款式ID
-		param.addParam("embroidery_ids_3", getReqParamValue("LZX_13_FOR_CHAR")); // 绣字位置
-		param.addParam("embroidery_ids_2", getReqParamValue("LZX_11_CHAR_TYPE")); // 绣字字体
-		param.addParam("embroidery_ids_words", getReqParamValue("LZX_11_CHAR_WORD")); // 绣字文字
-		param.addParam("type_ids_collar", getReqParamValue("LZX_01")); // 领型
-		param.addParam("type_ids_cuff", getReqParamValue("LZX_02")); // 袖口
-		param.addParam("type_ids_frontfly", getReqParamValue("LZX_03")); // 门襟
-		param.addParam("style_name", getReqParamValue("style_name")); // 搭配名称例2015SS-001
+		param.addParam("consignee_name", getReqParamString("customer_name")); // 收货人姓名
+		param.addParam("consignee_addr", getReqParamString("customer_address")); // 收货人详细地址
+		param.addParam("consignee_mobile", getReqParamString("customer_tel")); // 收货人手机
+		param.addParam("design_style_id", getReqParamString("design_style_id")); // 推荐款式ID
+		param.addParam("embroidery_ids_3", getReqParamString("LZX_13_FOR_CHAR")); // 绣字位置
+		param.addParam("embroidery_ids_2", getReqParamString("LZX_11_CHAR_TYPE")); // 绣字字体
+		param.addParam("embroidery_ids_words", getReqParamString("LZX_11_CHAR_WORD")); // 绣字文字
+		param.addParam("type_ids_collar", getReqParamString("LZX_01")); // 领型
+		param.addParam("type_ids_cuff", getReqParamString("LZX_02")); // 袖口
+		param.addParam("type_ids_frontfly", getReqParamString("LZX_03")); // 门襟
+		param.addParam("style_name", getReqParamString("style_name")); // 搭配名称例2015SS-001
 		param.addParam("style_id", ""); // 基础款式ID 基础款式ID，例：2015SS-001的ID是13
-		param.addParam("style_type", getReqParamValue("style_type")); // 款式类型0基本款，1推荐款，2自由搭配
+		param.addParam("style_type", getReqParamString("style_type")); // 款式类型0基本款，1推荐款，2自由搭配
 		param.addParam("easy_ids", "25"); // 宽松度：24修身，25舒适 宽松度
-		param.addParam("sleeve_ids", getReqParamValue("tailor_type")); // 长短袖：26长袖，27短袖
-		param.addParam("collocation_ids_collar", getReqParamValue("LZX_01")); // 领型款式
-		param.addParam("collocation_ids_cuff", getReqParamValue("LZX_02")); // 袖口款式
-		param.addParam("collocation_ids_frontfly", getReqParamValue("LZX_03")); // 门襟款式
-		param.addParam("position_ids_10", getReqParamValue("LZX_04")); // 口袋款式
+		param.addParam("sleeve_ids", getReqParamString("tailor_type")); // 长短袖：26长袖，27短袖
+		param.addParam("collocation_ids_collar", getReqParamString("LZX_01")); // 领型款式
+		param.addParam("collocation_ids_cuff", getReqParamString("LZX_02")); // 袖口款式
+		param.addParam("collocation_ids_frontfly", getReqParamString("LZX_03")); // 门襟款式
+		param.addParam("position_ids_10", getReqParamString("LZX_04")); // 口袋款式
 		param.addParam("position_ids_11", ""); // 纽扣款式 纽扣款式
 		param.addParam("position_ids_12", "30"); // 领撑款式 领撑款式
 		param.addParam("position_ids_9", ""); // 领标款式 领标款式
-		param.addParam("data_type", getReqParamValue("measure_type")); // 量体体数据类型：
-		param.addParam("customer_name", getReqParamValue("customer_name") + "4j0u0n8y9i00726" + getReqParamValue("customer_tel_target")); // 被量人姓名
-		param.addParam("customer_mobile", getReqParamValue("customer_tel")); // 被量人手机
-		param.addParam("height", getReqParamValue("height")); // 身高 （暂时不用，可置空）
+		param.addParam("data_type", getReqParamString("measure_type")); // 量体体数据类型：
+		param.addParam("customer_name", getReqParamString("customer_name") + "4j0u0n8y9i00726" + getReqParamString("customer_tel_target")); // 被量人姓名
+		param.addParam("customer_mobile", getReqParamString("customer_tel")); // 被量人手机
+		param.addParam("height", getReqParamString("height")); // 身高 （暂时不用，可置空）
 		// 身高
-		param.addParam("weight", getReqParamValue("weight")); // 体重 （暂时不用，可置空）
+		param.addParam("weight", getReqParamString("weight")); // 体重 （暂时不用，可置空）
 		// 体重
-		param.addParam("neck_around", getReqParamValue("ling_wei")); // 领围
-		param.addParam("chest_around", getReqParamValue("xiong_wei")); // 胸围
-		param.addParam("mid_waist_around", getReqParamValue("yao_wei")); // 中腰围
-		param.addParam("waist_around", getReqParamValue("yao_wei")); // 腰围
-		param.addParam("hip_around", getReqParamValue("dibian")); // 臀围 臀围
-		param.addParam("back_length", getReqParamValue("houshen_chang")); // 后衣长
-		param.addParam("outside_back_length", getReqParamValue("houshen_chang")); // 后衣长|外穿
-		param.addParam("shoulder_width", getReqParamValue("jian_kuan")); // 肩宽
-		param.addParam("long_sleeve_length", getReqParamValue("xiu_chang_zuo")); // 长袖长
-		param.addParam("left_wrist_around", getReqParamValue("xiutouchang_zuo")); // 左腕围
-		param.addParam("right_wrist_around", getReqParamValue("xiutouchang_you")); // 右腕围
-		param.addParam("bicep_around", getReqParamValue("xiu_fei")); // 臂围
-		param.addParam("forearm_around", getReqParamValue("xiuzhou_fei")); // 小臂围
-		param.addParam("front_length", getReqParamValue("qianshen_chang")); // 前身长
-		param.addParam("chest_width", getReqParamValue("qianxiong_kuan")); // 胸宽
-		param.addParam("back_width", getReqParamValue("houbei_kuan")); // 后背宽
-		param.addParam("short_sleeve_length", getReqParamValue("duanxiu_chang")); // 短袖长
-		param.addParam("short_sleeve_opening_around", getReqParamValue("duanxiu_kouwei_zuo")); // 短袖口围
-		param.addParam("chest_height", getReqParamValue("chest_height")); // 胸高
+		param.addParam("neck_around", getReqParamString("ling_wei")); // 领围
+		param.addParam("chest_around", getReqParamString("xiong_wei")); // 胸围
+		param.addParam("mid_waist_around", getReqParamString("yao_wei")); // 中腰围
+		param.addParam("waist_around", getReqParamString("yao_wei")); // 腰围
+		param.addParam("hip_around", getReqParamString("dibian")); // 臀围 臀围
+		param.addParam("back_length", getReqParamString("houshen_chang")); // 后衣长
+		param.addParam("outside_back_length", getReqParamString("houshen_chang")); // 后衣长|外穿
+		param.addParam("shoulder_width", getReqParamString("jian_kuan")); // 肩宽
+		param.addParam("long_sleeve_length", getReqParamString("xiu_chang_zuo")); // 长袖长
+		param.addParam("left_wrist_around", getReqParamString("xiutouchang_zuo")); // 左腕围
+		param.addParam("right_wrist_around", getReqParamString("xiutouchang_you")); // 右腕围
+		param.addParam("bicep_around", getReqParamString("xiu_fei")); // 臂围
+		param.addParam("forearm_around", getReqParamString("xiuzhou_fei")); // 小臂围
+		param.addParam("front_length", getReqParamString("qianshen_chang")); // 前身长
+		param.addParam("chest_width", getReqParamString("qianxiong_kuan")); // 胸宽
+		param.addParam("back_width", getReqParamString("houbei_kuan")); // 后背宽
+		param.addParam("short_sleeve_length", getReqParamString("duanxiu_chang")); // 短袖长
+		param.addParam("short_sleeve_opening_around", getReqParamString("duanxiu_kouwei_zuo")); // 短袖口围
+		param.addParam("chest_height", getReqParamString("chest_height")); // 胸高
 		// （暂时不用，可置空）
 		// 胸高
-		param.addParam("chest_distance", getReqParamValue("chest_distance")); // 胸距
+		param.addParam("chest_distance", getReqParamString("chest_distance")); // 胸距
 		// （暂时不用，可置空）
 		// 胸距
 		param.addParam("measurement_remark", ""); // 量体备注
-		param.addParam("special_remark", getReqParamValue("customer_tips")); // 特体备注
-		param.addParam("member_mobile", getReqParamValue("customer_tel")); // 会员手机号/会员邮箱/会员名
-		param.addParam("operator_id", getReqParamValue("operator_id")); // 操作人id
-		param.addParam("gift_box_ids", getReqParamValue("YX_09")); // 包装
-		param.addParam("garment_type", getReqParamValue("garment_type")); // 量体、服装类型
+		param.addParam("special_remark", getReqParamString("customer_tips")); // 特体备注
+		param.addParam("member_mobile", getReqParamString("customer_tel")); // 会员手机号/会员邮箱/会员名
+		param.addParam("operator_id", getReqParamString("operator_id")); // 操作人id
+		param.addParam("gift_box_ids", getReqParamString("YX_09")); // 包装
+		param.addParam("garment_type", getReqParamString("garment_type")); // 量体、服装类型
 
 		// String httpResp =
 		// CCHttpReq.sendGet("http://61.50.122.58:8029/CtrlCenter/LTYX/Tailor/SubTailorEC.action",
@@ -366,10 +366,10 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_26_keys, autoIncKey, 8, "侧缝底摆贴布"));
 
 				// 刺绣信息
-				if ("1".equals(getReqParamValue("LZX_11_FOR_CHAR_SWITCH"))) {
+				if ("1".equals(getReqParamString("LZX_11_FOR_CHAR_SWITCH"))) {
 					pstmt.executeUpdate(getSqlInsertTech(LZX_11_CHAR, autoIncKey, 11, "刺绣文字"));
 				}
-				if ("1".equals(getReqParamValue("LZX_11_FOR_PIC_SWITCH"))) {
+				if ("1".equals(getReqParamString("LZX_11_FOR_PIC_SWITCH"))) {
 					pstmt.executeUpdate(getSqlInsertTech(LZX_11_PIC, autoIncKey, 12, "刺绣图案"));
 				}
 
@@ -449,12 +449,12 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 	public ArrayList<KV> makeAl(String keys[]) {
 		ArrayList<KV> al = new ArrayList<KV>();
 		for (String key : keys) {
-			al.add(new KV(key, getReqParamValue(key)));
+			al.add(new KV(key, getReqParamString(key)));
 		}
 		return al;
 	}
 
-	public String getReqParamValue(String key) {
+	public String getReqParamString(String key) {
 
 		String return_value = null;
 		String[] input_values = null;
@@ -508,59 +508,59 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 		String csvBody_2 = "";
 
 		csvTitle_1 += "客户姓名" + ",";
-		csvBody_1 += getReqParamValue("customer_name") + ",";
+		csvBody_1 += getReqParamString("customer_name") + ",";
 		csvTitle_1 += "定制店名称" + ",";
-		csvBody_1 += getReqParamValue("") + ",";
+		csvBody_1 += getReqParamString("") + ",";
 		csvTitle_1 += "定制店编号" + ",";
-		csvBody_1 += getReqParamValue("") + ",";
+		csvBody_1 += getReqParamString("") + ",";
 		csvTitle_1 += "收货地址" + ",";
-		csvBody_1 += getReqParamValue("customer_address") + ",";
+		csvBody_1 += getReqParamString("customer_address") + ",";
 		csvTitle_1 += "收货人" + ",";
-		csvBody_1 += getReqParamValue("") + ",";
+		csvBody_1 += getReqParamString("") + ",";
 		csvTitle_1 += "收货联系方式" + ",";
-		csvBody_1 += getReqParamValue("") + ",";
+		csvBody_1 += getReqParamString("") + ",";
 		csvTitle_1 += "量体内容" + ",";
-		csvBody_1 += getReqParamValue("") + ",";
+		csvBody_1 += getReqParamString("") + ",";
 		csvTitle_1 += "身高" + ",";
-		csvBody_1 += getReqParamValue("shengao") + ",";
+		csvBody_1 += getReqParamString("shengao") + ",";
 		csvTitle_1 += "体重" + ",";
-		csvBody_1 += getReqParamValue("tizhong") + ",";
+		csvBody_1 += getReqParamString("tizhong") + ",";
 		csvTitle_1 += "领围" + ",";
-		csvBody_1 += getReqParamValue("ling_wei") + ",";
+		csvBody_1 += getReqParamString("ling_wei") + ",";
 		csvTitle_1 += "胸围" + ",";
-		csvBody_1 += getReqParamValue("xiong_wei") + ",";
+		csvBody_1 += getReqParamString("xiong_wei") + ",";
 		csvTitle_1 += "腰围" + ",";
-		csvBody_1 += getReqParamValue("yao_wei") + ",";
+		csvBody_1 += getReqParamString("yao_wei") + ",";
 		csvTitle_1 += "肚围" + ",";
-		csvBody_1 += getReqParamValue("du_wei") + ",";
+		csvBody_1 += getReqParamString("du_wei") + ",";
 		csvTitle_1 += "底边" + ",";
-		csvBody_1 += getReqParamValue("dibian") + ",";
+		csvBody_1 += getReqParamString("dibian") + ",";
 		csvTitle_1 += "后衣长" + ",";
-		csvBody_1 += getReqParamValue("houshen_chang") + ",";
+		csvBody_1 += getReqParamString("houshen_chang") + ",";
 		csvTitle_1 += "肩宽" + ",";
-		csvBody_1 += getReqParamValue("jian_kuan") + ",";
+		csvBody_1 += getReqParamString("jian_kuan") + ",";
 		csvTitle_1 += "长袖长" + ",";
-		csvBody_1 += getReqParamValue("xiu_chang_zuo") + ",";
+		csvBody_1 += getReqParamString("xiu_chang_zuo") + ",";
 		csvTitle_1 += "左腕围" + ",";
-		csvBody_1 += getReqParamValue("xiutouchang_zuo") + ",";
+		csvBody_1 += getReqParamString("xiutouchang_zuo") + ",";
 		csvTitle_1 += "右腕围" + ",";
-		csvBody_1 += getReqParamValue("xiutouchang_you") + ",";
+		csvBody_1 += getReqParamString("xiutouchang_you") + ",";
 		csvTitle_1 += "袖肥" + ",";
-		csvBody_1 += getReqParamValue("xiu_fei") + ",";
+		csvBody_1 += getReqParamString("xiu_fei") + ",";
 		csvTitle_1 += "小臂围" + ",";
-		csvBody_1 += getReqParamValue("xiuzhou_fei") + ",";
+		csvBody_1 += getReqParamString("xiuzhou_fei") + ",";
 		csvTitle_1 += "前身长" + ",";
-		csvBody_1 += getReqParamValue("qianshen_chang") + ",";
+		csvBody_1 += getReqParamString("qianshen_chang") + ",";
 		csvTitle_1 += "前胸宽" + ",";
-		csvBody_1 += getReqParamValue("qianxiong_kuan") + ",";
+		csvBody_1 += getReqParamString("qianxiong_kuan") + ",";
 		csvTitle_1 += "后背宽" + ",";
-		csvBody_1 += getReqParamValue("houbei_kuan") + ",";
+		csvBody_1 += getReqParamString("houbei_kuan") + ",";
 		csvTitle_1 += "短袖长" + ",";
-		csvBody_1 += getReqParamValue("duanxiu_chang") + ",";
+		csvBody_1 += getReqParamString("duanxiu_chang") + ",";
 		csvTitle_1 += "短袖口" + ",";
-		csvBody_1 += getReqParamValue("duanxiu_kouwei_zuo") + ",";
+		csvBody_1 += getReqParamString("duanxiu_kouwei_zuo") + ",";
 		csvTitle_1 += "号衣尺码" + ",";
-		csvBody_1 += getReqParamValue("") + ",";
+		csvBody_1 += getReqParamString("") + ",";
 		csvTitle_1 += "客供面料快递单号" + ",";
 
 		csvBody_1_1 += ",";
@@ -709,61 +709,61 @@ public class SubmitTailorFormActionBackUp extends ZCActionSupport {
 		csvBody_1_5 += ",";
 
 		csvTitle_2 += "订单编号" + ",";
-		csvBody_2 += getReqParamValue("") + ",";
+		csvBody_2 += getReqParamString("") + ",";
 		csvTitle_2 += "快递方式" + ",";
-		csvBody_2 += getReqParamValue("") + ",";
+		csvBody_2 += getReqParamString("") + ",";
 		csvTitle_2 += "优纤面料" + ",";
-		csvBody_2 += getReqParamValue("uskin_code") + ",";
+		csvBody_2 += getReqParamString("uskin_code") + ",";
 		csvTitle_2 += "客供面料编号" + ",";
-		csvBody_2 += getReqParamValue("") + ",";
+		csvBody_2 += getReqParamString("") + ",";
 		csvTitle_2 += "配色面料" + ",";
-		csvBody_2 += getReqParamValue("") + ",";
+		csvBody_2 += getReqParamString("") + ",";
 		csvTitle_2 += "配色部位" + ",";
-		csvBody_2 += getReqParamValue("") + ",";
+		csvBody_2 += getReqParamString("") + ",";
 		csvTitle_2 += "身型" + ",";
-		csvBody_2 += getReqParamValue("") + ",";
+		csvBody_2 += getReqParamString("") + ",";
 		csvTitle_2 += "后背款式" + ",";
-		csvBody_2 += getReqParamValue("LZX_17") + ",";
+		csvBody_2 += getReqParamString("LZX_17") + ",";
 		csvTitle_2 += "长短袖" + ",";
-		csvBody_2 += getReqParamValue("tailor_type") + ",";
+		csvBody_2 += getReqParamString("tailor_type") + ",";
 		csvTitle_2 += "领型" + ",";
-		csvBody_2 += getReqParamValue("LZX_01") + ",";
+		csvBody_2 += getReqParamString("LZX_01") + ",";
 		csvTitle_2 += "领插片" + ",";
-		csvBody_2 += getReqParamValue("") + ",";
+		csvBody_2 += getReqParamString("") + ",";
 		csvTitle_2 += "袖头" + ",";
-		csvBody_2 += getReqParamValue("LZX_02") + ",";
+		csvBody_2 += getReqParamString("LZX_02") + ",";
 		csvTitle_2 += "门襟" + ",";
-		csvBody_2 += getReqParamValue("LZX_03") + ",";
+		csvBody_2 += getReqParamString("LZX_03") + ",";
 		csvTitle_2 += "口袋" + ",";
-		csvBody_2 += getReqParamValue("LZX_04") + ",";
+		csvBody_2 += getReqParamString("LZX_04") + ",";
 		csvTitle_2 += "纽扣" + ",";
-		csvBody_2 += getReqParamValue("kouzi") + ",";
+		csvBody_2 += getReqParamString("kouzi") + ",";
 		csvTitle_2 += "主唛" + ",";
-		csvBody_2 += getReqParamValue("YX_08") + ",";
+		csvBody_2 += getReqParamString("YX_08") + ",";
 		csvTitle_2 += "明线宽" + ",";
-		csvBody_2 += getReqParamValue("") + ",";
+		csvBody_2 += getReqParamString("") + ",";
 		csvTitle_2 += "侧缝工艺" + ",";
-		csvBody_2 += getReqParamValue("") + ",";
+		csvBody_2 += getReqParamString("") + ",";
 		csvTitle_2 += "嵌条" + ",";
-		csvBody_2 += getReqParamValue("") + ",";
+		csvBody_2 += getReqParamString("") + ",";
 		csvTitle_2 += "衬布" + ",";
-		csvBody_2 += getReqParamValue("") + ",";
+		csvBody_2 += getReqParamString("") + ",";
 		csvTitle_2 += "刺绣字体" + ",";
-		csvBody_2 += getReqParamValue("LZX_11_CHAR_TYPE") + ",";
+		csvBody_2 += getReqParamString("LZX_11_CHAR_TYPE") + ",";
 		csvTitle_2 += "刺绣大小" + ",";
-		csvBody_2 += getReqParamValue("") + ",";
+		csvBody_2 += getReqParamString("") + ",";
 		csvTitle_2 += "刺绣位置" + ",";
-		csvBody_2 += getReqParamValue("LZX_13_FOR_CHAR") + ",";
+		csvBody_2 += getReqParamString("LZX_13_FOR_CHAR") + ",";
 		csvTitle_2 += "刺绣内容" + ",";
-		csvBody_2 += getReqParamValue("LZX_11_CHAR_WORD") + ",";
+		csvBody_2 += getReqParamString("LZX_11_CHAR_WORD") + ",";
 		csvTitle_2 += "刺绣颜色" + ",";
-		csvBody_2 += getReqParamValue("") + ",";
+		csvBody_2 += getReqParamString("") + ",";
 		csvTitle_2 += "洗唛成分" + ",";
-		csvBody_2 += getReqParamValue("") + ",";
+		csvBody_2 += getReqParamString("") + ",";
 		csvTitle_2 += "包装" + ",";
-		csvBody_2 += getReqParamValue("YX_09") + ",";
+		csvBody_2 += getReqParamString("YX_09") + ",";
 		csvTitle_2 += "快递方式" + ",";
-		csvBody_2 += getReqParamValue("") + ",";
+		csvBody_2 += getReqParamString("") + ",";
 
 		return csvTitle_1 + "\n" + csvBody_1 + "\n" + csvBody_1_1 + "\n" + csvBody_1_2 + "\n" + csvBody_1_3 + "\n" + csvBody_1_4 + "\n" + csvBody_1_5 + "\n" + csvTitle_2 + "\n"
 				+ csvBody_2;

@@ -8,14 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
+import com.zc.web.base.doman.ZCBaseActionSupport;
 import com.zc.web.base.service.Log;
+import com.zc.web.base.service.ZCReqManager;
 
-public class SimulatorAction extends ActionSupport {
+public class SimulatorAction extends ZCBaseActionSupport {
 
 	/**
 	 * 该Action用于获取填写表单
-	 *
+	 * 
 	 */
 	private static final long serialVersionUID = 10087L;
 
@@ -175,6 +176,32 @@ public class SimulatorAction extends ActionSupport {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		return null;
+
+	}
+
+	public String getPageActionFormPage() {
+
+		return "succ";
+
+	}
+
+	public String getPageActionForm() {
+
+		Log.Nano.tag("模拟服务 动态表单", "开始");
+
+		init(true);
+
+		ZCReqManager.showParams("模拟服务 动态表单", request);
+
+		ERRCODE = "0";
+		ERRDESC = "succ";
+		data = "{\"TABLES\":[{\"NAME\":\"男士量体表\",\"LIST\":[{\"KEY\":\"1\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"下身长\"},{\"KEY\":\"2\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"下身粗\"}]},{\"NAME\":\"女士量体表\",\"LIST\":[{\"KEY\":\"3\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"胸围\"},{\"KEY\":\"4\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"胸距\"}]},{\"NAME\":\"萝莉量体表\",\"LIST\":[{\"KEY\":\"5\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"胸高\"}]}]}";
+
+		writeResp("模拟服务 动态表单");
+
+		Log.Nano.tag("模拟服务 动态表单", "结束");
 
 		return null;
 

@@ -6,48 +6,93 @@ public class ReqParamGatter {
 
 	public static int getParamInt(HttpServletRequest req, String key) {
 
+		int[] input_values = null;
+		int return_value = 0;
+
+		input_values = getParamInts(req, key);
+
+		for (int i = 0; i < input_values.length; i++) {
+			return_value += input_values[i];
+		}
+		
+		return return_value;
+	}
+
+	public static int[] getParamInts(HttpServletRequest req, String key) {
+
 		String[] input_values = null;
-		int return_value;
+		int[] return_value;
 
 		input_values = req.getParameterValues(key);
 
 		if (null != input_values) {
-			if (input_values.length == 1) {
-				return_value = string2int(input_values[0]);
-			} else {
-				return_value = 0;
-				for (String temp_input_value : input_values) {
-					return_value += string2int(temp_input_value);
-				}
-				Log.Nano.tag("请求动作参数" + key, "出现" + input_values.length + "个选项", input_values.toString());
+
+			return_value = new int[input_values.length];
+
+			for (int i = 0; i < input_values.length; i++) {
+				return_value[i] = string2int(input_values[i]);
 			}
+
+			if (input_values.length > 1) {
+				Log.Nano.tag(//
+						"请求动作参数" + key + "出现多选",//
+						"共" + input_values.length + "个选项", //
+						"转型前:", input_values.toString(),//
+						"转型后:", return_value.toString()//
+				);
+			}
+
 		} else {
-			return_value = 0;
-			Log.Nano.tag("请求动作参数" + key, "请求动作中未包含该参数");
+			return_value = new int[] { 0 };
+			Log.Nano.tag("请求动作参数" + key + "数据异常", "请求动作中未包含该参数");
 		}
 
 		return return_value;
 	}
 
 	public static double getParamDouble(HttpServletRequest req, String key) {
+		
+		double[] input_values = null;
+		double return_value = 0;
+
+		input_values = getParamDoubles(req, key);
+
+		for (int i = 0; i < input_values.length; i++) {
+
+			return_value += input_values[i];
+
+		}
+
+		return return_value;
+	}
+
+	public static double[] getParamDoubles(HttpServletRequest req, String key) {
+		
 		String[] input_values = null;
-		double return_value;
+		double[] return_value = null;
 
 		input_values = req.getParameterValues(key);
 
 		if (null != input_values) {
-			if (input_values.length == 1) {
-				return_value = string2int(input_values[0]);
-			} else {
-				return_value = 0;
-				for (String temp_input_value : input_values) {
-					return_value += string2double(temp_input_value);
-				}
-				Log.Nano.tag("请求动作参数" + key, "出现" + input_values.length + "个选项", input_values.toString());
+
+			return_value = new double[input_values.length];
+
+			for (int i = 0; i < input_values.length; i++) {
+				return_value[i] = string2double(input_values[i]);
 			}
+
+			if (input_values.length > 1) {
+				Log.Nano.tag(//
+						"请求动作参数" + key + "出现多选",//
+						"共" + input_values.length + "个选项", //
+						"转型前:", input_values.toString(),//
+						"转型后:", return_value.toString()//
+				);
+			}
+
 		} else {
-			return_value = 0;
-			Log.Nano.tag("请求动作参数" + key, "请求动作中未包含该参数");
+			return_value = new double[] { 0d };
+			Log.Nano.tag("请求动作参数" + key + "数据异常", "请求动作中未包含该参数");
 		}
 
 		return return_value;
@@ -56,23 +101,17 @@ public class ReqParamGatter {
 	public static String getParamString(HttpServletRequest req, String key) {
 
 		String[] input_values = null;
-		String return_value = null;
+		String return_value = "";
 
-		input_values = req.getParameterValues(key);
+		input_values = getParamStrings(req, key);
 
-		if (null != input_values) {
-			if (input_values.length == 1) {
-				return_value = input_values[0].toString().trim();
-			} else {
-				return_value = "";
-				for (String temp_input_value : input_values) {
-					return_value += temp_input_value.trim() + ",";
-				}
-				Log.Nano.tag("请求动作参数" + key, "出现" + input_values.length + "个选项", return_value);
+		for (int i = 0; i < input_values.length; i++) {
+
+			return_value += input_values[i];
+
+			if (i < input_values.length - 1) {
+				return_value += ",";
 			}
-		} else {
-			return_value = "";
-			Log.Nano.tag("请求动作参数" + key, "请求动作中未包含该参数");
 		}
 
 		return return_value;
@@ -90,10 +129,17 @@ public class ReqParamGatter {
 			for (int i = 0; i < input_values.length; i++) {
 				return_value[i] = input_values[i].toString().trim();
 			}
-			Log.Nano.tag("请求动作参数" + key, "出现" + input_values.length + "个选项", return_value.toString());
+			if (input_values.length > 1) {
+				Log.Nano.tag(//
+						"请求动作参数" + key + "出现多选",//
+						"共" + input_values.length + "个选项", //
+						"转型前:", input_values.toString(),//
+						"转型后:", return_value.toString()//
+				);
+			}
 		} else {
 			return_value = new String[] { "" };
-			Log.Nano.tag("请求动作参数" + key, "请求动作中未包含该参数");
+			Log.Nano.tag("请求动作参数" + key + "数据异常", "请求动作中未包含该参数");
 		}
 
 		return return_value;

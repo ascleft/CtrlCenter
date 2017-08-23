@@ -44,7 +44,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-		<title>推荐款</title>
+		<title>推荐款、其他商品</title>
 
 		<!-- CDN  -->
 		<!-- Google Icon Font -->
@@ -230,7 +230,7 @@
 		<nav class="teal" role="navigation">
 			<div class="nav-wrapper container">
 				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons white-text">menu</i></a>
-				<a id="logo-container" href="#" class="brand-logo white-text">设计师推荐款</a>
+				<a id="logo-container" href="#" class="brand-logo white-text">推荐款、其他商品</a>
 				<ul class="right hide-on-med-and-down">
 					<li>
 						<a class="white-text" href="#">您好:
@@ -310,7 +310,7 @@
 								</li>
 								<li>
 									<div class="collapsible-header">
-										<i class="material-icons">view_carousel</i>设计师推荐款 包装
+										<i class="material-icons">view_carousel</i>商品编号 包装
 									</div>
 									<div class="collapsible-body">
 										<div class="row">
@@ -322,7 +322,7 @@
 											</div>
 											<div class="col s12 m14 l4">
 												<div class="input-field">
-													<input type="text" class="validate" name="style_name" value=""> <label>设计师推荐款编号</label>
+													<input type="text" class="validate" name="style_name" value=""> <label>商品编号</label>
 												</div>
 											</div>
 											<div class="input-field col s5 m5 l4" style="display: none;">
@@ -1040,6 +1040,7 @@
 											<select name="garment_type">
 												<option value="man">男装</option>
 												<option value="woman">女装</option>
+												<option value="other">其他商品</option>
 											</select> <label>服装类型</label>
 										</div>
 										<a class="col s4 m4 l4 waves-effect waves-light btn input-field" onclick="submitclothform()">提交订单数据</a>

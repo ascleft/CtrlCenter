@@ -17,7 +17,7 @@ import net.sf.json.JSONObject;
 
 import com.zc.web.base.service.Log;
 
-public class ZCHttpFilter implements Filter {
+public class ZCBaseHttpFilter implements Filter {
 
 	public HttpServletResponse response;
 	public HttpServletRequest request;

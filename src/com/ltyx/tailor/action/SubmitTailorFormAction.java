@@ -3,27 +3,26 @@ package com.ltyx.tailor.action;
 import com.ltyx.tailor.actionplugin.MoudleCalCSV;
 import com.ltyx.tailor.actionplugin.MoudleCheckMeasure;
 import com.ltyx.tailor.actionplugin.MoudleCheckOther;
-import com.ltyx.tailor.actionplugin.MoudleSubmitDB;
 import com.ltyx.tailor.actionplugin.MoudleSubmitEC;
-import com.zc.web.base.doman.ZCActionSupport;
-import com.zc.web.base.service.ZCReqManager;
+import com.zc.web.base.doman.ZCBaseActionSupport;
 import com.zc.web.base.service.Log;
+import com.zc.web.base.service.ZCReqManager;
 
-public class SubmitTailorFormAction extends ZCActionSupport {
+public class SubmitTailorFormAction extends ZCBaseActionSupport {
 
 	/**
 	 * 该Action用于获取填写表单
-	 *
+	 * 
 	 */
 	private static final long serialVersionUID = 10087L;
 
 	public String submit() {
-		
+
 		Log.Nano.tag("提交衬衫信息订单", "开始");
 
 		init(true);
 
-		ZCReqManager.showParams(request);
+		ZCReqManager.showParams("提交衬衫信息订单", request);
 
 		doJobs();
 
@@ -70,16 +69,16 @@ public class SubmitTailorFormAction extends ZCActionSupport {
 		}
 		Log.Nano.tag("衬衫提交信息进度", "MoudleSubmitEC", "已完成");
 
-//		{
-//			MoudleSubmitDB submitDB = new MoudleSubmitDB(request);
-//			if (!submitDB.doJobs()) {
-//				ERRCODE = submitDB.getERRCODE();
-//				ERRDESC = submitDB.getERRDESC();
-//				data = submitDB.getData();
-//				return false;
-//			}
-//		}
-//		Log.Nano.tag("衬衫提交信息进度", "MoudleSubmitDB", "已完成");
+		// {
+		// MoudleSubmitDB submitDB = new MoudleSubmitDB(request);
+		// if (!submitDB.doJobs()) {
+		// ERRCODE = submitDB.getERRCODE();
+		// ERRDESC = submitDB.getERRDESC();
+		// data = submitDB.getData();
+		// return false;
+		// }
+		// }
+		// Log.Nano.tag("衬衫提交信息进度", "MoudleSubmitDB", "已完成");
 
 		{
 			MoudleCalCSV calCSV = new MoudleCalCSV(request);

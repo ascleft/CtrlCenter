@@ -1,18 +1,21 @@
 package com.ltyx.tailor.action;
 
-import com.zc.web.base.doman.ZCActionSupport;
+import com.zc.web.base.doman.ZCBaseActionSupport;
+import com.zc.web.base.service.ZCReqManager;
 
-public class GetTailorFormAction extends ZCActionSupport {
+public class GetTailorFormAction extends ZCBaseActionSupport {
 
 	/**
 	 * 该Action用于获取填写表单
-	 *
+	 * 
 	 */
 	private static final long serialVersionUID = 10087L;
 
 	public String getForm() {
 
 		init(true);
+
+		session.setAttribute("menulist", FormConfig.get_menu_list());
 
 		session.setAttribute("list_LZX_01", FormConfig.get_list_LZX_01());
 		session.setAttribute("list_LZX_02", FormConfig.get_list_LZX_02());
@@ -42,7 +45,10 @@ public class GetTailorFormAction extends ZCActionSupport {
 	}
 
 	public String getFormWithCode() {
+
 		init(true);
+
+		session.setAttribute("menulist", FormConfig.get_menu_list());
 
 		session.setAttribute("list_LZX_01", FormConfig.get_list_LZX_01());
 		session.setAttribute("list_LZX_02", FormConfig.get_list_LZX_02());
@@ -67,7 +73,7 @@ public class GetTailorFormAction extends ZCActionSupport {
 		session.setAttribute("list_weizhi_zhidai", FormConfig.get_list_weizhi_zhidai());
 		session.setAttribute("list_weizhi_peise", FormConfig.get_list_weizhi_peise());
 
-		String code = getReqParamValue("code");
+		String code = getReqParamString("code");
 		session.setAttribute("code", code);
 
 		return "succ";

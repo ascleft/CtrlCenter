@@ -10,7 +10,7 @@
 	
 	String menulist=(String) session.getAttribute("menulist");
 	
-	String list_LZX_01=(String) session.getAttribute("list_LZX_01");
+	String list_LZX_01 =(String) session.getAttribute("list_LZX_01");
 	String list_LZX_02=(String) session.getAttribute("list_LZX_02");
 	String list_LZX_03=(String) session.getAttribute("list_LZX_03");
 	String list_LZX_04=(String) session.getAttribute("list_LZX_04");

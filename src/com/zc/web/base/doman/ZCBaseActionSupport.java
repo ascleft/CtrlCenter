@@ -18,7 +18,7 @@ import com.zc.web.base.service.DBConfigHelper;
 import com.zc.web.base.service.Log;
 import com.zc.web.base.service.ReqParamGatter;
 
-public class ZCActionSupport extends ActionSupport {
+public class ZCBaseActionSupport extends ActionSupport {
 
 	private static final long serialVersionUID = 10086L;
 
@@ -27,7 +27,7 @@ public class ZCActionSupport extends ActionSupport {
 
 	public HttpSession session;
 
-	public JSONObject result;
+	private JSONObject result;
 	public String ERRCODE;
 	public String ERRDESC;
 	public String data;
@@ -45,8 +45,33 @@ public class ZCActionSupport extends ActionSupport {
 		session.setMaxInactiveInterval(30 * 60);
 	}
 
-	public String getReqParamValue(String key) {
+	public int getReqParamInt(String key) {
+		int return_value = ReqParamGatter.getParamInt(request, key);
+		return return_value;
+	}
+
+	public int[] getReqParamInts(String key) {
+		int[] return_value = ReqParamGatter.getParamInts(request, key);
+		return return_value;
+	}
+
+	public double getReqParamDouble(String key) {
+		double return_value = ReqParamGatter.getParamDouble(request, key);
+		return return_value;
+	}
+
+	public double[] getReqParamDoubles(String key) {
+		double[] return_value = ReqParamGatter.getParamDoubles(request, key);
+		return return_value;
+	}
+
+	public String getReqParamString(String key) {
 		String return_value = ReqParamGatter.getParamString(request, key);
+		return return_value;
+	}
+
+	public String[] getReqParamStrings(String key) {
+		String[] return_value = ReqParamGatter.getParamStrings(request, key);
 		return return_value;
 	}
 
@@ -60,7 +85,6 @@ public class ZCActionSupport extends ActionSupport {
 		result.put("ERRCODE", ERRCODE);
 		result.put("ERRDESC", ERRDESC);
 		result.put("data", data);
-		Log.Nano.tag("data", data);
 		try {
 			PrintWriter out;
 			out = response.getWriter();

@@ -171,8 +171,8 @@ public class MoudleSubmitDB extends ZCActionPluginBase {
 
 		String key;
 		String val;
-		String def;
-		String toast;
+		// String def;
+		// String toast;
 	}
 
 }

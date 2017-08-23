@@ -3,33 +3,35 @@ package com.ltyx.ucsplus.action;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import com.zc.web.base.doman.ZCActionSupport;
+import com.zc.web.base.doman.ZCBaseActionSupport;
 import com.zc.web.base.doman.ZCHttpParam;
 import com.zc.web.base.service.ZCHttpReq;
 import com.zc.web.base.service.Log;
 
-public class SearchAction extends ZCActionSupport {
+public class SearchAction extends ZCBaseActionSupport {
 
 	/**
 	 * 登录Action
-	 *
+	 * 
 	 * session中的user为用户信息，role中0为最高权限
-	 *
+	 * 
 	 * session中的isOnline：1为已经登录，0为未登录。
 	 */
+
 	private static final long serialVersionUID = 10086L;
 
 	/**
 	 * 获取搜索页面
-	 *
+	 * 
 	 */
+
 	public String getPage() {
 		return "succ";
 	}
 
 	/**
 	 * 搜索
-	 *
+	 * 
 	 */
 	public String search() {
 

@@ -2,12 +2,12 @@ package com.zc.talk;
 
 import net.sf.json.JSONObject;
 
-import com.zc.web.base.doman.ZCActionSupport;
+import com.zc.web.base.doman.ZCBaseActionSupport;
 import com.zc.web.base.doman.ZCHttpParam;
 import com.zc.web.base.service.ZCHttpReq;
 import com.zc.web.base.service.Log;
 
-public class TalkAction extends ZCActionSupport {
+public class TalkAction extends ZCBaseActionSupport {
 
 	private static final long serialVersionUID = 10086L;
 

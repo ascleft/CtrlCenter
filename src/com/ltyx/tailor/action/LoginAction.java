@@ -2,26 +2,26 @@ package com.ltyx.tailor.action;
 
 import net.sf.json.JSONObject;
 
-import com.zc.web.base.doman.ZCActionSupport;
+import com.zc.web.base.doman.ZCBaseActionSupport;
 import com.zc.web.base.doman.ZCHttpParam;
 import com.zc.web.base.service.ZCHttpReq;
 import com.zc.web.base.service.Log;
 import com.zc.web.base.service.URLConfigHelper;
 
-public class LoginAction extends ZCActionSupport {
+public class LoginAction extends ZCBaseActionSupport {
 
 	/**
 	 * 登录Action
-	 *
+	 * 
 	 * session中的user为用户信息，role中0为最高权限
-	 *
+	 * 
 	 * session中的isOnline：1为已经登录，0为未登录。
 	 */
 	private static final long serialVersionUID = 10086L;
 
 	/**
 	 * 注销接口
-	 *
+	 * 
 	 */
 	public String loginPage() {
 		return "succ";
@@ -29,7 +29,7 @@ public class LoginAction extends ZCActionSupport {
 
 	/**
 	 * 登录接口
-	 *
+	 * 
 	 */
 	public String login() {
 
@@ -103,8 +103,6 @@ public class LoginAction extends ZCActionSupport {
 				session.setAttribute("ec_user_name", ec_user_name);
 				session.setAttribute("ec_user_rank", ec_user_role);
 
-				session.setAttribute("menulist", getMenuList());
-
 				ERRCODE = "0";
 				ERRDESC = "succ";
 				data = "succ";
@@ -126,7 +124,7 @@ public class LoginAction extends ZCActionSupport {
 
 	/**
 	 * 注销接口
-	 *
+	 * 
 	 */
 	public String logout() {
 		init(true);
@@ -136,16 +134,6 @@ public class LoginAction extends ZCActionSupport {
 		session.setAttribute("ec_user_role", null);
 		Log.Nano.tag("注销", "完成");
 		return "succ";
-	}
-
-	private String getMenuList() {
-		String menuList = "<li><a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/Pro.action\">高级模式</a></li>"//
-				+ "<li><a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/Design.action\">设计师推荐款</a></li>"//
-				+ "<li><a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/Advisor.action\">定制顾问</a></li>" //
-				+ "<li><a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/Other.action\">其他商品</a></li>" //
-				+ "<li><a href=\"/CtrlCenter/UcsPlus/GetSearchPage.action\">库存查询</a></li>";
-		return menuList;
-
 	}
 
 }

@@ -7,9 +7,9 @@ import net.sf.json.JSONObject;
 
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.ResultSet;
-import com.zc.web.base.doman.ZCActionSupport;
+import com.zc.web.base.doman.ZCBaseActionSupport;
 
-public class GetListAction extends ZCActionSupport {
+public class GetListAction extends ZCBaseActionSupport {
 
 	/**
 	 * 该Action用于获取填写表单
