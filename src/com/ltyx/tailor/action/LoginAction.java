@@ -2,11 +2,11 @@ package com.ltyx.tailor.action;
 
 import net.sf.json.JSONObject;
 
-import com.zc.web.support.config.ConfigHelperURL;
-import com.zc.web.support.doman.ZCBaseActionSupport;
-import com.zc.web.support.link.ZCHttpReqParam;
-import com.zc.web.support.link.ZCHttpReq;
-import com.zc.web.support.service.Log;
+import com.zc.support.config.ConfigHelperURL;
+import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.link.ZCHttpReqParam;
+import com.zc.support.link.ZCHttpReqSender;
+import com.zc.support.service.Log;
 
 public class LoginAction extends ZCBaseActionSupport {
 
@@ -75,7 +75,7 @@ public class LoginAction extends ZCBaseActionSupport {
 			// String httpResp =
 			// CCHttpReq.sendGet("http://61.50.122.58:8029/CtrlCenter/LTYX/Tailor/LoginEC.action",
 			// param);
-			String httpResp = ZCHttpReq.sendGet(ConfigHelperURL.Url_LoginEC, param);
+			String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_LoginEC, param);
 
 			String isOnline;
 			String ec_user_id;

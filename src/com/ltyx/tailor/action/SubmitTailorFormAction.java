@@ -4,9 +4,9 @@ import com.ltyx.tailor.actionplugin.MoudleCalCSV;
 import com.ltyx.tailor.actionplugin.MoudleCheckMeasure;
 import com.ltyx.tailor.actionplugin.MoudleCheckOther;
 import com.ltyx.tailor.actionplugin.MoudleSubmitEC;
-import com.zc.web.support.doman.ZCBaseActionSupport;
-import com.zc.web.support.link.ZCReqManager;
-import com.zc.web.support.service.Log;
+import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.link.ZCReqIntroGetter;
+import com.zc.support.service.Log;
 
 public class SubmitTailorFormAction extends ZCBaseActionSupport {
 
@@ -22,7 +22,7 @@ public class SubmitTailorFormAction extends ZCBaseActionSupport {
 
 		init(true);
 
-		ZCReqManager.showParams("提交衬衫信息订单", request);
+		ZCReqIntroGetter.showParams("提交衬衫信息订单", request);
 
 		doJobs();
 

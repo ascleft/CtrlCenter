@@ -1,8 +1,8 @@
 package com.ltyx.tailor.action;
 
-import com.zc.web.support.config.ConfigHelperDB;
-import com.zc.web.support.config.ConfigHelperURL;
-import com.zc.web.support.doman.ZCBaseActionSupport;
+import com.zc.support.config.ConfigHelperDB;
+import com.zc.support.config.ConfigHelperURL;
+import com.zc.support.doman.ZCBaseActionSupport;
 
 public class SettingAction extends ZCBaseActionSupport {
 

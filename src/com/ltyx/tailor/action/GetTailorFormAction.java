@@ -1,6 +1,6 @@
 package com.ltyx.tailor.action;
 
-import com.zc.web.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.ZCBaseActionSupport;
 
 public class GetTailorFormAction extends ZCBaseActionSupport {
 

@@ -3,10 +3,10 @@ package com.ltyx.ucsplus.action;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import com.zc.web.support.doman.ZCBaseActionSupport;
-import com.zc.web.support.link.ZCHttpReqParam;
-import com.zc.web.support.link.ZCHttpReq;
-import com.zc.web.support.service.Log;
+import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.link.ZCHttpReqParam;
+import com.zc.support.link.ZCHttpReqSender;
+import com.zc.support.service.Log;
 
 public class SearchAction extends ZCBaseActionSupport {
 
@@ -106,7 +106,7 @@ public class SearchAction extends ZCBaseActionSupport {
 			param.addParam("businessObjectTypeId", businessObjectTypeId);
 			param.addParam("filter", filter);
 
-			String httpResp = ZCHttpReq.sendGet("http://www.lttcerp.com:88/k3cloud/Services/LUTAIWebService.asmx/K3CloudSendDataToUtailor", param);
+			String httpResp = ZCHttpReqSender.sendGet("http://www.lttcerp.com:88/k3cloud/Services/LUTAIWebService.asmx/K3CloudSendDataToUtailor", param);
 
 			httpResp = httpResp.substring(103, httpResp.length() - 9);
 

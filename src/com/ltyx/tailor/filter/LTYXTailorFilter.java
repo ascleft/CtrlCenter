@@ -10,9 +10,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.zc.web.support.doman.ZCBaseHttpFilter;
-import com.zc.web.support.service.Log;
-import com.zc.web.support.service.SystemInitHelper;
+import com.zc.support.doman.ZCBaseHttpFilter;
+import com.zc.support.service.Log;
+import com.zc.support.service.SystemInitHelper;
 
 public class LTYXTailorFilter extends ZCBaseHttpFilter {
 

@@ -2,13 +2,13 @@ package com.ltyx.tailor.action;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.zc.web.support.link.ZCReqManager;
+import com.zc.support.link.ZCReqIntroGetter;
 
 public class FormConfig {
 
 	public static String get_QR_url(HttpServletRequest request) {
 
-		String IP = ZCReqManager.getIpAddress(request);
+		String IP = ZCReqIntroGetter.getIpAddress(request);
 		String PORT = ("61.50.122.58".equals(IP)) ? "8029" : "8080";
 
 		String url = "";

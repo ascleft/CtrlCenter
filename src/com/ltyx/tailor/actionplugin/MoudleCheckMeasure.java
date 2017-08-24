@@ -5,8 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.zc.web.support.doman.ZCBaseActionSupportPlugin;
-import com.zc.web.support.service.Log;
+import com.zc.support.doman.ZCBaseActionSupportPlugin;
+import com.zc.support.service.Log;
 
 public class MoudleCheckMeasure extends ZCBaseActionSupportPlugin {
 

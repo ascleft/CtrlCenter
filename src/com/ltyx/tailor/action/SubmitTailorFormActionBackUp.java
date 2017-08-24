@@ -7,13 +7,13 @@ import net.sf.json.JSONObject;
 
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.ResultSet;
-import com.zc.web.support.config.ConfigHelperURL;
-import com.zc.web.support.doman.ZCBaseActionSupport;
-import com.zc.web.support.link.ZCHttpReqParam;
-import com.zc.web.support.link.ZCHttpReq;
-import com.zc.web.support.link.ZCReqManager;
-import com.zc.web.support.service.Log;
-import com.zc.web.support.service.TimeHelper;
+import com.zc.support.config.ConfigHelperURL;
+import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.link.ZCHttpReqParam;
+import com.zc.support.link.ZCHttpReqSender;
+import com.zc.support.link.ZCReqIntroGetter;
+import com.zc.support.service.Log;
+import com.zc.support.service.TimeHelper;
 
 public class SubmitTailorFormActionBackUp extends ZCBaseActionSupport {
 
@@ -46,7 +46,7 @@ public class SubmitTailorFormActionBackUp extends ZCBaseActionSupport {
 
 		init(true);
 
-		ZCReqManager.showParams("提交衬衫信息订单", request);
+		ZCReqIntroGetter.showParams("提交衬衫信息订单", request);
 
 		boolean CI_SUCC = checkInput();
 		System.out.println("CI_SUCC " + CI_SUCC);
@@ -320,7 +320,7 @@ public class SubmitTailorFormActionBackUp extends ZCBaseActionSupport {
 		// String httpResp =
 		// CCHttpReq.sendGet("http://61.50.122.58:8029/CtrlCenter/LTYX/Tailor/SubTailorEC.action",
 		// param);
-		String httpResp = ZCHttpReq.sendGet(ConfigHelperURL.Url_SubTailor, param);
+		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_SubTailor, param);
 		Log.Nano.tag("Save Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp = JSONObject.fromObject(httpResp);

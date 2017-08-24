@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.ResultSet;
-import com.zc.web.support.doman.ZCBaseActionSupportPlugin;
-import com.zc.web.support.service.Log;
-import com.zc.web.support.service.TimeHelper;
+import com.zc.support.doman.ZCBaseActionSupportPlugin;
+import com.zc.support.service.Log;
+import com.zc.support.service.TimeHelper;
 
 public class MoudleSubmitDB extends ZCBaseActionSupportPlugin {
 

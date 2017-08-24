@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
 import com.opensymphony.xwork2.ActionContext;
-import com.zc.web.support.doman.ZCBaseActionSupport;
-import com.zc.web.support.link.ZCReqManager;
-import com.zc.web.support.service.Log;
+import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.link.ZCReqIntroGetter;
+import com.zc.support.service.Log;
 
 public class SimulatorAction extends ZCBaseActionSupport {
 
@@ -193,7 +193,7 @@ public class SimulatorAction extends ZCBaseActionSupport {
 
 		init(true);
 
-		ZCReqManager.showParams("模拟服务 动态表单", request);
+		ZCReqIntroGetter.showParams("模拟服务 动态表单", request);
 
 		ERRCODE = "0";
 		ERRDESC = "succ";

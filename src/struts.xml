@@ -6,6 +6,11 @@
 	<package name="TailorLoginAction" namespace="/LTYX/Tailor" extends="struts-default">
 		<default-action-ref name="User"></default-action-ref>
 
+		<!--注销接口 -->
+		<action name="Logout" class="com.ltyx.tailor.action.LoginAction" method="logout">
+			<result name="succ">/html/TailorInfo/Login.jsp</result>
+		</action>
+
 		<!--获取登录页面 -->
 		<action name="LoginPage" class="com.ltyx.tailor.action.LoginAction" method="loginPage">
 			<result name="succ">/html/TailorInfo/Login.jsp</result>
@@ -13,11 +18,6 @@
 
 		<!--登录接口 -->
 		<action name="Login" class="com.ltyx.tailor.action.LoginAction" method="login"></action>
-
-		<!--注销接口 -->
-		<action name="Logout" class="com.ltyx.tailor.action.LoginAction" method="logout">
-			<result name="succ">/html/TailorInfo/Login.jsp</result>
-		</action>
 
 	</package>
 
@@ -30,12 +30,12 @@
 			<result name="succ">/html/TailorInfo/FormTailorPro.jsp</result>
 		</action>
 
-		<!-- 获取订单信息表单 专业版 客供 -->
+		<!-- 获取订单信息表单 客供版 -->
 		<action name="ProPBC" class="com.ltyx.tailor.action.GetTailorFormAction" method="getFormWithCode">
 			<result name="succ">/html/TailorInfo/FormTailorProPBC.jsp</result>
 		</action>
 
-		<!-- 获取订单信息表单 设计师推荐款 -->
+		<!-- 获取订单信息表单 设计师款 -->
 		<action name="Design" class="com.ltyx.tailor.action.GetTailorFormAction" method="getForm">
 			<result name="succ">/html/TailorInfo/FormTailorDesign.jsp</result>
 		</action>
@@ -48,16 +48,29 @@
 		<!-- 提交成衬衫订单 -->
 		<action name="SubmitTailorForm" class="com.ltyx.tailor.action.SubmitTailorFormAction" method="submit"></action>
 
-		<!-- 获取系统设置页面 -->
+		<!-- 系统设置 获取页面 -->
 		<action name="GetSettingPage" class="com.ltyx.tailor.action.SettingAction" method="getPage">
 			<result name="succ">/html/TailorInfo/Setting.jsp</result>
 		</action>
 
-		<!-- 获取当前服务器状态 -->
+		<!-- 系统设置  当前服务器状态 -->
 		<action name="GetState" class="com.ltyx.tailor.action.SettingAction" method="getState"></action>
 
-		<!-- 设置 -->
+		<!-- 系统设置 更新系统设置 -->
 		<action name="Setting" class="com.ltyx.tailor.action.SettingAction" method="setting"></action>
+
+	</package>
+
+	<!--衬衫下单工具 即时库存模块 -->
+	<package name="UcsAction" namespace="/UcsPlus" extends="struts-default">
+
+		<!-- 即时库存 获取搜索页 -->
+		<action name="GetSearchPage" class="com.ltyx.ucsplus.action.SearchAction" method="getPage">
+			<result name="succ">/html/TailorInfo/Search.jsp</result>
+		</action>
+
+		<!-- 即时库存 搜索 -->
+		<action name="Search" class="com.ltyx.ucsplus.action.SearchAction" method="search"></action>
 
 	</package>
 
@@ -77,26 +90,13 @@
 
 	</package>
 
-	<!--衬衫下单工具 即时库存模块 -->
-	<package name="UcsAction" namespace="/UcsPlus" extends="struts-default">
-
-		<!-- 即时库存 获取搜索页 -->
-		<action name="GetSearchPage" class="com.ltyx.ucsplus.action.SearchAction" method="getPage">
-			<result name="succ">/html/TailorInfo/Search.jsp</result>
-		</action>
-
-		<!-- 即时库存 搜索 -->
-		<action name="Search" class="com.ltyx.ucsplus.action.SearchAction" method="search"></action>
-
-	</package>
-
 	<!--鲁泰优纤 衬衫下单工具 对外接口 -->
 	<package name="OpenAPI" namespace="/LTYX/OpenAPI" extends="struts-default">
 
-		<!-- 提交成衬衫订单 -->
+		<!-- 衬衫订单 提交成衬衫订单 -->
 		<action name="SubmitTailorForm" class="com.ltyx.tailor.action.SubmitTailorFormAction" method="submit"></action>
 
-		<!-- 接口测试 -->
+		<!-- 通用工具 上行参数测试 -->
 		<action name="ShowParam" class="com.ltyx.ucsplus.action.ParamTestAction" method="showParam"></action>
 
 	</package>
@@ -122,21 +122,21 @@
 	<!--附加 小程序 -->
 	<package name="TalkAction" namespace="/Talk" extends="struts-default">
 
-		<!-- 获取聊天页 -->
-		<action name="GetTalkPage" class="com.zc.talk.TalkAction" method="getPage">
+		<!-- 聊天 获取聊天页 -->
+		<action name="GetTalkPage" class="com.zc.fun.talk.TalkAction" method="getPage">
 			<result name="succ">/html/Talk/Talk.jsp</result>
 		</action>
 
 		<!-- 聊天 -->
-		<action name="Talk" class="com.zc.talk.TalkAction" method="talk"></action>
+		<action name="Talk" class="com.zc.fun.talk.TalkAction" method="talk"></action>
 
-		<!-- 获取随机短语页面 -->
-		<action name="GetRandomWordPage" class="com.zc.talk.WordAction" method="getPage">
+		<!-- 随机短语 获取页面 -->
+		<action name="GetRandomWordPage" class="com.zc.fun.talk.WordAction" method="getPage">
 			<result name="succ">/html/Talk/Word.jsp</result>
 		</action>
 
-		<!-- 获取随机短语页面 -->
-		<action name="GetRandomWord" class="com.zc.talk.WordAction" method="randomWord"></action>
+		<!-- 随机短语 获取随机短语 -->
+		<action name="GetRandomWord" class="com.zc.fun.talk.WordAction" method="randomWord"></action>
 
 	</package>
 

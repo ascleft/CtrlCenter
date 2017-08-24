@@ -26,7 +26,7 @@
 	<!-- 参数测试Servlet -->
 	<servlet>
 		<servlet-name>ParamTestServlet</servlet-name>
-		<servlet-class>com.ltyx.test.servlet.ParamTestServlet</servlet-class>
+		<servlet-class>com.ltyx.top.servlet.ParamTestServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ParamTestServlet</servlet-name>
@@ -37,7 +37,7 @@
 	<!-- LTYX基础过滤器 -->
 	<filter>
 		<filter-name>MainHttpFilter</filter-name>
-		<filter-class>com.ltyx.filter.LTYXMainHttpFilter</filter-class>
+		<filter-class>com.ltyx.top.filter.LTYXMainHttpFilter</filter-class>
 		<init-param>
 			<param-name>count</param-name>
 			<param-value>10000</param-value>
