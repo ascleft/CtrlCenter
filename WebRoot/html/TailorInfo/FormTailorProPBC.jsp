@@ -8,6 +8,8 @@
 	String ec_user_name=(String) session.getAttribute("ec_user_name");
 	String ec_user_rank=(String) session.getAttribute("ec_user_rank");
 	
+	String QRurl=(String) session.getAttribute("QRurl");
+
 	String menulist=(String) session.getAttribute("menulist");
 	
 	String list_LZX_01=(String) session.getAttribute("list_LZX_01");

@@ -1,4 +1,4 @@
-package com.zc.web.base.service;
+package com.zc.web.support.link;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLConnection;
@@ -6,23 +6,23 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.zc.web.support.service.Log;
+
 public class ZCReqManager {
+
 	/**
-	 * 打印请求中的所有header
+	 * 打印请求中的所有Header
 	 * 
-	 * @param request
-	 * @return
 	 */
 	public static void showHeaders(String reqName, URLConnection connection) {
 
 		Map<String, List<String>> map = connection.getHeaderFields();
 
 		Log.Pro.start();
-		Log.Pro.whiteLine(reqName + " 的 " + " header");
+		Log.Pro.whiteLine(reqName + " " + "Header");
 		Log.Pro.whiteCut();
 		for (String key : map.keySet()) {
 			Log.Pro.whiteLine(key + "--->" + map.get(key));
@@ -31,6 +31,10 @@ public class ZCReqManager {
 
 	}
 
+	/**
+	 * 打印请求中的所有Header
+	 * 
+	 */
 	public static Map<String, String> showHeaders(String reqName, HttpServletRequest request) {
 		Map<String, String> map = new HashMap<String, String>();
 		Enumeration<String> headerNames = request.getHeaderNames();
@@ -41,7 +45,7 @@ public class ZCReqManager {
 		}
 
 		Log.Pro.start();
-		Log.Pro.whiteLine(reqName + " " + " header");
+		Log.Pro.whiteLine(reqName + " " + "Header");
 		Log.Pro.whiteCut();
 		for (String key : map.keySet()) {
 			Log.Pro.whiteLine(key + "--->" + map.get(key));
@@ -52,13 +56,11 @@ public class ZCReqManager {
 	}
 
 	/**
-	 * 打印请求中的所有提交数据
+	 * 打印请求中的所有Param
 	 * 
-	 * @param request
-	 * @return
 	 */
-	public static HashMap<String, String> showParams(String reqName, HttpServletRequest request) {
-		HashMap<String, String> map = new HashMap<String, String>();
+	public static Map<String, String> showParams(String reqName, HttpServletRequest request) {
+		Map<String, String> map = new HashMap<String, String>();
 		try {
 			request.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {
@@ -67,37 +69,21 @@ public class ZCReqManager {
 		}
 		Enumeration<String> paramNames = request.getParameterNames();
 		while (paramNames.hasMoreElements()) {
-			String paramName = (String) paramNames.nextElement();
-			String[] paramValues = request.getParameterValues(paramName);
-			if (paramValues != null) {
-				if (paramValues.length <= 1) {
-					String paramValue = paramValues[0];
-					if (paramValue.length() != 0) {
-						map.put(paramName, paramValue);
-					}
-				} else {
-					String paramValue = "";
-					for (String temp_paramValue : paramValues) {
-						paramValue += temp_paramValue + " , ";
-					}
-					if (paramValue.length() != 0) {
-						map.put(paramName, paramValue);
-					}
-				}
-			}
+			String paramKey = (String) paramNames.nextElement();
+			String paramValue = ZCReqParamGetter.getParamString(request, paramKey, false);
+			map.put(paramKey, paramValue);
 		}
-
-		Set<Map.Entry<String, String>> set = map.entrySet();
 
 		Log.Pro.start();
-		Log.Pro.whiteLine(reqName + " " +"请求参数");
+		Log.Pro.whiteLine(reqName + " " + "Params");
 		Log.Pro.whiteCut();
-		for (Map.Entry<String, String> entry : set) {
-			Log.Pro.whiteLine(entry.getKey() + ":" + entry.getValue());
+		for (String key : map.keySet()) {
+			Log.Pro.whiteLine(key + "--->" + map.get(key));
 		}
-
 		Log.Pro.finish();
 
+		Log.Nano.tag("ip",getIpAddress(request));
+		
 		return map;
 	}
 

@@ -7,13 +7,13 @@ import net.sf.json.JSONObject;
 
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.ResultSet;
-import com.zc.web.base.doman.ZCBaseActionSupport;
-import com.zc.web.base.doman.ZCHttpParam;
-import com.zc.web.base.service.ZCHttpReq;
-import com.zc.web.base.service.ZCReqManager;
-import com.zc.web.base.service.Log;
-import com.zc.web.base.service.TimeHelper;
-import com.zc.web.base.service.URLConfigHelper;
+import com.zc.web.support.config.ConfigHelperURL;
+import com.zc.web.support.doman.ZCBaseActionSupport;
+import com.zc.web.support.link.ZCHttpReqParam;
+import com.zc.web.support.link.ZCHttpReq;
+import com.zc.web.support.link.ZCReqManager;
+import com.zc.web.support.service.Log;
+import com.zc.web.support.service.TimeHelper;
 
 public class SubmitTailorFormActionBackUp extends ZCBaseActionSupport {
 
@@ -238,7 +238,7 @@ public class SubmitTailorFormActionBackUp extends ZCBaseActionSupport {
 	}
 
 	public boolean saveEC() {
-		ZCHttpParam param = new ZCHttpParam();
+		ZCHttpReqParam param = new ZCHttpReqParam();
 
 		param.addParam("bn", getReqParamString("uskin_code")); // USKIN编码
 		param.addParam("quantity", "1"); // 商品数量
@@ -320,7 +320,7 @@ public class SubmitTailorFormActionBackUp extends ZCBaseActionSupport {
 		// String httpResp =
 		// CCHttpReq.sendGet("http://61.50.122.58:8029/CtrlCenter/LTYX/Tailor/SubTailorEC.action",
 		// param);
-		String httpResp = ZCHttpReq.sendGet(URLConfigHelper.Url_SubTailor, param);
+		String httpResp = ZCHttpReq.sendGet(ConfigHelperURL.Url_SubTailor, param);
 		Log.Nano.tag("Save Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp = JSONObject.fromObject(httpResp);

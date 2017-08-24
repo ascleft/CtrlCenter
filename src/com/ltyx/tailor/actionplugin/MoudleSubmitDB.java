@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.ResultSet;
-import com.zc.web.base.doman.ZCActionPluginBase;
-import com.zc.web.base.service.Log;
-import com.zc.web.base.service.TimeHelper;
+import com.zc.web.support.doman.ZCBaseActionSupportPlugin;
+import com.zc.web.support.service.Log;
+import com.zc.web.support.service.TimeHelper;
 
-public class MoudleSubmitDB extends ZCActionPluginBase {
+public class MoudleSubmitDB extends ZCBaseActionSupportPlugin {
 
 	// 订单
 	private String order_keys[] = new String[] { "customer_name", "customer_tel", "customer_email", "customer_address", "customer_tips", "operator_id", "operator_name",
@@ -34,7 +34,7 @@ public class MoudleSubmitDB extends ZCActionPluginBase {
 	private String LZX_11_PIC[] = new String[] { "LZX_11_PIC_TYPE", "sequence", "name", "LZX_11_PIC_COLOR", "LZX_13_FOR_PIC", "LZX_11_PIC_NUM", "tips" };// 刺绣图案
 
 	public MoudleSubmitDB(HttpServletRequest req) {
-		this.req = req;
+		this.request = req;
 	}
 
 	@Override
@@ -68,10 +68,10 @@ public class MoudleSubmitDB extends ZCActionPluginBase {
 				pstmt.executeUpdate(getSqlInsertTech(tech_LZX_26_keys, autoIncKey, 8, "侧缝底摆贴布"));
 
 				// 刺绣信息
-				if ("1".equals(getString("LZX_11_FOR_CHAR_SWITCH"))) {
+				if ("1".equals(getReqParamString("LZX_11_FOR_CHAR_SWITCH"))) {
 					pstmt.executeUpdate(getSqlInsertTech(LZX_11_CHAR, autoIncKey, 11, "刺绣文字"));
 				}
-				if ("1".equals(getString("LZX_11_FOR_PIC_SWITCH"))) {
+				if ("1".equals(getReqParamString("LZX_11_FOR_PIC_SWITCH"))) {
 					pstmt.executeUpdate(getSqlInsertTech(LZX_11_PIC, autoIncKey, 12, "刺绣图案"));
 				}
 
@@ -156,7 +156,7 @@ public class MoudleSubmitDB extends ZCActionPluginBase {
 	private ArrayList<KV> makeAl(String keys[]) {
 		ArrayList<KV> al = new ArrayList<KV>();
 		for (String key : keys) {
-			al.add(new KV(key, getString(key)));
+			al.add(new KV(key, getReqParamString(key)));
 		}
 		return al;
 	}

@@ -8,6 +8,8 @@
 	String ec_user_name=(String) session.getAttribute("ec_user_name");
 	String ec_user_rank=(String) session.getAttribute("ec_user_rank");
 	
+	String QRurl=(String) session.getAttribute("QRurl");
+
 	String menulist=(String) session.getAttribute("menulist");
 	
 	String list_LZX_01 =(String) session.getAttribute("list_LZX_01");
@@ -1061,10 +1063,9 @@
 
 		<footer class="page-footer teal">
 			<div class="container">
-				<div class="row" style="display: none;">
+				<div class="row">
 					<h5 class="center-align">					
-						<img class="hoverable"
-						src="http://pan.baidu.com/share/qrcode?w=150&h=150&url=http://61.50.122.58:8029/CtrlCenter/LTYX/Tailor/TailorForm/Pro.action"/>
+						<img class="hoverable" src="<%=QRurl%>"/>
 					</h5>
 				</div>
 			</div>

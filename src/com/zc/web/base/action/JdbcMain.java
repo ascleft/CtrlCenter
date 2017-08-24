@@ -1,21 +1,12 @@
-package com.ltyx.test.sql;
+package com.zc.web.base.action;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import cn.jpush.api.JPushClient;
-import cn.jpush.api.common.resp.APIConnectionException;
-import cn.jpush.api.common.resp.APIRequestException;
-import cn.jpush.api.push.PushResult;
-import cn.jpush.api.push.model.Message;
-import cn.jpush.api.push.model.Platform;
-import cn.jpush.api.push.model.PushPayload;
-import cn.jpush.api.push.model.audience.Audience;
-
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.ResultSet;
-import com.zc.web.base.service.Log;
+import com.zc.web.support.service.Log;
 
 public class JdbcMain {
 
@@ -95,34 +86,6 @@ public class JdbcMain {
 			}
 		}
 
-	}
-
-	public static void makelocationRec() {
-
-		JPushClient jpushClient = new JPushClient("8dd54c5cfd3fd812528c8aef", "e5e6c1087f2078fc69bbc72d", 3);
-
-		// For push, all you need do is to build PushPayload object.
-		PushPayload payload = buildPushObject_all_all_alert();
-
-		try {
-			PushResult result = jpushClient.sendPush(payload);
-			System.out.println("Got result - " + result);
-
-		} catch (APIConnectionException e) {
-			// Connection error, should retry later
-			System.out.println("Connection error, should retry later" + e);
-
-		} catch (APIRequestException e) {
-			// Should review the error, and fix the request
-			System.out.println("Should review the error, and fix the request" + e);
-			System.out.println("HTTP Status: " + e.getStatus());
-			System.out.println("Error Code: " + e.getErrorCode());
-			System.out.println("Error Message: " + e.getErrorMessage());
-		}
-	}
-
-	public static PushPayload buildPushObject_all_all_alert() {
-		return PushPayload.newBuilder().setPlatform(Platform.android()).setAudience(Audience.tag("10086")).setMessage(Message.content("推送消息正文")).build();
 	}
 
 }

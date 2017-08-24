@@ -3,10 +3,10 @@ package com.ltyx.ucsplus.action;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import com.zc.web.base.doman.ZCBaseActionSupport;
-import com.zc.web.base.doman.ZCHttpParam;
-import com.zc.web.base.service.ZCHttpReq;
-import com.zc.web.base.service.Log;
+import com.zc.web.support.doman.ZCBaseActionSupport;
+import com.zc.web.support.link.ZCHttpReqParam;
+import com.zc.web.support.link.ZCHttpReq;
+import com.zc.web.support.service.Log;
 
 public class SearchAction extends ZCBaseActionSupport {
 
@@ -100,7 +100,7 @@ public class SearchAction extends ZCBaseActionSupport {
 				filter = "(FMATERIALNUMBER LIKE '%" + name + "%' OR FMATERIALNAME LIKE '%" + name + "%' OR FUSKIN LIKE '%" + name + "%') AND FSTOCKNUMBER='MLCK040'";
 			}
 
-			ZCHttpParam param = new ZCHttpParam();
+			ZCHttpReqParam param = new ZCHttpReqParam();
 
 			param.addParam("usertoken", usertoken);
 			param.addParam("businessObjectTypeId", businessObjectTypeId);

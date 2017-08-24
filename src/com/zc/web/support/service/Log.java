@@ -1,4 +1,5 @@
-package com.zc.web.base.service;
+package com.zc.web.support.service;
+
 
 public class Log {
 

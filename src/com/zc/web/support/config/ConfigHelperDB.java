@@ -1,6 +1,6 @@
-package com.zc.web.base.service;
+package com.zc.web.support.config;
 
-public class DBConfigHelper {
+public class ConfigHelperDB {
 
 	final public static String STATE_RELEASE = "STATE_RELEASE";
 	final public static String STATE_TEST = "STATE_TEST";;
@@ -30,9 +30,9 @@ public class DBConfigHelper {
 	}
 
 	private static void setDB(String NAME, String PWD) {
-		DBConfigHelper.URL = "jdbc:mysql://localhost:3306/ctrlcenter";
-		DBConfigHelper.NAME = NAME;
-		DBConfigHelper.PWD = PWD;
+		ConfigHelperDB.URL = "jdbc:mysql://localhost:3306/ctrlcenter";
+		ConfigHelperDB.NAME = NAME;
+		ConfigHelperDB.PWD = PWD;
 	}
 
 }

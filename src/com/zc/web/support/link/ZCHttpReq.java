@@ -1,4 +1,4 @@
-package com.zc.web.base.service;
+package com.zc.web.support.link;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,6 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
 
-import com.zc.web.base.doman.ZCHttpParam;
 
 public class ZCHttpReq {
 	/**
@@ -19,7 +18,7 @@ public class ZCHttpReq {
 	 *            请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
 	 * @return URL 所代表远程资源的响应结果
 	 */
-	public static String sendGet(String url, ZCHttpParam param) {
+	public static String sendGet(String url, ZCHttpReqParam param) {
 
 		String result = "";
 		BufferedReader in = null;
@@ -69,7 +68,7 @@ public class ZCHttpReq {
 	 *            请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
 	 * @return 所代表远程资源的响应结果
 	 */
-	public static String sendPost(String url, ZCHttpParam param) {
+	public static String sendPost(String url, ZCHttpReqParam param) {
 		PrintWriter out = null;
 		BufferedReader in = null;
 		String result = "";

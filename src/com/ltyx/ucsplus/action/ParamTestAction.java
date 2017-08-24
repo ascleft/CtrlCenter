@@ -4,8 +4,8 @@ import java.util.Map;
 
 import net.sf.json.JSONObject;
 
-import com.zc.web.base.doman.ZCBaseActionSupport;
-import com.zc.web.base.service.ZCReqManager;
+import com.zc.web.support.doman.ZCBaseActionSupport;
+import com.zc.web.support.link.ZCReqManager;
 
 public class ParamTestAction extends ZCBaseActionSupport {
 

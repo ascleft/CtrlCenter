@@ -1,6 +1,6 @@
-package com.zc.web.base.service;
+package com.zc.web.support.config;
 
-public class URLConfigHelper {
+public class ConfigHelperURL {
 
 	final public static String STATE_RELEASE = "STATE_RELEASE";
 	final public static String STATE_TEST = "STATE_TEST";;

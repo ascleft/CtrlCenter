@@ -1,6 +1,23 @@
 package com.ltyx.tailor.action;
 
+import javax.servlet.http.HttpServletRequest;
+
+import com.zc.web.support.link.ZCReqManager;
+
 public class FormConfig {
+
+	public static String get_QR_url(HttpServletRequest request) {
+
+		String IP = ZCReqManager.getIpAddress(request);
+		String PORT = ("61.50.122.58".equals(IP)) ? "8029" : "8080";
+
+		String url = "";
+		url += "http://pan.baidu.com/share/qrcode?w=150&h=150&url=http://";
+		url += IP + ":" + PORT;
+		url += "/CtrlCenter/LTYX/Tailor/TailorForm/Pro.action";
+
+		return url;
+	}
 
 	public static String get_menu_list() {
 

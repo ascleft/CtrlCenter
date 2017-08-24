@@ -6,9 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.zc.web.base.doman.ZCBaseServlet;
-import com.zc.web.base.service.Log;
-import com.zc.web.base.service.ZCReqManager;
+import com.zc.web.support.doman.ZCBaseServlet;
+import com.zc.web.support.link.ZCReqManager;
+import com.zc.web.support.service.Log;
 
 public class ParamTestServlet extends ZCBaseServlet {
 	private static final long serialVersionUID = 1L;

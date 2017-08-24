@@ -20,16 +20,7 @@
 		<session-timeout>30</session-timeout>
 	</session-config>
 
-	<!-- 基础servlet -->
-	<!-- Mainservlet -->
-	<servlet>
-		<servlet-name>MainHttpServlet</servlet-name>
-		<servlet-class>com.ascleft.simplectrl.MainHttpServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>MainHttpServlet</servlet-name>
-		<url-pattern>/MainHttpServlet</url-pattern>
-	</servlet-mapping>
+
 
 	<!-- 测试模块 -->
 	<!-- 参数测试Servlet -->

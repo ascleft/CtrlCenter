@@ -1,7 +1,6 @@
 package com.ltyx.tailor.action;
 
-import com.zc.web.base.doman.ZCBaseActionSupport;
-import com.zc.web.base.service.ZCReqManager;
+import com.zc.web.support.doman.ZCBaseActionSupport;
 
 public class GetTailorFormAction extends ZCBaseActionSupport {
 
@@ -14,6 +13,8 @@ public class GetTailorFormAction extends ZCBaseActionSupport {
 	public String getForm() {
 
 		init(true);
+
+		session.setAttribute("QRurl", FormConfig.get_QR_url(request));
 
 		session.setAttribute("menulist", FormConfig.get_menu_list());
 
@@ -47,6 +48,8 @@ public class GetTailorFormAction extends ZCBaseActionSupport {
 	public String getFormWithCode() {
 
 		init(true);
+
+		session.setAttribute("QRurl", FormConfig.get_QR_url(request));
 
 		session.setAttribute("menulist", FormConfig.get_menu_list());
 

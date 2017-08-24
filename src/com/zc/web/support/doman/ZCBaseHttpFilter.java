@@ -1,4 +1,4 @@
-package com.zc.web.base.doman;
+package com.zc.web.support.doman;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,9 +15,9 @@ import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONObject;
 
-import com.zc.web.base.service.Log;
+import com.zc.web.support.service.Log;
 
-public class ZCBaseHttpFilter implements Filter {
+public class ZCBaseHttpFilter implements Filter, ZCImplReqParamGetter {
 
 	public HttpServletResponse response;
 	public HttpServletRequest request;
@@ -49,6 +49,78 @@ public class ZCBaseHttpFilter implements Filter {
 
 		Log.i("filter destroy");
 
+	}
+
+	@Override
+	public int getReqParamInt(String key) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int[] getReqParamInts(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getReqParamDouble(String key) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double[] getReqParamDoubles(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getReqParamString(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String[] getReqParamStrings(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getReqParamIntWithLog(String key) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int[] getReqParamIntsWithLog(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getReqParamDoubleWithLog(String key) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double[] getReqParamDoublesWithLog(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getReqParamStringWithLog(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String[] getReqParamStringsWithLog(String key) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public void writeResp(String tab) {

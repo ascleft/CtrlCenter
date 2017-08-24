@@ -5,15 +5,15 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.zc.web.base.doman.ZCActionPluginBase;
-import com.zc.web.base.service.Log;
+import com.zc.web.support.doman.ZCBaseActionSupportPlugin;
+import com.zc.web.support.service.Log;
 
-public class MoudleCheckMeasure extends ZCActionPluginBase {
+public class MoudleCheckMeasure extends ZCBaseActionSupportPlugin {
 
 	private Map<String, Cell> maleBodyMeasure = null;
 
 	public MoudleCheckMeasure(HttpServletRequest req) {
-		this.req = req;
+		this.request = req;
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class MoudleCheckMeasure extends ZCActionPluginBase {
 			init();
 		}
 		// 当尺寸类型指定为“needless”时直接跳过校验插件
-		if ("needless".equals(getString("measure_type"))) {
+		if ("needless".equals(getReqParamString("measure_type"))) {
 			return true;
 		}
 		// 男性必填内容校验
@@ -36,11 +36,11 @@ public class MoudleCheckMeasure extends ZCActionPluginBase {
 
 	private boolean check_maleMeasure() {
 		for (String key : maleBodyMeasure.keySet()) {
-			if (!maleBodyMeasure.get(key).check(getInt(key))) {
-				Log.Nano.TagByLine(maleBodyMeasure.get(key) + "未通过", "web-key:" + key, "web-value:" + getString(key), "本地转型值:" + getInt(key), "高精度转型:" + getDouble(key));
+			if (!maleBodyMeasure.get(key).check(getReqParamInt(key))) {
+				Log.Nano.TagByLine(maleBodyMeasure.get(key) + "未通过", "web-key:" + key, "web-value:" + getReqParamString(key), "本地转型值:" + getReqParamInt(key), "高精度转型:" + getReqParamDouble(key));
 				return false;
 			}
-//			Log.Nano.TagByLine(maleBodyMeasure.get(key) + "通过", "web-key:" + key, "web-value:" + getString(key), "本地转型值:" + getInt(key), "高精度转型:" + getDouble(key));
+//			Log.Nano.TagByLine(maleBodyMeasure.get(key) + "通过", "web-key:" + key, "web-value:" + getReqParamString(key), "本地转型值:" + getInt(key), "高精度转型:" + getDouble(key));
 
 		}
 		return true;

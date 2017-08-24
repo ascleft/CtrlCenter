@@ -2,7 +2,7 @@ package com.zc.talk;
 
 import java.util.Random;
 
-import com.zc.web.base.doman.ZCBaseActionSupport;
+import com.zc.web.support.doman.ZCBaseActionSupport;
 
 public class WordAction extends ZCBaseActionSupport {
 

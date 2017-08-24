@@ -1,14 +1,14 @@
-package com.zc.web.base.doman;
+package com.zc.web.support.link;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
-public class ZCHttpParam {
+public class ZCHttpReqParam {
 
 	private HashMap<String, String> map = null;
 
-	public ZCHttpParam() {
+	public ZCHttpReqParam() {
 
 		init();
 

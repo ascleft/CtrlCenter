@@ -7,7 +7,7 @@ import net.sf.json.JSONObject;
 
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.ResultSet;
-import com.zc.web.base.doman.ZCBaseActionSupport;
+import com.zc.web.support.doman.ZCBaseActionSupport;
 
 public class GetListAction extends ZCBaseActionSupport {
 

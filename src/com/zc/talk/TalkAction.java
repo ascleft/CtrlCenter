@@ -2,10 +2,10 @@ package com.zc.talk;
 
 import net.sf.json.JSONObject;
 
-import com.zc.web.base.doman.ZCBaseActionSupport;
-import com.zc.web.base.doman.ZCHttpParam;
-import com.zc.web.base.service.ZCHttpReq;
-import com.zc.web.base.service.Log;
+import com.zc.web.support.doman.ZCBaseActionSupport;
+import com.zc.web.support.link.ZCHttpReqParam;
+import com.zc.web.support.link.ZCHttpReq;
+import com.zc.web.support.service.Log;
 
 public class TalkAction extends ZCBaseActionSupport {
 
@@ -44,7 +44,7 @@ public class TalkAction extends ZCBaseActionSupport {
 
 		} else {
 
-			ZCHttpParam param = new ZCHttpParam();
+			ZCHttpReqParam param = new ZCHttpReqParam();
 			param.addParam("key", "free");
 			param.addParam("appid", "0");
 			param.addParam("msg", tell);

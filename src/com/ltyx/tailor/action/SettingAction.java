@@ -1,8 +1,8 @@
 package com.ltyx.tailor.action;
 
-import com.zc.web.base.doman.ZCBaseActionSupport;
-import com.zc.web.base.service.DBConfigHelper;
-import com.zc.web.base.service.URLConfigHelper;
+import com.zc.web.support.config.ConfigHelperDB;
+import com.zc.web.support.config.ConfigHelperURL;
+import com.zc.web.support.doman.ZCBaseActionSupport;
 
 public class SettingAction extends ZCBaseActionSupport {
 
@@ -27,15 +27,15 @@ public class SettingAction extends ZCBaseActionSupport {
 		ERRCODE = "0";
 		ERRDESC = "succ";
 		data = "";
-		data += "当前登录地址:" + URLConfigHelper.Url_LoginEC;
+		data += "当前登录地址:" + ConfigHelperURL.Url_LoginEC;
 		data += "<br />";
-		data += "当前提交地址:" + URLConfigHelper.Url_SubTailor;
+		data += "当前提交地址:" + ConfigHelperURL.Url_SubTailor;
 		data += "<br />";
-		data += "当前数据库:" + DBConfigHelper.NAME;
+		data += "当前数据库:" + ConfigHelperDB.NAME;
 		data += "<br />";
-		if ("jycsFactal150428!".equals(DBConfigHelper.PWD)) {
+		if ("jycsFactal150428!".equals(ConfigHelperDB.PWD)) {
 			data += "当前数据库密码:" + "正式库";
-		} else if ("junyi000726".equals(DBConfigHelper.PWD)) {
+		} else if ("junyi000726".equals(ConfigHelperDB.PWD)) {
 			data += "当前数据库密码:" + "测试库";
 		} else {
 			data += "当前数据库密码:" + "喵喵喵？？？";
@@ -56,8 +56,8 @@ public class SettingAction extends ZCBaseActionSupport {
 		String pwd = getReqParamString("pwd");
 
 		if ("4008900726".equals(pwd)) {
-			URLConfigHelper.customUrl(url);
-			DBConfigHelper.customDB("root", DBpwd);
+			ConfigHelperURL.customUrl(url);
+			ConfigHelperDB.customDB("root", DBpwd);
 			ERRCODE = "0";
 			ERRDESC = "succ";
 			data = "succ";
