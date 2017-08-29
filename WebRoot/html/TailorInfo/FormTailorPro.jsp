@@ -638,7 +638,7 @@
 															<p>侧缝底摆贴布</p>
 														</div>
 														<div class="input-field col s12 m12 l12">
-															<select name="LZX-26">
+															<select name="LZX_26">
 																<%=list_LZX_26%>
 															</select> <label>侧缝底摆贴布</label>
 														</div>

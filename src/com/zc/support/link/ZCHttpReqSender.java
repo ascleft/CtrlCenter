@@ -7,11 +7,12 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
 
+import com.zc.support.service.TimeHelper;
 
 public class ZCHttpReqSender {
 	/**
 	 * 向指定URL发送GET方法的请求
-	 *
+	 * 
 	 * @param url
 	 *            发送请求的URL
 	 * @param param
@@ -19,6 +20,8 @@ public class ZCHttpReqSender {
 	 * @return URL 所代表远程资源的响应结果
 	 */
 	public static String sendGet(String url, ZCHttpReqParam param) {
+
+		TimeHelper.Timer timer = new TimeHelper.Timer();
 
 		String result = "";
 		BufferedReader in = null;
@@ -31,13 +34,15 @@ public class ZCHttpReqSender {
 			// 设置通用的请求属性
 			connection.setRequestProperty("accept", "*/*");
 			connection.setRequestProperty("connection", "Keep-Alive");
-			connection.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+			connection.setRequestProperty("user-agent",
+					"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
 			// 建立实际的连接
 			connection.connect();
 			// 获取所有响应头字段
 			// CCReqManager.showHeaders("GET", connection);
 			// 定义 BufferedReader输入流来读取URL的响应
-			in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
+			in = new BufferedReader(new InputStreamReader(
+					connection.getInputStream(), "UTF-8"));
 			String line;
 			while ((line = in.readLine()) != null) {
 				result += line;
@@ -56,12 +61,15 @@ public class ZCHttpReqSender {
 				e2.printStackTrace();
 			}
 		}
+
+		timer.stop("Get通讯");
+
 		return result;
 	}
 
 	/**
 	 * 向指定 URL 发送POST方法的请求
-	 *
+	 * 
 	 * @param url
 	 *            发送请求的 URL
 	 * @param param
@@ -69,6 +77,8 @@ public class ZCHttpReqSender {
 	 * @return 所代表远程资源的响应结果
 	 */
 	public static String sendPost(String url, ZCHttpReqParam param) {
+		TimeHelper.Timer timer = new TimeHelper.Timer();
+
 		PrintWriter out = null;
 		BufferedReader in = null;
 		String result = "";
@@ -79,7 +89,8 @@ public class ZCHttpReqSender {
 			// 设置通用的请求属性
 			conn.setRequestProperty("accept", "*/*");
 			conn.setRequestProperty("connection", "Keep-Alive");
-			conn.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+			conn.setRequestProperty("user-agent",
+					"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
 			// 发送POST请求必须设置如下两行
 			conn.setDoOutput(true);
 			conn.setDoInput(true);
@@ -90,7 +101,8 @@ public class ZCHttpReqSender {
 			// flush输出流的缓冲
 			out.flush();
 			// 定义BufferedReader输入流来读取URL的响应
-			in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+			in = new BufferedReader(new InputStreamReader(
+					conn.getInputStream(), "UTF-8"));
 			String line;
 			while ((line = in.readLine()) != null) {
 				result += line;
@@ -112,6 +124,9 @@ public class ZCHttpReqSender {
 				ex.printStackTrace();
 			}
 		}
+
+		timer.stop("Post通讯");
+
 		return result;
 	}
 

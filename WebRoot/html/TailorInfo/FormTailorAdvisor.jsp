@@ -329,8 +329,8 @@
 											</div>
 											<div class="input-field col s7 m7 l4">
 												<select name="YX_09">
-													<option value="YX-09-00">无包装（透明胶袋）</option>
 													<option value="YX-09-01">礼盒装（优纤包装盒）</option>
+													<option value="YX-09-00">无包装（透明胶袋）</option>
 													<option value="YX-09-02">环保装（简易包装）</option>
 												</select> <label>包装</label>
 											</div>
@@ -641,7 +641,7 @@
 															<p>侧缝底摆贴布</p>
 														</div>
 														<div class="input-field col s12 m12 l12">
-															<select name="LZX-26">
+															<select name="LZX_26">
 																<%=list_LZX_26%>
 															</select> <label>侧缝底摆贴布</label>
 														</div>

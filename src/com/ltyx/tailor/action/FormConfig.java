@@ -173,39 +173,33 @@ public class FormConfig {
 
 	public static String get_list_LZX_04() {
 
-		String list = "<optgroup label=\"基础口袋\">"//
-				+ "<option value=\"\">不使用口袋</option>"//
+		String list = "<option value=\"\">不使用口袋</option>"//
 				+ "<option value=\"LZX-04-01\">三角袋</option>"//
 				+ "<option value=\"LZX-04-02\">圆袋</option>"//
 				+ "<option value=\"LZX-04-03\">六角袋</option>"//
 				+ "<option value=\"LZX-04-04\">V型窝边袋</option>"//
 				+ "<option value=\"LZX-04-05\">双明线袋</option>"//
-				+ "</optgroup>"//
-				+ "<optgroup label=\"其他口袋\">"//
 				+ "<option value=\"LZX-04-06\">三角盖袋</option>"//
 				+ "<option value=\"LZX-04-07\">圆型盖袋</option>"//
-				+ "<option value=\"LZX-04-08\">六角盖袋</option>"//
-				+ "</optgroup>";
+				+ "<option value=\"LZX-04-08\">六角盖袋</option>";
 
 		return list;
 	}
 
 	public static String get_list_LZX_08() {
 
-		String list = "<option value=\"YX-08-00\">无领标</option>"//
-				+ "<option value=\"YX-08-01\">颈后主唛</option>"//
-				+ "<option value=\"YX-08-02\">右门襟下摆</option>";
+		String list = "<option value=\"YX-08-01\">颈后主唛</option>"//
+				+ "<option value=\"YX-08-02\">右门襟下摆</option>" //
+				+ "<option value=\"YX-08-00\">无领标</option>";
 
 		return list;
 	}
 
 	public static String get_list_LZX_120() {
 
-		String list = "<optgroup label=\"基础袖褶\">"//
+		String list = "<option value=\"LZX-120-01\">袖口单褶</option>"//
 				+ "<option value=\"LZX-120-00\">袖口无褶</option>"//
-				+ "<option value=\"LZX-120-01\">袖口单褶</option>"//
-				+ "<option value=\"LZX-120-02\">袖口双褶</option>"//
-				+ "</optgroup>";
+				+ "<option value=\"LZX-120-02\">袖口双褶</option>";
 
 		return list;
 	}
@@ -572,10 +566,10 @@ public class FormConfig {
 
 	public static String get_list_lingcheng() {
 
-		String list = "<option value=\"7\">外置黄铜领撑</option>"//
+		String list = "<option value=\"30\">无领撑</option>"//
+				+ "<option value=\"7\">外置黄铜领撑</option>" //
 				+ "<option value=\"28\">外置不锈钢领撑</option>"//
-				+ "<option value=\"29\">内置树脂领撑</option>"//
-				+ "<option value=\"30\">无领撑</option>";
+				+ "<option value=\"29\">内置树脂领撑</option>";
 		return list;
 	}
 

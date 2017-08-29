@@ -3,13 +3,15 @@ package com.zc.support.link;
 import java.io.UnsupportedEncodingException;
 import java.net.URLConnection;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.zc.support.service.Log;
+import com.zc.support.service.MapHelper;
+import com.zc.support.service.StringHelper;
 
 public class ZCReqIntroGetter {
 
@@ -35,14 +37,17 @@ public class ZCReqIntroGetter {
 	 * 打印请求中的所有Header
 	 * 
 	 */
-	public static Map<String, String> showHeaders(String reqName, HttpServletRequest request) {
-		Map<String, String> map = new HashMap<String, String>();
+	public static Map<String, String> showHeaders(String reqName,
+			HttpServletRequest request) {
+		Map<String, String> map = new TreeMap<String, String>();
 		Enumeration<String> headerNames = request.getHeaderNames();
 		while (headerNames.hasMoreElements()) {
 			String key = (String) headerNames.nextElement();
 			String value = request.getHeader(key);
 			map.put(key, value);
 		}
+
+		map = MapHelper.sortMapByKey(map);
 
 		Log.Pro.start();
 		Log.Pro.whiteLine(reqName + " " + "Header");
@@ -59,8 +64,9 @@ public class ZCReqIntroGetter {
 	 * 打印请求中的所有Param
 	 * 
 	 */
-	public static Map<String, String> showParams(String reqName, HttpServletRequest request) {
-		Map<String, String> map = new HashMap<String, String>();
+	public static Map<String, String> showParams(String reqName,
+			HttpServletRequest request) {
+		Map<String, String> map = new TreeMap<String, String>();
 		try {
 			request.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {
@@ -70,15 +76,19 @@ public class ZCReqIntroGetter {
 		Enumeration<String> paramNames = request.getParameterNames();
 		while (paramNames.hasMoreElements()) {
 			String paramKey = (String) paramNames.nextElement();
-			String paramValue = ZCReqParamGetter.getParamString(request, paramKey, false);
+			String paramValue = ZCReqParamGetter.getParamString(request,
+					paramKey, false);
 			map.put(paramKey, paramValue);
 		}
+
+		map = MapHelper.sortMapByKey(map);
 
 		Log.Pro.start();
 		Log.Pro.whiteLine(reqName + " " + "Params");
 		Log.Pro.whiteCut();
 		for (String key : map.keySet()) {
-			Log.Pro.whiteLine(key + "--->" + map.get(key));
+			Log.Pro.whiteLine(StringHelper.fillFooter(key, 20, "-") + "--->"
+					+ map.get(key));
 		}
 		Log.Pro.finish();
 
