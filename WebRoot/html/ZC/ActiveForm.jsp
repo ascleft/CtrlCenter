@@ -23,26 +23,26 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-		<title>喵喵喵？？？</title>
+		<title>接口联通性测试</title>
 
 		<!-- CDN  -->
 		<!-- Google Icon Font -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<!-- JQuery  -->
 		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<!--  Vue.js-->
-		<script src="https://unpkg.com/vue/dist/vue.js"></script>
 		<!--  Angular.js-->
 		<!--<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>-->
 
 		<!-- local html  -->
-		<link href="../../img/CodeMartrix/main/weisuomeng.jpg" rel="shortcut icon" />
+		<link href="../../img/global/logo/icon_title_1.jpg" rel="shortcut icon" />
 
 		<link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
 		<script src="../../js/materialize.js"></script>
 		<script src="../../js/init.js"></script>
+
+		<script src="../../js/vue.min.js"></script>
 
 		<script src="../../js/init_tailorinfo.js"></script>
 
@@ -55,11 +55,12 @@
 		<script src="<%=path %>/js/materialize.js"></script>
 		<script src="<%=path %>/js/init.js"></script>
 
+		<script src="<%=path %>/js/vue.min.js"></script>
+
 		<script src="<%=path %>/js/init_tailorinfo.js"></script>
 
 		<script type="application/javascript">
-			var url_getActionForm = "/CtrlCenter/LTYX/Simulator/GetActionForm.action";
-			var url_submitActionForm = "";
+			var url_getActionForm = "/CtrlCenter/LTYX/OpenAPI/InterfaceTest.action";
 
 			var modal_state_title;
 			var modal_state_progress_bar;
@@ -77,98 +78,86 @@
 					cache: true,
 					type: "POST",
 					url: url_getActionForm,
-					data: $('#nothing').serialize(),
+					data: $('#paramform').serialize(),
 					async: true,
 					error: function(request) {
 						state_upload_error("无法连接到服务器");
 						tinybug.message = request;
-						//						tablelist = JSON.parse("[{\"NAME\":\"男士量体表\",\"LIST\":[{\"KEY\":\"1\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"下身长\"},{\"KEY\":\"2\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"下身粗\"}]},{\"NAME\":\"女士量体表\",\"LIST\":[{\"KEY\":\"3\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"胸围\"},{\"KEY\":\"4\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"胸距\"}]},{\"NAME\":\"萝莉量体表\",\"LIST\":[{\"KEY\":\"5\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"胸高\"}]}]");
-						//
-						//						state_upload_finish();
-						//
-						//						Materialize.toast('2', 1000);
-						//
-						//						insertSelector(tablelist);
-						//
-						//						Materialize.toast('3', 1000);
-						//
-						//						insertItems(tablelist);
-
 					},
 					success: function(data) {
-						if(data.length < 2000) {
-							var resp = JSON.parse(data);
-							if("0" == resp.ERRCODE) {
-								if("succ" == resp.ERRDESC) {
-
-									tablelist = resp.data.TABLES;
-
-									state_upload_finish();
-
-									insertSelector(tablelist);
-
-									insertItems(tablelist);
-
-									tablelist = resp.data.TABLES;
-
-								} else {
-									var desc = "提交失败<br/>智能错误分析：" + resp.data;
-									state_upload_error(desc);
-								}
+						var resp = JSON.parse(data);
+						if("0" == resp.ERRCODE) {
+							if("succ" == resp.ERRDESC) {
+								state_upload_finish();
+								$('#resp').val(resp.data);
+								$('#resp').trigger('autoresize');
 							} else {
-								state_upload_error("EC服务器通讯异常");
+								var desc = "提交失败<br/>智能错误分析：" + resp.data;
+								state_upload_error(desc);
 							}
 						} else {
-							state_upload_error("操作超时，请重新登录");
+							state_upload_error("EC服务器通讯异常");
 						}
 						tinybug.message = data;
 					}
 				});
 			}
 
-			function insertSelector(tablelist_in) {
-				var items = "";
-				for(i = 0; i < tablelist_in.length; i++) {
-					items += "<option>" + tablelist_in[i].NAME + "</option>";
+			function check_param_list() {
+
+				var param_list = $("input[name^='param_key_']"); //选择所有的name属性以'param_key_'开头的input元素 
+				var param_num = 0;
+
+				for(i = 0; i < param_list.length; i++) {
+					if(param_list[i].value.length > 0) {
+						param_num++;
+					}
 				}
 
-				$("#tableSelector").html(items);
+				if(param_list.length > 0) {
+					if(param_list.length == param_num) {
+						add_param_group("param_key_" + param_list.length, "param_value_" + param_list.length);
+					}
+				} else {
+					add_param_group("param_key_" + "0", "param_value_" + "0");
+				}
 
-				$('select').material_select();
 			}
 
-			function insertItems(tablelist_in) {
+			function add_param_group(param_key_name, param_value_name) {
 
-				var tableName = document.getElementById("tableSelector").value;
+				var param_group = "";
 
-				var table;
+				param_group += "<div class=\"input-field col s12 m6 l4\">";
+				param_group += "	<div class=\"card-panel hoverable\">";
+				param_group += "		<div class=\"row\" >";
+				param_group += "			<div class=\"input-field col s6\">";
+				param_group += "				<input name=\"" + param_key_name + "\" type=\"text\" class=\"validate\" value=\"\">";
+				param_group += "				<label>Key</label>";
+				param_group += "			</div>";
+				param_group += "			<div class=\"input-field col s6\">";
+				param_group += "				<input name=\"" + param_value_name + "\" type=\"text\" class=\"validate\" value=\"\">";
+				param_group += "				<label>Value</label>";
+				param_group += "			</div>";
+				param_group += "		</div>";
+				param_group += "	</div>";
+				param_group += "</div>";
 
-				for(i = 0; i < tablelist_in.length; i++) {
+				var param_list = $("#param_list").append(param_group);
 
-					if(tableName == tablelist_in[i].NAME) {
-						table = tablelist_in[i];
-					}
+				Materialize.updateTextFields();
 
-				}
-				var items = "";
-				var selector = "";
+				$("input").bind("keyup", function() {
+					check_param_list();
+				});
+				$("input").bind("change", function() {
+					check_param_list();
+				});
+				$("select").bind("change", function() {
+					check_param_list();
+				});
 
-				for(i = 0; i < table.LIST.length; i++) {
-
-					items += "<div class=\"col s6 m4 l3\">";
-					items += "<div class=\"input-field\">";
-					items += "<input type=\"number\" class=\"validate\" name=\"height\" value=\"\">";
-					items += "<label>" + table.LIST[i].NAME + "</label>";
-					items += "</div>";
-					items += "</div>";
-
-				}
-
-				var actionform = document.getElementById("actionform");
-
-				actionform.innerHTML = items;
-
-			};
+			}
 
 			function state_upload_ing(displaywords) {
 				$("#modal_state").modal('open');
@@ -199,17 +188,17 @@
 				btn_finish.style.display = "";
 				btn_download.style.display = "none";
 			}
+
 			$(document).ready(function() {
 				$("input").bind("keyup", function() {
-					//					update();
+					check_param_list();
 				});
 				$("input").bind("change", function() {
-					//					update();
+					check_param_list();
 				});
-				$("select").bind("change", function() {
-					//					update();
-					insertItems(tablelist);
-				});
+				//				$("select").bind("change", function() {
+				//					check_param_list();
+				//				});
 
 				modal_state_title = document.getElementById("modal_state_title");
 				modal_state_progress_bar = document.getElementById("modal_state_progress_bar");
@@ -221,7 +210,9 @@
 					data: {
 						seen: false
 					}
-				})
+				});
+
+				check_param_list();
 
 			})
 		</script>
@@ -236,7 +227,7 @@
 		<nav class="teal" role="navigation">
 			<div class="nav-wrapper container">
 				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons white-text">menu</i></a>
-				<a id="logo-container" href="#" class="brand-logo white-text">专业版</a>
+				<a id="logo-container" href="#" class="brand-logo white-text">接口联通性测试</a>
 				<ul class="right hide-on-med-and-down">
 					<li>
 						<a class="white-text" href="#">您好:
@@ -269,37 +260,43 @@
 			<div class="section">
 				<div class="row">
 
-					<form method="post" id="clothform">
-						<div class="col s12 m12 l12">
-							<div class="card-panel hoverable">
-								<div class="card-content grey-text">
-									<div class="row">
-										<div id="actionform">
+					<div class="col s12 m12 l12">
+
+						<div class="card-panel hoverable">
+							<div class="card-content grey-text">
+								<div class="row">
+
+									<form method="post" id="paramform">
+
+										<div class="input-field col s12">
+											<div class="input-field col s12">
+												<input name="target_url" type="text" class="validate" value="https://">
+												<label>接口地址</label>
+											</div>
+										</div>
+										<div id="param_list"></div>
+
+									</form>
+									<div class="input-field col s12">
+										<div class="card-panel hoverable ">
+											<textarea id="resp" type="text" class="materialize-textarea"></textarea>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</form>
 
-					<div class="col s12 m12 l12">
-						<div class="card-panel hoverable">
-							<div class="card-content grey-text">
-								<div class="row">
-									<a class="col s12 m12 l12 waves-effect waves-light btn input-field" onclick="getActionForm()">获取表单列表</a>
-								</div>
-							</div>
-						</div>
 					</div>
 
 					<div class="col s12 m12 l12">
 						<div class="card-panel hoverable">
 							<div class="card-content grey-text">
 								<div class="row">
-									<div class="input-field col s6 m4 l3">
-										<select id="tableSelector">
-										</select> <label>量体表</label>
-										<div id="tableSelectors"></div>
+									<div class="col s6 m6 l6">
+										<a class="col s12 m12 l12 waves-effect waves-light btn input-field" onclick="getActionForm()">get提交</a>
+									</div>
+									<div class="col s6 m6 l6">
+										<a class="col s12 m12 l12 waves-effect waves-light btn input-field" onclick="getActionForm()">post提交</a>
 									</div>
 								</div>
 							</div>

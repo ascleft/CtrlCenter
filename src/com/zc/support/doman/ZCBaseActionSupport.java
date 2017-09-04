@@ -17,6 +17,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.zc.support.config.ConfigHelperDB;
 import com.zc.support.link.ZCReqParamGetter;
 import com.zc.support.service.Log;
+import com.zc.support.service.TimeHelper;
 
 public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParamGetter {
 
@@ -32,12 +33,17 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 	public String ERRDESC;
 	public String data;
 
+	public TimeHelper.Timer timer = null;
+
 	/**
 	 * 初始化ActionSupport，同时提供跨域支持（CORS）
 	 * 
 	 */
 
 	public void init(boolean allowCORS) {
+
+		timer = new TimeHelper.Timer();
+
 		response = (HttpServletResponse) ActionContext.getContext().get(org.apache.struts2.StrutsStatics.HTTP_RESPONSE);
 		request = (HttpServletRequest) ActionContext.getContext().get(org.apache.struts2.StrutsStatics.HTTP_REQUEST);
 		if (allowCORS) {
@@ -58,7 +64,17 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 	 */
 	public void writeResp(String tab) {
 		writeResp();
-		Log.Nano.tag(tab, result.toString());
+
+		Log.Pro.start();
+		Log.Pro.whiteLine(tab);
+		Log.Pro.whiteCut();
+		Log.Pro.whiteLine("结束");
+		Log.Pro.whiteCut();
+		Log.Pro.whiteLine(result.toString());
+		Log.Pro.whiteCut();
+		timer.showTimerPartable(tab);
+		Log.Pro.finish();
+
 	}
 
 	/**

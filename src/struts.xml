@@ -98,6 +98,16 @@
 
 		<!-- 通用工具 上行参数测试 -->
 		<action name="ShowParam" class="com.ltyx.ucsplus.action.ParamTestAction" method="showParam"></action>
+		
+		<!-- 即时库存 获取搜索页 -->
+		<action name="GetInterfaceTestPage" class="com.ltyx.ucsplus.action.InterfaceTestAction" method="getPage">
+			<result name="succ">/html/ZC/ActiveForm.jsp</result>
+		</action>
+
+		<!-- 即时库存 搜索 -->
+		<action name="InterfaceTest" class="com.ltyx.ucsplus.action.InterfaceTestAction" method="test"></action>
+		
+		
 
 	</package>
 

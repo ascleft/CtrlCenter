@@ -28,8 +28,6 @@ public class SubmitTailorFormAction extends ZCBaseActionSupport {
 
 		writeResp("提交衬衫信息订单");
 
-		Log.Nano.tag("提交衬衫信息订单", "结束");
-
 		return null;
 
 	}

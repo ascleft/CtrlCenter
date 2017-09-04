@@ -3,7 +3,6 @@ package com.ltyx.tailor.actionplugin;
 import javax.servlet.http.HttpServletRequest;
 
 import com.zc.support.doman.ZCBaseActionSupportPlugin;
-import com.zc.support.service.Log;
 
 public class MoudleCheckOther extends ZCBaseActionSupportPlugin {
 
@@ -98,34 +97,15 @@ public class MoudleCheckOther extends ZCBaseActionSupportPlugin {
 				data = "请填写客供面料颜色描述";
 				return false;
 			}
-			Log.Nano.tag("uskin_code_type", uskin_code_type);
+
 		}
 
 		{
-			String tailor_type = getReqParamString("tailor_type");
-			String duanxiu_chang = getReqParamString("duanxiu_chang");
-			String duanxiu_kouwei_zuo = getReqParamString("duanxiu_kouwei_zuo");
-			String duanxiu_kouwei_you = getReqParamString("duanxiu_kouwei_you");
-			if ("27".equals(tailor_type) && (duanxiu_chang.length() == 0 || duanxiu_kouwei_zuo.length() == 0 || duanxiu_kouwei_you.length() == 0)) {
+			String prices = getReqParamString("prices");// 自主报价
+			if (prices.length() < 1) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "请补全短袖长及左右短袖口围信息";
-				return false;
-			}
-		}
-
-		{
-			String tailor_type = getReqParamString("tailor_type");
-			String xiu_chang_zuo = getReqParamString("xiu_chang_zuo");
-			String xiu_chang_you = getReqParamString("xiu_chang_you");
-			String xiutouchang_zuo = getReqParamString("xiutouchang_zuo");
-			String xiutouchang_you = getReqParamString("xiutouchang_you");
-			String xiuzhou_fei = getReqParamString("xiuzhou_fei");
-			if ("26".equals(tailor_type)
-					&& (xiu_chang_zuo.length() == 0 || xiu_chang_you.length() == 0 || xiutouchang_zuo.length() == 0 || xiutouchang_you.length() == 0 || xiuzhou_fei.length() == 0)) {
-				ERRCODE = "0";
-				ERRDESC = "fail";
-				data = "请补全左右袖长、袖头长及袖肘肥信息";
+				data = "请填写报价";
 				return false;
 			}
 		}

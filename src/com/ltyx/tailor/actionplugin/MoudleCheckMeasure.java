@@ -26,21 +26,74 @@ public class MoudleCheckMeasure extends ZCBaseActionSupportPlugin {
 		if ("needless".equals(getReqParamString("measure_type"))) {
 			return true;
 		}
+
 		// 男性必填内容校验
 		if (!check_maleMeasure()) {
 			return false;
 		}
+
+		// 特殊关系
+		if (!check_special()) {
+			return false;
+		}
+
 		// 顺利执行返回
+		return true;
+	}
+
+	private boolean check_special() {
+
+		{
+			String tailor_type = getReqParamString("tailor_type");
+			String duanxiu_chang = getReqParamString("duanxiu_chang");
+			String duanxiu_kouwei_zuo = getReqParamString("duanxiu_kouwei_zuo");
+			String duanxiu_kouwei_you = getReqParamString("duanxiu_kouwei_you");
+			if ("27".equals(tailor_type)
+					&& (duanxiu_chang.length() == 0
+							|| duanxiu_kouwei_zuo.length() == 0 || duanxiu_kouwei_you
+							.length() == 0)) {
+				ERRCODE = "0";
+				ERRDESC = "fail";
+				data = "请补全短袖长及左右短袖口围信息";
+				return false;
+			}
+		}
+
+		{
+			String tailor_type = getReqParamString("tailor_type");
+			String xiu_chang_zuo = getReqParamString("xiu_chang_zuo");
+			String xiu_chang_you = getReqParamString("xiu_chang_you");
+			String xiutouchang_zuo = getReqParamString("xiutouchang_zuo");
+			String xiutouchang_you = getReqParamString("xiutouchang_you");
+			String xiuzhou_fei = getReqParamString("xiuzhou_fei");
+			if ("26".equals(tailor_type)
+					&& (xiu_chang_zuo.length() == 0
+							|| xiu_chang_you.length() == 0
+							|| xiutouchang_zuo.length() == 0
+							|| xiutouchang_you.length() == 0 || xiuzhou_fei
+							.length() == 0)) {
+				ERRCODE = "0";
+				ERRDESC = "fail";
+				data = "请补全左右袖长、袖头长及袖肘肥信息";
+				return false;
+			}
+		}
+
 		return true;
 	}
 
 	private boolean check_maleMeasure() {
 		for (String key : maleBodyMeasure.keySet()) {
 			if (!maleBodyMeasure.get(key).check(getReqParamInt(key))) {
-				Log.Nano.TagByLine(maleBodyMeasure.get(key) + "未通过", "web-key:" + key, "web-value:" + getReqParamString(key), "本地转型值:" + getReqParamInt(key), "高精度转型:" + getReqParamDouble(key));
+				Log.Nano.TagByLine(maleBodyMeasure.get(key) + "未通过", "web-key:"
+						+ key, "web-value:" + getReqParamString(key), "本地转型值:"
+						+ getReqParamInt(key), "高精度转型:"
+						+ getReqParamDouble(key));
 				return false;
 			}
-//			Log.Nano.TagByLine(maleBodyMeasure.get(key) + "通过", "web-key:" + key, "web-value:" + getReqParamString(key), "本地转型值:" + getInt(key), "高精度转型:" + getDouble(key));
+			// Log.Nano.TagByLine(maleBodyMeasure.get(key) + "通过", "web-key:" +
+			// key, "web-value:" + getReqParamString(key), "本地转型值:" +
+			// getInt(key), "高精度转型:" + getDouble(key));
 
 		}
 		return true;
@@ -87,13 +140,15 @@ public class MoudleCheckMeasure extends ZCBaseActionSupportPlugin {
 				if (input < Min) {
 					ERRCODE = "0";
 					ERRDESC = "fail";
-					data = "当前" + name + "为" + input + "，" + "已经低于下限" + Min + "，" + "请重新填写";
+					data = "当前" + name + "为" + input + "，" + "已经低于下限" + Min
+							+ "，" + "请重新填写";
 					return false;
 				}
 				if (input > Max) {
 					ERRCODE = "0";
 					ERRDESC = "fail";
-					data = "当前" + name + "为" + input + "，" + "已经超过上限" + Max + "，" + "请重新填写";
+					data = "当前" + name + "为" + input + "，" + "已经超过上限" + Max
+							+ "，" + "请重新填写";
 					return false;
 				}
 				return true;

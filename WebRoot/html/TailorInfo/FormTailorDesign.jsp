@@ -53,19 +53,19 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<!-- JQuery  -->
 		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<!--  Vue.js-->
-		<script src="https://unpkg.com/vue/dist/vue.js"></script>
 		<!--  Angular.js-->
 		<!--<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>-->
 
 		<!-- local html  -->
-		<link href="../../img/CodeMartrix/main/weisuomeng.jpg" rel="shortcut icon" />
+		<link href="../../img/global/logo/icon_title_1.jpg" rel="shortcut icon" />
 
 		<link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
 		<script src="../../js/materialize.js"></script>
 		<script src="../../js/init.js"></script>
+
+		<script src="../../js/vue.min.js"></script>
 
 		<script src="../../js/init_tailorinfo.js"></script>
 
@@ -77,6 +77,8 @@
 
 		<script src="<%=path %>/js/materialize.js"></script>
 		<script src="<%=path %>/js/init.js"></script>
+
+		<script src="<%=path %>/js/vue.min.js"></script>
 
 		<script src="<%=path %>/js/init_tailorinfo.js"></script>
 
@@ -316,17 +318,17 @@
 									</div>
 									<div class="collapsible-body">
 										<div class="row">
+											<div class="col s12 m16 l6">
+												<div class="input-field">
+													<input type="text" class="validate" name="style_name" value=""> <label>设计师款编号 或 商品编号（必填）</label>
+												</div>
+											</div>
+											<div class="col s12 m16 l6">
+												<div class="input-field">
+													<input type="text" class="validate" name="uskin_code" value=""> <label>面料编号（用于设计师推荐款更换面料）</label>
+												</div>
+											</div>
 
-											<div class="col s12 m14 l4">
-												<div class="input-field">
-													<input type="text" class="validate" name="uskin_code" value=""> <label>面料编号（USKIN 编号）</label>
-												</div>
-											</div>
-											<div class="col s12 m14 l4">
-												<div class="input-field">
-													<input type="text" class="validate" name="style_name" value=""> <label>商品编号</label>
-												</div>
-											</div>
 											<div class="input-field col s5 m5 l4" style="display: none;">
 												<select name="YX_08">
 													<%=list_LZX_08%>

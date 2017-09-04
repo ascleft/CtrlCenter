@@ -1,6 +1,5 @@
 package com.zc.support.service;
 
-
 public class Log {
 
 	public static int STYLE_CLOSE = 1, STYLE_OPEN = 2;
@@ -33,7 +32,7 @@ public class Log {
 
 	}
 
-	public static void i(Object... inputs) {
+	synchronized public static void i(Object... inputs) {
 		if (debug) {
 			StringBuffer sb = new StringBuffer();
 
@@ -52,7 +51,7 @@ public class Log {
 		}
 	}
 
-	public static void err(Object... inputs) {
+	synchronized public static void err(Object... inputs) {
 		if (debug) {
 			StringBuffer sb = new StringBuffer();
 
@@ -141,7 +140,7 @@ public class Log {
 	}
 
 	public static class Nano {
-		public static void tag(Object... inputs) {
+		synchronized public static void tag(Object... inputs) {
 
 			if (debug) {
 				StringBuffer sb_tag = new StringBuffer();
@@ -173,7 +172,7 @@ public class Log {
 			}
 		}
 
-		public static void byLine(Object... inputs) {
+		synchronized public static void byLine(Object... inputs) {
 
 			if (debug) {
 
@@ -191,7 +190,7 @@ public class Log {
 
 		}
 
-		public static void TagByLine(Object... inputs) {
+		synchronized public static void TagByLine(Object... inputs) {
 
 			if (debug) {
 
@@ -223,21 +222,21 @@ public class Log {
 	}
 
 	public static class Pro {
-		public static void start() {
+		synchronized public static void start() {
 			logHead();
 		}
 
-		public static void whiteCut() {
+		synchronized public static void whiteCut() {
 			logCut();
 		}
 
-		public static void whiteLine(Object input) {
+		synchronized public static void whiteLine(Object input) {
 			String string = null;
 			string = checkInput(input);
 			logMsg(string);
 		}
 
-		public static void finish() {
+		synchronized public static void finish() {
 			logFoot();
 		}
 	}

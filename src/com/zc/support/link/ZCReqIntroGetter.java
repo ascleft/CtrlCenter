@@ -37,8 +37,7 @@ public class ZCReqIntroGetter {
 	 * 打印请求中的所有Header
 	 * 
 	 */
-	public static Map<String, String> showHeaders(String reqName,
-			HttpServletRequest request) {
+	public static Map<String, String> showHeaders(String reqName, HttpServletRequest request) {
 		Map<String, String> map = new TreeMap<String, String>();
 		Enumeration<String> headerNames = request.getHeaderNames();
 		while (headerNames.hasMoreElements()) {
@@ -64,8 +63,7 @@ public class ZCReqIntroGetter {
 	 * 打印请求中的所有Param
 	 * 
 	 */
-	public static Map<String, String> showParams(String reqName,
-			HttpServletRequest request) {
+	public static Map<String, String> showParams(String reqName, HttpServletRequest request) {
 		Map<String, String> map = new TreeMap<String, String>();
 		try {
 			request.setCharacterEncoding("UTF-8");
@@ -76,8 +74,7 @@ public class ZCReqIntroGetter {
 		Enumeration<String> paramNames = request.getParameterNames();
 		while (paramNames.hasMoreElements()) {
 			String paramKey = (String) paramNames.nextElement();
-			String paramValue = ZCReqParamGetter.getParamString(request,
-					paramKey, false);
+			String paramValue = ZCReqParamGetter.getParamString(request, paramKey, false);
 			map.put(paramKey, paramValue);
 		}
 
@@ -87,8 +84,7 @@ public class ZCReqIntroGetter {
 		Log.Pro.whiteLine(reqName + " " + "Params");
 		Log.Pro.whiteCut();
 		for (String key : map.keySet()) {
-			Log.Pro.whiteLine(StringHelper.fillFooter(key, 20, "-") + "--->"
-					+ map.get(key));
+			Log.Pro.whiteLine(StringHelper.fillFooter(key, 20, "-") + "--->" + map.get(key));
 		}
 		Log.Pro.finish();
 

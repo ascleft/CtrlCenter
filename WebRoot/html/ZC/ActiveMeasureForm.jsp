@@ -30,19 +30,19 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<!-- JQuery  -->
 		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<!--  Vue.js-->
-		<script src="https://unpkg.com/vue/dist/vue.js"></script>
 		<!--  Angular.js-->
 		<!--<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>-->
 
 		<!-- local html  -->
-		<link href="../../img/CodeMartrix/main/weisuomeng.jpg" rel="shortcut icon" />
+		<link href="../../img/global/logo/icon_title_1.jpg" rel="shortcut icon" />
 
 		<link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
 		<script src="../../js/materialize.js"></script>
 		<script src="../../js/init.js"></script>
+
+		<script src="../../js/vue.min.js"></script>
 
 		<script src="../../js/init_tailorinfo.js"></script>
 
@@ -54,6 +54,8 @@
 
 		<script src="<%=path %>/js/materialize.js"></script>
 		<script src="<%=path %>/js/init.js"></script>
+
+		<script src="<%=path %>/js/vue.min.js"></script>
 
 		<script src="<%=path %>/js/init_tailorinfo.js"></script>
 
@@ -80,33 +82,23 @@
 					data: $('#nothing').serialize(),
 					async: true,
 					error: function(request) {
-						//						state_upload_error("无法连接到服务器");
-						//						tinybug.message = request;
-						tablelist = JSON.parse("[{\"NAME\":\"男士量体表\",\"LIST\":[{\"KEY\":\"1\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"下身长\"},{\"KEY\":\"2\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"下身粗\"}]},{\"NAME\":\"女士量体表\",\"LIST\":[{\"KEY\":\"3\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"胸围\"},{\"KEY\":\"4\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"胸距\"}]},{\"NAME\":\"萝莉量体表\",\"LIST\":[{\"KEY\":\"5\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"胸高\"}]}]");
+						state_upload_error("无法连接到服务器");
+						tinybug.message = request;
 
-						state_upload_finish();
-
-						insertSelector(tablelist);
-
-						insertItems(tablelist);
-
+						//						tablelist = JSON.parse("[{\"NAME\":\"男士量体表\",\"LIST\":[{\"KEY\":\"1\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"胸围\"},{\"KEY\":\"2\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"腰围\"},{\"KEY\":\"2\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"臂长\"},{\"KEY\":\"2\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"臀围\"}]},{\"NAME\":\"女士量体表\",\"LIST\":[{\"KEY\":\"3\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"胸围\"},{\"KEY\":\"4\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"臀围\"},{\"KEY\":\"4\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"领围\"}]},{\"NAME\":\"童装体表\",\"LIST\":[{\"KEY\":\"5\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"胸高\"},{\"KEY\":\"4\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"身高\"},{\"KEY\":\"4\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"腰围\"},{\"KEY\":\"4\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"领围\"}]}]");
+						//						state_upload_finish();
+						//						insertSelector(tablelist);
+						//						insertItems(tablelist);
 					},
 					success: function(data) {
 						if(data.length < 2000) {
 							var resp = JSON.parse(data);
 							if("0" == resp.ERRCODE) {
 								if("succ" == resp.ERRDESC) {
-
 									tablelist = resp.data.TABLES;
-
 									state_upload_finish();
-
 									insertSelector(tablelist);
-
 									insertItems(tablelist);
-
-									tablelist = resp.data.TABLES;
-
 								} else {
 									var desc = "提交失败<br/>智能错误分析：" + resp.data;
 									state_upload_error(desc);
@@ -264,6 +256,21 @@
 			<div class="section">
 				<div class="row">
 
+					<div class="col s12 m12 l12">
+						<div class="card-panel hoverable">
+							<div class="card-content grey-text">
+								<div class="row">
+									<div class="input-field col s6 m6 l6">
+										<select id="tableSelector">
+										</select> <label>量体表</label>
+										<div id="tableSelectors"></div>
+									</div>
+									<a class="col s6 m6 l6 waves-effect waves-light btn input-field" onclick="getActionForm()">获取表单列表</a>
+
+								</div>
+							</div>
+						</div>
+					</div>
 					<form method="post" id="clothform">
 						<div class="col s12 m12 l12">
 							<div class="card-panel hoverable">
@@ -281,20 +288,11 @@
 						<div class="card-panel hoverable">
 							<div class="card-content grey-text">
 								<div class="row">
-									<a class="col s12 m12 l12 waves-effect waves-light btn input-field" onclick="getActionForm()">获取表单列表</a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col s12 m12 l12">
-						<div class="card-panel hoverable">
-							<div class="card-content grey-text">
-								<div class="row">
-									<div class="input-field col s6 m4 l3">
-										<select id="tableSelector">
-										</select> <label>量体表</label>
-										<div id="tableSelectors"></div>
+									<div class="col s6">
+										<a class="col s12 m12 l12 waves-effect waves-light btn input-field">上一位</a>
+									</div>
+									<div class="col s6">
+										<a class="col s12 m12 l12 waves-effect waves-light btn input-field">下一位</a>
 									</div>
 								</div>
 							</div>

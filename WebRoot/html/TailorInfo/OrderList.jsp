@@ -23,13 +23,11 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<!-- JQuery  -->
 		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<!--  Vue.js-->
-		<!--<script src="https://unpkg.com/vue/dist/vue.js"></script>-->
 		<!--  Angular.js-->
-		<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+		<!--<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>-->
 
 		<!-- local html  -->
-		<link href="../../img/CodeMartrix/main/weisuomeng.jpg" rel="shortcut icon" />
+		<link href="../../img/global/logo/icon_title_1.jpg" rel="shortcut icon" />
 
 		<link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
@@ -37,13 +35,12 @@
 		<script src="../../js/materialize.js"></script>
 		<script src="../../js/init.js"></script>
 
-		<script src="../../js/jquery.table2excel.js"></script>
-		<script src="../../js/innerhtml.js"></script>
+		<script src="../../js/vue.min.js"></script>
 
 		<script src="../../js/init_tailorinfo.js"></script>
 
 		<!--local jsp   -->
-		<link href="<%=path %>/img/CodeMartrix/main/weisuomeng.jpg" rel="shortcut icon" />
+		<link href="<%=path %>/img/global/logo/icon_title_1.jpg" rel="shortcut icon">
 
 		<link href="<%=path %>/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="<%=path %>/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
@@ -51,8 +48,7 @@
 		<script src="<%=path %>/js/materialize.js"></script>
 		<script src="<%=path %>/js/init.js"></script>
 
-		<script src="<%=path %>/js/jquery.table2excel.js"></script>
-		<script src="<%=path %>/js/innerhtml.js"></script>
+		<script src="<%=path %>/js/vue.min.js"></script>
 
 		<script src="<%=path %>/js/init_tailorinfo.js"></script>
 

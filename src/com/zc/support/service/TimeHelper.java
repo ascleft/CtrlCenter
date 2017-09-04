@@ -62,8 +62,7 @@ public class TimeHelper {
 	 */
 	public static String dateToStamp(String s) throws ParseException {
 		String res;
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
-				"yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = simpleDateFormat.parse(s);
 		long ts = date.getTime();
 		res = String.valueOf(ts);
@@ -77,8 +76,7 @@ public class TimeHelper {
 	 */
 	public String TimeStamp2Date(String timestampString, String formats) {
 		Long timestamp = Long.parseLong(timestampString) * 1000;
-		String date = new SimpleDateFormat(formats).format(new java.util.Date(
-				timestamp));
+		String date = new SimpleDateFormat(formats).format(new java.util.Date(timestamp));
 		return date;
 	}
 
@@ -122,6 +120,20 @@ public class TimeHelper {
 
 		public long stop(String name) {
 
+			Log.Pro.start();
+			Log.Pro.whiteLine("计时器统计 " + "--->" + name);
+			Log.Pro.whiteCut();
+
+			interval = showTimerPartable(name);
+
+			Log.Pro.finish();
+
+			return interval;
+
+		}
+
+		public long showTimerPartable(String name) {
+
 			time_stop = new Date();
 			time_stop_stamp = TimeHelper.getTimeMS();
 
@@ -130,21 +142,17 @@ public class TimeHelper {
 				return 0;
 			} else {
 				interval = time_stop.getTime() - time_start.getTime();
-				Log.Pro.start();
-				Log.Pro.whiteLine("计时器统计 " + "--->" + name);
-				Log.Pro.whiteCut();
+
 				Log.Pro.whiteLine("开始时间" + ": " + time_start_stamp);
 				if (null != pointList || pointList.size() > 0) {
 					for (int i = 0; i < pointList.size(); i++) {
-						Log.Pro.whiteLine("第" + (i + 1) + "次" + ": "
-								+ pointList.get(i));
+						Log.Pro.whiteLine("第" + (i + 1) + "次" + ": " + pointList.get(i));
 					}
 				}
 				Log.Pro.whiteLine("结束时间" + ": " + time_stop_stamp);
 				Log.Pro.whiteCut();
 				Log.Pro.whiteLine("总时长" + interval / 1000 + "秒"//
 						+ "(" + interval + "毫秒)");
-				Log.Pro.finish();
 
 				return interval;
 			}
