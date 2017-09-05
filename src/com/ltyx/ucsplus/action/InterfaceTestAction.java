@@ -21,7 +21,49 @@ public class InterfaceTestAction extends ZCBaseActionSupport {
 	public String test() {
 		init(true);
 
-		String target_url = getReqParamString("target_url");
+		ZCReqIntroGetter.showParams("接口连通性测试 输入参数", request);
+
+		if (!checkURL()) {
+			ERRCODE = "0";
+			ERRDESC = "succ";
+			data = "当前URL不合法，请检查。";
+			writeResp("接口连通性测试");
+			return null;
+		}
+		String httpResp = getResp();
+		if (!checkResp(httpResp)) {
+			ERRCODE = "0";
+			ERRDESC = "succ";
+			data = "当前请求无返回值。";
+			writeResp("接口连通性测试");
+			return null;
+		}
+
+		ERRCODE = "0";
+		ERRDESC = "succ";
+		data = httpResp;
+
+		writeResp("接口连通性测试");
+
+		return null;
+
+	}
+
+	private boolean checkURL() {
+
+		String URL = getReqParamString("target_url");
+
+		int indexHttp = URL.indexOf("http://");
+		int indexHttps = URL.indexOf("https://");
+
+		if ((indexHttp + indexHttps) == -1 && URL.length() > 13) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	private String getResp() {
 
 		ZCHttpReqParam param = new ZCHttpReqParam();
 
@@ -34,18 +76,29 @@ public class InterfaceTestAction extends ZCBaseActionSupport {
 
 		}
 
-//		ZCReqIntroGetter.showParams("接口连通性测试 输入参数", request);
+		String httpURL = getReqParamString("target_url");
+		String httpType = getReqParamString("http_type");
+		String terminalType = getReqParamString("terminal_type");
 
-		String httpResp = ZCHttpReqSender.sendGet(target_url, param);
+		String httpResp = null;
 
-		ERRCODE = "0";
-		ERRDESC = "succ";
-		data = httpResp;
+		if (httpType.equals("POST")) {
+			httpResp = ZCHttpReqSender.sendPost(httpURL, param);
+		} else {
+			httpResp = ZCHttpReqSender.sendGet(httpURL, param);
+		}
 
-		writeResp("接口连通性测试");
-//		writeResp();
-
-		return null;
+		return httpResp;
 
 	}
+
+	private boolean checkResp(String resp) {
+
+		if (null == resp) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 }

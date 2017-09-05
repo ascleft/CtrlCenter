@@ -20,6 +20,10 @@ public class ZCHttpReqSender {
 	 * @return URL 所代表远程资源的响应结果
 	 */
 	public static String sendGet(String url, ZCHttpReqParam param) {
+		return sendGet(url, param, userAgent.PC);
+	}
+
+	public static String sendGet(String url, ZCHttpReqParam param, String userAgent) {
 
 		TimeHelper.Timer timer = new TimeHelper.Timer();
 
@@ -34,7 +38,9 @@ public class ZCHttpReqSender {
 			// 设置通用的请求属性
 			connection.setRequestProperty("accept", "*/*");
 			connection.setRequestProperty("connection", "Keep-Alive");
-			connection.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+			// connection.setRequestProperty("user-agent",
+			// "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+			connection.setRequestProperty("user-agent", userAgent);
 			// 建立实际的连接
 			connection.connect();
 			// 获取所有响应头字段
@@ -60,7 +66,7 @@ public class ZCHttpReqSender {
 			}
 		}
 
-		// timer.stop("GET通讯 " + url);
+		timer.stop("GET通讯 " + url);
 
 		return result;
 	}
@@ -75,6 +81,10 @@ public class ZCHttpReqSender {
 	 * @return 所代表远程资源的响应结果
 	 */
 	public static String sendPost(String url, ZCHttpReqParam param) {
+		return sendPost(url, param, userAgent.PC);
+	}
+
+	public static String sendPost(String url, ZCHttpReqParam param, String userAgent) {
 		TimeHelper.Timer timer = new TimeHelper.Timer();
 
 		PrintWriter out = null;
@@ -87,7 +97,9 @@ public class ZCHttpReqSender {
 			// 设置通用的请求属性
 			conn.setRequestProperty("accept", "*/*");
 			conn.setRequestProperty("connection", "Keep-Alive");
-			conn.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+			// conn.setRequestProperty("user-agent",
+			// "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+			conn.setRequestProperty("user-agent", userAgent);
 			// 发送POST请求必须设置如下两行
 			conn.setDoOutput(true);
 			conn.setDoInput(true);
@@ -121,9 +133,17 @@ public class ZCHttpReqSender {
 			}
 		}
 
-		// timer.stop("POST通讯 "+url);
+		timer.stop("POST通讯 " + url);
 
 		return result;
+	}
+
+	public static class userAgent {
+		final static String PC = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)";
+		final static String iPhone = "";
+		final static String Android = "";
+		final static String WeChat = "Mozilla/5.0 (Linux; Android 6.0; 1503-M02 Build/MRA58K) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile MQQBrowser/6.2 TBS/036558 Safari/537.36 MicroMessenger/6.3.25.861 NetType/WIFI Language/zh_CN";
+
 	}
 
 }

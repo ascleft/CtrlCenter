@@ -268,12 +268,33 @@
 
 									<form method="post" id="paramform">
 
-										<div class="input-field col s12">
+										<div class="input-field col l8 m8 s12">
 											<div class="input-field col s12">
 												<input name="target_url" type="text" class="validate" value="https://">
 												<label>接口地址</label>
 											</div>
 										</div>
+										<div class="input-field col l2 m2 s6">
+											<div class="input-field col s12">
+												<select name="http_type">
+													<option value="GET">GET</option>
+													<option value="POST">POST</option>
+												</select>
+												<label>提交类型</label>
+											</div>
+										</div>
+										<div class="input-field col l2 m2 s6">
+											<div class="input-field col s12">
+												<select name="terminal_type">
+													<option value="PC">PC</option>
+													<option value="Android">Android</option>
+													<option value="iPhone">iPhone</option>
+													<option value="WeChat">WeChat</option>
+												</select>
+												<label>设备类型</label>
+											</div>
+										</div>
+
 										<div id="param_list"></div>
 
 									</form>
@@ -289,18 +310,7 @@
 					</div>
 
 					<div class="col s12 m12 l12">
-						<div class="card-panel hoverable">
-							<div class="card-content grey-text">
-								<div class="row">
-									<div class="col s6 m6 l6">
-										<a class="col s12 m12 l12 waves-effect waves-light btn input-field" onclick="getActionForm()">get提交</a>
-									</div>
-									<div class="col s6 m6 l6">
-										<a class="col s12 m12 l12 waves-effect waves-light btn input-field" onclick="getActionForm()">post提交</a>
-									</div>
-								</div>
-							</div>
-						</div>
+						<a class="col col s12 m12 l12waves-effect waves-light btn input-field" onclick="getActionForm()">get提交</a>
 					</div>
 
 				</div>

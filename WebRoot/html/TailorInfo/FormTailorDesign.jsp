@@ -318,6 +318,20 @@
 									</div>
 									<div class="collapsible-body">
 										<div class="row">
+											<div class="col s12 m112 l12">
+												<p>SUIT5000 （通用）西服套装（高价位）</p>
+												<p>SUIT2980 （通用）西服套装</p>
+												<p>JEANS_H （通用）牛仔裤（国产）</p>
+												<p>JEANS_I （通用）牛仔裤（进口）</p>
+												<p>PANTS （通用）西裤</p>
+												<p>OVERCOAT （通用）大衣</p>
+												<p>SLACKS （通用）休闲裤</p>
+												<p>JACKET （通用）夹克</p>
+												<p>DUSTCOAT （通用）风衣</p>
+												<p>VEST （通用）马甲</p>
+												<p>BLAZER （通用）西装上衣</p>
+												<p>CASHMERE （通用）羊绒衫</p>
+											</div>
 											<div class="col s12 m16 l6">
 												<div class="input-field">
 													<input type="text" class="validate" name="style_name" value=""> <label>设计师款编号 或 商品编号（必填）</label>
@@ -1042,8 +1056,8 @@
 										</div>
 										<div class="input-field col s4 m4 l4">
 											<select name="garment_type">
-												<option value="man">男装</option>
-												<option value="woman">女装</option>
+												<option value="man">男衬衫</option>
+												<option value="woman">女衬衫</option>
 												<option value="other">其他商品</option>
 											</select> <label>服装类型</label>
 										</div>
