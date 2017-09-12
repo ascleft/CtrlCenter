@@ -82,9 +82,9 @@ public class FormConfig {
 				+ "<option value=\"LZX-01-09G\">礼服领高</option>" //
 				+ "<option value=\"LZX-01-09Z\">礼服领中</option>" //
 				+ "<option value=\"LZX-01-09A\">礼服领矮</option>" //
-				+ "<option value=\"LZX-01-15S\">时尚底领双扣</option>" //
+				+ "<option value=\"LZX-01-15S\">时尚底领双扣</option>" //  
 				+ "</optgroup>" //
-				+ "<optgroup label=\"其他领型\">" //
+				+ "<optgroup label=\"其他领型\">" //  
 				+ "<option value=\"LZX-01-16G\">尖领暗扣高</option>" //
 				+ "<option value=\"LZX-01-16Z\">尖领暗扣中</option>" //
 				+ "<option value=\"LZX-01-16A\">尖领暗扣矮</option>" //
@@ -230,6 +230,7 @@ public class FormConfig {
 	public static String get_list_LZX_26() {
 
 		String list = "<optgroup label=\"基础侧缝底摆贴布\">"//
+				+ "<option value=\"\">不使用贴布</option>"//
 				+ "<option value=\"LZX-26-01\">剑型</option>"//
 				+ "<option value=\"LZX-26-02\">方形</option>"//
 				+ "<option value=\"LZX-26-03\">三角</option>"//

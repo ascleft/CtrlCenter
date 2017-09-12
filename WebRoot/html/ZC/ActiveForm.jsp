@@ -89,7 +89,7 @@
 						if("0" == resp.ERRCODE) {
 							if("succ" == resp.ERRDESC) {
 								state_upload_finish();
-								$('#resp').val(resp.data);
+								$('#resp').val(""+resp.data);
 								$('#resp').trigger('autoresize');
 							} else {
 								var desc = "提交失败<br/>智能错误分析：" + resp.data;

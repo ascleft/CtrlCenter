@@ -3,9 +3,12 @@ package com.zc.support.link;
 import java.io.UnsupportedEncodingException;
 import java.net.URLConnection;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -123,6 +126,64 @@ public class ZCReqIntroGetter {
 			ip = request.getRemoteAddr();
 		}
 		return ip;
+	}
+
+	/**
+	 * 获取终端设备类型
+	 * 
+	 */
+	public Map<String, String> getUserAgent(HttpServletRequest req) {
+		Map<String, String> Sys = new HashMap<String, String>();
+		String ua = req.getHeader("User-Agent").toLowerCase();
+		String s;
+		String msieP = "msie ([\\d.]+)";
+		String firefoxP = "firefox\\/([\\d.]+)";
+		String chromeP = "chrome\\/([\\d.]+)";
+		String operaP = "opera.([\\d.]+)/)";
+		String safariP = "version\\/([\\d.]+).*safari";
+
+		Pattern pattern = Pattern.compile(msieP);
+		Matcher mat = pattern.matcher(ua);
+		if (mat.find()) {
+			s = mat.group();
+			Sys.put("type", "ie");
+			Sys.put("version", s.split(" ")[1]);
+			return Sys;
+		}
+		pattern = Pattern.compile(firefoxP);
+		mat = pattern.matcher(ua);
+		if (mat.find()) {
+			s = mat.group();
+			System.out.println(s);
+			Sys.put("type", "firefox");
+			Sys.put("version", s.split("/")[1]);
+			return Sys;
+		}
+		pattern = Pattern.compile(chromeP);
+		mat = pattern.matcher(ua);
+		if (mat.find()) {
+			s = mat.group();
+			Sys.put("type", "chrome");
+			Sys.put("version", s.split("/")[1]);
+			return Sys;
+		}
+		pattern = Pattern.compile(operaP);
+		mat = pattern.matcher(ua);
+		if (mat.find()) {
+			s = mat.group();
+			Sys.put("type", "opera");
+			Sys.put("version", s.split("\\.")[1]);
+			return Sys;
+		}
+		pattern = Pattern.compile(safariP);
+		mat = pattern.matcher(ua);
+		if (mat.find()) {
+			s = mat.group();
+			Sys.put("type", "safari");
+			Sys.put("version", s.split("/")[1].split(".")[0]);
+			return Sys;
+		}
+		return Sys;
 	}
 
 }

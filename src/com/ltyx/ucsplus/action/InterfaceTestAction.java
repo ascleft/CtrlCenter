@@ -4,7 +4,6 @@ import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.link.ZCReqIntroGetter;
-import com.zc.support.service.Log;
 
 public class InterfaceTestAction extends ZCBaseActionSupport {
 
@@ -83,13 +82,29 @@ public class InterfaceTestAction extends ZCBaseActionSupport {
 		String httpResp = null;
 
 		if (httpType.equals("POST")) {
+			if ("Android".equals(terminalType)) {
+				httpResp = ZCHttpReqSender.sendPost(httpURL, param, ZCHttpReqSender.userAgent.Android);
+			} else if ("iPhone".equals(terminalType)) {
+				httpResp = ZCHttpReqSender.sendPost(httpURL, param, ZCHttpReqSender.userAgent.iPhone);
+			} else if ("WeChat".equals(terminalType)) {
+				httpResp = ZCHttpReqSender.sendPost(httpURL, param, ZCHttpReqSender.userAgent.WeChat);
+			} else {
+				httpResp = ZCHttpReqSender.sendPost(httpURL, param, ZCHttpReqSender.userAgent.PC);
+			}
 			httpResp = ZCHttpReqSender.sendPost(httpURL, param);
 		} else {
-			httpResp = ZCHttpReqSender.sendGet(httpURL, param);
+			if ("Android".equals(terminalType)) {
+				httpResp = ZCHttpReqSender.sendGet(httpURL, param, ZCHttpReqSender.userAgent.Android);
+			} else if ("iPhone".equals(terminalType)) {
+				httpResp = ZCHttpReqSender.sendGet(httpURL, param, ZCHttpReqSender.userAgent.iPhone);
+			} else if ("WeChat".equals(terminalType)) {
+				httpResp = ZCHttpReqSender.sendGet(httpURL, param, ZCHttpReqSender.userAgent.WeChat);
+			} else {
+				httpResp = ZCHttpReqSender.sendGet(httpURL, param, ZCHttpReqSender.userAgent.PC);
+			}
 		}
 
 		return httpResp;
-
 	}
 
 	private boolean checkResp(String resp) {

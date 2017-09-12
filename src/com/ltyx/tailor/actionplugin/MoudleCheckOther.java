@@ -101,11 +101,34 @@ public class MoudleCheckOther extends ZCBaseActionSupportPlugin {
 		}
 
 		{
-			String prices = getReqParamString("prices");// 自主报价
-			if (prices.length() < 1) {
+			String[] style_name = getReqParamStrings("style_name");// 自主报价
+
+			if (style_name.length == 2) {
+				if (style_name[0].length() == 0 && style_name[1].length() == 0) {
+					ERRCODE = "0";
+					ERRDESC = "fail";
+					data = "当前选择的商品是设计师推荐款，必须填写其设计师推荐款编号";
+					return false;
+				}
+			}
+		}
+
+		{
+			String prices_now = getReqParamString("prices_now");// 自主报价
+			String prices_defult = getReqParamString("prices_defult");// 原价
+			String prices_desc = getReqParamString("prices_desc");// 价差说明
+
+			if ((prices_now.length() > 0) && (prices_defult.length() > 0)) {
+				if ((!prices_now.equals(prices_defult)) && prices_desc.length() < 1) {
+					ERRCODE = "0";
+					ERRDESC = "fail";
+					data = "原价与结算价不一致时，必须填写报价说明";
+					return false;
+				}
+			} else {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "请填写报价";
+				data = "请填写原价与结算价";
 				return false;
 			}
 		}

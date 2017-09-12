@@ -139,11 +139,10 @@ public class ZCHttpReqSender {
 	}
 
 	public static class userAgent {
-		final static String PC = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)";
-		final static String iPhone = "";
-		final static String Android = "";
-		final static String WeChat = "Mozilla/5.0 (Linux; Android 6.0; 1503-M02 Build/MRA58K) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile MQQBrowser/6.2 TBS/036558 Safari/537.36 MicroMessenger/6.3.25.861 NetType/WIFI Language/zh_CN";
-
+		public final static String PC = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0";
+		public final static String iPhone = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.2924.87 Safari/537.36 LBBROWSER";
+		public final static String Android = "Mozilla/5.0 (Linux; U; Android 7.1.2; zh-CN; 2014811 Build/NJH47F) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/40.0.2214.89 Quark/2.0.4.956 Mobile Safari/537.36";
+		public final static String WeChat = "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_3 like Mac OS X) AppleWebKit/603.3.8 (KHTML, like Gecko) Mobile/14G60 MicroMessenger/6.5.15 NetType/WIFI Language/zh_CN";
 	}
 
 }

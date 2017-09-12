@@ -110,22 +110,20 @@
 						tinybug.message = request;
 					},
 					success: function(data) {
-						if(data.length < 1000) {
-							var resp = JSON.parse(data);
-							if("0" == resp.ERRCODE) {
-								if("succ" == resp.ERRDESC) {
-									state_upload_finish("提交成功");
-									csv_string = resp.data.CONTENT;
-								} else {
-									var desc = "提交失败<br/>智能错误分析：" + resp.data;
-									state_upload_error(desc);
-								}
+
+						var resp = JSON.parse(data);
+						if("0" == resp.ERRCODE) {
+							if("succ" == resp.ERRDESC) {
+								state_upload_finish("提交成功");
+								csv_string = resp.data.CONTENT;
 							} else {
-								state_upload_error("EC服务器通讯异常");
+								var desc = "提交失败<br/>智能错误分析：" + resp.data;
+								state_upload_error(desc);
 							}
 						} else {
-							state_upload_error("操作超时，请重新登录");
+							state_upload_error("EC服务器通讯异常");
 						}
+
 						tinybug.message = data;
 					}
 				});
@@ -1002,10 +1000,22 @@
 													<div class="col s12 m12 l12 teal-text">
 														<p>自主报价</p>
 													</div>
-													<div class="col s12 m12 l12">
+													<div class="col s6 m6 l4">
 														<div class="input-field">
-															<input type="text" class="validate" name="prices" value="">
-															<label>报价</label>
+															<input type="number" class="validate" name="prices_now" value="">
+															<label>结算价</label>
+														</div>
+													</div>
+													<div class="col s6 m6 l4">
+														<div class="input-field">
+															<input type="number" class="validate" name="prices_defult" value="">
+															<label>原价</label>
+														</div>
+													</div>
+													<div class="col s12 m12 l4">
+														<div class="input-field">
+															<input type="text" class="validate" name="prices_desc" value="">
+															<label>说明</label>
 														</div>
 													</div>
 												</div>

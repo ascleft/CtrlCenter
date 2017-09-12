@@ -109,22 +109,20 @@
 						tinybug.message = request;
 					},
 					success: function(data) {
-						if(data.length < 1000) {
-							var resp = JSON.parse(data);
-							if("0" == resp.ERRCODE) {
-								if("succ" == resp.ERRDESC) {
-									state_upload_finish("提交成功");
-									csv_string = resp.data.CONTENT;
-								} else {
-									var desc = "提交失败<br/>智能错误分析：" + resp.data;
-									state_upload_error(desc);
-								}
+
+						var resp = JSON.parse(data);
+						if("0" == resp.ERRCODE) {
+							if("succ" == resp.ERRDESC) {
+								state_upload_finish("提交成功");
+								csv_string = resp.data.CONTENT;
 							} else {
-								state_upload_error("EC服务器通讯异常");
+								var desc = "提交失败<br/>智能错误分析：" + resp.data;
+								state_upload_error(desc);
 							}
 						} else {
-							state_upload_error("操作超时，请重新登录");
+							state_upload_error("EC服务器通讯异常");
 						}
+
 						tinybug.message = data;
 					}
 				});
@@ -318,23 +316,26 @@
 									</div>
 									<div class="collapsible-body">
 										<div class="row">
-											<div class="col s12 m112 l12">
-												<p>SUIT5000 （通用）西服套装（高价位）</p>
-												<p>SUIT2980 （通用）西服套装</p>
-												<p>JEANS_H （通用）牛仔裤（国产）</p>
-												<p>JEANS_I （通用）牛仔裤（进口）</p>
-												<p>PANTS （通用）西裤</p>
-												<p>OVERCOAT （通用）大衣</p>
-												<p>SLACKS （通用）休闲裤</p>
-												<p>JACKET （通用）夹克</p>
-												<p>DUSTCOAT （通用）风衣</p>
-												<p>VEST （通用）马甲</p>
-												<p>BLAZER （通用）西装上衣</p>
-												<p>CASHMERE （通用）羊绒衫</p>
+											<div class="input-field col s12 m16 l6">
+												<select name="style_name">
+													<option value="">设计师推荐款</option>
+													<option value="SUIT5000">西服套装（高价位）</option>
+													<option value="SUIT2980">西服套装</option>
+													<option value="JEANS_H">牛仔裤（国产）</option>
+													<option value="JEANS_I">牛仔裤（进口）</option>
+													<option value="PANTS">西裤</option>
+													<option value="OVERCOAT">大衣</option>
+													<option value="SLACKS">休闲裤</option>
+													<option value="JACKET">夹克</option>
+													<option value="DUSTCOAT">风衣</option>
+													<option value="VEST">马甲</option>
+													<option value="BLAZER">西装上衣</option>
+													<option value="CASHMERE">羊绒衫</option>
+												</select> <label>产品类型</label>
 											</div>
 											<div class="col s12 m16 l6">
 												<div class="input-field">
-													<input type="text" class="validate" name="style_name" value=""> <label>设计师款编号 或 商品编号（必填）</label>
+													<input type="text" class="validate" name="style_name" value=""> <label>设计师款编号（选择设计师款时此项必填）</label>
 												</div>
 											</div>
 											<div class="col s12 m16 l6">
@@ -359,7 +360,6 @@
 										<div style="display: none;">
 											<input type="text" class="validate" name="uskin_code_type" value="DESIGN"><label>USKIN编码类型</label>
 											<input type="text" class="validate" name="style_type" value="1"><label>1推荐款、2自由搭配</label>
-											<input type="text"><label>补位</label>
 											<input type="text"><label>补位</label>
 											<input type="text"><label>补位</label>
 											<input type="text"><label>补位</label>
@@ -1007,10 +1007,22 @@
 													<div class="col s12 m12 l12 teal-text">
 														<p>自主报价</p>
 													</div>
-													<div class="col s12 m12 l12">
+													<div class="col s6 m6 l4">
 														<div class="input-field">
-															<input type="text" class="validate" name="prices" value="">
-															<label>报价</label>
+															<input type="number" class="validate" name="prices_now" value="">
+															<label>结算价</label>
+														</div>
+													</div>
+													<div class="col s6 m6 l4">
+														<div class="input-field">
+															<input type="number" class="validate" name="prices_defult" value="">
+															<label>原价</label>
+														</div>
+													</div>
+													<div class="col s12 m12 l4">
+														<div class="input-field">
+															<input type="text" class="validate" name="prices_desc" value="">
+															<label>说明</label>
 														</div>
 													</div>
 												</div>
