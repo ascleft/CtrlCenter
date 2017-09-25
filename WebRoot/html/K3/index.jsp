@@ -74,8 +74,8 @@
 				<div class="row">
 					<div class="col s12 m12 l12">
 						<div class="card">
-							<div class="card-image">
-								<img src="../../img/global/main/title_breast_1.jpg">
+							<div class="card-image" style="display: none;">
+								<img src="../../img/global/main/">
 								<span class="card-title ">测试数据</span>
 							</div>
 						</div>

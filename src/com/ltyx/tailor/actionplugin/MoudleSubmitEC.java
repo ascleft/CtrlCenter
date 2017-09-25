@@ -131,7 +131,16 @@ public class MoudleSubmitEC extends ZCBaseActionSupportPlugin {
 		param.addParam("chest_distance", getReqParamStringWithLog("chest_distance"));
 
 		// 搭配名称例2015SS-001
-		param.addParam("style_name", getReqParamStringWithLog("style_name"));
+		// param.addParam("style_name", getReqParamStringWithLog("style_name"));
+
+		// 搭配名称-----------------------------------------------------------------------
+		String style_name = "";
+		for (String style_name_temp : getReqParamStringsWithLog("style_name")) {
+			style_name += style_name_temp;
+		}
+		param.addParam("style_name", style_name);
+		// 搭配名称-----------------------------------------------------------------------
+
 		// 款式类型0基本款，1推荐款，2自由搭配
 		if (getReqParamStringWithLog("garment_type").equals("other")) {
 			param.addParam("style_type", "2");
