@@ -87,7 +87,7 @@ public class ZCReqIntroGetter {
 		Log.Pro.whiteLine(reqName + " " + "Params");
 		Log.Pro.whiteCut();
 		for (String key : map.keySet()) {
-			Log.Pro.whiteLine(StringHelper.fillFooter(key, 20, "-") + "--->" + map.get(key));
+			Log.Pro.whiteLine(StringHelper.fillRight(key, 20, "-") + "--->" + map.get(key));
 		}
 		Log.Pro.finish();
 

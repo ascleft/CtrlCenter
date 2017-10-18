@@ -72,6 +72,24 @@
 		<action name="Setting" class="com.ltyx.tailor.action.SettingAction"
 			method="setting"></action>
 
+		<!-- 平台商品 获取页面 -->
+		<action name="GetPlatformTailorPage" class="com.ltyx.tailor.action.PlatformTailor"
+			method="getPage">
+			<result name="succ">/html/TailorInfo/PlatformTailor.jsp</result>
+		</action>
+
+		<!-- 平台商品 更新列表 -->
+		<action name="UpdatePlatformTailorPage" class="com.ltyx.tailor.action.PlatformTailor"
+			method="updateList"></action>
+			
+		<!-- 平台商品 即时库存 -->
+		<action name="GetPlatformTailorRTInventory" class="com.ltyx.tailor.action.PlatformTailor"
+			method="RTInventory"></action>
+
+		<!-- 平台商品 提交下单 -->
+		<action name="SubmitPlatformTailor" class="com.ltyx.tailor.action.PlatformTailor"
+			method="submitTailor"></action>
+
 	</package>
 
 	<!--衬衫下单工具 即时库存模块 -->

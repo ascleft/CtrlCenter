@@ -37,9 +37,9 @@ public class LoginAction extends ZCBaseActionSupport {
 
 		init(true);
 
-		String name = request.getParameter("name");
-		String pwd = request.getParameter("pwd");
-		String role = request.getParameter("role");
+		String name = getReqParamString("name");
+		String pwd = getReqParamString("pwd");
+		String role = getReqParamString("role");
 
 		if (null == role) {
 

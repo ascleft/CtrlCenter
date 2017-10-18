@@ -112,8 +112,20 @@
 							</div>
 							<div class="card-stacked">
 								<div class="card-content">
-									<p>衬衫下单平台设置</p>
-									<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+									<h5>衬衫下单平台设置</h5>
+									<div class="row">
+										<div class="col s6 m6 l6 teal-text ">
+											<p>进入页面</p>
+											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+										</div>
+										<div class="col s6 m6 l6 orange-text">
+											<p>数据接口</p>
+											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">提交设置</a>
+											<p></p>
+											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">获取当前设置</a>
+
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -126,8 +138,21 @@
 							</div>
 							<div class="card-stacked">
 								<div class="card-content">
-									<p>OpenAPI上行参数测试</p>
-									<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+									<h5>衬衫下单工具 平台商品</h5>
+									<div class="row">
+										<div class="col s6 m6 l6 teal-text ">
+											<p>进入页面</p>
+											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+										</div>
+										<div class="col s6 m6 l6 orange-text">
+											<p>数据接口</p>
+											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">获取列表（基于关键词）</a>
+											<p></p>
+											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">获取即时库存</a>
+											<p></p>
+											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">提交订单</a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -140,8 +165,17 @@
 							</div>
 							<div class="card-stacked">
 								<div class="card-content">
-									<p>OpenAPI接口连通性测试</p>
-									<a href="/CtrlCenter/LTYX/OpenAPI/GetInterfaceTestPage.action">进入</a>
+									<h5>OpenAPI上行参数测试</h5>
+									<div class="row">
+										<div class="col s6 m6 l6 teal-text ">
+											<p>进入页面</p>
+											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+										</div>
+										<div class="col s6 m6 l6 orange-text">
+											<p>提交接口</p>
+											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -154,13 +188,21 @@
 							</div>
 							<div class="card-stacked">
 								<div class="card-content">
-									<p>聊天机器人</p>
-									<a href="/CtrlCenter/Talk/GetTalkPage.action">进入</a>
+									<h5>OpenAPI接口连通性测试</h5>
+									<div class="row">
+										<div class="col s6 m6 l6 teal-text ">
+											<p>进入页面</p>
+											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+										</div>
+										<div class="col s6 m6 l6 orange-text">
+											<p>提交接口</p>
+											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
 
 					<div class="col s12 m12 l12">
 						<div class="card horizontal">
@@ -169,8 +211,40 @@
 							</div>
 							<div class="card-stacked">
 								<div class="card-content">
-									<p>随机串获取</p>
-									<a href="/CtrlCenter/Talk/GetRandomWordPage.action">进入</a>
+									<h5>聊天机器人</h5>
+									<div class="row">
+										<div class="col s6 m6 l6 teal-text ">
+											<p>进入页面</p>
+											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+										</div>
+										<div class="col s6 m6 l6 orange-text">
+											<p>提交接口</p>
+											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col s12 m12 l12">
+						<div class="card horizontal">
+							<div class="card-image">
+								<img src="">
+							</div>
+							<div class="card-stacked">
+								<div class="card-content">
+									<h5>随机串获取</h5>
+									<div class="row">
+										<div class="col s6 m6 l6 teal-text ">
+											<p>进入页面</p>
+											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+										</div>
+										<div class="col s6 m6 l6 orange-text">
+											<p>提交接口</p>
+											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -179,8 +253,6 @@
 				</div>
 			</div>
 		</div>
-
-	
 
 		<footer class="page-footer teal">
 			<div class="container">

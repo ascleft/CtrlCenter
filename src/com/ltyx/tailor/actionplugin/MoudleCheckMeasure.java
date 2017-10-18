@@ -101,18 +101,18 @@ public class MoudleCheckMeasure extends ZCBaseActionSupportPlugin {
 
 	private void init() {
 		maleBodyMeasure = new HashMap<String, Cell>();
-		maleBodyMeasure.put("ling_wei", new Cell(true, "领围", 0, 1000));
-		maleBodyMeasure.put("xiong_wei", new Cell(true, "胸围", 0, 1000));
-		maleBodyMeasure.put("yao_wei", new Cell(true, "腰围", 0, 1000));
-		maleBodyMeasure.put("du_wei", new Cell(false, "肚围", 0, 1000));
-		maleBodyMeasure.put("dibian", new Cell(true, "底边", 0, 1000));
-		maleBodyMeasure.put("houshen_chang", new Cell(true, "后身长", 0, 1000));
-		maleBodyMeasure.put("jian_kuan", new Cell(true, "肩宽", 0, 1000));
+		maleBodyMeasure.put("ling_wei",       new Cell(true,  "领围", 0, 1000));
+		maleBodyMeasure.put("xiong_wei",      new Cell(true,  "胸围", 0, 1000));
+		maleBodyMeasure.put("yao_wei",        new Cell(true,  "腰围", 0, 1000));
+		maleBodyMeasure.put("du_wei",         new Cell(false, "肚围", 0, 1000));
+		maleBodyMeasure.put("dibian",         new Cell(true,  "底边", 0, 1000));
+		maleBodyMeasure.put("houshen_chang",  new Cell(true,  "后身长", 0, 1000));
+		maleBodyMeasure.put("jian_kuan",      new Cell(true,  "肩宽", 0, 1000));
 		maleBodyMeasure.put("jian_kuan_qian", new Cell(false, "前肩宽", 0, 1000));
-		maleBodyMeasure.put("xiu_fei", new Cell(true, "袖肥", 0, 1000));
+		maleBodyMeasure.put("xiu_fei",        new Cell(true,  "袖肥", 0, 1000));
 		maleBodyMeasure.put("qianshen_chang", new Cell(false, "前身长", 0, 1000));
 		maleBodyMeasure.put("qianxiong_kuan", new Cell(false, "前胸宽", 0, 1000));
-		maleBodyMeasure.put("houbei_kuan", new Cell(false, "后背宽", 0, 1000));
+		maleBodyMeasure.put("houbei_kuan",    new Cell(false, "后背宽", 0, 1000));
 	}
 
 	class Cell {

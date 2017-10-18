@@ -72,6 +72,24 @@
 		<action name="Setting" class="com.ltyx.tailor.action.SettingAction"
 			method="setting"></action>
 
+		<!-- 平台商品 获取页面 -->
+		<action name="GetPlatformTailorPage" class="com.ltyx.tailor.action.PlatformTailor"
+			method="getPage">
+			<result name="succ">/html/TailorInfo/PlatformTailor.jsp</result>
+		</action>
+
+		<!-- 平台商品 更新列表 -->
+		<action name="UpdatePlatformTailorPage" class="com.ltyx.tailor.action.PlatformTailor"
+			method="updateList"></action>
+
+		<!-- 平台商品 即时库存 -->
+		<action name="GetPlatformTailorRTInventory" class="com.ltyx.tailor.action.PlatformTailor"
+			method="RTInventory"></action>
+
+		<!-- 平台商品 提交下单 -->
+		<action name="SubmitPlatformTailor" class="com.ltyx.tailor.action.PlatformTailor"
+			method="submitTailor"></action>
+
 	</package>
 
 	<!--衬衫下单工具 即时库存模块 -->
@@ -157,13 +175,13 @@
 	<!--附加 小程序 -->
 	<package name="TalkAction" namespace="/Talk" extends="struts-default">
 
-		<!-- 聊天 获取聊天页 -->
+		<!-- 聊天 获取页面 -->
 		<action name="GetTalkPage" class="com.zc.fun.talk.TalkAction"
 			method="getPage">
 			<result name="succ">/html/Talk/Talk.jsp</result>
 		</action>
 
-		<!-- 聊天 -->
+		<!-- 聊天 提交对话 -->
 		<action name="Talk" class="com.zc.fun.talk.TalkAction" method="talk"></action>
 
 		<!-- 随机短语 获取页面 -->
