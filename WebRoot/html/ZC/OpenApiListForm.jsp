@@ -60,70 +60,82 @@
 		<script src="<%=path %>/js/init_tailorinfo.js"></script>
 
 		<script type="application/javascript">
+			function OpenMenu() {
+				$('#nav_menu').sideNav('show');
+			}
 		</script>
 
 	</head>
 
 	<body>
-		<!--宽屏模式下拉框菜单-->
-		<ul id="dropdown1" class="dropdown-content">
-			<%= menulist %>
-		</ul>
-		<nav class="teal" role="navigation">
-			<div class="nav-wrapper container">
-				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons white-text">menu</i></a>
-				<a id="logo-container" href="#" class="brand-logo white-text">OpenAPI列表</a>
-				<ul class="right hide-on-med-and-down">
-					<li>
-						<a class="white-text" href="#">您好:
-							<%=ec_user_name%>
-						</a>
-					</li>
-					<li>
-						<a class="white-text" onclick="logout()">注销 </a>
-					</li>
-					<li>
-						<a class="white-text dropdown-button" data-activates="dropdown1">操作选择</a>
-					</li>
-				</ul>
-				<ul id="nav-mobile" class="side-nav">
-					<li class="teal">
-						<a class="white-text" href="#">您好:
-							<%=ec_user_name%>
-						</a>
-					</li>
-					<li class="teal lighten-1">
-						<a class="white-text" onclick="logout()">注销 </a>
-					</li>
-					<%= menulist %>
-				</ul>
-			</div>
-		</nav>
 
-		<div class="container">
-			<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons white-text">menu</i></a>
-			<div class="section">
-				<div class="row">
+		<header>
+			<nav class="teal" role="navigation">
+				<div class="nav-wrapper container">
+					<!-- 页面标题  -->
+					<a id="logo-container " href="#" class="brand-logo white-text ">OpenAPI列表</a>
+					<!-- 导航菜单键（运动移动设备） -->
+					<a href="#" data-activates="nav_menu_list " class="button-collapse ">
+						<i class="material-icons white-text">menu</i>
+					</a>
+					<!-- 页面右上角菜单  （桌面设备）-->
+					<ul id="nav_menu_mobile" class="right hide-on-med-and-down white-text">
+						<li>
+							<a class="white-text">当前用户:
+								<%=ec_user_name%>
+							</a>
+						</li>
+						<li>
+							<a class="white-text" onclick="OpenMenu()">操作</a>
+						</li>
+					</ul>
+					<!-- 菜单触发-->
+					<a href="#" class="button-collapse" data-activates="nav_menu_list" id="nav_menu"></a>
+					<!-- 菜单列表-->
+					<ul id="nav_menu_list" class="side-nav teal-text">
+						<div class="teal ">
+							<li>
+								<a class=" white-text">您好:
+									<%=ec_user_name%>
+								</a>
+							</li>
+							<li>
+								<a class=" white-text" onclick="logout() ">注销 </a>
+							</li>
+						</div>
+						<li>
+							<a class="subheader">功能</a>
+						</li>
+						<li>
+							<a class="waves-effect" href="/CtrlCenter/Core/Main.action">首页</a>
+						</li>
+						<li>
+							<a class="waves-effect" href="/CtrlCenter/Core/OpenApiList.action">OpenAPI列表</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
 
-					<div class="col s12 m12 l12">
-						<div class="card horizontal">
-							<div class="card-image">
-								<img src="">
-							</div>
-							<div class="card-stacked">
-								<div class="card-content">
+		<div class="container ">
+			<!--<a href="# " data-activates="slide-out " class="button-collapse "><i class="material-icons white-text ">menu</i></a>-->
+			<div class="section ">
+				<div class="row ">
+					<div class="col s12 m12 l12 ">
+						<div class="card horizontal ">
+							<div class="card-stacked ">
+								<div class="card-content ">
 									<h5>衬衫下单平台设置</h5>
-									<div class="row">
+									<div class="row ">
 										<div class="col s6 m6 l6 teal-text ">
 											<p>进入页面</p>
-											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+											<a href="/CtrlCenter/LTYX/Tailor/TailorForm/GetSettingPage.action ">进入</a>
 										</div>
-										<div class="col s6 m6 l6 orange-text">
+										<div class="col s6 m6 l6 orange-text ">
 											<p>数据接口</p>
-											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">提交设置</a>
-											<p></p>
-											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">获取当前设置</a>
-
+											<a href="/CtrlCenter/LTYX/Tailor/TailorForm/Setting.action ">提交设置</a>
+											<br>
+											<a href="/CtrlCenter/LTYX/Tailor/TailorForm/GetState.action ">获取当前设置</a>
 										</div>
 									</div>
 								</div>
@@ -131,26 +143,23 @@
 						</div>
 					</div>
 
-					<div class="col s12 m12 l12">
-						<div class="card horizontal">
-							<div class="card-image">
-								<img src="">
-							</div>
-							<div class="card-stacked">
-								<div class="card-content">
+					<div class="col s12 m12 l12 ">
+						<div class="card horizontal ">
+							<div class="card-stacked ">
+								<div class="card-content ">
 									<h5>衬衫下单工具 平台商品</h5>
-									<div class="row">
+									<div class="row ">
 										<div class="col s6 m6 l6 teal-text ">
 											<p>进入页面</p>
-											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+											<a href="/CtrlCenter/LTYX/Tailor/TailorForm/GetPlatformTailorPage.action ">进入</a>
 										</div>
-										<div class="col s6 m6 l6 orange-text">
+										<div class="col s6 m6 l6 orange-text ">
 											<p>数据接口</p>
-											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">获取列表（基于关键词）</a>
-											<p></p>
-											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">获取即时库存</a>
-											<p></p>
-											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">提交订单</a>
+											<a href="/CtrlCenter/LTYX/Tailor/TailorForm/UpdatePlatformTailorPage.action ">获取列表（基于关键词）</a>
+											<br>
+											<a href="/CtrlCenter/LTYX/Tailor/TailorForm/GetPlatformTailorRTInventory.action ">获取即时库存</a>
+											<br>
+											<a href=" ">提交订单</a>
 										</div>
 									</div>
 								</div>
@@ -158,45 +167,19 @@
 						</div>
 					</div>
 
-					<div class="col s12 m12 l12">
-						<div class="card horizontal">
-							<div class="card-image">
-								<img src="">
-							</div>
-							<div class="card-stacked">
-								<div class="card-content">
-									<h5>OpenAPI上行参数测试</h5>
-									<div class="row">
-										<div class="col s6 m6 l6 teal-text ">
-											<p>进入页面</p>
-											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
-										</div>
-										<div class="col s6 m6 l6 orange-text">
-											<p>提交接口</p>
-											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col s12 m12 l12">
-						<div class="card horizontal">
-							<div class="card-image">
-								<img src="">
-							</div>
-							<div class="card-stacked">
-								<div class="card-content">
+					<div class="col s12 m12 l12 ">
+						<div class="card horizontal ">
+							<div class="card-stacked ">
+								<div class="card-content ">
 									<h5>OpenAPI接口连通性测试</h5>
-									<div class="row">
+									<div class="row ">
 										<div class="col s6 m6 l6 teal-text ">
 											<p>进入页面</p>
-											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+											<a href="/CtrlCenter/LTYX/OpenAPI/GetInterfaceTestPage.action ">进入</a>
 										</div>
-										<div class="col s6 m6 l6 orange-text">
-											<p>提交接口</p>
-											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+										<div class="col s6 m6 l6 orange-text ">
+											<p>数据接口</p>
+											<a href="/CtrlCenter/LTYX/OpenAPI/InterfaceTest.action ">提交参数</a>
 										</div>
 									</div>
 								</div>
@@ -204,22 +187,35 @@
 						</div>
 					</div>
 
-					<div class="col s12 m12 l12">
-						<div class="card horizontal">
-							<div class="card-image">
-								<img src="">
+					<div class="col s12 m12 l12 ">
+						<div class="card horizontal ">
+							<div class="card-stacked ">
+								<div class="card-content ">
+									<h5>OpenAPI上行参数测试</h5>
+									<div class="row ">
+										<div class="col s6 m6 l6 orange-text ">
+											<p>数据接口</p>
+											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action ">提交参数</a>
+										</div>
+									</div>
+								</div>
 							</div>
-							<div class="card-stacked">
-								<div class="card-content">
+						</div>
+					</div>
+
+					<div class="col s12 m12 l12 ">
+						<div class="card horizontal ">
+							<div class="card-stacked ">
+								<div class="card-content ">
 									<h5>聊天机器人</h5>
-									<div class="row">
+									<div class="row ">
 										<div class="col s6 m6 l6 teal-text ">
 											<p>进入页面</p>
-											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+											<a href="/CtrlCenter/Talk/GetTalkPage.action ">进入</a>
 										</div>
-										<div class="col s6 m6 l6 orange-text">
-											<p>提交接口</p>
-											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+										<div class="col s6 m6 l6 orange-text ">
+											<p>数据接口</p>
+											<a href="/CtrlCenter/Talk/Talk.action ">提交信息</a>
 										</div>
 									</div>
 								</div>
@@ -227,44 +223,40 @@
 						</div>
 					</div>
 
-					<div class="col s12 m12 l12">
-						<div class="card horizontal">
-							<div class="card-image">
-								<img src="">
-							</div>
-							<div class="card-stacked">
-								<div class="card-content">
+					<div class="col s12 m12 l12 ">
+						<div class="card horizontal ">
+							<div class="card-stacked ">
+								<div class="card-content ">
 									<h5>随机串获取</h5>
-									<div class="row">
+									<div class="row ">
 										<div class="col s6 m6 l6 teal-text ">
 											<p>进入页面</p>
-											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+											<a href="/CtrlCenter/Talk/GetRandomWordPage.action ">进入</a>
 										</div>
-										<div class="col s6 m6 l6 orange-text">
-											<p>提交接口</p>
-											<a href="/CtrlCenter/LTYX/OpenAPI/ShowParam.action">进入</a>
+										<div class="col s6 m6 l6 orange-text ">
+											<p>数据接口</p>
+											<a href="/CtrlCenter/Talk/GetRandomWord.action ">提交信息</a>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
 
-		<footer class="page-footer teal">
-			<div class="container">
-				<div class="row" style="display: none;">
-					<h5 class="center-align">					
-						<img class="hoverable"
-						src="http://pan.baidu.com/share/qrcode?w=150&h=150&url=http://61.50.122.58:8029/CtrlCenter/LTYX/Tailor/TailorForm/Pro.action"/>
+		<footer class="page-footer teal ">
+			<div class="container ">
+				<div class="row " style="display: none; ">
+					<h5 class="center-align ">					
+						<img class="hoverable "
+						src="http://pan.baidu.com/share/qrcode?w=150&h=150&url=http://61.50.122.58:8029/CtrlCenter/LTYX/Tailor/TailorForm/Pro.action "/>
 					</h5>
 				</div>
 			</div>
-			<div class="footer-copyright">
-				<div class="container">Made By ZhangChi 2017</div>
+			<div class="footer-copyright ">
+				<div class="container ">Made By ZhangChi 2017</div>
 			</div>
 		</footer>
 	</body>

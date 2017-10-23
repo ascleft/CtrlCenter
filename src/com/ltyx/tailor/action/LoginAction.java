@@ -20,7 +20,7 @@ public class LoginAction extends ZCBaseActionSupport {
 	private static final long serialVersionUID = 10086L;
 
 	/**
-	 * 注销接口
+	 * 获取登录页面
 	 * 
 	 */
 	public String loginPage() {
@@ -72,9 +72,6 @@ public class LoginAction extends ZCBaseActionSupport {
 			param.addParam("pwd", pwd);
 			param.addParam("role", role);
 
-			// String httpResp =
-			// CCHttpReq.sendGet("http://61.50.122.58:8029/CtrlCenter/LTYX/Tailor/LoginEC.action",
-			// param);
 			String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_LoginEC, param);
 
 			String isOnline;

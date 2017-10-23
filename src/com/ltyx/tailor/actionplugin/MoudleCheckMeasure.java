@@ -70,8 +70,8 @@ public class MoudleCheckMeasure extends ZCBaseActionSupportPlugin {
 					&& (xiu_chang_zuo.length() == 0
 							|| xiu_chang_you.length() == 0
 							|| xiutouchang_zuo.length() == 0
-							|| xiutouchang_you.length() == 0 || xiuzhou_fei
-							.length() == 0)) {
+							|| xiutouchang_you.length() == 0
+							|| xiuzhou_fei.length() == 0)) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
 				data = "请补全左右袖长、袖头长及袖肘肥信息";

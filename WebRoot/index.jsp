@@ -46,28 +46,31 @@
 			};
 
 			function go() {
-				location.href = "<%=path %>/html/index.jsp";
+				location.href = "<%=path %>/LTYX/Tailor/TailorForm/Advisor.action";
 			}
 		</script>
 	</head>
 
 	<body>
 		<div class="container">
-			<div class="card ">
-				<div class="col s12 m4">
-					<div class="card-image">
-						<img src="img/global/main/pre_gif_2.gif">
-						<span class="card-title ">正在跳转，请稍候</span>
-					</div>
-					<div class="progress">
-						<div class="indeterminate"></div>
-					</div>
-					<div class="card-action">
-						<a href="<%=path %>/html/index.jsp">立刻进入</a>
+			<div class="row">
+				<div class="col s1 m2 l3">
+				</div>
+				<div class="card ">
+					<div class="col s10 m8 l6">
+						<div class="card-image">
+							<img src="img/global/main/pre_gif_2.gif">
+							<span class="card-title ">正在跳转，请稍候</span>
+						</div>
+						<div class="progress">
+							<div class="indeterminate"></div>
+						</div>
+						<div class="card-action">
+							<a href="<%=path %>/LTYX/Tailor/TailorForm/Advisor.action">立刻进入</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</body>
-
 </html>

@@ -348,7 +348,7 @@
 										</div>
 									</div>
 								</li>
-								<li>
+								<li style="display: none;">
 									<div class="collapsible-header">
 										<i class="material-icons">settings_overscan</i>尺寸
 									</div>
@@ -510,9 +510,9 @@
 											</div>
 											<div class="input-field col s6 m4 l3">
 												<select name="measure_type">
+													<option value="needless">不使用尺寸</option>
 													<option value="patternform">净尺寸</option>
 													<option value="clotheval">成衣尺寸</option>
-													<option value="needless">不使用尺寸</option>
 												</select> <label>尺寸类型</label>
 											</div>
 
