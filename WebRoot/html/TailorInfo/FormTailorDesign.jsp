@@ -553,7 +553,7 @@
 											<div class="input-field col s12 m8 l6">
 												<div class="card-panel">
 													<div class="row">
-														<div class="col  s12 m12 l12 teal-text">
+														<div class="col s12 m12 l12 teal-text">
 															<p>领型</p>
 														</div>
 														<div class="input-field col s8 m8 l8">
