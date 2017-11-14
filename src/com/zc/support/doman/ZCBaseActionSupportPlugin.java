@@ -91,6 +91,12 @@ public abstract class ZCBaseActionSupportPlugin implements ZCImplReqParamGetter 
 	}
 
 	@Override
+	public String getReqParamString(String key, String symbol) {
+		String return_value = ZCReqParamGetter.getParamStringWithSymbol(request, key, symbol, false);
+		return return_value;
+	}
+
+	@Override
 	public String[] getReqParamStrings(String key) {
 		String[] return_value = ZCReqParamGetter.getParamStrings(request, key, false);
 		return return_value;

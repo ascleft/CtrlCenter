@@ -1,8 +1,6 @@
 package com.zc.support.doman;
 
-
 public interface ZCImplReqParamGetter {
-	
 
 	/**
 	 * 根据key获取req中的参数值（int类型），若不存在则返回0，若多个则进行求和运算。
@@ -33,6 +31,12 @@ public interface ZCImplReqParamGetter {
 	 * 
 	 */
 	public String getReqParamString(String key);
+
+	/**
+	 * 根据key获取req中的参数值（String类型），若不存在则返回""，若多个则进行拼接处理。
+	 * 
+	 */
+	public String getReqParamString(String key, String symbol);
 
 	/**
 	 * 根据key获取req中的参数数组（String类型），若不存在则返回[""]。

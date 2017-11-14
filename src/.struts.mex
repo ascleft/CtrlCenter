@@ -1,28 +1,195 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Struts2Diagram version="2.0">
-  <package name="TailorFormAction" location="87,418" size="370,284">
-    <action name="Pro" location="42,39" size="150,41">
+  <package name="SystemCore" location="350,50" size="192,183">
+    <action name="Main" location="36,44" size="150,41">
       <result name="succ">
-        <resourceEdge source="succ" routing="0" target="tailorform.jsp" />
+        <resourceEdge source="succ" routing="0" target="index.jsp" />
       </result>
     </action>
-    <action name="SubmitTailorForm" location="38,226" size="150,40" />
+    <action name="OpenApiList" location="36,136" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="OpenApiListForm.jsp" />
+      </result>
+    </action>
+  </package>
+  <package name="TailorLoginAction" location="95,10" size="195,285">
+    <action name="Logout" location="39,239" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="Login.jsp" />
+      </result>
+    </action>
+    <action name="LoginPage" location="41,49" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="Login.jsp" />
+      </result>
+    </action>
+    <action name="Login" location="40,140" size="150,40" />
+  </package>
+  <package name="TailorFormAction" location="87,418" size="224,982">
+    <action name="Pro" location="68,65" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="FormTailorPro.jsp" />
+      </result>
+    </action>
+    <action name="ProPBC" location="36,136" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="FormTailorProPBC.jsp" />
+      </result>
+    </action>
+    <action name="Design" location="36,336" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="FormTailorDesign.jsp" />
+      </result>
+    </action>
+    <action name="Advisor" location="36,436" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="FormTailorAdvisor.jsp" />
+      </result>
+    </action>
+    <action name="SubmitTailorForm" location="64,252" size="150,40" />
+    <action name="GetSettingPage" location="36,536" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="Setting.jsp" />
+      </result>
+    </action>
+    <action name="GetState" location="36,636" size="150,40" />
+    <action name="Setting" location="36,686" size="150,40" />
+    <action name="GetPlatformTailorPage" location="36,736" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="PlatformTailor.jsp" />
+      </result>
+    </action>
+    <action name="UpdatePlatformTailorPage" location="36,836" size="150,40" />
+    <action name="GetPlatformTailorRTInventory" location="36,886" size="150,40" />
+    <action name="SubmitPlatformTailor" location="36,936" size="150,40" />
+  </package>
+  <package name="ShoppingCartAssistant" location="913,149" size="192,282">
+    <action name="LoginPage" location="36,44" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="Login.jsp" />
+      </result>
+    </action>
+    <action name="Logout" location="36,136" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="Login.jsp" />
+      </result>
+    </action>
+    <action name="Login" location="36,236" size="150,40" />
+  </package>
+  <package name="ShoppingCartAssistantMain" location="500,500" size="192,832">
+    <action name="AidePBYX" location="36,44" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="AidePBYX.jsp" />
+      </result>
+    </action>
+    <action name="AideSearch" location="36,136" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="AideSearch.jsp" />
+      </result>
+    </action>
+    <action name="CustomShopPBYX" location="36,236" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="CustomShopPBYX.jsp" />
+      </result>
+    </action>
+    <action name="CustomShopPBC" location="36,336" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="CustomShopPBC.jsp" />
+      </result>
+    </action>
+    <action name="CustomShopSearch" location="36,436" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="CustomShopSearch.jsp" />
+      </result>
+    </action>
+    <action name="Design" location="36,536" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="Design.jsp" />
+      </result>
+    </action>
+    <action name="Subcontract" location="36,636" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="Subcontract.jsp" />
+      </result>
+    </action>
+    <action name="GetPrice" location="36,736" size="150,40" />
+    <action name="SubmitOrder" location="36,786" size="150,40" />
+  </package>
+  <package name="UcsAction" location="500,650" size="192,182">
+    <action name="GetSearchPage" location="36,44" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="Search.jsp" />
+      </result>
+    </action>
+    <action name="Search" location="36,136" size="150,40" />
+  </package>
+  <package name="LTYXTailorListAction" location="50,800" size="192,232">
+    <action name="GetListPage" location="36,44" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="OrderList.jsp" />
+      </result>
+    </action>
+    <action name="GetPageCount" location="36,136" size="150,40" />
+    <action name="GetList" location="36,186" size="150,40" />
+  </package>
+  <package name="OpenAPI" location="350,800" size="192,282">
+    <action name="SubmitTailorForm" location="36,44" size="150,40" />
+    <action name="GetInterfaceTestPage" location="36,86" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="ActiveForm.jsp" />
+      </result>
+    </action>
+    <action name="InterfaceTest" location="36,186" size="150,40" />
+    <action name="ShowParam" location="36,236" size="150,40" />
+  </package>
+  <package name="Simulator" location="50,950" size="192,282">
+    <action name="LoginEC" location="36,44" size="150,40" />
+    <action name="SubTailorEC" location="36,86" size="150,40" />
+    <action name="GetActionFormPage" location="36,136" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="ActiveMeasureForm.jsp" />
+      </result>
+    </action>
+    <action name="GetActionForm" location="36,236" size="150,40" />
+  </package>
+  <package name="TalkAction" location="350,950" size="192,332">
+    <action name="GetTalkPage" location="36,44" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="Talk.jsp" />
+      </result>
+    </action>
+    <action name="Talk" location="36,136" size="150,40" />
+    <action name="GetRandomWordPage" location="36,186" size="150,41">
+      <result name="succ">
+        <resourceEdge source="succ" routing="0" target="Word.jsp" />
+      </result>
+    </action>
+    <action name="GetRandomWord" location="36,286" size="150,40" />
   </package>
   <webResource name="login.jsp" path="/html/TailorInfo/login.jsp" location="777,39" size="150,55" />
   <webResource name="tailorform.jsp" path="/html/TailorInfo/tailorform.jsp" location="748,370" size="150,55" />
-  <package name="TailorLoginAction" location="95,10" size="174,361">
-    <action name="LoginPage" location="15,23" size="150,41">
-      <result name="succ">
-        <resourceEdge source="succ" routing="0" target="login.jsp" />
-      </result>
-    </action>
-    <action name="Login" location="14,114" size="150,41">
-      <result name="succ">
-        <resourceEdge source="succ" routing="0" target="tailorform.jsp" />
-      </result>
-    </action>
-    <action name="Logout" location="13,213" size="150,40" />
-    <action name="LoginEC" location="12,312" size="150,40" />
-  </package>
+  <webResource name="index.jsp" path="/html/index.jsp" location="200,1100" size="150,55" />
+  <webResource name="OpenApiListForm.jsp" path="/html/ZC/OpenApiListForm.jsp" location="50,1400" size="150,55" />
+  <webResource name="Login.jsp" path="/html/TailorInfo/Login.jsp" location="350,1400" size="150,55" />
+  <webResource name="FormTailorPro.jsp" path="/html/TailorInfo/FormTailorPro.jsp" location="50,1550" size="150,55" />
+  <webResource name="FormTailorProPBC.jsp" path="/html/TailorInfo/FormTailorProPBC.jsp" location="350,1550" size="150,55" />
+  <webResource name="FormTailorDesign.jsp" path="/html/TailorInfo/FormTailorDesign.jsp" location="50,1700" size="150,55" />
+  <webResource name="FormTailorAdvisor.jsp" path="/html/TailorInfo/FormTailorAdvisor.jsp" location="350,1700" size="150,55" />
+  <webResource name="Setting.jsp" path="/html/TailorInfo/Setting.jsp" location="50,1850" size="150,55" />
+  <webResource name="PlatformTailor.jsp" path="/html/TailorInfo/PlatformTailor.jsp" location="350,1850" size="150,55" />
+  <webResource name="Login.jsp" path="/html/ShoppingCartAssistant/Login.jsp" location="50,2000" size="150,55" />
+  <webResource name="AidePBYX.jsp" path="/html/ShoppingCartAssistant/AidePBYX.jsp" location="350,2000" size="150,55" />
+  <webResource name="AideSearch.jsp" path="/html/ShoppingCartAssistant/AideSearch.jsp" location="50,2150" size="150,55" />
+  <webResource name="CustomShopPBYX.jsp" path="/html/ShoppingCartAssistant/CustomShopPBYX.jsp" location="650,1400" size="150,55" />
+  <webResource name="CustomShopPBC.jsp" path="/html/ShoppingCartAssistant/CustomShopPBC.jsp" location="650,1550" size="150,55" />
+  <webResource name="CustomShopSearch.jsp" path="/html/ShoppingCartAssistant/CustomShopSearch.jsp" location="650,1700" size="150,55" />
+  <webResource name="Design.jsp" path="/html/ShoppingCartAssistant/Design.jsp" location="650,1850" size="150,55" />
+  <webResource name="Subcontract.jsp" path="/html/ShoppingCartAssistant/Subcontract.jsp" location="650,2000" size="150,55" />
+  <webResource name="Search.jsp" path="/html/TailorInfo/Search.jsp" location="350,2150" size="150,55" />
+  <webResource name="OrderList.jsp" path="/html/TailorInfo/OrderList.jsp" location="650,2150" size="150,55" />
+  <webResource name="ActiveForm.jsp" path="/html/ZC/ActiveForm.jsp" location="50,2300" size="150,55" />
+  <webResource name="ActiveMeasureForm.jsp" path="/html/ZC/ActiveMeasureForm.jsp" location="350,2300" size="150,55" />
+  <webResource name="Talk.jsp" path="/html/Talk/Talk.jsp" location="650,2300" size="150,55" />
+  <webResource name="Word.jsp" path="/html/Talk/Word.jsp" location="50,2450" size="150,55" />
 </Struts2Diagram>
 

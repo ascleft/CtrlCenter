@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONObject;
 
+import com.zc.support.link.ZCReqParamGetter;
 import com.zc.support.service.Log;
 
 public class ZCBaseHttpFilter implements Filter, ZCImplReqParamGetter {
@@ -79,6 +80,12 @@ public class ZCBaseHttpFilter implements Filter, ZCImplReqParamGetter {
 	public String getReqParamString(String key) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getReqParamString(String key, String symbol) {
+		String return_value = ZCReqParamGetter.getParamStringWithSymbol(request, key, symbol, true);
+		return return_value;
 	}
 
 	@Override

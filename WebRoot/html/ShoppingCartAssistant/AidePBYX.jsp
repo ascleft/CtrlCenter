@@ -67,7 +67,7 @@
 
 		<script src="../../js/vue.min.js"></script>
 
-		<script src="../../js/init_tailorinfo.js"></script>
+		<script src="../../js/init_sca.js"></script>
 
 		<!--local jsp   -->
 		<link href="<%=path %>/img/global/logo/icon_title_1.jpg" rel="shortcut icon">
@@ -80,7 +80,7 @@
 
 		<script src="<%=path %>/js/vue.min.js"></script>
 
-		<script src="<%=path %>/js/init_tailorinfo.js"></script>
+		<script src="<%=path %>/js/init_sca.js"></script>
 
 		<script type="application/javascript">
 			//开启菜单
@@ -88,8 +88,8 @@
 				$('#nav_menu').sideNav('show');
 			}
 			//url定义
-			var url_addShoppingCart = "/CtrlCenter/LTYX/SCA/SubmitOrder.action";
-			var url_getPrice = "/CtrlCenter/LTYX/SCA/GetPrice.action";
+			var url_addShoppingCart = "/CtrlCenter/LTYX/SCA/Main/SubmitAidePBYX.action";
+			var url_getPrice = "/CtrlCenter/LTYX/SCA/Main/GetPriceAidePBYX.action";
 
 			//提交到购物车
 			function addShoppingCart() {
@@ -258,39 +258,7 @@
 								<a class=" white-text" onclick="logout() ">注销 </a>
 							</li>
 						</div>
-						<li>
-							<a class="subheader">定制顾问功能</a>
-						</li>
-						<li>
-							<a class="waves-effect" href="/CtrlCenter/LTYX/SCA/AidePBYX.action">衬衫 定制顾问</a>
-						</li>
-						<li>
-							<a class="waves-effect" href="/CtrlCenter/LTYX/SCA/Design.action">衬衫 设计师推荐款</a>
-						</li>
-						<li>
-							<a class="waves-effect" href="/CtrlCenter/LTYX/SCA/Subcontract.action">其他商品</a>
-						</li>
-						<li>
-							<a class="waves-effect" href="/CtrlCenter/LTYX/SCA/AideSearch.action">即时库存查询</a>
-						</li>
-						<li>
-							<a class="subheader">定制店功能</a>
-						</li>
-						<li>
-							<a class="waves-effect" href="/CtrlCenter/LTYX/SCA/CustomShopPBYX.action">衬衫 优纤面料</a>
-						</li>
-						<li>
-							<a class="waves-effect" href="/CtrlCenter/LTYX/SCA/CustomShopPBC.action">衬衫 客供面料</a>
-						</li>
-						<li>
-							<a class="waves-effect" href="/CtrlCenter/LTYX/SCA/Design.action">衬衫 设计师推荐款</a>
-						</li>
-						<li>
-							<a class="waves-effect" href="/CtrlCenter/LTYX/SCA/Subcontract.action">其他商品</a>
-						</li>
-						<li>
-							<a class="waves-effect" href="/CtrlCenter/LTYX/SCA/CustomShopSearch.action">即时库存查询</a>
-						</li>
+						<%=menulist%>
 					</ul>
 				</div>
 			</nav>
@@ -320,20 +288,20 @@
 												</div>
 												<div class="col s12 m6 l4">
 													<div class="input-field">
-														<input type="text" class="validate" name="customer_tel_target" value=""> <label>量体人电话（必填）</label>
+														<input type="text" class="validate" name="customer_tel" value=""> <label>量体人电话（必填）</label>
 													</div>
 												</div>
 												<div class="col s12 m6 l4">
 													<div class="input-field">
-														<input type="text" class="validate" name="customer_tel" value=""> <label>账户电话（必填）</label>
-													</div>
-												</div>
-												<div class="col s12 m6 l6">
-													<div class="input-field">
 														<input type="text" class="validate" name="customer_address" value=""> <label>收货地址</label>
 													</div>
 												</div>
-												<div class="col s12 m12 l6">
+												<div class="col s12 m6 l4">
+													<div class="input-field">
+														<input type="text" class="validate" name="customer_tel_target" value=""> <label>账户电话（必填）</label>
+													</div>
+												</div>
+												<div class="col s12 m12 l4">
 													<div class="input-field">
 														<input type="text" class="validate" name="customer_tips" value=""> <label>备注</label>
 													</div>
@@ -351,7 +319,6 @@
 										</div>
 										<div class="collapsible-body">
 											<div class="row">
-
 												<div class="col s12 m14 l4">
 													<div class="input-field">
 														<input type="text" class="validate" name="uskin_code" value=""> <label>面料编号（USKIN 编号）</label>
@@ -359,9 +326,17 @@
 												</div>
 												<div class="input-field col s6 m6 l4">
 													<select name="tailor_type">
-														<option value="26">长袖</option>
-														<option value="27">短袖</option>
+														<option value="YX-00-02">长袖</option>
+														<option value="YX-00-01">短袖</option>
 													</select> <label>长袖/短袖</label>
+												</div>
+												<div class="input-field col s12 m6 l4">
+													<select name="easy_type">
+														<option value="K">宽松</option>
+														<option value="H">合身</option>
+														<option value="X">修身</option>
+														<option value="J">紧身</option>
+													</select> <label>宽松度</label>
 												</div>
 												<div class="input-field col s6 m6 l4">
 													<select name="YX_08">
@@ -378,338 +353,7 @@
 											</div>
 										</div>
 									</li>
-									<li>
-										<div class="collapsible-header">
-											<i class="material-icons">settings_overscan</i>量体尺寸
-										</div>
-										<div class="collapsible-body">
-											<div class="row">
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="height" value="">
-														<label>身高</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="weight" value="">
-														<label>体重</label>
-													</div>
-												</div>
 
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="xiong_wei" value="">
-														<label>胸围</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="yao_wei" value="">
-														<label>腰围</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="du_wei" value="">
-														<label>肚围</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="dibian" value="">
-														<label>底边（臀围）</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="ling_wei" value="">
-														<label>领围</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="houshen_chang" value="">
-														<label>后身长</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="jian_kuan" value="">
-														<label>肩宽</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="jian_kuan_qian" value="">
-														<label>前肩宽</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="xiu_chang_zuo" value="">
-														<label>袖长左</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="xiu_chang_you" value="">
-														<label>袖长右</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="duanxiu_chang" value="">
-														<label>短袖长</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="xiu_fei" value="">
-														<label>袖肥（大臂围）</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="xiuzhou_fei" value="">
-														<label>袖肘肥（小臂围）</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="duanxiu_kouwei_zuo" value="">
-														<label>短袖口围左</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="duanxiu_kouwei_you" value="">
-														<label>短袖口围右</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="xiutouchang_zuo" value="">
-														<label>左袖头长（左腕围）</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="xiutouchang_you" value="">
-														<label>右袖头长（右腕围）</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="qianshen_chang" value="">
-														<label>前身长</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="qianxiong_kuan" value="">
-														<label>前胸宽</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="houbei_kuan" value="">
-														<label>后背宽</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="chest_height" value="">
-														<label>胸高</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="chest_distance" value="">
-														<label>胸距</label>
-													</div>
-												</div>
-												<div class="input-field col s6 m4 l3">
-													<select name="shenxing">
-														<%=list_shenxing%>
-													</select> <label>身型</label>
-												</div>
-												<div class="input-field col s6 m4 l3">
-													<select name="measure_type">
-														<option value="needless">不使用尺寸</option>
-														<option value="patternform">净尺寸</option>
-														<option value="clotheval">成衣尺寸</option>
-													</select> <label>尺寸类型</label>
-												</div>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="collapsible-header">
-											<i class="material-icons">settings_overscan</i>成衣尺寸
-										</div>
-										<div class="collapsible-body">
-											<div class="row">
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="height" value="">
-														<label>身高</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="weight" value="">
-														<label>体重</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="xiong_wei" value="">
-														<label>胸围</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="yao_wei" value="">
-														<label>腰围</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="du_wei" value="">
-														<label>肚围</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="dibian" value="">
-														<label>底边（臀围）</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="ling_wei" value="">
-														<label>领围</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="houshen_chang" value="">
-														<label>后身长</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="jian_kuan" value="">
-														<label>肩宽</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="jian_kuan_qian" value="">
-														<label>前肩宽</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="xiu_chang_zuo" value="">
-														<label>袖长左</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="xiu_chang_you" value="">
-														<label>袖长右</label>
-													</div>
-												</div>
-
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="duanxiu_chang" value="">
-														<label>短袖长</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="xiu_fei" value="">
-														<label>袖肥（大臂围）</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="xiuzhou_fei" value="">
-														<label>袖肘肥（小臂围）</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="duanxiu_kouwei_zuo" value="">
-														<label>短袖口围左</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="duanxiu_kouwei_you" value="">
-														<label>短袖口围右</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="xiutouchang_zuo" value="">
-														<label>左袖头长（左腕围）</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="xiutouchang_you" value="">
-														<label>右袖头长（右腕围）</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="qianshen_chang" value="">
-														<label>前身长</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="qianxiong_kuan" value="">
-														<label>前胸宽</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="houbei_kuan" value="">
-														<label>后背宽</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="chest_height" value="">
-														<label>胸高</label>
-													</div>
-												</div>
-												<div class="col s6 m4 l3">
-													<div class="input-field">
-														<input type="number" class="validate" name="chest_distance" value="">
-														<label>胸距</label>
-													</div>
-												</div>
-												<div class="input-field col s6 m4 l3">
-													<select name="shenxing">
-														<%=list_shenxing%>
-													</select> <label>身型</label>
-												</div>
-												<div class="input-field col s6 m4 l3">
-													<select name="measure_type">
-														<option value="needless">不使用尺寸</option>
-														<option value="patternform">净尺寸</option>
-														<option value="clotheval">成衣尺寸</option>
-													</select> <label>尺寸类型</label>
-												</div>
-											</div>
-										</div>
-									</li>
 									<li>
 										<div class="collapsible-header">
 											<i class="material-icons">playlist_add</i>工艺
@@ -1106,7 +750,7 @@
 														</div>
 														<div class="col s6 m6 l6">
 															<div class="input-field">
-																<input type="text" class="validate" name="peise_bn" value="">
+																<input type="text" class="validate" name="uskin_code_2" value="">
 																<label>配色面料</label>
 															</div>
 														</div>
@@ -1129,7 +773,7 @@
 										<div class="row">
 											<div class="col s6 m6 l4">
 												<div class="input-field">
-													<input type="number" class="validate" name="prices_system" value="0" id="prices_system"  readonly="true">
+													<input type="number" class="validate" name="prices_system" value="0" id="prices_system" readonly="true">
 													<label>系统报价</label>
 												</div>
 											</div>
@@ -1154,7 +798,7 @@
 												<a class="col s12 m12 l12 btn" onclick="getPrice()" id="addShoppingCart">获取报价</a>
 											</div>
 											<div class="col s12 m12 l12">
-												<a class="col s12 m12 l12 btn" onclick="addShoppingCart()" id="getPrice">提交订单数据</a>
+												<a class="col s12 m12 l12 btn red" onclick="addShoppingCart()" id="getPrice">提交订单数据</a>
 											</div>
 										</div>
 									</div>

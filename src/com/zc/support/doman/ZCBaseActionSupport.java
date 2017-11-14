@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,6 +43,8 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 
 	public void init(boolean allowCORS) {
 
+		initProgress();
+
 		timer = new TimeHelper.Timer();
 
 		response = (HttpServletResponse) ActionContext.getContext().get(org.apache.struts2.StrutsStatics.HTTP_RESPONSE);
@@ -53,7 +56,48 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 		}
 
 		session = request.getSession();
-		session.setMaxInactiveInterval(30 * 60);
+		// session.setMaxInactiveInterval(6 * 60 * 60);
+
+	}
+
+	private ArrayList<String> progressLog = null;
+
+	public void initProgress() {
+		progressLog = new ArrayList<String>();
+	}
+
+	public void addProgress(String log) {
+		progressLog.add(log);
+	}
+
+	public void addProgressSucc(String log) {
+		progressLog.add(log + "--->" + "成功");
+	}
+
+	public void addProgressFail(String log) {
+		progressLog.add(log + "--->" + "失败");
+	}
+
+	public void logProgress(String title) {
+		Log.Pro.start();
+		Log.Pro.whiteLine(title);
+		Log.Pro.whiteCut();
+		for (String logNow : progressLog) {
+			Log.Pro.whiteLine(logNow);
+		}
+		Log.Pro.finish();
+	}
+
+	public void logActionResponse(String title) {
+		Log.Pro.start();
+		Log.Pro.whiteLine(title);
+		Log.Pro.whiteCut();
+		Log.Pro.whiteLine("结束");
+		Log.Pro.whiteCut();
+		Log.Pro.whiteLine(result.toString());
+		Log.Pro.whiteCut();
+		timer.showTimerPartable(title);
+		Log.Pro.finish();
 	}
 
 	/**
@@ -64,17 +108,8 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 	 */
 	public void writeResp(String tab) {
 		writeResp();
-
-		Log.Pro.start();
-		Log.Pro.whiteLine(tab);
-		Log.Pro.whiteCut();
-		Log.Pro.whiteLine("结束");
-		Log.Pro.whiteCut();
-		Log.Pro.whiteLine(result.toString());
-		Log.Pro.whiteCut();
-		timer.showTimerPartable(tab);
-		Log.Pro.finish();
-
+		logActionResponse(tab);
+		logProgress(tab);
 	}
 
 	/**
@@ -148,6 +183,12 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 	@Override
 	public String getReqParamString(String key) {
 		String return_value = ZCReqParamGetter.getParamString(request, key, false);
+		return return_value;
+	}
+
+	@Override
+	public String getReqParamString(String key, String symbol) {
+		String return_value = ZCReqParamGetter.getParamStringWithSymbol(request, key, symbol, true);
 		return return_value;
 	}
 

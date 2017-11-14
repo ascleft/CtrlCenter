@@ -43,7 +43,7 @@
 
 		<script src="../../js/vue.min.js"></script>
 
-		<script src="../../js/init_tailorinfo.js"></script>
+		<script src="../../js/init_sca.js"></script>
 
 		<!--local jsp   -->
 		<link href="<%=path %>/img/global/logo/icon_title_1.jpg" rel="shortcut icon">
@@ -56,7 +56,7 @@
 
 		<script src="<%=path %>/js/vue.min.js"></script>
 
-		<script src="<%=path %>/js/init_tailorinfo.js"></script>
+		<script src="<%=path %>/js/init_sca.js"></script>
 
 		<script type="application/javascript">
 			//开启菜单
@@ -108,13 +108,13 @@
 								String_html += "<tr>";
 								String_html += "<td>";
 								if("MLCK040" == resp.data[i].FSTOCKNUMBER) {
-									String_html += "<a href=\"/CtrlCenter/LTYX/SCA/CustomShopPBC.action?code=";
+									String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBC.action?code=";
 									String_html += resp.data[i].FMATERIALNUMBER;
 									String_html += "\">";
 									String_html += resp.data[i].FMATERIALNUMBER;
 									String_html += "</a>";
 								} else {
-									String_html += "<a href=\"/CtrlCenter/LTYX/SCA/CustomShopPBC.action?code=";
+									String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action?code=";
 									String_html += resp.data[i].FUSKIN;
 									String_html += "\">";
 									String_html += resp.data[i].FUSKIN;

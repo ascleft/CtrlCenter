@@ -67,7 +67,7 @@
 
 		<script src="../../js/vue.min.js"></script>
 
-		<script src="../../js/init_tailorinfo.js"></script>
+		<script src="../../js/init_sca.js"></script>
 
 		<!--local jsp   -->
 		<link href="<%=path %>/img/global/logo/icon_title_1.jpg" rel="shortcut icon">
@@ -80,7 +80,7 @@
 
 		<script src="<%=path %>/js/vue.min.js"></script>
 
-		<script src="<%=path %>/js/init_tailorinfo.js"></script>
+		<script src="<%=path %>/js/init_sca.js"></script>
 
 		<script type="application/javascript">
 			//开启菜单

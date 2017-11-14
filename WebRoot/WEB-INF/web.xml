@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	<display-name></display-name>
 
@@ -54,6 +55,16 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	<filter-mapping>
 		<filter-name>LTYXTailorUser</filter-name>
 		<url-pattern>/LTYX/Tailor/TailorForm/*</url-pattern>
+	</filter-mapping>
+
+	<!--优纤下单工具SCA 登录验证 过滤器 -->
+	<filter>
+		<filter-name>SCAUser</filter-name>
+		<filter-class>com.ltyx.sca.filter.LTYXTailorFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>SCAUser</filter-name>
+		<url-pattern>/LTYX/SCA/Main/*</url-pattern>
 	</filter-mapping>
 
 	<!-- struts2过滤器 -->

@@ -74,7 +74,7 @@ public abstract class ZCBaseServlet extends HttpServlet implements ZCImplReqPara
 	private void initSession(int miminute) {
 
 		session = request.getSession();
-		session.setMaxInactiveInterval(miminute * 60);
+		// session.setMaxInactiveInterval(6 * 60 * 60);
 	}
 
 	private void initCORS(boolean allowCORS) {
@@ -136,6 +136,12 @@ public abstract class ZCBaseServlet extends HttpServlet implements ZCImplReqPara
 	@Override
 	public String getReqParamString(String key) {
 		String return_value = ZCReqParamGetter.getParamString(request, key, false);
+		return return_value;
+	}
+
+	@Override
+	public String getReqParamString(String key, String symbol) {
+		String return_value = ZCReqParamGetter.getParamStringWithSymbol(request, key, symbol, false);
 		return return_value;
 	}
 
