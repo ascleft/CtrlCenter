@@ -87,9 +87,9 @@
 			function OpenMenu() {
 				$('#nav_menu').sideNav('show');
 			}
-			//url定义
-			var url_addShoppingCart = "添加购物车url";
-			var url_getPrice = "获取报价url";
+			//url定义			
+			var url_addShoppingCart = "/CtrlCenter/LTYX/SCA/Main/SubmitAideSubcontract.action";
+			var url_getPrice = "/CtrlCenter/LTYX/SCA/Main/GetPriceAideSubcontract.action";
 
 			//提交到购物车
 			function addShoppingCart() {
@@ -148,7 +148,7 @@
 								state_loaded();
 								$("#prices_system").val('999999999');
 								$("#prices_now").val('999999999');
-								$("#prices_desc").val('信息不合法，请重新获取报价:' + resp.data);
+								$("#prices_desc").val('报价异常，请重试:' + resp.data);
 								state_ready("n");
 							}
 						} else {
@@ -287,20 +287,20 @@
 												</div>
 												<div class="col s12 m6 l4">
 													<div class="input-field">
-														<input type="text" class="validate" name="customer_tel_target" value=""> <label>量体人电话（必填）</label>
+														<input type="text" class="validate" name="customer_tel" value=""> <label>量体人电话（必填）</label>
 													</div>
 												</div>
 												<div class="col s12 m6 l4">
 													<div class="input-field">
-														<input type="text" class="validate" name="customer_tel" value=""> <label>账户电话（必填）</label>
-													</div>
-												</div>
-												<div class="col s12 m6 l6">
-													<div class="input-field">
 														<input type="text" class="validate" name="customer_address" value=""> <label>收货地址</label>
 													</div>
 												</div>
-												<div class="col s12 m12 l6">
+												<div class="col s12 m6 l4">
+													<div class="input-field">
+														<input type="text" class="validate" name="customer_tel_target" value=""> <label>账户电话（必填）</label>
+													</div>
+												</div>
+												<div class="col s12 m12 l4">
 													<div class="input-field">
 														<input type="text" class="validate" name="customer_tips" value=""> <label>备注</label>
 													</div>
@@ -319,8 +319,7 @@
 										<div class="collapsible-body">
 											<div class="row">
 												<div class="input-field col s12 m12 l12">
-													<select name="style_name">
-														<option value="">设计师推荐款</option>
+													<select name="design_code">
 														<option value="SUIT5000">西服套装（高价位）</option>
 														<option value="SUIT2980">西服套装</option>
 														<option value="JEANS_H">牛仔裤（国产）</option>
@@ -335,11 +334,6 @@
 														<option value="CASHMERE">羊绒衫</option>
 													</select> <label>产品类型</label>
 												</div>
-												<div class="col s12 m14 l4">
-													<div class="input-field">
-														<input type="text" class="validate" name="uskin_code" value=""> <label>面料编号（USKIN 编号）</label>
-													</div>
-												</div>
 											</div>
 										</div>
 									</li>
@@ -352,7 +346,7 @@
 										<div class="row">
 											<div class="col s6 m6 l4">
 												<div class="input-field">
-													<input type="number" class="validate" name="prices_system" value="0" id="prices_system"  readonly="true">
+													<input type="number" class="validate" name="prices_system" value="0" id="prices_system" readonly="true">
 													<label>系统报价</label>
 												</div>
 											</div>
@@ -407,7 +401,7 @@
 
 		<footer class="page-footer teal">
 			<div class="container">
-				<div class="row" style="display: none; ">
+				<div class="row" style="display:none;">
 					<h5 class="center-align">					
 						<img class="hoverable" src="<%=QRurl%>"/>
 					</h5>
@@ -417,6 +411,7 @@
 				<div class="container">Made By ZhangChi 2017</div>
 			</div>
 		</footer>
+
 	</body>
 
 </html>

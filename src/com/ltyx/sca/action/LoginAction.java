@@ -6,6 +6,7 @@ import com.zc.support.config.ConfigHelperURL;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
+import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.Log;
 import com.zc.support.service.NumberHelper;
 
@@ -34,40 +35,54 @@ public class LoginAction extends ZCBaseActionSupport {
 	 */
 	public String login() {
 
-		Log.Nano.tag("登录接口", "开始");
+		init(true);
+
+		String methodName = "SCA 登录";
+
+		ZCReqIntroGetter.showParams(methodName, request);
+
+		doLogin();
+
+		writeResp(methodName);
+
+		return null;
+
+	}
+
+	/**
+	 * 注销接口
+	 * 
+	 */
+	public String logout() {
 
 		init(true);
+
+		String methodName = "SCA 注销";
+
+		doLogout();
+
+		logProgress(methodName);
+
+		return "succ";
+	}
+
+	private boolean doLogin() {
 
 		String name = getReqParamString("name");
 		String pwd = getReqParamString("pwd");
 		String role = getReqParamString("role");
 
 		if (null == role) {
-
-			Log.Nano.tag("登录接口数据缺失 from Web", "name:" + name, "pwd:" + pwd, "role:" + role);
-
 			ERRCODE = "1";
 			ERRDESC = "fail";
 			data = "弱鸡，少特么调戏接口";
-
-			writeResp("登录接口 resp to Web");
-
-			return null;
-
+			addProgressFail("登录状态权限丢失");
 		} else if (null == name || null == pwd) {
-
-			Log.Nano.tag("登录接口数据缺失 from Web", "name:" + name, "pwd:" + pwd, "role:" + role);
-
 			ERRCODE = "1";
 			ERRDESC = "fail";
 			data = "请输入完整的用户名和密码";
-
-			writeResp("登录接口 resp to Web");
-
-			return null;
-
+			addProgressFail("登录状态用户信息丢失");
 		} else {
-
 			ZCHttpReqParam param = new ZCHttpReqParam();
 			param.addParam("name", name);
 			param.addParam("pwd", pwd);
@@ -104,44 +119,42 @@ public class LoginAction extends ZCBaseActionSupport {
 				String targetUrl = "";
 				int roleCheck = NumberHelper.string2int(ec_user_role);
 				if (0 <= roleCheck && roleCheck < 10) {
-					targetUrl = "/CtrlCenter/LTYX/SCA/Main/AidePBYX.action";// 定制顾问
+					targetUrl = "/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action";// 客户经理
 				} else if (10 <= roleCheck && roleCheck < 20) {
-					targetUrl = "/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action";// 客户经理
+					targetUrl = "/CtrlCenter/LTYX/SCA/Main/AidePBYX.action";// 定制顾问
 				} else if (20 <= roleCheck && roleCheck < 30) {
 					targetUrl = "/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action";// 定制店
+				} else {
+					ERRCODE = "1";
+					ERRDESC = "fail";
+					data = "权限异常";
+					addProgressFail("EC权限异常");
+					return false;
 				}
 
 				ERRCODE = "0";
 				ERRDESC = "succ";
 				data = targetUrl;
+				addProgressSucc("登录成功:" + " name:" + ec_user_name + " id:" + ec_user_id + " role:" + ec_user_role);
 
 			} else {
-
 				ERRCODE = "0";
 				ERRDESC = "fail";
 				data = "EC错误码：" + jsonERRCODE + " EC错误描述：" + jsonERRDESC;
-
+				addProgressFail(data);
 			}
-
-			writeResp("登录接口 resp to Web");
-
-			return null;
 		}
 
+		return true;
 	}
 
-	/**
-	 * 注销接口
-	 * 
-	 */
-	public String logout() {
-		init(true);
+	private boolean doLogout() {
 		session.setAttribute("isOnline", "0");
 		session.setAttribute("ec_user_id", null);
 		session.setAttribute("ec_user_name", null);
 		session.setAttribute("ec_user_role", null);
-		Log.Nano.tag("注销", "完成");
-		return "succ";
+		addProgressSucc("注销完成");
+		return true;
 	}
 
 }

@@ -1,14 +1,13 @@
 package com.ltyx.sca.action;
 
-import com.ltyx.sca.actionplugin.MoudleAideCheckSummaryClothes;
 import com.ltyx.sca.actionplugin.MoudleAideCheckUserInfo;
-import com.ltyx.sca.actionplugin.MoudleAideGetPricePBYX;
-import com.ltyx.sca.actionplugin.MoudleAideSubmitECPBYX;
+import com.ltyx.sca.actionplugin.MoudleAideGetPriceSubcontract;
+import com.ltyx.sca.actionplugin.MoudleAideSubmitECSubcontract;
 import com.ltyx.sca.actionplugin.MoudleCheckPrice;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 
-public class AidePBYXAction extends ZCBaseActionSupport {
+public class AideSubcontractAction extends ZCBaseActionSupport {
 
 	/**
 	 * 
@@ -65,7 +64,7 @@ public class AidePBYXAction extends ZCBaseActionSupport {
 	public String getPrice() {
 
 		init(true);
-		String methodName = "定制顾问 衬衫 报价";
+		String methodName = "定制顾问 其他商品 报价";
 
 		ZCReqIntroGetter.showParams(methodName, request);
 
@@ -79,7 +78,7 @@ public class AidePBYXAction extends ZCBaseActionSupport {
 	public String submit() {
 
 		init(true);
-		String methodName = "定制顾问 衬衫 提交购物车";
+		String methodName = "定制顾问 其他商品 提交购物车";
 
 		ZCReqIntroGetter.showParams(methodName, request);
 
@@ -92,7 +91,7 @@ public class AidePBYXAction extends ZCBaseActionSupport {
 
 	public boolean doGetPrice() {
 
-		MoudleAideGetPricePBYX moudle = new MoudleAideGetPricePBYX(request);
+		MoudleAideGetPriceSubcontract moudle = new MoudleAideGetPriceSubcontract(request);
 		moudle.doJobs();
 		ERRCODE = moudle.getERRCODE();
 		ERRDESC = moudle.getERRDESC();
@@ -116,18 +115,6 @@ public class AidePBYXAction extends ZCBaseActionSupport {
 		}
 
 		{
-			MoudleAideCheckSummaryClothes moudle = new MoudleAideCheckSummaryClothes(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("订单摘要信息");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
-				return false;
-			}
-			addProgressSucc("订单摘要信息");
-		}
-
-		{
 			MoudleCheckPrice moudle = new MoudleCheckPrice(request);
 			if (!moudle.doJobs()) {
 				addProgressFail("报价核对");
@@ -140,7 +127,7 @@ public class AidePBYXAction extends ZCBaseActionSupport {
 		}
 
 		{
-			MoudleAideSubmitECPBYX moudle = new MoudleAideSubmitECPBYX(request);
+			MoudleAideSubmitECSubcontract moudle = new MoudleAideSubmitECSubcontract(request);
 			if (!moudle.doJobs()) {
 				ERRCODE = moudle.getERRCODE();
 				ERRDESC = moudle.getERRDESC();

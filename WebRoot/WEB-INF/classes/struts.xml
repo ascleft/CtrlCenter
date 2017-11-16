@@ -139,26 +139,64 @@
 		<action name="AidePBYX" class="com.ltyx.sca.action.AidePBYXAction" method="getPage">
 			<result name="succ">/html/ShoppingCartAssistant/AidePBYX.jsp</result>
 		</action>
+		<action name="GetPriceAidePBYX" class="com.ltyx.sca.action.AidePBYXAction" method="getPrice"></action>
+		<action name="SubmitAidePBYX" class="com.ltyx.sca.action.AidePBYXAction" method="submit"></action>
+		
 		<!-- 获取页面 设计师款 定制顾问-->
 		<action name="AideDesign" class="com.ltyx.sca.action.AideDesignAction" method="getPage">
 			<result name="succ">/html/ShoppingCartAssistant/AideDesign.jsp</result>
+		</action>
+		<action name="GetPriceAideDesign" class="com.ltyx.sca.action.AideDesignAction" method="getPrice"></action>
+		<action name="SubmitAideDesign" class="com.ltyx.sca.action.AideDesignAction" method="submit"></action>
+		
+		<!-- 获取页面 其他商品 定制顾问-->
+		<action name="AideSubcontract" class="com.ltyx.sca.action.AideSubcontractAction" method="getPage">
+			<result name="succ">/html/ShoppingCartAssistant/AideSubcontract.jsp</result>
+		</action>
+		<action name="GetPriceAideSubcontract" class="com.ltyx.sca.action.AideSubcontractAction" method="getPrice"></action>
+		<action name="SubmitAideSubcontract" class="com.ltyx.sca.action.AideSubcontractAction" method="submit"></action>
+		
+		<!-- 获取页面 衬衫 定制店 优纤面料-->
+		<action name="CustomShopPBYX" class="com.ltyx.sca.action.CustomShopPBYXAction" method="getPage">
+			<result name="succ">/html/ShoppingCartAssistant/CustomShopPBYX.jsp</result>
+		</action>
+		<action name="GetPriceCustomShopPBYX" class="com.ltyx.sca.action.CustomShopPBYXAction" method="getPrice"></action>
+		<action name="SubmitCustomShopPBYX" class="com.ltyx.sca.action.CustomShopPBYXAction" method="submit"></action>
+		
+		<!-- 获取页面 衬衫 定制店 客供面料-->
+		<action name="CustomShopPBC" class="com.ltyx.sca.action.CustomShopPBCAction" method="getFormWithCode">
+			<result name="succ">/html/ShoppingCartAssistant/CustomShopPBC.jsp</result>
+		</action>
+		<action name="GetPriceCustomShopPBC" class="com.ltyx.sca.action.CustomShopPBCAction" method="getPrice"></action>
+		<action name="SubmitCustomShopPBC" class="com.ltyx.sca.action.CustomShopPBCAction" method="submit"></action>
+		
+		
+		<!-- 获取页面 衬衫 客户经理 优纤面料-->
+		<action name="CustomShopAidePBYX" class="com.ltyx.sca.action.GetForm" method="getPage">
+			<result name="succ">/html/ShoppingCartAssistant/CustomShopAidePBYX.jsp</result>
+		</action>
+		<action name="GetPriceCustomShopAidePBYX" class="com.ltyx.sca.action.CustomShopAidePBYXAction" method="getPrice"></action>
+		<action name="SubmitCustomShopAidePBYX" class="com.ltyx.sca.action.CustomShopAidePBYXAction" method="submit"></action>
+		
+		<!-- 获取页面 衬衫 客户经理 客供面料-->
+		<action name="CustomShopAidePBC" class="com.ltyx.sca.action.GetForm" method="getFormWithCode">
+			<result name="succ">/html/ShoppingCartAssistant/CustomShopAidePBC.jsp</result>
+		</action>
+		<action name="GetPriceCustomShopAidePBC" class="com.ltyx.sca.action.CustomShopAidePBCAction" method="getPrice"></action>
+		<action name="SubmitCustomShopAidePBC" class="com.ltyx.sca.action.CustomShopAidePBCAction" method="submit"></action>
+		
+		
+		<!-- 获取页面 即时库存 定制店 -->
+		<action name="CustomShopSearch" class="com.ltyx.sca.action.GetForm" method="getPage">
+			<result name="succ">/html/ShoppingCartAssistant/CustomShopSearch.jsp</result>
 		</action>
 		<!-- 获取页面 即时库存 定制顾问 -->
 		<action name="AideSearch" class="com.ltyx.sca.action.GetForm" method="getPage">
 			<result name="succ">/html/ShoppingCartAssistant/AideSearch.jsp</result>
 		</action>
-		
-		<!-- 获取页面 衬衫 定制店 优纤面料-->
-		<action name="CustomShopPBYX" class="com.ltyx.sca.action.GetForm" method="getPage">
-			<result name="succ">/html/ShoppingCartAssistant/CustomShopPBYX.jsp</result>
-		</action>
-		<!-- 获取页面 衬衫 定制店 客供面料-->
-		<action name="CustomShopPBC" class="com.ltyx.sca.action.GetForm" method="getFormWithCode">
-			<result name="succ">/html/ShoppingCartAssistant/CustomShopPBC.jsp</result>
-		</action>
-		<!-- 获取页面 即时库存 定制店 -->
-		<action name="CustomShopSearch" class="com.ltyx.sca.action.GetForm" method="getPage">
-			<result name="succ">/html/ShoppingCartAssistant/CustomShopSearch.jsp</result>
+		<!-- 获取页面 即时库存 客户经理 -->
+		<action name="CustomShopAideSearch" class="com.ltyx.sca.action.GetForm" method="getPage">
+			<result name="succ">/html/ShoppingCartAssistant/CustomShopAideSearch.jsp</result>
 		</action>
 		
 		<!-- 获取页面 其他商品-->
@@ -166,18 +204,6 @@
 			<result name="succ">/html/ShoppingCartAssistant/Subcontract.jsp</result>
 		</action>
 		
-		<!-- 数据接口  衬衫 定制顾问 -->
-		<action name="GetPriceAidePBYX" class="com.ltyx.sca.action.AidePBYXAction" method="getPrice"></action>
-		<action name="SubmitAidePBYX" class="com.ltyx.sca.action.AidePBYXAction" method="submit"></action>
-		<!-- 数据接口 设计师款 定制顾问 -->
-		<action name="GetPriceAideDesign" class="com.ltyx.sca.action.AideDesignAction" method="getPrice"></action>
-		<action name="SubmitAideDesign" class="com.ltyx.sca.action.AideDesignAction" method="submit"></action>
-		<!-- 数据接口 衬衫 定制店 优纤面料-->
-		<action name="GetPriceCustomShopPBYX" class="com.ltyx.sca.action.CustomShopPBYXAction" method="getPrice"></action>
-		<action name="SubmitCustomShopPBYX" class="com.ltyx.sca.action.CustomShopPBYXAction" method="submit"></action>
-		<!-- 数据接口 衬衫 定制店 客供面料-->
-		<action name="GetPriceCustomShopPBYC" class="com.ltyx.sca.action.CustomShopPBCAction" method="getPrice"></action>
-		<action name="SubmitCustomShopPBYC" class="com.ltyx.sca.action.CustomShopPBCAction" method="submit"></action>
 		
 		<!-- 临时模拟 获取报价 -->
 		<action name="GetPrice" class="com.ltyx.sca.action.GetForm" method="getPrice"></action>

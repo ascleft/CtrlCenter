@@ -10,9 +10,9 @@ import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
 
-public class MoudleCSSubmitECPBYX extends ZCBaseActionSupportPlugin {
+public class MoudleCSASubmitECPBC extends ZCBaseActionSupportPlugin {
 
-	public MoudleCSSubmitECPBYX(HttpServletRequest req) {
+	public MoudleCSASubmitECPBC(HttpServletRequest req) {
 		this.request = req;
 	}
 
@@ -99,8 +99,8 @@ public class MoudleCSSubmitECPBYX extends ZCBaseActionSupportPlugin {
 		param.addParam("chest_height", getReqParamString("chest_height"));
 		param.addParam("chest_distance", getReqParamString("chest_distance"));
 
-		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshop_add_cart_pbyx, param);
-		Log.Nano.tag("定制店 提交 优纤面料 Resp From EC", httpResp);
+		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_add_cart_pbc, param);
+		Log.Nano.tag("客户经理 提交 客供面料 Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp;
 		String jsonERRCODE;

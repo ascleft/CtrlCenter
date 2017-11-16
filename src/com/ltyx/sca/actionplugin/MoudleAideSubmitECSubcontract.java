@@ -10,9 +10,9 @@ import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
 
-public class MoudleCSSubmitECPBYX extends ZCBaseActionSupportPlugin {
+public class MoudleAideSubmitECSubcontract extends ZCBaseActionSupportPlugin {
 
-	public MoudleCSSubmitECPBYX(HttpServletRequest req) {
+	public MoudleAideSubmitECSubcontract(HttpServletRequest req) {
 		this.request = req;
 	}
 
@@ -20,7 +20,6 @@ public class MoudleCSSubmitECPBYX extends ZCBaseActionSupportPlugin {
 
 		ZCHttpReqParam param = new ZCHttpReqParam();
 
-		// 订单信息
 		param.addParam("LZX_01", getReqParamString("LZX_01"));
 		param.addParam("LZX_02", getReqParamString("LZX_02"));
 		param.addParam("LZX_03", getReqParamString("LZX_03"));
@@ -41,7 +40,7 @@ public class MoudleCSSubmitECPBYX extends ZCBaseActionSupportPlugin {
 		param.addParam("LZX_13_FOR_PIC", getReqParamString("LZX_13_FOR_PIC"));
 		param.addParam("LZX_17", getReqParamString("LZX_17"));
 		param.addParam("LZX_26", getReqParamString("LZX_26"));
-		param.addParam("YX_08", getReqParamString("YX_08", ""));
+		param.addParam("YX_08", getReqParamString("YX_08"));
 		param.addParam("YX_09", getReqParamString("YX_09"));
 		param.addParam("cefeng", getReqParamString("cefeng"));
 		param.addParam("chenbu", getReqParamString("chenbu"));
@@ -50,8 +49,9 @@ public class MoudleCSSubmitECPBYX extends ZCBaseActionSupportPlugin {
 		param.addParam("customer_tel", getReqParamString("customer_tel"));
 		param.addParam("customer_tel_target", getReqParamString("customer_tel_target"));
 		param.addParam("customer_tips", getReqParamString("customer_tips"));
+		param.addParam("design_code", getReqParamString("design_code"));
 		param.addParam("easy_type", getReqParamString("easy_type"));
-		param.addParam("kouzi", getReqParamString("kouzi", ""));
+		param.addParam("kouzi", getReqParamString("kouzi"));
 		param.addParam("line_color_location_1", getReqParamString("line_color_location_1"));
 		param.addParam("line_color_location_2", getReqParamString("line_color_location_2"));
 		param.addParam("line_color_location_3", getReqParamString("line_color_location_3"));
@@ -60,10 +60,6 @@ public class MoudleCSSubmitECPBYX extends ZCBaseActionSupportPlugin {
 		param.addParam("mingxian", getReqParamString("mingxian"));
 		param.addParam("operator_id", getReqParamString("operator_id"));
 		param.addParam("operator_name", getReqParamString("operator_name"));
-		param.addParam("order_delivery_time", getReqParamString("order_delivery_time"));// -----------
-		param.addParam("order_mtm_type", getReqParamString("order_mtm_type"));// ---------------------
-		param.addParam("order_processing_cost", getReqParamString("order_processing_cost"));// -------
-		param.addParam("order_production_count", getReqParamString("order_production_count"));// -----
 		param.addParam("prices_desc", getReqParamString("prices_desc"));
 		param.addParam("prices_now", getReqParamString("prices_now"));
 		param.addParam("prices_system", getReqParamString("prices_system"));
@@ -73,34 +69,8 @@ public class MoudleCSSubmitECPBYX extends ZCBaseActionSupportPlugin {
 		param.addParam("uskin_code_2", getReqParamString("uskin_code_2"));
 		param.addParam("zhidai", getReqParamString("zhidai"));
 
-		// 成衣尺寸、量体尺寸信息
-		param.addParam("measure_type", getReqParamString("measure_type"));
-		param.addParam("size", getReqParamString("size"));
-		param.addParam("height", getReqParamString("height"));
-		param.addParam("weight", getReqParamString("weight"));
-		param.addParam("xiong_wei", getReqParamString("xiong_wei"));
-		param.addParam("yao_wei", getReqParamString("yao_wei"));
-		param.addParam("du_wei", getReqParamString("du_wei"));
-		param.addParam("dibian", getReqParamString("dibian"));
-		param.addParam("ling_wei", getReqParamString("ling_wei"));
-		param.addParam("houshen_chang_nei", getReqParamString("houshen_chang_nei"));
-		param.addParam("houshen_chang_wai", getReqParamString("houshen_chang_wai"));
-		param.addParam("jian_kuan", getReqParamString("jian_kuan"));
-		param.addParam("xiu_chang", getReqParamString("xiu_chang"));
-		param.addParam("duanxiu_chang", getReqParamString("duanxiu_chang"));
-		param.addParam("xiu_fei", getReqParamString("xiu_fei"));
-		param.addParam("xiuzhou_fei", getReqParamString("xiuzhou_fei"));
-		param.addParam("duanxiu_kouwei", getReqParamString("duanxiu_kouwei"));
-		param.addParam("xiutouchang_zuo", getReqParamString("xiutouchang_zuo"));
-		param.addParam("xiutouchang_you", getReqParamString("xiutouchang_you"));
-		param.addParam("qianshen_chang", getReqParamString("qianshen_chang"));
-		param.addParam("qianxiong_kuan", getReqParamString("qianxiong_kuan"));
-		param.addParam("houbei_kuan", getReqParamString("houbei_kuan"));
-		param.addParam("chest_height", getReqParamString("chest_height"));
-		param.addParam("chest_distance", getReqParamString("chest_distance"));
-
-		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshop_add_cart_pbyx, param);
-		Log.Nano.tag("定制店 提交 优纤面料 Resp From EC", httpResp);
+		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_aide_add_cart_subcontract, param);
+		Log.Nano.tag("定制顾问 提交 其他商品 Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp;
 		String jsonERRCODE;

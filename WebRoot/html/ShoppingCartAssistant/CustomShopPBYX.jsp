@@ -148,7 +148,7 @@
 								state_loaded();
 								$("#prices_system").val('999999999');
 								$("#prices_now").val('999999999');
-								$("#prices_desc").val('信息不合法，请重新获取报价:' + resp.data);
+								$("#prices_desc").val('报价异常，请重试:' + resp.data);
 								state_ready("n");
 							}
 						} else {
@@ -236,7 +236,7 @@
 			<nav class="teal" role="navigation">
 				<div class="nav-wrapper container">
 					<!-- 页面标题  -->
-					<a id="logo-container " href="#" class="brand-logo white-text ">衬衫 优纤面料</a>
+					<a id="logo-container " href="#" class="brand-logo white-text ">衬衫 优纤面料 定制店</a>
 					<!-- 导航菜单键（运动移动设备） -->
 					<a href="#" data-activates="nav_menu_list " class="button-collapse ">
 						<i class="material-icons white-text">menu</i>
@@ -397,10 +397,82 @@
 													<div class="row" id="size_list">
 														<div class="input-field col s12 m6 l4">
 															<select name="size">
-																<option value="">28</option>
-																<option value="">29</option>
-																<option value="">30</option>
-																<option value="">31</option>
+																<option value="2176">男式衬衫紧身版38 </option>
+																<option value="2177">男式衬衫紧身版38.5</option>
+																<option value="2178">男式衬衫紧身版39 </option>
+																<option value="2179">男式衬衫紧身版39.5</option>
+																<option value="2180">男式衬衫紧身版40 </option>
+																<option value="2181">男式衬衫紧身版40.5</option>
+																<option value="2182">男式衬衫紧身版41 </option>
+																<option value="2183">男式衬衫紧身版41.5</option>
+																<option value="2184">男式衬衫紧身版42 </option>
+																<option value="2185">男式衬衫紧身版42.5</option>
+																<option value="2186">男式衬衫紧身版43 </option>
+																<option value="2187">男式衬衫紧身版43.5</option>
+																<option value="2188">男式衬衫紧身版44 </option>
+																<option value="2189">男式衬衫紧身版44.5</option>
+																<option value="2190">男式衬衫紧身版45 </option>
+																<option value="2191">男式衬衫紧身版45.5</option>
+																<option value="2192">男式衬衫紧身版46 </option>
+																<option value="2193">男式衬衫紧身版46.5</option>
+																<option value="2194">男式衬衫紧身版47 </option>
+																<option value="2276">男式衬衫修身版38 </option>
+																<option value="2277">男式衬衫修身版38.5</option>
+																<option value="2278">男式衬衫修身版39 </option>
+																<option value="2279">男式衬衫修身版39.5</option>
+																<option value="2280">男式衬衫修身版40 </option>
+																<option value="2281">男式衬衫修身版40.5</option>
+																<option value="2282">男式衬衫修身版41 </option>
+																<option value="2283">男式衬衫修身版41.5</option>
+																<option value="2284">男式衬衫修身版42 </option>
+																<option value="2285">男式衬衫修身版42.5</option>
+																<option value="2286">男式衬衫修身版43 </option>
+																<option value="2287">男式衬衫修身版43.5</option>
+																<option value="2288">男式衬衫修身版44 </option>
+																<option value="2289">男式衬衫修身版44.5</option>
+																<option value="2290">男式衬衫修身版45 </option>
+																<option value="2291">男式衬衫修身版45.5</option>
+																<option value="2292">男式衬衫修身版46 </option>
+																<option value="2293">男式衬衫修身版46.5</option>
+																<option value="2294">男式衬衫修身版47 </option>
+																<option value="2376">男式衬衫合身版38 </option>
+																<option value="2377">男式衬衫合身版38.5</option>
+																<option value="2378">男式衬衫合身版39 </option>
+																<option value="2379">男式衬衫合身版39.5</option>
+																<option value="2380">男式衬衫合身版40 </option>
+																<option value="2381">男式衬衫合身版40.5</option>
+																<option value="2382">男式衬衫合身版41 </option>
+																<option value="2383">男式衬衫合身版41.5</option>
+																<option value="2384">男式衬衫合身版42 </option>
+																<option value="2385">男式衬衫合身版42.5</option>
+																<option value="2386">男式衬衫合身版43 </option>
+																<option value="2387">男式衬衫合身版43.5</option>
+																<option value="2388">男式衬衫合身版44 </option>
+																<option value="2389">男式衬衫合身版44.5</option>
+																<option value="2390">男式衬衫合身版45 </option>
+																<option value="2391">男式衬衫合身版45.5</option>
+																<option value="2392">男式衬衫合身版46 </option>
+																<option value="2393">男式衬衫合身版46.5</option>
+																<option value="2394">男式衬衫合身版47 </option>
+																<option value="2476">男式衬衫宽松版38 </option>
+																<option value="2477">男式衬衫宽松版38.5</option>
+																<option value="2478">男式衬衫宽松版39 </option>
+																<option value="2479">男式衬衫宽松版39.5</option>
+																<option value="2480">男式衬衫宽松版40 </option>
+																<option value="2481">男式衬衫宽松版40.5</option>
+																<option value="2482">男式衬衫宽松版41 </option>
+																<option value="2483">男式衬衫宽松版41.5</option>
+																<option value="2484">男式衬衫宽松版42 </option>
+																<option value="2485">男式衬衫宽松版42.5</option>
+																<option value="2486">男式衬衫宽松版43 </option>
+																<option value="2487">男式衬衫宽松版43.5</option>
+																<option value="2488">男式衬衫宽松版44 </option>
+																<option value="2489">男式衬衫宽松版44.5</option>
+																<option value="2490">男式衬衫宽松版45 </option>
+																<option value="2491">男式衬衫宽松版45.5</option>
+																<option value="2492">男式衬衫宽松版46 </option>
+																<option value="2493">男式衬衫宽松版46.5</option>
+																<option value="2494">男式衬衫宽松版47 </option>
 															</select> <label>号衣尺码</label>
 														</div>
 													</div>
@@ -983,7 +1055,7 @@
 													<label>自主报价</label>
 												</div>
 											</div>
-											<div class="col s12 m12 l4" style="display: none;">
+											<div class="col s12 m12 l4">
 												<div class="input-field">
 													<input type="text" class="validate" name="prices_desc" value="点击获取报价" id="prices_desc" readonly="true">
 													<label>差价说明</label>

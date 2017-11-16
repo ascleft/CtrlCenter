@@ -100,7 +100,7 @@ public class MoudleCSSubmitECPBC extends ZCBaseActionSupportPlugin {
 		param.addParam("chest_distance", getReqParamString("chest_distance"));
 
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshop_add_cart_pbc, param);
-		Log.Nano.tag("Save Resp From EC", httpResp);
+		Log.Nano.tag("定制店 提交 客供面料 Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp;
 		String jsonERRCODE;

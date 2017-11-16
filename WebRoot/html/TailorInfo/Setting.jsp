@@ -139,7 +139,7 @@
 									<div class="input-field col s12 m6 l6">
 										<select name="url">
 											<option value="http://www.utailor.com.cn">正式服务器 http://www.utailor.com.cn</option>
-											<option value="http://101.200.159.174">测试服务器 http://101.200.159.174</option>
+											<option value="http://tool.uskin.net.cn/">测试服务器 http://tool.uskin.net.cn/</option>
 										</select>
 										<label>目标服务器</label>
 									</div>

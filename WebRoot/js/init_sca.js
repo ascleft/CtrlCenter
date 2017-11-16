@@ -24,7 +24,7 @@ var DeliveryTimeTable;
 
 function initDeliveryTimeTable() {
 	DeliveryTimeTable = {
-		'但单独打板，单量单裁': {
+		'单独打板，单量单裁': {
 			'1': {
 				'7': {
 					'基础款式': '120',

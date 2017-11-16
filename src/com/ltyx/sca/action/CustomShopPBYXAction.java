@@ -5,6 +5,7 @@ import com.ltyx.sca.actionplugin.MoudleCSCheckUserInfo;
 import com.ltyx.sca.actionplugin.MoudleCSGetPricePBYX;
 import com.ltyx.sca.actionplugin.MoudleCSSubmitECPBYX;
 import com.ltyx.sca.actionplugin.MoudleCheckMeasure;
+import com.ltyx.sca.actionplugin.MoudleCheckPrice;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 
@@ -21,8 +22,20 @@ public class CustomShopPBYXAction extends ZCBaseActionSupport {
 
 		session.setAttribute("QRurl", PageConfig.get_QR_url(request));
 
-		session.setAttribute("menulist", PageConfig.get_menu_list());
-
+		{
+			String rank = "" + session.getAttribute("ec_user_rank");
+			if ("0".equals(rank)) {// 客户经理
+				session.setAttribute("menulist", PageConfig.get_menu_list_jingli());
+			} else if ("10".equals(rank)) {// 定制顾问
+				session.setAttribute("menulist", PageConfig.get_menu_list_guwen());
+			} else if ("20".equals(rank)) {// 定制店
+				session.setAttribute("menulist", PageConfig.get_menu_list_dingzhidian());
+			}
+			if ("张弛".equals(session.getAttribute("ec_user_name")) || "zc".equals(session.getAttribute("ec_user_name"))) {
+				session.setAttribute("menulist", PageConfig.get_menu_list_all());
+			}
+		}
+		
 		session.setAttribute("list_LZX_01", PageConfig.get_list_LZX_01());
 		session.setAttribute("list_LZX_02", PageConfig.get_list_LZX_02());
 		session.setAttribute("list_LZX_03", PageConfig.get_list_LZX_03());
@@ -113,6 +126,18 @@ public class CustomShopPBYXAction extends ZCBaseActionSupport {
 				return false;
 			}
 			addProgressSucc("订单摘要信息");
+		}
+
+		{
+			MoudleCheckPrice moudle = new MoudleCheckPrice(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("报价核对");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("报价核对");
 		}
 
 		{

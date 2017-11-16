@@ -19,7 +19,7 @@ public class PageConfig {
 		return url;
 	}
 
-	public static String get_menu_list() {
+	public static String get_menu_list_all() {
 
 		String menuList = "<li>"//
 				+ "<a class=\"subheader\">定制顾问功能</a>"//
@@ -30,10 +30,9 @@ public class PageConfig {
 				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/AideDesign.action\">设计师款 定制顾问</a>"//
 				+ "</li>"//
-				// + "<li>"//
-				// +
-				// "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/Subcontract.action\">其他商品</a>"//
-				// + "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/AideSubcontract.action\">其他商品 定制顾问</a>"//
+				+ "</li>"//
 				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/AideSearch.action\">即时库存查询</a>"//
 				+ "</li>"//
@@ -41,21 +40,82 @@ public class PageConfig {
 				+ "<a class=\"subheader\">定制店功能</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action\">衬衫 优纤面料</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action\">衬衫 优纤面料 定制店</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">衬衫 客供面料</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">衬衫 客供面料 定制店</a>"//
 				+ "</li>"//
-				// + "<li>"//
-				// +
-				// "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/Design.action\">衬衫 设计师推荐款</a>"//
-				// + "</li>"//
-				// + "<li>"//
-				// +
-				// "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/Subcontract.action\">其他商品</a>"//
-				// + "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">即时库存查询</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">即时库存查询 定制店</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"subheader\">客户经理功能</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action\">衬衫 优纤面料 客户经理</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearch.action\">衬衫 客供面料 客户经理</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearch.action\">即时库存查询 客户经理</a>"//
+				+ "</li>";//
+
+		return menuList;
+	}
+
+	public static String get_menu_list_guwen() {
+
+		String menuList = "<li>"//
+				+ "<a class=\"subheader\">定制顾问功能</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/AidePBYX.action\">衬衫 定制顾问</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/AideDesign.action\">设计师款 定制顾问</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/AideSubcontract.action\">其他商品 定制顾问</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/AideSearch.action\">即时库存查询</a>"//
+				+ "</li>";//
+
+		return menuList;
+	}
+
+	public static String get_menu_list_dingzhidian() {
+
+		String menuList = "<li>"//
+				+ "<a class=\"subheader\">定制店功能</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action\">衬衫 优纤面料 定制店</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">衬衫 客供面料 定制店</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">即时库存查询 定制店</a>"//
+				+ "</li>";//
+
+		return menuList;
+	}
+
+	public static String get_menu_list_jingli() {
+
+		String menuList = "<li>"//
+				+ "<a class=\"subheader\">客户经理功能</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action\">衬衫 优纤面料 客户经理</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearch.action\">衬衫 客供面料 客户经理</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearch.action\">即时库存查询 客户经理</a>"//
 				+ "</li>";//
 
 		return menuList;

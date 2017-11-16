@@ -19,7 +19,20 @@ public class GetForm extends ZCBaseActionSupport {
 
 		session.setAttribute("QRurl", PageConfig.get_QR_url(request));
 
-		session.setAttribute("menulist", PageConfig.get_menu_list());
+		{
+			String rank = "" + session.getAttribute("ec_user_rank");
+			if ("0".equals(rank)) {// 客户经理
+				session.setAttribute("menulist", PageConfig.get_menu_list_jingli());
+			} else if ("10".equals(rank)) {// 定制顾问
+				session.setAttribute("menulist", PageConfig.get_menu_list_guwen());
+			} else if ("20".equals(rank)) {// 定制店
+				session.setAttribute("menulist", PageConfig.get_menu_list_dingzhidian());
+			} else {
+				if ("张弛".equals(session.getAttribute("ec_user_name")) || "zc".equals(session.getAttribute("ec_user_name"))) {
+					session.setAttribute("menulist", PageConfig.get_menu_list_all());
+				}
+			}
+		}
 
 		session.setAttribute("list_LZX_01", PageConfig.get_list_LZX_01());
 		session.setAttribute("list_LZX_02", PageConfig.get_list_LZX_02());
@@ -54,8 +67,21 @@ public class GetForm extends ZCBaseActionSupport {
 
 		session.setAttribute("QRurl", PageConfig.get_QR_url(request));
 
-		session.setAttribute("menulist", PageConfig.get_menu_list());
-
+		{
+			String rank = "" + session.getAttribute("ec_user_rank");
+			if ("0".equals(rank)) {// 客户经理
+				session.setAttribute("menulist", PageConfig.get_menu_list_jingli());
+			} else if ("10".equals(rank)) {// 定制顾问
+				session.setAttribute("menulist", PageConfig.get_menu_list_guwen());
+			} else if ("20".equals(rank)) {// 定制店
+				session.setAttribute("menulist", PageConfig.get_menu_list_dingzhidian());
+			} else {
+				if ("张弛".equals(session.getAttribute("ec_user_name")) || "zc".equals(session.getAttribute("ec_user_name"))) {
+					session.setAttribute("menulist", PageConfig.get_menu_list_all());
+				}
+			}
+		}
+		
 		session.setAttribute("list_LZX_01", PageConfig.get_list_LZX_01());
 		session.setAttribute("list_LZX_02", PageConfig.get_list_LZX_02());
 		session.setAttribute("list_LZX_03", PageConfig.get_list_LZX_03());

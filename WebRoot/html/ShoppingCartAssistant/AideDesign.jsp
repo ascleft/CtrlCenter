@@ -148,7 +148,7 @@
 								state_loaded();
 								$("#prices_system").val('999999999');
 								$("#prices_now").val('999999999');
-								$("#prices_desc").val('信息不合法，请重新获取报价:' + resp.data);
+								$("#prices_desc").val('报价异常，请重试:' + resp.data);
 								state_ready("n");
 							}
 						} else {

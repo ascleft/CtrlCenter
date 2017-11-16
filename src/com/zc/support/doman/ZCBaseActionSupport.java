@@ -79,6 +79,7 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 	}
 
 	public void logProgress(String title) {
+		System.out.println(TimeHelper.getTimeMS());
 		Log.Pro.start();
 		Log.Pro.whiteLine(title);
 		Log.Pro.whiteCut();
@@ -89,6 +90,7 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 	}
 
 	public void logActionResponse(String title) {
+		System.out.println(TimeHelper.getTimeMS());
 		Log.Pro.start();
 		Log.Pro.whiteLine(title);
 		Log.Pro.whiteCut();

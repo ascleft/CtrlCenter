@@ -4,6 +4,8 @@ import com.ltyx.sca.actionplugin.MoudleCSCheckSummaryClothes;
 import com.ltyx.sca.actionplugin.MoudleCSCheckUserInfo;
 import com.ltyx.sca.actionplugin.MoudleCSGetPricePBC;
 import com.ltyx.sca.actionplugin.MoudleCSSubmitECPBC;
+import com.ltyx.sca.actionplugin.MoudleCheckMeasure;
+import com.ltyx.sca.actionplugin.MoudleCheckPrice;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 
@@ -20,7 +22,19 @@ public class CustomShopPBCAction extends ZCBaseActionSupport {
 
 		session.setAttribute("QRurl", PageConfig.get_QR_url(request));
 
-		session.setAttribute("menulist", PageConfig.get_menu_list());
+		{
+			String rank = "" + session.getAttribute("ec_user_rank");
+			if ("0".equals(rank)) {// 客户经理
+				session.setAttribute("menulist", PageConfig.get_menu_list_jingli());
+			} else if ("10".equals(rank)) {// 定制顾问
+				session.setAttribute("menulist", PageConfig.get_menu_list_guwen());
+			} else if ("20".equals(rank)) {// 定制店
+				session.setAttribute("menulist", PageConfig.get_menu_list_dingzhidian());
+			}
+			if ("张弛".equals(session.getAttribute("ec_user_name")) || "zc".equals(session.getAttribute("ec_user_name"))) {
+				session.setAttribute("menulist", PageConfig.get_menu_list_all());
+			}
+		}
 
 		session.setAttribute("list_LZX_01", PageConfig.get_list_LZX_01());
 		session.setAttribute("list_LZX_02", PageConfig.get_list_LZX_02());
@@ -47,6 +61,56 @@ public class CustomShopPBCAction extends ZCBaseActionSupport {
 
 		return "succ";
 
+	}
+
+	public String getFormWithCode() {
+
+		init(true);
+
+		session.setAttribute("QRurl", PageConfig.get_QR_url(request));
+
+		{
+			String rank = "" + session.getAttribute("ec_user_rank");
+			if ("0".equals(rank)) {// 客户经理
+				session.setAttribute("menulist", PageConfig.get_menu_list_jingli());
+			} else if ("10".equals(rank)) {// 定制顾问
+				session.setAttribute("menulist", PageConfig.get_menu_list_guwen());
+			} else if ("20".equals(rank)) {// 定制店
+				session.setAttribute("menulist", PageConfig.get_menu_list_dingzhidian());
+			} else {
+				if ("张弛".equals(session.getAttribute("ec_user_name")) || "zc".equals(session.getAttribute("ec_user_name"))) {
+					session.setAttribute("menulist", PageConfig.get_menu_list_all());
+				}
+			}
+		}
+
+		session.setAttribute("list_LZX_01", PageConfig.get_list_LZX_01());
+		session.setAttribute("list_LZX_02", PageConfig.get_list_LZX_02());
+		session.setAttribute("list_LZX_03", PageConfig.get_list_LZX_03());
+		session.setAttribute("list_LZX_04", PageConfig.get_list_LZX_04());
+		session.setAttribute("list_LZX_08", PageConfig.get_list_LZX_08());
+		session.setAttribute("list_LZX_120", PageConfig.get_list_LZX_120());
+		session.setAttribute("list_LZX_06", PageConfig.get_list_LZX_06());
+		session.setAttribute("list_LZX_17", PageConfig.get_list_LZX_17());
+		session.setAttribute("list_LZX_26", PageConfig.get_list_LZX_26());
+		session.setAttribute("list_LZX_13", PageConfig.get_list_LZX_13());
+		session.setAttribute("list_zhidai", PageConfig.get_list_zhidai());
+		session.setAttribute("list_color", PageConfig.get_list_color());
+		session.setAttribute("list_kouzi", PageConfig.get_list_kouzi());
+		session.setAttribute("list_shenxing", PageConfig.get_list_shenxing());
+		session.setAttribute("list_lingcheng", PageConfig.get_list_lingcheng());
+		session.setAttribute("list_mingxian", PageConfig.get_list_mingxian());
+		session.setAttribute("list_cefeng", PageConfig.get_list_cefeng());
+		session.setAttribute("list_qiantiao", PageConfig.get_list_qiantiao());
+		session.setAttribute("list_chenbu", PageConfig.get_list_chenbu());
+
+		session.setAttribute("list_weizhi_zhidai", PageConfig.get_list_weizhi_zhidai());
+		session.setAttribute("list_weizhi_peise", PageConfig.get_list_weizhi_peise());
+
+		String code = getReqParamString("code");
+		session.setAttribute("code", code);
+
+		return "succ";
 	}
 
 	public String getPrice() {
@@ -112,6 +176,29 @@ public class CustomShopPBCAction extends ZCBaseActionSupport {
 				return false;
 			}
 			addProgressSucc("订单摘要信息");
+		}
+
+		{
+			MoudleCheckMeasure moudle = new MoudleCheckMeasure(request);
+			if (!moudle.doJobs()) {
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("尺寸校验");
+		}
+
+		{
+			MoudleCheckPrice moudle = new MoudleCheckPrice(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("报价核对");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("报价核对");
 		}
 
 		{
