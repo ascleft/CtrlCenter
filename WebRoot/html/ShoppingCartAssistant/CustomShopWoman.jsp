@@ -93,8 +93,8 @@
 				$('#nav_menu').sideNav('show');
 			}
 			//url定义
-			var url_addShoppingCart = "/CtrlCenter/LTYX/SCA/Main/SubmitCustomShopPBYX.action";
-			var url_getPrice = "/CtrlCenter/LTYX/SCA/Main/GetPriceCustomShopPBYX.action";
+			var url_addShoppingCart = "/CtrlCenter/LTYX/SCA/Main/SubmitCustomShopWoman.action";
+			var url_getPrice = "/CtrlCenter/LTYX/SCA/Main/GetPriceCustomShopWoman.action";
 
 			//提交到购物车
 			function addShoppingCart() {
@@ -241,7 +241,7 @@
 			<nav class="teal" role="navigation">
 				<div class="nav-wrapper container">
 					<!-- 页面标题  -->
-					<a id="logo-container " href="#" class="brand-logo white-text ">定制店 优纤面料</a>
+					<a id="logo-container " href="#" class="brand-logo white-text ">定制店 女装</a>
 					<!-- 导航菜单键（运动移动设备） -->
 					<a href="#" data-activates="nav_menu_list " class="button-collapse ">
 						<i class="material-icons white-text">menu</i>

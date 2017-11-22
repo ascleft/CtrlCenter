@@ -119,17 +119,25 @@ public class LoginAction extends ZCBaseActionSupport {
 				String targetUrl = "";
 				int roleCheck = NumberHelper.string2int(ec_user_role);
 				if (0 <= roleCheck && roleCheck < 10) {
+					if (jsonUser.getString("ec_user_rank").length() > 2) {
+						if (ec_user_name.equals("zc") || ec_user_name.equals("张弛")) {
+							ERRCODE = "0";
+							ERRDESC = "succ";
+							data = "权限异常";
+							addProgressFail("EC权限异常,当前采用特权登录");
+						} else {
+							ERRCODE = "0";
+							ERRDESC = "fail";
+							data = "权限异常";
+							addProgressFail("EC权限异常");
+							return false;
+						}
+					}
 					targetUrl = "/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action";// 客户经理
 				} else if (10 <= roleCheck && roleCheck < 20) {
 					targetUrl = "/CtrlCenter/LTYX/SCA/Main/AidePBYX.action";// 定制顾问
 				} else if (20 <= roleCheck && roleCheck < 30) {
 					targetUrl = "/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action";// 定制店
-				} else {
-					ERRCODE = "1";
-					ERRDESC = "fail";
-					data = "权限异常";
-					addProgressFail("EC权限异常");
-					return false;
 				}
 
 				ERRCODE = "0";

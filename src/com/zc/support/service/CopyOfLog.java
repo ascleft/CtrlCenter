@@ -1,6 +1,6 @@
 package com.zc.support.service;
 
-public class Log {
+public class CopyOfLog {
 
 	public static int STYLE_CLOSE = 1, STYLE_OPEN = 2;
 	protected static boolean debug = true;
@@ -8,7 +8,7 @@ public class Log {
 	private static int lineLen = 100;
 
 	public static void init(boolean debug, int STYLE) {
-		Log.debug = debug;
+		CopyOfLog.debug = debug;
 		style = STYLE;
 
 	}
@@ -43,7 +43,7 @@ public class Log {
 				sb.append(" ");
 			}
 
-			printlnWithLog(TimeHelper.getTimeHMSS());
+			System.out.println(TimeHelper.getTimeHMSS());
 			logHead();
 			logMsg(sb.toString());
 			logFoot();
@@ -70,86 +70,73 @@ public class Log {
 
 	private static void logHead() {
 
-		String line = "";
-
-		line += "┌";
+		System.out.print("┌");
 		for (int i = 0; i < lineLen - 2 + 6; i++) {
-			line += "─";
+			System.out.print("─");
 		}
 
 		if (style == STYLE_CLOSE) {
-			line += "┐";
+			System.out.println("┐");
 		} else {
-			line += "─";
+			System.out.println("─");
 		}
-
-		printlnWithLog(line);
 
 	}
 
 	private static void logCut() {
 
-		String line = "";
-		line += "├";
+		System.out.print("├");
 		for (int i = 0; i < lineLen - 2 + 6; i++) {
-			line += "─";
+			System.out.print("─");
 		}
 
 		if (style == STYLE_CLOSE) {
-			line += "┤";
+			System.out.println("┤");
 		} else {
-			line += "─";
+			System.out.println("─");
 		}
-		printlnWithLog(line);
 
 	}
 
 	private static void logMsg(String s) {
-
-		String line = "";
-
 		int msgLen = s.length();
 
 		int lineCont = msgLen / lineLen + 1;
 		int lineTail = msgLen % lineLen;
 
 		for (int i = 0; i < lineCont; i++) {
-			line += "│  ";
+			System.out.print("│  ");
 			if (i == lineCont - 1) {
-				line += s.substring(i * lineLen, i * lineLen + lineTail);
+				System.out.print(s.substring(i * lineLen, i * lineLen + lineTail));
 				for (int j = 0; j < lineLen - 6 - lineTail + 6; j++) {
-					line += " ";
+					System.out.print(" ");
 				}
 			} else {
-				line += s.substring(i * lineLen, (i + 1) * lineLen);
+				System.out.print(s.substring(i * lineLen, (i + 1) * lineLen));
 			}
 
 			if (style == STYLE_CLOSE) {
-				line += "  │";
+				System.out.println("  │");
 			} else {
-				line += " ";
+				System.out.println(" ");
 			}
 		}
-
-		printlnWithLog(line);
 
 	}
 
 	private static void logFoot() {
-		String line = "";
-		line += "└";
+
+		System.out.print("└");
 		for (int i = 0; i < lineLen - 2 + 6; i++) {
-			line += "─";
+			System.out.print("─");
 		}
 
 		if (style == STYLE_CLOSE) {
-			line += "┘";
+			System.out.println("┘");
 		} else {
-			line += "─";
+			System.out.println("─");
 		}
 
-		printlnWithLog(line);
-		
 	}
 
 	public static class Nano {
@@ -175,7 +162,7 @@ public class Log {
 
 				}
 
-				printlnWithLog(TimeHelper.getTimeHMSS());
+				System.out.println(TimeHelper.getTimeHMSS());
 				logHead();
 				logMsg(sb_tag.toString());
 				logCut();
@@ -189,7 +176,7 @@ public class Log {
 
 			if (debug) {
 
-				printlnWithLog(TimeHelper.getTimeHMSS());
+				System.out.println(TimeHelper.getTimeHMSS());
 				logHead();
 
 				for (int i = 0; i < inputs.length; i++) {
@@ -207,7 +194,7 @@ public class Log {
 
 			if (debug) {
 
-				printlnWithLog(TimeHelper.getTimeHMSS());
+				System.out.println(TimeHelper.getTimeHMSS());
 				logHead();
 
 				for (int i = 0; i < inputs.length; i++) {
@@ -252,11 +239,6 @@ public class Log {
 		synchronized public static void finish() {
 			logFoot();
 		}
-	}
-	
-	public static void printlnWithLog(String line){
-		System.out.println(line);
-		TextLogHelper.white(line);
 	}
 
 }

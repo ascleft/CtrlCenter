@@ -20,9 +20,45 @@ public class TimeHelper {
 	}
 
 	/*
+	 * 将时间戳转换为时间 "yyyy-MM-dd HH:mm:ss.S"
+	 */
+	public static String getTime(String dateFormat) {
+
+		SimpleDateFormat myFmt1 = new SimpleDateFormat(dateFormat);
+		Date now = new Date();
+		String time = myFmt1.format(now);
+
+		return time;
+	}
+
+	/*
 	 * 将时间戳转换为时间
 	 */
-	public static String getTime() {
+	public static String getTimeH() {
+
+		SimpleDateFormat myFmt1 = new SimpleDateFormat("yyyy-MM-dd HH");
+		Date now = new Date();
+		String time = myFmt1.format(now);
+
+		return time;
+	}
+
+	/*
+	 * 将时间戳转换为时间
+	 */
+	public static String getTimeHM() {
+
+		SimpleDateFormat myFmt1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		Date now = new Date();
+		String time = myFmt1.format(now);
+
+		return time;
+	}
+
+	/*
+	 * 将时间戳转换为时间
+	 */
+	public static String getTimeHMS() {
 
 		SimpleDateFormat myFmt1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date now = new Date();
@@ -35,7 +71,7 @@ public class TimeHelper {
 	 * 将时间戳转换为时间
 	 */
 
-	public static String getTimeMS() {
+	public static String getTimeHMSS() {
 
 		SimpleDateFormat myFmt1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
 		Date now = new Date();
@@ -101,7 +137,7 @@ public class TimeHelper {
 		public void start() {
 
 			time_start = new Date();
-			time_start_stamp = TimeHelper.getTimeMS();
+			time_start_stamp = TimeHelper.getTimeHMSS();
 
 			pointList = new ArrayList<String>();
 
@@ -114,7 +150,7 @@ public class TimeHelper {
 			}
 
 			time_start = new Date();
-			time_start_stamp = TimeHelper.getTimeMS();
+			time_start_stamp = TimeHelper.getTimeHMSS();
 
 		}
 
@@ -135,7 +171,7 @@ public class TimeHelper {
 		public long showTimerPartable(String name) {
 
 			time_stop = new Date();
-			time_stop_stamp = TimeHelper.getTimeMS();
+			time_stop_stamp = TimeHelper.getTimeHMSS();
 
 			if (null == time_start) {
 				Log.i("计时器未启动，请按顺序依次调用 start() stop() 方法");

@@ -38,9 +38,14 @@
 
 <html>
 	<!--
+		
 		作者：ascleft@163.com
-		 时间：2017-04-29
-		 描述：
+		时间：2017-11-20
+		描述：
+		购物车添加工具 SCA 2.0
+		
+		定制顾问 自由搭配
+		
 	-->
 
 	<head>
@@ -228,7 +233,7 @@
 			<nav class="teal" role="navigation">
 				<div class="nav-wrapper container">
 					<!-- 页面标题  -->
-					<a id="logo-container " href="#" class="brand-logo white-text ">衬衫 定制顾问</a>
+					<a id="logo-container " href="#" class="brand-logo white-text ">定制顾问 优纤面料</a>
 					<!-- 导航菜单键（运动移动设备） -->
 					<a href="#" data-activates="nav_menu_list " class="button-collapse ">
 						<i class="material-icons white-text">menu</i>

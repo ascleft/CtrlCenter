@@ -6,10 +6,15 @@
 %>
 <html>
 	<!--
+		
 		作者：ascleft@163.com
-		时间：2017-04-29
-               描述：
-     -->
+		时间：2017-11-20
+		描述：
+		购物车添加工具 SCA 2.0
+		
+		登录
+		
+	-->
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -52,7 +57,7 @@
 
 		<script type="application/javascript">
 			var url_login = "/CtrlCenter/LTYX/SCA/Login.action";
-			
+
 			function checkFormInput() {
 				if($('#name').val().length == 0) {
 					Materialize.toast('请输入账户', 1000);
@@ -83,7 +88,7 @@
 								Materialize.toast(resp.data, 1000);
 							}
 						} else {
-							Materialize.toast("EC服务器通讯异常");
+							Materialize.toast("EC服务器通讯异常", 1000);
 						}
 					}
 				});

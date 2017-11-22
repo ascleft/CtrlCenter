@@ -66,7 +66,7 @@ public class SubmitTailorFormActionBackUp extends ZCBaseActionSupport {
 					ERRDESC = "succ";
 					JSONObject datacontent = new JSONObject();
 					datacontent.put("CONTENT", getCSV());
-					datacontent.put("NAME", "鲁泰优纤智能下单系统" + TimeHelper.getTimeMS());
+					datacontent.put("NAME", "鲁泰优纤智能下单系统" + TimeHelper.getTimeHMSS());
 					data = datacontent.toString();
 				}
 			}
@@ -414,7 +414,7 @@ public class SubmitTailorFormActionBackUp extends ZCBaseActionSupport {
 
 	private String getSqlInsertOrder(String keys[]) {
 		ArrayList<KV> kval = makeAl(keys);
-		kval.add(new KV("operator_time", TimeHelper.getTime()));
+		kval.add(new KV("operator_time", TimeHelper.getTimeHMS()));
 		kval.add(new KV("quickphoto", ""));
 		String sql = getSql("INSERT INTO", "order4user", kval);
 		Log.Nano.tag("sql getSqlInsertOrder", sql);

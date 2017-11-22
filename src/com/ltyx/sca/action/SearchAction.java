@@ -1,16 +1,12 @@
 package com.ltyx.sca.action;
 
-import com.ltyx.sca.actionplugin.MoudleAideCheckUserInfo;
-import com.ltyx.sca.actionplugin.MoudleAideGetPriceSubcontract;
-import com.ltyx.sca.actionplugin.MoudleAideSubmitECSubcontract;
-import com.ltyx.sca.actionplugin.MoudleCheckPrice;
 import com.zc.support.doman.ZCBaseActionSupport;
-import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.Log;
 
-public class AideSubcontractAction extends ZCBaseActionSupport {
+public class SearchAction extends ZCBaseActionSupport {
 
 	/**
+	 *
 	 * 
 	 */
 	private static final long serialVersionUID = 10087L;
@@ -23,7 +19,7 @@ public class AideSubcontractAction extends ZCBaseActionSupport {
 
 		{
 			String rank = "" + session.getAttribute("ec_user_rank");
-			
+
 			if ("0".equals(rank)) {// 客户经理
 				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_jingli());
 				Log.i("分配菜单1");
@@ -39,7 +35,7 @@ public class AideSubcontractAction extends ZCBaseActionSupport {
 				Log.i("分配菜单4");
 			}
 		}
-		
+
 		session.setAttribute("list_LZX_01", SCAPageConfigMan.get_list_LZX_01());
 		session.setAttribute("list_LZX_02", SCAPageConfigMan.get_list_LZX_02());
 		session.setAttribute("list_LZX_03", SCAPageConfigMan.get_list_LZX_03());
@@ -64,91 +60,6 @@ public class AideSubcontractAction extends ZCBaseActionSupport {
 		session.setAttribute("list_weizhi_peise", SCAPageConfigMan.get_list_weizhi_peise());
 
 		return "succ";
-
-	}
-
-	public String getPrice() {
-
-		init(true);
-		String methodName = "定制顾问 其他商品 报价";
-
-		ZCReqIntroGetter.showParams(methodName, request);
-
-		doGetPrice();
-		writeResp(methodName);
-
-		return null;
-
-	}
-
-	public String submit() {
-
-		init(true);
-		String methodName = "定制顾问 其他商品 提交购物车";
-
-		ZCReqIntroGetter.showParams(methodName, request);
-
-		doSubmit();
-		writeResp(methodName);
-
-		return null;
-
-	}
-
-	public boolean doGetPrice() {
-
-		MoudleAideGetPriceSubcontract moudle = new MoudleAideGetPriceSubcontract(request);
-		moudle.doJobs();
-		ERRCODE = moudle.getERRCODE();
-		ERRDESC = moudle.getERRDESC();
-		data = moudle.getData();
-		return true;
-
-	}
-
-	public boolean doSubmit() {
-
-		{
-			MoudleAideCheckUserInfo moudle = new MoudleAideCheckUserInfo(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("用户信息检测");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
-				return false;
-			}
-			addProgressSucc("用户信息检测");
-		}
-
-		{
-			MoudleCheckPrice moudle = new MoudleCheckPrice(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("报价核对");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
-				return false;
-			}
-			addProgressSucc("报价核对");
-		}
-
-		{
-			MoudleAideSubmitECSubcontract moudle = new MoudleAideSubmitECSubcontract(request);
-			if (!moudle.doJobs()) {
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
-				return false;
-			}
-			addProgressSucc("提交EC");
-		}
-
-		{
-			ERRCODE = "0";
-			ERRDESC = "succ";
-			data = "提交成功";
-			return true;
-		}
 
 	}
 

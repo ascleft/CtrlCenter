@@ -93,19 +93,19 @@ public class SeedLogHelper {
 	}
 
 	public static void add(String applicationName, String title) {
-		add(applicationName, "0", title, "", "", TimeHelper.getTime());
+		add(applicationName, "0", title, "", "", TimeHelper.getTimeHMS());
 	}
 
 	public static void add(String applicationName, String title, String description) {
-		add(applicationName, "0", title, description, "", TimeHelper.getTime());
+		add(applicationName, "0", title, description, "", TimeHelper.getTimeHMS());
 	}
 
 	public static void add(String applicationName, String state, String title, String description) {
-		add(applicationName, state, title, description, "", TimeHelper.getTime());
+		add(applicationName, state, title, description, "", TimeHelper.getTimeHMS());
 	}
 
 	public static void add(String applicationName, String state, String title, String description, String tip) {
-		add(applicationName, state, title, description, tip, TimeHelper.getTime());
+		add(applicationName, state, title, description, tip, TimeHelper.getTimeHMS());
 	}
 
 	private static void add(String applicationName, String state, String title, String description, String tip, String time) {

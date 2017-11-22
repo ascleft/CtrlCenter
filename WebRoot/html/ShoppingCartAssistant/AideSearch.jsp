@@ -13,10 +13,16 @@
 	String menulist=(String) session.getAttribute("menulist");
 %>
 <html>
+
 	<!--
+		
 		作者：ascleft@163.com
-		 时间：2017-04-29
-		 描述：
+		时间：2017-11-20
+		描述：
+		购物车添加工具 SCA 2.0
+		
+		定制顾问 即时库存查询
+		
 	-->
 
 	<head>
@@ -187,7 +193,7 @@
 			<nav class="teal" role="navigation">
 				<div class="nav-wrapper container">
 					<!-- 页面标题  -->
-					<a id="logo-container " href="#" class="brand-logo white-text ">即时库存查询 定制顾问</a>
+					<a id="logo-container " href="#" class="brand-logo white-text ">定制顾问 即时库存查询</a>
 					<!-- 导航菜单键（运动移动设备） -->
 					<a href="#" data-activates="nav_menu_list " class="button-collapse ">
 						<i class="material-icons white-text">menu</i>
@@ -257,7 +263,9 @@
 										<p>输入USKIN编码或物料编码</p>
 									</div>
 									<div style="display: none;">
-										<input name="rank"><%=ec_user_rank%></input>
+										<input name="rank">
+										<%=ec_user_rank%>
+										</input>
 									</div>
 									<div class="col s12 m6 l6 red-text">
 										<div class="input-field">

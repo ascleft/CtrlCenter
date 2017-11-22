@@ -121,7 +121,7 @@ public class MoudleSubmitDB extends ZCBaseActionSupportPlugin {
 
 	private String getSqlInsertOrder(String keys[]) {
 		ArrayList<KV> kval = makeAl(keys);
-		kval.add(new KV("operator_time", TimeHelper.getTime()));
+		kval.add(new KV("operator_time", TimeHelper.getTimeHMS()));
 		kval.add(new KV("quickphoto", ""));
 		String sql = getSql("INSERT INTO", "order4user", kval);
 		Log.Nano.tag("sql getSqlInsertOrder", sql);

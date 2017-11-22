@@ -19,7 +19,7 @@ public class MoudleCalCSV extends ZCBaseActionSupportPlugin {
 		ERRDESC = "succ";
 		JSONObject datacontent = new JSONObject();
 		datacontent.put("CONTENT", getCSV());
-		datacontent.put("NAME", "鲁泰优纤智能下单系统" + TimeHelper.getTimeMS());
+		datacontent.put("NAME", "鲁泰优纤智能下单系统" + TimeHelper.getTimeHMSS());
 		data = datacontent.toString();
 		return true;
 
