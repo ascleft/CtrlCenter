@@ -1,19 +1,32 @@
 package com.zc.support.service;
 
+import java.util.ArrayList;
 
 public class LogHelper {
 
-	public static void init() {
+	private static ArrayList<String> infos = null;
+
+	public static ArrayList<String> init() {
+
 		Log.init(true, Log.STYLE_OPEN);
-		showDebugList();
+
+		infos = new ArrayList<String>();
+		infos.add("Log.debug" + " : " + Log.debug);
+		infos.add("Log.style" + " : " + Log.style);
+
+		return infos;
 	}
 
-	private static void showDebugList() {
-		if (Log.debug) {
-			Log.Nano.TagByLine("Log Section", "Log.debug" + " : " + Log.debug, "Log.style" + " : " + Log.style);
-		} else {
-			System.err.println("Log System off !");
+	public static ArrayList<String> getState() {
+		return infos;
+	}
+
+	public static void showState() {
+		Log.Pro.start();
+		for (String info : infos) {
+			Log.Pro.whiteLine(info);
 		}
+		Log.Pro.finish();
 	}
 
 }

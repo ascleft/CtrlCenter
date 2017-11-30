@@ -88,7 +88,7 @@ public class LoginAction extends ZCBaseActionSupport {
 			param.addParam("pwd", pwd);
 			param.addParam("role", role);
 
-			String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_LoginEC, param);
+			String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_LoginEC.getUrl(), param);
 
 			String isOnline;
 			String ec_user_id;

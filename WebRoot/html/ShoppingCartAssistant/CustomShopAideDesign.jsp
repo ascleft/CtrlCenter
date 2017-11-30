@@ -44,7 +44,7 @@
 		描述：
 		购物车添加工具 SCA 2.0
 		
-		定制顾问 设计师推荐款		
+		客户经理 优纤面料
 		
 	-->
 
@@ -93,8 +93,8 @@
 				$('#nav_menu').sideNav('show');
 			}
 			//url定义
-			var url_addShoppingCart = "/CtrlCenter/LTYX/SCA/Main/SubmitAideDesign.action";
-			var url_getPrice = "/CtrlCenter/LTYX/SCA/Main/GetPriceAideDesign.action";
+			var url_addShoppingCart = "/CtrlCenter/LTYX/SCA/Main/SubmitCustomShopAideDesign.action";
+			var url_getPrice = "/CtrlCenter/LTYX/SCA/Main/GetPriceCustomShopAideDesign.action";
 
 			//提交到购物车
 			function addShoppingCart() {
@@ -222,6 +222,14 @@
 				});
 				state_loaded();
 				state_ready("n");
+
+				initDeliveryTime();
+
+				use_pbc_YX_08();
+				use_pbc_kouzi();
+
+				use_size();
+
 			})
 		</script>
 
@@ -233,7 +241,7 @@
 			<nav class="teal" role="navigation">
 				<div class="nav-wrapper container">
 					<!-- 页面标题  -->
-					<a id="logo-container " href="#" class="brand-logo white-text ">定制顾问 设计师款</a>
+					<a id="logo-container " href="#" class="brand-logo white-text ">客户经理 设计师款</a>
 					<!-- 导航菜单键（运动移动设备） -->
 					<a href="#" data-activates="nav_menu_list " class="button-collapse ">
 						<i class="material-icons white-text">menu</i>
@@ -320,7 +328,7 @@
 									</li>
 									<li>
 										<div class="collapsible-header">
-											<i class="material-icons">view_carousel</i>款式 面料 领标 包装
+											<i class="material-icons">view_carousel</i>面料 领标 包装
 										</div>
 										<div class="collapsible-body">
 											<div class="row">
@@ -334,6 +342,12 @@
 														<input type="text" class="validate" name="uskin_code" value=""> <label>面料编号（USKIN 编号）</label>
 													</div>
 												</div>
+												<div class="input-field col s6 m6 l4">
+													<select name="tailor_type">
+														<option value="YX-00-02">长袖</option>
+														<option value="YX-00-01">短袖</option>
+													</select> <label>长袖/短袖</label>
+												</div>
 												<div class="input-field col s12 m6 l4">
 													<select name="easy_type">
 														<option value="K">宽松</option>
@@ -343,9 +357,14 @@
 													</select> <label>宽松度</label>
 												</div>
 												<div class="input-field col s6 m6 l4">
-													<select name="YX_08">
+													<select id="YX_08" name="YX_08">
 														<%=list_LZX_08%>
+														<option value="">客供</option>
 													</select> <label>主唛</label>
+												</div>
+												<div class="input-field col s6 m6 l4" id="YX_08_div">
+													<input id="YX_08_pbc" type="text" class="validate" name="YX_08" value="">
+													<label>客供主唛说明</label>
 												</div>
 												<div class="input-field col s6 m6 l4">
 													<select name="YX_09">
@@ -353,6 +372,264 @@
 														<option value="YX-09-00">无包装（透明胶袋）</option>
 														<option value="YX-09-02">环保装（简易包装）</option>
 													</select> <label>包装</label>
+												</div>
+												<div class="input-field col s6 m6 l4">
+													<select id="delivery_time_table_section_1" name="order_mtm_type">
+													</select> <label>订单类型</label>
+												</div>
+												<div class="input-field col s6 m6 l4">
+													<select id="delivery_time_table_section_2" name="order_production_count">
+													</select> <label>起订量（件）</label>
+												</div>
+												<div class="input-field col s6 m6 l4">
+													<select id="delivery_time_table_section_3" name="order_delivery_time">
+													</select> <label>交期（工作日）</label>
+												</div>
+												<div class="input-field col s6 m6 l4">
+													<select id="delivery_time_table_section_4" name="order_processing_cost">
+													</select> <label>工艺类型</label>
+												</div>
+											</div>
+										</div>
+									</li>
+
+									<li>
+										<div class="collapsible-header">
+											<i class="material-icons">settings_overscan</i>成衣尺寸
+										</div>
+										<div class="collapsible-body">
+											<div class="row">
+												<div class="input-field col s12 m6 l4">
+													<select id="measure_type" name="measure_type">
+														<option value="成衣尺寸">成衣尺寸</option>
+														<option value="号衣尺码">号衣尺码</option>
+														<option value="量体尺寸">量体尺寸</option>
+													</select> <label>尺寸类型</label>
+												</div>
+
+												<div class="col s12 m12 l12">
+													<div class="row" id="size_list">
+														<div class="input-field col s12 m6 l4">
+															<select name="size">
+																<option value="2176">男式衬衫紧身版38 </option>
+																<option value="2177">男式衬衫紧身版38.5</option>
+																<option value="2178">男式衬衫紧身版39 </option>
+																<option value="2179">男式衬衫紧身版39.5</option>
+																<option value="2180">男式衬衫紧身版40 </option>
+																<option value="2181">男式衬衫紧身版40.5</option>
+																<option value="2182">男式衬衫紧身版41 </option>
+																<option value="2183">男式衬衫紧身版41.5</option>
+																<option value="2184">男式衬衫紧身版42 </option>
+																<option value="2185">男式衬衫紧身版42.5</option>
+																<option value="2186">男式衬衫紧身版43 </option>
+																<option value="2187">男式衬衫紧身版43.5</option>
+																<option value="2188">男式衬衫紧身版44 </option>
+																<option value="2189">男式衬衫紧身版44.5</option>
+																<option value="2190">男式衬衫紧身版45 </option>
+																<option value="2191">男式衬衫紧身版45.5</option>
+																<option value="2192">男式衬衫紧身版46 </option>
+																<option value="2193">男式衬衫紧身版46.5</option>
+																<option value="2194">男式衬衫紧身版47 </option>
+																<option value="2276">男式衬衫修身版38 </option>
+																<option value="2277">男式衬衫修身版38.5</option>
+																<option value="2278">男式衬衫修身版39 </option>
+																<option value="2279">男式衬衫修身版39.5</option>
+																<option value="2280">男式衬衫修身版40 </option>
+																<option value="2281">男式衬衫修身版40.5</option>
+																<option value="2282">男式衬衫修身版41 </option>
+																<option value="2283">男式衬衫修身版41.5</option>
+																<option value="2284">男式衬衫修身版42 </option>
+																<option value="2285">男式衬衫修身版42.5</option>
+																<option value="2286">男式衬衫修身版43 </option>
+																<option value="2287">男式衬衫修身版43.5</option>
+																<option value="2288">男式衬衫修身版44 </option>
+																<option value="2289">男式衬衫修身版44.5</option>
+																<option value="2290">男式衬衫修身版45 </option>
+																<option value="2291">男式衬衫修身版45.5</option>
+																<option value="2292">男式衬衫修身版46 </option>
+																<option value="2293">男式衬衫修身版46.5</option>
+																<option value="2294">男式衬衫修身版47 </option>
+																<option value="2376">男式衬衫合身版38 </option>
+																<option value="2377">男式衬衫合身版38.5</option>
+																<option value="2378">男式衬衫合身版39 </option>
+																<option value="2379">男式衬衫合身版39.5</option>
+																<option value="2380">男式衬衫合身版40 </option>
+																<option value="2381">男式衬衫合身版40.5</option>
+																<option value="2382">男式衬衫合身版41 </option>
+																<option value="2383">男式衬衫合身版41.5</option>
+																<option value="2384">男式衬衫合身版42 </option>
+																<option value="2385">男式衬衫合身版42.5</option>
+																<option value="2386">男式衬衫合身版43 </option>
+																<option value="2387">男式衬衫合身版43.5</option>
+																<option value="2388">男式衬衫合身版44 </option>
+																<option value="2389">男式衬衫合身版44.5</option>
+																<option value="2390">男式衬衫合身版45 </option>
+																<option value="2391">男式衬衫合身版45.5</option>
+																<option value="2392">男式衬衫合身版46 </option>
+																<option value="2393">男式衬衫合身版46.5</option>
+																<option value="2394">男式衬衫合身版47 </option>
+																<option value="2476">男式衬衫宽松版38 </option>
+																<option value="2477">男式衬衫宽松版38.5</option>
+																<option value="2478">男式衬衫宽松版39 </option>
+																<option value="2479">男式衬衫宽松版39.5</option>
+																<option value="2480">男式衬衫宽松版40 </option>
+																<option value="2481">男式衬衫宽松版40.5</option>
+																<option value="2482">男式衬衫宽松版41 </option>
+																<option value="2483">男式衬衫宽松版41.5</option>
+																<option value="2484">男式衬衫宽松版42 </option>
+																<option value="2485">男式衬衫宽松版42.5</option>
+																<option value="2486">男式衬衫宽松版43 </option>
+																<option value="2487">男式衬衫宽松版43.5</option>
+																<option value="2488">男式衬衫宽松版44 </option>
+																<option value="2489">男式衬衫宽松版44.5</option>
+																<option value="2490">男式衬衫宽松版45 </option>
+																<option value="2491">男式衬衫宽松版45.5</option>
+																<option value="2492">男式衬衫宽松版46 </option>
+																<option value="2493">男式衬衫宽松版46.5</option>
+																<option value="2494">男式衬衫宽松版47 </option>
+															</select> <label>号衣尺码</label>
+														</div>
+													</div>
+													<div class="row" id="measure_list">
+
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="height" value="">
+																<label>身高</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="weight" value="">
+																<label>体重</label>
+															</div>
+														</div>
+
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="xiong_wei" value="">
+																<label>胸围*</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="yao_wei" value="">
+																<label>中腰围（腰围）*</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="du_wei" value="">
+																<label>肚围</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="dibian" value="">
+																<label>底边（臀围）*</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="ling_wei" value="">
+																<label>领围*</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="houshen_chang_nei" value="">
+																<label>后身长（内穿）*</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="houshen_chang_wai" value="">
+																<label>后身长（外穿）*</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="jian_kuan" value="">
+																<label>肩宽*</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="xiu_chang" value="">
+																<label>长袖长*</label>
+															</div>
+														</div>
+
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="duanxiu_chang" value="">
+																<label>短袖长*</label>
+															</div>
+														</div>
+
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="xiu_fei" value="">
+																<label>袖肥（大臂围）*</label>
+															</div>
+														</div>
+
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="xiuzhou_fei" value="">
+																<label>袖肘肥（小臂围）*</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="duanxiu_kouwei" value="">
+																<label>短袖口围*</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="xiutouchang_zuo" value="">
+																<label>左袖头长（左腕围）*</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="xiutouchang_you" value="">
+																<label>右袖头长（右腕围）*</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="qianshen_chang" value="">
+																<label>前身长</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="qianxiong_kuan" value="">
+																<label>前胸宽</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="houbei_kuan" value="">
+																<label>后背宽</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="chest_height" value="">
+																<label>胸高</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="chest_distance" value="">
+																<label>胸距</label>
+															</div>
+														</div>
+
+													</div>
 												</div>
 											</div>
 										</div>
@@ -713,9 +990,14 @@
 																<p>纽扣</p>
 															</div>
 															<div class="input-field col s12 m12 l12">
-																<select name="kouzi">
+																<select id="kouzi" name="kouzi">
 																	<%=list_kouzi%>
+																	<option value="">客供</option>
 																</select> <label>纽扣类型</label>
+															</div>
+															<div class="input-field col s12 m12 l12" id="kouzi_div">
+																<input id="kouzi_pbc" type="text" class="validate" name="kouzi" value="">
+																<label>客供扣子</label>
 															</div>
 														</div>
 													</div>
@@ -764,7 +1046,7 @@
 														</div>
 														<div class="col s6 m6 l6">
 															<div class="input-field">
-																<input type="text" class="validate" name="uskin_code_2" value="">
+																<input type="text" class="validate" name="peise_bn" value="">
 																<label>配色面料</label>
 															</div>
 														</div>
@@ -812,7 +1094,7 @@
 												<a class="col s12 m12 l12 btn" onclick="getPrice()" id="addShoppingCart">获取报价</a>
 											</div>
 											<div class="col s12 m12 l12">
-												<a class="col s12 m12 l12 btn red" onclick="addShoppingCart()" id="getPrice">提交订单数据</a>
+												<a class="col s12 m12 l12 btn" onclick="addShoppingCart()" id="getPrice">提交订单数据</a>
 											</div>
 										</div>
 									</div>

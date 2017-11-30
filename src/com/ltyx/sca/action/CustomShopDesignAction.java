@@ -1,15 +1,15 @@
 package com.ltyx.sca.action;
 
-import com.ltyx.sca.actionplugin.MoudleCSACheckSummaryClothes;
-import com.ltyx.sca.actionplugin.MoudleCSACheckUserInfo;
-import com.ltyx.sca.actionplugin.MoudleCSAGetPricePBYX;
-import com.ltyx.sca.actionplugin.MoudleCSASubmitECWoman;
+import com.ltyx.sca.actionplugin.MoudleCSCheckSummaryClothes;
+import com.ltyx.sca.actionplugin.MoudleCSCheckUserInfo;
+import com.ltyx.sca.actionplugin.MoudleCSGetPriceDesign;
+import com.ltyx.sca.actionplugin.MoudleCSSubmitECDesign;
 import com.ltyx.sca.actionplugin.MoudleCheckMeasure;
 import com.ltyx.sca.actionplugin.MoudleCheckPrice;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 
-public class CustomShopAideWomanAction extends ZCBaseActionSupport {
+public class CustomShopDesignAction extends ZCBaseActionSupport {
 
 	/**
 	 * 
@@ -32,7 +32,7 @@ public class CustomShopAideWomanAction extends ZCBaseActionSupport {
 	public String getPrice() {
 
 		init(true);
-		String methodName = "客户经理 衬衫 优纤面料 报价";
+		String methodName = "定制店 衬衫 优纤面料 报价";
 
 		ZCReqIntroGetter.showParams(methodName, request);
 
@@ -46,7 +46,7 @@ public class CustomShopAideWomanAction extends ZCBaseActionSupport {
 	public String submit() {
 
 		init(true);
-		String methodName = "客户经理 衬衫 优纤面料 提交购物车";
+		String methodName = "定制店 衬衫 优纤面料 提交购物车";
 
 		ZCReqIntroGetter.showParams(methodName, request);
 
@@ -59,7 +59,7 @@ public class CustomShopAideWomanAction extends ZCBaseActionSupport {
 
 	public boolean doGetPrice() {
 
-		MoudleCSAGetPricePBYX moudle = new MoudleCSAGetPricePBYX(request);
+		MoudleCSGetPriceDesign moudle = new MoudleCSGetPriceDesign(request);
 		moudle.doJobs();
 		ERRCODE = moudle.getERRCODE();
 		ERRDESC = moudle.getERRDESC();
@@ -71,7 +71,7 @@ public class CustomShopAideWomanAction extends ZCBaseActionSupport {
 	public boolean doSubmit() {
 
 		{
-			MoudleCSACheckUserInfo moudle = new MoudleCSACheckUserInfo(request);
+			MoudleCSCheckUserInfo moudle = new MoudleCSCheckUserInfo(request);
 			if (!moudle.doJobs()) {
 				addProgressFail("用户信息检测");
 				ERRCODE = moudle.getERRCODE();
@@ -83,7 +83,7 @@ public class CustomShopAideWomanAction extends ZCBaseActionSupport {
 		}
 
 		{
-			MoudleCSACheckSummaryClothes moudle = new MoudleCSACheckSummaryClothes(request);
+			MoudleCSCheckSummaryClothes moudle = new MoudleCSCheckSummaryClothes(request);
 			if (!moudle.doJobs()) {
 				addProgressFail("订单摘要信息");
 				ERRCODE = moudle.getERRCODE();
@@ -118,7 +118,7 @@ public class CustomShopAideWomanAction extends ZCBaseActionSupport {
 		}
 
 		{
-			MoudleCSASubmitECWoman moudle = new MoudleCSASubmitECWoman(request);
+			MoudleCSSubmitECDesign moudle = new MoudleCSSubmitECDesign(request);
 			if (!moudle.doJobs()) {
 				ERRCODE = moudle.getERRCODE();
 				ERRDESC = moudle.getERRDESC();

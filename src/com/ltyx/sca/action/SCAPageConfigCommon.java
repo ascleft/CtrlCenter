@@ -1,10 +1,61 @@
 package com.ltyx.sca.action;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.zc.support.link.ZCReqIntroGetter;
 
 public class SCAPageConfigCommon {
+
+	synchronized public static HttpSession manageMenu(HttpSession session) {
+
+		{
+			String rank = "" + session.getAttribute("ec_user_rank");
+
+			if ("0".equals(rank)) {// 客户经理
+				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_csa());
+			} else if ("10".equals(rank)) {// 定制顾问
+				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_aide());
+			} else if ("20".equals(rank)) {// 定制店
+				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_cs());
+			}
+			if ("张弛".equals(session.getAttribute("ec_user_name")) || "zc".equals(session.getAttribute("ec_user_name"))) {
+				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_all());
+			}
+		}
+
+		return session;
+	}
+
+	synchronized public static HttpSession manageTechnology(HttpSession session) {
+
+		{
+			session.setAttribute("list_LZX_01", SCAPageConfigMan.get_list_LZX_01());
+			session.setAttribute("list_LZX_02", SCAPageConfigMan.get_list_LZX_02());
+			session.setAttribute("list_LZX_03", SCAPageConfigMan.get_list_LZX_03());
+			session.setAttribute("list_LZX_04", SCAPageConfigMan.get_list_LZX_04());
+			session.setAttribute("list_LZX_08", SCAPageConfigMan.get_list_LZX_08());
+			session.setAttribute("list_LZX_120", SCAPageConfigMan.get_list_LZX_120());
+			session.setAttribute("list_LZX_06", SCAPageConfigMan.get_list_LZX_06());
+			session.setAttribute("list_LZX_17", SCAPageConfigMan.get_list_LZX_17());
+			session.setAttribute("list_LZX_26", SCAPageConfigMan.get_list_LZX_26());
+			session.setAttribute("list_LZX_13", SCAPageConfigMan.get_list_LZX_13());
+			session.setAttribute("list_zhidai", SCAPageConfigMan.get_list_zhidai());
+			session.setAttribute("list_color", SCAPageConfigMan.get_list_color());
+			session.setAttribute("list_kouzi", SCAPageConfigMan.get_list_kouzi());
+			session.setAttribute("list_shenxing", SCAPageConfigMan.get_list_shenxing());
+			session.setAttribute("list_lingcheng", SCAPageConfigMan.get_list_lingcheng());
+			session.setAttribute("list_mingxian", SCAPageConfigMan.get_list_mingxian());
+			session.setAttribute("list_cefeng", SCAPageConfigMan.get_list_cefeng());
+			session.setAttribute("list_qiantiao", SCAPageConfigMan.get_list_qiantiao());
+			session.setAttribute("list_chenbu", SCAPageConfigMan.get_list_chenbu());
+
+			session.setAttribute("list_weizhi_zhidai", SCAPageConfigMan.get_list_weizhi_zhidai());
+			session.setAttribute("list_weizhi_peise", SCAPageConfigMan.get_list_weizhi_peise());
+		}
+
+		return session;
+	}
 
 	public static String get_QR_url(HttpServletRequest request) {
 
@@ -22,14 +73,14 @@ public class SCAPageConfigCommon {
 	public static String get_menu_list_all() {
 
 		String menuList = "";//
-		menuList += get_menu_list_guwen();
-		menuList += get_menu_list_jingli();
-		menuList += get_menu_list_dingzhidian();
+		menuList += get_menu_list_aide();
+		menuList += get_menu_list_csa();
+		menuList += get_menu_list_cs();
 
 		return menuList;
 	}
 
-	public static String get_menu_list_guwen() {
+	public static String get_menu_list_aide() {
 
 		String menuList = ""//
 				+ "<li>"//
@@ -54,7 +105,7 @@ public class SCAPageConfigCommon {
 		return menuList;
 	}
 
-	public static String get_menu_list_jingli() {
+	public static String get_menu_list_csa() {
 
 		String menuList = ""//
 				+ "<li>"//
@@ -70,6 +121,9 @@ public class SCAPageConfigCommon {
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideWoman.action\">客户经理 女装</a>"//
 				+ "</li>"//
 				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideDesign.action\">客户经理 设计师款</a>"//
+				+ "</li>"//
+				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearch.action\">客户经理 即时库存查询</a>"//
 				+ "</li>";//
 
@@ -77,7 +131,7 @@ public class SCAPageConfigCommon {
 
 	}
 
-	public static String get_menu_list_dingzhidian() {
+	public static String get_menu_list_cs() {
 
 		String menuList = ""//
 				+ "<li>"//
@@ -91,6 +145,9 @@ public class SCAPageConfigCommon {
 				+ "</li>"//
 				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopWoman.action\">定制店 女装</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopDesign.action\">定制店 设计师款</a>"//
 				+ "</li>"//
 				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">定制店 即时库存查询</a>"//

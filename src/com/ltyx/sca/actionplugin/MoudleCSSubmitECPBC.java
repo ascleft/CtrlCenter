@@ -99,7 +99,7 @@ public class MoudleCSSubmitECPBC extends ZCBaseActionSupportPlugin {
 		param.addParam("chest_height", getReqParamString("chest_height"));
 		param.addParam("chest_distance", getReqParamString("chest_distance"));
 
-		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshop_add_cart_pbc, param);
+		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshop_add_cart_pbc.getUrl(), param);
 		Log.Nano.tag("定制店 提交 客供面料 Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp;
@@ -110,7 +110,7 @@ public class MoudleCSSubmitECPBC extends ZCBaseActionSupportPlugin {
 			jsonHttpResp = JSONObject.fromObject(httpResp);
 			jsonERRCODE = jsonHttpResp.getString("ERRCODE");
 			jsonERRDESC = jsonHttpResp.getString("ERRDESC");
-			jsonData = "EC错误码：" + jsonERRCODE + " EC错误描述：" + jsonERRDESC;
+			jsonData = jsonERRDESC;
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.Nano.tag("EC服务器响应错误", httpResp);

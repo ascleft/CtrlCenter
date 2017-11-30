@@ -53,7 +53,7 @@ public class SearchAction extends ZCBaseActionSupport {
 
 			ERRCODE = "1";
 			ERRDESC = "fail";
-			data = "弱鸡，少特么调戏接口";
+			data = "请不要攻击接口";
 
 			writeResp("即时库存接口 resp to Web");
 
@@ -77,7 +77,7 @@ public class SearchAction extends ZCBaseActionSupport {
 
 			if (null == rank || "".equals(rank) || Integer.parseInt(rank) > 30) {
 
-				if (name.length() > 15) {
+				if (name.length() > 50) {
 
 					ERRCODE = "0";
 					ERRDESC = "fail";

@@ -2,9 +2,9 @@ package com.ltyx.sca.actionplugin;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class MoudleCSGetPricePBC extends MoudleCSAGetPricePBC {
+public class MoudleCSAGetPriceDesign extends MoudleCSGetPricePBYX {
 
-	public MoudleCSGetPricePBC(HttpServletRequest req) {
+	public MoudleCSAGetPriceDesign(HttpServletRequest req) {
 		super(req);
 		// TODO Auto-generated constructor stub
 	}

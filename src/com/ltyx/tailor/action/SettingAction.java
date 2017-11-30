@@ -2,6 +2,7 @@ package com.ltyx.tailor.action;
 
 import com.zc.support.config.ConfigHelperDB;
 import com.zc.support.config.ConfigHelperURL;
+import com.zc.support.config.ConfigHelperURL.ZCUrl;
 import com.zc.support.doman.ZCBaseActionSupport;
 
 public class SettingAction extends ZCBaseActionSupport {
@@ -27,7 +28,7 @@ public class SettingAction extends ZCBaseActionSupport {
 		ERRCODE = "0";
 		ERRDESC = "succ";
 		data = "";
-		
+
 		{
 			data += "当前数据库:" + ConfigHelperDB.NAME;
 			data += "<br />";
@@ -43,43 +44,9 @@ public class SettingAction extends ZCBaseActionSupport {
 
 		data += "<br />";
 		data += "<br />";
-		
-		{
-			data += "下单工具1.0";
-			data += "<br />";
-			data += "当前登录地址:  " + ConfigHelperURL.Url_LoginEC;
-			data += "<br />";
-			data += "当前提交地址:  " + ConfigHelperURL.Url_SubTailor;
-			data += "<br />";
-		}
-		
-		data += "<br />";
-		data += "<br />";
-		
-		{
-			data += "下单工具2.0（SCA）";
-			data += "<br />";
-			data += "当前定制顾问 自由搭配 报价:  " + ConfigHelperURL.Url_aide_get_price_pbyx;
-			data += "<br />";
-			data += "当前定制顾问 自由搭配 提交:  " + ConfigHelperURL.Url_aide_add_cart_pbyx;
-			data += "<br />";
-			data += "定制顾问 设计师推荐款 报价:  " + ConfigHelperURL.Url_aide_get_price_design;
-			data += "<br />";
-			data += "定制顾问 设计师推荐款 提交:  " + ConfigHelperURL.Url_aide_add_cart_design;
-			data += "<br />";
-			data += "定制顾问 其他商品 提交:  " + ConfigHelperURL.Url_aide_add_cart_subcontract;
-			data += "<br />";
-			data += "定制店 自由搭配 报价:  " + ConfigHelperURL.Url_customshop_get_price_pbyx;
-			data += "<br />";
-			data += "定制店 自由搭配 提交:  " + ConfigHelperURL.Url_customshop_add_cart_pbyx;
-			data += "<br />";
-			data += "定制店 自由搭配 提交:  " + ConfigHelperURL.Url_customshop_add_cart_pbc;
-			data += "<br />";
-			data += "定制店 自由搭配 报价:  " + ConfigHelperURL.Url_customshopaide_get_price_pbyx;
-			data += "<br />";
-			data += "定制店 自由搭配 提交:  " + ConfigHelperURL.Url_customshopaide_add_cart_pbyx;
-			data += "<br />";
-			data += "客户经理 客供面料 提交:  " + ConfigHelperURL.Url_customshopaide_add_cart_pbc;
+
+		for (ZCUrl url : ConfigHelperURL.list) {
+			data += url.getDesc();
 			data += "<br />";
 		}
 

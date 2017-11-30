@@ -382,3 +382,50 @@ function use_size() {
 		Materialize.updateTextFields();
 	});
 }
+
+//启用尺寸调整
+
+
+
+function use_size_change() {
+	$("#measure_list").show();
+	$("#size_list").hide();
+	$("#measure_type").bind("change", function() {
+		var selected_name = $("#measure_type option:selected").text();
+		if(selected_name == "号衣尺码") {
+			$("#measure_list").hide();
+			$("#size_list ").show();
+		} else {
+			$("#measure_list").show();
+			$("#size_list").hide();
+		}
+		Materialize.updateTextFields();
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

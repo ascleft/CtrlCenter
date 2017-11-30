@@ -114,13 +114,17 @@
 								String_html += "<tr>";
 								String_html += "<td>";
 								if("MLCK040" == resp.data[i].FSTOCKNUMBER) {
-									String_html += "<a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/ProPBC.action?code=";
+									String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/AidePBYX.action?code=";
 									String_html += resp.data[i].FMATERIALNUMBER;
 									String_html += "\">";
 									String_html += resp.data[i].FMATERIALNUMBER;
 									String_html += "</a>";
 								} else {
+									String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/AidePBYX.action?code=";
 									String_html += resp.data[i].FUSKIN;
+									String_html += "\">";
+									String_html += resp.data[i].FUSKIN;
+									String_html += "</a>";
 								}
 								String_html += "</td>";
 								if(ec_user_rank < 10) {

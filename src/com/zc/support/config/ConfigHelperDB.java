@@ -3,10 +3,10 @@ package com.zc.support.config;
 public class ConfigHelperDB {
 
 	final public static String STATE_RELEASE = "STATE_RELEASE";
-	final public static String STATE_TEST = "STATE_TEST";;
+	final public static String STATE_TEST = "STATE_TEST";
 	final public static String STATE_CUSTOM = "STATE_CUSTOM";
 
-	private static String STATE = STATE_TEST;
+	private static String STATE = STATE_RELEASE;
 
 	public static String URL = "";
 	public static String NAME = "";
@@ -14,13 +14,9 @@ public class ConfigHelperDB {
 
 	public static void init() {
 		if (STATE.equals(STATE_RELEASE)) {
-			URL = "jdbc:mysql://localhost:3306/ctrlcenter";
-			NAME = "root";
-			PWD = "jycsFactal150428!";
+			setDB("root", "jycsFactal150428!");
 		} else {
-			URL = "jdbc:mysql://localhost:3306/ctrlcenter";
-			NAME = "root";
-			PWD = "junyi000726";
+			setDB("root", "junyi000726");
 		}
 	}
 

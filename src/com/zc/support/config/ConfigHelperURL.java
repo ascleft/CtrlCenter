@@ -1,5 +1,9 @@
 package com.zc.support.config;
 
+import java.util.ArrayList;
+
+import com.zc.support.service.StringHelper;
+
 public class ConfigHelperURL {
 
 	final public static String STATE_RELEASE = "STATE_RELEASE";
@@ -11,45 +15,63 @@ public class ConfigHelperURL {
 	private static String BaseUrl_RELEASE = "http://www.utailor.com.cn";
 	private static String BaseUrl_TEST = "http://tool.uskin.net.cn/";
 
-	// 下单工具
-	private static String url_LoginEC = "/index.php/openapi/uskinapi/tool_check_login";
-	public static String Url_LoginEC = "";
-	private static String url_SubTailor = "/index.php/openapi/uskinapi/tool_add_cart";
-	public static String Url_SubTailor = "";
+	// 下单工具1.0
+	public static ZCUrl Url_LoginEC = new ZCUrl("下单工具1.0 登录", "/index.php/openapi/uskinapi/tool_check_login");
+	public static ZCUrl Url_SubTailor = new ZCUrl("下单工具1.0 添加购物车", "/index.php/openapi/uskinapi/tool_add_cart");
 
-	// SCA
-	private static String url_aide_get_price_pbyx = "/index.php/openapi/uskinapi/body_trainer_freechoice_price";
-	public static String Url_aide_get_price_pbyx = "";// 定制顾问 衬衫 报价 ↑
-	private static String url_aide_add_cart_pbyx = "/index.php/openapi/uskinapi/body_trainer_freechoice_add_cart";
-	public static String Url_aide_add_cart_pbyx = "";// 定制顾问 衬衫 提交 ↑
-	private static String url_aide_get_price_design = "/index.php/openapi/uskinapi/body_trainer_recommendlist_price";
-	public static String Url_aide_get_price_design = "";// 定制顾问 设计师款 报价 ↑
-	private static String url_aide_add_cart_design = "/index.php/openapi/uskinapi/body_trainer_recommendlist_add_cart";
-	public static String Url_aide_add_cart_design = "";// 定制顾问 设计师款 提交 ↑
-	private static String url_aide_add_cart_subcontract = "/index.php/openapi/uskinapi/body_trainer_other_goods_add_cart";
-	public static String Url_aide_add_cart_subcontract = "";// 定制顾问 其他商品 提交 ↑
-	private static String url_aide_add_cart_woman = "/index.php/openapi/uskinapi/body_trainer_other_goods_add_cart";
-	public static String Url_aide_add_cart_woman = "";// 定制顾问 女装 提交 ↑--------------------------------------
+	// 下单工具2.0 SCA
+	public static ZCUrl Url_aide_get_price_pbyx = new ZCUrl("下单工具2.0 定制顾问 衬衫 报价 ", "/index.php/openapi/uskinapi/body_trainer_freechoice_price");
+	public static ZCUrl Url_aide_add_cart_pbyx = new ZCUrl("下单工具2.0 定制顾问 衬衫 提交 ", "/index.php/openapi/uskinapi/body_trainer_freechoice_add_cart");
+	public static ZCUrl Url_aide_get_price_design = new ZCUrl("下单工具2.0 定制顾问 设计师款 报价", "/index.php/openapi/uskinapi/body_trainer_recommendlist_price");
+	public static ZCUrl Url_aide_add_cart_design = new ZCUrl("下单工具2.0 定制顾问 设计师款 提交", "/index.php/openapi/uskinapi/body_trainer_recommendlist_add_cart");
+	public static ZCUrl Url_aide_add_cart_subcontract = new ZCUrl("下单工具2.0 定制顾问 其他商品 提交", "/index.php/openapi/uskinapi/body_trainer_other_goods_add_cart");
+	public static ZCUrl Url_aide_add_cart_woman = new ZCUrl("下单工具2.0 定制顾问 女装 提交 ", "/index.php/openapi/uskinapi/body_trainer_add_cart_for_mygirl");
 
-	private static String url_customshop_get_price_pbyx = "/index.php/openapi/uskinapi/bespoke_shop_freechoice_price";
-	public static String Url_customshop_get_price_pbyx = "";// 定制店 衬衫 报价 ↑
-	private static String url_customshop_add_cart_pbyx = "/index.php/openapi/uskinapi/bespoke_shop_freechoice_add_cart";
-	public static String Url_customshop_add_cart_pbyx = "";// 定制店 衬衫 提交 ↑
-	private static String url_customshop_add_cart_pbc = "/index.php/openapi/uskinapi/bespoke_shop_cust_fabric_add_cart";
-	public static String Url_customshop_add_cart_pbc = "";// 定制店 衬衫 客供面料 提交 ↑
-	private static String url_customshop_add_cart_woman = "/index.php/openapi/uskinapi/bespoke_shop_freechoice_add_cart";
-	public static String Url_customshop_add_cart_woman = "";// 定制店 女装 提交 ↑--------------------------------------
+	public static ZCUrl Url_customshop_get_price_pbyx = new ZCUrl("下单工具2.0 定制店 衬衫 报价", "/index.php/openapi/uskinapi/bespoke_shop_freechoice_price");
+	public static ZCUrl Url_customshop_add_cart_pbyx = new ZCUrl("下单工具2.0 定制店 衬衫 提交", "/index.php/openapi/uskinapi/bespoke_shop_freechoice_add_cart");
+	public static ZCUrl Url_customshop_add_cart_pbc = new ZCUrl("下单工具2.0 定制店 衬衫 客供面料 提交", "/index.php/openapi/uskinapi/bespoke_shop_cust_fabric_add_cart");
+	public static ZCUrl Url_customshop_add_cart_woman = new ZCUrl("下单工具2.0 定制店 女装 提交", "/index.php/openapi/uskinapi/bespoke_shop_add_cart_for_mygirl");
+	public static ZCUrl Url_customshop_add_cart_design = new ZCUrl("下单工具2.0 定制店 设计师款 提交", "/index.php/openapi/shirtapi/bespoke_shop_recommendlist_add_cart");
 
-	private static String url_customshopaide_get_price_pbyx = "/index.php/openapi/uskinapi/bespoke_shop_freechoice_price";
-	public static String Url_customshopaide_get_price_pbyx = "";// 客户经理 衬衫 报价 ↑
-	private static String url_customshopaide_add_cart_pbyx = "/index.php/openapi/uskinapi/manager_freechoice_add_cart";
-	public static String Url_customshopaide_add_cart_pbyx = "";// 客户经理 衬衫 提交 ↑
-	private static String url_customshopaide_add_cart_pbc = "/index.php/openapi/uskinapi/manager_custfabric_add_cart";
-	public static String Url_customshopaide_add_cart_pbc = "";// 客户经理 客供面料 提交 ↑
-	private static String url_customshopaide_add_cart_woman = "/index.php/openapi/uskinapi/manager_freechoice_add_cart";
-	public static String Url_customshopaide_add_cart_woman = "";// 客户经理 女装 提交 ↑--------------------------------------
+	public static ZCUrl Url_customshopaide_get_price_pbyx = new ZCUrl("下单工具2.0 客户经理 衬衫 报价", "/index.php/openapi/uskinapi/bespoke_shop_freechoice_price");
+	public static ZCUrl Url_customshopaide_add_cart_pbyx = new ZCUrl("下单工具2.0 客户经理 衬衫 提交", "/index.php/openapi/uskinapi/manager_freechoice_add_cart");
+	public static ZCUrl Url_customshopaide_add_cart_pbc = new ZCUrl("下单工具2.0 客户经理 客供面料 提交", "/index.php/openapi/uskinapi/manager_custfabric_add_cart");
+	public static ZCUrl Url_customshopaide_add_cart_woman = new ZCUrl("下单工具2.0 客户经理 女装 提交", "/index.php/openapi/uskinapi/manager_add_cart_for_mygirl");
+	public static ZCUrl Url_customshopaide_add_cart_design = new ZCUrl("下单工具2.0 客户经理 设计师款 提交", "/index.php/openapi/shirtapi/manager_recommendlist_add_cart");
+
+	public static ArrayList<ZCUrl> list = null;
 
 	public static void init() {
+
+		list = new ArrayList<ConfigHelperURL.ZCUrl>();
+		// 下单工具1.0
+		{
+			list.add(Url_LoginEC);
+			list.add(Url_SubTailor);
+		}
+		// 下单工具2.0 SCA
+		{
+			// 定制顾问
+			list.add(Url_aide_get_price_pbyx);
+			list.add(Url_aide_add_cart_pbyx);
+			list.add(Url_aide_get_price_design);
+			list.add(Url_aide_add_cart_design);
+			list.add(Url_aide_add_cart_subcontract);
+			list.add(Url_aide_add_cart_woman);
+			// 客户经理
+			list.add(Url_customshopaide_get_price_pbyx);
+			list.add(Url_customshopaide_add_cart_pbyx);
+			list.add(Url_customshopaide_add_cart_pbc);
+			list.add(Url_customshopaide_add_cart_woman);
+			list.add(Url_customshopaide_add_cart_design);
+			// 定制店
+			list.add(Url_customshop_get_price_pbyx);
+			list.add(Url_customshop_add_cart_pbyx);
+			list.add(Url_customshop_add_cart_pbc);
+			list.add(Url_customshop_add_cart_woman);
+			list.add(Url_customshop_add_cart_design);
+		}
+
 		if (STATE.equals(STATE_RELEASE)) {
 			setUrl(BaseUrl_RELEASE);
 		} else {
@@ -63,35 +85,35 @@ public class ConfigHelperURL {
 	}
 
 	private static void setUrl(String baseurl) {
-		Url_LoginEC = baseurl + url_LoginEC;
-		Url_SubTailor = baseurl + url_SubTailor;
+		for (ZCUrl url : list) {
+			url.setUrl(baseurl);
+		}
+	}
 
-		// 定制顾问 自由搭配
-		Url_aide_get_price_pbyx = baseurl + url_aide_get_price_pbyx;
-		Url_aide_add_cart_pbyx = baseurl + url_aide_add_cart_pbyx;
-		// 定制顾问 设计师推荐款
-		Url_aide_get_price_design = baseurl + url_aide_get_price_design;
-		Url_aide_add_cart_design = baseurl + url_aide_add_cart_design;
-		// 定制顾问 其他商品
-		Url_aide_add_cart_subcontract = baseurl + url_aide_add_cart_subcontract;
-		// 定制顾问 女装
-		Url_customshopaide_add_cart_woman= baseurl + url_customshopaide_add_cart_woman;
+	public static class ZCUrl {
+		String nameCH;
+		String nameEN;
+		String urlAPI;
+		String urlFull;
 
-		// 定制店 自由搭配
-		Url_customshop_get_price_pbyx = baseurl + url_customshop_get_price_pbyx;
-		Url_customshop_add_cart_pbyx = baseurl + url_customshop_add_cart_pbyx;
-		// 定制店 客供面料
-		Url_customshop_add_cart_pbc = baseurl + url_customshop_add_cart_pbc;
-		// 定制店 女装
-		Url_customshop_add_cart_woman= baseurl + url_customshop_add_cart_woman;
+		public ZCUrl(String name, String API) {
+			nameCH = name;
+			nameEN = "";
+			urlAPI = API;
+			urlFull = "";
+		}
 
-		// 客户经理 自由搭配
-		Url_customshopaide_get_price_pbyx = baseurl + url_customshopaide_get_price_pbyx;
-		Url_customshopaide_add_cart_pbyx = baseurl + url_customshopaide_add_cart_pbyx;
-		// 客户经理 客供面料
-		Url_customshopaide_add_cart_pbc = baseurl + url_customshopaide_add_cart_pbc;
-		// 客户经理 女装
-		Url_customshop_add_cart_woman= baseurl + url_customshop_add_cart_woman;
+		public void setUrl(String baseUrl) {
+			urlFull = baseUrl + urlAPI;
+		}
+
+		public String getUrl() {
+			return urlFull;
+		}
+
+		public String getDesc() {
+			return StringHelper.fillRight(nameCH, 26, "—") + ">" + urlFull;
+		}
 
 	}
 

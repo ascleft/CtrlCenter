@@ -198,7 +198,7 @@ public class MoudleSubmitEC extends ZCBaseActionSupportPlugin {
 
 		// 模拟地址"http://61.50.122.58:8029/CtrlCenter/LTYX/Tailor/SubTailorEC.action"
 
-		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_SubTailor, param);
+		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_SubTailor.getUrl(), param);
 		Log.Nano.tag("Save Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp;

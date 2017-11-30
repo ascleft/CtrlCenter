@@ -2,14 +2,14 @@ package com.ltyx.sca.action;
 
 import com.ltyx.sca.actionplugin.MoudleCSACheckSummaryClothes;
 import com.ltyx.sca.actionplugin.MoudleCSACheckUserInfo;
-import com.ltyx.sca.actionplugin.MoudleCSAGetPricePBYX;
-import com.ltyx.sca.actionplugin.MoudleCSASubmitECWoman;
+import com.ltyx.sca.actionplugin.MoudleCSAGetPriceDesign;
+import com.ltyx.sca.actionplugin.MoudleCSASubmitECDesign;
 import com.ltyx.sca.actionplugin.MoudleCheckMeasure;
 import com.ltyx.sca.actionplugin.MoudleCheckPrice;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 
-public class CustomShopAideWomanAction extends ZCBaseActionSupport {
+public class CustomShopAideDesignAction extends ZCBaseActionSupport {
 
 	/**
 	 * 
@@ -59,7 +59,7 @@ public class CustomShopAideWomanAction extends ZCBaseActionSupport {
 
 	public boolean doGetPrice() {
 
-		MoudleCSAGetPricePBYX moudle = new MoudleCSAGetPricePBYX(request);
+		MoudleCSAGetPriceDesign moudle = new MoudleCSAGetPriceDesign(request);
 		moudle.doJobs();
 		ERRCODE = moudle.getERRCODE();
 		ERRDESC = moudle.getERRDESC();
@@ -109,6 +109,7 @@ public class CustomShopAideWomanAction extends ZCBaseActionSupport {
 		{
 			MoudleCheckMeasure moudle = new MoudleCheckMeasure(request);
 			if (!moudle.doJobs()) {
+				addProgressFail("尺寸校验");
 				ERRCODE = moudle.getERRCODE();
 				ERRDESC = moudle.getERRDESC();
 				data = moudle.getData();
@@ -118,8 +119,9 @@ public class CustomShopAideWomanAction extends ZCBaseActionSupport {
 		}
 
 		{
-			MoudleCSASubmitECWoman moudle = new MoudleCSASubmitECWoman(request);
+			MoudleCSASubmitECDesign moudle = new MoudleCSASubmitECDesign(request);
 			if (!moudle.doJobs()) {
+				addProgressFail("提交EC");
 				ERRCODE = moudle.getERRCODE();
 				ERRDESC = moudle.getERRDESC();
 				data = moudle.getData();

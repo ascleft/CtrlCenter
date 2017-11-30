@@ -119,7 +119,7 @@
 									String_html += resp.data[i].FMATERIALNUMBER;
 									String_html += "</a>";
 								} else {
-									String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBC.action?code=";
+									String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action?code=";
 									String_html += resp.data[i].FUSKIN;
 									String_html += "\">";
 									String_html += resp.data[i].FUSKIN;

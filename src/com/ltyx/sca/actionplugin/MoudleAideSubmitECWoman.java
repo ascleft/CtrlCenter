@@ -64,11 +64,11 @@ public class MoudleAideSubmitECWoman extends ZCBaseActionSupportPlugin {
 		param.addParam("prices_system", getReqParamString("prices_system"));
 		param.addParam("qiantiao", getReqParamString("qiantiao"));
 		param.addParam("tailor_type", getReqParamString("tailor_type"));
-		param.addParam("uskin_code", getReqParamString("uskin_code"));
-		param.addParam("uskin_code_2", getReqParamString("uskin_code_2"));
+		param.addParam("uskin_code", getReqParamString("uskin_code").toUpperCase());
+		param.addParam("uskin_code_2", getReqParamString("uskin_code_2").toUpperCase());
 		param.addParam("zhidai", getReqParamString("zhidai"));
 
-		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_aide_add_cart_woman, param);
+		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_aide_add_cart_woman.getUrl(), param);
 		Log.Nano.tag("定制顾问 提交 优纤面料 Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp;
@@ -79,7 +79,7 @@ public class MoudleAideSubmitECWoman extends ZCBaseActionSupportPlugin {
 			jsonHttpResp = JSONObject.fromObject(httpResp);
 			jsonERRCODE = jsonHttpResp.getString("ERRCODE");
 			jsonERRDESC = jsonHttpResp.getString("ERRDESC");
-			jsonData = "EC错误码：" + jsonERRCODE + " EC错误描述：" + jsonERRDESC;
+			jsonData = jsonERRDESC;
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.Nano.tag("EC服务器响应错误", httpResp);

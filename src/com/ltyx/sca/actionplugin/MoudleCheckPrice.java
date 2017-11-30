@@ -31,11 +31,14 @@ public class MoudleCheckPrice extends ZCBaseActionSupportPlugin {
 			String prices_now_string = getReqParamString("prices_now");
 			double prices_now_number = getReqParamDouble("prices_now");
 
-			if (!((prices_now_number == 0) && ("0".equals(prices_now_string)))) {
-				ERRCODE = "0";
-				ERRDESC = "fail";
-				data = "自主报价必须为有效数字！";
-				return false;
+			if (prices_now_number == 0) {
+				if (!"0".equals(prices_now_string)) {
+
+					ERRCODE = "0";
+					ERRDESC = "fail";
+					data = "自主报价必须为有效数字！";
+					return false;
+				}
 			}
 		}
 

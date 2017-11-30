@@ -69,8 +69,8 @@ public class MoudleCSASubmitECPBYX extends ZCBaseActionSupportPlugin {
 		param.addParam("prices_system", getReqParamString("prices_system"));
 		param.addParam("qiantiao", getReqParamString("qiantiao"));
 		param.addParam("tailor_type", getReqParamString("tailor_type"));
-		param.addParam("uskin_code", getReqParamString("uskin_code"));
-		param.addParam("uskin_code_2", getReqParamString("uskin_code_2"));
+		param.addParam("uskin_code", getReqParamString("uskin_code").toUpperCase());
+		param.addParam("uskin_code_2", getReqParamString("uskin_code_2").toUpperCase());
 		param.addParam("zhidai", getReqParamString("zhidai"));
 
 		// 成衣尺寸、量体尺寸信息
@@ -99,7 +99,7 @@ public class MoudleCSASubmitECPBYX extends ZCBaseActionSupportPlugin {
 		param.addParam("chest_height", getReqParamString("chest_height"));
 		param.addParam("chest_distance", getReqParamString("chest_distance"));
 
-		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_add_cart_pbyx, param);
+		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_add_cart_pbyx.getUrl(), param);
 		Log.Nano.tag("客户经理 提交 优纤面料 Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp;
@@ -110,7 +110,7 @@ public class MoudleCSASubmitECPBYX extends ZCBaseActionSupportPlugin {
 			jsonHttpResp = JSONObject.fromObject(httpResp);
 			jsonERRCODE = jsonHttpResp.getString("ERRCODE");
 			jsonERRDESC = jsonHttpResp.getString("ERRDESC");
-			jsonData = "EC错误码：" + jsonERRCODE + " EC错误描述：" + jsonERRDESC;
+			jsonData = jsonERRDESC;
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.Nano.tag("EC服务器响应错误", httpResp);

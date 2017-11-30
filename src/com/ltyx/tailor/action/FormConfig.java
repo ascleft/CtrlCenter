@@ -31,82 +31,73 @@ public class FormConfig {
 
 	public static String get_list_LZX_01() {
 
-		String list = "<optgroup label=\"八字领\">" //
-				+ "<option value=\"LZX-01-01G\">大八字领高</option>" //
-				+ "<option value=\"LZX-01-01Z\">大八字领中</option>" //
-				+ "<option value=\"LZX-01-01A\">大八字领矮</option>" //
-				+ "<option value=\"LZX-01-02G\">中八字领高</option>" //
-				+ "<option value=\"LZX-01-02Z\">中八字领中</option>" //
-				+ "<option value=\"LZX-01-02A\">中八字领矮</option>" //
-				+ "<option value=\"LZX-01-02S\">时尚八字领</option>" //
+		String list = ""//
+				+ "<optgroup label=\"基础款\">" //
+				+ "<option value=\"LZX-01-01G\" stylebase=\"true\">LZX-01-01G 大八字领高</option>" //
+				+ "<option value=\"LZX-01-01Z\" stylebase=\"true\">LZX-01-01Z 大八字领中</option>" //
+				+ "<option value=\"LZX-01-01A\" stylebase=\"true\">LZX-01-01A 大八字领矮</option>" //
+				+ "<option value=\"LZX-01-02G\" stylebase=\"true\">LZX-01-02G 中八字领高</option>" //
+				+ "<option value=\"LZX-01-02Z\" stylebase=\"true\">LZX-01-02Z 中八字领中</option>" //
+				+ "<option value=\"LZX-01-02A\" stylebase=\"true\">LZX-01-02A 中八字领矮</option>" //
+				+ "<option value=\"LZX-01-02S\" stylebase=\"true\">LZX-01-02S 时尚八字领</option>" //
+				+ "<option value=\"LZX-01-03G\" stylebase=\"true\">LZX-01-03G 正装尖领</option>" //
+				+ "<option value=\"LZX-01-03Z\" stylebase=\"true\">LZX-01-03Z 正装尖领</option>" //
+				+ "<option value=\"LZX-01-03A\" stylebase=\"true\">LZX-01-03A 正装尖领</option>" //
+				+ "<option value=\"LZX-01-03S\" stylebase=\"true\">LZX-01-03S 时尚小尖领</option>" //
+				+ "<option value=\"LZX-01-04G\" stylebase=\"true\">LZX-01-04G 方领高</option>" //
+				+ "<option value=\"LZX-01-04Z\" stylebase=\"true\">LZX-01-04Z 方领中</option>" //
+				+ "<option value=\"LZX-01-04A\" stylebase=\"true\">LZX-01-04A 方领矮</option>" //
+				+ "<option value=\"LZX-01-04S\" stylebase=\"true\">LZX-01-04S 时尚小方领</option>" //
+				+ "<option value=\"LZX-01-05G\" stylebase=\"true\">LZX-01-05G 大一字领高</option>" //
+				+ "<option value=\"LZX-01-05Z\" stylebase=\"true\">LZX-01-05Z 大一字领中</option>" //
+				+ "<option value=\"LZX-01-05A\" stylebase=\"true\">LZX-01-05A 大一字领矮</option>" //
+				+ "<option value=\"LZX-01-06G\" stylebase=\"true\">LZX-01-06G 中一字领高</option>" //
+				+ "<option value=\"LZX-01-06Z\" stylebase=\"true\">LZX-01-06Z 中一字领中</option>" //
+				+ "<option value=\"LZX-01-06A\" stylebase=\"true\">LZX-01-06A 中一字领矮</option>" //
+				+ "<option value=\"LZX-01-06S\" stylebase=\"true\">LZX-01-06S 小一字领</option>" //
+				+ "<option value=\"LZX-01-07G\" stylebase=\"true\">LZX-01-07G 尖领明扣高</option>" //
+				+ "<option value=\"LZX-01-07Z\" stylebase=\"true\">LZX-01-07Z 尖领明扣中</option>" //
+				+ "<option value=\"LZX-01-07A\" stylebase=\"true\">LZX-01-07A 尖领明扣矮</option>" //
+				+ "<option value=\"LZX-01-08G\" stylebase=\"true\">LZX-01-08G 时尚圆角领高</option>" //
+				+ "<option value=\"LZX-01-08Z\" stylebase=\"true\">LZX-01-08Z 时尚圆角领中</option>" //
+				+ "<option value=\"LZX-01-09G\" stylebase=\"true\">LZX-01-09G 礼服领高</option>" //
+				+ "<option value=\"LZX-01-09Z\" stylebase=\"true\">LZX-01-09Z 礼服领中</option>" //
+				+ "<option value=\"LZX-01-09A\" stylebase=\"true\">LZX-01-09A 礼服领矮</option>" //
+				+ "<option value=\"LZX-01-10G\" stylebase=\"true\">LZX-01-10G 直角立领高</option>" //
+				+ "<option value=\"LZX-01-10Z\" stylebase=\"true\">LZX-01-10Z 直角立领中</option>" //
+				+ "<option value=\"LZX-01-10A\" stylebase=\"true\">LZX-01-10A 直角立领矮</option>" //
+				+ "<option value=\"LZX-01-11G\" stylebase=\"true\">LZX-01-11G 圆角立领高</option>" //
+				+ "<option value=\"LZX-01-11Z\" stylebase=\"true\">LZX-01-11Z 圆角立领中</option>" //
+				+ "<option value=\"LZX-01-11A\" stylebase=\"true\">LZX-01-11A 圆角立领矮</option>" //
+				+ "<option value=\"LZX-01-13G\" stylebase=\"true\">LZX-01-13G 开口直角立领高</option>" //
+				+ "<option value=\"LZX-01-13Z\" stylebase=\"true\">LZX-01-13Z 开口直角立领中</option>" //
+				+ "<option value=\"LZX-01-13A\" stylebase=\"true\">LZX-01-13A 开口直角立领矮</option>" //
+				+ "<option value=\"LZX-01-14S\" stylebase=\"true\">LZX-01-14S 时尚小方领明扣</option>" //
+				+ "<option value=\"LZX-01-15S\" stylebase=\"true\">LZX-01-15S 时尚底领双扣</option>" //
 				+ "</optgroup>" //
-				+ "<optgroup label=\"尖领\">" //
-				+ "<option value=\"LZX-01-03G\">正装尖领</option>" //
-				+ "<option value=\"LZX-01-03Z\">正装尖领</option>" //
-				+ "<option value=\"LZX-01-03A\">正装尖领</option>" //
-				+ "<option value=\"LZX-01-03S\">时尚小尖领</option>" //
-				+ "<option value=\"LZX-01-07G\">尖领明扣高</option>" //
-				+ "<option value=\"LZX-01-07Z\">尖领明扣中</option>" //
-				+ "<option value=\"LZX-01-07A\">尖领明扣矮</option>" //
-				+ "</optgroup>" //
-				+ "<optgroup label=\"方领\">" //
-				+ "<option value=\"LZX-01-04G\">方领高</option>" //
-				+ "<option value=\"LZX-01-04Z\">方领中</option>" //
-				+ "<option value=\"LZX-01-04A\">方领矮</option>" //
-				+ "<option value=\"LZX-01-04S\">时尚小方领</option>" //
-				+ "<option value=\"LZX-01-14S\">时尚小方领明扣</option>" //
-				+ "</optgroup>" //
-				+ "<optgroup label=\"一字领\">" //
-				+ "<option value=\"LZX-01-05G\">大一字领高</option>" //
-				+ "<option value=\"LZX-01-05Z\">大一字领中</option>" //
-				+ "<option value=\"LZX-01-05A\">大一字领矮</option>" //
-				+ "<option value=\"LZX-01-06G\">中一字领高</option>" //
-				+ "<option value=\"LZX-01-06Z\">中一字领中</option>" //
-				+ "<option value=\"LZX-01-06A\">中一字领矮</option>" //
-				+ "<option value=\"LZX-01-06S\">小一字领</option>" //
-				+ "</optgroup>" //
-				+ "<optgroup label=\"立领\">" //
-				+ "<option value=\"LZX-01-10G\">直角立领高</option>" //
-				+ "<option value=\"LZX-01-10Z\">直角立领中</option>" //
-				+ "<option value=\"LZX-01-10A\">直角立领矮</option>" //
-				+ "<option value=\"LZX-01-11G\">圆角立领高</option>" //
-				+ "<option value=\"LZX-01-11Z\">圆角立领中</option>" //
-				+ "<option value=\"LZX-01-11A\">圆角立领矮</option>" //
-				+ "<option value=\"LZX-01-13G\">开口直角立领高</option>" //
-				+ "<option value=\"LZX-01-13Z\">开口直角立领中</option>" //
-				+ "<option value=\"LZX-01-13A\">开口直角立领矮</option>" //
-				+ "</optgroup>" //
-				+ "<optgroup label=\"其他\">" //
-				+ "<option value=\"LZX-01-08G\">时尚圆角领高</option>" //
-				+ "<option value=\"LZX-01-08Z\">时尚圆角领中</option>" //
-				+ "<option value=\"LZX-01-09G\">礼服领高</option>" //
-				+ "<option value=\"LZX-01-09Z\">礼服领中</option>" //
-				+ "<option value=\"LZX-01-09A\">礼服领矮</option>" //
-				+ "<option value=\"LZX-01-15S\">时尚底领双扣</option>" //  
-				+ "</optgroup>" //
-				+ "<optgroup label=\"其他领型\">" //  
-				+ "<option value=\"LZX-01-16G\">尖领暗扣高</option>" //
-				+ "<option value=\"LZX-01-16Z\">尖领暗扣中</option>" //
-				+ "<option value=\"LZX-01-16A\">尖领暗扣矮</option>" //
-				+ "<option value=\"LZX-01-17G\">装饰线领高</option>" //
-				+ "<option value=\"LZX-01-17Z\">装饰线领中</option>" //
-				+ "<option value=\"LZX-01-17A\">装饰线领矮</option>" //
-				+ "<option value=\"LZX-01-18G\">拼接领1高</option>" //
-				+ "<option value=\"LZX-01-18Z\">拼接领1中</option>" //
-				+ "<option value=\"LZX-01-18A\">拼接领1矮</option>" //
-				+ "<option value=\"LZX-01-19G\">拼接领2高</option>" //
-				+ "<option value=\"LZX-01-19Z\">拼接领2中</option>" //
-				+ "<option value=\"LZX-01-19A\">拼接领2矮</option>" //
-				+ "<option value=\"LZX-01-20G\">拼接领3高</option>" //
-				+ "<option value=\"LZX-01-20Z\">拼接领3中</option>" //
-				+ "<option value=\"LZX-01-20A\">拼接领3矮</option>" //
-				+ "<option value=\"LZX-01-21G\">中八领暗扣高</option>" //
-				+ "<option value=\"LZX-01-21Z\">中八领暗扣中</option>" //
-				+ "<option value=\"LZX-01-21A\">中八领暗扣矮</option>" //
-				+ "<option value=\"LZX-01-22G\">方领暗扣高</option>" //
-				+ "<option value=\"LZX-01-22Z\">方领暗扣中</option>" //
-				+ "<option value=\"LZX-01-22A\">方领暗扣矮</option>" //
-				+ "<option value=\"LZX-01-23Z\">小方领三角针</option>" //
+				+ "<optgroup label=\"特殊款\">" //
+				+ "<option value=\"LZX-01-16G\" stylebase=\"false\">LZX-01-16G 尖领暗扣高</option>" //
+				+ "<option value=\"LZX-01-16Z\" stylebase=\"false\">LZX-01-16Z 尖领暗扣中</option>" //
+				+ "<option value=\"LZX-01-16A\" stylebase=\"false\">LZX-01-16A 尖领暗扣矮</option>" //
+				+ "<option value=\"LZX-01-17G\" stylebase=\"false\">LZX-01-17G 装饰线领高</option>" //
+				+ "<option value=\"LZX-01-17Z\" stylebase=\"false\">LZX-01-17Z 装饰线领中</option>" //
+				+ "<option value=\"LZX-01-17A\" stylebase=\"false\">LZX-01-17A 装饰线领矮</option>" //
+				+ "<option value=\"LZX-01-18G\" stylebase=\"false\">LZX-01-18G 拼接领1高</option>" //
+				+ "<option value=\"LZX-01-18Z\" stylebase=\"false\">LZX-01-18Z 拼接领1中</option>" //
+				+ "<option value=\"LZX-01-18A\" stylebase=\"false\">LZX-01-18A 拼接领1矮</option>" //
+				+ "<option value=\"LZX-01-19G\" stylebase=\"false\">LZX-01-19G 拼接领2高</option>" //
+				+ "<option value=\"LZX-01-19Z\" stylebase=\"false\">LZX-01-19Z 拼接领2中</option>" //
+				+ "<option value=\"LZX-01-19A\" stylebase=\"false\">LZX-01-19A 拼接领2矮</option>" //
+				+ "<option value=\"LZX-01-20G\" stylebase=\"false\">LZX-01-20G 拼接领3高</option>" //
+				+ "<option value=\"LZX-01-20Z\" stylebase=\"false\">LZX-01-20Z 拼接领3中</option>" //
+				+ "<option value=\"LZX-01-20A\" stylebase=\"false\">LZX-01-20A 拼接领3矮</option>" //
+				+ "<option value=\"LZX-01-21G\" stylebase=\"false\">LZX-01-21G 中八领暗扣高</option>" //
+				+ "<option value=\"LZX-01-21Z\" stylebase=\"false\">LZX-01-21Z 中八领暗扣中</option>" //
+				+ "<option value=\"LZX-01-21A\" stylebase=\"false\">LZX-01-21A 中八领暗扣矮</option>" //
+				+ "<option value=\"LZX-01-22G\" stylebase=\"false\">LZX-01-22G 方领暗扣高</option>" //
+				+ "<option value=\"LZX-01-22Z\" stylebase=\"false\">LZX-01-22Z 方领暗扣中</option>" //
+				+ "<option value=\"LZX-01-22A\" stylebase=\"false\">LZX-01-22A 方领暗扣矮</option>" //
+				+ "<option value=\"LZX-01-23Z\" stylebase=\"false\">LZX-01-23Z 小方领三角针</option>" //
 				+ "</optgroup>";
 
 		return list;
@@ -114,38 +105,31 @@ public class FormConfig {
 
 	public static String get_list_LZX_02() {
 
-		String list = "<optgroup label=\"单扣\">"//
-				+ "<option value=\"LZX-02-01\">六角单扣</option>"//
-				+ "<option value=\"LZX-02-02\">圆角单扣</option>"//
-				+ "<option value=\"LZX-02-03\">直角单扣</option>"//
+		String list = ""//
+				+ "<optgroup label=\"基础款\">"//
+				+ "<option value=\"LZX-02-01\" stylebase=\"true\">LZX-02-01 六角单扣</option>"//
+				+ "<option value=\"LZX-02-02\" stylebase=\"true\">LZX-02-02 圆角单扣</option>"//
+				+ "<option value=\"LZX-02-03\" stylebase=\"true\">LZX-02-03 直角单扣</option>"//
+				+ "<option value=\"LZX-02-04\" stylebase=\"true\">LZX-02-04 六角两扣</option>"//
+				+ "<option value=\"LZX-02-05\" stylebase=\"true\">LZX-02-05 圆角两扣</option>"//
+				+ "<option value=\"LZX-02-06\" stylebase=\"true\">LZX-02-06 直角两扣</option>"//
+				+ "<option value=\"LZX-02-07\" stylebase=\"true\">LZX-02-07 礼服直角</option>"//
+				+ "<option value=\"LZX-02-08\" stylebase=\"true\">LZX-02-08 礼服圆角</option>"//
+				+ "<option value=\"LZX-02-09\" stylebase=\"true\">LZX-02-09 弧形单扣</option>"//
+				+ "<option value=\"LZX-02-10\" stylebase=\"true\">LZX-02-10 大圆角</option>"//
+				+ "<option value=\"LZX-02-51\" stylebase=\"true\">LZX-02-51 内翻边</option>"//
+				+ "<option value=\"LZX-02-52\" stylebase=\"true\">LZX-02-52 外翻边</option>"//
+				+ "<option value=\"LZX-02-53\" stylebase=\"true\">LZX-02-53 内贴</option>"//
 				+ "</optgroup>"//
-				+ "<optgroup label=\"两扣\">"//
-				+ "<option value=\"LZX-02-04\">六角两扣</option>"//
-				+ "<option value=\"LZX-02-05\">圆角两扣</option>"//
-				+ "<option value=\"LZX-02-06\">直角两扣</option>"//
-				+ "</optgroup>"//
-				+ "<optgroup label=\"礼服\">"//
-				+ "<option value=\"LZX-02-07\">礼服直角</option>"//
-				+ "<option value=\"LZX-02-08\">礼服圆角</option>"//
-				+ "</optgroup>"//
-				+ "<optgroup label=\"其他\">"//
-				+ "<option value=\"LZX-02-09\">弧形单扣</option>"//
-				+ "<option value=\"LZX-02-10\">大圆角</option>"//
-				+ "</optgroup>"//
-				+ "<optgroup label=\"半袖\">"//
-				+ "<option value=\"LZX-02-51\">内翻边</option>"//
-				+ "<option value=\"LZX-02-52\">外翻边</option>"//
-				+ "<option value=\"LZX-02-53\">内贴</option>"//
-				+ "</optgroup>"//
-				+ "<optgroup label=\"其他袖头\">"//
-				+ "<option value=\"LZX-02-11\">六角贴条</option>"//
-				+ "<option value=\"LZX-02-12\">六角大拼布</option>"//
-				+ "<option value=\"LZX-02-13\">六角装饰线</option>"//
-				+ "<option value=\"LZX-02-14\">六角夹牙子</option>"//
-				+ "<option value=\"LZX-02-15\">六角小拼布</option>"//
-				+ "<option value=\"LZX-02-16\">直角拼布</option>"//
-				+ "<option value=\"LZX-02-54\">袖头式</option>"//
-				+ "<option value=\"LZX-02-55\">外贴翻边</option>"//
+				+ "<optgroup label=\"特殊款\">"//
+				+ "<option value=\"LZX-02-11\" stylebase=\"false\">LZX-02-11 六角贴条</option>"//
+				+ "<option value=\"LZX-02-12\" stylebase=\"false\">LZX-02-12 六角大拼布</option>"//
+				+ "<option value=\"LZX-02-13\" stylebase=\"false\">LZX-02-13 六角装饰线</option>"//
+				+ "<option value=\"LZX-02-14\" stylebase=\"false\">LZX-02-14 六角夹牙子</option>"//
+				+ "<option value=\"LZX-02-15\" stylebase=\"false\">LZX-02-15 六角小拼布</option>"//
+				+ "<option value=\"LZX-02-16\" stylebase=\"false\">LZX-02-16 直角拼布</option>"//
+				+ "<option value=\"LZX-02-54\" stylebase=\"false\">LZX-02-54 袖头式</option>"//
+				+ "<option value=\"LZX-02-55\" stylebase=\"false\">LZX-02-55 外贴翻边</option>"//
 				+ "</optgroup>";
 
 		return list;
@@ -153,19 +137,20 @@ public class FormConfig {
 
 	public static String get_list_LZX_03() {
 
-		String list = "<optgroup label=\"基础门襟\">"//
-				+ "<option value=\"LZX-03-01\">贴门襟3.5</option>"//
-				+ "<option value=\"LZX-03-02\">宽贴门襟</option>"//
-				+ "<option value=\"LZX-03-03\">窄贴门襟</option>"//
-				+ "<option value=\"LZX-03-04\">内扣门襟</option>"//
-				+ "<option value=\"LZX-03-05\">暗门襟</option>"//
-				+ "<option value=\"LZX-03-06\">夹明门襟</option>"//
-				+ "<option value=\"LZX-03-07\">夹暗门襟</option>"//
+		String list = ""//
+				+ "<optgroup label=\"基础款\">"//
+				+ "<option value=\"LZX-03-01\" stylebase=\"true\">LZX-03-01 贴门襟3.5</option>"//
+				+ "<option value=\"LZX-03-02\" stylebase=\"true\">LZX-03-02 宽贴门襟</option>"//
+				+ "<option value=\"LZX-03-03\" stylebase=\"true\">LZX-03-03 窄贴门襟</option>"//
+				+ "<option value=\"LZX-03-04\" stylebase=\"true\">LZX-03-04 内扣门襟</option>"//
+				+ "<option value=\"LZX-03-05\" stylebase=\"true\">LZX-03-05 暗门襟</option>"//
+				+ "<option value=\"LZX-03-06\" stylebase=\"true\">LZX-03-06 夹明门襟</option>"//
+				+ "<option value=\"LZX-03-07\" stylebase=\"true\">LZX-03-07 夹暗门襟</option>"//
 				+ "</optgroup>"//
-				+ "<optgroup label=\"其他门襟\">"//
-				+ "<option value=\"LZX-03-08\">暗门襟</option>"//
-				+ "<option value=\"LZX-03-09\">配色门襟1</option>"//
-				+ "<option value=\"LZX-03-10\">配色门襟2</option>"//
+				+ "<optgroup label=\"特殊款\">"//
+				+ "<option value=\"LZX-03-08\" stylebase=\"false\">LZX-03-08 暗门襟</option>"//
+				+ "<option value=\"LZX-03-09\" stylebase=\"false\">LZX-03-09 配色门襟1</option>"//
+				+ "<option value=\"LZX-03-10\" stylebase=\"false\">LZX-03-10 配色门襟2</option>"//
 				+ "</optgroup>";
 
 		return list;
@@ -173,22 +158,24 @@ public class FormConfig {
 
 	public static String get_list_LZX_04() {
 
-		String list = "<option value=\"\">不使用口袋</option>"//
-				+ "<option value=\"LZX-04-01\">三角袋</option>"//
-				+ "<option value=\"LZX-04-02\">圆袋</option>"//
-				+ "<option value=\"LZX-04-03\">六角袋</option>"//
-				+ "<option value=\"LZX-04-04\">V型窝边袋</option>"//
-				+ "<option value=\"LZX-04-05\">双明线袋</option>"//
-				+ "<option value=\"LZX-04-06\">三角盖袋</option>"//
-				+ "<option value=\"LZX-04-07\">圆型盖袋</option>"//
-				+ "<option value=\"LZX-04-08\">六角盖袋</option>";
+		String list = ""//
+				+ "<option value=\"\">不使用口袋</option>"//
+				+ "<option value=\"LZX-04-01\">LZX-04-01 三角袋</option>"//
+				+ "<option value=\"LZX-04-02\">LZX-04-02 圆袋</option>"//
+				+ "<option value=\"LZX-04-03\">LZX-04-03 六角袋</option>"//
+				+ "<option value=\"LZX-04-04\">LZX-04-04 V型窝边袋</option>"//
+				+ "<option value=\"LZX-04-05\">LZX-04-05 双明线袋</option>"//
+				+ "<option value=\"LZX-04-06\">LZX-04-06 三角盖袋</option>"//
+				+ "<option value=\"LZX-04-07\">LZX-04-07 圆型盖袋</option>"//
+				+ "<option value=\"LZX-04-08\">LZX-04-08 六角盖袋</option>";
 
 		return list;
 	}
 
 	public static String get_list_LZX_08() {
 
-		String list = "<option value=\"YX-08-01\">颈后主唛</option>"//
+		String list = ""//
+				+ "<option value=\"YX-08-01\">颈后主唛</option>"//
 				+ "<option value=\"YX-08-02\">右门襟下摆</option>" //
 				+ "<option value=\"YX-08-00\">无领标</option>";
 
@@ -197,86 +184,86 @@ public class FormConfig {
 
 	public static String get_list_LZX_120() {
 
-		String list = "<option value=\"LZX-120-01\">袖口单褶</option>"//
-				+ "<option value=\"LZX-120-00\">袖口无褶</option>"//
-				+ "<option value=\"LZX-120-02\">袖口双褶</option>";
+		String list = ""//
+				+ "<option value=\"LZX-120-01\">LZX-120-01 袖口单褶</option>"//
+				+ "<option value=\"LZX-120-00\">LZX-120-00 袖口无褶</option>"//
+				+ "<option value=\"LZX-120-02\">LZX-120-02 袖口双褶</option>";
 
 		return list;
 	}
 
 	public static String get_list_LZX_06() {
 
-		String list = "<optgroup label=\"基础下摆\">"//
-				+ "<option value=\"LZX-06-01\">小圆摆</option>"//
-				+ "<option value=\"LZX-06-02\">圆摆</option>"//
-				+ "<option value=\"LZX-06-03\">直摆</option>"//
-				+ "</optgroup>";
+		String list = ""//
+				+ "<option value=\"LZX-06-01\">LZX-06-01 小圆摆</option>"//
+				+ "<option value=\"LZX-06-02\">LZX-06-02 圆摆</option>"//
+				+ "<option value=\"LZX-06-03\">LZX-06-03 直摆</option>";
 
 		return list;
 	}
 
 	public static String get_list_LZX_17() {
 
-		String list = "<optgroup label=\"基础后片款式\">"//
-				+ "<option value=\"LZX-17-01\">无褶不收省</option>"//
-				+ "<option value=\"LZX-17-02\">无褶收双省</option>"//
-				+ "<option value=\"LZX-17-03\">边褶不收省</option>"//
-				+ "<option value=\"LZX-17-04\">中褶不收省</option>"//
-				+ "</optgroup>";
+		String list = ""//
+				+ "<option value=\"LZX-17-01\">LZX-17-01 无褶不收省</option>"//
+				+ "<option value=\"LZX-17-02\">LZX-17-02 无褶收双省</option>"//
+				+ "<option value=\"LZX-17-03\">LZX-17-03 边褶不收省</option>"//
+				+ "<option value=\"LZX-17-04\">LZX-17-04 中褶不收省</option>";
 
 		return list;
 	}
 
 	public static String get_list_LZX_26() {
 
-		String list = "<optgroup label=\"基础侧缝底摆贴布\">"//
+		String list = ""//
 				+ "<option value=\"\">不使用贴布</option>"//
-				+ "<option value=\"LZX-26-01\">剑型</option>"//
-				+ "<option value=\"LZX-26-02\">方形</option>"//
-				+ "<option value=\"LZX-26-03\">三角</option>"//
-				+ "<option value=\"LZX-26-04\">内三角</option>"//
-				+ "</optgroup>";
+				+ "<option value=\"LZX-26-01\">LZX-26-01 剑型</option>"//
+				+ "<option value=\"LZX-26-02\">LZX-26-02 方形</option>"//
+				+ "<option value=\"LZX-26-03\">LZX-26-03 三角</option>"//
+				+ "<option value=\"LZX-26-04\">LZX-26-04 内三角</option>";
 
 		return list;
 	}
 
 	public static String get_list_LZX_13() {
 
-		String list = "<option value=\"LZX-13-01\">袋口</option>"//
-				+ "<option value=\"LZX-13-02\">左胸</option>"//
-				+ "<option value=\"LZX-13-03\">右胸</option>"//
-				+ "<option value=\"LZX-13-04\">左袖头外</option>"//
-				+ "<option value=\"LZX-13-05\">右袖头外</option>"//
-				+ "<option value=\"LZX-13-06\">左袖头侧</option>"//
-				+ "<option value=\"LZX-13-07\">右袖头侧</option>"//
-				+ "<option value=\"LZX-13-08\">礼服左袖口中</option>"//
-				+ "<option value=\"LZX-13-09\">礼服右袖口中</option>"//
-				+ "<option value=\"LZX-13-10\">左袖中</option>"//
-				+ "<option value=\"LZX-13-11\">右袖中</option>"//
-				+ "<option value=\"LZX-13-12\">左短袖中</option>"//
-				+ "<option value=\"LZX-13-13\">右短袖中</option>"//
-				+ "<option value=\"LZX-13-14\">左大身</option>"//
-				+ "<option value=\"LZX-13-15\">右大身</option>"//
-				+ "<option value=\"LZX-13-16\">左下摆</option>"//
-				+ "<option value=\"LZX-13-17\">右下摆</option>"//
-				+ "<option value=\"LZX-13-18\">底领里中</option>"//
-				+ "<option value=\"LZX-13-19\">底领面左</option>"//
-				+ "<option value=\"LZX-13-20\">底领面右</option>"//
-				+ "<option value=\"LZX-13-21\">底领面中</option>"//
-				+ "<option value=\"LZX-13-22\">翻领面左</option>"//
-				+ "<option value=\"LZX-13-23\">翻领面右</option>"//
-				+ "<option value=\"LZX-13-24\">左过肩面中</option>"//
-				+ "<option value=\"LZX-13-25\">右过肩面中</option>"//
-				+ "<option value=\"LZX-13-26\">后过肩面中</option>"//
-				+ "<option value=\"LZX-13-27\">右门襟上</option>"//
-				+ "<option value=\"LZX-13-28\">左袖里</option>";
+		String list = ""//
+				+ "<option value=\"LZX-13-01\">LZX-13-01 袋口</option>"//
+				+ "<option value=\"LZX-13-02\">LZX-13-02 左胸</option>"//
+				+ "<option value=\"LZX-13-03\">LZX-13-03 右胸</option>"//
+				+ "<option value=\"LZX-13-04\">LZX-13-04 左袖头外</option>"//
+				+ "<option value=\"LZX-13-05\">LZX-13-05 右袖头外</option>"//
+				+ "<option value=\"LZX-13-06\">LZX-13-06 左袖头侧</option>"//
+				+ "<option value=\"LZX-13-07\">LZX-13-07 右袖头侧</option>"//
+				+ "<option value=\"LZX-13-08\">LZX-13-08 礼服左袖口中</option>"//
+				+ "<option value=\"LZX-13-09\">LZX-13-09 礼服右袖口中</option>"//
+				+ "<option value=\"LZX-13-10\">LZX-13-10 左袖中</option>"//
+				+ "<option value=\"LZX-13-11\">LZX-13-11 右袖中</option>"//
+				+ "<option value=\"LZX-13-12\">LZX-13-12 左短袖中</option>"//
+				+ "<option value=\"LZX-13-13\">LZX-13-13 右短袖中</option>"//
+				+ "<option value=\"LZX-13-14\">LZX-13-14 左大身</option>"//
+				+ "<option value=\"LZX-13-15\">LZX-13-15 右大身</option>"//
+				+ "<option value=\"LZX-13-16\">LZX-13-16 左下摆</option>"//
+				+ "<option value=\"LZX-13-17\">LZX-13-17 右下摆</option>"//
+				+ "<option value=\"LZX-13-18\">LZX-13-18 底领里中</option>"//
+				+ "<option value=\"LZX-13-19\">LZX-13-19 底领面左</option>"//
+				+ "<option value=\"LZX-13-20\">LZX-13-20 底领面右</option>"//
+				+ "<option value=\"LZX-13-21\">LZX-13-21 底领面中</option>"//
+				+ "<option value=\"LZX-13-22\">LZX-13-22 翻领面左</option>"//
+				+ "<option value=\"LZX-13-23\">LZX-13-23 翻领面右</option>"//
+				+ "<option value=\"LZX-13-24\">LZX-13-24 左过肩面中</option>"//
+				+ "<option value=\"LZX-13-25\">LZX-13-25 右过肩面中</option>"//
+				+ "<option value=\"LZX-13-26\">LZX-13-26 后过肩面中</option>"//
+				+ "<option value=\"LZX-13-27\">LZX-13-27 右门襟上</option>"//
+				+ "<option value=\"LZX-13-28\">LZX-13-28 左袖里</option>";
 
 		return list;
 	}
 
 	public static String get_list_zhidai() {
 
-		String list = "<optgroup label=\"默认\">"//
+		String list = ""//
+				+ "<optgroup label=\"默认\">"//
 				+ "<option value=\"default\">不使用织带</option>"//
 				+ "</optgroup>"//
 				+ "<optgroup label=\"唧边织带\">"//
@@ -353,7 +340,8 @@ public class FormConfig {
 
 	public static String get_list_color() {
 
-		String list = "<option value=\"defult\">默认</option>"//
+		String list = ""//
+				+ "<option value=\"defult\">默认</option>"//
 				+ "<option value=\"U0000\">U0000</option>"//
 				+ "<option value=\"U0100\">U0100</option>"//
 				+ "<option value=\"U0200\">U0200</option>"//
@@ -460,7 +448,8 @@ public class FormConfig {
 
 	public static String get_list_kouzi() {
 
-		String list = "<option value=\"defult\">默认</option>"//
+		String list = ""//
+				+ "<option value=\"defult\">默认</option>"//
 				+ "<option value=\"KB001\">KB001</option>"//
 				+ "<option value=\"KB002\">KB002</option>"//
 				+ "<option value=\"KB003\">KB003</option>"//
@@ -558,7 +547,8 @@ public class FormConfig {
 
 	public static String get_list_shenxing() {
 
-		String list = "<option value=\"J\">紧身</option>"//
+		String list = ""//
+				+ "<option value=\"J\">紧身</option>"//
 				+ "<option value=\"X\">修身</option>"//
 				+ "<option value=\"H\">合身</option>"//
 				+ "<option value=\"K\">宽松</option>";
@@ -567,7 +557,8 @@ public class FormConfig {
 
 	public static String get_list_lingcheng() {
 
-		String list = "<option value=\"30\">无领撑</option>"//
+		String list = ""//
+				+ "<option value=\"30\">无领撑</option>"//
 				+ "<option value=\"7\">外置黄铜领撑</option>" //
 				+ "<option value=\"28\">外置不锈钢领撑</option>"//
 				+ "<option value=\"29\">内置树脂领撑</option>";
@@ -576,7 +567,8 @@ public class FormConfig {
 
 	public static String get_list_mingxian() {
 
-		String list = "<option value=\"111\">0.5CM明线宽</option>"//
+		String list = ""//
+				+ "<option value=\"111\">0.5CM明线宽</option>"//
 				+ "<option value=\"112\">0.3CM明线宽</option>"//
 				+ "<option value=\"113\">0.1CM明线宽</option>";
 		return list;
@@ -584,7 +576,8 @@ public class FormConfig {
 
 	public static String get_list_cefeng() {
 
-		String list = "<option value=\"115\">牛腿合身</option>"//
+		String list = ""//
+				+ "<option value=\"115\">牛腿合身</option>"//
 				+ "<option value=\"116\">0.3手工包缝</option>";
 		return list;
 	}
@@ -603,14 +596,16 @@ public class FormConfig {
 
 	public static String get_list_weizhi_zhidai() {
 
-		String list = "<option value=\"未提供1\">未提供1</option>" //
+		String list = ""//
+				+ "<option value=\"未提供1\">未提供1</option>" //
 				+ "<option value=\"未提供2\">未提供2</option>";
 		return list;
 	}
 
 	public static String get_list_weizhi_peise() {
 
-		String list = "<option value=\"未提供1\">未提供1</option>" //
+		String list = ""//
+				+ "<option value=\"未提供1\">未提供1</option>" //
 				+ "<option value=\"未提供2\">未提供2</option>";
 		return list;
 	}

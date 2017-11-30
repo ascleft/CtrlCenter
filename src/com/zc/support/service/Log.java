@@ -106,7 +106,7 @@ public class Log {
 
 	private static void logMsg(String s) {
 
-		String line = "";
+		
 
 		int msgLen = s.length();
 
@@ -114,6 +114,7 @@ public class Log {
 		int lineTail = msgLen % lineLen;
 
 		for (int i = 0; i < lineCont; i++) {
+			String line = "";
 			line += "│  ";
 			if (i == lineCont - 1) {
 				line += s.substring(i * lineLen, i * lineLen + lineTail);
@@ -129,9 +130,10 @@ public class Log {
 			} else {
 				line += " ";
 			}
+
+			printlnWithLog(line);
 		}
 
-		printlnWithLog(line);
 
 	}
 

@@ -119,13 +119,18 @@
 		<action name="LoginPage" class="com.ltyx.sca.action.LoginAction" method="getPage">
 			<result name="succ">/html/ShoppingCartAssistant/Login.jsp</result>
 		</action>
+		<action name="Login" class="com.ltyx.sca.action.LoginAction" method="login"></action>
+		
 		<!-- 获取页面 登出页面-->
 		<action name="Logout" class="com.ltyx.sca.action.LoginAction" method="logout">
 			<result name="succ">/html/ShoppingCartAssistant/Login.jsp</result>
 		</action>
-
-		<!-- 数据接口 登录 -->
-		<action name="Login" class="com.ltyx.sca.action.LoginAction" method="login"></action>
+		
+		<!-- 系统设置 获取页面 -->
+		<action name="GetSettingPage" class="com.ltyx.tailor.action.SettingAction"
+		method="getPage">
+			<result name="succ">/html/TailorInfo/Setting.jsp</result>
+		</action>
 
 	</package>
 
@@ -192,6 +197,13 @@
 		<action name="GetPriceCustomShopAideWoman" class="com.ltyx.sca.action.CustomShopAideWomanAction" method="getPrice"></action>
 		<action name="SubmitCustomShopAideWoman" class="com.ltyx.sca.action.CustomShopAideWomanAction" method="submit"></action>
 
+		<!-- 客户经理 设计师款-->
+		<action name="CustomShopAideDesign" class="com.ltyx.sca.action.CustomShopAideDesignAction" method="getPage">
+			<result name="succ">/html/ShoppingCartAssistant/CustomShopAideDesign.jsp</result>
+		</action>
+		<action name="GetPriceCustomShopAideDesign" class="com.ltyx.sca.action.CustomShopAideDesignAction" method="getPrice"></action>
+		<action name="SubmitCustomShopAideDesign" class="com.ltyx.sca.action.CustomShopAideDesignAction" method="submit"></action>
+
 		<!-- 客户经理 即时库存  -->
 		<action name="CustomShopAideSearch" class="com.ltyx.sca.action.SearchAction" method="getPage">
 			<result name="succ">/html/ShoppingCartAssistant/CustomShopAideSearch.jsp</result>
@@ -219,6 +231,13 @@
 		</action>
 		<action name="GetPriceCustomShopWoman" class="com.ltyx.sca.action.CustomShopWomanAction" method="getPrice"></action>
 		<action name="SubmitCustomShopWoman" class="com.ltyx.sca.action.CustomShopWomanAction" method="submit"></action>
+
+		<!-- 定制店  设计师款-->
+		<action name="CustomShopDesign" class="com.ltyx.sca.action.CustomShopDesignAction" method="getPage">
+			<result name="succ">/html/ShoppingCartAssistant/CustomShopDesign.jsp</result>
+		</action>
+		<action name="GetPriceCustomShopDesign" class="com.ltyx.sca.action.CustomShopDesignAction" method="getPrice"></action>
+		<action name="SubmitCustomShopDesign" class="com.ltyx.sca.action.CustomShopDesignAction" method="submit"></action>
 
 		<!-- 获取页面 即时库存 定制店 -->
 		<action name="CustomShopSearch" class="com.ltyx.sca.action.SearchAction" method="getPage">
