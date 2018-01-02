@@ -226,8 +226,6 @@
 
 				use_lzx11();
 
-				use_SubcontractTable();
-
 			})
 		</script>
 
@@ -329,37 +327,21 @@
 										</div>
 										<div class="collapsible-body">
 											<div class="row">
-												<div class="input-field col s12 m6 l4" id="subcontract_design_code_div">
-													<select name="design_code" id="subcontract_design_code">
-													</select> <label>商品编号</label>
-												</div>
-												<div class="input-field col s12 m6 l4">
-													<input name="uskin_code" type="text" class="validate">
-													<label>面料编号</label>
-												</div>
-												<div class="input-field col s12 m6 l4" id="subcontract_price_type_div">
-													<select name="subcontract_price_type" id="subcontract_price_type">
-													</select> <label>价格类型</label>
-												</div>
-												<div class="input-field col s12 m6 l4" id="subcontract_peice_final_div">
-													<select name="subcontract_peice_final" id="subcontract_peice_final">
-													</select> <label>价格</label>
-												</div>
-												<div class="input-field col s12 m6 l4" id="subcontract_fabric_unit_cost_div">
-													<select name="subcontract_fabric_unit_cost" id="subcontract_fabric_unit_cost">
-													</select> <label>面料价位</label>
-												</div>
-												<div class="input-field col s12 m6 l4" id="subcontract_process_cost_div">
-													<select name="subcontract_process_cost" id="subcontract_process_cost">
-													</select> <label>工艺类型</label>
-												</div>
-												<div class="input-field col s6 m3 l2" id="subcontract_fabric_length_div">
-													<input name="subcontract_fabric_length" id="subcontract_fabric_length" type="number" class="validate" value="0" readonly="true">
-													<label>面料用量</label>
-												</div>
-												<div class="input-field col s6 m3 l2" id="subcontract_ratio_div">
-													<input name="subcontract_ratio" id="subcontract_ratio" type="number" class="validate" value="0" readonly="true">
-													<label>辅助参数</label>
+												<div class="input-field col s12 m12 l12">
+													<select name="design_code">
+														<option value="SUIT5000">西服套装（高价位）</option>
+														<option value="SUIT2980">西服套装</option>
+														<option value="JEANS_H">牛仔裤（国产）</option>
+														<option value="JEANS_I">牛仔裤（进口）</option>
+														<option value="PANTS">西裤</option>
+														<option value="OVERCOAT">大衣</option>
+														<option value="SLACKS">休闲裤</option>
+														<option value="JACKET">夹克</option>
+														<option value="DUSTCOAT">风衣</option>
+														<option value="VEST">马甲</option>
+														<option value="BLAZER">西装上衣</option>
+														<option value="CASHMERE">羊绒衫</option>
+													</select> <label>产品类型</label>
 												</div>
 											</div>
 										</div>

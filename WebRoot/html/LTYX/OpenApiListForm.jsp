@@ -129,13 +129,13 @@
 									<div class="row ">
 										<div class="col s6 m6 l6 teal-text ">
 											<p>进入页面</p>
-											<a href="/CtrlCenter/LTYX/Tailor/TailorForm/GetSettingPage.action ">进入</a>
+											<a href="/CtrlCenter/LTYX/Core/GetSettingPage.action ">进入</a>
 										</div>
 										<div class="col s6 m6 l6 orange-text ">
 											<p>数据接口</p>
-											<a href="/CtrlCenter/LTYX/Tailor/TailorForm/Setting.action ">提交设置</a>
+											<a href="/CtrlCenter/LTYX/Core/Setting.action ">提交设置</a>
 											<br>
-											<a href="/CtrlCenter/LTYX/Tailor/TailorForm/GetState.action ">获取当前设置</a>
+											<a href="/CtrlCenter/LTYX/Core/GetState.action ">获取当前设置</a>
 										</div>
 									</div>
 								</div>
@@ -151,13 +151,13 @@
 									<div class="row ">
 										<div class="col s6 m6 l6 teal-text ">
 											<p>进入页面</p>
-											<a href="/CtrlCenter/LTYX/Tailor/TailorForm/GetPlatformTailorPage.action ">进入</a>
+											<a href="/CtrlCenter/LTYX/Test/GetPlatformTailorPage.action ">进入</a>
 										</div>
 										<div class="col s6 m6 l6 orange-text ">
 											<p>数据接口</p>
-											<a href="/CtrlCenter/LTYX/Tailor/TailorForm/UpdatePlatformTailorPage.action ">获取列表（基于关键词）</a>
+											<a href="/CtrlCenter/LTYX/Test/UpdatePlatformTailorPage.action ">获取列表（基于关键词）</a>
 											<br>
-											<a href="/CtrlCenter/LTYX/Tailor/TailorForm/GetPlatformTailorRTInventory.action ">获取即时库存</a>
+											<a href="/CtrlCenter/LTYX/Test/GetPlatformTailorRTInventory.action ">获取即时库存</a>
 											<br>
 											<a href=" ">提交订单</a>
 										</div>

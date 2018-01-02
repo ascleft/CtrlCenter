@@ -268,20 +268,17 @@ public class SCAPageConfigMan {
 
 	}
 
-	public static String get_list_shenxing() {
+	public static String get_list_easy_type() {
 
 		String list = "";
 
-		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'shenxing'", "state = 1").exe();
-		list += "<optgroup label=\"基础款\">";
+		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'easy_type'", "state = 1").exe();
 		for (int i = 0; i < al_1.size(); i++) {
 			list += "<option value=\"" + al_1.get(i).get("code");
 			list += "\" stylebase=\"true\">";
 			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
 			list += "</option>";
 		}
-		list += "</optgroup>";//
-
 		return list;
 
 	}
@@ -407,6 +404,22 @@ public class SCAPageConfigMan {
 			list += "</option>";
 		}
 		list += "</optgroup>";//
+
+		return list;
+
+	}
+
+	public static String get_list_baozhuang() {
+
+		String list = "";
+
+		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'baozhuang'", "state = 1").exe();
+		for (int i = 0; i < al_1.size(); i++) {
+			list += "<option value=\"" + al_1.get(i).get("code");
+			list += "\" stylebase=\"true\">";
+			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
+			list += "</option>";
+		}
 
 		return list;
 

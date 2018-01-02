@@ -27,9 +27,26 @@ public class MoudleAideGetPriceSubcontract extends ZCBaseActionSupportPlugin {
 	}
 
 	private double calPrice(double Fabric, double Craft, double Additives, double Other, double Total) {
-
 		double price_temp = 0;
-		price_temp = 999999999;
+
+		String subcontract_price_type = getReqParamString("subcontract_price_type");
+		double subcontract_peice_final = getReqParamDouble("subcontract_peice_final");
+		double subcontract_fabric_unit_cost = getReqParamDouble("subcontract_fabric_unit_cost");
+		double subcontract_process_cost = getReqParamDouble("subcontract_process_cost");
+		double subcontract_fabric_length = getReqParamDouble("subcontract_fabric_length");
+		double subcontract_ratio = getReqParamDouble("subcontract_ratio");
+
+		if ("一口价".equals(subcontract_price_type)) {
+			price_temp = subcontract_peice_final;
+		} else if ("计算价格".equals(subcontract_price_type)) {
+			price_temp = (//
+					(subcontract_fabric_unit_cost * subcontract_fabric_length)//
+					+ subcontract_process_cost)//
+					* subcontract_ratio //
+			;
+		} else {
+			price_temp = 999999999;
+		}
 
 		return price_temp;
 

@@ -84,10 +84,9 @@
 		<script src="<%=path %>/js/init_tailorinfo.js"></script>
 
 		<script type="application/javascript">
-			var url_submit_key = "/CtrlCenter/LTYX/Tailor/TailorForm/UpdatePlatformTailorPage.action";
-			var url_get_realtime_inventory = "/CtrlCenter/LTYX/Tailor/TailorForm/GetPlatformTailorRTInventory.action";
-
-			var url_submit_tailor = "/CtrlCenter/LTYX/Tailor/TailorForm/SubmitTailorForm.action";
+			var url_submit_key =             "/CtrlCenter/LTYX/Test/UpdatePlatformTailorPage.action";
+			var url_get_realtime_inventory = "/CtrlCenter/LTYX/Test/GetPlatformTailorRTInventory.action";
+			var url_submit_tailor =          "/CtrlCenter/LTYX/Test/SubmitTailorForm.action";
 
 			var shangpin_list;
 

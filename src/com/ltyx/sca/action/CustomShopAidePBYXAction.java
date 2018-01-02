@@ -21,7 +21,7 @@ public class CustomShopAidePBYXAction extends ZCBaseActionSupport {
 		init(true);
 
 		session = SCAPageConfigCommon.manageMenu(session);
-		session = SCAPageConfigCommon.manageTechnology(session);
+		session = SCAPageConfigCommon.manageTechnologyMan(session);
 
 		session.setAttribute("QRurl", SCAPageConfigCommon.get_QR_url(request));
 

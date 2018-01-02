@@ -31,7 +31,7 @@ public class FileHelper {
 
 	}
 
-	public static void whiteFile(File file, String line) {
+	public static void writeFile(File file, String line) {
 		try {
 			if (file.exists()) {
 				FileWriter fw = new FileWriter(file, true);

@@ -1,4 +1,4 @@
-package com.ltyx.tailor.action;
+package com.ltyx.core.action;
 
 import com.zc.support.config.ConfigHelperDB;
 import com.zc.support.config.ConfigHelperURL;

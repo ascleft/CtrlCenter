@@ -9,7 +9,7 @@ import java.net.URLConnection;
 
 import com.zc.support.service.TimeHelper;
 
-public class ZCHttpReqSender {
+public class ZCHttpReqSenderBC {
 	/**
 	 * 向指定URL发送GET方法的请求
 	 * 
@@ -20,14 +20,10 @@ public class ZCHttpReqSender {
 	 * @return URL 所代表远程资源的响应结果
 	 */
 	public static String sendGet(String url, ZCHttpReqParam param) {
-		ZCHttpReqProperty property = new ZCHttpReqProperty();
-		property.importBase(ZCHttpReqProperty.BaseProperty.TYPE_1);
-		property.importUserAgent(ZCHttpReqProperty.Terminal.PC);
-
-		return sendGet(url, param, property);
+		return sendGet(url, param, userAgent.PC);
 	}
 
-	public static String sendGet(String url, ZCHttpReqParam param, ZCHttpReqProperty property) {
+	public static String sendGet(String url, ZCHttpReqParam param, String userAgent) {
 
 		TimeHelper.Timer timer = new TimeHelper.Timer();
 
@@ -39,8 +35,12 @@ public class ZCHttpReqSender {
 			System.out.println(urlNameString);
 			// 打开和URL之间的连接
 			URLConnection connection = realUrl.openConnection();
-			// 填充Header
-			property.setConnPropertys(connection);
+			// 设置通用的请求属性
+			connection.setRequestProperty("accept", "*/*");
+			connection.setRequestProperty("connection", "Keep-Alive");
+			// connection.setRequestProperty("user-agent",
+			// "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+			connection.setRequestProperty("user-agent", userAgent);
 			// 建立实际的连接
 			connection.connect();
 			// 获取所有响应头字段
@@ -81,14 +81,10 @@ public class ZCHttpReqSender {
 	 * @return 所代表远程资源的响应结果
 	 */
 	public static String sendPost(String url, ZCHttpReqParam param) {
-		ZCHttpReqProperty property = new ZCHttpReqProperty();
-		property.importBase(ZCHttpReqProperty.BaseProperty.TYPE_1);
-		property.importUserAgent(ZCHttpReqProperty.Terminal.PC);
-
-		return sendPost(url, param, property);
+		return sendPost(url, param, userAgent.PC);
 	}
 
-	public static String sendPost(String url, ZCHttpReqParam param, ZCHttpReqProperty property) {
+	public static String sendPost(String url, ZCHttpReqParam param, String userAgent) {
 		TimeHelper.Timer timer = new TimeHelper.Timer();
 
 		PrintWriter out = null;
@@ -98,8 +94,12 @@ public class ZCHttpReqSender {
 			URL realUrl = new URL(url);
 			// 打开和URL之间的连接
 			URLConnection conn = realUrl.openConnection();
-			// 填充Header
-			property.setConnPropertys(conn);
+			// 设置通用的请求属性
+			conn.setRequestProperty("accept", "*/*");
+			conn.setRequestProperty("connection", "Keep-Alive");
+			// conn.setRequestProperty("user-agent",
+			// "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+			conn.setRequestProperty("user-agent", userAgent);
 			// 发送POST请求必须设置如下两行
 			conn.setDoOutput(true);
 			conn.setDoInput(true);
@@ -136,6 +136,13 @@ public class ZCHttpReqSender {
 		timer.stop("POST通讯 " + url);
 
 		return result;
+	}
+
+	public static class userAgent {
+		public final static String PC = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0";
+		public final static String iPhone = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.2924.87 Safari/537.36 LBBROWSER";
+		public final static String Android = "Mozilla/5.0 (Linux; U; Android 7.1.2; zh-CN; 2014811 Build/NJH47F) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/40.0.2214.89 Quark/2.0.4.956 Mobile Safari/537.36";
+		public final static String WeChat = "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_3 like Mac OS X) AppleWebKit/603.3.8 (KHTML, like Gecko) Mobile/14G60 MicroMessenger/6.5.15 NetType/WIFI Language/zh_CN";
 	}
 
 }

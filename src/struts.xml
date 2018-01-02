@@ -12,34 +12,49 @@
 			<result name="succ">/html/index.jsp</result>
 		</action>
 
+	</package>
+	
+	<!--系统核心 -->
+	<package name="LTYXCore" namespace="/LTYX/Core" extends="struts-default">
+		<default-action-ref name="User"></default-action-ref>
+
 		<!--OpenAPI -->
 		<action name="OpenApiList" class="com.ltyx.core.action.MainAction"
 		method="getPage">
-			<result name="succ">/html/ZC/OpenApiListForm.jsp</result>
+			<result name="succ">/html/LTYX/OpenApiListForm.jsp</result>
 		</action>
+		
+		<!-- 系统设置 获取页面 -->
+		<action name="GetSettingPage" class="com.ltyx.core.action.SettingAction"
+		method="getPage">
+			<result name="succ">/html/LTYX/Setting.jsp</result>
+		</action>
+		<action name="GetSettingState" class="com.ltyx.core.action.SettingAction"
+		method="getState"></action>
+		<action name="Setting" class="com.ltyx.core.action.SettingAction"
+		method="setting"></action>
 
 	</package>
+	
 
 	<!--衬衫下单工具 1.0 登录模块 -->
 	<package name="TailorLoginAction" namespace="/LTYX/Tailor"
 	extends="struts-default">
 		<default-action-ref name="User"></default-action-ref>
-
-		<!--注销接口 -->
-		<action name="Logout" class="com.ltyx.tailor.action.LoginAction"
-		method="logout">
-			<result name="succ">/html/TailorInfo/Login.jsp</result>
-		</action>
-
-		<!--获取登录页面 -->
+		
+		<!--登录 -->
 		<action name="LoginPage" class="com.ltyx.tailor.action.LoginAction"
 		method="loginPage">
-			<result name="succ">/html/TailorInfo/Login.jsp</result>
+			<!--<result name="succ">/html/TailorInfo/Login.jsp.lost</result>-->
 		</action>
-
-		<!--登录接口 -->
 		<action name="Login" class="com.ltyx.tailor.action.LoginAction"
 		method="login"></action>
+		
+		<!--注销 -->
+		<action name="Logout" class="com.ltyx.tailor.action.LoginAction"
+		method="logout">
+			<!--<result name="succ">/html/TailorInfo/Login.jsp.lost</result>-->
+		</action>
 
 	</package>
 
@@ -51,62 +66,36 @@
 		<!-- 获取订单信息表单 专业版 -->
 		<action name="Pro" class="com.ltyx.tailor.action.GetTailorFormAction"
 		method="getForm">
-			<result name="succ">/html/TailorInfo/FormTailorPro.jsp</result>
+			<!--<result name="succ">/html/TailorInfo/FormTailorPro.jsp.lost</result>-->
 		</action>
 
 		<!-- 获取订单信息表单 客供版 -->
 		<action name="ProPBC" class="com.ltyx.tailor.action.GetTailorFormAction"
 		method="getFormWithCode">
-			<result name="succ">/html/TailorInfo/FormTailorProPBC.jsp</result>
+			<!--<result name="succ">/html/TailorInfo/FormTailorProPBC.jsp.lost</result>-->
 		</action>
 
 		<!-- 获取订单信息表单 设计师款 -->
 		<action name="Design" class="com.ltyx.tailor.action.GetTailorFormAction"
 		method="getForm">
-			<result name="succ">/html/TailorInfo/FormTailorDesign.jsp</result>
+			<!--<result name="succ">/html/TailorInfo/FormTailorDesign.jsp.lost</result>-->
 		</action>
 
 		<!-- 获取订单信息表单 定制顾问 -->
 		<action name="Advisor" class="com.ltyx.tailor.action.GetTailorFormAction"
 		method="getForm">
-			<result name="succ">/html/TailorInfo/FormTailorAdvisor.jsp</result>
+			<!--<result name="succ">/html/TailorInfo/FormTailorAdvisor.jsp.lost</result>-->
 		</action>
 
 		<!-- 提交成衬衫订单 -->
 		<action name="SubmitTailorForm" class="com.ltyx.tailor.action.SubmitTailorFormAction"
 		method="submit"></action>
-
-		<!-- 系统设置 获取页面 -->
-		<action name="GetSettingPage" class="com.ltyx.tailor.action.SettingAction"
+		
+		<!-- 即时库存 获取搜索页 -->
+		<action name="GetSearchPage" class="com.ltyx.tailor.action.SearchAction"
 		method="getPage">
-			<result name="succ">/html/TailorInfo/Setting.jsp</result>
+			<!--<result name="succ">/html/TailorInfo/Search.jsp.lost</result>-->
 		</action>
-
-		<!-- 系统设置 当前服务器状态 -->
-		<action name="GetState" class="com.ltyx.tailor.action.SettingAction"
-		method="getState"></action>
-
-		<!-- 系统设置 更新系统设置 -->
-		<action name="Setting" class="com.ltyx.tailor.action.SettingAction"
-		method="setting"></action>
-
-		<!-- 平台商品 获取页面 -->
-		<action name="GetPlatformTailorPage" class="com.ltyx.tailor.action.PlatformTailor"
-		method="getPage">
-			<result name="succ">/html/TailorInfo/PlatformTailor.jsp</result>
-		</action>
-
-		<!-- 平台商品 更新列表 -->
-		<action name="UpdatePlatformTailorPage" class="com.ltyx.tailor.action.PlatformTailor"
-		method="updateList"></action>
-
-		<!-- 平台商品 即时库存 -->
-		<action name="GetPlatformTailorRTInventory" class="com.ltyx.tailor.action.PlatformTailor"
-		method="RTInventory"></action>
-
-		<!-- 平台商品 提交下单 -->
-		<action name="SubmitPlatformTailor" class="com.ltyx.tailor.action.PlatformTailor"
-		method="submitTailor"></action>
 
 	</package>
 
@@ -124,12 +113,6 @@
 		<!-- 获取页面 登出页面-->
 		<action name="Logout" class="com.ltyx.sca.action.LoginAction" method="logout">
 			<result name="succ">/html/ShoppingCartAssistant/Login.jsp</result>
-		</action>
-		
-		<!-- 系统设置 获取页面 -->
-		<action name="GetSettingPage" class="com.ltyx.tailor.action.SettingAction"
-		method="getPage">
-			<result name="succ">/html/TailorInfo/Setting.jsp</result>
 		</action>
 
 	</package>
@@ -246,14 +229,9 @@
 
 	</package>
 
+
 	<!--衬衫下单工具 即时库存模块 -->
 	<package name="UcsAction" namespace="/UcsPlus" extends="struts-default">
-
-		<!-- 即时库存 获取搜索页 -->
-		<action name="GetSearchPage" class="com.ltyx.ucsplus.action.SearchAction"
-		method="getPage">
-			<result name="succ">/html/TailorInfo/Search.jsp</result>
-		</action>
 
 		<!-- 即时库存 搜索 -->
 		<action name="Search" class="com.ltyx.ucsplus.action.SearchAction"
@@ -261,25 +239,6 @@
 
 	</package>
 
-	<!--衬衫下单工具 订单查询模块 -->
-	<package name="LTYXTailorListAction" namespace="/LTYX/Tailor/List"
-	extends="struts-default">
-
-		<!-- 获取列表查询页 -->
-		<action name="GetListPage" class="com.ltyx.tailor.action.GetListAction"
-		method="getPage">
-			<result name="succ">/html/TailorInfo/OrderList.jsp</result>
-		</action>
-
-		<!-- 获取总页数 -->
-		<action name="GetPageCount" class="com.ltyx.tailor.action.GetListAction"
-		method="getPageCount"></action>
-
-		<!-- 查询 -->
-		<action name="GetList" class="com.ltyx.tailor.action.GetListAction"
-		method="getList"></action>
-
-	</package>
 
 	<!--鲁泰优纤 衬衫下单工具 对外接口 -->
 	<package name="OpenAPI" namespace="/LTYX/OpenAPI" extends="struts-default">
@@ -303,6 +262,37 @@
 		method="showParam"></action>
 
 	</package>
+	
+	
+	
+	<!--鲁泰优纤 测试接口 -->
+	<package name="Test" namespace="/LTYX/Test" extends="struts-default">
+		<default-action-ref name="User"></default-action-ref>
+
+		<!-- 平台商品 获取页面 -->
+		<action name="GetPlatformTailorPage" class="com.ltyx.test.PlatformTailor"
+		method="getPage">
+			<result name="succ">/html/Test/PlatformTailor.jsp</result>
+		</action>
+
+		<!-- 平台商品 更新列表 -->
+		<action name="UpdatePlatformTailorPage" class="com.ltyx.test.PlatformTailor"
+		method="updateList"></action>
+
+		<!-- 平台商品 即时库存 -->
+		<action name="GetPlatformTailorRTInventory" class="com.ltyx.test.PlatformTailor"
+		method="RTInventory"></action>
+
+		<!-- 平台商品 提交下单 -->
+		<action name="SubmitPlatformTailor" class="com.ltyx.test.PlatformTailor"
+		method="submitTailor"></action>
+
+		<!-- MTM 提交下单 -->
+		<action name="SubmitMTM" class="com.ltyx.test.MTMAction"
+		method="submit"></action>
+	
+	</package>
+
 
 	<!--鲁泰优纤 模拟接口 -->
 	<package name="Simulator" namespace="/LTYX/Simulator" extends="struts-default">

@@ -11,7 +11,7 @@ import com.zc.support.service.Log;
 public class SearchAction extends ZCBaseActionSupport {
 
 	/**
-	 * 登录Action
+	 * 搜索Action
 	 * 
 	 * session中的user为用户信息，role中0为最高权限
 	 * 
@@ -19,15 +19,6 @@ public class SearchAction extends ZCBaseActionSupport {
 	 */
 
 	private static final long serialVersionUID = 10086L;
-
-	/**
-	 * 获取搜索页面
-	 * 
-	 */
-
-	public String getPage() {
-		return "succ";
-	}
 
 	/**
 	 * 搜索

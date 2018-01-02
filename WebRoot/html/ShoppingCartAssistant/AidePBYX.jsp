@@ -25,7 +25,7 @@
 	String list_zhidai=(String) session.getAttribute("list_zhidai");
 	String list_color=(String) session.getAttribute("list_color");
 	String list_kouzi=(String) session.getAttribute("list_kouzi");
-	String list_shenxing=(String) session.getAttribute("list_shenxing");
+	String list_easytype=(String) session.getAttribute("list_easytype");
 	String list_lingcheng=(String) session.getAttribute("list_lingcheng");
 	String list_mingxian=(String) session.getAttribute("list_mingxian");
 	String list_cefeng=(String) session.getAttribute("list_cefeng");
@@ -33,6 +33,7 @@
 	String list_chenbu=(String) session.getAttribute("list_chenbu");
 	String list_weizhi_zhidai=(String) session.getAttribute("list_weizhi_zhidai");
 	String list_weizhi_peise=(String) session.getAttribute("list_weizhi_peise");
+	String list_baozhuang=(String) session.getAttribute("list_baozhuang");	
 	
 %>
 
@@ -222,6 +223,11 @@
 				});
 				state_loaded();
 				state_ready("n");
+
+				use_lzx11();
+				
+				use_custom_weizhi_peise();
+				
 			})
 		</script>
 
@@ -337,10 +343,7 @@
 												</div>
 												<div class="input-field col s12 m6 l4">
 													<select name="easy_type">
-														<option value="K">宽松</option>
-														<option value="H">合身</option>
-														<option value="X">修身</option>
-														<option value="J">紧身</option>
+														<%=list_easytype%>
 													</select> <label>宽松度</label>
 												</div>
 												<div class="input-field col s6 m6 l4">
@@ -350,9 +353,7 @@
 												</div>
 												<div class="input-field col s6 m6 l4">
 													<select name="YX_09">
-														<option value="YX-09-01">礼盒装（优纤包装盒）</option>
-														<option value="YX-09-00">无包装（透明胶袋）</option>
-														<option value="YX-09-02">环保装（简易包装）</option>
+														<%=list_baozhuang%>
 													</select> <label>包装</label>
 												</div>
 											</div>
@@ -711,7 +712,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="col s12 m6 l4 teal-text">
+												<div class="col s12 m6 l4 teal-text" style="display: none;">
 													<div class="card-panel">
 														<div class="row">
 															<div class="col s12 m12 l12 teal-text">
@@ -753,16 +754,21 @@
 														<div class="col s12 m12 l12 teal-text">
 															<p>配色</p>
 														</div>
-														<div class="col s6 m6 l6">
+														<div class="col s12 m6 l4">
 															<div class="input-field">
 																<input type="text" class="validate" name="uskin_code_2" value="">
 																<label>配色面料</label>
 															</div>
 														</div>
-														<div class="input-field col s6 m6 l6">
-															<select name="peise_weizhi" multiple="multiple">
+														<div class="input-field col s12 m6 l4">
+															<select name="weizhi_peise" id="weizhi_peise">
 																<%=list_weizhi_peise%>
+																<option value="">手动填写</option>
 															</select> <label>配色位置</label>
+														</div>
+														<div class="input-field col s12 m6 l4" id="weizhi_peise_div">
+															<input type="text" class="validate" name="weizhi_peise" id="weizhi_peise_custom" value="">
+															<label>手动填写配色位置</label>
 														</div>
 													</div>
 												</div>

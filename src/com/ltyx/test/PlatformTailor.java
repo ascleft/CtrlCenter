@@ -1,4 +1,4 @@
-package com.ltyx.tailor.action;
+package com.ltyx.test;
 
 import java.util.Random;
 

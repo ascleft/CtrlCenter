@@ -1,5 +1,6 @@
 package com.ltyx.sca.action;
 
+import com.ltyx.sca.actionplugin.MoudleAideCheckSubcontract;
 import com.ltyx.sca.actionplugin.MoudleAideCheckUserInfo;
 import com.ltyx.sca.actionplugin.MoudleAideGetPriceSubcontract;
 import com.ltyx.sca.actionplugin.MoudleAideSubmitECSubcontract;
@@ -19,7 +20,7 @@ public class AideSubcontractAction extends ZCBaseActionSupport {
 		init(true);
 
 		session = SCAPageConfigCommon.manageMenu(session);
-		session = SCAPageConfigCommon.manageTechnology(session);
+		session = SCAPageConfigCommon.manageTechnologyMan(session);
 
 		session.setAttribute("QRurl", SCAPageConfigCommon.get_QR_url(request));
 
@@ -78,6 +79,18 @@ public class AideSubcontractAction extends ZCBaseActionSupport {
 				return false;
 			}
 			addProgressSucc("用户信息检测");
+		}
+
+		{
+			MoudleAideCheckSubcontract moudle = new MoudleAideCheckSubcontract(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("委外商品信息检测");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("委外商品信息检测");
 		}
 
 		{

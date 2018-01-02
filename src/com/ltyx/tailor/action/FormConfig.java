@@ -21,10 +21,11 @@ public class FormConfig {
 
 	public static String get_menu_list() {
 
-		String menuList = "<li><a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/Pro.action\">高级模式</a></li>"//
+		String menuList = ""//
+				+ "<li><a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/Pro.action\">高级模式</a></li>"//
 				+ "<li><a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/Advisor.action\">定制顾问专版</a></li>" //
 				+ "<li><a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/Design.action\">推荐款、其他</a></li>"//
-				+ "<li><a href=\"/CtrlCenter/UcsPlus/GetSearchPage.action\">库存查询</a></li>";
+				+ "<li><a href=\"/CtrlCenter/LTYX/Tailor/TailorForm/GetSearchPage.action\">库存查询</a></li>";
 
 		return menuList;
 	}

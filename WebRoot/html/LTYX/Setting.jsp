@@ -51,8 +51,8 @@
 		<script src="<%=path %>/js/init_tailorinfo.js"></script>
 
 		<script type="application/javascript">
-			var url_getstate = "/CtrlCenter/LTYX/Tailor/TailorForm/GetState.action";
-			var url_setting = "/CtrlCenter/LTYX/Tailor/TailorForm/Setting.action";
+			var url_getstate = "/CtrlCenter/LTYX/Core/GetSettingState.action";
+			var url_setting =  "/CtrlCenter/LTYX/Core/Setting.action";
 
 			var p_systeminfo;
 			var systeminfo;

@@ -21,7 +21,7 @@ public class CustomShopWomanAction extends ZCBaseActionSupport {
 		init(true);
 
 		session = SCAPageConfigCommon.manageMenu(session);
-		session = SCAPageConfigCommon.manageTechnology(session);
+		session = SCAPageConfigCommon.manageTechnologyWoman(session);
 
 		session.setAttribute("QRurl", SCAPageConfigCommon.get_QR_url(request));
 

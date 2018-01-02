@@ -58,31 +58,22 @@
 
 		<script type="application/javascript">
 			var url_talk = "<%=path %>/UcsPlus/Search.action";
-
 			var ucs_tip_card = document.getElementById("ucs_tip_card");
 			var ucs_tip = document.getElementById("ucs_tip");
 			var ucs_progress_bar = document.getElementById("ucs_progress_bar");
-
 			var ucs_table_card = document.getElementById("ucs_table_card");
 			var ucs_table = document.getElementById("ucs_table");
-
 			var ec_user_rank = parseInt("<%=ec_user_rank%>");
-
 			$().ready(function() {
 				ucs_tip_card = document.getElementById("ucs_tip_card");
 				ucs_tip = document.getElementById("ucs_tip");
 				ucs_progress_bar = document.getElementById("ucs_progress_bar");
-
 				ucs_table_card = document.getElementById("ucs_table_card");
 				ucs_table = document.getElementById("ucs_table");
-
 				state_defult();
 			})
-
 			function submitfilterform() {
-
 				state_loading();
-
 				$.ajax({
 					cache: true,
 					type: "GET",
@@ -91,14 +82,12 @@
 					async: true,
 					error: function(request) {
 						state_error("无法连接服务器");
-
 					},
 					success: function(data) {
 						var resp = JSON.parse(data);
 						if("0" == resp.ERRCODE && "succ" == resp.ERRDESC) {
 							state_answer();
 							var String_html = "";
-
 							String_html += "<table class=\"striped\">";
 							String_html += "<thead>";
 							String_html += "<tr>";
@@ -111,7 +100,6 @@
 							String_html += "</tr>";
 							String_html += "</thead>";
 							String_html += "<tbody>";
-
 							for(var i = 0; i < resp.data.length; i++) {
 								String_html += "<tr>";
 								String_html += "<td>";
@@ -138,51 +126,40 @@
 								String_html += "</td>";
 								String_html += "</tr>";
 							}
-
 							String_html += "</tbody>";
 							String_html += "</table>";
-
 							ucs_table.innerHTML = String_html;
-
 						} else {
 							state_error(resp.data);
 						}
 					}
 				});
 			}
-
 			function state_defult() {
 				ucs_tip_card.style.display = "none";
 				ucs_tip.textContent = "";
 				ucs_progress_bar.style.display = "none";
-
 				ucs_table_card.style.display = "none";
 				ucs_table.innerHTML = "";
 			}
-
 			function state_loading() {
 				ucs_tip_card.style.display = "";
 				ucs_tip.textContent = "查询中，请稍候...";
 				ucs_progress_bar.style.display = "";
-
 				ucs_table_card.style.display = "none";
 				ucs_table.innerHTML = "";
 			}
-
 			function state_answer() {
 				ucs_tip_card.style.display = "none";
 				ucs_tip.textContent = "";
 				ucs_progress_bar.style.display = "none";
-
 				ucs_table_card.style.display = "";
 				ucs_table.innerHTML = "";
 			}
-
 			function state_error(string_desc) {
 				ucs_tip_card.style.display = "";
 				ucs_tip.textContent = string_desc;
 				ucs_progress_bar.style.display = "none";
-
 				ucs_table_card.style.display = "none";
 				ucs_table.innerHTML = "";
 			}

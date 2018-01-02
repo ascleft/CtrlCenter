@@ -44,7 +44,6 @@ public class MoudleAideGetPriceDesign extends ZCBaseActionSupportPlugin {
 			jsonERRCODE = jsonHttpResp.getString("ERRCODE");
 			jsonERRDESC = jsonHttpResp.getString("ERRDESC");
 			jsonData = jsonERRDESC;
-			Log.Nano.byLine("ERRCODE", jsonERRCODE, "ERRDESC", jsonERRDESC);
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.Nano.tag("EC服务器响应错误，结构异常", httpResp);
@@ -101,13 +100,12 @@ public class MoudleAideGetPriceDesign extends ZCBaseActionSupportPlugin {
 	private double calPrice(double Fabric, double Craft, double Additives, double Other, double Total) {
 
 		double price_temp = 0;
-		if ("1".equals(getReqParamString("LZX_11_FOR_CHAR_SWITCH"))) {
-			price_temp += 5f;
-		}
-		if ("1".equals(getReqParamString("LZX_11_FOR_PIC_SWITCH"))) {
-			price_temp += 5f;
-
-		}
+//		if ("1".equals(getReqParamString("LZX_11_FOR_CHAR_SWITCH"))) {
+//			price_temp += 5f;
+//		}
+//		if ("1".equals(getReqParamString("LZX_11_FOR_PIC_SWITCH"))) {
+//			price_temp += 5f;
+//		}
 
 		price_temp += getReqParamDouble("order_processing_cost");
 

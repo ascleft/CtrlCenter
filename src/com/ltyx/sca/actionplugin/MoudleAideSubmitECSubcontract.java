@@ -20,54 +20,24 @@ public class MoudleAideSubmitECSubcontract extends ZCBaseActionSupportPlugin {
 
 		ZCHttpReqParam param = new ZCHttpReqParam();
 
-		param.addParam("LZX_01", getReqParamString("LZX_01"));
-		param.addParam("LZX_02", getReqParamString("LZX_02"));
-		param.addParam("LZX_03", getReqParamString("LZX_03"));
-		param.addParam("LZX_04", getReqParamString("LZX_04"));
-		param.addParam("LZX_06", getReqParamString("LZX_06"));
-		param.addParam("LZX_11_CHAR_COLOR", getReqParamString("LZX_11_CHAR_COLOR"));
-		param.addParam("LZX_11_CHAR_SIZE", getReqParamString("LZX_11_CHAR_SIZE"));
-		param.addParam("LZX_11_CHAR_TYPE", getReqParamString("LZX_11_CHAR_TYPE"));
-		param.addParam("LZX_11_CHAR_WORD", getReqParamString("LZX_11_CHAR_WORD"));
-		param.addParam("LZX_11_FOR_CHAR_SWITCH", getReqParamString("LZX_11_FOR_CHAR_SWITCH"));
-		param.addParam("LZX_11_FOR_PIC_SWITCH", getReqParamString("LZX_11_FOR_PIC_SWITCH"));
-		param.addParam("LZX_11_PIC_COLOR", getReqParamString("LZX_11_PIC_COLOR"));
-		param.addParam("LZX_11_PIC_NUM", getReqParamString("LZX_11_PIC_NUM"));
-		param.addParam("LZX_11_PIC_SIZE", getReqParamString("LZX_11_PIC_SIZE"));
-		param.addParam("LZX_11_PIC_TYPE", getReqParamString("LZX_11_PIC_TYPE"));
-		param.addParam("LZX_120", getReqParamString("LZX_120"));
-		param.addParam("LZX_13_FOR_CHAR", getReqParamString("LZX_13_FOR_CHAR"));
-		param.addParam("LZX_13_FOR_PIC", getReqParamString("LZX_13_FOR_PIC"));
-		param.addParam("LZX_17", getReqParamString("LZX_17"));
-		param.addParam("LZX_26", getReqParamString("LZX_26"));
-		param.addParam("YX_08", getReqParamString("YX_08"));
-		param.addParam("YX_09", getReqParamString("YX_09"));
-		param.addParam("cefeng", getReqParamString("cefeng"));
-		param.addParam("chenbu", getReqParamString("chenbu"));
 		param.addParam("customer_address", getReqParamString("customer_address"));
 		param.addParam("customer_name", getReqParamString("customer_name"));
 		param.addParam("customer_tel", getReqParamString("customer_tel"));
 		param.addParam("customer_tel_target", getReqParamString("customer_tel_target"));
 		param.addParam("customer_tips", getReqParamString("customer_tips"));
 		param.addParam("design_code", getReqParamString("design_code"));
-		param.addParam("easy_type", getReqParamString("easy_type"));
-		param.addParam("kouzi", getReqParamString("kouzi"));
-		param.addParam("line_color_location_1", getReqParamString("line_color_location_1"));
-		param.addParam("line_color_location_2", getReqParamString("line_color_location_2"));
-		param.addParam("line_color_location_3", getReqParamString("line_color_location_3"));
-		param.addParam("line_color_location_4", getReqParamString("line_color_location_4"));
-		param.addParam("lingcheng", getReqParamString("lingcheng"));
-		param.addParam("mingxian", getReqParamString("mingxian"));
 		param.addParam("operator_id", getReqParamString("operator_id"));
 		param.addParam("operator_name", getReqParamString("operator_name"));
 		param.addParam("prices_desc", getReqParamString("prices_desc"));
 		param.addParam("prices_now", getReqParamString("prices_now"));
 		param.addParam("prices_system", getReqParamString("prices_system"));
-		param.addParam("qiantiao", getReqParamString("qiantiao"));
-		param.addParam("tailor_type", getReqParamString("tailor_type"));
-		param.addParam("uskin_code", getReqParamString("uskin_code").toUpperCase());
-		param.addParam("uskin_code_2", getReqParamString("uskin_code_2").toUpperCase());
-		param.addParam("zhidai", getReqParamString("zhidai"));
+
+		if ("计算价格".equals("subcontract_price_type")) {
+			param.addParam("subcontract_fabric_unit_cost", getReqParamString("subcontract_fabric_unit_cost"));
+		} else {
+			param.addParam("subcontract_fabric_unit_cost", "0");
+		}
+		param.addParam("uskin_code", getReqParamString("uskin_code"));
 
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_aide_add_cart_subcontract.getUrl(), param);
 		Log.Nano.tag("定制顾问 提交 其他商品 Resp From EC", httpResp);

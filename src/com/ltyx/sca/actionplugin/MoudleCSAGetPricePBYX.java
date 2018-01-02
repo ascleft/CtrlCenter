@@ -42,7 +42,6 @@ public class MoudleCSAGetPricePBYX extends ZCBaseActionSupportPlugin {
 			jsonERRCODE = jsonHttpResp.getString("ERRCODE");
 			jsonERRDESC = jsonHttpResp.getString("ERRDESC");
 			jsonData = jsonERRDESC;
-			Log.Nano.byLine("ERRCODE", jsonERRCODE, "ERRDESC", jsonERRDESC);
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.Nano.tag("EC服务器响应错误，结构异常", httpResp);

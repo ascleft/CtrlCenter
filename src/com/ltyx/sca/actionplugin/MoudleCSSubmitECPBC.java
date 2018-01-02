@@ -69,8 +69,9 @@ public class MoudleCSSubmitECPBC extends ZCBaseActionSupportPlugin {
 		param.addParam("prices_system", getReqParamString("prices_system"));
 		param.addParam("qiantiao", getReqParamString("qiantiao"));
 		param.addParam("tailor_type", getReqParamString("tailor_type"));
-		param.addParam("uskin_code", getReqParamString("uskin_code"));
-		param.addParam("uskin_code_2", getReqParamString("uskin_code_2"));
+		param.addParam("uskin_code", getReqParamString("uskin_code").toUpperCase());
+		param.addParam("uskin_code_2", getReqParamString("uskin_code_2").toUpperCase());
+		param.addParam("weizhi_peise", getReqParamString("weizhi_peise",""));
 		param.addParam("zhidai", getReqParamString("zhidai"));
 
 		// 成衣尺寸、量体尺寸信息

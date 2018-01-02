@@ -12,7 +12,6 @@ public class AideDesignAction extends ZCBaseActionSupport {
 
 	/**
 	 * 
-	 * 
 	 */
 	private static final long serialVersionUID = 10087L;
 
@@ -21,7 +20,7 @@ public class AideDesignAction extends ZCBaseActionSupport {
 		init(true);
 
 		session = SCAPageConfigCommon.manageMenu(session);
-		session = SCAPageConfigCommon.manageTechnology(session);
+		session = SCAPageConfigCommon.manageTechnologyMan(session);
 
 		session.setAttribute("QRurl", SCAPageConfigCommon.get_QR_url(request));
 

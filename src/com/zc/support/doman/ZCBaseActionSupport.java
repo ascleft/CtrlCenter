@@ -2,8 +2,6 @@ package com.zc.support.doman;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONObject;
 
-import com.mysql.jdbc.Connection;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.zc.support.config.ConfigHelperDB;
 import com.zc.support.link.ZCReqParamGetter;
 import com.zc.support.service.Log;
 import com.zc.support.service.TimeHelper;
@@ -79,14 +75,16 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 	}
 
 	public void logProgress(String title) {
-		System.out.println(TimeHelper.getTimeHMSS());
-		Log.Pro.start();
-		Log.Pro.whiteLine(title);
-		Log.Pro.whiteCut();
-		for (String logNow : progressLog) {
-			Log.Pro.whiteLine(logNow);
+		if (progressLog.size() > 0) {
+			System.out.println(TimeHelper.getTimeHMSS());
+			Log.Pro.start();
+			Log.Pro.whiteLine(title);
+			Log.Pro.whiteCut();
+			for (String logNow : progressLog) {
+				Log.Pro.whiteLine(logNow);
+			}
+			Log.Pro.finish();
 		}
-		Log.Pro.finish();
 	}
 
 	public void logActionResponse(String title) {
@@ -109,9 +107,9 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 	 * 
 	 */
 	public void writeResp(String tab) {
+		logProgress(tab);
 		writeResp();
 		logActionResponse(tab);
-		logProgress(tab);
 	}
 
 	/**
@@ -132,29 +130,6 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-	}
-
-	public Connection DBconn = null;
-
-	public void creatDBConn() {
-
-		try {
-
-			Class.forName("com.mysql.jdbc.Driver");
-
-			String url = ConfigHelperDB.URL;
-			String username = ConfigHelperDB.NAME;
-			String password = ConfigHelperDB.PWD;
-
-			DBconn = (Connection) DriverManager.getConnection(url, username, password);
-
-		} catch (ClassNotFoundException e) {
-			Log.i("找不到驱动程序类 ，加载驱动失败！");
-			e.printStackTrace();
-		} catch (SQLException se) {
-			Log.i("数据库连接失败！");
-			se.printStackTrace();
 		}
 	}
 

@@ -2,6 +2,7 @@ package com.ltyx.ucsplus.action;
 
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCHttpReqParam;
+import com.zc.support.link.ZCHttpReqProperty;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.link.ZCReqIntroGetter;
 
@@ -81,27 +82,31 @@ public class InterfaceTestAction extends ZCBaseActionSupport {
 
 		String httpResp = null;
 
+		ZCHttpReqProperty property = new ZCHttpReqProperty();
+		property.importBase(ZCHttpReqProperty.BaseProperty.TYPE_1);
+
 		if (httpType.equals("POST")) {
 			if ("Android".equals(terminalType)) {
-				httpResp = ZCHttpReqSender.sendPost(httpURL, param, ZCHttpReqSender.userAgent.Android);
+				property.importUserAgent(ZCHttpReqProperty.Terminal.Android);
 			} else if ("iPhone".equals(terminalType)) {
-				httpResp = ZCHttpReqSender.sendPost(httpURL, param, ZCHttpReqSender.userAgent.iPhone);
+				property.importUserAgent(ZCHttpReqProperty.Terminal.iPhone);
 			} else if ("WeChat".equals(terminalType)) {
-				httpResp = ZCHttpReqSender.sendPost(httpURL, param, ZCHttpReqSender.userAgent.WeChat);
+				property.importUserAgent(ZCHttpReqProperty.Terminal.WeChat);
 			} else {
-				httpResp = ZCHttpReqSender.sendPost(httpURL, param, ZCHttpReqSender.userAgent.PC);
+				property.importUserAgent(ZCHttpReqProperty.Terminal.PC);
 			}
-			httpResp = ZCHttpReqSender.sendPost(httpURL, param);
+			httpResp = ZCHttpReqSender.sendPost(httpURL, param, property);
 		} else {
 			if ("Android".equals(terminalType)) {
-				httpResp = ZCHttpReqSender.sendGet(httpURL, param, ZCHttpReqSender.userAgent.Android);
+				property.importUserAgent(ZCHttpReqProperty.Terminal.Android);
 			} else if ("iPhone".equals(terminalType)) {
-				httpResp = ZCHttpReqSender.sendGet(httpURL, param, ZCHttpReqSender.userAgent.iPhone);
+				property.importUserAgent(ZCHttpReqProperty.Terminal.iPhone);
 			} else if ("WeChat".equals(terminalType)) {
-				httpResp = ZCHttpReqSender.sendGet(httpURL, param, ZCHttpReqSender.userAgent.WeChat);
+				property.importUserAgent(ZCHttpReqProperty.Terminal.WeChat);
 			} else {
-				httpResp = ZCHttpReqSender.sendGet(httpURL, param, ZCHttpReqSender.userAgent.PC);
+				property.importUserAgent(ZCHttpReqProperty.Terminal.PC);
 			}
+			httpResp = ZCHttpReqSender.sendGet(httpURL, param, property);
 		}
 
 		return httpResp;

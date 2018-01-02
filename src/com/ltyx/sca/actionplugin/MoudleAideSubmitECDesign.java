@@ -67,8 +67,9 @@ public class MoudleAideSubmitECDesign extends ZCBaseActionSupportPlugin {
 		param.addParam("tailor_type", getReqParamString("tailor_type"));
 		param.addParam("uskin_code", getReqParamString("uskin_code").toUpperCase());
 		param.addParam("uskin_code_2", getReqParamString("uskin_code_2").toUpperCase());
+		param.addParam("weizhi_peise", getReqParamString("weizhi_peise",""));
 		param.addParam("zhidai", getReqParamString("zhidai"));
-
+		
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_aide_add_cart_design.getUrl(), param);
 		Log.Nano.tag("定制顾问 提交 设计师款 Resp From EC", httpResp);
 
