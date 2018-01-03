@@ -287,8 +287,12 @@
 		<action name="SubmitPlatformTailor" class="com.ltyx.test.PlatformTailor"
 		method="submitTailor"></action>
 
-		<!-- MTM 提交下单 -->
-		<action name="SubmitMTM" class="com.ltyx.test.MTMAction"
+		<!-- MTM 测试提交下单 -->
+		<action name="SubmitMTMTest" class="com.ltyx.test.MTMTestAction"
+		method="submit"></action>
+		
+		<!-- MTM 正式提交下单 -->
+		<action name="SubmitMTMRelease" class="com.ltyx.test.MTMReleaseAction"
 		method="submit"></action>
 	
 	</package>

@@ -5,7 +5,7 @@ import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqProperty;
 import com.zc.support.link.ZCHttpReqSender;
 
-public class MTMAction extends ZCBaseActionSupport {
+public class MTMTestAction extends ZCBaseActionSupport {
 
 	/**
 	 * 
@@ -16,7 +16,7 @@ public class MTMAction extends ZCBaseActionSupport {
 		init(true);
 
 		ZCHttpReqParam param = new ZCHttpReqParam();
-		param.addParam("retail_customer_email", "zhinengzhizao_test@163.com");
+		param.addParam("retail_customer_email", "zhinengzhizao_test@lttc.com");
 		param.addParam("measurements[domain_id]", "399");
 		param.addParam("profile_id", "0");
 		param.addParam("form_build_id", "form-MN2ojAoUFAn2n6efgLAtGINGIk7R9VXo3y5-rk5aagY");
@@ -32,7 +32,6 @@ public class MTMAction extends ZCBaseActionSupport {
 		property.addProperty("Cookie", "has_js=1; SESS254d6241dc85dcb04eee3d2ef73422a5=8IqC9JWM8p4WwgOEgQTH2GIJI59BOU6faaQjDmntxHE");
 
 		String resp = ZCHttpReqSender.sendPost("http://test.tailor.tailogic.com/tailogic/constructor/choose-style/75", param, property);
-//		String resp = ZCHttpReqSender.sendPost("http://tailor.tailogic.com/tailogic/constructor/choose-style/75", param, property);
 
 		ERRCODE = "0";
 		ERRDESC = "succ";
