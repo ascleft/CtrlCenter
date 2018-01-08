@@ -24,6 +24,7 @@ public class ConfigHelperURL {
 	public static ZCUrl Url_aide_add_cart_pbyx = new ZCUrl("下单工具2.0 定制顾问 衬衫 提交 ", "/index.php/openapi/uskinapi/body_trainer_freechoice_add_cart");
 	public static ZCUrl Url_aide_get_price_design = new ZCUrl("下单工具2.0 定制顾问 设计师款 报价", "/index.php/openapi/uskinapi/body_trainer_recommendlist_price");
 	public static ZCUrl Url_aide_add_cart_design = new ZCUrl("下单工具2.0 定制顾问 设计师款 提交", "/index.php/openapi/uskinapi/body_trainer_recommendlist_add_cart");
+	public static ZCUrl Url_aide_get_price_subcontract = new ZCUrl("下单工具2.0 定制顾问 其他商品 报价", "/index.php/openapi/uskinapi/body_trainer_other_goods_price");
 	public static ZCUrl Url_aide_add_cart_subcontract = new ZCUrl("下单工具2.0 定制顾问 其他商品 提交", "/index.php/openapi/uskinapi/body_trainer_other_goods_add_cart");
 	public static ZCUrl Url_aide_add_cart_woman = new ZCUrl("下单工具2.0 定制顾问 女装 提交 ", "/index.php/openapi/uskinapi/body_trainer_add_cart_for_mygirl");
 
@@ -56,6 +57,7 @@ public class ConfigHelperURL {
 			list.add(Url_aide_add_cart_pbyx);
 			list.add(Url_aide_get_price_design);
 			list.add(Url_aide_add_cart_design);
+			list.add(Url_aide_get_price_subcontract);
 			list.add(Url_aide_add_cart_subcontract);
 			list.add(Url_aide_add_cart_woman);
 			// 客户经理

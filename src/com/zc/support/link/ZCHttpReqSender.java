@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
 
+import com.zc.support.service.StringHelper;
 import com.zc.support.service.TimeHelper;
 
 public class ZCHttpReqSender {
@@ -31,12 +32,14 @@ public class ZCHttpReqSender {
 
 		TimeHelper.Timer timer = new TimeHelper.Timer();
 
+		System.out.println(TimeHelper.getTimeHMSS());
+		System.out.println(StringHelper.fillRight("url ", 6, " ") + url + "?" + param.getParam());
+
 		String result = "";
 		BufferedReader in = null;
 		try {
 			String urlNameString = url + "?" + param.getParam();
 			URL realUrl = new URL(urlNameString);
-			System.out.println(urlNameString);
 			// 打开和URL之间的连接
 			URLConnection connection = realUrl.openConnection();
 			// 填充Header
@@ -89,7 +92,12 @@ public class ZCHttpReqSender {
 	}
 
 	public static String sendPost(String url, ZCHttpReqParam param, ZCHttpReqProperty property) {
+
 		TimeHelper.Timer timer = new TimeHelper.Timer();
+
+		System.out.println(TimeHelper.getTimeHMSS());
+		System.out.println(StringHelper.fillRight("url ", 6, " ") + url);
+		System.out.println(StringHelper.fillRight("body", 6, " ") + url + param.getParam());
 
 		PrintWriter out = null;
 		BufferedReader in = null;
@@ -136,6 +144,7 @@ public class ZCHttpReqSender {
 		timer.stop("POST通讯 " + url);
 
 		return result;
+		
 	}
 
 }

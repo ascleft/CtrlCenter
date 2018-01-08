@@ -30,7 +30,7 @@ public class MoudleAideGetPriceDesign extends ZCBaseActionSupportPlugin {
 		param.addParam("uskin_code", uskin_code.toUpperCase());
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_aide_get_price_design.getUrl(), param);
 
-		Log.Nano.tag("Save Resp From EC", httpResp);
+		Log.Nano.tag("Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp;
 		String jsonERRCODE;
@@ -100,12 +100,12 @@ public class MoudleAideGetPriceDesign extends ZCBaseActionSupportPlugin {
 	private double calPrice(double Fabric, double Craft, double Additives, double Other, double Total) {
 
 		double price_temp = 0;
-//		if ("1".equals(getReqParamString("LZX_11_FOR_CHAR_SWITCH"))) {
-//			price_temp += 5f;
-//		}
-//		if ("1".equals(getReqParamString("LZX_11_FOR_PIC_SWITCH"))) {
-//			price_temp += 5f;
-//		}
+		// if ("1".equals(getReqParamString("LZX_11_FOR_CHAR_SWITCH"))) {
+		// price_temp += 5f;
+		// }
+		// if ("1".equals(getReqParamString("LZX_11_FOR_PIC_SWITCH"))) {
+		// price_temp += 5f;
+		// }
 
 		price_temp += getReqParamDouble("order_processing_cost");
 

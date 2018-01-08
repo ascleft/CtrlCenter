@@ -157,7 +157,7 @@ public class TimeHelper {
 		public long stop(String name) {
 
 			Log.Pro.start();
-			Log.Pro.whiteLine("计时器统计 " + "--->" + name);
+			Log.Pro.whiteLine("计时器统计 " + "--->" + name + " ");
 			Log.Pro.whiteCut();
 
 			interval = showTimerPartable(name);

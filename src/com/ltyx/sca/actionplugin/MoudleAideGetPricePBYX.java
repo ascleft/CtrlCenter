@@ -28,7 +28,7 @@ public class MoudleAideGetPricePBYX extends ZCBaseActionSupportPlugin {
 		param.addParam("uskin_code", uskin_code.toUpperCase());
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_aide_get_price_pbyx.getUrl(), param);
 
-		Log.Nano.tag("Save Resp From EC", httpResp);
+		Log.Nano.tag("Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp;
 		String jsonERRCODE;

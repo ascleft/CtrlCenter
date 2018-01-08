@@ -57,13 +57,20 @@ public class AideSubcontractAction extends ZCBaseActionSupport {
 	}
 
 	public boolean doGetPrice() {
-
-		MoudleAideGetPriceSubcontract moudle = new MoudleAideGetPriceSubcontract(request);
-		moudle.doJobs();
-		ERRCODE = moudle.getERRCODE();
-		ERRDESC = moudle.getERRDESC();
-		data = moudle.getData();
-		return true;
+		{
+			MoudleAideGetPriceSubcontract moudle = new MoudleAideGetPriceSubcontract(request);
+			if (!moudle.doJobs()) {
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}else {
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return true;
+			}
+		}
 
 	}
 
