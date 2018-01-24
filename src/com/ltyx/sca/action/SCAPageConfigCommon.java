@@ -53,7 +53,8 @@ public class SCAPageConfigCommon {
 			session.setAttribute("list_weizhi_zhidai", SCAPageConfigMan.get_list_weizhi_zhidai());
 			session.setAttribute("list_weizhi_peise", SCAPageConfigMan.get_list_weizhi_peise());
 
-			session.setAttribute("list_baozhuang", SCAPageConfigMan.get_list_baozhuang());
+			session.setAttribute("list_baozhuang_aide", SCAPageConfigMan.get_list_baozhuang_aide());
+			session.setAttribute("list_baozhuang_shop", SCAPageConfigMan.get_list_baozhuang_shop());
 
 		}
 
@@ -86,7 +87,42 @@ public class SCAPageConfigCommon {
 			session.setAttribute("list_weizhi_zhidai", SCAPageConfigWoman.get_list_weizhi_zhidai());
 			session.setAttribute("list_weizhi_peise", SCAPageConfigWoman.get_list_weizhi_peise());
 
-			session.setAttribute("list_baozhuang", SCAPageConfigWoman.get_list_baozhuang());
+			session.setAttribute("list_baozhuang_aide", SCAPageConfigWoman.get_list_baozhuang_aide());
+			session.setAttribute("list_baozhuang_shop", SCAPageConfigWoman.get_list_baozhuang_shop());
+
+		}
+
+		return session;
+	}
+
+	synchronized public static HttpSession manageTechnologyMix(HttpSession session) {
+
+		{
+			session.setAttribute("list_LZX_01", SCAPageConfigMix.get_list_LZX_01());
+			session.setAttribute("list_LZX_02", SCAPageConfigMix.get_list_LZX_02());
+			session.setAttribute("list_LZX_03", SCAPageConfigMix.get_list_LZX_03());
+			session.setAttribute("list_LZX_04", SCAPageConfigMix.get_list_LZX_04());
+			session.setAttribute("list_LZX_08", SCAPageConfigMix.get_list_LZX_08());
+			session.setAttribute("list_LZX_120", SCAPageConfigMix.get_list_LZX_120());
+			session.setAttribute("list_LZX_06", SCAPageConfigMix.get_list_LZX_06());
+			session.setAttribute("list_LZX_17", SCAPageConfigMix.get_list_LZX_17());
+			session.setAttribute("list_LZX_26", SCAPageConfigMix.get_list_LZX_26());
+			session.setAttribute("list_LZX_13", SCAPageConfigMix.get_list_LZX_13());
+			session.setAttribute("list_zhidai", SCAPageConfigMix.get_list_zhidai());
+			session.setAttribute("list_color", SCAPageConfigMix.get_list_color());
+			session.setAttribute("list_kouzi", SCAPageConfigMix.get_list_kouzi());
+			session.setAttribute("list_easytype", SCAPageConfigMix.get_list_easy_type());
+			session.setAttribute("list_lingcheng", SCAPageConfigMix.get_list_lingcheng());
+			session.setAttribute("list_mingxian", SCAPageConfigMix.get_list_mingxian());
+			session.setAttribute("list_cefeng", SCAPageConfigMix.get_list_cefeng());
+			session.setAttribute("list_qiantiao", SCAPageConfigMix.get_list_qiantiao());
+			session.setAttribute("list_chenbu", SCAPageConfigMix.get_list_chenbu());
+
+			session.setAttribute("list_weizhi_zhidai", SCAPageConfigMix.get_list_weizhi_zhidai());
+			session.setAttribute("list_weizhi_peise", SCAPageConfigMix.get_list_weizhi_peise());
+
+			session.setAttribute("list_baozhuang_aide", SCAPageConfigMix.get_list_baozhuang_aide());
+			session.setAttribute("list_baozhuang_shop", SCAPageConfigMix.get_list_baozhuang_shop());
 
 		}
 

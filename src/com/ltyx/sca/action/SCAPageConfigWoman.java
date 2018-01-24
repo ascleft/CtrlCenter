@@ -134,12 +134,12 @@ public class SCAPageConfigWoman {
 
 		String list = "";
 
-		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_17'", "state = 1").exe();
+		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'YXL_03'", "state = 11").exe();
 		list += "<optgroup label=\"基础款\">";
 		for (int i = 0; i < al_1.size(); i++) {
 			list += "<option value=\"" + al_1.get(i).get("code");
 			list += "\" stylebase=\"true\">";
-			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
+			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch") + " " + "女装";
 			list += "</option>";
 		}
 		list += "</optgroup>";//
@@ -242,11 +242,11 @@ public class SCAPageConfigWoman {
 
 		String list = "";
 
-		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'easy_type'", "state = 1").exe();
+		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'easy_type'", "state = 11").exe();
 		for (int i = 0; i < al_1.size(); i++) {
 			list += "<option value=\"" + al_1.get(i).get("code");
 			list += "\" stylebase=\"true\">";
-			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
+			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch") + " " + "女装";
 			list += "</option>";
 		}
 		return list;
@@ -334,7 +334,7 @@ public class SCAPageConfigWoman {
 		for (int i = 0; i < al_1.size(); i++) {
 			list += "<option value=\"" + al_1.get(i).get("code");
 			list += "\" stylebase=\"true\">";
-			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
+			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch") + " " + "女装";
 			list += "</option>";
 		}
 		list += "</optgroup>";//
@@ -379,11 +379,27 @@ public class SCAPageConfigWoman {
 
 	}
 
-	public static String get_list_baozhuang() {
+	public static String get_list_baozhuang_aide() {
 
 		String list = "";
 
 		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'baozhuang'", "state = 1").exe();
+		for (int i = 0; i < al_1.size(); i++) {
+			list += "<option value=\"" + al_1.get(i).get("code");
+			list += "\" stylebase=\"true\">";
+			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
+			list += "</option>";
+		}
+
+		return list;
+
+	}
+	
+	public static String get_list_baozhuang_shop() {
+
+		String list = "";
+
+		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'baozhuang'", "state = 2").exe();
 		for (int i = 0; i < al_1.size(); i++) {
 			list += "<option value=\"" + al_1.get(i).get("code");
 			list += "\" stylebase=\"true\">";

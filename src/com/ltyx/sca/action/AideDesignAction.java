@@ -5,6 +5,7 @@ import com.ltyx.sca.actionplugin.MoudleAideCheckUserInfo;
 import com.ltyx.sca.actionplugin.MoudleAideGetPriceDesign;
 import com.ltyx.sca.actionplugin.MoudleAideSubmitECDesign;
 import com.ltyx.sca.actionplugin.MoudleCheckPrice;
+import com.ltyx.sca.actionplugin.MoudleCheckTechLZX01;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 
@@ -20,7 +21,7 @@ public class AideDesignAction extends ZCBaseActionSupport {
 		init(true);
 
 		session = SCAPageConfigCommon.manageMenu(session);
-		session = SCAPageConfigCommon.manageTechnologyMan(session);
+		session = SCAPageConfigCommon.manageTechnologyMix(session);
 
 		session.setAttribute("QRurl", SCAPageConfigCommon.get_QR_url(request));
 
@@ -91,6 +92,18 @@ public class AideDesignAction extends ZCBaseActionSupport {
 				return false;
 			}
 			addProgressSucc("订单摘要信息");
+		}
+
+		{
+			MoudleCheckTechLZX01 moudle = new MoudleCheckTechLZX01(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("领型插片冲突校验");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("领型插片冲突校验");
 		}
 
 		{

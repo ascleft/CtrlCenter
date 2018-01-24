@@ -84,6 +84,7 @@ public class MoudleCSASubmitECPBC extends ZCBaseActionSupportPlugin {
 		param.addParam("du_wei", getReqParamString("du_wei"));
 		param.addParam("dibian", getReqParamString("dibian"));
 		param.addParam("ling_wei", getReqParamString("ling_wei"));
+		param.addParam("neiwaichuan", getReqParamString("neiwaichuan"));
 		param.addParam("houshen_chang_nei", getReqParamString("houshen_chang_nei"));
 		param.addParam("houshen_chang_wai", getReqParamString("houshen_chang_wai"));
 		param.addParam("jian_kuan", getReqParamString("jian_kuan"));

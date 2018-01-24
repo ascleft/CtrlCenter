@@ -92,7 +92,7 @@ public class MoudleCheckMeasure extends ZCBaseActionSupportPlugin {
 		maleBodyMeasure.put("houshen_chang_wai", new Cell(true, "后身长（外穿）", 0, 1000));
 		maleBodyMeasure.put("jian_kuan", new Cell(true, "肩宽", 0, 1000));
 		maleBodyMeasure.put("xiu_fei", new Cell(false, "袖肥（大臂围）", 0, 1000));
-		maleBodyMeasure.put("xiuzhou_fei", new Cell(true, "袖肘肥（小臂围）", 0, 1000));
+//		maleBodyMeasure.put("xiuzhou_fei", new Cell(true, "袖肘肥（小臂围）", 0, 1000));
 	}
 
 	class Cell {

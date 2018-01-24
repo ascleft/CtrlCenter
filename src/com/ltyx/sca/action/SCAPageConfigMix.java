@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.zc.support.service.DBHelper;
 
-public class SCAPageConfigMan {
+public class SCAPageConfigMix {
 
 	public static String get_list_LZX_01() {
 
@@ -165,11 +165,20 @@ public class SCAPageConfigMan {
 		String list = "";
 
 		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_17'", "state = 1").exe();
-		list += "<optgroup label=\"基础款\">";
+		list += "<optgroup label=\"男装基础款\">";
 		for (int i = 0; i < al_1.size(); i++) {
 			list += "<option value=\"" + al_1.get(i).get("code");
 			list += "\" stylebase=\"true\">";
 			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
+			list += "</option>";
+		}
+		list += "</optgroup>";//
+		ArrayList<DBHelper.SelectBean> al_2 = DBHelper.select("code", "ch").from("technology").where("name1 = 'YXL_03'", "state = 11").exe();
+		list += "<optgroup label=\"女装基础款\">";
+		for (int i = 0; i < al_2.size(); i++) {
+			list += "<option value=\"" + al_2.get(i).get("code");
+			list += "\" stylebase=\"true\">";
+			list += al_2.get(i).get("code") + " " + al_2.get(i).get("ch") + " " + "女装";
 			list += "</option>";
 		}
 		list += "</optgroup>";//
@@ -277,6 +286,13 @@ public class SCAPageConfigMan {
 			list += "<option value=\"" + al_1.get(i).get("code");
 			list += "\" stylebase=\"true\">";
 			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
+			list += "</option>";
+		}
+		ArrayList<DBHelper.SelectBean> al_2 = DBHelper.select("code", "ch").from("technology").where("name1 = 'easy_type'", "state = 11").exe();
+		for (int i = 0; i < al_2.size(); i++) {
+			list += "<option value=\"" + al_2.get(i).get("code");
+			list += "\" stylebase=\"true\">";
+			list += al_2.get(i).get("code") + " " + al_2.get(i).get("ch");
 			list += "</option>";
 		}
 		return list;
@@ -424,7 +440,7 @@ public class SCAPageConfigMan {
 		return list;
 
 	}
-
+	
 	public static String get_list_baozhuang_shop() {
 
 		String list = "";

@@ -33,7 +33,7 @@
 	String list_chenbu=(String) session.getAttribute("list_chenbu");
 	String list_weizhi_zhidai=(String) session.getAttribute("list_weizhi_zhidai");
 	String list_weizhi_peise=(String) session.getAttribute("list_weizhi_peise");
-	String list_baozhuang=(String) session.getAttribute("list_baozhuang");	
+	String list_baozhuang=(String) session.getAttribute("list_baozhuang_aide");	
 	
 %>
 
@@ -294,27 +294,31 @@
 												<div class="col s12 m6 l4">
 													<div class="input-field">
 														<input type="text" class="validate" name="customer_name" value="">
-														<label>量体人姓名（必填）</label>
+														<label>穿衣人姓名（必填）</label>
 													</div>
 												</div>
 												<div class="col s12 m6 l4">
 													<div class="input-field">
-														<input type="text" class="validate" name="customer_tel" value=""> <label>量体人电话（必填）</label>
+														<input type="text" class="validate" name="customer_tel" value="">
+														<label>穿衣人电话（必填）</label>
+													</div>
+												</div>
+												<div class="col s12 m6 l4" style="display: none;">
+													<div class="input-field">
+														<input type="text" class="validate" name="customer_address" value="">
+														<label>收货地址</label>
 													</div>
 												</div>
 												<div class="col s12 m6 l4">
 													<div class="input-field">
-														<input type="text" class="validate" name="customer_address" value=""> <label>收货地址</label>
-													</div>
-												</div>
-												<div class="col s12 m6 l4">
-													<div class="input-field">
-														<input type="text" class="validate" name="customer_tel_target" value=""> <label>账户电话（必填）</label>
+														<input type="text" class="validate" name="customer_tel_target" value="">
+														<label>会员帐号（电话）（必填）</label>
 													</div>
 												</div>
 												<div class="col s12 m12 l4">
 													<div class="input-field">
-														<input type="text" class="validate" name="customer_tips" value=""> <label>备注</label>
+														<input type="text" class="validate" name="customer_tips" value="">
+														<label>生产备注</label>
 													</div>
 												</div>
 											</div>
@@ -525,52 +529,31 @@
 														<div class="col s12 m12 l12 teal-text">
 															<p>刺绣文字</p>
 														</div>
-														<div class="input-field col s12 m4 l4">
+														<div class="input-field col s12 m6 l4">
 															<select name="LZX_11_FOR_CHAR_SWITCH">
 																<option value="0">不使用文字刺绣</option>
 																<option value="1">使用文字刺绣</option>
 															</select> <label>是否使用文字刺绣</label>
 														</div>
-														<div class="input-field col s12 m4 l4">
+														<div class="input-field col s12 m6 l4">
 															<select name="LZX_13_FOR_CHAR">
 																<%=list_LZX_13%>
 															</select> <label>刺绣文字位置</label>
 														</div>
-														<div class="input-field col s12 m4 l4">
+														<div class="input-field col s12 m6 l4">
 															<select name="LZX_11_CHAR_COLOR">
 																<%=list_color%>
 															</select> <label>刺绣文字颜色</label>
 														</div>
-														<div class="input-field col s6 m4 l4">
+														<div class="input-field col s12 m6 l4">
 															<select name="LZX_11_CHAR_TYPE">
-																<option value="LZX-11-01">英文中宋</option>
-																<option value="LZX-11-02">舒体</option>
-																<option value="LZX-11-04">皇家体</option>
-																<option value="LZX-11-05">手写体</option>
-																<option value="LZX-11-06">古圆体</option>
-																<option value="LZX-11-08">维体</option>
-																<option value="LZX-11-09">书写体</option>
-																<option value="LZX-11-10">哥特体</option>
-																<option value="LZX-11-12">卡曼体</option>
-																<option value="LZX-11-13">花体</option>
-																<option value="LZX-11-14">书信体</option>
-																<option value="LZX-11-15">巴洛克体</option>
-																<option value="LZX-11-16">英文行楷</option>
-																<option value="LZX-11-17">黑体</option>
-																<option value="LZX-11-18">隶属</option>
-																<option value="LZX-11-19">毛体</option>
-																<option value="LZX-11-20">草书</option>
-																<option value="LZX-11-21">中文行楷</option>
-																<option value="LZX-11-22">中文中宋</option>
 															</select> <label>刺绣文字字体</label>
 														</div>
-														<div class="col s6 m4 l4">
-															<div class="input-field">
-																<input type="number" class="validate" name="LZX_11_CHAR_SIZE" value="">
-																<label>刺绣文字大小</label>
-															</div>
+														<div class="input-field col s12 m6 l4">
+															<select name="LZX_11_CHAR_SIZE">
+															</select> <label>刺绣文字高度</label>
 														</div>
-														<div class="col s6 m6 l4">
+														<div class="col s12 m6 l4">
 															<div class="input-field">
 																<input type="text" class="validate" name="LZX_11_CHAR_WORD" value="">
 																<label>刺绣文字内容</label>
@@ -583,60 +566,32 @@
 														<div class="col s12 m12 l12 teal-text">
 															<p>刺绣图案</p>
 														</div>
-														<div class="input-field col s12 m4 l4">
+														<div class="input-field col s12 m6 l4">
 															<select name="LZX_11_FOR_PIC_SWITCH">
 																<option value="0">不使用图案刺绣</option>
 																<option value="1">使用图案刺绣</option>
 															</select> <label>是否使用图案刺绣</label>
 														</div>
-														<div class="input-field col s12 m4 l4">
+														<div class="input-field col s12 m6 l4">
 															<select name="LZX_13_FOR_PIC">
 																<%=list_LZX_13%>
 															</select> <label>刺绣图案位置</label>
 														</div>
-														<div class="input-field col s12 m4 l4">
+														<div class="input-field col s12 m6 l4">
 															<select name="LZX_11_PIC_COLOR">
 																<%=list_color%>
 															</select> <label>刺绣图案颜色</label>
 														</div>
-														<div class="input-field col s6 m4 l4">
+														<div class="input-field col s12 m6 l4">
 															<select name="LZX_11_PIC_TYPE">
-																<option value="LZX-11-23">十二生肖</option>
-																<option value="LZX-11-24">十二星座</option>
-																<option value="LZX-11-25">宽贴门襟</option>
-																<option value="LZX-11-26">宽贴门襟</option>
-																<option value="LZX-11-27">宽贴门襟</option>
 															</select> <label>刺绣图案系列</label>
 														</div>
-														<div class="col s6 m4 l4">
-															<div class="input-field">
-																<input type="number" class="validate" name="LZX_11_PIC_SIZE" value="">
-																<label>刺绣图案大小</label>
-															</div>
+														<div class="input-field col s12 m6 l4">
+															<select name="LZX_11_PIC_SIZE">
+															</select> <label>刺绣图案高度</label>
 														</div>
-														<div class="input-field col s6 m6 l4">
+														<div class="input-field col s12 m6 l4">
 															<select name="LZX_11_PIC_NUM">
-																<option value="01">01</option>
-																<option value="02">02</option>
-																<option value="04">04</option>
-																<option value="05">05</option>
-																<option value="06">06</option>
-																<option value="08">08</option>
-																<option value="09">09</option>
-																<option value="10">10</option>
-																<option value="12">12</option>
-																<option value="13">13</option>
-																<option value="14">14</option>
-																<option value="15">15</option>
-																<option value="16">16</option>
-																<option value="17">17</option>
-																<option value="18">18</option>
-																<option value="19">19</option>
-																<option value="20">20</option>
-																<option value="21">21</option>
-																<option value="22">22</option>
-																<option value="23">23</option>
-																<option value="24">24</option>
 															</select> <label>刺绣图案编号</label>
 														</div>
 													</div>

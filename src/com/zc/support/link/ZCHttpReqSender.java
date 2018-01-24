@@ -8,6 +8,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import com.zc.support.service.StringHelper;
+import com.zc.support.service.TextLogHelper;
 import com.zc.support.service.TimeHelper;
 
 public class ZCHttpReqSender {
@@ -34,6 +35,8 @@ public class ZCHttpReqSender {
 
 		System.out.println(TimeHelper.getTimeHMSS());
 		System.out.println(StringHelper.fillRight("url ", 6, " ") + url + "?" + param.getParam());
+		TextLogHelper.white(TimeHelper.getTimeHMSS());
+		TextLogHelper.white(StringHelper.fillRight("url ", 6, " ") + url + "?" + param.getParam());
 
 		String result = "";
 		BufferedReader in = null;
@@ -98,6 +101,9 @@ public class ZCHttpReqSender {
 		System.out.println(TimeHelper.getTimeHMSS());
 		System.out.println(StringHelper.fillRight("url ", 6, " ") + url);
 		System.out.println(StringHelper.fillRight("body", 6, " ") + url + param.getParam());
+		TextLogHelper.white(TimeHelper.getTimeHMSS());
+		TextLogHelper.white(StringHelper.fillRight("url ", 6, " ") + url);
+		TextLogHelper.white(StringHelper.fillRight("body", 6, " ") + url + param.getParam());
 
 		PrintWriter out = null;
 		BufferedReader in = null;

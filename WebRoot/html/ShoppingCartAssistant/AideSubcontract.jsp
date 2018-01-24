@@ -33,7 +33,7 @@
 	String list_chenbu=(String) session.getAttribute("list_chenbu");
 	String list_weizhi_zhidai=(String) session.getAttribute("list_weizhi_zhidai");
 	String list_weizhi_peise=(String) session.getAttribute("list_weizhi_peise");
-	String list_baozhuang=(String) session.getAttribute("list_baozhuang");	
+	String list_baozhuang=(String) session.getAttribute("list_baozhuang_aide");	
 	
 %>
 
@@ -224,8 +224,6 @@
 				state_loaded();
 				state_ready("n");
 
-				use_lzx11();
-
 				use_SubcontractTable();
 
 			})
@@ -293,27 +291,31 @@
 												<div class="col s12 m6 l4">
 													<div class="input-field">
 														<input type="text" class="validate" name="customer_name" value="">
-														<label>量体人姓名（必填）</label>
+														<label>穿衣人姓名（必填）</label>
 													</div>
 												</div>
 												<div class="col s12 m6 l4">
 													<div class="input-field">
-														<input type="text" class="validate" name="customer_tel" value=""> <label>量体人电话（必填）</label>
+														<input type="text" class="validate" name="customer_tel" value="">
+														<label>穿衣人电话（必填）</label>
+													</div>
+												</div>
+												<div class="col s12 m6 l4" style="display: none;">
+													<div class="input-field">
+														<input type="text" class="validate" name="customer_address" value="">
+														<label>收货地址</label>
 													</div>
 												</div>
 												<div class="col s12 m6 l4">
 													<div class="input-field">
-														<input type="text" class="validate" name="customer_address" value=""> <label>收货地址</label>
-													</div>
-												</div>
-												<div class="col s12 m6 l4">
-													<div class="input-field">
-														<input type="text" class="validate" name="customer_tel_target" value=""> <label>账户电话（必填）</label>
+														<input type="text" class="validate" name="customer_tel_target" value="">
+														<label>会员帐号（电话）（必填）</label>
 													</div>
 												</div>
 												<div class="col s12 m12 l4">
 													<div class="input-field">
-														<input type="text" class="validate" name="customer_tips" value=""> <label>备注</label>
+														<input type="text" class="validate" name="customer_tips" value="">
+														<label>生产备注</label>
 													</div>
 												</div>
 											</div>
