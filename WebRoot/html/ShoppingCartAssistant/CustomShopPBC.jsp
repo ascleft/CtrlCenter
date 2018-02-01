@@ -535,7 +535,7 @@
 															<div class="input-field">
 																<select name="neiwaichuan">
 																	<option value="YX-10-01">内穿</option>
-																	<option value="YX-10-01">外穿</option>
+																	<option value="YX-10-02">外穿</option>
 																</select> <label>内外穿</label>
 															</div>
 														</div>

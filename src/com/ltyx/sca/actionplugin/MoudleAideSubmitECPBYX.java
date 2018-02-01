@@ -57,6 +57,7 @@ public class MoudleAideSubmitECPBYX extends ZCBaseActionSupportPlugin {
 		param.addParam("line_color_location_4", getReqParamString("line_color_location_4"));
 		param.addParam("lingcheng", getReqParamString("lingcheng"));
 		param.addParam("mingxian", getReqParamString("mingxian"));
+		param.addParam("neiwaichuan", getReqParamString("neiwaichuan"));
 		param.addParam("operator_id", getReqParamString("operator_id"));
 		param.addParam("operator_name", getReqParamString("operator_name"));
 		param.addParam("prices_desc", getReqParamString("prices_desc"));

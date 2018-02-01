@@ -359,6 +359,12 @@
 														<%=list_baozhuang%>
 													</select> <label>包装</label>
 												</div>
+												<div class="input-field col s6 m6 l4">
+													<select name="neiwaichuan">
+														<option value="YX-10-01">内穿</option>
+														<option value="YX-10-02">外穿</option>
+													</select> <label>内外穿</label>
+												</div>
 											</div>
 										</div>
 									</li>

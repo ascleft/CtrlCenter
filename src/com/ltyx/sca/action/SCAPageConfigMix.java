@@ -11,7 +11,7 @@ public class SCAPageConfigMix {
 		String list = "";
 
 		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_01'", "state = 1").exe();
-		list += "<optgroup label=\"基础款\">";
+		list += "<optgroup label=\"男装 基础款\">";
 		for (int i = 0; i < al_1.size(); i++) {
 			list += "<option value=\"" + al_1.get(i).get("code");
 			list += "\" stylebase=\"true\">";
@@ -21,7 +21,7 @@ public class SCAPageConfigMix {
 		list += "</optgroup>";//
 
 		ArrayList<DBHelper.SelectBean> al_2 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_01'", "state = 2").exe();
-		list += "<optgroup label=\"特殊款\">";
+		list += "<optgroup label=\"男装 特殊款\">";
 		for (int i = 0; i < al_2.size(); i++) {
 			list += "<option value=\"" + al_2.get(i).get("code");
 			list += "\" stylebase=\"false\">";
@@ -29,6 +29,16 @@ public class SCAPageConfigMix {
 			list += "</option>";
 		}
 		list += "</optgroup>"; //
+
+		ArrayList<DBHelper.SelectBean> al_3 = DBHelper.select("code", "ch").from("technology").where("name1 = 'YXL_01'", "state = 11").exe();
+		list += "<optgroup label=\"女装 基础款\">";
+		for (int i = 0; i < al_3.size(); i++) {
+			list += "<option value=\"" + al_3.get(i).get("code");
+			list += "\" stylebase=\"true\">";
+			list += al_3.get(i).get("code") + " " + al_3.get(i).get("ch");
+			list += "</option>";
+		}
+		list += "</optgroup>";//
 
 		return list;
 	}
@@ -37,25 +47,39 @@ public class SCAPageConfigMix {
 
 		String list = "";
 
-		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_02'", "state = 1").exe();
-		list += "<optgroup label=\"基础款\">";
-		for (int i = 0; i < al_1.size(); i++) {
-			list += "<option value=\"" + al_1.get(i).get("code");
-			list += "\" stylebase=\"true\">";
-			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
-			list += "</option>";
-		}
-		list += "</optgroup>";//
+		{
+			ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_02'", "state = 1").exe();
+			list += "<optgroup label=\"男装 基础款\">";
+			for (int i = 0; i < al_1.size(); i++) {
+				list += "<option value=\"" + al_1.get(i).get("code");
+				list += "\" stylebase=\"true\">";
+				list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
+				list += "</option>";
+			}
+			list += "</optgroup>";//
 
-		ArrayList<DBHelper.SelectBean> al_2 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_02'", "state = 2").exe();
-		list += "<optgroup label=\"特殊款\">";
-		for (int i = 0; i < al_2.size(); i++) {
-			list += "<option value=\"" + al_2.get(i).get("code");
-			list += "\" stylebase=\"false\">";
-			list += al_2.get(i).get("code") + " " + al_2.get(i).get("ch");
-			list += "</option>";
+			ArrayList<DBHelper.SelectBean> al_2 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_02'", "state = 2").exe();
+			list += "<optgroup label=\"男装 特殊款\">";
+			for (int i = 0; i < al_2.size(); i++) {
+				list += "<option value=\"" + al_2.get(i).get("code");
+				list += "\" stylebase=\"false\">";
+				list += al_2.get(i).get("code") + " " + al_2.get(i).get("ch");
+				list += "</option>";
+			}
+			list += "</optgroup>"; //
 		}
-		list += "</optgroup>"; //
+
+		{
+			ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'YXL_02'", "state = 11").exe();
+			list += "<optgroup label=\"女装 基础款\">";
+			for (int i = 0; i < al_1.size(); i++) {
+				list += "<option value=\"" + al_1.get(i).get("code");
+				list += "\" stylebase=\"true\">";
+				list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
+				list += "</option>";
+			}
+			list += "</optgroup>";//
+		}
 
 		return list;
 
@@ -65,25 +89,39 @@ public class SCAPageConfigMix {
 
 		String list = "";
 
-		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_03'", "state = 1").exe();
-		list += "<optgroup label=\"基础款\">";
-		for (int i = 0; i < al_1.size(); i++) {
-			list += "<option value=\"" + al_1.get(i).get("code");
-			list += "\" stylebase=\"true\">";
-			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
-			list += "</option>";
-		}
-		list += "</optgroup>";//
+		{
+			ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_03'", "state = 1").exe();
+			list += "<optgroup label=\"男装 基础款\">";
+			for (int i = 0; i < al_1.size(); i++) {
+				list += "<option value=\"" + al_1.get(i).get("code");
+				list += "\" stylebase=\"true\">";
+				list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
+				list += "</option>";
+			}
+			list += "</optgroup>";//
 
-		ArrayList<DBHelper.SelectBean> al_2 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_03'", "state = 2").exe();
-		list += "<optgroup label=\"特殊款\">";
-		for (int i = 0; i < al_2.size(); i++) {
-			list += "<option value=\"" + al_2.get(i).get("code");
-			list += "\" stylebase=\"false\">";
-			list += al_2.get(i).get("code") + " " + al_2.get(i).get("ch");
-			list += "</option>";
+			ArrayList<DBHelper.SelectBean> al_2 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_03'", "state = 2").exe();
+			list += "<optgroup label=\"男装 特殊款\">";
+			for (int i = 0; i < al_2.size(); i++) {
+				list += "<option value=\"" + al_2.get(i).get("code");
+				list += "\" stylebase=\"false\">";
+				list += al_2.get(i).get("code") + " " + al_2.get(i).get("ch");
+				list += "</option>";
+			}
+			list += "</optgroup>"; //
 		}
-		list += "</optgroup>"; //
+
+		{
+			ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'YXL_17'", "state = 11").exe();
+			list += "<optgroup label=\"女装 基础款\">";
+			for (int i = 0; i < al_1.size(); i++) {
+				list += "<option value=\"" + al_1.get(i).get("code");
+				list += "\" stylebase=\"true\">";
+				list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
+				list += "</option>";
+			}
+			list += "</optgroup>";//
+		}
 
 		return list;
 
@@ -92,16 +130,29 @@ public class SCAPageConfigMix {
 	public static String get_list_LZX_04() {
 
 		String list = "";
-
-		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_04'", "state = 1").exe();
-		list += "<optgroup label=\"基础款\">";
-		for (int i = 0; i < al_1.size(); i++) {
-			list += "<option value=\"" + al_1.get(i).get("code");
-			list += "\" stylebase=\"true\">";
-			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
-			list += "</option>";
+		{
+			ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_04'", "state = 1").exe();
+			list += "<optgroup label=\"男装 基础款\">";
+			for (int i = 0; i < al_1.size(); i++) {
+				list += "<option value=\"" + al_1.get(i).get("code");
+				list += "\" stylebase=\"true\">";
+				list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
+				list += "</option>";
+			}
+			list += "</optgroup>";//
 		}
-		list += "</optgroup>";//
+
+		{
+			ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'YXL_05'", "state = 11").exe();
+			list += "<optgroup label=\"女装 基础款\">";
+			for (int i = 0; i < al_1.size(); i++) {
+				list += "<option value=\"" + al_1.get(i).get("code");
+				list += "\" stylebase=\"true\">";
+				list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
+				list += "</option>";
+			}
+			list += "</optgroup>";//
+		}
 
 		return list;
 
@@ -112,16 +163,18 @@ public class SCAPageConfigMix {
 		String list = "";
 
 		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_08'", "state = 1").exe();
-		list += "<optgroup label=\"基础款\">";
+		list += "<optgroup label=\"男装 基础款\">";
 		for (int i = 0; i < al_1.size(); i++) {
 			list += "<option value=\"" + al_1.get(i).get("code");
 			list += "\" stylebase=\"true\">";
 			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
 			list += "</option>";
 		}
+
 		list += "</optgroup>";//
 
 		return list;
+
 	}
 
 	public static String get_list_LZX_120() {
@@ -129,7 +182,7 @@ public class SCAPageConfigMix {
 		String list = "";
 
 		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_120'", "state = 1").exe();
-		list += "<optgroup label=\"基础款\">";
+		list += "<optgroup label=\"男装 基础款\">";
 		for (int i = 0; i < al_1.size(); i++) {
 			list += "<option value=\"" + al_1.get(i).get("code");
 			list += "\" stylebase=\"true\">";
@@ -147,7 +200,7 @@ public class SCAPageConfigMix {
 		String list = "";
 
 		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_06'", "state = 1").exe();
-		list += "<optgroup label=\"基础款\">";
+		list += "<optgroup label=\"男装 基础款\">";
 		for (int i = 0; i < al_1.size(); i++) {
 			list += "<option value=\"" + al_1.get(i).get("code");
 			list += "\" stylebase=\"true\">";
@@ -164,24 +217,29 @@ public class SCAPageConfigMix {
 
 		String list = "";
 
-		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_17'", "state = 1").exe();
-		list += "<optgroup label=\"男装基础款\">";
-		for (int i = 0; i < al_1.size(); i++) {
-			list += "<option value=\"" + al_1.get(i).get("code");
-			list += "\" stylebase=\"true\">";
-			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
-			list += "</option>";
+		{
+			ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_17'", "state = 1").exe();
+			list += "<optgroup label=\"男装 基础款\">";
+			for (int i = 0; i < al_1.size(); i++) {
+				list += "<option value=\"" + al_1.get(i).get("code");
+				list += "\" stylebase=\"true\">";
+				list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
+				list += "</option>";
+			}
+			list += "</optgroup>";//
 		}
-		list += "</optgroup>";//
-		ArrayList<DBHelper.SelectBean> al_2 = DBHelper.select("code", "ch").from("technology").where("name1 = 'YXL_03'", "state = 11").exe();
-		list += "<optgroup label=\"女装基础款\">";
-		for (int i = 0; i < al_2.size(); i++) {
-			list += "<option value=\"" + al_2.get(i).get("code");
-			list += "\" stylebase=\"true\">";
-			list += al_2.get(i).get("code") + " " + al_2.get(i).get("ch") + " " + "女装";
-			list += "</option>";
+
+		{
+			ArrayList<DBHelper.SelectBean> al_2 = DBHelper.select("code", "ch").from("technology").where("name1 = 'YXL_03'", "state = 11").exe();
+			list += "<optgroup label=\"女装 基础款\">";
+			for (int i = 0; i < al_2.size(); i++) {
+				list += "<option value=\"" + al_2.get(i).get("code");
+				list += "\" stylebase=\"true\">";
+				list += al_2.get(i).get("code") + " " + al_2.get(i).get("ch") + " " + "女装";
+				list += "</option>";
+			}
+			list += "</optgroup>";//
 		}
-		list += "</optgroup>";//
 
 		return list;
 
@@ -192,7 +250,7 @@ public class SCAPageConfigMix {
 		String list = "";
 
 		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_26'", "state = 1").exe();
-		list += "<optgroup label=\"基础款\">";
+		list += "<optgroup label=\"男装 基础款\">";
 		for (int i = 0; i < al_1.size(); i++) {
 			list += "<option value=\"" + al_1.get(i).get("code");
 			list += "\" stylebase=\"true\">";
@@ -210,7 +268,7 @@ public class SCAPageConfigMix {
 		String list = "";
 
 		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_13'", "state = 1").exe();
-		list += "<optgroup label=\"基础款\">";
+		list += "<optgroup label=\"男装 基础款\">";
 		for (int i = 0; i < al_1.size(); i++) {
 			list += "<option value=\"" + al_1.get(i).get("code");
 			list += "\" stylebase=\"true\">";
@@ -281,20 +339,31 @@ public class SCAPageConfigMix {
 
 		String list = "";
 
-		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'easy_type'", "state = 1").exe();
-		for (int i = 0; i < al_1.size(); i++) {
-			list += "<option value=\"" + al_1.get(i).get("code");
-			list += "\" stylebase=\"true\">";
-			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
-			list += "</option>";
+		{
+			ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'easy_type'", "state = 1").exe();
+			list += "<optgroup label=\"男装\">";
+			for (int i = 0; i < al_1.size(); i++) {
+				list += "<option value=\"" + al_1.get(i).get("code");
+				list += "\" stylebase=\"true\">";
+				list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
+				list += "</option>";
+			}
+			list += "</optgroup>";//
+
 		}
-		ArrayList<DBHelper.SelectBean> al_2 = DBHelper.select("code", "ch").from("technology").where("name1 = 'easy_type'", "state = 11").exe();
-		for (int i = 0; i < al_2.size(); i++) {
-			list += "<option value=\"" + al_2.get(i).get("code");
-			list += "\" stylebase=\"true\">";
-			list += al_2.get(i).get("code") + " " + al_2.get(i).get("ch");
-			list += "</option>";
+		
+		{
+			ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'easy_type'", "state = 11").exe();
+			list += "<optgroup label=\"女装\">";
+			for (int i = 0; i < al_1.size(); i++) {
+				list += "<option value=\"" + al_1.get(i).get("code");
+				list += "\" stylebase=\"true\">";
+				list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
+				list += "</option>";
+			}
+			list += "</optgroup>";//
 		}
+
 		return list;
 
 	}
@@ -304,11 +373,21 @@ public class SCAPageConfigMix {
 		String list = "";
 
 		ArrayList<DBHelper.SelectBean> al_1 = DBHelper.select("code", "ch").from("technology").where("name1 = 'lingcheng'", "state = 1").exe();
-		list += "<optgroup label=\"基础款\">";
+		list += "<optgroup label=\"男装 基础款\">";
 		for (int i = 0; i < al_1.size(); i++) {
 			list += "<option value=\"" + al_1.get(i).get("code");
 			list += "\" stylebase=\"true\">";
 			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
+			list += "</option>";
+		}
+		list += "</optgroup>";//
+
+		ArrayList<DBHelper.SelectBean> al_2 = DBHelper.select("code", "ch").from("technology").where("name1 = 'lingcheng'", "state = 11").exe();
+		list += "<optgroup label=\"女装 基础款\">";
+		for (int i = 0; i < al_2.size(); i++) {
+			list += "<option value=\"" + al_2.get(i).get("code");
+			list += "\" stylebase=\"true\">";
+			list += al_2.get(i).get("code") + " " + al_2.get(i).get("ch");
 			list += "</option>";
 		}
 		list += "</optgroup>";//
@@ -440,7 +519,7 @@ public class SCAPageConfigMix {
 		return list;
 
 	}
-	
+
 	public static String get_list_baozhuang_shop() {
 
 		String list = "";

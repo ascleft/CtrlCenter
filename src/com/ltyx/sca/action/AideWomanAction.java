@@ -5,7 +5,6 @@ import com.ltyx.sca.actionplugin.MoudleAideCheckUserInfo;
 import com.ltyx.sca.actionplugin.MoudleAideGetPriceWoman;
 import com.ltyx.sca.actionplugin.MoudleAideSubmitECWoman;
 import com.ltyx.sca.actionplugin.MoudleCheckPrice;
-import com.ltyx.sca.actionplugin.MoudleCheckTechLZX01;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 
@@ -92,18 +91,6 @@ public class AideWomanAction extends ZCBaseActionSupport {
 				return false;
 			}
 			addProgressSucc("订单摘要信息");
-		}
-
-		{
-			MoudleCheckTechLZX01 moudle = new MoudleCheckTechLZX01(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("领型插片冲突校验");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
-				return false;
-			}
-			addProgressSucc("领型插片冲突校验");
 		}
 
 		{

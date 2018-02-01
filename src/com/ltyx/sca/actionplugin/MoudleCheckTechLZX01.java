@@ -28,6 +28,7 @@ public class MoudleCheckTechLZX01 extends ZCBaseActionSupportPlugin {
 
 	private boolean Check(String lingcheng, String LZX01) {
 		boolean isSupported = false;
+
 		if ("YX-07-54".equals(lingcheng)) {// 外树脂
 			isSupported = isInTable(LZX01, 2);
 		}
@@ -43,6 +44,11 @@ public class MoudleCheckTechLZX01 extends ZCBaseActionSupportPlugin {
 		if ("YX-07-01".equals(lingcheng)) {// 外铜
 			isSupported = isInTable(LZX01, 2);
 		}
+
+		if ("".equals(lingcheng) && "".equals(LZX01)) {// 为空时，用于设计师推荐款
+			isSupported = true;
+		}
+
 		return isSupported;
 	}
 
