@@ -383,7 +383,7 @@
 												</div>
 												<div class="input-field col s6 m6 l4">
 													<select id="delivery_time_table_section_3" name="order_delivery_time">
-													</select> <label>交期（工作日）</label>
+													</select> <label>交期（工作日）（DP面料在此基础上加2个工作日）</label>
 												</div>
 												<div class="input-field col s6 m6 l4">
 													<select id="delivery_time_table_section_4" name="order_processing_cost">
@@ -404,6 +404,7 @@
 														<option value="成衣尺寸">成衣尺寸</option>
 														<option value="号衣尺码">号衣尺码</option>
 														<option value="量体尺寸">量体尺寸</option>
+														<option value="needless">不新增尺寸信息</option>
 													</select> <label>尺寸类型</label>
 												</div>
 

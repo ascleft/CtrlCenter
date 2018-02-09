@@ -1,9 +1,10 @@
 package com.ltyx.test;
 
 import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.link.HttpsUtil;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqProperty;
-import com.zc.support.link.ZCHttpReqSender;
+import com.zc.support.link.ZCHttpsReqSender;
 
 public class MTMReleaseAction extends ZCBaseActionSupport {
 
@@ -29,9 +30,16 @@ public class MTMReleaseAction extends ZCBaseActionSupport {
 		ZCHttpReqProperty property = new ZCHttpReqProperty();
 		property.importBase(ZCHttpReqProperty.BaseProperty.TYPE_1);
 		property.importUserAgent(ZCHttpReqProperty.Terminal.PC);
-		property.addProperty("Cookie", "has_js=1; SESS75bd0a9204b50aaf348ad7ab7f8b9104=4-qBHxob8JlnUlbnWzze-paTd_T8nVOxUJh23KONhEo");
+		property.addProperty("Cookie", "has_js=1; SSESS75bd0a9204b50aaf348ad7ab7f8b9104=qcEzFgI6HLnXdY7kyMTPBOMXI_sxkuQ_bX7K3fntRHs");
 
-		String resp = ZCHttpReqSender.sendPost("http://tailor.tailogic.com/tailogic/constructor/choose-style/75", param, property);
+		// String resp =
+		// ZCHttpsReqSender.sendPost("http://tailor.tailogic.com/tailogic/constructor/choose-style/75",
+		// param, property);
+		// ZCHttpsReqSender.httpsRequest("http://tailor.tailogic.com/tailogic/constructor/choose-style/75",
+		// "GET", "");
+		String resp = "";
+
+		String s = HttpsUtil.httpsRequest("https://tailor.tailogic.com/tailogic/constructor/choose-style/75", "GET", null);
 
 		ERRCODE = "0";
 		ERRDESC = "succ";

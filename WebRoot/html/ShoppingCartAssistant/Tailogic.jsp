@@ -563,34 +563,14 @@
 						<div class="card-panel hoverable">
 							<div class="card-content grey-text">
 								<div class="row">
-									<div class="col s6 m6 l4">
-										<div class="input-field">
-											<input type="number" class="validate" name="prices_system" value="0" id="prices_system" readonly="true">
-											<label>系统报价</label>
-										</div>
-									</div>
-									<div class="col s6 m6 l4" style="display: none;">
-										<div class="input-field">
-											<input type="number" class="validate" name="prices_now" value="0" id="prices_now" readonly="true">
-											<label>自主报价</label>
-										</div>
-									</div>
-									<div class="col s12 m12 l4">
-										<div class="input-field">
-											<input type="text" class="validate" name="prices_desc" value="点击获取报价" id="prices_desc" readonly="true">
-											<label>差价说明</label>
-										</div>
-									</div>
+									
 									<div class="col s12 m12 l12">
 										<div class="progress" id="load_state_progress_bar">
 											<div class="indeterminate"></div>
 										</div>
 									</div>
 									<div class="col s12 m12 l12">
-										<a class="col s12 m12 l12 btn" onclick="getPrice()" id="addShoppingCart">获取报价</a>
-									</div>
-									<div class="col s12 m12 l12">
-										<a class="col s12 m12 l12 btn" onclick="addShoppingCart()" id="getPrice">提交订单数据</a>
+										<a class="col s12 m12 l12 btn" onclick="getPrice()" id="addShoppingCart">提交MTM报价</a>
 									</div>
 								</div>
 							</div>

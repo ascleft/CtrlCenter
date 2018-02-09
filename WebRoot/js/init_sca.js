@@ -149,9 +149,11 @@ function set_delivery_time_table_section_3() {
 			for(var prop2 in DeliveryTimeTable[prop1]) {
 				if(prop2 == selected_2) {
 					for(var prop3 in DeliveryTimeTable[prop1][prop2]) {
-						list_3 += "<option>";
-						list_3 += prop3;
-						list_3 += "</option>";
+						list_3_item = "";
+						list_3_item += "<option>";
+						list_3_item += prop3;
+						list_3_item += "</option>";
+						list_3 = list_3_item + list_3;
 					}
 				}
 			}

@@ -110,8 +110,22 @@ public class MoudleCSAGetPricePBYX extends ZCBaseActionSupportPlugin {
 
 		price_temp += Fabric;
 
+		if (isDP()) {
+			price_temp += 20;
+		}
+
 		return price_temp;
 
 	}
 
+	public boolean isDP() {
+		boolean isDP = false;
+		String uskin_code = getReqParamString("uskin_code").trim().toUpperCase();
+		int dpIndex = uskin_code.indexOf("DP");
+		int codeLength = uskin_code.length();
+		if (codeLength == 7 && dpIndex == 0) {
+			isDP = true;
+		}
+		return isDP;
+	}
 }
