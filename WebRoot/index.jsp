@@ -46,7 +46,7 @@
 			};
 
 			function go() {
-				location.href = "<%=path %>/LTYX/Tailor/TailorForm/Advisor.action";
+				location.href = "<%=path %>/LTYX/SCA/LoginPage.action";
 			}
 		</script>
 	</head>
@@ -66,7 +66,7 @@
 							<div class="indeterminate"></div>
 						</div>
 						<div class="card-action">
-							<a href="<%=path %>/LTYX/Tailor/TailorForm/Advisor.action">立刻进入</a>
+							<a href="<%=path %>/LTYX/SCA/LoginPage.action">立刻进入</a>
 						</div>
 					</div>
 				</div>
