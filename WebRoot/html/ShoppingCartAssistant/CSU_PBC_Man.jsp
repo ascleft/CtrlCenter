@@ -35,6 +35,8 @@
 	String list_weizhi_peise=(String) session.getAttribute("list_weizhi_peise");
 	String list_baozhuang=(String) session.getAttribute("list_baozhuang_shop");	
 	
+	String code=(String) session.getAttribute("code");
+	
 %>
 
 <html>
@@ -45,7 +47,7 @@
 		描述：
 		购物车添加工具 SCA 2.0
 		
-		客户经理 优纤面料
+		定制店 客供面料
 		
 	-->
 
@@ -94,8 +96,8 @@
 				$('#nav_menu').sideNav('show');
 			}
 			//url定义
-			var url_addShoppingCart = "/CtrlCenter/LTYX/SCA/Main/SubmitCustomShopAideDesign.action";
-			var url_getPrice = "/CtrlCenter/LTYX/SCA/Main/GetPriceCustomShopAideDesign.action";
+			var url_addShoppingCart = "/CtrlCenter/LTYX/SCA/Main/SubmitCustomShopPBC.action";
+			var url_getPrice = "/CtrlCenter/LTYX/SCA/Main/GetPriceCustomShopPBC.action";
 
 			//提交到购物车
 			function addShoppingCart() {
@@ -246,7 +248,7 @@
 			<nav class="teal" role="navigation">
 				<div class="nav-wrapper container">
 					<!-- 页面标题  -->
-					<a id="logo-container " href="#" class="brand-logo white-text ">客户经理 设计师款</a>
+					<a id="logo-container " href="#" class="brand-logo white-text ">定制店 客供面料 男装</a>
 					<!-- 导航菜单键（运动移动设备） -->
 					<a href="#" data-activates="nav_menu_list " class="button-collapse ">
 						<i class="material-icons white-text">menu</i>
@@ -307,19 +309,13 @@
 												<div class="col s12 m6 l4">
 													<div class="input-field">
 														<input type="text" class="validate" name="customer_tel" value="">
-														<label>穿衣人电话（必填）</label>
+														<label>穿衣人电话</label>
 													</div>
 												</div>
 												<div class="col s12 m6 l4" style="display: none;">
 													<div class="input-field">
 														<input type="text" class="validate" name="customer_address" value="">
 														<label>收货地址</label>
-													</div>
-												</div>
-												<div class="col s12 m6 l4">
-													<div class="input-field">
-														<input type="text" class="validate" name="customer_tel_target" value="">
-														<label>会员帐号（电话）（必填）</label>
 													</div>
 												</div>
 												<div class="col s12 m12 l4">
@@ -341,14 +337,10 @@
 										</div>
 										<div class="collapsible-body">
 											<div class="row">
+
 												<div class="col s12 m14 l4">
 													<div class="input-field">
-														<input type="text" class="validate" name="design_code" value=""> <label>商品名或商品编号</label>
-													</div>
-												</div>
-												<div class="col s12 m14 l4">
-													<div class="input-field">
-														<input type="text" class="validate" name="uskin_code" value=""> <label>面料编号（USKIN 编号）</label>
+														<input type="text" class="validate" name="uskin_code" value="<%=code%>" readonly="true"> <label>面料编号（USKIN 编号）</label>
 													</div>
 												</div>
 												<div class="input-field col s6 m6 l4">
@@ -647,6 +639,7 @@
 											</div>
 										</div>
 									</li>
+
 									<li>
 										<div class="collapsible-header">
 											<i class="material-icons">playlist_add</i>工艺
@@ -661,13 +654,11 @@
 															</div>
 															<div class="input-field col s8 m8 l8">
 																<select name="LZX_01">
-																	<option value="">设计师款默认</option>
 																	<%=list_LZX_01%>
 																</select> <label>领型</label>
 															</div>
 															<div class="input-field col s4 m4 l4">
 																<select name="lingcheng">
-																	<option value="">设计师款默认</option>
 																	<%=list_lingcheng%>
 																</select> <label>领撑</label>
 															</div>
@@ -682,7 +673,6 @@
 															</div>
 															<div class="input-field col s12 m12 l12">
 																<select name="LZX_02">
-																	<option value="">设计师款默认</option>
 																	<%=list_LZX_02%>
 																</select> <label>袖头</label>
 															</div>
@@ -697,7 +687,6 @@
 															</div>
 															<div class="input-field col s12 m12 l12">
 																<select name="LZX_03">
-																	<option value="">设计师款默认</option>
 																	<%=list_LZX_03%>
 																</select> <label>门襟</label>
 															</div>
@@ -712,7 +701,6 @@
 															</div>
 															<div class="input-field col s12 m12 l12">
 																<select name="LZX_04">
-																	<option value="">设计师款默认</option>
 																	<%=list_LZX_04%>
 																</select> <label>口袋</label>
 															</div>
@@ -727,7 +715,6 @@
 															</div>
 															<div class="input-field col s12 m12 l12">
 																<select name="LZX_120">
-																	<option value="">设计师款默认</option>
 																	<%=list_LZX_120%>
 																</select> <label>袖褶</label>
 															</div>
@@ -742,7 +729,6 @@
 															</div>
 															<div class="input-field col s12 m12 l12">
 																<select name="LZX_06">
-																	<option value="">设计师款默认</option>
 																	<%=list_LZX_06%>
 																</select> <label>下摆弧度</label>
 															</div>
@@ -757,7 +743,6 @@
 															</div>
 															<div class="input-field col s12 m12 l12">
 																<select name="LZX_17">
-																	<option value="">设计师款默认</option>
 																	<%=list_LZX_17%>
 																</select> <label>后片款式</label>
 															</div>
@@ -772,7 +757,6 @@
 															</div>
 															<div class="input-field col s12 m12 l12">
 																<select name="LZX_26">
-																	<option value="">设计师款默认</option>
 																	<%=list_LZX_26%>
 																</select> <label>侧缝底摆贴布</label>
 															</div>
@@ -787,7 +771,6 @@
 															</div>
 															<div class="input-field col s12 m12 l12">
 																<select name="mingxian">
-																	<option value="">设计师款默认</option>
 																	<%=list_mingxian%>
 																</select> <label>明线宽</label>
 															</div>
@@ -802,7 +785,6 @@
 															</div>
 															<div class="input-field col s12 m12 l12">
 																<select name="cefeng">
-																	<option value="">设计师款默认</option>
 																	<%=list_cefeng%>
 																</select> <label>侧缝工艺</label>
 															</div>
@@ -1042,16 +1024,16 @@
 													<label>系统报价</label>
 												</div>
 											</div>
-											<div class="col s6 m6 l4">
+											<div class="col s6 m6 l4" style="display: none;">
 												<div class="input-field">
-													<input type="number" class="validate" name="prices_now" value="0" id="prices_now">
+													<input type="number" class="validate" name="prices_now" value="0" id="prices_now" readonly="true">
 													<label>自主报价</label>
 												</div>
 											</div>
 											<div class="col s12 m12 l4">
 												<div class="input-field">
-													<input type="text" class="validate" name="prices_desc" value="点击获取报价" id="prices_desc">
-													<label>差价说明</label>
+													<input type="text" class="validate" name="prices_desc" value="点击获取报价" id="prices_desc" readonly="true">
+													<label>报价说明</label>
 												</div>
 											</div>
 											<div class="col s12 m12 l12">

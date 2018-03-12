@@ -41,6 +41,7 @@ public class FileHelper {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 
@@ -53,6 +54,7 @@ public class FileHelper {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 

@@ -24,16 +24,6 @@ public class MoudleCSCheckUserInfo extends ZCBaseActionSupportPlugin {
 			}
 		}
 
-		{
-			String customer_tel = getReqParamString("customer_tel");
-			if (customer_tel.length() != 11) {
-				ERRCODE = "0";
-				ERRDESC = "fail";
-				data = "请填写正确的收货人手机号";
-				return false;
-			}
-		}
-
 		return true;
 
 	}

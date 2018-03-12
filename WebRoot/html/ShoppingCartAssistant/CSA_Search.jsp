@@ -20,7 +20,7 @@
 		描述：
 		购物车添加工具 SCA 2.0
 		
-		定制店 即时库存查询
+		客户经理 即时库存查询
 		
 	-->
 
@@ -113,13 +113,33 @@
 								String_html += "<tr>";
 								String_html += "<td>";
 								if("MLCK040" == resp.data[i].FSTOCKNUMBER) {
-									String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBC.action?code=";
-									String_html += resp.data[i].FMATERIALNUMBER;
-									String_html += "\">";
+									String_html += "<a>";
 									String_html += resp.data[i].FMATERIALNUMBER;
 									String_html += "</a>";
+
+									String_html += "<br/>";
+
+									String_html += "<a ";
+									String_html += "style=\"color: lightskyblue;\" ";
+									String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBC.action?code=";
+									String_html += resp.data[i].FMATERIALNUMBER;
+									String_html += "\">";
+									String_html += "男装客供";
+									String_html += "</a>";
+
+									String_html += "<a>";
+									String_html += " ";
+									String_html += "</a>";
+
+									String_html += "<a ";
+									String_html += "style=\"color: lightpink;\" ";
+									String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideWomanPBC.action?code=";
+									String_html += resp.data[i].FMATERIALNUMBER;
+									String_html += "\">";
+									String_html += "女装客供";
+									String_html += "</a>";
 								} else {
-									String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action?code=";
+								    String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action?code=";
 									String_html += resp.data[i].FUSKIN;
 									String_html += "\">";
 									String_html += resp.data[i].FUSKIN;
@@ -196,7 +216,7 @@
 			<nav class="teal" role="navigation">
 				<div class="nav-wrapper container">
 					<!-- 页面标题  -->
-					<a id="logo-container " href="#" class="brand-logo white-text ">定制店 即时库存查询</a>
+					<a id="logo-container " href="#" class="brand-logo white-text ">客户经理 即时库存查询</a>
 					<!-- 导航菜单键（运动移动设备） -->
 					<a href="#" data-activates="nav_menu_list " class="button-collapse ">
 						<i class="material-icons white-text">menu</i>
@@ -218,7 +238,7 @@
 					<ul id="nav_menu_list" class="side-nav teal-text">
 						<div class="teal">
 							<li>
-								<a class=" white-text">您好:
+								<a class="white-text">您好:
 									<%=ec_user_name%>
 								</a>
 							</li>

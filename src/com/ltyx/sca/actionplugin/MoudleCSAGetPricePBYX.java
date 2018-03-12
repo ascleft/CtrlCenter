@@ -23,9 +23,11 @@ public class MoudleCSAGetPricePBYX extends ZCBaseActionSupportPlugin {
 		double price = 0;
 
 		String uskin_code = getReqParamString("uskin_code");
+		String kouzi = getReqParamString("kouzi");
 
 		ZCHttpReqParam param = new ZCHttpReqParam();
 		param.addParam("uskin_code", uskin_code.toUpperCase());
+		param.addParam("kouzi", kouzi);
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_get_price_pbyx.getUrl(), param);
 
 		Log.Nano.tag("Resp From EC", httpResp);
@@ -103,16 +105,18 @@ public class MoudleCSAGetPricePBYX extends ZCBaseActionSupportPlugin {
 		}
 		if ("1".equals(getReqParamString("LZX_11_FOR_PIC_SWITCH"))) {
 			price_temp += 5f;
-
 		}
 
 		price_temp += getReqParamDouble("order_processing_cost");
 
-		price_temp += Fabric;
-
 		if (isDP()) {
 			price_temp += 20;
 		}
+
+		price_temp += Fabric;
+		price_temp += Craft;
+		price_temp += Additives;
+		price_temp += Other;
 
 		return price_temp;
 

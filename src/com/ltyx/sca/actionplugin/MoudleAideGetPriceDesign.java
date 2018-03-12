@@ -24,10 +24,12 @@ public class MoudleAideGetPriceDesign extends ZCBaseActionSupportPlugin {
 
 		String design_code = getReqParamString("design_code");
 		String uskin_code = getReqParamString("uskin_code");
+		// String kouzi = getReqParamString("kouzi");
 
 		ZCHttpReqParam param = new ZCHttpReqParam();
 		param.addParam("design_code", design_code);
 		param.addParam("uskin_code", uskin_code.toUpperCase());
+		// param.addParam("kouzi", kouzi);
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_aide_get_price_design.getUrl(), param);
 
 		Log.Nano.tag("Resp From EC", httpResp);
@@ -110,6 +112,9 @@ public class MoudleAideGetPriceDesign extends ZCBaseActionSupportPlugin {
 		price_temp += getReqParamDouble("order_processing_cost");
 
 		price_temp += Fabric;
+		price_temp += Craft;
+		price_temp += Additives;
+		price_temp += Other;
 
 		return price_temp;
 

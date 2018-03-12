@@ -22,8 +22,12 @@ public class MoudleCheckMeasure extends ZCBaseActionSupportPlugin {
 
 		init();
 
-		// 当尺寸类型指定为“needless”时直接跳过校验插件
+		// 当尺寸类型指定为“号衣尺码”时直接跳过校验插件
 		if ("号衣尺码".equals(getReqParamString("measure_type"))) {
+			return true;
+		}
+		// 当尺寸类型指定为“needless”时直接跳过校验插件
+		if ("needless".equals(getReqParamString("measure_type"))) {
 			return true;
 		}
 

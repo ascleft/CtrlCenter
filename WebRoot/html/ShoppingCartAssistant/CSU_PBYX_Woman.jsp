@@ -45,7 +45,7 @@
 		描述：
 		购物车添加工具 SCA 2.0
 		
-		客户经理 优纤面料
+		定制店 优纤面料
 		
 	-->
 
@@ -94,8 +94,8 @@
 				$('#nav_menu').sideNav('show');
 			}
 			//url定义
-			var url_addShoppingCart = "/CtrlCenter/LTYX/SCA/Main/SubmitCustomShopAidePBYX.action";
-			var url_getPrice = "/CtrlCenter/LTYX/SCA/Main/GetPriceCustomShopAidePBYX.action";
+			var url_addShoppingCart = "/CtrlCenter/LTYX/SCA/Main/SubmitCustomShopWoman.action";
+			var url_getPrice = "/CtrlCenter/LTYX/SCA/Main/GetPriceCustomShopWoman.action";
 
 			//提交到购物车
 			function addShoppingCart() {
@@ -246,7 +246,7 @@
 			<nav class="teal" role="navigation">
 				<div class="nav-wrapper container">
 					<!-- 页面标题  -->
-					<a id="logo-container " href="#" class="brand-logo white-text ">客户经理 优纤面料</a>
+					<a id="logo-container " href="#" class="brand-logo white-text ">定制店 优纤面料 女装</a>
 					<!-- 导航菜单键（运动移动设备） -->
 					<a href="#" data-activates="nav_menu_list " class="button-collapse ">
 						<i class="material-icons white-text">menu</i>
@@ -307,19 +307,13 @@
 												<div class="col s12 m6 l4">
 													<div class="input-field">
 														<input type="text" class="validate" name="customer_tel" value="">
-														<label>穿衣人电话（必填）</label>
+														<label>穿衣人电话</label>
 													</div>
 												</div>
 												<div class="col s12 m6 l4" style="display: none;">
 													<div class="input-field">
 														<input type="text" class="validate" name="customer_address" value="">
 														<label>收货地址</label>
-													</div>
-												</div>
-												<div class="col s12 m6 l4">
-													<div class="input-field">
-														<input type="text" class="validate" name="customer_tel_target" value="">
-														<label>会员帐号（电话）（必填）</label>
 													</div>
 												</div>
 												<div class="col s12 m12 l4">
@@ -1028,16 +1022,16 @@
 													<label>系统报价</label>
 												</div>
 											</div>
-											<div class="col s6 m6 l4">
+											<div class="col s6 m6 l4" style="display: none;">
 												<div class="input-field">
-													<input type="number" class="validate" name="prices_now" value="0" id="prices_now">
+													<input type="number" class="validate" name="prices_now" value="0" id="prices_now" readonly="true">
 													<label>自主报价</label>
 												</div>
 											</div>
 											<div class="col s12 m12 l4">
 												<div class="input-field">
-													<input type="text" class="validate" name="prices_desc" value="点击获取报价" id="prices_desc">
-													<label>差价说明</label>
+													<input type="text" class="validate" name="prices_desc" value="点击获取报价" id="prices_desc" readonly="true">
+													<label>报价说明</label>
 												</div>
 											</div>
 											<div class="col s12 m12 l12">

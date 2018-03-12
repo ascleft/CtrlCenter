@@ -9,7 +9,7 @@ import com.ltyx.sca.actionplugin.MoudleCheckPrice;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 
-public class CustomShopPBCAction extends ZCBaseActionSupport {
+public class CustomShopUserPBCManAction extends ZCBaseActionSupport {
 
 	/**
 	 * 
@@ -47,7 +47,7 @@ public class CustomShopPBCAction extends ZCBaseActionSupport {
 	public String getPrice() {
 
 		init(true);
-		String methodName = "定制店 衬衫 客供面料 报价";
+		String methodName = "定制店 客供面料 男装 报价";
 
 		ZCReqIntroGetter.showParams(methodName, request);
 
@@ -61,7 +61,7 @@ public class CustomShopPBCAction extends ZCBaseActionSupport {
 	public String submit() {
 
 		init(true);
-		String methodName = "定制店 衬衫 客供面料 提交购物车";
+		String methodName = "定制店 客供面料 男装 提交购物车";
 
 		ZCReqIntroGetter.showParams(methodName, request);
 

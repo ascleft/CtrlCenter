@@ -19,7 +19,8 @@ public class SCAPageConfigCommon {
 			} else if ("20".equals(rank)) {// 定制店
 				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_cs());
 			}
-			if ("张弛".equals(session.getAttribute("ec_user_name")) || "zc".equals(session.getAttribute("ec_user_name"))) {
+			if ("张弛".equals(session.getAttribute("ec_user_name"))
+					|| "zc".equals(session.getAttribute("ec_user_name"))) {
 				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_all());
 			}
 		}
@@ -184,16 +185,19 @@ public class SCAPageConfigCommon {
 				+ "<a class=\"subheader\">客户经理功能</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action\">客户经理 优纤面料</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action\">客户经理 优纤面料 男装</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearch.action\">客户经理 客供面料</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideWoman.action\">客户经理 优纤面料 女装</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideWoman.action\">客户经理 女装</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearch.action\">客户经理 客供面料 男装</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideDesign.action\">客户经理 设计师款</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearch.action\">客户经理 客供面料 女装</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideDesign.action\">客户经理 优纤面料 设计师款</a>"//
 				+ "</li>"//
 				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearch.action\">客户经理 即时库存查询</a>"//
@@ -210,16 +214,19 @@ public class SCAPageConfigCommon {
 				+ "<a class=\"subheader\">定制店功能</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action\">定制店 优纤面料</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action\">定制店 优纤面料 男装</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">定制店 客供面料</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopWoman.action\">定制店 优纤面料 女装</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopWoman.action\">定制店 女装</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">定制店 客供面料 男装</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopDesign.action\">定制店 设计师款</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">定制店 客供面料 女装</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopDesign.action\">定制店 优纤面料 设计师款</a>"//
 				+ "</li>"//
 				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">定制店 即时库存查询</a>"//

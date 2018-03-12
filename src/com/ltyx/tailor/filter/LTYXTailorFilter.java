@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.zc.support.doman.ZCBaseHttpFilter;
 import com.zc.support.service.Log;
-import com.zc.support.service.SystemInitHelper;
 
 public class LTYXTailorFilter extends ZCBaseHttpFilter {
 
@@ -20,7 +19,6 @@ public class LTYXTailorFilter extends ZCBaseHttpFilter {
 	public void init(FilterConfig filterConfig) throws ServletException {
 		// TODO Auto-generated method stub
 
-		SystemInitHelper.init();
 		Log.Nano.tag("鲁泰优纤衬衫订单信息收集系统", "com.ltyx.tailor.filter", "LTYXTailorFilter", "初始化完成");
 
 	}

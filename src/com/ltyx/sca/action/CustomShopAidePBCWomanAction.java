@@ -1,14 +1,15 @@
 package com.ltyx.sca.action;
 
-import com.ltyx.sca.actionplugin.MoudleAideCheckSubcontract;
-import com.ltyx.sca.actionplugin.MoudleAideCheckUserInfo;
-import com.ltyx.sca.actionplugin.MoudleAideGetPriceSubcontract;
-import com.ltyx.sca.actionplugin.MoudleAideSubmitECSubcontract;
+import com.ltyx.sca.actionplugin.MoudleCSACheckSummaryClothes;
+import com.ltyx.sca.actionplugin.MoudleCSACheckUserInfo;
+import com.ltyx.sca.actionplugin.MoudleCSAGetPriceWomanPBC;
+import com.ltyx.sca.actionplugin.MoudleCSASubmitECWomanPBC;
+import com.ltyx.sca.actionplugin.MoudleCheckMeasure;
 import com.ltyx.sca.actionplugin.MoudleCheckPrice;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 
-public class AideSubcontractAction extends ZCBaseActionSupport {
+public class CustomShopAidePBCWomanAction extends ZCBaseActionSupport {
 
 	/**
 	 * 
@@ -20,9 +21,12 @@ public class AideSubcontractAction extends ZCBaseActionSupport {
 		init(true);
 
 		session = SCAPageConfigCommon.manageMenu(session);
-		session = SCAPageConfigCommon.manageTechnologyMan(session);
+		session = SCAPageConfigCommon.manageTechnologyWoman(session);
 
 		session.setAttribute("QRurl", SCAPageConfigCommon.get_QR_url(request));
+
+		String code = getReqParamString("code");
+		session.setAttribute("code", code);
 
 		return "succ";
 
@@ -31,7 +35,7 @@ public class AideSubcontractAction extends ZCBaseActionSupport {
 	public String getPrice() {
 
 		init(true);
-		String methodName = "定制顾问 其他商品 报价";
+		String methodName = "客户经理 客供面料 女装 报价";
 
 		ZCReqIntroGetter.showParams(methodName, request);
 
@@ -45,7 +49,7 @@ public class AideSubcontractAction extends ZCBaseActionSupport {
 	public String submit() {
 
 		init(true);
-		String methodName = "定制顾问 其他商品 提交购物车";
+		String methodName = "客户经理 客供面料 女装 提交购物车";
 
 		ZCReqIntroGetter.showParams(methodName, request);
 
@@ -57,27 +61,20 @@ public class AideSubcontractAction extends ZCBaseActionSupport {
 	}
 
 	public boolean doGetPrice() {
-		{
-			MoudleAideGetPriceSubcontract moudle = new MoudleAideGetPriceSubcontract(request);
-			if (!moudle.doJobs()) {
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
-				return false;
-			}else {
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
-				return true;
-			}
-		}
+
+		MoudleCSAGetPriceWomanPBC moudle = new MoudleCSAGetPriceWomanPBC(request);
+		moudle.doJobs();
+		ERRCODE = moudle.getERRCODE();
+		ERRDESC = moudle.getERRDESC();
+		data = moudle.getData();
+		return true;
 
 	}
 
 	public boolean doSubmit() {
 
 		{
-			MoudleAideCheckUserInfo moudle = new MoudleAideCheckUserInfo(request);
+			MoudleCSACheckUserInfo moudle = new MoudleCSACheckUserInfo(request);
 			if (!moudle.doJobs()) {
 				addProgressFail("用户信息检测");
 				ERRCODE = moudle.getERRCODE();
@@ -89,15 +86,15 @@ public class AideSubcontractAction extends ZCBaseActionSupport {
 		}
 
 		{
-			MoudleAideCheckSubcontract moudle = new MoudleAideCheckSubcontract(request);
+			MoudleCSACheckSummaryClothes moudle = new MoudleCSACheckSummaryClothes(request);
 			if (!moudle.doJobs()) {
-				addProgressFail("委外商品信息检测");
+				addProgressFail("订单摘要信息");
 				ERRCODE = moudle.getERRCODE();
 				ERRDESC = moudle.getERRDESC();
 				data = moudle.getData();
 				return false;
 			}
-			addProgressSucc("委外商品信息检测");
+			addProgressSucc("订单摘要信息");
 		}
 
 		{
@@ -113,7 +110,18 @@ public class AideSubcontractAction extends ZCBaseActionSupport {
 		}
 
 		{
-			MoudleAideSubmitECSubcontract moudle = new MoudleAideSubmitECSubcontract(request);
+			MoudleCheckMeasure moudle = new MoudleCheckMeasure(request);
+			if (!moudle.doJobs()) {
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("尺寸校验");
+		}
+
+		{
+			MoudleCSASubmitECWomanPBC moudle = new MoudleCSASubmitECWomanPBC(request);
 			if (!moudle.doJobs()) {
 				ERRCODE = moudle.getERRCODE();
 				ERRDESC = moudle.getERRDESC();

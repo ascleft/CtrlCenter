@@ -20,7 +20,7 @@
 		描述：
 		购物车添加工具 SCA 2.0
 		
-		客户经理 即时库存查询
+		定制店 即时库存查询
 		
 	-->
 
@@ -113,13 +113,33 @@
 								String_html += "<tr>";
 								String_html += "<td>";
 								if("MLCK040" == resp.data[i].FSTOCKNUMBER) {
-									String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBC.action?code=";
-									String_html += resp.data[i].FMATERIALNUMBER;
-									String_html += "\">";
+									String_html += "<a>";
 									String_html += resp.data[i].FMATERIALNUMBER;
 									String_html += "</a>";
+
+									String_html += "<br/>";
+
+									String_html += "<a ";
+									String_html += "style=\"color: lightskyblue;\" ";
+									String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBC.action?code=";
+									String_html += resp.data[i].FMATERIALNUMBER;
+									String_html += "\">";
+									String_html += "男装客供";
+									String_html += "</a>";
+
+									String_html += "<a>";
+									String_html += " ";
+									String_html += "</a>";
+
+									String_html += "<a ";
+									String_html += "style=\"color: lightpink;\" ";
+									String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopWomanPBC.action?code=";
+									String_html += resp.data[i].FMATERIALNUMBER;
+									String_html += "\">";
+									String_html += "女装客供";
+									String_html += "</a>";
 								} else {
-									String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action?code=";
+									String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action?code=";
 									String_html += resp.data[i].FUSKIN;
 									String_html += "\">";
 									String_html += resp.data[i].FUSKIN;
@@ -129,6 +149,10 @@
 								if(ec_user_rank < 10) {
 									String_html += "<td class=\"hide-on-small-only\">";
 									String_html += resp.data[i].FMATERIALNUMBER;
+									String_html += "</td>";
+								} else {
+									String_html += "<td class=\"hide-on-small-only\">";
+									String_html += "无";
 									String_html += "</td>";
 								}
 								String_html += "<td>";
@@ -196,7 +220,7 @@
 			<nav class="teal" role="navigation">
 				<div class="nav-wrapper container">
 					<!-- 页面标题  -->
-					<a id="logo-container " href="#" class="brand-logo white-text ">客户经理 即时库存查询</a>
+					<a id="logo-container " href="#" class="brand-logo white-text ">定制店 即时库存查询</a>
 					<!-- 导航菜单键（运动移动设备） -->
 					<a href="#" data-activates="nav_menu_list " class="button-collapse ">
 						<i class="material-icons white-text">menu</i>
