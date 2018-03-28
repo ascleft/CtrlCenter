@@ -240,6 +240,7 @@
 		<action name="CustomShopSearch" class="com.ltyx.sca.action.SearchAction" method="getPage">
 			<result name="succ">/html/ShoppingCartAssistant/CSU_Search.jsp</result>
 		</action>
+		
 
 	</package>
 
@@ -258,8 +259,10 @@
 	<package name="OpenAPI" namespace="/LTYX/OpenAPI" extends="struts-default">
 
 		<!-- 衬衫订单 提交成衬衫订单 -->
-		<action name="SubmitTailorForm" class="com.ltyx.tailor.action.SubmitTailorFormAction"
-		method="submit"></action>
+		<action name="SubmitTailorForm" class="com.ltyx.tailor.action.SubmitTailorFormAction" method="submit"></action>
+		
+		<!-- 衣帮人对外接口 新版-->
+		<action name="YBRSubmit" class="com.ltyx.open.ybr.YBR_OBO_Action" method="submit"></action>
 
 		<!-- 通用工具 接口连通性测试 获取页面 -->
 		<action name="GetInterfaceTestPage" class="com.ltyx.ucsplus.action.InterfaceTestAction"
@@ -274,7 +277,9 @@
 		<!-- 通用工具 上行参数测试 -->
 		<action name="ShowParam" class="com.ltyx.ucsplus.action.ParamTestAction"
 		method="showParam"></action>
-
+		
+		
+		
 	</package>
 	
 	

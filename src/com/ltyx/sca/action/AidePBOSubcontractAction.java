@@ -115,6 +115,7 @@ public class AidePBOSubcontractAction extends ZCBaseActionSupport {
 		{
 			MoudleAideSubmitECSubcontract moudle = new MoudleAideSubmitECSubcontract(request);
 			if (!moudle.doJobs()) {
+				addProgressFail("");
 				ERRCODE = moudle.getERRCODE();
 				ERRDESC = moudle.getERRDESC();
 				data = moudle.getData();

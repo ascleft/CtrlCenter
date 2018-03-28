@@ -23,6 +23,23 @@ public class JsonHelper {
 		return isJson;
 	}
 
+	public static JSONObject getJSONObject(String json) {
+		JSONObject jsonObjectIn = null;
+		JSONObject jsonObjectOut = null;
+		boolean isJson = false;
+		try {
+			jsonObjectIn = JSONObject.fromObject(json);
+			isJson = true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			isJson = false;
+		}
+		if (isJson) {
+			jsonObjectOut = jsonObjectIn;
+		}
+		return jsonObjectOut;
+	}
+
 	public static JSONObject getJSONObject(String json, String key) {
 		JSONObject jsonObjectIn = null;
 		JSONObject jsonObjectOut = null;
@@ -73,6 +90,5 @@ public class JsonHelper {
 		}
 		return stringOut;
 	}
-
 
 }

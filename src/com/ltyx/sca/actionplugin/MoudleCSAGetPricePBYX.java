@@ -22,12 +22,16 @@ public class MoudleCSAGetPricePBYX extends ZCBaseActionSupportPlugin {
 
 		double price = 0;
 
+		String customer_tel_target = getReqParamString("customer_tel_target");
 		String uskin_code = getReqParamString("uskin_code");
 		String kouzi = getReqParamString("kouzi");
+		String tailor_type = getReqParamString("tailor_type");
 
 		ZCHttpReqParam param = new ZCHttpReqParam();
+		param.addParam("customer_tel_target", customer_tel_target);
 		param.addParam("uskin_code", uskin_code.toUpperCase());
-		param.addParam("kouzi", kouzi);
+		param.addParam("kouzi", kouzi); 
+		param.addParam("tailor_type", tailor_type);
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_get_price_pbyx.getUrl(), param);
 
 		Log.Nano.tag("Resp From EC", httpResp);
@@ -80,6 +84,8 @@ public class MoudleCSAGetPricePBYX extends ZCBaseActionSupportPlugin {
 			} catch (Exception e) {
 				// TODO: handle exception
 				Log.Nano.tag("EC服务器响应错误，第二级格式异常", httpResp);
+				
+				e.printStackTrace();
 
 				ERRCODE = "0";
 				ERRDESC = "fail";

@@ -121,6 +121,7 @@ public class AidePBYXDesignAction extends ZCBaseActionSupport {
 		{
 			MoudleAideSubmitECDesign moudle = new MoudleAideSubmitECDesign(request);
 			if (!moudle.doJobs()) {
+				addProgressFail("提交EC");
 				ERRCODE = moudle.getERRCODE();
 				ERRDESC = moudle.getERRDESC();
 				data = moudle.getData();

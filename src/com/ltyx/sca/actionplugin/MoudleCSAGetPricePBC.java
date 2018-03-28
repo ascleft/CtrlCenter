@@ -23,9 +23,11 @@ public class MoudleCSAGetPricePBC extends ZCBaseActionSupportPlugin {
 		double price = 0;
 
 		String kouzi = getReqParamString("kouzi");
+		String tailor_type = getReqParamString("tailor_type");
 
 		ZCHttpReqParam param = new ZCHttpReqParam();
 		param.addParam("kouzi", kouzi);
+		param.addParam("tailor_type", tailor_type);
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_get_price_pbc.getUrl(), param);
 
 		Log.Nano.tag("Resp From EC", httpResp);

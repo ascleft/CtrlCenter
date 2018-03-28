@@ -1,56 +1,34 @@
-package com.ltyx.sca.action;
+package com.ltyx.open.ybr;
 
 import com.ltyx.sca.actionplugin.MoudleCSCheckSummaryClothes;
 import com.ltyx.sca.actionplugin.MoudleCSCheckUserInfo;
-import com.ltyx.sca.actionplugin.MoudleCSGetPricePBYX;
-import com.ltyx.sca.actionplugin.MoudleCSSubmitECPBYX;
 import com.ltyx.sca.actionplugin.MoudleCheckMeasure;
-import com.ltyx.sca.actionplugin.MoudleCheckPrice;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 
-public class CustomShopUserPBYXManAction extends ZCBaseActionSupport {
+public class YBR_OBO_Action extends ZCBaseActionSupport {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 10087L;
 
-	public String getPage() {
-
-		init(true);
-
-		session = SCAPageConfigCommon.manageMenu(session);
-		session = SCAPageConfigCommon.manageTechnologyMan(session);
-
-		session.setAttribute("QRurl", SCAPageConfigCommon.get_QR_url(request));
-
-		return "succ";
-
-	}
-
-	public String getPrice() {
-
-		init(true);
-		String methodName = "定制店 优纤面料 男装 报价";
-
-		ZCReqIntroGetter.showParams(methodName, request);
-
-		doGetPrice();
-		writeResp(methodName);
-
-		return null;
-
-	}
+	double price = 0;
 
 	public String submit() {
 
 		init(true);
-		String methodName = "定制店 优纤面料 男装 提交购物车";
+
+		String methodName = "衣帮人 对外接口 提交";
 
 		ZCReqIntroGetter.showParams(methodName, request);
 
-		doSubmit();
+		price = 0;
+
+		if (doGetPrice()) {
+			doSubmit();
+		}
+
 		writeResp(methodName);
 
 		return null;
@@ -59,11 +37,20 @@ public class CustomShopUserPBYXManAction extends ZCBaseActionSupport {
 
 	public boolean doGetPrice() {
 
-		MoudleCSGetPricePBYX moudle = new MoudleCSGetPricePBYX(request);
-		moudle.doJobs();
-		ERRCODE = moudle.getERRCODE();
-		ERRDESC = moudle.getERRDESC();
-		data = moudle.getData();
+		{
+			MoudleYBR_OBO_GetPrice moudle = new MoudleYBR_OBO_GetPrice(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("计算报价");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			} else {
+				price = moudle.getPrice();
+			}
+			addProgressSucc("计算报价");
+		}
+
 		return true;
 
 	}
@@ -94,17 +81,17 @@ public class CustomShopUserPBYXManAction extends ZCBaseActionSupport {
 			addProgressSucc("订单摘要信息");
 		}
 
-		{
-			MoudleCheckPrice moudle = new MoudleCheckPrice(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("报价核对");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
-				return false;
-			}
-			addProgressSucc("报价核对");
-		}
+		// {
+		// MoudleCheckPrice moudle = new MoudleCheckPrice(request);
+		// if (!moudle.doJobs()) {
+		// addProgressFail("报价核对");
+		// ERRCODE = moudle.getERRCODE();
+		// ERRDESC = moudle.getERRDESC();
+		// data = moudle.getData();
+		// return false;
+		// }
+		// addProgressSucc("报价核对");
+		// }
 
 		{
 			MoudleCheckMeasure moudle = new MoudleCheckMeasure(request);
@@ -119,7 +106,8 @@ public class CustomShopUserPBYXManAction extends ZCBaseActionSupport {
 		}
 
 		{
-			MoudleCSSubmitECPBYX moudle = new MoudleCSSubmitECPBYX(request);
+			MoudleYBR_OBO_SubmitEC moudle = new MoudleYBR_OBO_SubmitEC(request);
+			moudle.setPrice(price);
 			if (!moudle.doJobs()) {
 				addProgressFail("提交EC");
 				ERRCODE = moudle.getERRCODE();

@@ -108,6 +108,7 @@ public class AidePBYXWomanAction extends ZCBaseActionSupport {
 		{
 			MoudleAideSubmitECWoman moudle = new MoudleAideSubmitECWoman(request);
 			if (!moudle.doJobs()) {
+				addProgressFail("提交EC");
 				ERRCODE = moudle.getERRCODE();
 				ERRDESC = moudle.getERRDESC();
 				data = moudle.getData();

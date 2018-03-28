@@ -121,6 +121,7 @@ public class AidePBYXManAction extends ZCBaseActionSupport {
 		{
 			MoudleAideSubmitECPBYX moudle = new MoudleAideSubmitECPBYX(request);
 			if (!moudle.doJobs()) {
+				addProgressFail("提交EC");
 				ERRCODE = moudle.getERRCODE();
 				ERRDESC = moudle.getERRDESC();
 				data = moudle.getData();

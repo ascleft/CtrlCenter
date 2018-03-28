@@ -112,6 +112,7 @@ public class CustomShopAidePBCWomanAction extends ZCBaseActionSupport {
 		{
 			MoudleCheckMeasure moudle = new MoudleCheckMeasure(request);
 			if (!moudle.doJobs()) {
+				addProgressFail("尺寸校验");
 				ERRCODE = moudle.getERRCODE();
 				ERRDESC = moudle.getERRDESC();
 				data = moudle.getData();
@@ -123,6 +124,7 @@ public class CustomShopAidePBCWomanAction extends ZCBaseActionSupport {
 		{
 			MoudleCSASubmitECWomanPBC moudle = new MoudleCSASubmitECWomanPBC(request);
 			if (!moudle.doJobs()) {
+				addProgressFail("提交EC");
 				ERRCODE = moudle.getERRCODE();
 				ERRDESC = moudle.getERRDESC();
 				data = moudle.getData();
