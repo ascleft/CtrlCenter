@@ -5,6 +5,7 @@ import com.ltyx.sca.actionplugin.MoudleAideCheckUserInfo;
 import com.ltyx.sca.actionplugin.MoudleAideGetPriceWoman;
 import com.ltyx.sca.actionplugin.MoudleAideSubmitECWoman;
 import com.ltyx.sca.actionplugin.MoudleCheckPrice;
+import com.ltyx.sca.actionplugin.MoudleCheckTechLZX11;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 
@@ -103,6 +104,18 @@ public class AidePBYXWomanAction extends ZCBaseActionSupport {
 				return false;
 			}
 			addProgressSucc("报价核对");
+		}
+
+		{
+			MoudleCheckTechLZX11 moudle = new MoudleCheckTechLZX11(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("刺绣校验");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("刺绣校验");
 		}
 
 		{

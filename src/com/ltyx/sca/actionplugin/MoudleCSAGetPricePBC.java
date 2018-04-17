@@ -22,12 +22,31 @@ public class MoudleCSAGetPricePBC extends ZCBaseActionSupportPlugin {
 
 		double price = 0;
 
+		String customer_tel_target = getReqParamString("customer_tel_target");
+		String uskin_code = getReqParamString("uskin_code");
 		String kouzi = getReqParamString("kouzi");
 		String tailor_type = getReqParamString("tailor_type");
 
+		String order_delivery_time = getReqParamString("order_delivery_time");
+		String order_processing_cost = getReqParamString("order_processing_cost");
+		String order_mtm_type = getReqParamString("order_mtm_type");
+		String order_production_count = getReqParamString("order_production_count");
+		String LZX_11_FOR_CHAR_SWITCH = getReqParamString("LZX_11_FOR_CHAR_SWITCH");
+		String LZX_11_FOR_PIC_SWITCH = getReqParamString("LZX_11_FOR_PIC_SWITCH");
+
 		ZCHttpReqParam param = new ZCHttpReqParam();
+		param.addParam("customer_tel_target", customer_tel_target);
+		param.addParam("uskin_code", uskin_code.toUpperCase());
 		param.addParam("kouzi", kouzi);
 		param.addParam("tailor_type", tailor_type);
+
+		param.addParam("order_delivery_time", chooseNumber(order_delivery_time));
+		param.addParam("order_processing_cost", order_processing_cost);
+		param.addParam("order_mtm_type", order_mtm_type);
+		param.addParam("order_production_count", chooseNumber(order_production_count));
+		param.addParam("LZX_11_FOR_CHAR_SWITCH", LZX_11_FOR_CHAR_SWITCH);
+		param.addParam("LZX_11_FOR_PIC_SWITCH", LZX_11_FOR_PIC_SWITCH);
+
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_get_price_pbc.getUrl(), param);
 
 		Log.Nano.tag("Resp From EC", httpResp);
@@ -100,22 +119,44 @@ public class MoudleCSAGetPricePBC extends ZCBaseActionSupportPlugin {
 	private double calPrice(double Fabric, double Craft, double Additives, double Other, double Total) {
 
 		double price_temp = 0;
-		if ("1".equals(getReqParamString("LZX_11_FOR_CHAR_SWITCH"))) {
-			price_temp += 5f;
-		}
-		if ("1".equals(getReqParamString("LZX_11_FOR_PIC_SWITCH"))) {
-			price_temp += 5f;
-		}
 
-		price_temp += getReqParamDouble("order_processing_cost");
-
-		price_temp += 0;
-		price_temp += Craft;
-		price_temp += Additives;
-		price_temp += Other;
+		// price_temp += Fabric;
+		// price_temp += Craft;
+		// price_temp += Additives;
+		// price_temp += Other;
+		price_temp += Total;
 
 		return price_temp;
 
+	}
+
+	private String chooseNumber(String numberString) {
+		String numberInt = "";
+		switch (numberString) {
+		case "11-30":
+			numberInt = "11";
+			break;
+		case "31-100":
+			numberInt = "31";
+			break;
+		case "101-500":
+			numberInt = "101";
+			break;
+		case "501-1500":
+			numberInt = "501";
+			break;
+		case "10-15":
+			numberInt = "10";
+			break;
+		case "15-25":
+			numberInt = "15";
+			break;
+		default:
+			numberInt = numberString;
+			break;
+		}
+
+		return numberInt;
 	}
 
 }

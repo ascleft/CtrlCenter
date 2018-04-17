@@ -10,11 +10,11 @@ import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
 
-public class MoudleYBR_OBO_GetPrice_sync extends ZCBaseActionSupportPlugin {
+public class MoudleYBR_OBO_GetPrice_backup extends ZCBaseActionSupportPlugin {
 
 	double price = 0;
 
-	public MoudleYBR_OBO_GetPrice_sync(HttpServletRequest req) {
+	public MoudleYBR_OBO_GetPrice_backup(HttpServletRequest req) {
 		this.request = req;
 	}
 
@@ -56,6 +56,7 @@ public class MoudleYBR_OBO_GetPrice_sync extends ZCBaseActionSupportPlugin {
 		}
 
 		if ("0".equals(jsonERRCODE) && "succ".equals(jsonERRDESC)) {
+			// if (true) {
 
 			double jsonFabric;
 			double jsonCraft;
@@ -73,6 +74,7 @@ public class MoudleYBR_OBO_GetPrice_sync extends ZCBaseActionSupportPlugin {
 				jsonOther = MainData.getDouble("other");
 				jsonTotal = MainData.getDouble("total");
 
+				// price = calPrice(0, 0, 0, 0, 0);
 				price = calPrice(jsonFabric, jsonCraft, jsonAdditives, jsonOther, jsonTotal);
 
 				ERRCODE = "0";
@@ -86,9 +88,11 @@ public class MoudleYBR_OBO_GetPrice_sync extends ZCBaseActionSupportPlugin {
 				ERRCODE = "0";
 				ERRDESC = "fail";
 				data = "EC服务器响应错误，第二级格式异常";
+
 			}
 
 			return true;
+
 		} else {
 
 			ERRCODE = "0";
@@ -96,6 +100,7 @@ public class MoudleYBR_OBO_GetPrice_sync extends ZCBaseActionSupportPlugin {
 			data = jsonData;
 
 			return false;
+
 		}
 	}
 
@@ -105,9 +110,9 @@ public class MoudleYBR_OBO_GetPrice_sync extends ZCBaseActionSupportPlugin {
 		if ("1".equals(getReqParamString("LZX_11_FOR_CHAR_SWITCH"))) {
 			price_temp += 5f;
 		}
-//		if ("1".equals(getReqParamString("LZX_11_FOR_PIC_SWITCH"))) {
-//			price_temp += 5f;
-//		}
+		// if ("1".equals(getReqParamString("LZX_11_FOR_PIC_SWITCH"))) {
+		// price_temp += 5f;
+		// }
 
 		price_temp += getReqParamDouble("order_processing_cost");
 
@@ -124,16 +129,16 @@ public class MoudleYBR_OBO_GetPrice_sync extends ZCBaseActionSupportPlugin {
 
 	}
 
-	public boolean isDP() {
-		boolean isDP = false;
-		String uskin_code = getReqParamString("uskin_code").trim().toUpperCase();
-		int dpIndex = uskin_code.indexOf("DP");
-		int codeLength = uskin_code.length();
-		if (codeLength == 7 && dpIndex == 0) {
-			isDP = true;
-		}
-		return isDP;
-	}
+	// public boolean isDP() {
+	// boolean isDP = false;
+	// String uskin_code = getReqParamString("uskin_code").trim().toUpperCase();
+	// int dpIndex = uskin_code.indexOf("DP");
+	// int codeLength = uskin_code.length();
+	// if (codeLength == 7 && dpIndex == 0) {
+	// isDP = true;
+	// }
+	// return isDP;
+	// }
 
 	public double getPrice() {
 		return price;

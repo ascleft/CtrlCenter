@@ -58,7 +58,8 @@ public class ZCHttpReqSender {
 				result += line;
 			}
 		} catch (Exception e) {
-			System.out.println("发送GET请求出现异常！" + e);
+			System.out.println("发送GET请求出现异常！");
+			System.out.println(e);
 			e.printStackTrace();
 		}
 		// 使用finally块来关闭输入流
@@ -100,10 +101,10 @@ public class ZCHttpReqSender {
 
 		System.out.println(TimeHelper.getTimeHMSS());
 		System.out.println(StringHelper.fillRight("url ", 6, " ") + url);
-		System.out.println(StringHelper.fillRight("body", 6, " ") + url + param.getParam());
+		System.out.println(StringHelper.fillRight("body", 6, " ") + param.getParam());
 		TextLogHelper.white(TimeHelper.getTimeHMSS());
 		TextLogHelper.white(StringHelper.fillRight("url ", 6, " ") + url);
-		TextLogHelper.white(StringHelper.fillRight("body", 6, " ") + url + param.getParam());
+		TextLogHelper.white(StringHelper.fillRight("body", 6, " ") + param.getParam());
 
 		PrintWriter out = null;
 		BufferedReader in = null;
@@ -130,7 +131,8 @@ public class ZCHttpReqSender {
 				result += line;
 			}
 		} catch (Exception e) {
-			System.out.println("发送 POST请求出现异常！" + e);
+			System.out.println("发送 POST请求出现异常！");
+			System.out.println(e);
 			e.printStackTrace();
 		}
 		// 使用finally块来关闭输出流、输入流
@@ -150,7 +152,7 @@ public class ZCHttpReqSender {
 		timer.stop("POST通讯 " + url);
 
 		return result;
-		
+
 	}
 
 }

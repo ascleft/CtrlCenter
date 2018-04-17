@@ -26,85 +26,66 @@ var DeliveryTimeTable;
 //初始化交期系统字典
 function initDeliveryTimeTable() {
 	DeliveryTimeTable = {
-		'单独打板，单量单裁': {
-			'1': {
-				'7': {
-					'基础款式': '120',
-					'复杂款': '140',
-					'客供款式': '170'
+		"单独打板，单量单裁": {
+			"1": {
+				"6": {
+					"基础款": "120",
+					"复杂款": "140",
+					"客供款": "170"
 				},
-				'6': {
-					'基础款式': '132',
-					'复杂款': '154',
-					'客供款式': '187'
+				"5": {
+					"基础款": "144",
+					"复杂款": "168",
+					"客供款": "204"
 				},
-				'5': {
-					'基础款式': '144',
-					'复杂款': '168',
-					'客供款式': '204'
+				"4": {
+					"基础款": "156",
+					"复杂款": "182",
+					"客供款": "221"
 				},
-				'4': {
-					'基础款式': '156',
-					'复杂款': '182',
-					'客供款式': '221'
-				},
-				'3': {
-					'基础款式': '210',
-					'复杂款': '240',
-					'客供款式': '280'
+				"3": {
+					"基础款": "240",
+					"复杂款": "280",
+					"客供款": "340"
 				}
 			}
 		},
-		'标准码成衣': {
-			'1': {
-				'7': {
-					'基础款式': '105'
+		"标准码成衣": {
+			"1": {
+				"7": {
+					"基础款": "105"
 				}
 			}
 		},
-		'团单': {
-			'11-30': {
-				'12': {
-					'基础款式': '84',
-					'复杂款': '90',
+		"团单": {
+			"11-30": {
+				"10-15": {
+					"基础款": "84",
+					"复杂款": "90",
+					"客供款": "9999999"
 				}
 			},
-			'31-100': {
-				'17': {
-					'基础款式': '70',
-					'复杂款': '75',
+			"31-100": {
+				"10-15": {
+					"基础款": "70",
+					"复杂款": "75",
+					"客供款": "9999999"
 				}
 			},
-			'101-300': {
-				'18': {
-					'基础款式': '65',
-					'复杂款': '70',
+			"101-500": {
+				"10-15": {
+					"基础款": "65",
+					"复杂款": "70",
+					"客供款": "9999999"
 				}
 			},
-			'301-500': {
-				'20': {
-					'基础款式': '65',
-					'复杂款': '70',
+			"501-1500": {
+				"15-25": {
+					"基础款": "55",
+					"复杂款": "65",
+					"客供款": "9999999"
 				}
-			},
-			'501-999': {
-				'25': {
-					'基础款式': '55',
-					'复杂款': '65',
-				}
-			},
-			'1000-1500': {
-				'30': {
-					'基础款式': '55',
-					'复杂款': '65',
-				}
-			},
-			'1500+': {
-				'30-40': {
-					'基础款式': '50',
-					'复杂款': '60',
-				}
-			},
+			}
 		}
 	};
 }
@@ -112,7 +93,7 @@ function initDeliveryTimeTable() {
 function set_delivery_time_table_section_1() {
 	var list_1 = ""
 	for(var prop1 in DeliveryTimeTable) {
-		list_1 += "<option>";
+		list_1 += "<option value=\"" + prop1 + "\">";
 		list_1 += prop1;
 		list_1 += "</option>";
 	}
@@ -128,7 +109,7 @@ function set_delivery_time_table_section_2() {
 	for(var prop1 in DeliveryTimeTable) {
 		if(prop1 == selected_1) {
 			for(var prop2 in DeliveryTimeTable[prop1]) {
-				list_2 += "<option>";
+				list_2 += "<option value=\"" + prop2 + "\">";
 				list_2 += prop2;
 				list_2 += "</option>";
 			}
@@ -150,7 +131,7 @@ function set_delivery_time_table_section_3() {
 				if(prop2 == selected_2) {
 					for(var prop3 in DeliveryTimeTable[prop1][prop2]) {
 						list_3_item = "";
-						list_3_item += "<option>";
+						list_3_item += "<option value=\"" + prop3 + "\">";
 						list_3_item += prop3;
 						list_3_item += "</option>";
 						list_3 = list_3_item + list_3;
@@ -176,7 +157,7 @@ function set_delivery_time_table_section_4() {
 					for(var prop3 in DeliveryTimeTable[prop1][prop2]) {
 						if(prop3 == selected_3) {
 							for(var prop4 in DeliveryTimeTable[prop1][prop2][prop3]) {
-								list_4 += "<option value=\"" + DeliveryTimeTable[prop1][prop2][prop3][prop4] + "\">";
+								list_4 += "<option value=\"" + prop4 + "\">";
 								list_4 += prop4;
 								list_4 += "</option>";
 							}
@@ -759,10 +740,34 @@ function use_stylebase_check() {
 //特殊款校验
 function stylebase_check() {
 	var selected_name = $("#delivery_time_table_section_4 option:selected").text();
-	if(selected_name == "基础款式") {
-		$("option[stylebase='false']").attr("disabled", true);
-	} else {
+	if(selected_name == "基础款") {
+		$("option[stylebase='true']").removeAttr("disabled");
+		//$("option[stylebase='true']").attr("disabled", true);
 		$("option[stylebase='false']").removeAttr("disabled");
+		$("option[stylebase='false']").attr("disabled", true);
+		$("option[stylebase='pbc']").removeAttr("disabled");
+		$("option[stylebase='pbc']").attr("disabled", true);
+	} else if(selected_name == "复杂款") {
+		$("option[stylebase='true']").removeAttr("disabled");
+		//$("option[stylebase='true']").attr("disabled", true);
+		$("option[stylebase='false']").removeAttr("disabled");
+		//$("option[stylebase='false']").attr("disabled", true);
+		$("option[stylebase='pbc']").removeAttr("disabled");
+		$("option[stylebase='pbc']").attr("disabled", true);
+	} else if(selected_name == "客供款") {
+		$("option[stylebase='true']").removeAttr("disabled");
+		//$("option[stylebase='true']").attr("disabled", true);
+		$("option[stylebase='false']").removeAttr("disabled");
+		//$("option[stylebase='false']").attr("disabled", true);
+		$("option[stylebase='pbc']").removeAttr("disabled");
+		//$("option[stylebase='pbc']").attr("disabled", true);
+	} else {
+		$("option[stylebase='true']").removeAttr("disabled");
+		$("option[stylebase='true']").attr("disabled", true);
+		$("option[stylebase='false']").removeAttr("disabled");
+		$("option[stylebase='false']").attr("disabled", true);
+		$("option[stylebase='pbc']").removeAttr("disabled");
+		$("option[stylebase='pbc']").attr("disabled", true);
 	}
 	$('select').material_select();
 }

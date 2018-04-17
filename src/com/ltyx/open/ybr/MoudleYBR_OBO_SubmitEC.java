@@ -107,7 +107,17 @@ public class MoudleYBR_OBO_SubmitEC extends ZCBaseActionSupportPlugin {
 		param.addParam("chest_height", getReqParamString("chest_height"));
 		param.addParam("chest_distance", getReqParamString("chest_distance"));
 
-		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_add_cart_pbyx.getUrl(), param);
+		param.addParam("ybr_ono_cust", getReqParamString("ybr_ono_cust"));
+		param.addParam("ybr_ono_api", getReqParamString("ybr_ono_api"));
+		param.addParam("ybr_fabric_using", getReqParamString("ybr_fabric_using"));
+		param.addParam("ybr_addr_detail", getReqParamString("ybr_addr_detail"));
+		param.addParam("ybr_addr_name", getReqParamString("ybr_addr_name"));
+		param.addParam("ybr_addr_mobile", getReqParamString("ybr_addr_mobile"));
+		param.addParam("ybr_addr_province", getReqParamString("ybr_addr_province"));
+		param.addParam("ybr_addr_prefecture", getReqParamString("ybr_addr_prefecture"));
+		param.addParam("ybr_addr_county", getReqParamString("ybr_addr_county"));
+
+		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_add_cart_ybr.getUrl(), param);
 		Log.Nano.tag("衣帮人 提交 Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp;

@@ -30,6 +30,16 @@ public class SCAPageConfigMan {
 		}
 		list += "</optgroup>"; //
 
+		ArrayList<DBHelper.SelectBean> al_3 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_01'", "state = 3").exe();
+		list += "<optgroup label=\"男装 客供款\">";
+		for (int i = 0; i < al_3.size(); i++) {
+			list += "<option value=\"" + al_3.get(i).get("code");
+			list += "\" stylebase=\"pbc\">";
+			list += al_3.get(i).get("code") + " " + al_3.get(i).get("ch");
+			list += "</option>";
+		}
+		list += "</optgroup>"; //
+
 		return list;
 	}
 
@@ -53,6 +63,16 @@ public class SCAPageConfigMan {
 			list += "<option value=\"" + al_2.get(i).get("code");
 			list += "\" stylebase=\"false\">";
 			list += al_2.get(i).get("code") + " " + al_2.get(i).get("ch");
+			list += "</option>";
+		}
+		list += "</optgroup>"; //
+
+		ArrayList<DBHelper.SelectBean> al_3 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_02'", "state = 3").exe();
+		list += "<optgroup label=\"男装 客供款\">";
+		for (int i = 0; i < al_3.size(); i++) {
+			list += "<option value=\"" + al_3.get(i).get("code");
+			list += "\" stylebase=\"pbc\">";
+			list += al_3.get(i).get("code") + " " + al_3.get(i).get("ch");
 			list += "</option>";
 		}
 		list += "</optgroup>"; //
@@ -85,6 +105,16 @@ public class SCAPageConfigMan {
 		}
 		list += "</optgroup>"; //
 
+		ArrayList<DBHelper.SelectBean> al_3 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_03'", "state = 3").exe();
+		list += "<optgroup label=\"男装 客供款\">";
+		for (int i = 0; i < al_3.size(); i++) {
+			list += "<option value=\"" + al_3.get(i).get("code");
+			list += "\" stylebase=\"pbc\">";
+			list += al_3.get(i).get("code") + " " + al_3.get(i).get("ch");
+			list += "</option>";
+		}
+		list += "</optgroup>"; //
+
 		return list;
 
 	}
@@ -103,6 +133,16 @@ public class SCAPageConfigMan {
 		}
 		list += "</optgroup>";//
 
+		ArrayList<DBHelper.SelectBean> al_3 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_04'", "state = 3").exe();
+		list += "<optgroup label=\"男装 客供款\">";
+		for (int i = 0; i < al_3.size(); i++) {
+			list += "<option value=\"" + al_3.get(i).get("code");
+			list += "\" stylebase=\"pbc\">";
+			list += al_3.get(i).get("code") + " " + al_3.get(i).get("ch");
+			list += "</option>";
+		}
+		list += "</optgroup>"; //
+
 		return list;
 
 	}
@@ -119,8 +159,17 @@ public class SCAPageConfigMan {
 			list += al_1.get(i).get("code") + " " + al_1.get(i).get("ch");
 			list += "</option>";
 		}
-
 		list += "</optgroup>";//
+
+		ArrayList<DBHelper.SelectBean> al_3 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_08'", "state = 3").exe();
+		list += "<optgroup label=\"男装 客供款\">";
+		for (int i = 0; i < al_3.size(); i++) {
+			list += "<option value=\"" + al_3.get(i).get("code");
+			list += "\" stylebase=\"pbc\">";
+			list += al_3.get(i).get("code") + " " + al_3.get(i).get("ch");
+			list += "</option>";
+		}
+		list += "</optgroup>"; //
 
 		return list;
 
@@ -140,6 +189,16 @@ public class SCAPageConfigMan {
 		}
 		list += "</optgroup>";//
 
+		ArrayList<DBHelper.SelectBean> al_3 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_120'", "state = 3").exe();
+		list += "<optgroup label=\"男装 客供款\">";
+		for (int i = 0; i < al_3.size(); i++) {
+			list += "<option value=\"" + al_3.get(i).get("code");
+			list += "\" stylebase=\"pbc\">";
+			list += al_3.get(i).get("code") + " " + al_3.get(i).get("ch");
+			list += "</option>";
+		}
+		list += "</optgroup>"; //
+
 		return list;
 
 	}
@@ -157,6 +216,16 @@ public class SCAPageConfigMan {
 			list += "</option>";
 		}
 		list += "</optgroup>";//
+
+		ArrayList<DBHelper.SelectBean> al_3 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_06'", "state = 3").exe();
+		list += "<optgroup label=\"男装 客供款\">";
+		for (int i = 0; i < al_3.size(); i++) {
+			list += "<option value=\"" + al_3.get(i).get("code");
+			list += "\" stylebase=\"pbc\">";
+			list += al_3.get(i).get("code") + " " + al_3.get(i).get("ch");
+			list += "</option>";
+		}
+		list += "</optgroup>"; //
 
 		return list;
 
@@ -176,6 +245,16 @@ public class SCAPageConfigMan {
 		}
 		list += "</optgroup>";//
 
+		ArrayList<DBHelper.SelectBean> al_3 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_17'", "state = 3").exe();
+		list += "<optgroup label=\"男装 客供款\">";
+		for (int i = 0; i < al_3.size(); i++) {
+			list += "<option value=\"" + al_3.get(i).get("code");
+			list += "\" stylebase=\"pbc\">";
+			list += al_3.get(i).get("code") + " " + al_3.get(i).get("ch");
+			list += "</option>";
+		}
+		list += "</optgroup>"; //
+
 		return list;
 
 	}
@@ -194,6 +273,16 @@ public class SCAPageConfigMan {
 		}
 		list += "</optgroup>";//
 
+		ArrayList<DBHelper.SelectBean> al_3 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_26'", "state = 3").exe();
+		list += "<optgroup label=\"男装 客供款\">";
+		for (int i = 0; i < al_3.size(); i++) {
+			list += "<option value=\"" + al_3.get(i).get("code");
+			list += "\" stylebase=\"pbc\">";
+			list += al_3.get(i).get("code") + " " + al_3.get(i).get("ch");
+			list += "</option>";
+		}
+		list += "</optgroup>"; //
+
 		return list;
 
 	}
@@ -211,6 +300,16 @@ public class SCAPageConfigMan {
 			list += "</option>";
 		}
 		list += "</optgroup>";//
+
+		ArrayList<DBHelper.SelectBean> al_3 = DBHelper.select("code", "ch").from("technology").where("name1 = 'LZX_13'", "state = 3").exe();
+		list += "<optgroup label=\"男装 客供款\">";
+		for (int i = 0; i < al_3.size(); i++) {
+			list += "<option value=\"" + al_3.get(i).get("code");
+			list += "\" stylebase=\"pbc\">";
+			list += al_3.get(i).get("code") + " " + al_3.get(i).get("ch");
+			list += "</option>";
+		}
+		list += "</optgroup>"; //
 
 		return list;
 

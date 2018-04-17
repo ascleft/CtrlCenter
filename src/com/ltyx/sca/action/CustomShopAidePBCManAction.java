@@ -6,6 +6,7 @@ import com.ltyx.sca.actionplugin.MoudleCSAGetPricePBC;
 import com.ltyx.sca.actionplugin.MoudleCSASubmitECPBC;
 import com.ltyx.sca.actionplugin.MoudleCheckMeasure;
 import com.ltyx.sca.actionplugin.MoudleCheckPrice;
+import com.ltyx.sca.actionplugin.MoudleCheckTechLZX11;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 
@@ -122,6 +123,18 @@ public class CustomShopAidePBCManAction extends ZCBaseActionSupport {
 				return false;
 			}
 			addProgressSucc("尺寸校验");
+		}
+
+		{
+			MoudleCheckTechLZX11 moudle = new MoudleCheckTechLZX11(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("刺绣校验");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("刺绣校验");
 		}
 
 		{

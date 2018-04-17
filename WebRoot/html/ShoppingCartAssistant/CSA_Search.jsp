@@ -109,12 +109,22 @@
 							String_html += "</thead>";
 							String_html += "<tbody>";
 
+							//							resp.data.sort(sortBy('FUSKIN', false, String));
+
 							for(var i = 0; i < resp.data.length; i++) {
 								String_html += "<tr>";
 								String_html += "<td>";
 								if("MLCK040" == resp.data[i].FSTOCKNUMBER) {
 									String_html += "<a>";
-									String_html += resp.data[i].FMATERIALNUMBER;
+									if("" != resp.data[i].FUSKIN) {
+										if("客供" == resp.data[i].FUSKIN) {
+											String_html += "该面料无USKIN编码";
+										} else {
+											String_html += resp.data[i].FUSKIN;
+										}
+									} else {
+										String_html += "该面料无USKIN编码";
+									}
 									String_html += "</a>";
 
 									String_html += "<br/>";
@@ -139,7 +149,7 @@
 									String_html += "女装客供";
 									String_html += "</a>";
 								} else {
-								    String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action?code=";
+									String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action?code=";
 									String_html += resp.data[i].FUSKIN;
 									String_html += "\">";
 									String_html += resp.data[i].FUSKIN;
@@ -170,6 +180,25 @@
 					}
 				});
 			}
+
+			var sortBy = function(filed, rev, primer) {
+				rev = (rev) ? -1 : 1;
+				return function(a, b) {
+					a = a[filed];
+					b = b[filed];
+					if(typeof(primer) != 'undefined') {
+						a = primer(a);
+						b = primer(b);
+					}
+					if(a < b) {
+						return rev * -1;
+					}
+					if(a > b) {
+						return rev * 1;
+					}
+					return 1;
+				}
+			};
 
 			function state_defult() {
 				$("#ucs_tip_card").hide();

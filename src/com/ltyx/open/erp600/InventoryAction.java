@@ -1,0 +1,55 @@
+package com.ltyx.open.erp600;
+
+import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.link.ZCReqIntroGetter;
+
+public class InventoryAction extends ZCBaseActionSupport {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 10087L;
+
+	public String getPage() {
+		return "succ";
+	}
+
+	public String submit() {
+
+		init(true);
+
+		String methodName = "ERP600即时库存查询";
+
+		ZCReqIntroGetter.showParams(methodName, request);
+
+		if (doGetInventory()) {
+		}
+
+		writeResp(methodName);
+
+		return null;
+
+	}
+
+	public boolean doGetInventory() {
+
+		{
+			InventoryActionMoudle moudle = new InventoryActionMoudle(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("即时库存");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("即时库存");
+			ERRCODE = moudle.getERRCODE();
+			ERRDESC = moudle.getERRDESC();
+			data = moudle.getData();
+		}
+
+		return true;
+
+	}
+
+}

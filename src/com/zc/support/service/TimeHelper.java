@@ -187,8 +187,25 @@ public class TimeHelper {
 				}
 				Log.Pro.whiteLine("结束时间" + ": " + time_stop_stamp);
 				Log.Pro.whiteCut();
-				Log.Pro.whiteLine("总时长" + interval / 1000 + "秒"//
-						+ "(" + interval + "毫秒)");
+				Log.Pro.whiteLine("总时长" + interval / 1000 + "秒" + "(" + interval + "毫秒)");
+
+				if (interval < 5000) {
+
+				} else if (5000 < interval && interval < 10000) {
+					Log.Pro.whiteLine("TimeOut Warning 5 " + interval / 1000 + "秒" + "(" + interval + "毫秒)");
+				} else if (10000 < interval && interval < 15000) {
+					Log.Pro.whiteLine("TimeOut Warning 5 ");
+					Log.Pro.whiteLine("TimeOut Warning 10 " + interval / 1000 + "秒" + "(" + interval + "毫秒)");
+				} else if (15000 < interval && interval < 20000) {
+					Log.Pro.whiteLine("TimeOut Warning 5 ");
+					Log.Pro.whiteLine("TimeOut Warning 10 ");
+					Log.Pro.whiteLine("TimeOut Warning 15 " + interval / 1000 + "秒" + "(" + interval + "毫秒)");
+				} else {
+					Log.Pro.whiteLine("TimeOut Warning 5 ");
+					Log.Pro.whiteLine("TimeOut Warning 10 ");
+					Log.Pro.whiteLine("TimeOut Warning 15 ");
+					Log.Pro.whiteLine("TimeOut Warning 20 " + interval / 1000 + "秒" + "(" + interval + "毫秒)");
+				}
 
 				return interval;
 			}

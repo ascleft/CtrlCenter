@@ -5,6 +5,7 @@ import com.ltyx.sca.actionplugin.MoudleAideCheckUserInfo;
 import com.ltyx.sca.actionplugin.MoudleAideGetPriceSubcontract;
 import com.ltyx.sca.actionplugin.MoudleAideSubmitECSubcontract;
 import com.ltyx.sca.actionplugin.MoudleCheckPrice;
+import com.ltyx.sca.actionplugin.MoudleCheckTechLZX11;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 
@@ -64,7 +65,7 @@ public class AidePBOSubcontractAction extends ZCBaseActionSupport {
 				ERRDESC = moudle.getERRDESC();
 				data = moudle.getData();
 				return false;
-			}else {
+			} else {
 				ERRCODE = moudle.getERRCODE();
 				ERRDESC = moudle.getERRDESC();
 				data = moudle.getData();
@@ -110,6 +111,18 @@ public class AidePBOSubcontractAction extends ZCBaseActionSupport {
 				return false;
 			}
 			addProgressSucc("报价核对");
+		}
+
+		{
+			MoudleCheckTechLZX11 moudle = new MoudleCheckTechLZX11(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("刺绣校验");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("刺绣校验");
 		}
 
 		{

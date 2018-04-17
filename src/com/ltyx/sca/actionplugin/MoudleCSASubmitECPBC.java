@@ -60,10 +60,10 @@ public class MoudleCSASubmitECPBC extends ZCBaseActionSupportPlugin {
 		param.addParam("mingxian", getReqParamString("mingxian"));
 		param.addParam("operator_id", getReqParamString("operator_id"));
 		param.addParam("operator_name", getReqParamString("operator_name"));
-		param.addParam("order_delivery_time", getReqParamString("order_delivery_time"));// -----------
+		param.addParam("order_delivery_time", chooseNumber(getReqParamString("order_delivery_time")));// -----------
 		param.addParam("order_mtm_type", getReqParamString("order_mtm_type"));// ---------------------
 		param.addParam("order_processing_cost", getReqParamString("order_processing_cost"));// -------
-		param.addParam("order_production_count", getReqParamString("order_production_count"));// -----
+		param.addParam("order_production_count", chooseNumber(getReqParamString("order_production_count")));
 		param.addParam("prices_desc", getReqParamString("prices_desc"));
 		param.addParam("prices_now", getReqParamString("prices_now"));
 		param.addParam("prices_system", getReqParamString("prices_system"));
@@ -71,7 +71,7 @@ public class MoudleCSASubmitECPBC extends ZCBaseActionSupportPlugin {
 		param.addParam("tailor_type", getReqParamString("tailor_type"));
 		param.addParam("uskin_code", getReqParamString("uskin_code").toUpperCase());
 		param.addParam("uskin_code_2", getReqParamString("uskin_code_2").toUpperCase());
-		param.addParam("weizhi_peise", getReqParamString("weizhi_peise",""));
+		param.addParam("weizhi_peise", getReqParamString("weizhi_peise", ""));
 		param.addParam("zhidai", getReqParamString("zhidai"));
 
 		// 成衣尺寸、量体尺寸信息
@@ -130,6 +130,35 @@ public class MoudleCSASubmitECPBC extends ZCBaseActionSupportPlugin {
 			return false;
 		}
 
+	}
+
+	private String chooseNumber(String numberString) {
+		String numberInt = "";
+		switch (numberString) {
+		case "11-30":
+			numberInt = "11";
+			break;
+		case "31-100":
+			numberInt = "31";
+			break;
+		case "101-500":
+			numberInt = "101";
+			break;
+		case "501-1500":
+			numberInt = "501";
+			break;
+		case "10-15":
+			numberInt = "10";
+			break;
+		case "15-25":
+			numberInt = "15";
+			break;
+		default:
+			numberInt = numberString;
+			break;
+		}
+
+		return numberInt;
 	}
 
 }

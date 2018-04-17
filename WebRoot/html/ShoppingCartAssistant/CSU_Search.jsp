@@ -114,7 +114,15 @@
 								String_html += "<td>";
 								if("MLCK040" == resp.data[i].FSTOCKNUMBER) {
 									String_html += "<a>";
-									String_html += resp.data[i].FMATERIALNUMBER;
+									if("" != resp.data[i].FUSKIN) {
+										if("客供" == resp.data[i].FUSKIN) {
+											String_html += "该面料无USKIN编码";
+										} else {
+											String_html += resp.data[i].FUSKIN;
+										}
+									} else {
+										String_html += "该面料无USKIN编码";
+									}
 									String_html += "</a>";
 
 									String_html += "<br/>";

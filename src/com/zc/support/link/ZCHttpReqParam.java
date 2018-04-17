@@ -7,6 +7,7 @@ import java.util.HashMap;
 public class ZCHttpReqParam {
 
 	private HashMap<String, String> map = null;
+	private String body = null;
 
 	public ZCHttpReqParam() {
 
@@ -17,13 +18,14 @@ public class ZCHttpReqParam {
 	private void init() {
 
 		map = new HashMap<String, String>();
+		body = "";
 
 	}
 
 	/**
 	 * 清空参数信息
 	 *
-	 * */
+	 */
 	public void wipeParam() {
 
 		map = new HashMap<String, String>();
@@ -33,7 +35,7 @@ public class ZCHttpReqParam {
 	/**
 	 * 获取拼接好的参数，采取典型的&拼接方式
 	 *
-	 * */
+	 */
 	public void addParam(String key, String value) {
 
 		if (null == map) {
@@ -44,16 +46,33 @@ public class ZCHttpReqParam {
 	}
 
 	/**
+	 * 获取拼接好的参数，采取典型的&拼接方式
+	 *
+	 */
+	public void addBody(String bodyNew) {
+
+		if (null == body || body.length() > 0) {
+			init();
+		}
+		body += bodyNew;
+
+	}
+
+	/**
 	 * 获取拼接好的参数，采取典型的&拼接方式，POST正文和GET后缀均可使用
 	 *
-	 * */
+	 */
 	public String getParam() {
 
 		String params = "";
 
-		for (String obj : map.keySet()) {
-			String value = map.get(obj);
-			params += obj + "=" + value + "&";
+		if (null != body && body.length() > 0) {
+			params = body;
+		} else {
+			for (String obj : map.keySet()) {
+				String value = map.get(obj);
+				params += obj + "=" + value + "&";
+			}
 		}
 
 		return params;
