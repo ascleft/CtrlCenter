@@ -54,12 +54,9 @@ public class UnityInventoryK3Moudle extends ZCBaseActionSupportPlugin {
 	public boolean doJobs() {
 		// TODO Auto-generated method stub
 		cells = new ArrayList<UnityInventoryCell>();
-		desc = "";
 		if (change(getCore(getFull()))) {
 			return true;
 		} else {
-			cells = new ArrayList<UnityInventoryCell>();
-			desc = "制衣ERP返回异常";
 			return false;
 		}
 	}
@@ -108,6 +105,11 @@ public class UnityInventoryK3Moudle extends ZCBaseActionSupportPlugin {
 			cells.add(cell);
 		}
 
+		if (cells.size() > 0) {
+			this.desc = "库存信息正常";
+		} else {
+			this.desc = "库存信息正常，无库存";
+		}
 		isSucc = true;
 
 		return isSucc;

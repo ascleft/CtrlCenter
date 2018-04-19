@@ -70,10 +70,12 @@ public class MoudleYBR_OBO_SubmitEC extends ZCBaseActionSupportPlugin {
 		param.addParam("order_mtm_type", getReqParamString("order_mtm_type"));
 		param.addParam("order_processing_cost", getReqParamString("order_processing_cost"));
 		param.addParam("order_production_count", getReqParamString("order_production_count"));
+		param.addParam("order_production_count_real", getReqParamString("order_production_count_real"));
 		param.addParam("prices_desc", "衣帮人订单（下单工具接入）：" + getReqParamString("prices_desc"));
 		param.addParam("prices_now", "" + this.price);
 		param.addParam("prices_system", "" + this.price);
 		param.addParam("qiantiao", getReqParamString("qiantiao"));
+		param.addParam("sex", getReqParamString("sex"));
 		param.addParam("tailor_type", getReqParamString("tailor_type"));
 		param.addParam("uskin_code", getReqParamString("uskin_code").toUpperCase());
 		param.addParam("uskin_code_2", getReqParamString("uskin_code_2").toUpperCase());

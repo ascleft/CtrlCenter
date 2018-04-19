@@ -30,8 +30,8 @@ public class UnityInventoryERP600Moudle extends ZCBaseActionSupportPlugin {
 
 	public void setParam(String code, String type) {
 
-		name = "ERP600";
-		desc = "正常";
+		this.name = "ERP600";
+		this.desc = "正常";
 
 		BPartnerCode = "BJYX001"; // 鲁泰分配给合作方的账号
 		BPartnerKey_ = "123"; // 鲁泰分配给合作方的验证码
@@ -50,12 +50,9 @@ public class UnityInventoryERP600Moudle extends ZCBaseActionSupportPlugin {
 	public boolean doJobs() {
 		// TODO Auto-generated method stub
 		cells = new ArrayList<UnityInventoryCell>();
-		desc = "";
 		if (change(getCore(getFull()))) {
 			return true;
 		} else {
-			cells = new ArrayList<UnityInventoryCell>();
-			desc = "鲁泰ERP600返回异常";
 			return false;
 		}
 	}
@@ -120,15 +117,25 @@ public class UnityInventoryERP600Moudle extends ZCBaseActionSupportPlugin {
 				String luthaiCode = ((JSONObject) array.get(i)).getString("FabricCode");
 				double all_______ = ((JSONObject) array.get(i)).getDouble("Quantity");
 				double locked____ = ((JSONObject) array.get(i)).getDouble("LockingQuantity");
-				String department = "现货科/零裁科";
+				String department = "现货科/零裁组";
 				String warehouse_ = "未定义";
 
 				UnityInventoryCell cell = new UnityInventoryCell(uskinCode_, luthaiCode, all_______, locked____, department, warehouse_);
 
 				cells.add(cell);
 			}
+
+			if (cells.size() > 0) {
+				this.desc = "库存信息正常";
+			} else {
+				this.desc = "库存信息正常，无库存";
+			}
 			isSucc = true;
+		} else if (code.equals("0") && desc.equals("未处理！")) {
+			this.desc = "鲁泰ERP600返回异常： " + " ResultType " + code + " ResultMsg " + desc;
+			isSucc = false;
 		} else {
+			this.desc = "鲁泰ERP600返回异常,未知异常： " + " ResultType " + code + " ResultMsg " + desc;
 			isSucc = false;
 		}
 
