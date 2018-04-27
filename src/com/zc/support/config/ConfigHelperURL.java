@@ -42,7 +42,8 @@ public class ConfigHelperURL {
 	public static ZCUrl Url_customshopaide_add_cart_woman  = new ZCUrl("下单工具2.0 客户经理 女装 提交", "/index.php/openapi/uskinapi/manager_add_cart_for_mygirl");
 	public static ZCUrl Url_customshopaide_add_cart_design = new ZCUrl("下单工具2.0 客户经理 设计师款 提交", "/index.php/openapi/shirtapi/manager_recommendlist_add_cart");
 
-	public static ZCUrl Url_customshopaide_add_cart_ybr   = new ZCUrl("下单工具2.0 客户经理 衬衫 提交", "/index.php/openapi/uskinapi/ybr_add_cart");
+	public static ZCUrl Url_customshopaide_add_cart_ybr_pbyx   = new ZCUrl("下单工具2.0 客户经理 衬衫 优纤面料 提交", "/index.php/openapi/uskinapi/ybr_add_cart");
+	public static ZCUrl Url_customshopaide_add_cart_ybr_pbc    = new ZCUrl("下单工具2.0 客户经理 衬衫 客供面料 提交", "/index.php/openapi/uskinapi/ybr_cust_fabric_add_cart");
 
 	public static ArrayList<ZCUrl> list = null;
 
@@ -68,7 +69,8 @@ public class ConfigHelperURL {
 			list.add(Url_customshopaide_get_price_pbyx);
 			list.add(Url_customshopaide_get_price_pbc);
 			list.add(Url_customshopaide_add_cart_pbyx);
-			list.add(Url_customshopaide_add_cart_ybr);
+			list.add(Url_customshopaide_add_cart_ybr_pbyx);
+			list.add(Url_customshopaide_add_cart_ybr_pbc);
 			list.add(Url_customshopaide_add_cart_pbc);
 			list.add(Url_customshopaide_add_cart_woman);
 			list.add(Url_customshopaide_add_cart_design);

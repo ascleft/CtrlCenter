@@ -12,15 +12,16 @@ public class SCAPageConfigCommon {
 		{
 			String rank = "" + session.getAttribute("ec_user_rank");
 
-			if ("0".equals(rank)) {// 客户经理
+			if ("1".equals(rank)) {// 客户经理
+				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_temporary());
+			} else if ("0".equals(rank)) {// 客户经理
 				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_csa());
 			} else if ("10".equals(rank)) {// 定制顾问
 				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_aide());
 			} else if ("20".equals(rank)) {// 定制店
 				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_cs());
 			}
-			if ("张弛".equals(session.getAttribute("ec_user_name"))
-					|| "zc".equals(session.getAttribute("ec_user_name"))) {
+			if ("张弛".equals(session.getAttribute("ec_user_name")) || "zc".equals(session.getAttribute("ec_user_name"))) {
 				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_all());
 			}
 		}
@@ -149,6 +150,19 @@ public class SCAPageConfigCommon {
 		menuList += get_menu_list_aide();
 		menuList += get_menu_list_csa();
 		menuList += get_menu_list_cs();
+
+		return menuList;
+	}
+
+	public static String get_menu_list_temporary() {
+
+		String menuList = ""//
+				+ "<li>"//
+				+ "<a class=\"subheader\">临时账户功能</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/UnitySearch.action\">即时库存 联合查询</a>"//
+				+ "</li>";//
 
 		return menuList;
 	}

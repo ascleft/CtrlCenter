@@ -94,7 +94,9 @@ public class UnityInventoryERP600Moudle extends ZCBaseActionSupportPlugin {
 
 		String resp = "";
 
-		resp = in.substring(300, in.length() - 80);
+		if (in.length() > 300) {
+			resp = in.substring(300, in.length() - 80);
+		}
 
 		return resp;
 	}
@@ -103,39 +105,45 @@ public class UnityInventoryERP600Moudle extends ZCBaseActionSupportPlugin {
 
 		boolean isSucc = false;
 
-		JSONObject jsonObject = JSONObject.fromObject(in);
+		try {
+			JSONObject jsonObject = JSONObject.fromObject(in);
 
-		String code = jsonObject.get("ResultType").toString();
-		String desc = jsonObject.get("ResultMsg").toString();
+			String code = jsonObject.get("ResultType").toString();
+			String desc = jsonObject.get("ResultMsg").toString();
 
-		if (code.equals("1") && desc.equals("成功")) {
-			JSONArray array = jsonObject.getJSONArray("Content");
+			if (code.equals("1") && desc.equals("成功")) {
+				JSONArray array = jsonObject.getJSONArray("Content");
 
-			for (int i = 0; i < array.size(); i++) {
+				for (int i = 0; i < array.size(); i++) {
 
-				String uskinCode_ = ((JSONObject) array.get(i)).getString("ProCode");
-				String luthaiCode = ((JSONObject) array.get(i)).getString("FabricCode");
-				double all_______ = ((JSONObject) array.get(i)).getDouble("Quantity");
-				double locked____ = ((JSONObject) array.get(i)).getDouble("LockingQuantity");
-				String department = "现货科/零裁组";
-				String warehouse_ = "未定义";
+					String uskinCode_ = ((JSONObject) array.get(i)).getString("ProCode");
+					String luthaiCode = ((JSONObject) array.get(i)).getString("FabricCode");
+					double all_______ = ((JSONObject) array.get(i)).getDouble("Quantity");
+					double locked____ = ((JSONObject) array.get(i)).getDouble("LockingQuantity");
+					String department = "现货科/零裁组";
+					String warehouse_ = "未定义";
 
-				UnityInventoryCell cell = new UnityInventoryCell(uskinCode_, luthaiCode, all_______, locked____, department, warehouse_);
+					UnityInventoryCell cell = new UnityInventoryCell(uskinCode_, luthaiCode, all_______, locked____, department, warehouse_);
 
-				cells.add(cell);
-			}
+					cells.add(cell);
+				}
 
-			if (cells.size() > 0) {
-				this.desc = "库存信息正常";
+				if (cells.size() > 0) {
+					this.desc = "库存信息正常";
+				} else {
+					this.desc = "库存信息正常，无库存";
+				}
+				isSucc = true;
+			} else if (code.equals("0") && desc.equals("未处理！")) {
+				this.desc = "鲁泰ERP600返回异常： " + " ResultType " + code + " ResultMsg " + desc;
+				isSucc = false;
 			} else {
-				this.desc = "库存信息正常，无库存";
+				this.desc = "鲁泰ERP600返回异常,未知异常： " + " ResultType " + code + " ResultMsg " + desc;
+				isSucc = false;
 			}
-			isSucc = true;
-		} else if (code.equals("0") && desc.equals("未处理！")) {
-			this.desc = "鲁泰ERP600返回异常： " + " ResultType " + code + " ResultMsg " + desc;
-			isSucc = false;
-		} else {
-			this.desc = "鲁泰ERP600返回异常,未知异常： " + " ResultType " + code + " ResultMsg " + desc;
+		} catch (Exception e) {
+			// TODO: handle exception
+			this.desc = "鲁泰ERP600服务器异常 ,详情查看日志";
 			isSucc = false;
 		}
 

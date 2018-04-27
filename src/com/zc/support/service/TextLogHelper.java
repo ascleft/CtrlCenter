@@ -9,4 +9,16 @@ public class TextLogHelper {
 		FileHelper.writeFile(day, line);
 		FileHelper.writeFile(hour, line);
 	}
+
+	public static void white(String line, String type) {
+		switch (type) {
+		case LogType.Normal:
+			white(line);
+			break;
+
+		default:
+			break;
+		}
+	}
+
 }

@@ -134,6 +134,7 @@
 												<option value="2">客户经理</option>
 												<option value="1">定制顾问</option>
 												<option value="3">定制店</option>
+												<option value="4">临时账户登录</option>
 											</select>
 											<label>角色</label>
 										</div>

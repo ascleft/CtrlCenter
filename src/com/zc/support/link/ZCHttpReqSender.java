@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
 
+import com.zc.support.service.Log;
 import com.zc.support.service.StringHelper;
 import com.zc.support.service.TextLogHelper;
 import com.zc.support.service.TimeHelper;
@@ -34,9 +35,7 @@ public class ZCHttpReqSender {
 		TimeHelper.Timer timer = new TimeHelper.Timer();
 
 		System.out.println(TimeHelper.getTimeHMSS());
-		System.out.println(StringHelper.fillRight("url ", 6, " ") + url + "?" + param.getParam());
 		TextLogHelper.white(TimeHelper.getTimeHMSS());
-		TextLogHelper.white(StringHelper.fillRight("url ", 6, " ") + url + "?" + param.getParam());
 
 		String result = "";
 		BufferedReader in = null;
@@ -58,8 +57,8 @@ public class ZCHttpReqSender {
 				result += line;
 			}
 		} catch (Exception e) {
-			System.out.println("发送GET请求出现异常！");
-			System.out.println(e);
+			result = "";
+			Log.Nano.TagByLine("发送 GET请求出现异常！", e);
 			e.printStackTrace();
 		}
 		// 使用finally块来关闭输入流
@@ -74,6 +73,9 @@ public class ZCHttpReqSender {
 		}
 
 		timer.stop("GET通讯 " + url);
+
+		System.out.println(StringHelper.fillRight("URL ", 6, " ") + url + "?" + param.getParam());
+		TextLogHelper.white(StringHelper.fillRight("URL ", 6, " ") + url + "?" + param.getParam());
 
 		return result;
 	}
@@ -100,11 +102,7 @@ public class ZCHttpReqSender {
 		TimeHelper.Timer timer = new TimeHelper.Timer();
 
 		System.out.println(TimeHelper.getTimeHMSS());
-		System.out.println(StringHelper.fillRight("url ", 6, " ") + url);
-		System.out.println(StringHelper.fillRight("body", 6, " ") + param.getParam());
 		TextLogHelper.white(TimeHelper.getTimeHMSS());
-		TextLogHelper.white(StringHelper.fillRight("url ", 6, " ") + url);
-		TextLogHelper.white(StringHelper.fillRight("body", 6, " ") + param.getParam());
 
 		PrintWriter out = null;
 		BufferedReader in = null;
@@ -131,8 +129,8 @@ public class ZCHttpReqSender {
 				result += line;
 			}
 		} catch (Exception e) {
-			System.out.println("发送 POST请求出现异常！");
-			System.out.println(e);
+			result = "";
+			Log.Nano.TagByLine("发送 POST请求出现异常！", e);
 			e.printStackTrace();
 		}
 		// 使用finally块来关闭输出流、输入流
@@ -150,6 +148,11 @@ public class ZCHttpReqSender {
 		}
 
 		timer.stop("POST通讯 " + url);
+
+		System.out.println(StringHelper.fillRight("URL ", 6, " ") + url);
+		TextLogHelper.white(StringHelper.fillRight("URL ", 6, " ") + url);
+		System.out.println(StringHelper.fillRight("BODY", 6, " ") + param.getParam());
+		TextLogHelper.white(StringHelper.fillRight("BODY", 6, " ") + param.getParam());
 
 		return result;
 

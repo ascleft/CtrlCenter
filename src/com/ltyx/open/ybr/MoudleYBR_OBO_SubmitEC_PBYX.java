@@ -10,9 +10,9 @@ import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
 
-public class MoudleYBR_OBO_SubmitEC extends ZCBaseActionSupportPlugin {
+public class MoudleYBR_OBO_SubmitEC_PBYX extends ZCBaseActionSupportPlugin {
 
-	public MoudleYBR_OBO_SubmitEC(HttpServletRequest req) {
+	public MoudleYBR_OBO_SubmitEC_PBYX(HttpServletRequest req) {
 		this.request = req;
 	}
 
@@ -119,7 +119,7 @@ public class MoudleYBR_OBO_SubmitEC extends ZCBaseActionSupportPlugin {
 		param.addParam("ybr_addr_prefecture", getReqParamString("ybr_addr_prefecture"));
 		param.addParam("ybr_addr_county", getReqParamString("ybr_addr_county"));
 
-		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_add_cart_ybr.getUrl(), param);
+		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_add_cart_ybr_pbyx.getUrl(), param);
 		Log.Nano.tag("衣帮人 提交 Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp;

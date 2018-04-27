@@ -23,6 +23,9 @@ public class UnityInventoryAction extends ZCBaseActionSupport {
 	private String CodeType;// LT YX
 	private String Department;// ERP600 K3
 	private String Warehouse;// LT ZN KG
+	private String Fuzzy;// Y N
+
+	private String[][] keyWords;
 
 	public String submit() {
 
@@ -45,67 +48,24 @@ public class UnityInventoryAction extends ZCBaseActionSupport {
 		JSONArray jsonArray = new JSONArray();
 
 		Code = getReqParamString("Code");
-		CodeType = getReqParamString("CodeType");// LT YX
-		Department = getReqParamString("Department");// ERP600 K3
-		Warehouse = getReqParamString("Warehouse");// LT ZN KG
+		CodeType = getReqParamString("CodeType");// YX LT (YX)
+		Department = getReqParamString("Department");// ERP600 K3 (&)
+		Warehouse = getReqParamString("Warehouse");// LT ZN KG (LT)
+		Fuzzy = getReqParamString("Fuzzy");// Y N (Y)
+
+		packageKeyWords();
 
 		if (Code.length() > 3) {
 			switch (Department) {
 			case "ERP600":
-				switch (CodeType) {
-				case "LT":
-					getERP600(jsonArray, Code, "LT");
-					break;
-				case "YX":
-					getERP600(jsonArray, Code, "YX");
-					break;
-				default:
-					getERP600(jsonArray, Code, "YX");
-					break;
-				}
+				getERP600(jsonArray, Code, keyWords[0][2]);
 				break;
 			case "K3":
-				switch (Warehouse) {
-				case "LT":
-					getK3(jsonArray, Code, "LT");
-					break;
-				case "ZN":
-					getK3(jsonArray, Code, "ZN");
-					break;
-				case "KG":
-					getK3(jsonArray, Code, "KG");
-					break;
-				default:
-					getK3(jsonArray, Code, "LT");
-					break;
-				}
+				getK3(jsonArray, Code, keyWords[1][2], keyWords[1][3]);
 				break;
 			default:
-				switch (CodeType) {
-				case "LT":
-					getERP600(jsonArray, Code, "LT");
-					break;
-				case "YX":
-					getERP600(jsonArray, Code, "YX");
-					break;
-				default:
-					getERP600(jsonArray, Code, "YX");
-					break;
-				}
-				switch (Warehouse) {
-				case "LT":
-					getK3(jsonArray, Code, "LT");
-					break;
-				case "ZN":
-					getK3(jsonArray, Code, "ZN");
-					break;
-				case "KG":
-					getK3(jsonArray, Code, "KG");
-					break;
-				default:
-					getK3(jsonArray, Code, "LT");
-					break;
-				}
+				getERP600(jsonArray, Code, keyWords[0][2]);
+				getK3(jsonArray, Code, keyWords[1][2], keyWords[1][3]);
 				break;
 			}
 			ERRCODE = "0";
@@ -114,7 +74,7 @@ public class UnityInventoryAction extends ZCBaseActionSupport {
 		} else {
 			ERRCODE = "0";
 			ERRDESC = "fail";
-			data = "请填写正确的面料编码";
+			data = "面料编号过短，请填写正确的面料编码";
 		}
 
 	}
@@ -131,9 +91,9 @@ public class UnityInventoryAction extends ZCBaseActionSupport {
 		return jsonArray;
 	}
 
-	private JSONArray getK3(JSONArray jsonArray, String code, String warehouse) {
+	private JSONArray getK3(JSONArray jsonArray, String code, String warehouse, String fuzzy) {
 		UnityInventoryK3Moudle moudle = new UnityInventoryK3Moudle(request);
-		moudle.setParam(code, warehouse);
+		moudle.setParam(code, warehouse, fuzzy);
 		if (moudle.doJobs()) {
 			addProgressSucc("联合即时库存 K3");
 		} else {
@@ -164,9 +124,54 @@ public class UnityInventoryAction extends ZCBaseActionSupport {
 		jsonObject.put("desc", desc);
 		jsonObject.put("list", array);
 
-		System.out.println(jsonObject.toString());
-
 		return jsonObject;
+
+	}
+
+	public void packageKeyWords() {
+
+		keyWords = new String[2][4];
+
+		// 编码类型
+		// getERP600(jsonArray, Code, "LT");
+		// keyWords[0][2]
+		// YX LT (YX)
+		switch (CodeType) {
+		case "LT":
+		case "YX":
+			keyWords[0][2] = CodeType;
+			break;
+		default:
+			keyWords[0][2] = "YX";
+			break;
+		}
+		// 仓库指定
+		// getK3(jsonArray, Code, "LT", "Y");
+		// keyWords[1][2]
+		// LT ZN KG (LT)
+		switch (Warehouse) {
+		case "LT":
+		case "ZN":
+		case "KG":
+			keyWords[1][2] = Warehouse;
+			break;
+		default:
+			keyWords[1][2] = "LT";
+			break;
+		}
+		// 模糊查询
+		// getK3(jsonArray, Code, "LT", "Y");
+		// keyWords[1][3]
+		// Y N (Y)
+		switch (Fuzzy) {
+		case "Y":
+		case "N":
+			keyWords[1][3] = Fuzzy;
+			break;
+		default:
+			keyWords[1][3] = "Y";
+			break;
+		}
 
 	}
 

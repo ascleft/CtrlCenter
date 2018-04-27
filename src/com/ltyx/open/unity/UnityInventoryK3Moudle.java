@@ -26,23 +26,39 @@ public class UnityInventoryK3Moudle extends ZCBaseActionSupportPlugin {
 
 	}
 
-	public void setParam(String code, String warehouse) {
+	public void setParam(String code, String warehouse, String fuzzy) {
 
 		name = "K3";
 		desc = "正常";
 
-		if ("LT".equals(warehouse)) {
-			// Log.Nano.tag("即时库存接口 from K3", "鲁泰仓库");
-			filter = "FMATERIALNUMBER LIKE  '%" + code + "%' OR FMATERIALNAME LIKE '%" + code + "%' OR FUSKIN LIKE '%" + code + "%'";
-		} else if ("ZN".equals(warehouse)) {
-			// Log.Nano.tag("即时库存接口 from K3", "智能制造");
-			filter = "(FMATERIALNUMBER LIKE '%" + code + "%' OR FMATERIALNAME LIKE '%" + code + "%' OR FUSKIN LIKE '%" + code + "%') AND FSTOCKNUMBER='MLCK028'";
-		} else if ("KG".equals(warehouse)) {
-			// Log.Nano.tag("即时库存接口 from K3", "客供库存");
-			filter = "(FMATERIALNUMBER LIKE '%" + code + "%' OR FMATERIALNAME LIKE '%" + code + "%' OR FUSKIN LIKE '%" + code + "%') AND FSTOCKNUMBER='MLCK040'";
+		if ("Y".equals(fuzzy)) {
+			if ("LT".equals(warehouse)) {
+				// Log.Nano.tag("即时库存接口 from K3", "鲁泰仓库");
+				filter = "FMATERIALNUMBER LIKE  '%" + code + "%' OR FMATERIALNAME LIKE '%" + code + "%' OR FUSKIN LIKE '%" + code + "%'";
+			} else if ("ZN".equals(warehouse)) {
+				// Log.Nano.tag("即时库存接口 from K3", "智能制造");
+				filter = "(FMATERIALNUMBER LIKE '%" + code + "%' OR FMATERIALNAME LIKE '%" + code + "%' OR FUSKIN LIKE '%" + code + "%') AND FSTOCKNUMBER='MLCK028'";
+			} else if ("KG".equals(warehouse)) {
+				// Log.Nano.tag("即时库存接口 from K3", "客供库存");
+				filter = "(FMATERIALNUMBER LIKE '%" + code + "%' OR FMATERIALNAME LIKE '%" + code + "%' OR FUSKIN LIKE '%" + code + "%') AND FSTOCKNUMBER='MLCK040'";
+			} else {
+				// Log.Nano.tag("即时库存接口 from K3", "鲁泰仓库");
+				filter = "FMATERIALNUMBER LIKE  '%" + code + "%' OR FMATERIALNAME LIKE '%" + code + "%' OR FUSKIN LIKE '%" + code + "%'";
+			}
 		} else {
-			// Log.Nano.tag("即时库存接口 from K3", "鲁泰仓库");
-			filter = "FMATERIALNUMBER LIKE  '%" + code + "%' OR FMATERIALNAME LIKE '%" + code + "%' OR FUSKIN LIKE '%" + code + "%'";
+			if ("LT".equals(warehouse)) {
+				// Log.Nano.tag("即时库存接口 from K3", "鲁泰仓库");
+				filter = "FMATERIALNUMBER LIKE  '" + code + "' OR FMATERIALNAME LIKE '" + code + "' OR FUSKIN LIKE '" + code + "'";
+			} else if ("ZN".equals(warehouse)) {
+				// Log.Nano.tag("即时库存接口 from K3", "智能制造");
+				filter = "(FMATERIALNUMBER LIKE '" + code + "' OR FMATERIALNAME LIKE '" + code + "' OR FUSKIN LIKE '" + code + "') AND FSTOCKNUMBER='MLCK028'";
+			} else if ("KG".equals(warehouse)) {
+				// Log.Nano.tag("即时库存接口 from K3", "客供库存");
+				filter = "(FMATERIALNUMBER LIKE '" + code + "' OR FMATERIALNAME LIKE '" + code + "' OR FUSKIN LIKE '" + code + "') AND FSTOCKNUMBER='MLCK040'";
+			} else {
+				// Log.Nano.tag("即时库存接口 from K3", "鲁泰仓库");
+				filter = "FMATERIALNUMBER LIKE  '" + code + "' OR FMATERIALNAME LIKE '" + code + "' OR FUSKIN LIKE '" + code + "'";
+			}
 		}
 
 		usertoken = "UtailorForK3Cloud201612";

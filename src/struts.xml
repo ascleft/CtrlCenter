@@ -241,6 +241,10 @@
 			<result name="succ">/html/ShoppingCartAssistant/CSU_Search.jsp</result>
 		</action>
 		
+		<!-- 联合库存查询 -->
+		<action name="UnitySearch" class="com.ltyx.sca.action.SearchAction" method="getPage">
+			<result name="succ">/html/ShoppingCartAssistant/Unity_Search.jsp</result>
+		</action>
 
 	</package>
 
@@ -261,8 +265,11 @@
 		<!-- 衬衫订单 提交成衬衫订单 -->
 		<action name="SubmitTailorForm" class="com.ltyx.tailor.action.SubmitTailorFormAction" method="submit"></action>
 		
-		<!-- 衣帮人对外接口 新版-->
-		<action name="YBRSubmit" class="com.ltyx.open.ybr.YBR_OBO_Action" method="submit"></action>
+		<!-- 衣帮人对外接口 新版 优纤面料-->
+		<action name="YBRSubmit" class="com.ltyx.open.ybr.YBR_OBO_Action" method="submitPBYX"></action>
+		
+		<!-- 衣帮人对外接口 新版 客供面料-->
+		<action name="YBRPBCSubmit" class="com.ltyx.open.ybr.YBR_OBO_Action" method="submitPBC"></action>
 
 		<!-- ERP600即时库存接口-->
 		<action name="ERP600Inventory" class="com.ltyx.open.erp600.InventoryAction" method="submit"></action>

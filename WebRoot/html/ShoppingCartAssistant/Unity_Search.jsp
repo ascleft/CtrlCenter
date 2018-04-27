@@ -16,11 +16,11 @@
 	<!--
 		
 		作者：ascleft@163.com
-		时间：2017-11-20
+		时间：2018-04-25
 		描述：
 		购物车添加工具 SCA 2.0
 		
-		定制店 即时库存查询
+		即时库存 联合查询
 		
 	-->
 
@@ -99,14 +99,14 @@
 							String_html += "<table class=\"striped\">";
 							String_html += "<thead>";
 							String_html += "<tr>";
-							String_html += "<th onclick=\"submitfilterform(\'UskinCode\')\">USKIN编码 </th>";
+							String_html += "<th onclick=\"s ubmitfilterform(\'UskinCode\')\">USKIN编码 </th>";
 							if(ec_user_rank < 10) {
 
 								String_html += "<th class=\"hide-on-small-only\">部门 </th>";
-								String_html += "<th class=\"hide-on-small-only\" onclick=\"submitfilterform(\'LuthaiCode\')\">物料编码 </th>";
+								String_html += "<th class=\"hide-on-small-only\" onclick=\"s ubmitfilterform(\'LuthaiCode\')\">物料编码 </th>";
 							}
-							String_html += "<th onclick=\"submitfilterform(\'All\')\">库存 </th>";
-							String_html += "<th onclick=\"submitfilterform(\'Available\')\">可用库存 </th>";
+							String_html += "<th onclick=\"s ubmitfilterform(\'All\')\">库存 </th>";
+							String_html += "<th onclick=\"s ubmitfilterform(\'Available\')\">可用库存 </th>";
 							String_html += "</tr>";
 							String_html += "</thead>";
 							String_html += "<tbody>";
@@ -115,7 +115,7 @@
 
 								for(var j = 0; j < resp.data[i].list.length; j++) {
 
-									resp.data[i].list = jsonSort(resp.data[i].list, sortKeyWord, false)
+									//resp.data[i].list = jsonSort(resp.data[i].list, sortKeyWord, false)
 
 									String_html += "<tr>";
 									String_html += "<td>";
@@ -131,32 +131,9 @@
 											String_html += "该面料无USKIN编码";
 										}
 										String_html += "</a>";
-
-										String_html += "<br/>";
-
-										String_html += "<a ";
-										String_html += "style=\"color: lightskyblue;\" ";
-										String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBC.action?code=";
-										String_html += resp.data[i].list[j].LuthaiCode;
-										String_html += "\">";
-										String_html += "男装客供";
-										String_html += "</a>";
-
-										String_html += "<a>";
-										String_html += " ";
-										String_html += "</a>";
-
-										String_html += "<a ";
-										String_html += "style=\"color: lightpink;\" ";
-										String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopWomanPBC.action?code=";
-										String_html += resp.data[i].list[j].LuthaiCode;
-										String_html += "\">";
-										String_html += "女装客供";
-										String_html += "</a>";
+										
 									} else {
-										String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action?code=";
-										String_html += resp.data[i].list[j].UskinCode;
-										String_html += "\">";
+										String_html += "<a>";
 										String_html += resp.data[i].list[j].UskinCode;
 										String_html += "</a>";
 									}
@@ -243,7 +220,7 @@
 			<nav class="teal" role="navigation">
 				<div class="nav-wrapper container">
 					<!-- 页面标题  -->
-					<a id="logo-container " href="#" class="brand-logo white-text ">定制店 即时库存查询</a>
+					<a id="logo-container " href="#" class="brand-logo white-text ">即时库存 联合查询</a>
 					<!-- 导航菜单键（运动移动设备） -->
 					<a href="#" data-activates="nav_menu_list " class="button-collapse ">
 						<i class="material-icons white-text">menu</i>
@@ -307,7 +284,7 @@
 					<!--控制器-->
 					<div class="col s12 m12 l12">
 						<div class="card-panel">
-							<form method="post" id="filterForm" onkeydown="if(event.keyCode==13)return false;">
+							<form method="post" id="filterForm" onkeydown="if(event.keyCode==13)return true;">
 								<div class="row">
 									<div class="col s12 m12 l12 teal-text">
 										<p>输入USKIN编码或物料编码</p>
@@ -329,20 +306,20 @@
 											<option value="LT">鲁泰物料编码</option>
 										</select><label>编码类型指定（仅作用于现货科）</label>
 									</div>
-									<div class="col s6 m4 l3 teal-text input-field">
+									<div class="col s6 m4 l3 teal-text input-field" style="display: none">
 										<select name="Department">
 											<option value="All">联合查询</option>
 											<option value="ERP600">现货科</option>
 											<option value="K3">制衣ERP</option>
 										</select><label>数据源</label>
 									</div>
-									<div class="col s6 m4 l3 teal-text input-field ">
+									<div class="col s6 m4 l3 teal-text input-field " style="display: none">
 										<select name="Fuzzy">
 											<option value="Y">模糊查询</option>
 											<option value="N">精确查询</option>
 										</select><label>查询模式（仅支持制衣ERP）</label>
 									</div>
-									<div class="col s6 m4 l3 teal-text input-field">
+									<div class="col s6 m4 l3 teal-text input-field" style="display: none">
 										<select name="Warehouse">
 											<option value="LT">鲁泰仓库</option>
 											<option value="ZN">智能制造</option>
