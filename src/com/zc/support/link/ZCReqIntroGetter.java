@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 
 import com.zc.support.service.Log;
+import com.zc.support.service.LogSyncSafe;
 import com.zc.support.service.MapHelper;
 import com.zc.support.service.StringHelper;
 
@@ -66,7 +67,7 @@ public class ZCReqIntroGetter {
 	 * 打印请求中的所有Param
 	 * 
 	 */
-	public static Map<String, String> showParams(String reqName, HttpServletRequest request) {
+	public static Map<String, String> showParams(String reqName, HttpServletRequest request, String logType) {
 		Map<String, String> map = new TreeMap<String, String>();
 		try {
 			request.setCharacterEncoding("UTF-8");
@@ -83,13 +84,15 @@ public class ZCReqIntroGetter {
 
 		map = MapHelper.sortMapByKey(map);
 
-		Log.Pro.start();
-		Log.Pro.whiteLine(reqName + " " + "Params");
-		Log.Pro.whiteCut();
+		LogSyncSafe.Pro log = new LogSyncSafe.Pro();
+		log.addStart(true);
+		log.addMsgLine(reqName + " " + "Params");
+		log.addCut();
 		for (String key : map.keySet()) {
-			Log.Pro.whiteLine(StringHelper.fillRight(key, 20, "-") + "--->" + map.get(key));
+			log.addMsgLine(StringHelper.fillRight(key, 28, "-") + "--->" + map.get(key));
 		}
-		Log.Pro.finish();
+		log.addfinish();
+		log.flush(logType);
 
 		return map;
 	}

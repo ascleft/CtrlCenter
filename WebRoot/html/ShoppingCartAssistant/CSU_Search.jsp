@@ -115,7 +115,7 @@
 
 								for(var j = 0; j < resp.data[i].list.length; j++) {
 
-									resp.data[i].list = jsonSort(resp.data[i].list, sortKeyWord, false)
+									resp.data[i].list = jsonSort(resp.data[i].list, sortKeyWord, false);
 
 									String_html += "<tr>";
 									String_html += "<td>";
@@ -126,6 +126,7 @@
 												String_html += "该面料无USKIN编码";
 											} else {
 												String_html += resp.data[i].list[j].UskinCode;
+												String_html += "(客供仓库)";
 											}
 										} else {
 											String_html += "该面料无USKIN编码";
@@ -152,6 +153,13 @@
 										String_html += resp.data[i].list[j].LuthaiCode;
 										String_html += "\">";
 										String_html += "女装客供";
+										String_html += "</a>";
+									} else if("MLCK037" == resp.data[i].list[j].Warehouse) {
+										String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action?code=";
+										String_html += resp.data[i].list[j].UskinCode;
+										String_html += "\">";
+										String_html += resp.data[i].list[j].UskinCode;
+										String_html += "(报喜鸟仓库)";
 										String_html += "</a>";
 									} else {
 										String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action?code=";

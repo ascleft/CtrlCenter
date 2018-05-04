@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.Log;
+import com.zc.support.service.LogType;
 
 public class SimulatorAction extends ZCBaseActionSupport {
 
@@ -193,13 +194,13 @@ public class SimulatorAction extends ZCBaseActionSupport {
 
 		init(true);
 
-		ZCReqIntroGetter.showParams("模拟服务 动态表单", request);
+		ZCReqIntroGetter.showParams("模拟服务 动态表单", request, LogType.NORMAL);
 
 		ERRCODE = "0";
 		ERRDESC = "succ";
 		data = "{\"TABLES\":[{\"NAME\":\"男士量体表\",\"LIST\":[{\"KEY\":\"1\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"胸围\"},{\"KEY\":\"2\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"腰围\"},{\"KEY\":\"2\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"臂长\"},{\"KEY\":\"2\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"臀围\"}]},{\"NAME\":\"女士量体表\",\"LIST\":[{\"KEY\":\"3\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"胸围\"},{\"KEY\":\"4\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"臀围\"},{\"KEY\":\"4\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"领围\"}]},{\"NAME\":\"童装体表\",\"LIST\":[{\"KEY\":\"5\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"胸高\"},{\"KEY\":\"4\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"身高\"},{\"KEY\":\"4\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"腰围\"},{\"KEY\":\"4\",\"MAX\":\"100\",\"MIN\":\"1\",\"NAME\":\"领围\"}]}]}";
 
-		writeResp("模拟服务 动态表单");
+		writeResp("模拟服务 动态表单", LogType.NORMAL);
 
 		Log.Nano.tag("模拟服务 动态表单", "结束");
 

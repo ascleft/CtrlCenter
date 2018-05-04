@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
+import com.zc.support.service.LogType;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -31,13 +32,12 @@ public class UnityInventoryAction extends ZCBaseActionSupport {
 
 		init(true);
 
-		String methodName = "ERP600即时库存查询";
-
-		ZCReqIntroGetter.showParams(methodName, request);
+		String methodName = "即时库存 联合查询";
 
 		doGetInventory();
 
-		writeResp(methodName);
+		ZCReqIntroGetter.showParams(methodName, request, LogType.SearchUnity);
+		writeResp(methodName, LogType.SearchUnity);
 
 		return null;
 

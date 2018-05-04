@@ -156,58 +156,67 @@ public class TimeHelper {
 
 		public long stop(String name) {
 
-			Log.Pro.start();
-			Log.Pro.whiteLine("计时器统计 " + "--->" + name + " ");
-			Log.Pro.whiteCut();
+			return stop(name, LogType.NORMAL);
 
-			interval = showTimerPartable(name);
+		}
 
-			Log.Pro.finish();
+		public long stop(String name, String logType) {
+
+			LogSyncSafe.Pro log = new LogSyncSafe.Pro();
+			log.addStart(true);
+			log.addMsgLine("计时器统计 ");
+			log.addMsgLine(name);
+			log.addCut();
+			log.addMsgLines(getTimerPartableList());
+			log.addfinish();
+			log.flush(logType);
 
 			return interval;
 
 		}
 
-		public long showTimerPartable(String name) {
+		public ArrayList<String> getTimerPartableList() {
+
+			ArrayList<String> list = new ArrayList<String>();
 
 			time_stop = new Date();
 			time_stop_stamp = TimeHelper.getTimeHMSS();
 
 			if (null == time_start) {
-				Log.i("计时器未启动，请按顺序依次调用 start() stop() 方法");
-				return 0;
+				list.add("计时器未启动，请按顺序依次调用 start() stop() 方法");
+				return list;
 			} else {
+
 				interval = time_stop.getTime() - time_start.getTime();
 
-				Log.Pro.whiteLine("开始时间" + ": " + time_start_stamp);
+				list.add("开始时间" + ": " + time_start_stamp);
 				if (null != pointList || pointList.size() > 0) {
 					for (int i = 0; i < pointList.size(); i++) {
-						Log.Pro.whiteLine("第" + (i + 1) + "次" + ": " + pointList.get(i));
+						list.add("第" + (i + 1) + "次" + ": " + pointList.get(i));
 					}
 				}
-				Log.Pro.whiteLine("结束时间" + ": " + time_stop_stamp);
-				Log.Pro.whiteCut();
-				Log.Pro.whiteLine("总时长" + interval / 1000 + "秒" + "(" + interval + "毫秒)");
+				list.add("结束时间" + ": " + time_stop_stamp);
+				list.add("总时长" + interval / 1000 + "秒" + "(" + interval + "毫秒)");
 
 				if (interval < 5000) {
 
 				} else if (5000 < interval && interval < 10000) {
-					Log.Pro.whiteLine("TimeOut Warning 5 " + interval / 1000 + "秒" + "(" + interval + "毫秒)");
+					list.add("TimeOut Warning 5 " + interval / 1000 + "秒" + "(" + interval + "毫秒)");
 				} else if (10000 < interval && interval < 15000) {
-					Log.Pro.whiteLine("TimeOut Warning 5 ");
-					Log.Pro.whiteLine("TimeOut Warning 10 " + interval / 1000 + "秒" + "(" + interval + "毫秒)");
+					list.add("TimeOut Warning 5 ");
+					list.add("TimeOut Warning 10 " + interval / 1000 + "秒" + "(" + interval + "毫秒)");
 				} else if (15000 < interval && interval < 20000) {
-					Log.Pro.whiteLine("TimeOut Warning 5 ");
-					Log.Pro.whiteLine("TimeOut Warning 10 ");
-					Log.Pro.whiteLine("TimeOut Warning 15 " + interval / 1000 + "秒" + "(" + interval + "毫秒)");
+					list.add("TimeOut Warning 5 ");
+					list.add("TimeOut Warning 10 ");
+					list.add("TimeOut Warning 15 " + interval / 1000 + "秒" + "(" + interval + "毫秒)");
 				} else {
-					Log.Pro.whiteLine("TimeOut Warning 5 ");
-					Log.Pro.whiteLine("TimeOut Warning 10 ");
-					Log.Pro.whiteLine("TimeOut Warning 15 ");
-					Log.Pro.whiteLine("TimeOut Warning 20 " + interval / 1000 + "秒" + "(" + interval + "毫秒)");
+					list.add("TimeOut Warning 5 ");
+					list.add("TimeOut Warning 10 ");
+					list.add("TimeOut Warning 15 ");
+					list.add("TimeOut Warning 20 " + interval / 1000 + "秒" + "(" + interval + "毫秒)");
 				}
 
-				return interval;
+				return list;
 			}
 
 		}

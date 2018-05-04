@@ -7,6 +7,7 @@ import com.ltyx.tailor.actionplugin.MoudleSubmitEC;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.Log;
+import com.zc.support.service.LogType;
 
 public class SubmitTailorFormAction extends ZCBaseActionSupport {
 
@@ -22,11 +23,11 @@ public class SubmitTailorFormAction extends ZCBaseActionSupport {
 
 		init(true);
 
-		ZCReqIntroGetter.showParams("提交衬衫信息订单", request);
+		ZCReqIntroGetter.showParams("提交衬衫信息订单", request, LogType.NORMAL);
 
 		doJobs();
 
-		writeResp("提交衬衫信息订单");
+		writeResp("提交衬衫信息订单", LogType.NORMAL);
 
 		return null;
 

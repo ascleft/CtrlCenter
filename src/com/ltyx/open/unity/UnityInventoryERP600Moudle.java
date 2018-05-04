@@ -8,6 +8,7 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqProperty;
 import com.zc.support.link.ZCHttpReqSender;
+import com.zc.support.service.LogType;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -85,7 +86,7 @@ public class UnityInventoryERP600Moudle extends ZCBaseActionSupportPlugin {
 
 		ZCHttpReqParam param = new ZCHttpReqParam();
 		param.addBody(req);
-		String resp = ZCHttpReqSender.sendPost("http://eluthai.com/LTGlobalServices/BJYXInterface/LTGlobalServices.asmx", param, property);
+		String resp = ZCHttpReqSender.sendPost("http://eluthai.com/LTGlobalServices/BJYXInterface/LTGlobalServices.asmx", param, property, LogType.SearchUnity);
 
 		return resp;
 	}

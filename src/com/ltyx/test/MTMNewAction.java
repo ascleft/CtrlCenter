@@ -5,6 +5,7 @@ import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqProperty;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.link.ZCHttpsReqSender;
+import com.zc.support.service.LogType;
 import com.zc.support.service.StringHelper;
 import com.zc.support.service.TimeHelper;
 
@@ -57,7 +58,7 @@ public class MTMNewAction extends ZCBaseActionSupport {
 
 		analyze(resp);
 
-		writeResp("MTM test ReleaseServer");
+		writeResp("MTM test ReleaseServer", LogType.NORMAL);
 
 		System.out.println(resp);
 

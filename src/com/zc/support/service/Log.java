@@ -4,7 +4,7 @@ public class Log {
 
 	public static int STYLE_CLOSE = 1, STYLE_OPEN = 2;
 	protected static boolean debug = true;
-	protected static int style = 1;
+	protected static int style = 2;
 	private static int lineLen = 100;
 
 	public static void init(boolean debug, int STYLE) {

@@ -9,10 +9,13 @@ public class LogHelper {
 	public static ArrayList<String> init() {
 
 		Log.init(true, Log.STYLE_OPEN);
+		LogSyncSafe.init(true, LogSyncSafe.STYLE_OPEN);
 
 		infos = new ArrayList<String>();
 		infos.add("Log.debug" + " : " + Log.debug);
 		infos.add("Log.style" + " : " + Log.style);
+		infos.add("LogSyncSafe.debug" + " : " + LogSyncSafe.debug);
+		infos.add("LogSyncSafe.style" + " : " + LogSyncSafe.style);
 
 		return infos;
 	}

@@ -9,6 +9,7 @@ import com.ltyx.sca.actionplugin.MoudleCheckPrice;
 import com.ltyx.sca.actionplugin.MoudleCheckTechLZX11;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
+import com.zc.support.service.LogType;
 
 public class CustomShopAidePBYXDesignAction extends ZCBaseActionSupport {
 
@@ -35,10 +36,15 @@ public class CustomShopAidePBYXDesignAction extends ZCBaseActionSupport {
 		init(true);
 		String methodName = "客户经理 优纤面料 设计师款 报价";
 
-		ZCReqIntroGetter.showParams(methodName, request);
-
 		doGetPrice();
-		writeResp(methodName);
+
+		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
+			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_USKIN_AIDE_SUCC);
+			writeResp(methodName, LogType.LTYX_USKIN_AIDE_SUCC);
+		} else {
+			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_USKIN_AIDE_FAIL);
+			writeResp(methodName, LogType.LTYX_USKIN_AIDE_FAIL);
+		}
 
 		return null;
 
@@ -49,10 +55,15 @@ public class CustomShopAidePBYXDesignAction extends ZCBaseActionSupport {
 		init(true);
 		String methodName = "客户经理 优纤面料 设计师款 提交购物车";
 
-		ZCReqIntroGetter.showParams(methodName, request);
-
 		doSubmit();
-		writeResp(methodName);
+
+		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
+			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_USKIN_AIDE_SUCC_ORDER);
+			writeResp(methodName, LogType.LTYX_USKIN_AIDE_SUCC_ORDER);
+		} else {
+			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_USKIN_AIDE_FAIL);
+			writeResp(methodName, LogType.LTYX_USKIN_AIDE_FAIL);
+		}
 
 		return null;
 

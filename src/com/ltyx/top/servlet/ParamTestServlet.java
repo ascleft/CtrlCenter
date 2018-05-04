@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.zc.support.doman.ZCBaseServlet;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.Log;
+import com.zc.support.service.LogType;
 
 public class ParamTestServlet extends ZCBaseServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,7 +24,7 @@ public class ParamTestServlet extends ZCBaseServlet {
 
 		Log.i("doExeRequest start");
 
-		ZCReqIntroGetter.showParams("Servlet测试", request);
+		ZCReqIntroGetter.showParams("Servlet测试", request, LogType.NORMAL);
 
 		ERRCODE = "0";
 		ERRDESC = "succ";

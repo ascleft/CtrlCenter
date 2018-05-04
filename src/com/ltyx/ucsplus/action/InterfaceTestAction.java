@@ -5,6 +5,7 @@ import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqProperty;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.link.ZCReqIntroGetter;
+import com.zc.support.service.LogType;
 
 public class InterfaceTestAction extends ZCBaseActionSupport {
 
@@ -21,13 +22,13 @@ public class InterfaceTestAction extends ZCBaseActionSupport {
 	public String test() {
 		init(true);
 
-		ZCReqIntroGetter.showParams("接口连通性测试 输入参数", request);
+		ZCReqIntroGetter.showParams("接口连通性测试 输入参数", request, LogType.NORMAL);
 
 		if (!checkURL()) {
 			ERRCODE = "0";
 			ERRDESC = "succ";
 			data = "当前URL不合法，请检查。";
-			writeResp("接口连通性测试");
+			writeResp("接口连通性测试", LogType.NORMAL);
 			return null;
 		}
 		String httpResp = getResp();
@@ -35,7 +36,7 @@ public class InterfaceTestAction extends ZCBaseActionSupport {
 			ERRCODE = "0";
 			ERRDESC = "succ";
 			data = "当前请求无返回值。";
-			writeResp("接口连通性测试");
+			writeResp("接口连通性测试", LogType.NORMAL);
 			return null;
 		}
 
@@ -43,7 +44,7 @@ public class InterfaceTestAction extends ZCBaseActionSupport {
 		ERRDESC = "succ";
 		data = httpResp;
 
-		writeResp("接口连通性测试");
+		writeResp("接口连通性测试", LogType.NORMAL);
 
 		return null;
 

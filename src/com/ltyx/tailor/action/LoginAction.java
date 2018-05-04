@@ -7,6 +7,7 @@ import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
+import com.zc.support.service.LogType;
 
 public class LoginAction extends ZCBaseActionSupport {
 
@@ -49,7 +50,7 @@ public class LoginAction extends ZCBaseActionSupport {
 			ERRDESC = "fail";
 			data = "弱鸡，少特么调戏接口";
 
-			writeResp("登录接口 resp to Web");
+			writeResp("登录接口 resp to Web", LogType.NORMAL);
 
 			return null;
 
@@ -61,7 +62,7 @@ public class LoginAction extends ZCBaseActionSupport {
 			ERRDESC = "fail";
 			data = "请输入完整的用户名和密码";
 
-			writeResp("登录接口 resp to Web");
+			writeResp("登录接口 resp to Web", LogType.NORMAL);
 
 			return null;
 
@@ -112,7 +113,7 @@ public class LoginAction extends ZCBaseActionSupport {
 
 			}
 
-			writeResp("登录接口 resp to Web");
+			writeResp("登录接口 resp to Web", LogType.NORMAL);
 
 			return null;
 		}

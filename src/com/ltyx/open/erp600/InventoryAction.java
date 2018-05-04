@@ -2,6 +2,7 @@ package com.ltyx.open.erp600;
 
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
+import com.zc.support.service.LogType;
 
 public class InventoryAction extends ZCBaseActionSupport {
 
@@ -20,12 +21,12 @@ public class InventoryAction extends ZCBaseActionSupport {
 
 		String methodName = "ERP600即时库存查询";
 
-		ZCReqIntroGetter.showParams(methodName, request);
+		ZCReqIntroGetter.showParams(methodName, request, LogType.SearchUnity);
 
 		if (doGetInventory()) {
 		}
 
-		writeResp(methodName);
+		writeResp(methodName, LogType.SearchUnity);
 
 		return null;
 

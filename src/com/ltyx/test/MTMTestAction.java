@@ -4,6 +4,7 @@ import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqProperty;
 import com.zc.support.link.ZCHttpReqSender;
+import com.zc.support.service.LogType;
 
 public class MTMTestAction extends ZCBaseActionSupport {
 
@@ -41,7 +42,7 @@ public class MTMTestAction extends ZCBaseActionSupport {
 		data += "----->";
 		data += "服务端响应长度" + resp.length();
 
-		writeResp("MTM 测试");
+		writeResp("MTM 测试", LogType.NORMAL);
 
 		return null;
 	}

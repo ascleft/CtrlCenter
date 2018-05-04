@@ -115,7 +115,7 @@
 
 								for(var j = 0; j < resp.data[i].list.length; j++) {
 
-									//resp.data[i].list = jsonSort(resp.data[i].list, sortKeyWord, false)
+									resp.data[i].list = jsonSort(resp.data[i].list, sortKeyWord, false);
 
 									String_html += "<tr>";
 									String_html += "<td>";
@@ -126,12 +126,18 @@
 												String_html += "该面料无USKIN编码";
 											} else {
 												String_html += resp.data[i].list[j].UskinCode;
+												String_html += "(客供仓库)";
 											}
 										} else {
 											String_html += "该面料无USKIN编码";
 										}
 										String_html += "</a>";
-										
+
+									} else if("MLCK037" == resp.data[i].list[j].Warehouse) {
+										String_html += "<a>";
+										String_html += resp.data[i].list[j].UskinCode;
+										String_html += "(报喜鸟仓库)";
+										String_html += "</a>";
 									} else {
 										String_html += "<a>";
 										String_html += resp.data[i].list[j].UskinCode;
@@ -306,25 +312,30 @@
 											<option value="LT">鲁泰物料编码</option>
 										</select><label>编码类型指定（仅作用于现货科）</label>
 									</div>
-									<div class="col s6 m4 l3 teal-text input-field" style="display: none">
+									<div class="col s6 m4 l3 teal-text input-field">
 										<select name="Department">
 											<option value="All">联合查询</option>
 											<option value="ERP600">现货科</option>
 											<option value="K3">制衣ERP</option>
 										</select><label>数据源</label>
 									</div>
-									<div class="col s6 m4 l3 teal-text input-field " style="display: none">
+									<div class="col s6 m4 l3 teal-text input-field ">
 										<select name="Fuzzy">
 											<option value="Y">模糊查询</option>
 											<option value="N">精确查询</option>
 										</select><label>查询模式（仅支持制衣ERP）</label>
 									</div>
-									<div class="col s6 m4 l3 teal-text input-field" style="display: none">
+									<div class="col s6 m4 l3 teal-text input-field">
 										<select name="Warehouse">
 											<option value="LT">鲁泰仓库</option>
 											<option value="ZN">智能制造</option>
 											<option value="KG">客供仓库</option>
 										</select><label>仓库（仅支持制衣ERP）</label>
+									</div>
+
+									<div style="display: none;">
+										<input type="text" class="validate" name="operator_id" value="<%=ec_user_id%>"><label>操作人ID</label>
+										<input type="text" class="validate" name="operator_name" value="<%=ec_user_name%>"><label>操作人名称</label>
 									</div>
 
 									<div class="col s12 m12 l3 white-text center ">

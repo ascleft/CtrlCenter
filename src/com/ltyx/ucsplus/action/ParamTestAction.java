@@ -6,6 +6,7 @@ import net.sf.json.JSONObject;
 
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
+import com.zc.support.service.LogType;
 
 public class ParamTestAction extends ZCBaseActionSupport {
 
@@ -27,7 +28,7 @@ public class ParamTestAction extends ZCBaseActionSupport {
 		JSONObject reqBody = new JSONObject();
 
 		Map<String, String> headersMap = ZCReqIntroGetter.showHeaders("参数测试接口", request);
-		Map<String, String> paramsMap = ZCReqIntroGetter.showParams("参数测试接口", request);
+		Map<String, String> paramsMap = ZCReqIntroGetter.showParams("参数测试接口", request, LogType.NORMAL);
 
 		for (Map.Entry<String, String> entry : headersMap.entrySet()) {
 			reqHeader.put(entry.getKey(), entry.getValue());

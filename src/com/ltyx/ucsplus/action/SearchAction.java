@@ -7,6 +7,7 @@ import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
+import com.zc.support.service.LogType;
 
 public class SearchAction extends ZCBaseActionSupport {
 
@@ -46,7 +47,7 @@ public class SearchAction extends ZCBaseActionSupport {
 			ERRDESC = "fail";
 			data = "请不要攻击接口";
 
-			writeResp("即时库存接口 resp to Web");
+			writeResp("即时库存接口 resp to Web", LogType.NORMAL);
 
 			return null;
 
@@ -58,7 +59,7 @@ public class SearchAction extends ZCBaseActionSupport {
 				ERRDESC = "fail";
 				data = "请输入面料编号";
 
-				writeResp("即时库存接口 resp to Web");
+				writeResp("即时库存接口 resp to Web", LogType.NORMAL);
 
 				return null;
 
@@ -74,7 +75,7 @@ public class SearchAction extends ZCBaseActionSupport {
 					ERRDESC = "fail";
 					data = "当前身份无权查询该面料";
 
-					writeResp("即时库存接口 resp to Web");
+					writeResp("即时库存接口 resp to Web", LogType.NORMAL);
 
 					return null;
 				}

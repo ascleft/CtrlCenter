@@ -5,6 +5,7 @@ import com.ltyx.sca.actionplugin.MoudleCSCheckUserInfo;
 import com.ltyx.sca.actionplugin.MoudleCheckMeasure;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
+import com.zc.support.service.LogType;
 
 public class YBR_OBO_Action extends ZCBaseActionSupport {
 
@@ -21,15 +22,19 @@ public class YBR_OBO_Action extends ZCBaseActionSupport {
 
 		String methodName = "衣帮人 对外接口 优纤面料 提交";
 
-		ZCReqIntroGetter.showParams(methodName, request);
-
 		price = 0;
 
 		if (doGetPrice()) {
 			doSubmitPBYX();
 		}
 
-		writeResp(methodName);
+		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
+			ZCReqIntroGetter.showParams(methodName, request, LogType.YBR_ORDER_SUCC);
+			writeResp(methodName, LogType.YBR_ORDER_SUCC);
+		} else {
+			ZCReqIntroGetter.showParams(methodName, request, LogType.YBR_ORDER_FAIL);
+			writeResp(methodName, LogType.YBR_ORDER_FAIL);
+		}
 
 		return null;
 
@@ -41,15 +46,19 @@ public class YBR_OBO_Action extends ZCBaseActionSupport {
 
 		String methodName = "衣帮人 对外接口 客供面料 提交";
 
-		ZCReqIntroGetter.showParams(methodName, request);
-
 		price = 0;
 
 		if (doGetPrice()) {
 			doSubmitPBC();
 		}
 
-		writeResp(methodName);
+		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
+			ZCReqIntroGetter.showParams(methodName, request, LogType.YBR_ORDER_SUCC);
+			writeResp(methodName, LogType.YBR_ORDER_SUCC);
+		} else {
+			ZCReqIntroGetter.showParams(methodName, request, LogType.YBR_ORDER_FAIL);
+			writeResp(methodName, LogType.YBR_ORDER_FAIL);
+		}
 
 		return null;
 

@@ -8,6 +8,7 @@ import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.Log;
+import com.zc.support.service.LogType;
 import com.zc.support.service.NumberHelper;
 
 public class LoginAction extends ZCBaseActionSupport {
@@ -39,11 +40,15 @@ public class LoginAction extends ZCBaseActionSupport {
 
 		String methodName = "SCA 登录";
 
-		ZCReqIntroGetter.showParams(methodName, request);
-
 		doLogin();
 
-		writeResp(methodName);
+		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
+			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_CSA_LOGIN);
+			writeResp(methodName, LogType.LTYX_CSA_LOGIN);
+		} else {
+			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_CSA_LOGIN);
+			writeResp(methodName, LogType.LTYX_CSA_LOGIN);
+		}
 
 		return null;
 
@@ -61,7 +66,7 @@ public class LoginAction extends ZCBaseActionSupport {
 
 		doLogout();
 
-		logProgress(methodName);
+		logProgress(methodName, LogType.LTYX_CSA_LOGIN);
 
 		return "succ";
 	}

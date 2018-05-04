@@ -8,13 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import net.sf.json.JSONObject;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.zc.support.link.ZCReqParamGetter;
-import com.zc.support.service.Log;
+import com.zc.support.service.LogSyncSafe;
+import com.zc.support.service.StringHelper;
 import com.zc.support.service.TimeHelper;
+
+import net.sf.json.JSONObject;
 
 public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParamGetter {
 
@@ -67,37 +68,53 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 	}
 
 	public void addProgressSucc(String log) {
+		log = StringHelper.fillRight(log, 18, "-");
 		progressLog.add(log + "--->" + "成功");
 	}
 
 	public void addProgressFail(String log) {
+		log = StringHelper.fillRight(log, 18, "-");
 		progressLog.add(log + "--->" + "失败");
 	}
 
-	public void logProgress(String title) {
+	public void logProgress(String title, String logType) {
 		if (progressLog.size() > 0) {
-			System.out.println(TimeHelper.getTimeHMSS());
-			Log.Pro.start();
-			Log.Pro.whiteLine(title);
-			Log.Pro.whiteCut();
+			LogSyncSafe.Pro log = new LogSyncSafe.Pro();
+			log.addStart(true);
+			log.addMsgLine(title);
+			log.addCut();
 			for (String logNow : progressLog) {
-				Log.Pro.whiteLine(logNow);
+				log.addMsgLine(logNow);
 			}
-			Log.Pro.finish();
+			log.addfinish();
+			log.flush(logType);
 		}
 	}
 
-	public void logActionResponse(String title) {
-		System.out.println(TimeHelper.getTimeHMSS());
-		Log.Pro.start();
-		Log.Pro.whiteLine(title);
-		Log.Pro.whiteCut();
-		Log.Pro.whiteLine("结束");
-		Log.Pro.whiteCut();
-		Log.Pro.whiteLine(result.toString());
-		Log.Pro.whiteCut();
-		timer.showTimerPartable(title);
-		Log.Pro.finish();
+	public void logActionResponse(String title, String logType) {
+		// System.out.println(TimeHelper.getTimeHMSS());
+		// Log.Pro.start();
+		// Log.Pro.whiteLine(title);
+		// Log.Pro.whiteCut();
+		// Log.Pro.whiteLine("结束");
+		// Log.Pro.whiteCut();
+		// Log.Pro.whiteLine(result.toString());
+		// Log.Pro.whiteCut();
+		// timer.showTimerPartable(title);
+		// Log.Pro.finish();
+
+		LogSyncSafe.Pro log = new LogSyncSafe.Pro();
+		log.addStart(true);
+		log.addMsgLine(title);
+		log.addCut();
+		log.addMsgLine("结束");
+		log.addCut();
+		log.addMsgLine(result.toString());
+		log.addCut();
+		log.addMsgLines(timer.getTimerPartableList());
+		log.addfinish();
+		log.flush(logType);
+
 	}
 
 	/**
@@ -106,10 +123,10 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 	 * 支持打印log
 	 * 
 	 */
-	public void writeResp(String tab) {
-		logProgress(tab);
+	public void writeResp(String tab, String logType) {
+		logProgress(tab, logType);
 		writeResp();
-		logActionResponse(tab);
+		logActionResponse(tab, logType);
 	}
 
 	/**

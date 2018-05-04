@@ -7,9 +7,8 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
 
-import com.zc.support.service.Log;
-import com.zc.support.service.StringHelper;
-import com.zc.support.service.TextLogHelper;
+import com.zc.support.service.LogSyncSafe;
+import com.zc.support.service.LogType;
 import com.zc.support.service.TimeHelper;
 
 public class ZCHttpReqSender {
@@ -23,19 +22,28 @@ public class ZCHttpReqSender {
 	 * @return URL 所代表远程资源的响应结果
 	 */
 	public static String sendGet(String url, ZCHttpReqParam param) {
+		return sendGet(url, param, LogType.NORMAL);
+	}
+
+	public static String sendGet(String url, ZCHttpReqParam param, String logType) {
 		ZCHttpReqProperty property = new ZCHttpReqProperty();
 		property.importBase(ZCHttpReqProperty.BaseProperty.TYPE_1);
 		property.importUserAgent(ZCHttpReqProperty.Terminal.PC);
-
-		return sendGet(url, param, property);
+		return sendGet(url, param, property, logType);
 	}
 
 	public static String sendGet(String url, ZCHttpReqParam param, ZCHttpReqProperty property) {
+		return sendGet(url, param, property, LogType.NORMAL);
+	}
+
+	public static String sendGet(String url, ZCHttpReqParam param, ZCHttpReqProperty property, String logType) {
 
 		TimeHelper.Timer timer = new TimeHelper.Timer();
 
-		System.out.println(TimeHelper.getTimeHMSS());
-		TextLogHelper.white(TimeHelper.getTimeHMSS());
+		LogSyncSafe.Pro log = new LogSyncSafe.Pro();
+		log.addStart(true);
+		log.addMsgLine("GET通讯");
+		log.addCut();
 
 		String result = "";
 		BufferedReader in = null;
@@ -58,7 +66,9 @@ public class ZCHttpReqSender {
 			}
 		} catch (Exception e) {
 			result = "";
-			Log.Nano.TagByLine("发送 GET请求出现异常！", e);
+			log.addMsgLine("发送GET请求出现异常！");
+			log.addMsgLine(e);
+			log.addCut();
 			e.printStackTrace();
 		}
 		// 使用finally块来关闭输入流
@@ -72,10 +82,19 @@ public class ZCHttpReqSender {
 			}
 		}
 
-		timer.stop("GET通讯 " + url);
+		log.addMsgLine("URL");
+		log.addMsgLine(url);
+		log.addCut();
+		log.addMsgLine("Param");
+		log.addMsgLine(param.getParam());
+		log.addCut();
+		log.addMsgLine("Responce");
+		log.addMsgLine(result);
+		log.addfinish();
+		log.addMsgLineSystemStyle(url + "?" + param.getParam());
+		log.flush(logType);
 
-		System.out.println(StringHelper.fillRight("URL ", 6, " ") + url + "?" + param.getParam());
-		TextLogHelper.white(StringHelper.fillRight("URL ", 6, " ") + url + "?" + param.getParam());
+		timer.stop("GET通讯:" + url, logType);
 
 		return result;
 	}
@@ -90,19 +109,28 @@ public class ZCHttpReqSender {
 	 * @return 所代表远程资源的响应结果
 	 */
 	public static String sendPost(String url, ZCHttpReqParam param) {
+		return sendPost(url, param, LogType.NORMAL);
+	}
+
+	public static String sendPost(String url, ZCHttpReqParam param, String logType) {
 		ZCHttpReqProperty property = new ZCHttpReqProperty();
 		property.importBase(ZCHttpReqProperty.BaseProperty.TYPE_1);
 		property.importUserAgent(ZCHttpReqProperty.Terminal.PC);
-
-		return sendPost(url, param, property);
+		return sendPost(url, param, property, logType);
 	}
 
 	public static String sendPost(String url, ZCHttpReqParam param, ZCHttpReqProperty property) {
+		return sendPost(url, param, property, LogType.NORMAL);
+	}
+
+	public static String sendPost(String url, ZCHttpReqParam param, ZCHttpReqProperty property, String logType) {
 
 		TimeHelper.Timer timer = new TimeHelper.Timer();
 
-		System.out.println(TimeHelper.getTimeHMSS());
-		TextLogHelper.white(TimeHelper.getTimeHMSS());
+		LogSyncSafe.Pro log = new LogSyncSafe.Pro();
+		log.addStart(true);
+		log.addMsgLine("POST通讯");
+		log.addCut();
 
 		PrintWriter out = null;
 		BufferedReader in = null;
@@ -130,7 +158,11 @@ public class ZCHttpReqSender {
 			}
 		} catch (Exception e) {
 			result = "";
-			Log.Nano.TagByLine("发送 POST请求出现异常！", e);
+
+			log.addMsgLine("发送POST请求出现异常！");
+			log.addMsgLine(e);
+			log.addCut();
+
 			e.printStackTrace();
 		}
 		// 使用finally块来关闭输出流、输入流
@@ -147,12 +179,18 @@ public class ZCHttpReqSender {
 			}
 		}
 
-		timer.stop("POST通讯 " + url);
+		log.addMsgLine("URL");
+		log.addMsgLine(url);
+		log.addCut();
+		log.addMsgLine("BODY Param");
+		log.addMsgLine(param.getParam());
+		log.addCut();
+		log.addMsgLine("Responce");
+		log.addMsgLine(result);
+		log.addfinish();
+		log.flush(logType);
 
-		System.out.println(StringHelper.fillRight("URL ", 6, " ") + url);
-		TextLogHelper.white(StringHelper.fillRight("URL ", 6, " ") + url);
-		System.out.println(StringHelper.fillRight("BODY", 6, " ") + param.getParam());
-		TextLogHelper.white(StringHelper.fillRight("BODY", 6, " ") + param.getParam());
+		timer.stop("POST通讯:" + url, logType);
 
 		return result;
 
