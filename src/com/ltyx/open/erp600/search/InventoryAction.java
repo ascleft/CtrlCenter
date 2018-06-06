@@ -1,4 +1,4 @@
-package com.ltyx.open.erp600;
+package com.ltyx.open.erp600.search;
 
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;

@@ -13,7 +13,6 @@
 	String menulist=(String) session.getAttribute("menulist");
 %>
 <html>
-
 	<!--
 		
 		作者：ascleft@163.com
@@ -21,7 +20,7 @@
 		描述：
 		购物车添加工具 SCA 2.0
 		
-		定制顾问 即时库存查询
+		定制店 即时库存查询
 		
 	-->
 
@@ -70,14 +69,14 @@
 				$('#nav_menu').sideNav('show');
 			}
 
-			var url_search = "/CtrlCenter/UcsPlus/Search.action";
+			var url_search = "/CtrlCenter/LTYX/OpenAPI/UnityInventory.action";
 			var ec_user_rank = parseInt("<%=ec_user_rank%>");
 
 			$().ready(function() {
 				state_defult();
 			})
 
-			function submitfilterform() {
+			function submitfilterform(sortKeyWord) {
 
 				state_loading();
 
@@ -100,45 +99,90 @@
 							String_html += "<table class=\"striped\">";
 							String_html += "<thead>";
 							String_html += "<tr>";
-							String_html += "<th>USKIN编码 </th>";
-							if(ec_user_rank < 10) {
-								String_html += "<th class=\"hide-on-small-only\">物料编码 </th>";
+							String_html += "<th onclick=\"submitfilterform(\'UskinCode\')\">USKIN编码 </th>";
+							if(0 <= ec_user_rank && ec_user_rank < 10) {
+								String_html += "<th class=\"hide-on-small-only\">部门 </th>";
+								String_html += "<th class=\"hide-on-small-only\" onclick=\"submitfilterform(\'LuthaiCode\')\">物料编码</th>";
+							} else if(10 <= ec_user_rank && ec_user_rank < 20) {
+								String_html += "<th class=\"hide-on-small-only\">部门 </th>";
+								String_html += "<th class=\"hide-on-small-only\">物料编码(当前无权查看)</th>";
+							} else {
+								String_html += "<th class=\"hide-on-small-only\">部门 (当前无权查看)</th>";
+								String_html += "<th class=\"hide-on-small-only\">物料编码(当前无权查看)</th>";
 							}
-							String_html += "<th>库存 </th>";
-							String_html += "<th>可用库存 </th>";
+							String_html += "<th onclick=\"submitfilterform(\'All\')\">库存 </th>";
+							String_html += "<th onclick=\"submitfilterform(\'Available\')\">可用库存 </th>";
 							String_html += "</tr>";
 							String_html += "</thead>";
 							String_html += "<tbody>";
 
 							for(var i = 0; i < resp.data.length; i++) {
-								String_html += "<tr>";
-								String_html += "<td>";
-								if("MLCK040" == resp.data[i].FSTOCKNUMBER) {
-									String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/AidePBYX.action?code=";
-									String_html += resp.data[i].FMATERIALNUMBER;
-									String_html += "\">";
-									String_html += resp.data[i].FMATERIALNUMBER;
-									String_html += "</a>";
-								} else {
-									String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/AidePBYX.action?code=";
-									String_html += resp.data[i].FUSKIN;
-									String_html += "\">";
-									String_html += resp.data[i].FUSKIN;
-									String_html += "</a>";
-								}
-								String_html += "</td>";
-								if(ec_user_rank < 10) {
-									String_html += "<td class=\"hide-on-small-only\">";
-									String_html += resp.data[i].FMATERIALNUMBER;
+
+								for(var j = 0; j < resp.data[i].list.length; j++) {
+
+									resp.data[i].list = jsonSort(resp.data[i].list, sortKeyWord, false);
+
+									String_html += "<tr>";
+									String_html += "<td>";
+									if("MLCK040" == resp.data[i].list[j].Warehouse) {
+										String_html += "<a>";
+										if("" != resp.data[i].list[j].UskinCode) {
+											if("客供" == resp.data[i].list[j].UskinCode) {
+												String_html += "该面料无USKIN编码";
+											} else {
+												String_html += resp.data[i].list[j].UskinCode;
+												String_html += "(客供仓库)";
+											}
+										} else {
+											String_html += "该面料无USKIN编码";
+										}
+										String_html += "</a>";
+									} else if("MLCK037" == resp.data[i].list[j].Warehouse) {
+										String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/AidePBYX.action?code=";
+										String_html += resp.data[i].list[j].UskinCode;
+										String_html += "\">";
+										String_html += resp.data[i].list[j].UskinCode;
+										String_html += "(报喜鸟仓库)";
+										String_html += "</a>";
+									} else {
+										String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/AidePBYX.action?code=";
+										String_html += resp.data[i].list[j].UskinCode;
+										String_html += "\">";
+										String_html += resp.data[i].list[j].UskinCode;
+										String_html += "</a>";
+									}
 									String_html += "</td>";
+									if(0 <= ec_user_rank && ec_user_rank < 10) {
+										String_html += "<td class=\"hide-on-small-only\">";
+										String_html += resp.data[i].list[j].Department;
+										String_html += "</td>";
+										String_html += "<td class=\"hide-on-small-only\">";
+										String_html += resp.data[i].list[j].LuthaiCode;
+										String_html += "</td>";
+									} else if(10 <= ec_user_rank && ec_user_rank < 20) {
+										String_html += "<td class=\"hide-on-small-only\">";
+										String_html += resp.data[i].list[j].Department;
+										String_html += "</td>";
+										String_html += "<td class=\"hide-on-small-only\">";
+										String_html += "*";
+										String_html += "</td>";
+									} else {
+										String_html += "<td class=\"hide-on-small-only\">";
+										String_html += "*";
+										String_html += "</td>";
+										String_html += "<td class=\"hide-on-small-only\">";
+										String_html += "*";
+										String_html += "</td>";
+									}
+									String_html += "<td>";
+									String_html += resp.data[i].list[j].All;
+									String_html += "</td>";
+									String_html += "<td>";
+									String_html += resp.data[i].list[j].Available;
+									String_html += "</td>";
+									String_html += "</tr>";
 								}
-								String_html += "<td>";
-								String_html += resp.data[i].FBASEQTY;
-								String_html += "</td>";
-								String_html += "<td>";
-								String_html += resp.data[i].FBASEAVBQTY;
-								String_html += "</td>";
-								String_html += "</tr>";
+
 							}
 
 							String_html += "</tbody>";
@@ -271,21 +315,42 @@
 										<%=ec_user_rank%>
 										</input>
 									</div>
-									<div class="col s12 m6 l6 red-text">
+									<div class="col s12 m8 l8 red-text">
 										<div class="input-field">
-											<input type="text" class="validate" name="name" value="MC01-01">
+											<input type="text" class="validate" name="Code" value="MC01-01">
 										</div>
 									</div>
-									<div class="col s7 m3 l3 teal-text">
-										<select class="input-field" name="storeroom">
-											<option value="0">鲁泰仓库</option>
-											<option value="1">智能制造</option>
-											<option value="2">客供仓库</option>
-										</select>
+
+									<div class="col s6 m4 l4 teal-text input-field">
+										<select name="CodeType">
+											<option value="YX">USKIN编码</option>
+											<option value="LT">鲁泰物料编码</option>
+										</select><label>编码类型指定（仅作用于现货科）</label>
 									</div>
-									<div class="col s5 m3 l3  white-text center">
-										<div class="input-field">
-											<a class=" btn" onclick="submitfilterform()">确定</a>
+									<div class="col s6 m4 l3 teal-text input-field">
+										<select name="Department">
+											<option value="All">联合查询</option>
+											<option value="ERP600">现货科</option>
+											<option value="K3">制衣ERP</option>
+										</select><label>数据源</label>
+									</div>
+									<div class="col s6 m4 l3 teal-text input-field ">
+										<select name="Fuzzy">
+											<option value="Y">模糊查询</option>
+											<option value="N">精确查询</option>
+										</select><label>查询模式（仅支持制衣ERP）</label>
+									</div>
+									<div class="col s6 m4 l3 teal-text input-field">
+										<select name="Warehouse">
+											<option value="LT">鲁泰仓库</option>
+											<option value="ZN">智能制造</option>
+											<option value="KG">客供仓库</option>
+										</select><label>仓库（仅支持制衣ERP）</label>
+									</div>
+
+									<div class="col s12 m12 l3 white-text center ">
+										<div class="input-field ">
+											<a class="btn" onclick="submitfilterform('UskinCode')">确定</a>
 										</div>
 									</div>
 								</div>
@@ -296,12 +361,12 @@
 			</div>
 		</main>
 
-		<footer class="page-footer teal">
-			<div class="container">
-				<div class="row" style="display: none; ">
-					<h5 class="center-align">					
-						<img class="hoverable" src="<%=QRurl%>"/>
-					</h5>
+		<footer class="page-footer teal ">
+			<div class="container ">
+				<div class="row " style="display: none; ">
+					<h5 class="center-align ">					
+						<img class="hoverable " src="<%=QRurl%>"/>
+											</h5>
 				</div>
 			</div>
 			<div class="footer-copyright">

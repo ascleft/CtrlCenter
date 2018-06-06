@@ -24,5 +24,7 @@ public class LogType {
 	public final static String LTYX_USKIN_USER_ALL = "LTYX_USKIN_USER_ALL";
 	public final static String LTYX_USKIN_USER_SUCC = "LTYX_USKIN_USER_SUCC";
 	public final static String LTYX_USKIN_USER_FAIL = "LTYX_USKIN_USER_FAIL";
+	
+	public final static String ERP600_ORDER_SUBMIT = "ERP600_ORDER_SUBMIT";
 
 }

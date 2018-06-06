@@ -100,6 +100,9 @@
 			//提交到购物车
 			function addShoppingCart() {
 				state_upload_ing("正在提交订单信息，请稍候");
+				
+				checkLoginState();
+				
 				$.ajax({
 					cache: true,
 					type: "POST",
@@ -168,13 +171,21 @@
 				});
 			}
 
+			function stopAddShoppingCart() {
+				ajax_addShopingCart.abort();
+			}
+
 			function state_upload_ing(displaywords) {
 				$("#modal_state").modal('open');
 				$("#modal_state_title").html(displaywords);
 				$("#modal_state_progress_bar").show();
 				$("#btn_finish").hide();
 				$("#btn_cancel").hide();
-				$("#btn_download").hide();
+				$("#btn_stop").hide();
+
+				setTimeout(function() {
+					$("#btn_stop").show()
+				}, 20000);
 			}
 
 			function state_upload_finish(displaywords) {
@@ -182,7 +193,7 @@
 				$("#modal_state_progress_bar").hide();
 				$("#btn_finish").show();
 				$("#btn_cancel").hide();
-				$("#btn_download").hide();
+				$("#btn_stop").hide();
 			}
 
 			function state_upload_error(displaywords) {
@@ -190,7 +201,7 @@
 				$("#modal_state_progress_bar").hide();
 				$("#btn_finish").hide();
 				$("#btn_cancel").show();
-				$("#btn_download").hide();
+				$("#btn_stop").hide();
 			}
 
 			function state_loading(displaywords) {
@@ -1079,7 +1090,7 @@
 				<div class="modal-footer">
 					<a id="btn_finish" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">确定</a>
 					<a id="btn_cancel" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">取消</a>
-					<a id="btn_download" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">下载</a>
+					<a id="btn_stop"  onclick="stopAddShoppingCart()"  class="modal-action modal-close waves-effect waves-green btn-flat">停止</a>
 				</div>
 			</div>
 

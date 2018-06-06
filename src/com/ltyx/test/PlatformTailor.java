@@ -2,7 +2,6 @@ package com.ltyx.test;
 
 import java.util.Random;
 
-import com.ltyx.tailor.actionplugin.MoudleRTERP;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.service.LogType;
 

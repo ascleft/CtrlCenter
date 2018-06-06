@@ -1,7 +1,26 @@
 var url_logout = "/CtrlCenter/LTYX/SCA/Logout.action";
+var url_checklogin = "/CtrlCenter/LTYX/SCA/CheckLogin.action";
 
 function logout() {
 	location.href = url_logout;
+}
+
+function checkLoginState() {
+	$.ajax({
+		cache: true,
+		type: "POST",
+		url: url_checklogin,
+		data: "",
+		async: true,
+		error: function(request) {
+		},
+		success: function(data) {
+			var resp = JSON.parse(data);
+			if("1" == resp.ERRCODE && "fail" == resp.ERRDESC) {
+				window.open("/CtrlCenter/LTYX/SCA/ReLoginPage.action");
+			}
+		}
+	});
 }
 
 function testVar() {

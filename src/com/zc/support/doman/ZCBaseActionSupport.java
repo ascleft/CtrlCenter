@@ -150,6 +150,41 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 		}
 	}
 
+	/**
+	 * 向链接中写入返回数据
+	 * 
+	 * 支持打印log
+	 * 
+	 */
+	public void writeResp(String raw, String tab, String logType) {
+		logProgress(tab, logType);
+		writeResp();
+		logActionResponse(tab, logType);
+	}
+
+	/**
+	 * 向链接中写入返回数据
+	 * 
+	 */
+	public void writeRaw(String raw) {
+		try {
+			PrintWriter out;
+			out = response.getWriter();
+			out.print(raw);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void writeRaw(String raw, String tab, String logType) {
+		logProgress(tab, logType);
+		writeRaw(raw);
+		logActionResponse(tab, logType);
+	}
+
 	@Override
 	public int getReqParamInt(String key) {
 		int return_value = ZCReqParamGetter.getParamInt(request, key, false);

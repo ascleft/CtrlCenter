@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<nav class="top-nav teal">
 			<div class="container">
 				<div class="nav-wrapper">
-					<a class="page-title">找不到~找不到~~找不到~~~</a>
+					<a class="page-title">404</a>
 				</div>
 			</div>
 		</nav>
@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<span class="card-title "></span>
 							</div>
 							<div class="card-content">
-								<h5>自己别胡搞，服务器已经对非法请求做过处理了</h5>
+								<h5>别自己胡搞，链接地址必须要合法，服务器已经对非法请求做过处理了。</h5>
 							</div>
 						</div>
 					</div>

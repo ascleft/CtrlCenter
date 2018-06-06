@@ -1,4 +1,4 @@
-package com.ltyx.open.erp600;
+package com.ltyx.open.erp600.search;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -30,28 +30,28 @@ public class WordAction extends ZCBaseActionSupport {
 		int i = random.nextInt(8);
 		switch (i) {
 			case 0:
-				dataTemp = "老子暗恋你很久了";
+				dataTemp = "全时";
 				break;
 			case 1:
-				dataTemp = "老子忍你很久了";
+				dataTemp = "外卖";
 				break;
 			case 2:
-				dataTemp = "对不起你是个好人";
+				dataTemp = "泡泡米";
 				break;
 			case 3:
-				dataTemp = "今天拉肚子我要请假";
+				dataTemp = "田老师";
 				break;
 			case 4:
-				dataTemp = "今天发烧我要请假";
+				dataTemp = "煲仔饭";
 				break;
 			case 5:
-				dataTemp = "叔叔，我不约";
+				dataTemp = "嘉和一品";
 				break;
 			case 6:
-				dataTemp = "阿姨，我不约";
+				dataTemp = "麻辣烫";
 				break;
 			default:
-				dataTemp = "抬起屁股吧少年，让我们决一死战";
+				dataTemp = "全时";
 				break;
 		}
 

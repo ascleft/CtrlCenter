@@ -71,7 +71,7 @@ public class MoudleYBR_OBO_SubmitEC_PBC extends ZCBaseActionSupportPlugin {
 		param.addParam("order_processing_cost", getReqParamString("order_processing_cost"));
 		param.addParam("order_production_count", getReqParamString("order_production_count"));
 		param.addParam("order_production_count_real", getReqParamString("order_production_count_real"));
-		param.addParam("prices_desc", "衣帮人订单（下单工具接入）：" + getReqParamString("prices_desc"));
+		param.addParam("prices_desc", "衣邦人订单（下单工具接入）：" + getReqParamString("prices_desc"));
 		param.addParam("prices_now", "" + this.price);
 		param.addParam("prices_system", "" + this.price);
 		param.addParam("qiantiao", getReqParamString("qiantiao"));
@@ -118,6 +118,12 @@ public class MoudleYBR_OBO_SubmitEC_PBC extends ZCBaseActionSupportPlugin {
 		param.addParam("ybr_addr_province", getReqParamString("ybr_addr_province"));
 		param.addParam("ybr_addr_prefecture", getReqParamString("ybr_addr_prefecture"));
 		param.addParam("ybr_addr_county", getReqParamString("ybr_addr_county"));
+
+		//20180601新增
+		param.addParam("custom_id", getReqParamString("custom_id")); // 客户编号
+		param.addParam("tag_price", getReqParamString("tag_price")); // 吊牌价
+		param.addParam("document_pull_date", getReqParamString("document_pull_date")); // 合同发货日期
+		param.addParam("financial_auth_time", getReqParamString("financial_auth_time")); // 财审通过时间
 
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_add_cart_ybr_pbc.getUrl(), param);
 		Log.Nano.tag("衣帮人 提交 Resp From EC", httpResp);

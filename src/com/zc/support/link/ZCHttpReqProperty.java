@@ -26,7 +26,7 @@ public class ZCHttpReqProperty {
 	/**
 	 * 清空参数信息
 	 * 
-	 * */
+	 */
 	public void wipeProperty() {
 		map = new HashMap<String, String>();
 	}
@@ -69,11 +69,11 @@ public class ZCHttpReqProperty {
 					"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.2924.87 Safari/537.36 LBBROWSER");
 			break;
 		case Android:
-			addProperty("user-agent",//
+			addProperty("user-agent", //
 					"Mozilla/5.0 (Linux; U; Android 7.1.2; zh-CN; 2014811 Build/NJH47F) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/40.0.2214.89 Quark/2.0.4.956 Mobile Safari/537.36");
 			break;
 		case WeChat:
-			addProperty("user-agent",//
+			addProperty("user-agent", //
 					"Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_3 like Mac OS X) AppleWebKit/603.3.8 (KHTML, like Gecko) Mobile/14G60 MicroMessenger/6.5.15 NetType/WIFI Language/zh_CN");
 			break;
 		default:
@@ -93,6 +93,14 @@ public class ZCHttpReqProperty {
 			conn.setRequestProperty(key, value);
 		}
 		return conn;
+	}
+
+	public String toString() {
+		String propertys = "";
+		for (String key : map.keySet()) {
+			propertys += propertys + ":" + map.get(key) + " ";
+		}
+		return propertys;
 	}
 
 }

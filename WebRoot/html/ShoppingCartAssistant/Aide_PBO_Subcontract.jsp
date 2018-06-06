@@ -97,32 +97,38 @@
 			var url_addShoppingCart = "/CtrlCenter/LTYX/SCA/Main/SubmitAideSubcontract.action";
 			var url_getPrice = "/CtrlCenter/LTYX/SCA/Main/GetPriceAideSubcontract.action";
 
+			var ajax_addShopingCart;
+
 			//提交到购物车
 			function addShoppingCart() {
 				state_upload_ing("正在提交订单信息，请稍候");
-				$.ajax({
-					cache: true,
-					type: "POST",
-					url: url_addShoppingCart,
-					data: $('#mianForm').serialize(),
-					async: true,
-					error: function(request) {
-						state_upload_error("无法连接到服务器");
-					},
-					success: function(data) {
-						var resp = JSON.parse(data);
-						if("0" == resp.ERRCODE) {
-							if("succ" == resp.ERRDESC) {
-								state_upload_finish("提交成功");
+
+				checkLoginState();
+
+				ajax_addShopingCart =
+					$.ajax({
+						cache: true,
+						type: "POST",
+						url: url_addShoppingCart,
+						data: $('#mianForm').serialize(),
+						async: true,
+						error: function(request) {
+							state_upload_error("无法连接到服务器");
+						},
+						success: function(data) {
+							var resp = JSON.parse(data);
+							if("0" == resp.ERRCODE) {
+								if("succ" == resp.ERRDESC) {
+									state_upload_finish("提交成功");
+								} else {
+									var desc = "提交失败<br/>智能错误分析：" + resp.data;
+									state_upload_error(desc);
+								}
 							} else {
-								var desc = "提交失败<br/>智能错误分析：" + resp.data;
-								state_upload_error(desc);
+								state_upload_error("EC服务器通讯异常");
 							}
-						} else {
-							state_upload_error("EC服务器通讯异常");
 						}
-					}
-				});
+					});
 			}
 
 			//获取系统报价
@@ -168,13 +174,22 @@
 				});
 			}
 
+			function stopAddShoppingCart() {
+				ajax_addShopingCart.abort();
+			}
+
 			function state_upload_ing(displaywords) {
 				$("#modal_state").modal('open');
 				$("#modal_state_title").html(displaywords);
 				$("#modal_state_progress_bar").show();
 				$("#btn_finish").hide();
 				$("#btn_cancel").hide();
-				$("#btn_download").hide();
+				$("#btn_stop").hide();
+
+				setTimeout(function() {
+					$("#btn_stop").show()
+				}, 20000);
+				
 			}
 
 			function state_upload_finish(displaywords) {
@@ -182,15 +197,16 @@
 				$("#modal_state_progress_bar").hide();
 				$("#btn_finish").show();
 				$("#btn_cancel").hide();
-				$("#btn_download").hide();
+				$("#btn_stop").hide();
 			}
 
 			function state_upload_error(displaywords) {
+				$("#modal_state").modal('open');
 				$("#modal_state_title").html(displaywords);
 				$("#modal_state_progress_bar").hide();
 				$("#btn_finish").hide();
 				$("#btn_cancel").show();
-				$("#btn_download").hide();
+				$("#btn_stop").hide();
 			}
 
 			function state_loading(displaywords) {
@@ -422,7 +438,7 @@
 				<div class="modal-footer">
 					<a id="btn_finish" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">确定</a>
 					<a id="btn_cancel" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">取消</a>
-					<a id="btn_download" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">下载</a>
+					<a id="btn_stop" onclick="stopAddShoppingCart()" class="modal-action modal-close waves-effect waves-green btn-flat">停止</a>
 				</div>
 			</div>
 

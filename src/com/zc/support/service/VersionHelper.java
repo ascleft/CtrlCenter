@@ -11,8 +11,8 @@ public class VersionHelper {
 	private static String VERSION;
 
 	public static ArrayList<String> init() {
-		CORE = "Seed7改07" + "计算核心";
-		NAME = "Seed7" + "数据整合平台";
+		CORE = "Seed8改05" + "计算核心（通讯支持）";
+		NAME = "Seed8" + "数据整合平台";
 		VERSION = TimeHelper.getDateYMD() + " " + "beta";
 
 		infos = new ArrayList<String>();

@@ -160,7 +160,7 @@
 				<div class="row">
 					<h5 class="center-align">				
 						<img class="hoverable"
-						src="http://pan.baidu.com/share/qrcode?w=150&h=150&url=http://61.50.122.58:8029/CtrlCenter/Talk/GetRandomWordPage.action"/>
+						src="http://pan.baidu.com/share/qrcode?w=150&h=150&url=http://111.198.72.177:8029/CtrlCenter/Talk/GetRandomWordPage.action"/>
 					</h5>
 				</div>
 			</div>

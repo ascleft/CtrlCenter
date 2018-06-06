@@ -115,6 +115,18 @@ public class YBR_OBO_Action extends ZCBaseActionSupport {
 		}
 
 		{
+			MoudleYBR_OBO_Check moudle = new MoudleYBR_OBO_Check(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("尺寸校验");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("衣帮人日期校验");
+		}
+
+		{
 			MoudleYBR_OBO_SubmitEC_PBYX moudle = new MoudleYBR_OBO_SubmitEC_PBYX(request);
 			moudle.setPrice(price);
 			if (!moudle.doJobs()) {
@@ -172,6 +184,18 @@ public class YBR_OBO_Action extends ZCBaseActionSupport {
 				return false;
 			}
 			addProgressSucc("尺寸校验");
+		}
+
+		{
+			MoudleYBR_OBO_Check moudle = new MoudleYBR_OBO_Check(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("尺寸校验");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("衣帮人日期校验");
 		}
 
 		{

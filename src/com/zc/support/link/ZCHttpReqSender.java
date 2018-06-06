@@ -3,7 +3,7 @@ package com.zc.support.link;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -132,11 +132,16 @@ public class ZCHttpReqSender {
 		log.addMsgLine("POST通讯");
 		log.addCut();
 
-		PrintWriter out = null;
+		OutputStreamWriter out = null;
 		BufferedReader in = null;
 		String result = "";
 		try {
 			URL realUrl = new URL(url);
+
+			// 代理方式打开和URL之间的连接
+			// Proxy proxy = new Proxy(java.net.Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 8888));
+			// URLConnection conn = (URLConnection)realUrl.openConnection(proxy);
+
 			// 打开和URL之间的连接
 			URLConnection conn = realUrl.openConnection();
 			// 填充Header
@@ -145,9 +150,9 @@ public class ZCHttpReqSender {
 			conn.setDoOutput(true);
 			conn.setDoInput(true);
 			// 获取URLConnection对象对应的输出流
-			out = new PrintWriter(conn.getOutputStream());
+			out = new OutputStreamWriter(conn.getOutputStream(), "UTF-8");
 			// 发送请求参数
-			out.print(param.getParam());
+			out.write(param.getParam());
 			// flush输出流的缓冲
 			out.flush();
 			// 定义BufferedReader输入流来读取URL的响应

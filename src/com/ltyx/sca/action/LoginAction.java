@@ -1,7 +1,5 @@
 package com.ltyx.sca.action;
 
-import net.sf.json.JSONObject;
-
 import com.zc.support.config.ConfigHelperURL;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCHttpReqParam;
@@ -10,6 +8,8 @@ import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.Log;
 import com.zc.support.service.LogType;
 import com.zc.support.service.NumberHelper;
+
+import net.sf.json.JSONObject;
 
 public class LoginAction extends ZCBaseActionSupport {
 
@@ -69,6 +69,13 @@ public class LoginAction extends ZCBaseActionSupport {
 		logProgress(methodName, LogType.LTYX_CSA_LOGIN);
 
 		return "succ";
+	}
+
+	public String checkLogin() {
+		init(true);
+		doCheckLogin();
+		writeResp();
+		return null;
 	}
 
 	private boolean doLogin() {
@@ -158,6 +165,21 @@ public class LoginAction extends ZCBaseActionSupport {
 		session.setAttribute("ec_user_role", null);
 		addProgressSucc("注销完成");
 		return true;
+	}
+
+	private boolean doCheckLogin() {
+		String id = "" + session.getAttribute("ec_user_id");
+		if (id.equals("null")) {
+			ERRCODE = "1";
+			ERRDESC = "fail";
+			data = "登录失效";
+			return false;
+		} else {
+			ERRCODE = "0";
+			ERRDESC = "succ";
+			data = "登录正常";
+			return true;
+		}
 	}
 
 }

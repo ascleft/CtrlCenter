@@ -76,6 +76,9 @@ public class TextLogHelper {
 		case LogType.LTYX_USKIN_USER_FAIL: {
 			LTYX_USKIN_USER_FAIL(line);
 		}
+		case LogType.ERP600_ORDER_SUBMIT: {
+			ERP600_ORDER_SUBMIT(line);
+		}
 			break;
 		default: {
 			Default(line);
@@ -250,6 +253,15 @@ public class TextLogHelper {
 		{
 			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", "USER", "FAIL", TimeHelper.getDateYMD() + ".txt");
 			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", "USER", "FAIL", TimeHelper.getTimeH() + ".txt");
+			FileHelper.writeFile(day_, line);
+			FileHelper.writeFile(hour, line);
+		}
+	}
+
+	private static void ERP600_ORDER_SUBMIT(String line) {
+		{
+			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "ERP600", TimeHelper.getDateYMD() + ".txt");
+			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "ERP600", TimeHelper.getTimeH() + ".txt");
 			FileHelper.writeFile(day_, line);
 			FileHelper.writeFile(hour, line);
 		}

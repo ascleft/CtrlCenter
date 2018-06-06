@@ -16,11 +16,11 @@
 	<!--
 		
 		作者：ascleft@163.com
-		时间：2017-11-20
+		时间：2018-05-25
 		描述：
-		购物车添加工具 SCA 2.0
+		SCA 2.0
 		
-		定制店 即时库存查询
+		客户经理 即时库存联合查询
 		
 	-->
 
@@ -72,138 +72,168 @@
 			var url_search = "/CtrlCenter/LTYX/OpenAPI/UnityInventory.action";
 			var ec_user_rank = parseInt("<%=ec_user_rank%>");
 
+			var ajax_search;
+
 			$().ready(function() {
 				state_defult();
 			})
 
-			function submitfilterform(sortKeyWord) {
+			function searchStart(sortKeyWord) {
 
 				state_loading();
 
-				$.ajax({
-					cache: true,
-					type: "GET",
-					url: url_search,
-					data: $('#filterForm').serialize(),
-					async: true,
-					error: function(request) {
-						state_error("无法连接服务器");
+				ajax_search =
+					$.ajax({
+						cache: true,
+						type: "GET",
+						url: url_search,
+						data: $('#filterForm').serialize(),
+						async: true,
+						error: function(request) {
+							state_error("无法连接服务器");
+						},
+						success: function(data) {
+							var resp = JSON.parse(data);
+							if("0" == resp.ERRCODE && "succ" == resp.ERRDESC) {
+								state_answer();
+								var String_html = "";
+								if(resp.data[0].list.length + resp.data[1].list.length == 0) {
 
-					},
-					success: function(data) {
-						var resp = JSON.parse(data);
-						if("0" == resp.ERRCODE && "succ" == resp.ERRDESC) {
-							state_answer();
-							var String_html = "";
+									String_html += "<div class=\"col s12 m12 l12 red-text\">";
+									String_html += "<h5>鲁泰仓库显示该面料无库存</h2>";
+									String_html += "</div>";
 
-							String_html += "<table class=\"striped\">";
-							String_html += "<thead>";
-							String_html += "<tr>";
-							String_html += "<th onclick=\"submitfilterform(\'UskinCode\')\">USKIN编码 </th>";
-							if(ec_user_rank < 10) {
+								} else {
 
-								String_html += "<th class=\"hide-on-small-only\">部门 </th>";
-								String_html += "<th class=\"hide-on-small-only\" onclick=\"submitfilterform(\'LuthaiCode\')\">物料编码 </th>";
-							}
-							String_html += "<th onclick=\"submitfilterform(\'All\')\">库存 </th>";
-							String_html += "<th onclick=\"submitfilterform(\'Available\')\">可用库存 </th>";
-							String_html += "</tr>";
-							String_html += "</thead>";
-							String_html += "<tbody>";
-
-							for(var i = 0; i < resp.data.length; i++) {
-
-								for(var j = 0; j < resp.data[i].list.length; j++) {
-
-									resp.data[i].list = jsonSort(resp.data[i].list, sortKeyWord, false);
-
+									String_html += "<table class=\"striped\">";
+									String_html += "<thead>";
 									String_html += "<tr>";
-									String_html += "<td>";
-									if("MLCK040" == resp.data[i].list[j].Warehouse) {
-										String_html += "<a>";
-										if("" != resp.data[i].list[j].UskinCode) {
-											if("客供" == resp.data[i].list[j].UskinCode) {
-												String_html += "该面料无USKIN编码";
-											} else {
-												String_html += resp.data[i].list[j].UskinCode;
-												String_html += "(客供仓库)";
-											}
-										} else {
-											String_html += "该面料无USKIN编码";
-										}
-										String_html += "</a>";
-
-										String_html += "<br/>";
-
-										String_html += "<a ";
-										String_html += "style=\"color: lightskyblue;\" ";
-										String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBC.action?code=";
-										String_html += resp.data[i].list[j].LuthaiCode;
-										String_html += "\">";
-										String_html += "男装客供";
-										String_html += "</a>";
-
-										String_html += "<a>";
-										String_html += " ";
-										String_html += "</a>";
-
-										String_html += "<a ";
-										String_html += "style=\"color: lightpink;\" ";
-										String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideWomanPBC.action?code=";
-										String_html += resp.data[i].list[j].LuthaiCode;
-										String_html += "\">";
-										String_html += "女装客供";
-										String_html += "</a>";
-									} else if("MLCK037" == resp.data[i].list[j].Warehouse) {
-										String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action?code=";
-										String_html += resp.data[i].list[j].UskinCode;
-										String_html += "\">";
-										String_html += resp.data[i].list[j].UskinCode;
-										String_html += "(报喜鸟仓库)";
-										String_html += "</a>";
+									String_html += "<th onclick=\"submitfilterform(\'UskinCode\')\">USKIN编码 </th>";
+									if(0 <= ec_user_rank && ec_user_rank < 10) {
+										String_html += "<th class=\"hide-on-small-only\">部门 </th>";
+										String_html += "<th class=\"hide-on-small-only\" onclick=\"submitfilterform(\'LuthaiCode\')\">物料编码</th>";
+									} else if(10 <= ec_user_rank && ec_user_rank < 20) {
+										String_html += "<th class=\"hide-on-small-only\">部门 </th>";
+										String_html += "<th class=\"hide-on-small-only\">物料编码(当前无权查看)</th>";
 									} else {
-										String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action?code=";
-										String_html += resp.data[i].list[j].UskinCode;
-										String_html += "\">";
-										String_html += resp.data[i].list[j].UskinCode;
-										String_html += "</a>";
+										String_html += "<th class=\"hide-on-small-only\">部门 (当前无权查看)</th>";
+										String_html += "<th class=\"hide-on-small-only\">物料编码(当前无权查看)</th>";
 									}
-									String_html += "</td>";
-									if(ec_user_rank < 10) {
-										String_html += "<td class=\"hide-on-small-only\">";
-										String_html += resp.data[i].list[j].Department;
-										String_html += "</td>";
-										String_html += "<td class=\"hide-on-small-only\">";
-										String_html += resp.data[i].list[j].LuthaiCode;
-										String_html += "</td>";
-									} else {
-										String_html += "<td class=\"hide-on-small-only\">";
-										String_html += "无";
-										String_html += "</td>";
-										String_html += "<td class=\"hide-on-small-only\">";
-										String_html += "无";
-										String_html += "</td>";
-									}
-									String_html += "<td>";
-									String_html += resp.data[i].list[j].All;
-									String_html += "</td>";
-									String_html += "<td>";
-									String_html += resp.data[i].list[j].Available;
-									String_html += "</td>";
+									String_html += "<th onclick=\"submitfilterform(\'All\')\">库存 </th>";
+									String_html += "<th onclick=\"submitfilterform(\'Available\')\">可用库存 </th>";
 									String_html += "</tr>";
+									String_html += "</thead>";
+									String_html += "<tbody>";
+
+									for(var i = 0; i < resp.data.length; i++) {
+
+										for(var j = 0; j < resp.data[i].list.length; j++) {
+
+											resp.data[i].list = jsonSort(resp.data[i].list, sortKeyWord, false);
+
+											String_html += "<tr>";
+											String_html += "<td>";
+											if("MLCK040" == resp.data[i].list[j].Warehouse) {
+												String_html += "<a>";
+												if("" != resp.data[i].list[j].UskinCode) {
+													if("客供" == resp.data[i].list[j].UskinCode) {
+														String_html += "该面料无USKIN编码";
+													} else {
+														String_html += resp.data[i].list[j].UskinCode;
+														String_html += "(客供仓库)";
+													}
+												} else {
+													String_html += "该面料无USKIN编码";
+												}
+												String_html += "</a>";
+
+												String_html += "<br/>";
+
+												String_html += "<a ";
+												String_html += "style=\"color: lightskyblue;\" ";
+												String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBC.action?code=";
+												String_html += resp.data[i].list[j].LuthaiCode;
+												String_html += "\">";
+												String_html += "男装客供";
+												String_html += "</a>";
+
+												String_html += "<a>";
+												String_html += " ";
+												String_html += "</a>";
+
+												String_html += "<a ";
+												String_html += "style=\"color: lightpink;\" ";
+												String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideWomanPBC.action?code=";
+												String_html += resp.data[i].list[j].LuthaiCode;
+												String_html += "\">";
+												String_html += "女装客供";
+												String_html += "</a>";
+
+											} else if("MLCK037" == resp.data[i].list[j].Warehouse) {
+												String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action?code=";
+												String_html += resp.data[i].list[j].UskinCode;
+												String_html += "\">";
+												String_html += resp.data[i].list[j].UskinCode;
+												String_html += "(报喜鸟仓库)";
+												String_html += "</a>";
+
+											} else {
+												String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action?code=";
+												String_html += resp.data[i].list[j].UskinCode;
+												String_html += "\">";
+												String_html += resp.data[i].list[j].UskinCode;
+												String_html += "</a>";
+											}
+											String_html += "</td>";
+											if(0 <= ec_user_rank && ec_user_rank < 10) {
+												String_html += "<td class=\"hide-on-small-only\">";
+												String_html += resp.data[i].list[j].Department;
+												String_html += "</td>";
+												String_html += "<td class=\"hide-on-small-only\">";
+												String_html += resp.data[i].list[j].LuthaiCode;
+												String_html += "</td>";
+											} else if(10 <= ec_user_rank && ec_user_rank < 20) {
+												String_html += "<td class=\"hide-on-small-only\">";
+												String_html += resp.data[i].list[j].Department;
+												String_html += "</td>";
+												String_html += "<td class=\"hide-on-small-only\">";
+												String_html += "*";
+												String_html += "</td>";
+											} else {
+												String_html += "<td class=\"hide-on-small-only\">";
+												String_html += "*";
+												String_html += "</td>";
+												String_html += "<td class=\"hide-on-small-only\">";
+												String_html += "*";
+												String_html += "</td>";
+											}
+											String_html += "<td>";
+											String_html += resp.data[i].list[j].All;
+											String_html += "</td>";
+											String_html += "<td>";
+											String_html += resp.data[i].list[j].Available;
+											String_html += "</td>";
+											String_html += "</tr>";
+										}
+
+									}
+
+									String_html += "</tbody>";
+									String_html += "</table>";
+
 								}
 
+								$("#ucs_table").html(String_html);
+							} else {
+								state_error(resp.data);
 							}
-
-							String_html += "</tbody>";
-							String_html += "</table>";
-
-							$("#ucs_table").html(String_html);
-						} else {
-							state_error(resp.data);
 						}
-					}
-				});
+					});
+			}
+
+			function searchStop() {
+				ajax_search.abort();
+				state_defult();
 			}
 
 			function state_defult() {
@@ -213,6 +243,9 @@
 
 				$("#ucs_table_card").hide();
 				$("#ucs_table").html("");
+
+				$("#btn_search_start").show();
+				$("#btn_search_stop").hide();
 			}
 
 			function state_loading() {
@@ -222,6 +255,9 @@
 
 				$("#ucs_table_card").hide();
 				$("#ucs_table").html("");
+
+				$("#btn_search_start").hide();
+				$("#btn_search_stop").show();
 			}
 
 			function state_answer() {
@@ -231,6 +267,9 @@
 
 				$("#ucs_table_card").show();
 				$("#ucs_table").html("");
+
+				$("#btn_search_start").show();
+				$("#btn_search_stop").hide();
 			}
 
 			function state_error(string_desc) {
@@ -240,6 +279,9 @@
 
 				$("#ucs_table_card").hide();
 				$("#ucs_table").html("");
+
+				$("#btn_search_start").show();
+				$("#btn_search_stop").hide();
 			}
 		</script>
 
@@ -290,28 +332,6 @@
 		<main>
 			<div class="container">
 				<div class="section">
-					<!--状态板-->
-					<div class="card-panel" id="ucs_tip_card">
-						<div class="card-content grey-text">
-							<div class="row">
-								<p class="col s12 m12 l12" id="ucs_tip">tips</p>
-								<div class="progress" id="ucs_progress_bar">
-									<div class="indeterminate"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--展示表-->
-					<div class="col s12 m12 l12">
-						<div class="card-panel" id="ucs_table_card">
-							<div class="card-content grey-text">
-								<div class="row">
-									<div id="ucs_table">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 					<!--控制器-->
 					<div class="col s12 m12 l12">
 						<div class="card-panel">
@@ -360,11 +380,34 @@
 
 									<div class="col s12 m12 l3 white-text center ">
 										<div class="input-field ">
-											<a class="btn" onclick="submitfilterform('UskinCode')">确定</a>
+											<a class="btn" onclick="searchStart('UskinCode')" id="btn_search_start">确定</a>
+											<a class="btn" onclick="searchStop()" id="btn_search_stop">取消</a>
 										</div>
 									</div>
 								</div>
 							</form>
+						</div>
+					</div>
+					<!--进度板-->
+					<div class="card-panel" id="ucs_tip_card">
+						<div class="card-content grey-text">
+							<div class="row">
+								<p class="col s12 m12 l12" id="ucs_tip">tips</p>
+								<div class="progress" id="ucs_progress_bar">
+									<div class="indeterminate"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--结果板-->
+					<div class="col s12 m12 l12">
+						<div class="card-panel" id="ucs_table_card">
+							<div class="card-content grey-text">
+								<div class="row">
+									<div id="ucs_table">
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

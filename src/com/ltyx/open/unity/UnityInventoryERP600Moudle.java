@@ -70,13 +70,13 @@ public class UnityInventoryERP600Moudle extends ZCBaseActionSupportPlugin {
 		property.importBase(ZCHttpReqProperty.BaseProperty.TYPE_1);
 		property.importUserAgent(ZCHttpReqProperty.Terminal.PC);
 		property.addProperty("Content-Type", "text/xml; charset=utf-8");
-		property.addProperty("SOAPAction", "\"http://www.eluthai.com/ProductInventory\"");
+		property.addProperty("SOAPAction", "\"http://www.lttc.com.cn/ProductInventory\"");
 
 		String req = "";
 		req += "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 		req += "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">";
 		req += "<soap:Body>";
-		req += "<ProductInventory xmlns=\"http://www.eluthai.com/\">";
+		req += "<ProductInventory xmlns=\"http://www.lttc.com.cn/\">";
 		req += "<BProInfo>";
 		req += jsonObject.toString();
 		req += "</BProInfo>";
@@ -86,8 +86,8 @@ public class UnityInventoryERP600Moudle extends ZCBaseActionSupportPlugin {
 
 		ZCHttpReqParam param = new ZCHttpReqParam();
 		param.addBody(req);
-		String resp = ZCHttpReqSender.sendPost("http://eluthai.com/LTGlobalServices/BJYXInterface/LTGlobalServices.asmx", param, property, LogType.SearchUnity);
-
+//		String resp = ZCHttpReqSender.sendPost("http://eluthai.com/LTGlobalServices/BJYXInterface/LTGlobalServices.asmx", param, property, LogType.SearchUnity);
+		String resp = ZCHttpReqSender.sendPost("http://www.lttc.com.cn/LTGlobalServices/BJYXInterface/LTGlobalServices.asmx", param, property, LogType.SearchUnity);
 		return resp;
 	}
 
