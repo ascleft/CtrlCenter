@@ -6,6 +6,7 @@ import java.io.IOException;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.service.LogType;
 import com.zc.support.service.TextLogHelper;
+import com.zc.support.service.TextLogHelper2;
 import com.zc.support.service.TimeHelper;
 
 public class JSJAction extends ZCBaseActionSupport {
@@ -30,6 +31,10 @@ public class JSJAction extends ZCBaseActionSupport {
 			TextLogHelper.white(TimeHelper.getTimeHMSS(), LogType.JSJ_NOTICE);
 			TextLogHelper.white(wholeStr, LogType.JSJ_NOTICE);
 			TextLogHelper.white(" ", LogType.JSJ_NOTICE);
+
+			TextLogHelper2.white(TimeHelper.getTimeHMSS(), TextLogHelper2.Type.TEST_JSJ_NSRC);
+			TextLogHelper2.white(wholeStr, TextLogHelper2.Type.TEST_JSJ_NSRC);
+			TextLogHelper2.white(" ", TextLogHelper2.Type.TEST_JSJ_NSRC);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -6,57 +6,55 @@ public class TextLogHelper2 {
 
 	public static class Type {
 
-		public static String[][] GLOBAL = new String[][] { { "Global" } };
+		public static final String[][] GLOBAL = new String[][] { { "Global" } };
 
-		public static String[][] USKIN_LOGIN_SUCC = new String[][] { { "USKIN", "LOGIN", "SUCC" }, GLOBAL[0] };
-		public static String[][] USKIN_LOGIN_FAIL = new String[][] { { "USKIN", "LOGIN", "FAIL" }, GLOBAL[0] };
-		public static String[][] USKIN_LOGIN_NSRC = new String[][] { { "USKIN", "LOGIN", "NSRC" }, GLOBAL[0] };
+		public static final String[][] USKIN_LOGIN_SUCC = new String[][] { { "USKIN", "LOGIN", "SUCC" }, GLOBAL[0] };
+		public static final String[][] USKIN_LOGIN_FAIL = new String[][] { { "USKIN", "LOGIN", "FAIL" }, GLOBAL[0] };
+		public static final String[][] USKIN_LOGIN_NSRC = new String[][] { { "USKIN", "LOGIN", "NSRC" }, GLOBAL[0] };
 
-		public static String[][] USKIN_AIDE_SUCC = new String[][] { { "USKIN", "AIDE", "SUCC" }, GLOBAL[0] };
-		public static String[][] USKIN_AIDE_FAIL = new String[][] { { "USKIN", "AIDE", "FAIL" }, GLOBAL[0] };
-		public static String[][] USKIN_AIDE_NSRC = new String[][] { { "USKIN", "AIDE", "NSRC" }, GLOBAL[0] };
+		public static final String[][] USKIN_AIDE_SUCC = new String[][] { { "USKIN", "AIDE", "SUCC" }, GLOBAL[0] };
+		public static final String[][] USKIN_AIDE_FAIL = new String[][] { { "USKIN", "AIDE", "FAIL" }, GLOBAL[0] };
+		public static final String[][] USKIN_AIDE_NSRC = new String[][] { { "USKIN", "AIDE", "NSRC" }, GLOBAL[0] };
 
-		public static String[][] USKIN_USER_SUCC = new String[][] { { "USKIN", "USER", "SUCC" }, GLOBAL[0] };
-		public static String[][] USKIN_USER_FAIL = new String[][] { { "USKIN", "USER", "FAIL" }, GLOBAL[0] };
-		public static String[][] USKIN_USER_NSRC = new String[][] { { "USKIN", "USER", "NSRC" }, GLOBAL[0] };
+		public static final String[][] USKIN_USER_SUCC = new String[][] { { "USKIN", "USER", "SUCC" }, GLOBAL[0] };
+		public static final String[][] USKIN_USER_FAIL = new String[][] { { "USKIN", "USER", "FAIL" }, GLOBAL[0] };
+		public static final String[][] USKIN_USER_NSRC = new String[][] { { "USKIN", "USER", "NSRC" }, GLOBAL[0] };
 
-		public static String[][] USKIN_YBR_SUCC = new String[][] { { "USKIN", "YBR", "SUCC" }, GLOBAL[0] };
-		public static String[][] USKIN_YBR_FAIL = new String[][] { { "USKIN", "YBR", "FAIL" }, GLOBAL[0] };
-		public static String[][] USKIN_YBR_NSRC = new String[][] { { "USKIN", "YBR", "NSRC" }, GLOBAL[0] };
+		public static final String[][] USKIN_YBR_SUCC = new String[][] { { "USKIN", "YBR", "SUCC" }, GLOBAL[0] };
+		public static final String[][] USKIN_YBR_FAIL = new String[][] { { "USKIN", "YBR", "FAIL" }, GLOBAL[0] };
+		public static final String[][] USKIN_YBR_NSRC = new String[][] { { "USKIN", "YBR", "NSRC" }, GLOBAL[0] };
 
-		public static String[][] UNITY_SEARCH_SUCC = new String[][] { { "UNITY", "SEARCH", "SUCC" }, GLOBAL[0] };
-		public static String[][] UNITY_SEARCH_FAIL = new String[][] { { "UNITY", "SEARCH", "FAIL" }, GLOBAL[0] };
-		public static String[][] UNITY_SEARCH_NSRC = new String[][] { { "UNITY", "SEARCH", "NSRC" }, GLOBAL[0] };
+		public static final String[][] UNITY_SEARCH_SUCC = new String[][] { { "UNITY", "SEARCH", "SUCC" }, GLOBAL[0] };
+		public static final String[][] UNITY_SEARCH_FAIL = new String[][] { { "UNITY", "SEARCH", "FAIL" }, GLOBAL[0] };
+		public static final String[][] UNITY_SEARCH_NSRC = new String[][] { { "UNITY", "SEARCH", "NSRC" }, GLOBAL[0] };
 
-		public static String[][] TEST_JSJ_NSRC = new String[][] { { "TEST", "JSJ", "NSRC" }, GLOBAL[0] };
+		public static final String[][] TEST_JSJ_NSRC = new String[][] { { "TEST", "JSJ", "NSRC" }, GLOBAL[0] };
 
 	}
 
-	private static void white(String line, String logType[][]) {
+	public static void white(String line, String logType[][]) {
 		for (int i = 0; i < logType.length; i++) {
 			for (int j = 0; j < logType[i].length; j++) {
 
-				String[] floders_root = new String[j + 2];
-				String[] floders_day_ = new String[j + 4];
-				String[] floders_hour = new String[j + 4];
-				for (int k = 0; k < j; k++) {
-					floders_root[k + 2] = logType[i][j];
-					floders_day_[k + 2] = logType[i][j];
-					floders_hour[k + 2] = logType[i][j];
+				String[] floders_root = new String[3];
+				String[] floders_day_ = new String[j + 1 + 3];
+				String[] floders_hour = new String[j + 1 + 3];
+				for (int k = 0; k < j + 1; k++) {
+					floders_day_[k + 2] = logType[i][k];
+					floders_hour[k + 2] = logType[i][k];
 				}
 
-				floders_root[0] = "CtrlCenterLOG";
+				floders_root[0] = "LOG2CtrlCenter";
 				floders_root[1] = TimeHelper.getDateYMD();
+				floders_root[2] = TimeHelper.getDateYMD() + ".txt";
 
-				floders_day_[0] = "CtrlCenterLOG";
+				floders_day_[0] = "LOG2CtrlCenter";
 				floders_day_[1] = TimeHelper.getDateYMD();
-				floders_day_[j + 2] = TimeHelper.getDateYMD();
-				floders_day_[j + 3] = ".txt";
+				floders_day_[j + 1 + 2] = TimeHelper.getDateYMD() + ".txt";
 
-				floders_hour[0] = "CtrlCenterLOG";
+				floders_hour[0] = "LOG2CtrlCenter";
 				floders_hour[1] = TimeHelper.getDateYMD();
-				floders_hour[j + 2] = TimeHelper.getTimeH();
-				floders_hour[j + 3] = ".txt";
+				floders_hour[j + 1 + 2] = TimeHelper.getTimeH() + ".txt";
 
 				File root = FileHelper.getFile(floders_root);
 				File day_ = FileHelper.getFile(floders_day_);
@@ -64,6 +62,7 @@ public class TextLogHelper2 {
 				FileHelper.writeFile(root, line);
 				FileHelper.writeFile(day_, line);
 				FileHelper.writeFile(hour, line);
+				
 			}
 		}
 	}
