@@ -136,8 +136,11 @@
 		<action name="SubmitCustomShopAideDesign"   class="com.ltyx.sca.action.CustomShopAidePBYXDesignAction" method="submit"></action>
 
 		<!-- 客户经理 即时库存  -->
-		<action name="CustomShopAideSearch" class="com.ltyx.sca.action.SearchAction" method="getPage">
+		<action name="CustomShopAideSearch" class="com.ltyx.sca.action.CustomShopAideSearchAction" method="getPage">
 			<result name="succ">/html/ShoppingCartAssistant/CSA_Search.jsp</result>
+		</action>
+		<action name="CustomShopAideSearchMT" class="com.ltyx.sca.action.CustomShopAideSearchAction" method="getPage">
+			<result name="succ">/html/ShoppingCartAssistant/CSA_Search_MT.jsp</result>
 		</action>
 
 		<!-- 定制店  -->
@@ -155,6 +158,9 @@
 		</action>
 		<action name="GetPriceCustomShopPBC" class="com.ltyx.sca.action.CustomShopUserPBCManAction" method="getPrice"></action>
 		<action name="SubmitCustomShopPBC"   class="com.ltyx.sca.action.CustomShopUserPBCManAction" method="submit"></action>
+		<action name="CustomShopPBCNL"         class="com.ltyx.sca.action.CustomShopUserPBCManAction" method="getFormWithCode">
+			<result name="succ">/html/ShoppingCartAssistant/CSU_PBC_Man_NL.jsp</result>
+		</action>
 
 		<!-- 定制店 优纤面料 女装 -->
 		<action name="CustomShopWoman"         class="com.ltyx.sca.action.CustomShopUserPBYXWomanAction" method="getPage">
@@ -169,6 +175,9 @@
 		</action>
 		<action name="GetPriceCustomShopWomanPBC" class="com.ltyx.sca.action.CustomShopUserPBCWomanAction" method="getPrice"></action>
 		<action name="SubmitCustomShopWomanPBC"   class="com.ltyx.sca.action.CustomShopUserPBCWomanAction" method="submit"></action>
+		<action name="CustomShopWomanPBCNL"       class="com.ltyx.sca.action.CustomShopUserPBCWomanAction" method="getPage">
+			<result name="succ">/html/ShoppingCartAssistant/CSU_PBC_Woman_NL.jsp</result>
+		</action>
 
 		<!-- 定制店  设计师款-->
 		<action name="CustomShopDesign"         class="com.ltyx.sca.action.CustomShopUserPBYXDesignAction" method="getPage">
@@ -178,7 +187,7 @@
 		<action name="SubmitCustomShopDesign"   class="com.ltyx.sca.action.CustomShopUserPBYXDesignAction" method="submit"></action>
 
 		<!-- 获取页面 即时库存 定制店 -->
-		<action name="CustomShopSearch" class="com.ltyx.sca.action.SearchAction" method="getPage">
+		<action name="CustomShopSearch" class="com.ltyx.sca.action.CustomShopUserSearchAction" method="getPage">
 			<result name="succ">/html/ShoppingCartAssistant/CSU_Search.jsp</result>
 		</action>
 
@@ -216,8 +225,13 @@
 		method="submit">
 		</action>
 		
-		<!-- ERP600即时库存接口-->
+		<!-- ERP600订单提交接口-->
 		<action name="ERP600OrderSubmit" class="com.ltyx.open.erp600.submit.SubmitAction"
+		method="submit">
+		</action>
+		
+		<!-- ERP600订单提交接口-->
+		<action name="ERP600OrderState" class="com.ltyx.open.erp600.submit.OrderStateAction"
 		method="submit">
 		</action>
 
@@ -286,6 +300,11 @@
 		</action>
 		<action name="SubmitMTMRelease" class="com.ltyx.test.MTMReleaseAction"
 		method="submit">
+		</action>
+		
+		<!-- 金数据 测试提交下单 -->
+		<action name="ReceiveJSJ" class="com.ltyx.test.JSJAction"
+		method="Test">
 		</action>
 
 	</package>

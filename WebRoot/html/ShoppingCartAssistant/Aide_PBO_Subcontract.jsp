@@ -52,7 +52,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-		<title>优纤下单工具</title>
+		<title>定制商品创建工具</title>
 
 		<!-- CDN  -->
 		<!-- Google Icon Font -->
@@ -189,7 +189,7 @@
 				setTimeout(function() {
 					$("#btn_stop").show()
 				}, 20000);
-				
+
 			}
 
 			function state_upload_finish(displaywords) {
@@ -446,14 +446,16 @@
 
 		<footer class="page-footer teal">
 			<div class="container">
-				<div class="row" style="display:none;">
-					<h5 class="center-align">					
-						<img class="hoverable" src="<%=QRurl%>"/>
-					</h5>
+				<div class="row" style="display:;">
+					<div class="col s4 m4 l4"> </div>
+					<div class="col s4 m4 l4"> </div>
+					<div class="col s4 m4 l4">
+						<h6><a href="http://www.uskin.net.cn/index.php/cart.html" class="white-text">进入USKIN购物车</a></h6>
+					</div>
 				</div>
 			</div>
 			<div class="footer-copyright">
-				<div class="container">Made By ZhangChi 2017</div>
+				<div class="container">Made By ZhangChi 2018</div>
 			</div>
 		</footer>
 

@@ -15,12 +15,15 @@ public class MoudleCSCheckSummaryClothes extends ZCBaseActionSupportPlugin {
 		// TODO Auto-generated method stub
 
 		{
+			String design_code = getReqParamString("design_code");
 			String uskin_code = getReqParamString("uskin_code");
 			if (uskin_code.length() < 1) {
-				ERRCODE = "0";
-				ERRDESC = "fail";
-				data = "请填写正确的面料编号";
-				return false;
+				if (design_code.trim().length() == 0) {
+					ERRCODE = "0";
+					ERRDESC = "fail";
+					data = "请填写正确的面料编号";
+					return false;
+				}
 			}
 		}
 

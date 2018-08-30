@@ -9,6 +9,7 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
+import com.zc.support.service.LogType;
 
 public class MoudleCSSubmitECDesign extends ZCBaseActionSupportPlugin {
 
@@ -61,18 +62,20 @@ public class MoudleCSSubmitECDesign extends ZCBaseActionSupportPlugin {
 		param.addParam("mingxian", getReqParamString("mingxian"));
 		param.addParam("operator_id", getReqParamString("operator_id"));
 		param.addParam("operator_name", getReqParamString("operator_name"));
-		param.addParam("order_delivery_time", getReqParamString("order_delivery_time"));// -----------
+		param.addParam("order_delivery_time", chooseNumber(getReqParamString("order_delivery_time")));// -----------
 		param.addParam("order_mtm_type", getReqParamString("order_mtm_type"));// ---------------------
 		param.addParam("order_processing_cost", getReqParamString("order_processing_cost"));// -------
-		param.addParam("order_production_count", getReqParamString("order_production_count"));// -----
+		param.addParam("order_production_count", chooseNumber(getReqParamString("order_production_count")));// -----
 		param.addParam("prices_desc", getReqParamString("prices_desc"));
 		param.addParam("prices_now", getReqParamString("prices_now"));
 		param.addParam("prices_system", getReqParamString("prices_system"));
 		param.addParam("qiantiao", getReqParamString("qiantiao"));
+		param.addParam("special_technics", getReqParamString("special_technics"));
 		param.addParam("tailor_type", getReqParamString("tailor_type"));
 		param.addParam("uskin_code", getReqParamString("uskin_code").toUpperCase());
 		param.addParam("uskin_code_2", getReqParamString("uskin_code_2").toUpperCase());
-		param.addParam("weizhi_peise", getReqParamString("weizhi_peise",""));
+		param.addParam("weizhi_peise", getReqParamString("weizhi_peise"));
+		param.addParam("weizhi_zhidai", getReqParamString("weizhi_zhidai"));
 		param.addParam("zhidai", getReqParamString("zhidai"));
 
 		// 成衣尺寸、量体尺寸信息
@@ -102,7 +105,9 @@ public class MoudleCSSubmitECDesign extends ZCBaseActionSupportPlugin {
 		param.addParam("chest_height", getReqParamString("chest_height"));
 		param.addParam("chest_distance", getReqParamString("chest_distance"));
 
-		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshop_add_cart_design.getUrl(), param);
+		param.addParam("cixiu_kegong_num", getReqParamString("cixiu_kegong_num"));// 客供图案刺绣数量
+
+		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshop_add_cart_design.getUrl(), param, LogType.LTYX_USKIN_USER_ALL);
 		Log.Nano.tag("定制店 提交 优纤面料 Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp;
@@ -131,6 +136,35 @@ public class MoudleCSSubmitECDesign extends ZCBaseActionSupportPlugin {
 			return false;
 		}
 
+	}
+
+	private String chooseNumber(String numberString) {
+		String numberInt = "";
+		switch (numberString) {
+		case "11-30":
+			numberInt = "11";
+			break;
+		case "31-100":
+			numberInt = "31";
+			break;
+		case "101-500":
+			numberInt = "101";
+			break;
+		case "501-1500":
+			numberInt = "501";
+			break;
+		case "10-15":
+			numberInt = "10";
+			break;
+		case "15-25":
+			numberInt = "15";
+			break;
+		default:
+			numberInt = numberString;
+			break;
+		}
+
+		return numberInt;
 	}
 
 }

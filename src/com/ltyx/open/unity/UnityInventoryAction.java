@@ -25,6 +25,7 @@ public class UnityInventoryAction extends ZCBaseActionSupport {
 	private String Department;// ERP600 K3
 	private String Warehouse;// LT ZN KG
 	private String Fuzzy;// Y N
+	private String Attribute;// Y N
 
 	private String[][] keyWords;
 
@@ -52,6 +53,7 @@ public class UnityInventoryAction extends ZCBaseActionSupport {
 		Department = getReqParamString("Department");// ERP600 K3 (&)
 		Warehouse = getReqParamString("Warehouse");// LT ZN KG (LT)
 		Fuzzy = getReqParamString("Fuzzy");// Y N (Y)
+		Attribute = getReqParamString("Attribute");// Y N (N)
 
 		packageKeyWords();
 
@@ -61,11 +63,11 @@ public class UnityInventoryAction extends ZCBaseActionSupport {
 				getERP600(jsonArray, Code, keyWords[0][2]);
 				break;
 			case "K3":
-				getK3(jsonArray, Code, keyWords[1][2], keyWords[1][3]);
+				getK3(jsonArray, Code, keyWords[1][2], keyWords[1][3], keyWords[1][4]);
 				break;
 			default:
 				getERP600(jsonArray, Code, keyWords[0][2]);
-				getK3(jsonArray, Code, keyWords[1][2], keyWords[1][3]);
+				getK3(jsonArray, Code, keyWords[1][2], keyWords[1][3], keyWords[1][4]);
 				break;
 			}
 			ERRCODE = "0";
@@ -91,9 +93,9 @@ public class UnityInventoryAction extends ZCBaseActionSupport {
 		return jsonArray;
 	}
 
-	private JSONArray getK3(JSONArray jsonArray, String code, String warehouse, String fuzzy) {
+	private JSONArray getK3(JSONArray jsonArray, String code, String warehouse, String fuzzy, String attribute) {
 		UnityInventoryK3Moudle moudle = new UnityInventoryK3Moudle(request);
-		moudle.setParam(code, warehouse, fuzzy);
+		moudle.setParam(code, warehouse, fuzzy, attribute);
 		if (moudle.doJobs()) {
 			addProgressSucc("联合即时库存 K3");
 		} else {
@@ -116,6 +118,9 @@ public class UnityInventoryAction extends ZCBaseActionSupport {
 			jsonCell.put("Locked", cell.Locked);
 			jsonCell.put("Department", cell.Department);
 			jsonCell.put("Warehouse", cell.Warehouse);
+
+			jsonCell.put("Attribute", cell.getAttributes());
+
 			array.add(jsonCell);
 		}
 
@@ -130,7 +135,7 @@ public class UnityInventoryAction extends ZCBaseActionSupport {
 
 	public void packageKeyWords() {
 
-		keyWords = new String[2][4];
+		keyWords = new String[2][5];
 
 		// 编码类型
 		// getERP600(jsonArray, Code, "LT");
@@ -170,6 +175,19 @@ public class UnityInventoryAction extends ZCBaseActionSupport {
 			break;
 		default:
 			keyWords[1][3] = "Y";
+			break;
+		}
+		// 面料属性
+		// getK3(jsonArray, Code, "LT", "Y");
+		// keyWords[1][4]
+		// Y N (N)
+		switch (Attribute) {
+		case "N":
+		case "Y":
+			keyWords[1][4] = Attribute;
+			break;
+		default:
+			keyWords[1][4] = "N";
 			break;
 		}
 

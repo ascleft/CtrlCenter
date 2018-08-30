@@ -35,6 +35,8 @@
 	String list_weizhi_peise=(String) session.getAttribute("list_weizhi_peise");
 	String list_baozhuang=(String) session.getAttribute("list_baozhuang_shop");	
 	
+	String list_design_code=(String) session.getAttribute("list_design_code");	
+	
 %>
 
 <html>
@@ -52,7 +54,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-		<title>优纤下单工具</title>
+		<title>定制商品创建工具</title>
 
 		<!-- CDN  -->
 		<!-- Google Icon Font -->
@@ -100,9 +102,9 @@
 			//提交到购物车
 			function addShoppingCart() {
 				state_upload_ing("正在提交订单信息，请稍候");
-				
+
 				checkLoginState();
-				
+
 				$.ajax({
 					cache: true,
 					type: "POST",
@@ -333,7 +335,7 @@
 														<label>会员帐号（电话）（必填）</label>
 													</div>
 												</div>
-												<div class="col s12 m12 l4">
+												<div class="col s12 m12 l12">
 													<div class="input-field">
 														<input type="text" class="validate" name="customer_tips" value="">
 														<label>生产备注</label>
@@ -348,14 +350,14 @@
 									</li>
 									<li>
 										<div class="collapsible-header">
-											<i class="material-icons">view_carousel</i>面料 领标 包装
+											<i class="material-icons">view_carousel</i>面料 主唛 包装
 										</div>
 										<div class="collapsible-body">
 											<div class="row">
-												<div class="col s12 m14 l4">
-													<div class="input-field">
-														<input type="text" class="validate" name="design_code" value=""> <label>商品名或商品编号</label>
-													</div>
+												<div class="input-field col s12 m12 l4">
+													<select name="design_code">
+														<%=list_design_code%>
+													</select> <label>商品名或商品编号</label>
 												</div>
 												<div class="col s12 m14 l4">
 													<div class="input-field">
@@ -398,11 +400,14 @@
 												</div>
 												<div class="input-field col s6 m6 l4">
 													<select id="delivery_time_table_section_3" name="order_delivery_time">
-													</select> <label>交期（工作日）（DP面料在此基础上加2个工作日）</label>
+													</select> <label>交期（工作日）（单量单裁DP衬衫加工费在原基础上加20元/件，交期顺延1个工作日）</label>
 												</div>
 												<div class="input-field col s6 m6 l4">
 													<select id="delivery_time_table_section_4" name="order_processing_cost">
 													</select> <label>工艺类型</label>
+												</div>
+												<div class="input-field col s12 m12 l12 red-text" >
+													<p>注意：1.下单次日开始计算交期。 2.团单每加急一天加收相应加工费的5%。</p>
 												</div>
 											</div>
 										</div>
@@ -503,24 +508,79 @@
 																<option value="2492">男式衬衫宽松版46 </option>
 																<option value="2493">男式衬衫宽松版46.5</option>
 																<option value="2494">男式衬衫宽松版47 </option>
+																<option value="2570">女式衬衫修身版35</option>
+																<option value="2571">女式衬衫修身版35.5</option>
+																<option value="2572">女式衬衫修身版36</option>
+																<option value="2573">女式衬衫修身版36.5</option>
+																<option value="2574">女式衬衫修身版37</option>
+																<option value="2575">女式衬衫修身版37.5</option>
+																<option value="2576">女式衬衫修身版38</option>
+																<option value="2577">女式衬衫修身版38.5</option>
+																<option value="2578">女式衬衫修身版39</option>
+																<option value="2579">女式衬衫修身版39.5</option>
+																<option value="2580">女式衬衫修身版40</option>
+																<option value="2581">女式衬衫修身版40.5</option>
+																<option value="2582">女式衬衫修身版41</option>
+																<option value="2583">女式衬衫修身版41.5</option>
+																<option value="2584">女式衬衫修身版42</option>
+																<option value="2585">女式衬衫修身版42.5</option>
+																<option value="2586">女式衬衫修身版43</option>
+																<option value="2587">女式衬衫修身版43.5</option>
+																<option value="2588">女式衬衫修身版44</option>
+																<option value="2589">女式衬衫修身版44.5</option>
+																<option value="2590">女式衬衫修身版45</option>
+																<option value="2670">女式衬衫合身版35</option>
+																<option value="2671">女式衬衫合身版35.5</option>
+																<option value="2672">女式衬衫合身版36</option>
+																<option value="2673">女式衬衫合身版36.5</option>
+																<option value="2674">女式衬衫合身版37</option>
+																<option value="2675">女式衬衫合身版37.5</option>
+																<option value="2676">女式衬衫合身版38</option>
+																<option value="2677">女式衬衫合身版38.5</option>
+																<option value="2678">女式衬衫合身版39</option>
+																<option value="2679">女式衬衫合身版39.5</option>
+																<option value="2680">女式衬衫合身版40</option>
+																<option value="2681">女式衬衫合身版40.5</option>
+																<option value="2682">女式衬衫合身版41</option>
+																<option value="2683">女式衬衫合身版41.5</option>
+																<option value="2684">女式衬衫合身版42</option>
+																<option value="2685">女式衬衫合身版42.5</option>
+																<option value="2686">女式衬衫合身版43</option>
+																<option value="2687">女式衬衫合身版43.5</option>
+																<option value="2688">女式衬衫合身版44</option>
+																<option value="2689">女式衬衫合身版44.5</option>
+																<option value="2690">女式衬衫合身版45</option>
+																<option value="2770">女式衬衫宽松版35</option>
+																<option value="2771">女式衬衫宽松版35.5</option>
+																<option value="2772">女式衬衫宽松版36</option>
+																<option value="2773">女式衬衫宽松版36.5</option>
+																<option value="2774">女式衬衫宽松版37</option>
+																<option value="2775">女式衬衫宽松版37.5</option>
+																<option value="2776">女式衬衫宽松版38</option>
+																<option value="2777">女式衬衫宽松版38.5</option>
+																<option value="2778">女式衬衫宽松版39</option>
+																<option value="2779">女式衬衫宽松版39.5</option>
+																<option value="2780">女式衬衫宽松版40</option>
+																<option value="2781">女式衬衫宽松版40.5</option>
+																<option value="2782">女式衬衫宽松版41</option>
+																<option value="2783">女式衬衫宽松版41.5</option>
+																<option value="2784">女式衬衫宽松版42</option>
+																<option value="2785">女式衬衫宽松版42.5</option>
+																<option value="2786">女式衬衫宽松版43</option>
+																<option value="2787">女式衬衫宽松版43.5</option>
+																<option value="2788">女式衬衫宽松版44</option>
+																<option value="2789">女式衬衫宽松版44.5</option>
+																<option value="2790">女式衬衫宽松版45</option>
 															</select> <label>号衣尺码</label>
 														</div>
 													</div>
 													<div class="row" id="measure_list">
-
 														<div class="col s6 m4 l3">
 															<div class="input-field">
-																<input type="number" class="validate" name="height" value="">
-																<label>身高</label>
+																<input type="number" class="validate" name="ling_wei" value="">
+																<label>领围*</label>
 															</div>
 														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="weight" value="">
-																<label>体重</label>
-															</div>
-														</div>
-
 														<div class="col s6 m4 l3">
 															<div class="input-field">
 																<input type="number" class="validate" name="xiong_wei" value="">
@@ -530,7 +590,7 @@
 														<div class="col s6 m4 l3">
 															<div class="input-field">
 																<input type="number" class="validate" name="yao_wei" value="">
-																<label>中腰围（腰围）*</label>
+																<label>腰围（中腰围）*</label>
 															</div>
 														</div>
 														<div class="col s6 m4 l3">
@@ -545,12 +605,7 @@
 																<label>底边（臀围）*</label>
 															</div>
 														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="ling_wei" value="">
-																<label>领围*</label>
-															</div>
-														</div>
+
 														<div class="col s6 m4 l3">
 															<div class="input-field">
 																<select name="neiwaichuan">
@@ -571,26 +626,19 @@
 																<label>后身长（外穿）*</label>
 															</div>
 														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="jian_kuan" value="">
-																<label>肩宽*</label>
-															</div>
-														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="xiu_chang" value="">
-																<label>长袖长*</label>
-															</div>
-														</div>
 
 														<div class="col s6 m4 l3">
 															<div class="input-field">
-																<input type="number" class="validate" name="duanxiu_chang" value="">
-																<label>短袖长*</label>
+																<input type="number" class="validate" name="xiutouchang_zuo" value="">
+																<label>左袖头长（左腕围）*（长袖时必填）</label>
 															</div>
 														</div>
-
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="xiutouchang_you" value="">
+																<label>右袖头长（右腕围）*（长袖时必填）</label>
+															</div>
+														</div>
 														<div class="col s6 m4 l3">
 															<div class="input-field">
 																<input type="number" class="validate" name="xiu_fei" value="">
@@ -604,28 +652,51 @@
 																<label>袖肘肥（小臂围）</label>
 															</div>
 														</div>
+
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="jian_kuan" value="">
+																<label>肩宽*</label>
+															</div>
+														</div>
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="xiu_chang" value="">
+																<label>长袖长*（长袖时必填）</label>
+															</div>
+														</div>
+
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="duanxiu_chang" value="">
+																<label>短袖长*（短袖时必填）</label>
+															</div>
+														</div>
+
 														<div class="col s6 m4 l3">
 															<div class="input-field">
 																<input type="number" class="validate" name="duanxiu_kouwei" value="">
-																<label>短袖口围*</label>
+																<label>短袖口围*（短袖时必填）</label>
+															</div>
+														</div>
+
+														<div class="col s6 m4 l3">
+															<div class="input-field">
+																<input type="number" class="validate" name="chest_height" value="">
+																<label>胸高</label>
 															</div>
 														</div>
 														<div class="col s6 m4 l3">
 															<div class="input-field">
-																<input type="number" class="validate" name="xiutouchang_zuo" value="">
-																<label>左袖头长（左腕围）*</label>
+																<input type="number" class="validate" name="chest_distance" value="">
+																<label>胸距</label>
 															</div>
 														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="xiutouchang_you" value="">
-																<label>右袖头长（右腕围）*</label>
-															</div>
-														</div>
+
 														<div class="col s6 m4 l3">
 															<div class="input-field">
 																<input type="number" class="validate" name="qianshen_chang" value="">
-																<label>前身长</label>
+																<label>前身长*</label>
 															</div>
 														</div>
 														<div class="col s6 m4 l3">
@@ -640,16 +711,17 @@
 																<label>后背宽</label>
 															</div>
 														</div>
+
 														<div class="col s6 m4 l3">
 															<div class="input-field">
-																<input type="number" class="validate" name="chest_height" value="">
-																<label>胸高</label>
+																<input type="number" class="validate" name="height" value="">
+																<label>身高</label>
 															</div>
 														</div>
 														<div class="col s6 m4 l3">
 															<div class="input-field">
-																<input type="number" class="validate" name="chest_distance" value="">
-																<label>胸距</label>
+																<input type="number" class="validate" name="weight" value="">
+																<label>体重(kg)</label>
 															</div>
 														</div>
 
@@ -658,6 +730,7 @@
 											</div>
 										</div>
 									</li>
+
 									<li>
 										<div class="collapsible-header">
 											<i class="material-icons">playlist_add</i>工艺
@@ -680,7 +753,7 @@
 																<select name="lingcheng">
 																	<option value="">设计师款默认</option>
 																	<%=list_lingcheng%>
-																</select> <label>领撑</label>
+																</select> <label>领插片</label>
 															</div>
 														</div>
 													</div>
@@ -745,26 +818,12 @@
 														</div>
 													</div>
 												</div>
+
 												<div class="input-field col s6 m4 l3">
 													<div class="card-panel">
 														<div class="row">
 															<div class="col  s12 m12 l12 teal-text">
-																<p>下摆弧度</p>
-															</div>
-															<div class="input-field col s12 m12 l12">
-																<select name="LZX_06">
-																	<option value="">设计师款默认</option>
-																	<%=list_LZX_06%>
-																</select> <label>下摆弧度</label>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="input-field col s6 m4 l3">
-													<div class="card-panel">
-														<div class="row">
-															<div class="col  s12 m12 l12 teal-text">
-																<p>后片款式</p>
+																<p>后片</p>
 															</div>
 															<div class="input-field col s12 m12 l12">
 																<select name="LZX_17">
@@ -775,11 +834,28 @@
 														</div>
 													</div>
 												</div>
+
 												<div class="input-field col s6 m4 l3">
 													<div class="card-panel">
 														<div class="row">
 															<div class="col  s12 m12 l12 teal-text">
-																<p>侧缝底摆贴布</p>
+																<p>下摆</p>
+															</div>
+															<div class="input-field col s12 m12 l12">
+																<select name="LZX_06">
+																	<option value="">设计师款默认</option>
+																	<%=list_LZX_06%>
+																</select> <label>下摆弧度</label>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="input-field col s6 m4 l3">
+													<div class="card-panel">
+														<div class="row">
+															<div class="col  s12 m12 l12 teal-text">
+																<p>贴布</p>
 															</div>
 															<div class="input-field col s12 m12 l12">
 																<select name="LZX_26">
@@ -800,7 +876,7 @@
 																<select name="mingxian">
 																	<option value="">设计师款默认</option>
 																	<%=list_mingxian%>
-																</select> <label>明线宽</label>
+																</select> <label>翻领袖头明线</label>
 															</div>
 														</div>
 													</div>
@@ -820,9 +896,137 @@
 														</div>
 													</div>
 												</div>
+												<div class="input-field col s6 m4 l3">
+													<div class="card-panel">
+														<div class="row">
+															<div class="col  s12 m12 l12 teal-text">
+																<p>特殊工艺</p>
+															</div>
+															<div class="input-field col s12 m12 l12">
+																<select name="special_technics">
+																	<option value="YX-ST-00">无特殊工艺</option>
+																	<option value="YX-ST-01">DP成衣免烫</option>
+																	<option value="YX-ST-02">水洗</option>
+																</select> <label>特殊工艺</label>
+															</div>
+														</div>
+													</div>
+												</div>
 											</div>
 										</div>
 									</li>
+
+									<li>
+										<div class="collapsible-header">
+											<i class="material-icons">dashboard</i>辅料
+										</div>
+										<div class="collapsible-body">
+											<div class="row">
+
+												<div class="col s12 m12 l12 teal-text">
+													<div class="card-panel">
+														<div class="row">
+															<div class="col s12 m12 l12 teal-text">
+																<p>纽扣</p>
+															</div>
+															<div class="input-field col s12 m12 l12">
+																<select id="kouzi" name="kouzi">
+																	<%=list_kouzi%>
+																	<option value="">客供</option>
+																</select> <label>纽扣类型</label>
+															</div>
+															<div class="input-field col s12 m12 l12" id="kouzi_div">
+																<input id="kouzi_pbc" type="text" class="validate" name="kouzi" value="">
+																<label>客供扣子</label>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col s12 m12 l12 teal-text" style="display: none;">
+													<div class="card-panel">
+														<div class="row">
+															<div class="col s12 m12 l12 teal-text">
+																<p>线材</p>
+															</div>
+															<div class="input-field col s12 m6 l4">
+																<select name="line_color_location_1">
+																	<%=list_color%>
+																</select> <label>缝制线</label>
+															</div>
+															<div class="input-field col s12 m6 l4">
+																<select name="line_color_location_2">
+																	<%=list_color%>
+																</select> <label>装饰线</label>
+															</div>
+															<div class="input-field col s12 m6 l4">
+																<select name="line_color_location_3">
+																	<%=list_color%>
+																</select> <label>钉扣线</label>
+															</div>
+															<div class="input-field col s12 m6 l4">
+																<select name="line_color_location_4">
+																	<%=list_color%>
+																</select> <label>锁眼线</label>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col s12 m12 l12 teal-text">
+													<div class="card-panel">
+														<div class="row">
+															<div class="col s12 m12 l12 teal-text">
+																<p>织带</p>
+															</div>
+															<div class="input-field col s12 m4 l3">
+																<select name="zhidai">
+																	<%=list_zhidai%>
+																</select> <label>织带</label>
+															</div>
+															<div class="input-field col s12 m8 l9">
+																<select name="weizhi_zhidai">
+																	<%=list_weizhi_zhidai%>
+																</select> <label>织带位置</label>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col s12 m6 l4 teal-text" style="display: none;">
+													<div class="card-panel">
+														<div class="row">
+															<div class="col s12 m12 l12 teal-text">
+																<p>嵌条</p>
+															</div>
+															<div class="input-field col s12 m12 l12">
+																<select name="qiantiao">
+																	<%=list_qiantiao%>
+																</select> <label>嵌条</label>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col s12 m6 l4 teal-text">
+													<div class="card-panel">
+														<div class="row">
+															<div class="col s12 m12 l12 teal-text">
+																<p>衬布</p>
+															</div>
+															<div class="input-field col s12 m12 l12">
+																<select name="chenbu">
+																	<%=list_chenbu%>
+																</select> <label>衬布</label>
+															</div>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</li>
+
 									<li>
 										<div class="collapsible-header">
 											<i class="material-icons">mode_edit</i>刺绣
@@ -901,113 +1105,25 @@
 														</div>
 													</div>
 												</div>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="collapsible-header">
-											<i class="material-icons">dashboard</i>辅料
-										</div>
-										<div class="collapsible-body">
-											<div class="row">
-												<div class="col s12 m12 l12 teal-text">
-													<div class="card-panel">
-														<div class="row">
-															<div class="col s12 m12 l12 teal-text">
-																<p>织带（此处暂未提供织带编号归属及位置编号）</p>
-															</div>
-															<div class="input-field col s12 m4 l3">
-																<select name="zhidai">
-																	<%=list_zhidai%>
-																</select> <label>织带</label>
-															</div>
-															<div class="input-field col s12 m8 l9">
-																<select multiple="multiple" name="">
-																	<%=list_weizhi_zhidai%>
-																</select> <label>织带位置</label>
-															</div>
+												<div class="card-panel">
+													<div class="row">
+														<div class="col s12 m12 l12 teal-text">
+															<p>客供刺绣</p>
 														</div>
-													</div>
-												</div>
-												<div class="col s12 m12 l12 teal-text">
-													<div class="card-panel">
-														<div class="row">
-															<div class="col s12 m12 l12 teal-text">
-																<p>线材</p>
-															</div>
-															<div class="input-field col s12 m6 l4">
-																<select name="line_color_location_1">
-																	<%=list_color%>
-																</select> <label>缝制线</label>
-															</div>
-															<div class="input-field col s12 m6 l4">
-																<select name="line_color_location_2">
-																	<%=list_color%>
-																</select> <label>装饰线</label>
-															</div>
-															<div class="input-field col s12 m6 l4">
-																<select name="line_color_location_3">
-																	<%=list_color%>
-																</select> <label>钉扣线</label>
-															</div>
-															<div class="input-field col s12 m6 l4">
-																<select name="line_color_location_4">
-																	<%=list_color%>
-																</select> <label>锁眼线</label>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="col s12 m6 l4 teal-text">
-													<div class="card-panel">
-														<div class="row">
-															<div class="col s12 m12 l12 teal-text">
-																<p>纽扣</p>
-															</div>
-															<div class="input-field col s12 m12 l12">
-																<select id="kouzi" name="kouzi">
-																	<%=list_kouzi%>
-																	<option value="">客供</option>
-																</select> <label>纽扣类型</label>
-															</div>
-															<div class="input-field col s12 m12 l12" id="kouzi_div">
-																<input id="kouzi_pbc" type="text" class="validate" name="kouzi" value="">
-																<label>客供扣子</label>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="col s12 m6 l4 teal-text" style="display: none;">
-													<div class="card-panel">
-														<div class="row">
-															<div class="col s12 m12 l12 teal-text">
-																<p>嵌条</p>
-															</div>
-															<div class="input-field col s12 m12 l12">
-																<select name="qiantiao">
-																	<%=list_qiantiao%>
-																</select> <label>嵌条</label>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="col s12 m6 l4 teal-text">
-													<div class="card-panel">
-														<div class="row">
-															<div class="col s12 m12 l12 teal-text">
-																<p>衬布</p>
-															</div>
-															<div class="input-field col s12 m12 l12">
-																<select name="chenbu">
-																	<%=list_chenbu%>
-																</select> <label>衬布</label>
-															</div>
+														<div class="input-field col s12 m12 l12">
+															<select name="cixiu_kegong_num">
+																<option value="0">0个</option>
+																<option value="1">1个</option>
+																<option value="2">2个</option>
+																<option value="3">3个</option>
+															</select> <label>客供图案刺绣数量</label>
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 									</li>
+
 									<li>
 										<div class="collapsible-header">
 											<i class="material-icons">tab</i>配色
@@ -1074,7 +1190,7 @@
 												<a class="col s12 m12 l12 btn" onclick="getPrice()" id="addShoppingCart">获取报价</a>
 											</div>
 											<div class="col s12 m12 l12">
-												<a class="col s12 m12 l12 btn" onclick="addShoppingCart()" id="getPrice">提交订单数据</a>
+												<a class="col s12 m12 l12 btn" onclick="addShoppingCart()" id="getPrice">提交到USKIN购物车</a>
 											</div>
 										</div>
 									</div>
@@ -1096,7 +1212,7 @@
 				<div class="modal-footer">
 					<a id="btn_finish" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">确定</a>
 					<a id="btn_cancel" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">取消</a>
-					<a id="btn_stop"  onclick="stopAddShoppingCart()"  class="modal-action modal-close waves-effect waves-green btn-flat">停止</a>
+					<a id="btn_stop" onclick="stopAddShoppingCart()" class="modal-action modal-close waves-effect waves-green btn-flat">停止</a>
 				</div>
 			</div>
 
@@ -1104,16 +1220,20 @@
 
 		<footer class="page-footer teal">
 			<div class="container">
-				<div class="row" style="display: none; ">
-					<h5 class="center-align">					
-						<img class="hoverable" src="<%=QRurl%>"/>
-					</h5>
+				<div class="row" style="display:; text-align:center">
+					<div class="col s6 m6 l6">
+						<h6><a href="http://www.uskin.net.cn/index.php/wap/cart.html" target="_blank" class="white-text">进入USKIN购物车结算(手机版)</a></h6>
+					</div>
+					<div class="col s6 m6 l6">
+						<h6><a href="http://www.uskin.net.cn/index.php/cart.html" target="_blank" class="white-text">进入USKIN购物车结算(电脑版)</a></h6>
+					</div>
 				</div>
 			</div>
 			<div class="footer-copyright">
-				<div class="container">Made By ZhangChi 2017</div>
+				<div class="container">Made By ZhangChi 2018</div>
 			</div>
 		</footer>
+
 	</body>
 
 </html>

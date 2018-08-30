@@ -53,6 +53,17 @@ public class MoudleCheckPrice extends ZCBaseActionSupportPlugin {
 			}
 		}
 
+		{
+			String order_mtm_type = getReqParamString("prices_now");
+			String measure_type = getReqParamString("measure_type");
+			if ("标准码成衣".equals(order_mtm_type) && !"号衣尺码".equals(measure_type)) {
+				ERRCODE = "0";
+				ERRDESC = "fail";
+				data = "您选择的【订单类型】是【标准码成衣】，请在【尺寸类型】中选择【号衣尺码】。";
+				return false;
+			}
+		}
+
 		return true;
 
 	}

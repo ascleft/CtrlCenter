@@ -2,7 +2,6 @@ package com.ltyx.open.ybr;
 
 import com.ltyx.sca.actionplugin.MoudleCSCheckSummaryClothes;
 import com.ltyx.sca.actionplugin.MoudleCSCheckUserInfo;
-import com.ltyx.sca.actionplugin.MoudleCheckMeasure;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.LogType;
@@ -103,7 +102,7 @@ public class YBR_OBO_Action extends ZCBaseActionSupport {
 		// }
 
 		{
-			MoudleCheckMeasure moudle = new MoudleCheckMeasure(request);
+			MoudleYBR_OBO_CheckMeasure moudle = new MoudleYBR_OBO_CheckMeasure(request);
 			if (!moudle.doJobs()) {
 				addProgressFail("尺寸校验");
 				ERRCODE = moudle.getERRCODE();
@@ -117,7 +116,7 @@ public class YBR_OBO_Action extends ZCBaseActionSupport {
 		{
 			MoudleYBR_OBO_Check moudle = new MoudleYBR_OBO_Check(request);
 			if (!moudle.doJobs()) {
-				addProgressFail("尺寸校验");
+				addProgressFail("衣帮人日期校验");
 				ERRCODE = moudle.getERRCODE();
 				ERRDESC = moudle.getERRDESC();
 				data = moudle.getData();
@@ -175,7 +174,7 @@ public class YBR_OBO_Action extends ZCBaseActionSupport {
 		}
 
 		{
-			MoudleCheckMeasure moudle = new MoudleCheckMeasure(request);
+			MoudleYBR_OBO_CheckMeasure moudle = new MoudleYBR_OBO_CheckMeasure(request);
 			if (!moudle.doJobs()) {
 				addProgressFail("尺寸校验");
 				ERRCODE = moudle.getERRCODE();
@@ -189,7 +188,7 @@ public class YBR_OBO_Action extends ZCBaseActionSupport {
 		{
 			MoudleYBR_OBO_Check moudle = new MoudleYBR_OBO_Check(request);
 			if (!moudle.doJobs()) {
-				addProgressFail("尺寸校验");
+				addProgressFail("衣帮人日期校验");
 				ERRCODE = moudle.getERRCODE();
 				ERRDESC = moudle.getERRDESC();
 				data = moudle.getData();

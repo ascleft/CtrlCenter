@@ -34,6 +34,16 @@ public class MoudleCSAGetPricePBC extends ZCBaseActionSupportPlugin {
 		String LZX_11_FOR_CHAR_SWITCH = getReqParamString("LZX_11_FOR_CHAR_SWITCH");
 		String LZX_11_FOR_PIC_SWITCH = getReqParamString("LZX_11_FOR_PIC_SWITCH");
 
+		String special_technics = getReqParamString("special_technics");
+
+		String LZX_01 = getReqParamString("LZX_01");// 领型
+		String LZX_02 = getReqParamString("LZX_02");// 袖头,短袖头
+		String LZX_03 = getReqParamString("LZX_03");// 门襟
+		String LZX_04 = getReqParamString("LZX_04");// 口袋
+		String weizhi_zhidai = getReqParamString("weizhi_zhidai");// 织带位置
+		String LZX_26 = getReqParamString("LZX_26");// 底摆配布
+		String cixiu_kegong_num = getReqParamString("cixiu_kegong_num");// 客供图案刺绣数量
+
 		ZCHttpReqParam param = new ZCHttpReqParam();
 		param.addParam("customer_tel_target", customer_tel_target);
 		param.addParam("uskin_code", uskin_code.toUpperCase());
@@ -46,6 +56,16 @@ public class MoudleCSAGetPricePBC extends ZCBaseActionSupportPlugin {
 		param.addParam("order_production_count", chooseNumber(order_production_count));
 		param.addParam("LZX_11_FOR_CHAR_SWITCH", LZX_11_FOR_CHAR_SWITCH);
 		param.addParam("LZX_11_FOR_PIC_SWITCH", LZX_11_FOR_PIC_SWITCH);
+		
+		param.addParam("special_technics", special_technics);
+
+		param.addParam("LZX_01", LZX_01);// 领型
+		param.addParam("LZX_02", LZX_02);// 袖头,短袖头
+		param.addParam("LZX_03", LZX_03);// 门襟
+		param.addParam("LZX_04", LZX_04);// 口袋
+		param.addParam("weizhi_zhidai", weizhi_zhidai);// 织带位置
+		param.addParam("LZX_26", LZX_26);// 底摆配布
+		param.addParam("cixiu_kegong_num", cixiu_kegong_num);// 客供图案刺绣数量
 
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_get_price_pbc.getUrl(), param);
 

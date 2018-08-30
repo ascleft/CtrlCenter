@@ -30,17 +30,20 @@ public class ConfigHelperURL {
 
 	public static ZCUrl Url_customshop_get_price_pbyx      = new ZCUrl("下单工具2.0 定制店 衬衫 报价", "/index.php/openapi/uskinapi/bespoke_shop_freechoice_price");
 	public static ZCUrl Url_customshop_get_price_pbc       = new ZCUrl("下单工具2.0 定制店 客供 报价", "/index.php/openapi/uskinapi/get_cust_fabric_price");
+	public static ZCUrl Url_customshop_get_price_design    = new ZCUrl("下单工具2.0 定制店 客供 报价", "/index.php/openapi/uskinapi/bespoke_shop_recommendlist_price");
 	public static ZCUrl Url_customshop_add_cart_pbyx       = new ZCUrl("下单工具2.0 定制店 衬衫 提交", "/index.php/openapi/uskinapi/bespoke_shop_freechoice_add_cart");
-	public static ZCUrl Url_customshop_add_cart_pbc        = new ZCUrl("下单工具2.0 定制店 衬衫 客供面料 提交", "/index.php/openapi/uskinapi/bespoke_shop_cust_fabric_add_cart");
+	public static ZCUrl Url_customshop_add_cart_pbc        = new ZCUrl("下单工具2.0 定制店 衬衫 客供面料 男装 提交", "/index.php/openapi/uskinapi/bespoke_shop_cust_fabric_add_cart");
+	public static ZCUrl Url_customshop_add_cart_pbc_woman  = new ZCUrl("下单工具2.0 定制店 衬衫 客供面料 女装 提交", "/index.php/openapi/uskinapi/bespoke_shop_cust_fabric_add_cart_girl");
 	public static ZCUrl Url_customshop_add_cart_woman      = new ZCUrl("下单工具2.0 定制店 女装 提交", "/index.php/openapi/uskinapi/bespoke_shop_add_cart_for_mygirl");
-	public static ZCUrl Url_customshop_add_cart_design     = new ZCUrl("下单工具2.0 定制店 设计师款 提交", "/index.php/openapi/shirtapi/bespoke_shop_recommendlist_add_cart");
+	public static ZCUrl Url_customshop_add_cart_design     = new ZCUrl("下单工具2.0 定制店 设计师款 提交", "/index.php/openapi/uskinapi/bespoke_shop_recommendlist_add_cart");
 
 	public static ZCUrl Url_customshopaide_get_price_pbyx  = new ZCUrl("下单工具2.0 客户经理 衬衫 报价", "/index.php/openapi/uskinapi/bespoke_shop_freechoice_price");
 	public static ZCUrl Url_customshopaide_get_price_pbc   = new ZCUrl("下单工具2.0 客户经理 客供 报价", "/index.php/openapi/uskinapi/get_cust_fabric_price");
+	public static ZCUrl Url_customshopaide_get_price_woman = new ZCUrl("下单工具2.0 客户经理 衬衫 报价", "/index.php/openapi/uskinapi/bespoke_shop_freechoice_price_girl");
 	public static ZCUrl Url_customshopaide_add_cart_pbyx   = new ZCUrl("下单工具2.0 客户经理 衬衫 提交", "/index.php/openapi/uskinapi/manager_freechoice_add_cart");
 	public static ZCUrl Url_customshopaide_add_cart_pbc    = new ZCUrl("下单工具2.0 客户经理 客供面料 提交", "/index.php/openapi/uskinapi/manager_custfabric_add_cart");
 	public static ZCUrl Url_customshopaide_add_cart_woman  = new ZCUrl("下单工具2.0 客户经理 女装 提交", "/index.php/openapi/uskinapi/manager_add_cart_for_mygirl");
-	public static ZCUrl Url_customshopaide_add_cart_design = new ZCUrl("下单工具2.0 客户经理 设计师款 提交", "/index.php/openapi/shirtapi/manager_recommendlist_add_cart");
+	public static ZCUrl Url_customshopaide_add_cart_design = new ZCUrl("下单工具2.0 客户经理 设计师款 提交", "/index.php/openapi/uskinapi/manager_recommendlist_add_cart");
 
 	public static ZCUrl Url_customshopaide_add_cart_ybr_pbyx = new ZCUrl("下单工具2.0 客户经理 衬衫 优纤面料 提交", "/index.php/openapi/uskinapi/ybr_add_cart");
 	public static ZCUrl Url_customshopaide_add_cart_ybr_pbc  = new ZCUrl("下单工具2.0 客户经理 衬衫 客供面料 提交", "/index.php/openapi/uskinapi/ybr_cust_fabric_add_cart");
@@ -52,7 +55,9 @@ public class ConfigHelperURL {
 		list = new ArrayList<ConfigHelperURL.ZCUrl>();
 		// 下单工具1.0
 		{
+			//登录
 			list.add(Url_LoginEC);
+			//添加到购物车
 			list.add(Url_SubTailor);
 		}
 		// 下单工具2.0 SCA
@@ -68,6 +73,7 @@ public class ConfigHelperURL {
 			// 客户经理
 			list.add(Url_customshopaide_get_price_pbyx);
 			list.add(Url_customshopaide_get_price_pbc);
+			list.add(Url_customshopaide_get_price_woman);
 			list.add(Url_customshopaide_add_cart_pbyx);
 			list.add(Url_customshopaide_add_cart_ybr_pbyx);
 			list.add(Url_customshopaide_add_cart_ybr_pbc);
@@ -77,8 +83,10 @@ public class ConfigHelperURL {
 			// 定制店
 			list.add(Url_customshop_get_price_pbyx);
 			list.add(Url_customshop_get_price_pbc);
+			list.add(Url_customshop_get_price_design);
 			list.add(Url_customshop_add_cart_pbyx);
 			list.add(Url_customshop_add_cart_pbc);
+			list.add(Url_customshop_add_cart_pbc_woman);
 			list.add(Url_customshop_add_cart_woman);
 			list.add(Url_customshop_add_cart_design);
 		}
@@ -88,11 +96,14 @@ public class ConfigHelperURL {
 		} else {
 			setUrl(BaseUrl_TEST);
 		}
+		
 	}
 
 	public static void customUrl(String baseurl) {
+		
 		setUrl(baseurl);
 		STATE = STATE_CUSTOM;
+		
 	}
 
 	private static void setUrl(String baseurl) {

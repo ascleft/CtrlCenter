@@ -18,7 +18,7 @@ public class SCAPageConfigCommon {
 				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_csa());
 			} else if ("10".equals(rank)) {// 定制顾问
 				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_aide());
-			} else if ("20".equals(rank)) {// 定制店
+			} else if ("20".equals(rank) || "21".equals(rank)) {// 定制店
 				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_cs());
 			}
 			if ("张弛".equals(session.getAttribute("ec_user_name")) || "zc".equals(session.getAttribute("ec_user_name"))) {
@@ -123,6 +123,8 @@ public class SCAPageConfigCommon {
 			session.setAttribute("list_weizhi_zhidai", SCAPageConfigMix.get_list_weizhi_zhidai());
 			session.setAttribute("list_weizhi_peise", SCAPageConfigMix.get_list_weizhi_peise());
 
+			session.setAttribute("list_design_code", SCAPageConfigMix.get_list_design_code());
+
 			session.setAttribute("list_baozhuang_aide", SCAPageConfigMix.get_list_baozhuang_aide());
 			session.setAttribute("list_baozhuang_shop", SCAPageConfigMix.get_list_baozhuang_shop());
 
@@ -187,6 +189,9 @@ public class SCAPageConfigCommon {
 				+ "</li>"//
 				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/AideSearch.action\">定制顾问 即时库存查询</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"http://www.utailor.com.cn/\">登录UTAILOR官网</a>"//
 				+ "</li>";//
 
 		return menuList;
@@ -215,6 +220,14 @@ public class SCAPageConfigCommon {
 				+ "</li>"//
 				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearch.action\">客户经理 即时库存查询</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearchMT.action\">客户经理 即时库存查询(多线程)</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"http://www.uskin.net.cn/index.php/cart.html\" target=\"_blank\">进入USKIN购物车结算(电脑版)</a>"//
+				+ "</li>" + "<li>"//
+				+ "<a class=\"waves-effect\" href=\"http://www.uskin.net.cn/index.php/wap/cart.html\" target=\"_blank\">进入USKIN购物车结算(手机版)</a>"//
 				+ "</li>";//
 
 		return menuList;
@@ -244,9 +257,16 @@ public class SCAPageConfigCommon {
 				+ "</li>"//
 				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">定制店 即时库存查询</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"http://www.uskin.net.cn/index.php/cart.html\" target=\"_blank\">进入USKIN购物车结算(电脑版)</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"http://www.uskin.net.cn/index.php/wap/cart.html\" target=\"_blank\">进入USKIN购物车结算(手机版)</a>"//
 				+ "</li>";//
 
 		return menuList;
+
 	}
 
 }

@@ -19,7 +19,7 @@ public class MoudleCSCheckUserInfo extends ZCBaseActionSupportPlugin {
 			if (customer_name.length() < 1) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "请填写正确的收货人姓名";
+				data = "请填写正确的穿衣人姓名";
 				return false;
 			}
 		}

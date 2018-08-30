@@ -6,7 +6,11 @@ import com.ltyx.sca.actionplugin.MoudleCSAGetPriceDesign;
 import com.ltyx.sca.actionplugin.MoudleCSASubmitECDesign;
 import com.ltyx.sca.actionplugin.MoudleCheckMeasure;
 import com.ltyx.sca.actionplugin.MoudleCheckPrice;
+import com.ltyx.sca.actionplugin.MoudleCheckTechLZX01;
 import com.ltyx.sca.actionplugin.MoudleCheckTechLZX11;
+import com.ltyx.sca.actionplugin.MoudleCheckTechLZX120;
+import com.ltyx.sca.actionplugin.MoudleCheckTechLZXNecessary;
+import com.ltyx.sca.actionplugin.MoudleCheckTechYXST;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.LogType;
@@ -21,6 +25,10 @@ public class CustomShopAidePBYXDesignAction extends ZCBaseActionSupport {
 	public String getPage() {
 
 		init(true);
+
+		if (!"3071".equals(session.getAttribute("ec_user_id").toString()) && !"129".equals(session.getAttribute("ec_user_id").toString())){
+			AuthorizeAssistan.check(session.getAttribute("ec_user_rank").toString(), response, "0");
+		}
 
 		session = SCAPageConfigCommon.manageMenu(session);
 		session = SCAPageConfigCommon.manageTechnologyMix(session);
@@ -107,18 +115,6 @@ public class CustomShopAidePBYXDesignAction extends ZCBaseActionSupport {
 		}
 
 		{
-			MoudleCheckPrice moudle = new MoudleCheckPrice(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("报价核对");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
-				return false;
-			}
-			addProgressSucc("报价核对");
-		}
-
-		{
 			MoudleCheckMeasure moudle = new MoudleCheckMeasure(request);
 			if (!moudle.doJobs()) {
 				addProgressFail("尺寸校验");
@@ -131,6 +127,42 @@ public class CustomShopAidePBYXDesignAction extends ZCBaseActionSupport {
 		}
 
 		{
+			MoudleCheckTechYXST moudle = new MoudleCheckTechYXST(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("面料及特殊工艺校验");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("面料及特殊工艺校验");
+		}
+		
+		{
+			MoudleCheckTechLZX01 moudle = new MoudleCheckTechLZX01(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("领型领插片冲突校验");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("领型领插片冲突校验");
+		}
+
+		{
+			MoudleCheckTechLZX120 moudle = new MoudleCheckTechLZX120(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("袖褶冲突校验");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("袖褶冲突校验");
+		}
+
+		{
 			MoudleCheckTechLZX11 moudle = new MoudleCheckTechLZX11(request);
 			if (!moudle.doJobs()) {
 				addProgressFail("刺绣校验");
@@ -140,6 +172,30 @@ public class CustomShopAidePBYXDesignAction extends ZCBaseActionSupport {
 				return false;
 			}
 			addProgressSucc("刺绣校验");
+		}
+
+		{
+			MoudleCheckTechLZXNecessary moudle = new MoudleCheckTechLZXNecessary(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("必要工艺信息校验");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("必要工艺信息校验");
+		}
+
+		{
+			MoudleCheckPrice moudle = new MoudleCheckPrice(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("报价核对");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("报价核对");
 		}
 
 		{

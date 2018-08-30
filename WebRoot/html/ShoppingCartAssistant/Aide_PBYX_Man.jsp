@@ -52,7 +52,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-		<title>优纤下单工具</title>
+		<title>定制商品创建工具</title>
 
 		<!-- CDN  -->
 		<!-- Google Icon Font -->
@@ -100,9 +100,9 @@
 			//提交到购物车
 			function addShoppingCart() {
 				state_upload_ing("正在提交订单信息，请稍候");
-				
+
 				checkLoginState();
-				
+
 				$.ajax({
 					cache: true,
 					type: "POST",
@@ -236,9 +236,9 @@
 				state_ready("n");
 
 				use_lzx11();
-				
+
 				use_custom_weizhi_peise();
-				
+
 			})
 		</script>
 
@@ -341,7 +341,7 @@
 									</li>
 									<li>
 										<div class="collapsible-header">
-											<i class="material-icons">view_carousel</i>面料 领标 包装
+											<i class="material-icons">view_carousel</i>面料 主唛 包装
 										</div>
 										<div class="collapsible-body">
 											<div class="row">
@@ -803,7 +803,7 @@
 				<div class="modal-footer">
 					<a id="btn_finish" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">确定</a>
 					<a id="btn_cancel" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">取消</a>
-					<a id="btn_stop"  onclick="stopAddShoppingCart()"  class="modal-action modal-close waves-effect waves-green btn-flat">停止</a>
+					<a id="btn_stop" onclick="stopAddShoppingCart()" class="modal-action modal-close waves-effect waves-green btn-flat">停止</a>
 				</div>
 			</div>
 

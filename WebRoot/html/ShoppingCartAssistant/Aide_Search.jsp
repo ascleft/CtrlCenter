@@ -27,7 +27,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-		<title>优纤下单工具</title>
+		<title>定制商品创建工具</title>
 
 		<!-- CDN  -->
 		<!-- Google Icon Font -->
@@ -97,7 +97,11 @@
 							if("0" == resp.ERRCODE && "succ" == resp.ERRDESC) {
 								state_answer();
 								var String_html = "";
-								if(resp.data[0].list.length + resp.data[1].list.length == 0) {
+								var listLength = 0;
+								for(i = 0; i < resp.data.length; i++) {
+									listLength += resp.data[i].list.length;
+								}
+								if(listLength == 0) {
 
 									String_html += "<div class=\"col s12 m12 l12 red-text\">";
 									String_html += "<h5>鲁泰仓库显示该面料无库存</h2>";
@@ -336,7 +340,7 @@
 									<div class="col s6 m4 l3 teal-text input-field">
 										<select name="Department">
 											<option value="All">联合查询</option>
-											<option value="ERP600">现货科</option>
+											<option value="ERP600">现货科/零裁组</option>
 											<option value="K3">制衣ERP</option>
 										</select><label>数据源</label>
 									</div>

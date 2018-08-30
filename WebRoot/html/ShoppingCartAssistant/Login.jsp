@@ -14,12 +14,15 @@
 		
 		登录
 		
+		那个女人蠢如猪，看上你个堕落狗，
+		男儿到死心如铁，岂能无志活百年。
+		
 	-->
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-		<title>优纤下单工具</title>
+		<title>定制商品创建工具</title>
 
 		<!-- CDN  -->
 		<!-- Google Icon Font -->
@@ -103,7 +106,7 @@
 			<nav class="top-nav teal">
 				<div class="container">
 					<div class="nav-wrapper">
-						<a class="page-title">登录优纤下单工具</a>
+						<a class="page-title">登录定制商品创建工具</a>
 					</div>
 				</div>
 			</nav>
@@ -120,7 +123,7 @@
 										<div class="col s12 m4 l4">
 											<div class="input-field">
 												<input id="name" type="text" class="validate" name="name" value="">
-												<label>账户</label>
+												<label>USKIN企业会员手机号</label>
 											</div>
 										</div>
 										<div class="col s12 m4 l4">
@@ -131,9 +134,9 @@
 										</div>
 										<div class="input-field col s12 m4 l4">
 											<select name="role">
+												<option value="3">定制店</option>
 												<option value="2">客户经理</option>
 												<option value="1">定制顾问</option>
-												<option value="3">定制店</option>
 												<option value="4">临时账户登录</option>
 											</select>
 											<label>角色</label>

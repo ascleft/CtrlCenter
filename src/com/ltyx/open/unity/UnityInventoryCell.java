@@ -1,5 +1,9 @@
 package com.ltyx.open.unity;
 
+import java.util.HashMap;
+
+import net.sf.json.JSONObject;
+
 public class UnityInventoryCell {
 
 	public String UskinCode;
@@ -9,6 +13,8 @@ public class UnityInventoryCell {
 	public double Locked;
 	public String Department;
 	public String Warehouse;
+
+	public HashMap<String, String> Attribute;
 
 	public UnityInventoryCell(String uskinCode, String luthaiCode, double all, double available, double locked, String department, String warehouse) {
 		init(uskinCode, luthaiCode, all, available, locked, department, warehouse);
@@ -50,12 +56,29 @@ public class UnityInventoryCell {
 
 		Department = department;
 		Warehouse = warehouse;
+
+		Attribute = new HashMap<String, String>();
 	}
 
 	public void init(String uskinCode, String luthaiCode, double all, double locked, String department, String warehouse) {
 		double available = all - locked;
 		init(uskinCode, luthaiCode, all, available, locked, department, warehouse);
+	}
 
+	public void addAttribute(String key, String value) {
+		Attribute.put(key, value);
+	}
+
+	public String getAttributes() {
+		String Attributs = "";
+		JSONObject jsonAttributs = new JSONObject();
+		if (Attribute.size() > 0) {
+			for (String key : Attribute.keySet()) {
+				jsonAttributs.put(key, Attribute.get(key));
+			}
+			Attributs += jsonAttributs.toString();
+		}
+		return Attributs;
 	}
 
 }

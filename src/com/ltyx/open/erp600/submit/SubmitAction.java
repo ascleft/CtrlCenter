@@ -34,7 +34,7 @@ public class SubmitAction extends ZCBaseActionSupport {
 	public boolean doSubmit() {
 
 		{
-			SubmitActionMoudle moudle = new SubmitActionMoudle(request);
+			SubmitActionMoudle2 moudle = new SubmitActionMoudle2(request);
 			if (!moudle.doJobs()) {
 				addProgressFail("提交ERP600面料订单");
 				ERRCODE = moudle.getERRCODE();

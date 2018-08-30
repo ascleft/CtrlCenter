@@ -86,7 +86,9 @@ public class UnityInventoryERP600Moudle extends ZCBaseActionSupportPlugin {
 
 		ZCHttpReqParam param = new ZCHttpReqParam();
 		param.addBody(req);
-//		String resp = ZCHttpReqSender.sendPost("http://eluthai.com/LTGlobalServices/BJYXInterface/LTGlobalServices.asmx", param, property, LogType.SearchUnity);
+		// String resp =
+		// ZCHttpReqSender.sendPost("http://eluthai.com/LTGlobalServices/BJYXInterface/LTGlobalServices.asmx",
+		// param, property, LogType.SearchUnity);
 		String resp = ZCHttpReqSender.sendPost("http://www.lttc.com.cn/LTGlobalServices/BJYXInterface/LTGlobalServices.asmx", param, property, LogType.SearchUnity);
 		return resp;
 	}
@@ -136,8 +138,12 @@ public class UnityInventoryERP600Moudle extends ZCBaseActionSupportPlugin {
 				}
 				isSucc = true;
 			} else if (code.equals("0") && desc.equals("未处理！")) {
-				this.desc = "鲁泰ERP600返回异常： " + " ResultType " + code + " ResultMsg " + desc;
-				isSucc = false;
+				// this.desc = "鲁泰ERP600返回异常: ";
+				// this.desc += " ResultType " + code;
+				// this.desc += " ResultMsg " + desc;
+				// isSucc = false;
+				this.desc = "库存信息正常，无库存";
+				isSucc = true;
 			} else {
 				this.desc = "鲁泰ERP600返回异常,未知异常： " + " ResultType " + code + " ResultMsg " + desc;
 				isSucc = false;

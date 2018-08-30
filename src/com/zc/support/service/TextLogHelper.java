@@ -76,8 +76,17 @@ public class TextLogHelper {
 		case LogType.LTYX_USKIN_USER_FAIL: {
 			LTYX_USKIN_USER_FAIL(line);
 		}
+			break;
 		case LogType.ERP600_ORDER_SUBMIT: {
 			ERP600_ORDER_SUBMIT(line);
+		}
+			break;
+		case LogType.ERP600_ORDER_SEARCH: {
+			ERP600_ORDER_SEARCH(line);
+		}
+			break;
+		case LogType.JSJ_NOTICE: {
+			JSJ_NOTICE(line);
 		}
 			break;
 		default: {
@@ -260,13 +269,31 @@ public class TextLogHelper {
 
 	private static void ERP600_ORDER_SUBMIT(String line) {
 		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "ERP600", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "ERP600", TimeHelper.getTimeH() + ".txt");
+			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "ERP600", "SUBMIT", TimeHelper.getDateYMD() + ".txt");
+			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "ERP600", "SUBMIT", TimeHelper.getTimeH() + ".txt");
 			FileHelper.writeFile(day_, line);
 			FileHelper.writeFile(hour, line);
 		}
 	}
 
+	private static void ERP600_ORDER_SEARCH(String line) {
+		{
+			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "ERP600", "SEARCH", TimeHelper.getDateYMD() + ".txt");
+			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "ERP600", "SEARCH", TimeHelper.getTimeH() + ".txt");
+			FileHelper.writeFile(day_, line);
+			FileHelper.writeFile(hour, line);
+		}
+	}
+
+	private static void JSJ_NOTICE(String line) {
+		{
+			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "JSJ", TimeHelper.getDateYMD() + ".txt");
+			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "JSJ", TimeHelper.getTimeH() + ".txt");
+			FileHelper.writeFile(day_, line);
+			FileHelper.writeFile(hour, line);
+		}
+	}
+	
 	private static void Default(String line) {
 		NORMAL(line);
 		{

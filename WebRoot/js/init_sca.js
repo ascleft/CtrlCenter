@@ -12,8 +12,7 @@ function checkLoginState() {
 		url: url_checklogin,
 		data: "",
 		async: true,
-		error: function(request) {
-		},
+		error: function(request) {},
 		success: function(data) {
 			var resp = JSON.parse(data);
 			if("1" == resp.ERRCODE && "fail" == resp.ERRDESC) {
@@ -721,6 +720,9 @@ function use_size() {
 		if(selected_name == "号衣尺码") {
 			$("#measure_list").hide();
 			$("#size_list ").show();
+		} else if(selected_name == "不新增尺寸信息") {
+			$("#measure_list").hide();
+			$("#size_list").hide();
 		} else {
 			$("#measure_list").show();
 			$("#size_list").hide();

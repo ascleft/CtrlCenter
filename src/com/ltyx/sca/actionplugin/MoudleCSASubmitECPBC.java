@@ -9,6 +9,7 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
+import com.zc.support.service.LogType;
 
 public class MoudleCSASubmitECPBC extends ZCBaseActionSupportPlugin {
 
@@ -68,10 +69,12 @@ public class MoudleCSASubmitECPBC extends ZCBaseActionSupportPlugin {
 		param.addParam("prices_now", getReqParamString("prices_now"));
 		param.addParam("prices_system", getReqParamString("prices_system"));
 		param.addParam("qiantiao", getReqParamString("qiantiao"));
+		param.addParam("special_technics", getReqParamString("special_technics"));
 		param.addParam("tailor_type", getReqParamString("tailor_type"));
 		param.addParam("uskin_code", getReqParamString("uskin_code").toUpperCase());
 		param.addParam("uskin_code_2", getReqParamString("uskin_code_2").toUpperCase());
-		param.addParam("weizhi_peise", getReqParamString("weizhi_peise", ""));
+		param.addParam("weizhi_peise", getReqParamString("weizhi_peise"));
+		param.addParam("weizhi_zhidai", getReqParamString("weizhi_zhidai"));
 		param.addParam("zhidai", getReqParamString("zhidai"));
 
 		// 成衣尺寸、量体尺寸信息
@@ -101,7 +104,9 @@ public class MoudleCSASubmitECPBC extends ZCBaseActionSupportPlugin {
 		param.addParam("chest_height", getReqParamString("chest_height"));
 		param.addParam("chest_distance", getReqParamString("chest_distance"));
 
-		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_add_cart_pbc.getUrl(), param);
+		param.addParam("cixiu_kegong_num", getReqParamString("cixiu_kegong_num"));// 客供图案刺绣数量
+
+		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_add_cart_pbc.getUrl(), param, LogType.LTYX_USKIN_AIDE_ALL);
 		Log.Nano.tag("客户经理 提交 客供面料 Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp;
