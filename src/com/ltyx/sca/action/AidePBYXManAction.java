@@ -1,15 +1,15 @@
 package com.ltyx.sca.action;
 
-import com.ltyx.sca.actionplugin.MoudleAideCheckSummaryClothes;
-import com.ltyx.sca.actionplugin.MoudleAideCheckUserInfo;
-import com.ltyx.sca.actionplugin.MoudleAideGetPricePBYX;
-import com.ltyx.sca.actionplugin.MoudleAideSubmitECPBYX;
-import com.ltyx.sca.actionplugin.MoudleCheckPrice;
-import com.ltyx.sca.actionplugin.MoudleCheckTechLZX01;
-import com.ltyx.sca.actionplugin.MoudleCheckTechLZX11;
+import com.ltyx.sca.action.plugin.MoudleAideCheckSummaryClothes;
+import com.ltyx.sca.action.plugin.MoudleAideCheckUserInfo;
+import com.ltyx.sca.action.plugin.MoudleAideGetPricePBYX;
+import com.ltyx.sca.action.plugin.MoudleAideSubmitECPBYX;
+import com.ltyx.sca.action.plugin.MoudleCheckPrice;
+import com.ltyx.sca.action.plugin.MoudleCheckTechLZX01;
+import com.ltyx.sca.action.plugin.MoudleCheckTechLZX11;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
-import com.zc.support.service.LogType;
+import com.zc.support.service.TextLogHelper;
 
 public class AidePBYXManAction extends ZCBaseActionSupport {
 
@@ -39,11 +39,11 @@ public class AidePBYXManAction extends ZCBaseActionSupport {
 		doGetPrice();
 
 		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_UTAILOR_SUCC);
-			writeResp(methodName, LogType.LTYX_UTAILOR_SUCC);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.UNDEFINED);
+			writeResp(methodName, TextLogHelper.Type.UNDEFINED);
 		} else {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_UTAILOR_FAIL);
-			writeResp(methodName, LogType.LTYX_UTAILOR_FAIL);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.UNDEFINED);
+			writeResp(methodName, TextLogHelper.Type.UNDEFINED);
 		}
 
 		return null;
@@ -58,11 +58,11 @@ public class AidePBYXManAction extends ZCBaseActionSupport {
 		doSubmit();
 
 		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_UTAILOR_SUCC_ORDER);
-			writeResp(methodName, LogType.LTYX_UTAILOR_SUCC_ORDER);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.UNDEFINED);
+			writeResp(methodName, TextLogHelper.Type.UNDEFINED);
 		} else {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_UTAILOR_FAIL);
-			writeResp(methodName, LogType.LTYX_UTAILOR_FAIL);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.UNDEFINED);
+			writeResp(methodName, TextLogHelper.Type.UNDEFINED);
 		}
 
 		return null;

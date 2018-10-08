@@ -186,6 +186,13 @@
 		<action name="GetPriceCustomShopDesign" class="com.ltyx.sca.action.CustomShopUserPBYXDesignAction" method="getPrice"></action>
 		<action name="SubmitCustomShopDesign"   class="com.ltyx.sca.action.CustomShopUserPBYXDesignAction" method="submit"></action>
 
+		<!-- 定制店  返修订单-->
+		<action name="CustomShopRepair"         class="com.ltyx.sca.action.CustomShopUserRepairAction" method="getPage">
+			<result name="succ">/html/ShoppingCartAssistant/CSU_Repair.jsp</result>
+		</action>
+		<action name="GetPriceCustomShopRepair" class="com.ltyx.sca.action.CustomShopUserRepairAction" method="getPrice"></action>
+		<action name="SubmitCustomShopRepair"   class="com.ltyx.sca.action.CustomShopUserRepairAction" method="submit"></action>
+
 		<!-- 获取页面 即时库存 定制店 -->
 		<action name="CustomShopSearch" class="com.ltyx.sca.action.CustomShopUserSearchAction" method="getPage">
 			<result name="succ">/html/ShoppingCartAssistant/CSU_Search.jsp</result>

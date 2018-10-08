@@ -256,6 +256,9 @@ public class SCAPageConfigCommon {
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopDesign.action\">定制店 优纤面料 设计师款</a>"//
 				+ "</li>"//
 				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopRepair.action\">定制店 返修订单</a>"//
+				+ "</li>"//
+				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">定制店 即时库存查询</a>"//
 				+ "</li>"//
 				+ "<li>"//

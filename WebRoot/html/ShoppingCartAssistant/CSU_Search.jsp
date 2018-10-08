@@ -70,6 +70,7 @@
 			}
 
 			var url_search = "/CtrlCenter/LTYX/OpenAPI/UnityInventory.action";
+			//			 url_search = "http://www.utailor.com.cn:8080/CtrlCenter/LTYX/OpenAPI/UnityInventory.action";
 			var ec_user_rank = parseInt("<%=ec_user_rank%>");
 
 			var ajax_search;
@@ -160,7 +161,9 @@
 												String_html += "<a>";
 												if("" != resp.data[i].list[j].UskinCode) {
 													if("客供" == resp.data[i].list[j].UskinCode) {
-														String_html += "该面料无USKIN编码";
+														String_html += "客供面料，该面料无USKIN编码";
+														String_html += "<br/>";
+														String_html += resp.data[i].list[j].LuthaiCode;
 													} else {
 														String_html += resp.data[i].list[j].UskinCode;
 														String_html += "(客供仓库)";
@@ -177,7 +180,7 @@
 												String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBC.action?code=";
 												String_html += resp.data[i].list[j].LuthaiCode;
 												String_html += "\">";
-												String_html += "男装客供";
+												String_html += "建立男装客供";
 												String_html += "</a>";
 
 												String_html += "<a>";
@@ -189,7 +192,7 @@
 												String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopWomanPBC.action?code=";
 												String_html += resp.data[i].list[j].LuthaiCode;
 												String_html += "\">";
-												String_html += "女装客供";
+												String_html += "建立女装客供";
 												String_html += "</a>";
 											} else if("MLCK037" == resp.data[i].list[j].Warehouse) {
 												String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action?code=";
@@ -365,7 +368,7 @@
 									</div>
 									<div class="col s12 m8 l8 red-text">
 										<div class="input-field">
-											<input type="text" class="validate" name="Code" value="" >
+											<input type="text" class="validate" name="Code" value="">
 											<label>请输入USKIN编码 或 客供面料快递单号</label>
 										</div>
 									</div>

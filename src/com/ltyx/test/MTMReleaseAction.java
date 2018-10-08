@@ -5,8 +5,8 @@ import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqProperty;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.link.ZCHttpsReqSender;
-import com.zc.support.service.LogType;
 import com.zc.support.service.StringHelper;
+import com.zc.support.service.TextLogHelper;
 import com.zc.support.service.TimeHelper;
 
 import net.sf.json.JSONObject;
@@ -48,17 +48,20 @@ public class MTMReleaseAction extends ZCBaseActionSupport {
 			resp = ZCHttpsReqSender.sendPost(//
 					"https://" + getReqParamString("url"), //
 					param, //
-					property);
+					property //
+			);
 		} else {
 			resp = ZCHttpReqSender.sendPost(//
 					"http://" + getReqParamString("url"), //
 					param, //
-					property);
+					property, //
+					TextLogHelper.Type.TEST_MTM_NSRC//
+			);
 		}
 
 		analyze(resp);
 
-		writeResp("MTM test ReleaseServer", LogType.NORMAL);
+		writeResp("MTM test ReleaseServer", TextLogHelper.Type.TEST_MTM_NSRC);
 
 		System.out.println(resp);
 

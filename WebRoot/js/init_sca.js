@@ -321,6 +321,7 @@ function initLZX11Table() {
 	};
 	LZX_11_Pic_Table = {
 		'LZX-11-23': {
+			'name': 'LZX-11-23',
 			'map': {
 				'01': '2',
 				'02': '2',
@@ -406,6 +407,7 @@ function initLZX11Table() {
 
 		},
 		'LZX-11-24': {
+			'name': 'LZX-11-24',
 			'map': {
 				'01': '1',
 				'02': '1',
@@ -459,6 +461,7 @@ function initLZX11Table() {
 			},
 		},
 		'LZX-11-25': {
+			'name': 'LZX-11-25',
 			'map': {
 				'01': '1',
 				'02': '1',
@@ -500,6 +503,7 @@ function initLZX11Table() {
 			},
 		},
 		'LZX-11-26': {
+			'name': 'LZX-11-26',
 			'map': {
 				'01': '1',
 				'02': '1',
@@ -534,6 +538,7 @@ function initLZX11Table() {
 			},
 		},
 		'LZX-11-27': {
+			'name': 'LZX-11-27',
 			'map': {
 				'01': '1',
 				'02': '1',
@@ -571,6 +576,17 @@ function initLZX11Table() {
 					'YX-12-30': '3.0cm',
 				},
 			},
+		},
+		'LZX-11-FF': {
+			'name': '客供图案',
+			'map': {
+				'客供图案': '1'
+			},
+			'size': {
+				'1': {
+					'LZX-12-FF': '客供大小'
+				},
+			},
 		}
 	};
 }
@@ -593,18 +609,19 @@ function set_lzx11_char_section_2() {
 	var list_2 = ""
 	for(var prop2 in LZX_11_Char_Table['size'][selected_1_size]) {
 		list_2 += "<option value=\"" + prop2 + "\">";
-		list_2 += prop2 + " " + LZX_11_Char_Table['size'][selected_1_size][prop2];
+		list_2 += LZX_11_Char_Table['size'][selected_1_size][prop2];
 		list_2 += "</option>";
 	}
 	$("select[name$='LZX_11_CHAR_SIZE']").html(list_2);
 	$('select').material_select();
 }
+
 //填充图片刺绣第一部分
 function set_lzx11_pic_section_1() {
 	var list_1 = ""
 	for(var prop1 in LZX_11_Pic_Table) {
 		list_1 += "<option value=\"" + prop1 + "\">";
-		list_1 += prop1;
+		list_1 += LZX_11_Pic_Table[prop1].name;
 		list_1 += "</option>";
 	}
 	$("select[name$='LZX_11_PIC_TYPE']").html(list_1);
@@ -613,7 +630,7 @@ function set_lzx11_pic_section_1() {
 }
 //填充图片刺绣第二部分
 function set_lzx11_pic_section_2() {
-	selected_1 = "" + $("select[name$='LZX_11_PIC_TYPE'] option:selected").text();
+	selected_1 = "" + $("select[name$='LZX_11_PIC_TYPE'] option:selected").val();
 	var list_2 = ""
 	for(var prop2 in LZX_11_Pic_Table[selected_1]['map']) {
 		list_2 += "<option value=\"" + prop2 + "\">";
@@ -626,13 +643,13 @@ function set_lzx11_pic_section_2() {
 }
 //填充图片刺绣第三部分
 function set_lzx11_pic_section_3() {
-	selected_1 = "" + $("select[name$='LZX_11_PIC_TYPE'] option:selected").text();
+	selected_1 = "" + $("select[name$='LZX_11_PIC_TYPE'] option:selected").val();
 	selected_2 = "" + $("select[name$='LZX_11_PIC_NUM'] option:selected").val();
 	selected_2_size = "" + LZX_11_Pic_Table[selected_1]['map'][selected_2];
 	var list_3 = ""
 	for(var prop3 in LZX_11_Pic_Table[selected_1]['size'][selected_2_size]) {
 		list_3 += "<option value=\"" + prop3 + "\">";
-		list_3 += prop3 + " " + LZX_11_Pic_Table[selected_1]['size'][selected_2_size][prop3];
+		list_3 += LZX_11_Pic_Table[selected_1]['size'][selected_2_size][prop3];
 		list_3 += "</option>";
 	}
 	$("select[name$='LZX_11_PIC_SIZE']").html(list_3);
@@ -1185,3 +1202,388 @@ function jsonSort(array, field, reverse) {
 	return array;
 }
 //-------------------------------------------------------------------------辅助JS↑
+
+var Repair_Type_Table;
+//初始化修改字典
+function initRepairTypeTable() {
+	Repair_Type_Table = {
+		"01": {
+			"name_c": "减三围（袖肥相应顺减）",
+			"price_c": 30,
+			"time_c": 5,
+			"type_code": "LZX-XG-05",
+			"name_f": "减三围",
+			"price_f": 20,
+			"time_f": 5,
+			"tips_f": "拆包装、烫叠包装、拆袖头、拆底边、拆侧缝、修整尺寸、重新缝制"
+		},
+		"02": {
+			"name_c": "减衣长",
+			"price_c": 20,
+			"time_c": 2,
+			"type_code": "LZX-XG-01",
+			"name_f": "减衣长",
+			"price_f": 15,
+			"time_f": 1,
+			"tips_f": "拆包装、烫叠包装、修底边、重新缝制"
+		},
+		"03": {
+			"name_c": "减袖长（从袖口减）",
+			"price_c": 30,
+			"time_c": 3,
+			"type_code": "LZX-XH-14",
+			"name_f": "减袖长（袖口处）",
+			"price_f": 25,
+			"time_f": 2,
+			"tips_f": "拆包装、烫叠包装、拆袖头、修袖长、拆袖祺、重新缝制"
+		},
+		"04": {
+			"name_c": "加腰省（减腰围）",
+			"price_c": 20,
+			"time_c": 2,
+			"type_code": "LZX-XG-02",
+			"name_f": "加腰省",
+			"price_f": 15,
+			"time_f": 1,
+			"tips_f": "拆包装、烫叠包装、定后腰省位、成品收后腰省不到底"
+		},
+		"05": {
+			"name_c": "腰省（可能有针眼）",
+			"price_c": 20,
+			"time_c": 2,
+			"type_code": "LZX-XG-02",
+			"name_f": "加腰省",
+			"price_f": 15,
+			"time_f": 1,
+			"tips_f": "拆包装、烫叠包装、定后腰省位、成品收后腰省不到底"
+		},
+		"06": {
+			"name_c": "修领窝（不换领子）",
+			"price_c": 25,
+			"time_c": 4,
+			"type_code": "LZX-XG-12",
+			"name_f": "修领窝(不换领子)",
+			"price_f": 20,
+			"time_f": 3,
+			"tips_f": "拆包装、烫叠包装、拆领子、下挖后领窝、拆肩缝及接线、重新上领"
+		},
+		"07": {
+			"name_c": "换领子+修领窝",
+			"price_c": 45,
+			"time_c": 4,
+			"type_code": "LZX-XH-09",
+			"name_f": "换领子+修领窝",
+			"price_f": 40,
+			"time_f": 3,
+			"tips_f": "拆包装、烫叠包装、拆领子、下挖后领窝、重新做外插领"
+		},
+		"08": {
+			"name_c": "换口袋",
+			"price_c": 25,
+			"time_c": 3,
+			"type_code": "LZX-XH-01",
+			"name_f": "换口袋",
+			"price_f": 19,
+			"time_f": 2,
+			"tips_f": "拆包装、烫叠包装、拆口袋、重新裁、做口袋"
+		},
+		"09": {
+			"name_c": "换小袖头",
+			"price_c": 30,
+			"time_c": 3,
+			"type_code": "LZX-XH-02",
+			"name_f": "换小袖头（可含装饰线）",
+			"price_f": 27,
+			"time_f": 3,
+			"tips_f": "拆包装、烫叠包装、拆小袖头、重新裁、做袖头（装饰线）"
+		},
+		"10": {
+			"name_c": "换礼服袖头",
+			"price_c": 40,
+			"time_c": 3,
+			"type_code": "LZX-XH-03",
+			"name_f": "换大袖头（可含装饰线）",
+			"price_f": 32,
+			"time_f": 3,
+			"tips_f": "拆包装、烫叠包装、拆大袖头、重新裁、做袖头（装饰线）"
+		},
+		"11": {
+			"name_c": "换领子",
+			"price_c": 40,
+			"time_c": 4,
+			"type_code": "LZX-XH-06",
+			"name_f": "换领子（可含装饰线）",
+			"price_f": 34,
+			"time_f": 3,
+			"tips_f": "拆包装、烫叠包装、拆领子、重新裁做外插领（装饰线）、烫叠包装"
+		},
+		"12": {
+			"name_c": "换领子+小袖头",
+			"price_c": 50,
+			"time_c": 4,
+			"type_code": "LZX-XH-07",
+			"name_f": "换领子+袖头",
+			"price_f": 42,
+			"time_f": 3,
+			"tips_f": "拆包装、烫叠包装、拆领子、拆六角小袖头、重新裁做外插领、做袖头，烫叠包装"
+		},
+		"13": {
+			"name_c": "换领子+礼服袖头",
+			"price_c": 50,
+			"time_c": 4,
+			"type_code": "LZX-XH-07",
+			"name_f": "换领子+袖头",
+			"price_f": 42,
+			"time_f": 3,
+			"tips_f": "拆包装、烫叠包装、拆领子、拆六角小袖头、重新裁做外插领、做袖头，烫叠包装"
+		},
+		"14": {
+			"name_c": "换领子+袖头（装饰线）",
+			"price_c": 50,
+			"time_c": 4,
+			"type_code": "LZX-XH-08",
+			"name_f": "换领子+袖头（装饰线）",
+			"price_f": 45,
+			"time_f": 3,
+			"tips_f": "拆包装、烫叠包装、拆领子、拆六角小袖头、重新裁做外插领、做袖头、正常三周装饰线"
+		},
+		"15": {
+			"name_c": "换纽扣（普通树脂扣或客供纽扣）",
+			"price_c": 25,
+			"time_c": 2,
+			"type_code": "LZX-XG-09",
+			"name_f": "换纽扣（客供纽扣）",
+			"price_f": 22,
+			"time_f": 1,
+			"tips_f": "拆包装、烫叠包装、割扣全身15个、重新成品钉15个扣、全部绕扣"
+		},
+		"16": {
+			"name_c": "换纽扣（贝壳扣）",
+			"price_c": 45,
+			"time_c": 2,
+			"type_code": "LZX-XG-10",
+			"name_f": "换纽扣（贝壳扣）",
+			"price_f": 41,
+			"time_f": 1,
+			"tips_f": "拆包装、烫叠包装、割扣全身15个、重新成品钉15个扣、全部绕扣"
+		},
+		"17": {
+			"name_c": "换袖子（短袖）",
+			"price_c": 45,
+			"time_c": 5,
+			"type_code": "LZX-XH-04",
+			"name_f": "换袖子(短袖）",
+			"price_f": 29,
+			"time_f": 5,
+			"tips_f": "拆包装、烫叠包装、拆底边、拆侧缝、拆袖明线袖暗线、重新裁剪缝制"
+		},
+		"18": {
+			"name_c": "换袖子（长袖）",
+			"price_c": 65,
+			"time_c": 5,
+			"type_code": "LZX-XH-05",
+			"name_f": "换袖子(长袖）",
+			"price_f": 42,
+			"time_f": 5,
+			"tips_f": "拆包装、烫叠包装、拆袖头、拆底边、拆侧缝、拆袖明线袖暗线、重新裁剪缝制"
+		},
+		"18_1": {
+			"name_c": "换袖子（长袖）【客供面料】",
+			"price_c": 50,
+			"time_c": 5,
+			"type_code": "LZX-XH-05",
+			"name_f": "换袖子(长袖）",
+			"price_f": 42,
+			"time_f": 5,
+			"tips_f": "拆包装、烫叠包装、拆袖头、拆底边、拆侧缝、拆袖明线袖暗线、重新裁剪缝制"
+		},
+		"19": {
+			"name_c": "换门襟（只能换位夹门襟）",
+			"price_c": 60,
+			"time_c": 5,
+			"type_code": "LZX-XH-10",
+			"name_f": "换门襟",
+			"price_f": 42,
+			"time_f": 5,
+			"tips_f": "拆包装、烫叠包装、拆底边、拆门襟一线、修门襟、左贴改夹门襟"
+		},
+		"20": {
+			"name_c": "换一个前片（前片破损）",
+			"price_c": 85,
+			"time_c": 5,
+			"type_code": "LZX-XH-11",
+			"name_f": "换一个前片",
+			"price_f": 49,
+			"time_f": 5,
+			"tips_f": "拆包装、烫叠包装、拆底边、拆左边身片工序、换左片+口袋、重新裁做左片+口袋"
+		},
+		"20_1": {
+			"name_c": "换一个前片（前片破损）【客供面料】",
+			"price_c": 70,
+			"time_c": 5,
+			"type_code": "LZX-XH-11",
+			"name_f": "换一个前片",
+			"price_f": 49,
+			"time_f": 5,
+			"tips_f": "拆包装、烫叠包装、拆底边、拆左边身片工序、换左片+口袋、重新裁做左片+口袋"
+		},
+		"21": {
+			"name_c": "换后片（不换过肩）",
+			"price_c": 100,
+			"time_c": 5,
+			"type_code": "LZX-XH-12",
+			"name_f": "换后片（不换过肩）",
+			"price_f": 52,
+			"time_f": 5,
+			"tips_f": "拆包装、烫叠包装、拆领子、拆袖头、拆底边、拆侧缝、拆袖暗线明线、拆肩缝、拆过肩明线暗线，裁后片，重新缝制"
+		},
+		"21_1": {
+			"name_c": "换后片（不换过肩）【客供面料】",
+			"price_c": 80,
+			"time_c": 5,
+			"type_code": "LZX-XH-12",
+			"name_f": "换后片（不换过肩）",
+			"price_f": 52,
+			"time_f": 5,
+			"tips_f": "拆包装、烫叠包装、拆领子、拆袖头、拆底边、拆侧缝、拆袖暗线明线、拆肩缝、拆过肩明线暗线，裁后片，重新缝制"
+		},
+		"22": {
+			"name_c": "减肩宽",
+			"price_c": 35,
+			"time_c": 5,
+			"type_code": "LZX-XG-07",
+			"name_f": "减肩宽",
+			"price_f": 26,
+			"time_f": 5,
+			"tips_f": "拆包装、烫叠包装、拆袖头、底边、侧缝、袖子、修肩宽、重新缝制"
+		},
+		"23": {
+			"name_c": "袖山处减袖长",
+			"price_c": 40,
+			"time_c": 5,
+			"type_code": "LZX-XG-18",
+			"name_f": "袖山处减袖长",
+			"price_f": 27,
+			"time_f": 5,
+			"tips_f": "拆包装、烫叠包装、拆袖头、拆底边、拆侧缝、拆袖明线袖暗线、修袖山、重新缝制"
+		},
+		"24": {
+			"name_c": "下挖袖笼（不换袖子）",
+			"price_c": 35,
+			"time_c": 5,
+			"type_code": "LZX-XG-19",
+			"name_f": "下挖袖笼（不换袖子）",
+			"price_f": 31,
+			"time_f": 5,
+			"tips_f": "拆包装、烫叠包装、拆袖头、底边、侧缝，下挖袖窿，修袖山，上袖两遍，重新缝制"
+		},
+		"25": {
+			"name_c": "减前胸宽、后背宽（不换袖子）",
+			"price_c": 35,
+			"time_c": 5,
+			"type_code": "LZX-XG-06",
+			"name_f": "减前胸宽、后背宽(不换袖子)",
+			"price_f": 33,
+			"time_f": 5,
+			"tips_f": "拆包装、烫叠包装、拆袖头、底边、侧缝、拆袖暗线明线，修前胸宽和后背宽，修袖山，上袖两遍，重新缝制"
+		},
+		"26": {
+			"name_c": "长袖加袖袢",
+			"price_c": 35,
+			"time_c": 3,
+			"type_code": "LZX-XH-13",
+			"name_f": "长袖加袖袢",
+			"price_f": 29,
+			"time_f": 2,
+			"tips_f": "拆包装、烫叠包装、裁做袖袢，缝制袖袢"
+		},
+		"27": {
+			"name_c": "整烫、折叠",
+			"price_c": 15,
+			"time_c": 2,
+			"type_code": "LZX-XG-20",
+			"name_f": "整烫、折叠",
+			"price_f": 12,
+			"time_f": 1,
+			"tips_f": "拆包装、烫叠包装"
+		},
+		"28": {
+			"name_c": "加刺绣（需配合换部件）",
+			"price_c": 8,
+			"time_c": 2,
+			"type_code": "LZX-XH-14",
+			"name_f": "加刺绣（需配合换部件）",
+			"price_f": 5,
+			"time_f": 2,
+			"tips_f": "加刺绣（需配合换部件）",
+			"add_time": "20180928"
+		}
+	}
+}
+//初始化修改列表
+function set_repair_type_table() {
+	var list_1 = "";
+	for(var prop1 in Repair_Type_Table) {
+		list_1 += "<option value=\"" + Repair_Type_Table[prop1].type_code + "\">";
+		list_1 += Repair_Type_Table[prop1].name_c;
+		list_1 += "</option>";
+	}
+	$("#Type").html(list_1);
+	$('select').material_select();
+}
+//修改列表变更事件
+function add_repair_type_event() {
+	var type_code = '';
+	var name_c = '';
+	var price_c = 0;
+	var time_c = 0;
+	var tips_c = '';
+	var name_f = '';
+	var price_f = 0;
+	var time_f = 0;
+	var tips_f = '';
+	$("#Type option:selected").each(function() {
+		for(var prop2 in Repair_Type_Table) {
+			if($(this).val() == Repair_Type_Table[prop2].type_code && $(this).text() == Repair_Type_Table[prop2].name_c) {
+				name_c += Repair_Type_Table[prop2].name_c;
+				price_c += Repair_Type_Table[prop2].price_c;
+				time_c >= Repair_Type_Table[prop2].time_c ? time_c = time_c : time_c = Repair_Type_Table[prop2].time_c;
+				tips_c += Repair_Type_Table[prop2].tips_c;
+				name_f += Repair_Type_Table[prop2].name_f;
+				price_f += Repair_Type_Table[prop2].price_f;
+				time_f >= Repair_Type_Table[prop2].time_f ? time_f = time_f : time_f = Repair_Type_Table[prop2].time_f;
+				tips_f += Repair_Type_Table[prop2].tips_f;
+			}
+		}
+	})
+	$("#type_code").val(type_code);
+	$("#name_c").val(name_c);
+	$("#price_c").val(price_c);
+	$("#time_c").val(time_c);
+	$("#tips_c").val(tips_c);
+	$("#name_f").val(name_f);
+	$("#price_f").val(price_f);
+	$("#time_f").val(time_f);
+	$("#tips_f").val(tips_f);
+	Materialize.updateTextFields();
+
+	console.log('---start---');
+	console.log('type_code: ' + type_code);
+	console.log('name_c   : ' + name_c);
+	console.log('price_c  : ' + price_c);
+	console.log('time_c   : ' + time_c);
+	console.log('tips_c   : ' + tips_c);
+	console.log('name_f   : ' + name_f);
+	console.log('price_f  : ' + price_f);
+	console.log('time_f   : ' + time_f);
+	console.log('tips_f   : ' + tips_f);
+	console.log('---end---');
+}
+//启用修改列表
+function use_SubcontractTable() {
+	initRepairTypeTable();
+	set_repair_type_table();
+	$("#Type").bind("change", function() {
+		add_repair_type_event(); //
+	});
+}

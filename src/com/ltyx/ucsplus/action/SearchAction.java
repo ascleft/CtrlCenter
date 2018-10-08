@@ -1,13 +1,13 @@
 package com.ltyx.ucsplus.action;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
-import com.zc.support.service.LogType;
+import com.zc.support.service.TextLogHelper;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 public class SearchAction extends ZCBaseActionSupport {
 
@@ -47,7 +47,7 @@ public class SearchAction extends ZCBaseActionSupport {
 			ERRDESC = "fail";
 			data = "请不要攻击接口";
 
-			writeResp("即时库存接口 resp to Web", LogType.NORMAL);
+			writeResp("即时库存接口 resp to Web", TextLogHelper.Type.OTHER_UCSPLUS_SEARCH);
 
 			return null;
 
@@ -59,7 +59,7 @@ public class SearchAction extends ZCBaseActionSupport {
 				ERRDESC = "fail";
 				data = "请输入面料编号";
 
-				writeResp("即时库存接口 resp to Web", LogType.NORMAL);
+				writeResp("即时库存接口 resp to Web", TextLogHelper.Type.OTHER_UCSPLUS_SEARCH);
 
 				return null;
 
@@ -75,7 +75,7 @@ public class SearchAction extends ZCBaseActionSupport {
 					ERRDESC = "fail";
 					data = "当前身份无权查询该面料";
 
-					writeResp("即时库存接口 resp to Web", LogType.NORMAL);
+					writeResp("即时库存接口 resp to Web", TextLogHelper.Type.OTHER_UCSPLUS_SEARCH);
 
 					return null;
 				}
@@ -98,7 +98,8 @@ public class SearchAction extends ZCBaseActionSupport {
 			param.addParam("businessObjectTypeId", businessObjectTypeId);
 			param.addParam("filter", filter);
 
-			String httpResp = ZCHttpReqSender.sendGet("http://www.lttcerp.com:88/k3cloud/Services/LUTAIWebService.asmx/K3CloudSendDataToUtailor", param);
+			String httpResp = ZCHttpReqSender.sendGet("http://www.lttcerp.com:88/k3cloud/Services/LUTAIWebService.asmx/K3CloudSendDataToUtailor", param,
+					TextLogHelper.Type.OTHER_UCSPLUS_SEARCH);
 
 			httpResp = httpResp.substring(103, httpResp.length() - 9);
 
@@ -131,6 +132,7 @@ public class SearchAction extends ZCBaseActionSupport {
 			writeResp();
 
 			return null;
+
 		}
 
 	}

@@ -53,7 +53,7 @@ public class LogSyncSafe {
 			list.addAll(createLogMsg(logMessage.toString()));
 			list.add(createFoot());
 
-			flush(list, LogType.NORMAL);
+			flush(list, TextLogHelper.Type.UNDEFINED);
 
 		}
 	}
@@ -264,10 +264,10 @@ public class LogSyncSafe {
 		}
 
 		public void flush() {
-			LogSyncSafe.flush(list, LogType.NORMAL);
+			LogSyncSafe.flush(list, TextLogHelper.Type.UNDEFINED);
 		}
 
-		public void flush(String logType) {
+		public void flush(String[][] logType) {
 			LogSyncSafe.flush(list, logType);
 		}
 	}
@@ -316,16 +316,16 @@ public class LogSyncSafe {
 		}
 
 		public void flush() {
-			LogSyncSafe.flush(list, LogType.NORMAL);
+			LogSyncSafe.flush(list, TextLogHelper.Type.UNDEFINED);
 		}
 
-		public void flush(String logType) {
+		public void flush(String[][] logType) {
 			LogSyncSafe.flush(list, logType);
 		}
 
 	}
 
-	synchronized public static void flush(ArrayList<String> lines, String logType) {
+	synchronized public static void flush(ArrayList<String> lines, String[][] logType) {
 
 		if (null != lines) {
 			for (int i = 0; i < lines.size(); i++) {

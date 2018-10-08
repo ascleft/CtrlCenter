@@ -2,13 +2,14 @@ package com.ltyx.open.ybr;
 
 import javax.servlet.http.HttpServletRequest;
 
-import net.sf.json.JSONObject;
-
 import com.zc.support.config.ConfigHelperURL;
 import com.zc.support.doman.ZCBaseActionSupportPlugin;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
+import com.zc.support.service.TextLogHelper;
+
+import net.sf.json.JSONObject;
 
 public class MoudleYBR_OBO_SubmitEC_PBC extends ZCBaseActionSupportPlugin {
 
@@ -120,14 +121,14 @@ public class MoudleYBR_OBO_SubmitEC_PBC extends ZCBaseActionSupportPlugin {
 		param.addParam("ybr_addr_prefecture", getReqParamString("ybr_addr_prefecture"));
 		param.addParam("ybr_addr_county", getReqParamString("ybr_addr_county"));
 
-		//20180601新增
+		// 20180601新增
 		param.addParam("custom_id", getReqParamString("custom_id")); // 客户编号
 		param.addParam("tag_price", getReqParamString("tag_price")); // 吊牌价
 		param.addParam("document_pull_date", getReqParamString("document_pull_date")); // 合同发货日期
 		param.addParam("financial_auth_time", getReqParamString("financial_auth_time")); // 财审通过时间
 
-		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_add_cart_ybr_pbc.getUrl(), param);
-		Log.Nano.tag("衣帮人 提交 Resp From EC", httpResp);
+		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_add_cart_ybr_pbc.getUrl(), param, TextLogHelper.Type.USKIN_YBR_NSRC);
+		Log.Nano.tag(ConfigHelperURL.Url_customshopaide_add_cart_ybr_pbc.getDesc() + "Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp;
 		String jsonERRCODE;

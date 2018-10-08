@@ -1,10 +1,10 @@
 package com.ltyx.open.ybr;
 
-import com.ltyx.sca.actionplugin.MoudleCSCheckSummaryClothes;
-import com.ltyx.sca.actionplugin.MoudleCSCheckUserInfo;
+import com.ltyx.sca.action.plugin.MoudleCSCheckSummaryClothes;
+import com.ltyx.sca.action.plugin.MoudleCSCheckUserInfo;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
-import com.zc.support.service.LogType;
+import com.zc.support.service.TextLogHelper;
 
 public class YBR_OBO_Action extends ZCBaseActionSupport {
 
@@ -28,11 +28,11 @@ public class YBR_OBO_Action extends ZCBaseActionSupport {
 		}
 
 		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.YBR_ORDER_SUCC);
-			writeResp(methodName, LogType.YBR_ORDER_SUCC);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_YBR_SUCC);
+			writeResp(methodName, TextLogHelper.Type.USKIN_YBR_SUCC);
 		} else {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.YBR_ORDER_FAIL);
-			writeResp(methodName, LogType.YBR_ORDER_FAIL);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_YBR_FAIL);
+			writeResp(methodName, TextLogHelper.Type.USKIN_YBR_FAIL);
 		}
 
 		return null;
@@ -52,11 +52,11 @@ public class YBR_OBO_Action extends ZCBaseActionSupport {
 		}
 
 		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.YBR_ORDER_SUCC);
-			writeResp(methodName, LogType.YBR_ORDER_SUCC);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_YBR_SUCC);
+			writeResp(methodName, TextLogHelper.Type.USKIN_YBR_SUCC);
 		} else {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.YBR_ORDER_FAIL);
-			writeResp(methodName, LogType.YBR_ORDER_FAIL);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_YBR_FAIL);
+			writeResp(methodName, TextLogHelper.Type.USKIN_YBR_FAIL);
 		}
 
 		return null;

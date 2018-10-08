@@ -1,19 +1,20 @@
 package com.ltyx.sca.action;
 
-import com.ltyx.sca.actionplugin.MoudleCSACheckSummaryClothes;
-import com.ltyx.sca.actionplugin.MoudleCSACheckUserInfo;
-import com.ltyx.sca.actionplugin.MoudleCSAGetPricePBYX;
-import com.ltyx.sca.actionplugin.MoudleCSASubmitECPBYX;
-import com.ltyx.sca.actionplugin.MoudleCheckMeasure;
-import com.ltyx.sca.actionplugin.MoudleCheckPrice;
-import com.ltyx.sca.actionplugin.MoudleCheckTechLZX01;
-import com.ltyx.sca.actionplugin.MoudleCheckTechLZX11;
-import com.ltyx.sca.actionplugin.MoudleCheckTechLZX120;
-import com.ltyx.sca.actionplugin.MoudleCheckTechLZXNecessary;
-import com.ltyx.sca.actionplugin.MoudleCheckTechYXST;
+import com.ltyx.sca.action.plugin.MoudleCSACheckSummaryClothes;
+import com.ltyx.sca.action.plugin.MoudleCSACheckUserInfo;
+import com.ltyx.sca.action.plugin.MoudleCSAGetPriceManPBYX;
+import com.ltyx.sca.action.plugin.MoudleCSAOrderManPBYX;
+import com.ltyx.sca.action.plugin.MoudleCheckMeasure;
+import com.ltyx.sca.action.plugin.MoudleCheckPrice;
+import com.ltyx.sca.action.plugin.MoudleCheckTechClash;
+import com.ltyx.sca.action.plugin.MoudleCheckTechLZX01;
+import com.ltyx.sca.action.plugin.MoudleCheckTechLZX11;
+import com.ltyx.sca.action.plugin.MoudleCheckTechLZX120;
+import com.ltyx.sca.action.plugin.MoudleCheckTechLZXNecessary;
+import com.ltyx.sca.action.plugin.MoudleCheckTechYXST;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
-import com.zc.support.service.LogType;
+import com.zc.support.service.TextLogHelper;
 
 public class CustomShopAidePBYXManAction extends ZCBaseActionSupport {
 
@@ -26,7 +27,7 @@ public class CustomShopAidePBYXManAction extends ZCBaseActionSupport {
 
 		init(true);
 
-		if (!"3071".equals(session.getAttribute("ec_user_id").toString()) && !"129".equals(session.getAttribute("ec_user_id").toString())){
+		if (!"3071".equals(session.getAttribute("ec_user_id").toString()) && !"129".equals(session.getAttribute("ec_user_id").toString())) {
 			AuthorizeAssistan.check(session.getAttribute("ec_user_rank").toString(), response, "0");
 		}
 
@@ -47,11 +48,11 @@ public class CustomShopAidePBYXManAction extends ZCBaseActionSupport {
 		doGetPrice();
 
 		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_USKIN_AIDE_SUCC);
-			writeResp(methodName, LogType.LTYX_USKIN_AIDE_SUCC);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_AIDE_PRICE_SUCC);
+			writeResp(methodName, TextLogHelper.Type.USKIN_AIDE_PRICE_SUCC);
 		} else {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_USKIN_AIDE_FAIL);
-			writeResp(methodName, LogType.LTYX_USKIN_AIDE_FAIL);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_AIDE_PRICE_FAIL);
+			writeResp(methodName, TextLogHelper.Type.USKIN_AIDE_PRICE_FAIL);
 		}
 
 		return null;
@@ -66,11 +67,11 @@ public class CustomShopAidePBYXManAction extends ZCBaseActionSupport {
 		doSubmit();
 
 		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_USKIN_AIDE_SUCC_ORDER);
-			writeResp(methodName, LogType.LTYX_USKIN_AIDE_SUCC_ORDER);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_AIDE_ORDER_SUCC);
+			writeResp(methodName, TextLogHelper.Type.USKIN_AIDE_ORDER_SUCC);
 		} else {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_USKIN_AIDE_FAIL);
-			writeResp(methodName, LogType.LTYX_USKIN_AIDE_FAIL);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_AIDE_ORDER_FAIL);
+			writeResp(methodName, TextLogHelper.Type.USKIN_AIDE_ORDER_FAIL);
 		}
 
 		return null;
@@ -79,7 +80,7 @@ public class CustomShopAidePBYXManAction extends ZCBaseActionSupport {
 
 	public boolean doGetPrice() {
 
-		MoudleCSAGetPricePBYX moudle = new MoudleCSAGetPricePBYX(request);
+		MoudleCSAGetPriceManPBYX moudle = new MoudleCSAGetPriceManPBYX(request);
 		moudle.doJobs();
 		ERRCODE = moudle.getERRCODE();
 		ERRDESC = moudle.getERRDESC();
@@ -137,7 +138,7 @@ public class CustomShopAidePBYXManAction extends ZCBaseActionSupport {
 			}
 			addProgressSucc("面料及特殊工艺校验");
 		}
-		
+
 		{
 			MoudleCheckTechLZX01 moudle = new MoudleCheckTechLZX01(request);
 			if (!moudle.doJobs()) {
@@ -187,6 +188,18 @@ public class CustomShopAidePBYXManAction extends ZCBaseActionSupport {
 		}
 
 		{
+			MoudleCheckTechClash moudle = new MoudleCheckTechClash(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("冲突工艺校验");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("冲突工艺校验");
+		}
+
+		{
 			MoudleCheckPrice moudle = new MoudleCheckPrice(request);
 			if (!moudle.doJobs()) {
 				addProgressFail("报价核对");
@@ -199,7 +212,7 @@ public class CustomShopAidePBYXManAction extends ZCBaseActionSupport {
 		}
 
 		{
-			MoudleCSASubmitECPBYX moudle = new MoudleCSASubmitECPBYX(request);
+			MoudleCSAOrderManPBYX moudle = new MoudleCSAOrderManPBYX(request);
 			if (!moudle.doJobs()) {
 				addProgressFail("提交EC");
 				ERRCODE = moudle.getERRCODE();

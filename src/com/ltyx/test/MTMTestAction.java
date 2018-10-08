@@ -4,7 +4,7 @@ import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqProperty;
 import com.zc.support.link.ZCHttpReqSender;
-import com.zc.support.service.LogType;
+import com.zc.support.service.TextLogHelper;
 
 public class MTMTestAction extends ZCBaseActionSupport {
 
@@ -32,7 +32,7 @@ public class MTMTestAction extends ZCBaseActionSupport {
 		property.importUserAgent(ZCHttpReqProperty.Terminal.PC);
 		property.addProperty("Cookie", "has_js=1; SESS254d6241dc85dcb04eee3d2ef73422a5=8IqC9JWM8p4WwgOEgQTH2GIJI59BOU6faaQjDmntxHE");
 
-		String resp = ZCHttpReqSender.sendPost("http://test.tailor.tailogic.com/tailogic/constructor/choose-style/75", param, property);
+		String resp = ZCHttpReqSender.sendPost("http://test.tailor.tailogic.com/tailogic/constructor/choose-style/75", param, property, TextLogHelper.Type.UNDEFINED);
 
 		ERRCODE = "0";
 		ERRDESC = "succ";
@@ -42,7 +42,7 @@ public class MTMTestAction extends ZCBaseActionSupport {
 		data += "----->";
 		data += "服务端响应长度" + resp.length();
 
-		writeResp("MTM 测试", LogType.NORMAL);
+		writeResp("MTM 测试", TextLogHelper.Type.UNDEFINED);
 
 		return null;
 	}

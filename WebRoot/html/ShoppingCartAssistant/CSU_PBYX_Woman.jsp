@@ -815,7 +815,7 @@
 																	<option value="YX-ST-00">无特殊工艺</option>
 																	<option value="YX-ST-01">DP成衣免烫</option>
 																	<option value="YX-ST-02">水洗</option>
-																</select> <label>特殊工艺</label>
+																</select> <label>DP或水洗</label>
 															</div>
 														</div>
 													</div>

@@ -27,9 +27,13 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 	public HttpSession session;
 
 	private JSONObject result;
-	public String ERRCODE;
-	public String ERRDESC;
-	public String data;
+
+	public String ERRCODE = null;// 响应码
+	public String ERRDESC = null;// 响应描述
+	public String data = null;// 主数据存放区
+	public String TIP1 = null;// 贴士1
+	public String TIP2 = null;// 贴士2
+	public String TimeMgr = null;// 时间管理者
 
 	public TimeHelper.Timer timer = null;
 
@@ -77,7 +81,7 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 		progressLog.add(log + "--->" + "失败");
 	}
 
-	public void logProgress(String title, String logType) {
+	public void logProgress(String title, String[][] logType) {
 		if (progressLog.size() > 0) {
 			LogSyncSafe.Pro log = new LogSyncSafe.Pro();
 			log.addStart(true);
@@ -91,7 +95,7 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 		}
 	}
 
-	public void logActionResponse(String title, String logType) {
+	public void logActionResponse(String title, String[][] logType) {
 		// System.out.println(TimeHelper.getTimeHMSS());
 		// Log.Pro.start();
 		// Log.Pro.whiteLine(title);
@@ -123,7 +127,7 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 	 * 支持打印log
 	 * 
 	 */
-	public void writeResp(String tab, String logType) {
+	public void writeResp(String tab, String[][] logType) {
 		logProgress(tab, logType);
 		writeResp();
 		logActionResponse(tab, logType);
@@ -134,10 +138,36 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 	 * 
 	 */
 	public void writeResp() {
+		if (ERRCODE == null) {
+			ERRCODE = "1";
+		}
+		if (ERRDESC == null) {
+			ERRDESC = "响应描述未初始化";
+		}
+		if (data == null) {
+			data = "主数据未添加";
+		}
+		if (TIP1 == null) {
+			TIP1 = "";
+		}
+		if (TIP2 == null) {
+			TIP2 = "";
+		}
+		if (TimeMgr == null) {
+			JSONObject TimeListJson = new JSONObject();
+			ArrayList<String> timeList = timer.getTimerPartableList();
+			for (int i = 0; i < timeList.size(); i++) {
+				TimeListJson.put(i, timeList.get(i));
+			}
+			TimeMgr = TimeListJson.toString();
+		}
 		result = new JSONObject();
 		result.put("ERRCODE", ERRCODE);
 		result.put("ERRDESC", ERRDESC);
 		result.put("data", data);
+		result.put("TIP1", TIP1);
+		result.put("TIP2", TIP2);
+		result.put("TimeMgr", TimeMgr);
 		try {
 			PrintWriter out;
 			out = response.getWriter();
@@ -156,7 +186,7 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 	 * 支持打印log
 	 * 
 	 */
-	public void writeResp(String raw, String tab, String logType) {
+	public void writeResp(String raw, String tab, String[][] logType) {
 		logProgress(tab, logType);
 		writeResp();
 		logActionResponse(tab, logType);
@@ -179,7 +209,7 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 		}
 	}
 
-	public void writeRaw(String raw, String tab, String logType) {
+	public void writeRaw(String raw, String tab, String[][] logType) {
 		logProgress(tab, logType);
 		writeRaw(raw);
 		logActionResponse(tab, logType);

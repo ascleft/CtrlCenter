@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.zc.support.doman.ZCBaseActionSupportPlugin;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
-import com.zc.support.service.LogType;
+import com.zc.support.service.TextLogHelper;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -90,7 +90,8 @@ public class UnityInventoryK3Moudle extends ZCBaseActionSupportPlugin {
 		param.addParam("businessObjectTypeId", businessObjectTypeId);
 		param.addParam("filter", filter);
 
-		String httpResp = ZCHttpReqSender.sendGet("http://www.lttcerp.com:88/k3cloud/Services/LUTAIWebService.asmx/K3CloudSendDataToUtailor", param, LogType.SearchUnity);
+		String httpResp = ZCHttpReqSender.sendGet("http://www.lttcerp.com:88/k3cloud/Services/LUTAIWebService.asmx/K3CloudSendDataToUtailor", param,
+				TextLogHelper.Type.UNITY_SEARCH_NSRC);
 
 		return httpResp;
 	}

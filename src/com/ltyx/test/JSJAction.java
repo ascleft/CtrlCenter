@@ -4,9 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import com.zc.support.doman.ZCBaseActionSupport;
-import com.zc.support.service.LogType;
 import com.zc.support.service.TextLogHelper;
-import com.zc.support.service.TextLogHelper2;
 import com.zc.support.service.TimeHelper;
 
 public class JSJAction extends ZCBaseActionSupport {
@@ -28,13 +26,9 @@ public class JSJAction extends ZCBaseActionSupport {
 			while ((str = br.readLine()) != null) {
 				wholeStr += str;
 			}
-			TextLogHelper.white(TimeHelper.getTimeHMSS(), LogType.JSJ_NOTICE);
-			TextLogHelper.white(wholeStr, LogType.JSJ_NOTICE);
-			TextLogHelper.white(" ", LogType.JSJ_NOTICE);
-
-			TextLogHelper2.white(TimeHelper.getTimeHMSS(), TextLogHelper2.Type.TEST_JSJ_NSRC);
-			TextLogHelper2.white(wholeStr, TextLogHelper2.Type.TEST_JSJ_NSRC);
-			TextLogHelper2.white(" ", TextLogHelper2.Type.TEST_JSJ_NSRC);
+			TextLogHelper.white(TimeHelper.getTimeHMSS(), TextLogHelper.Type.TEST_JSJ_NSRC);
+			TextLogHelper.white(wholeStr, TextLogHelper.Type.TEST_JSJ_NSRC);
+			TextLogHelper.white(" ", TextLogHelper.Type.TEST_JSJ_NSRC);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -3,7 +3,7 @@ package com.ltyx.test;
 import java.util.Random;
 
 import com.zc.support.doman.ZCBaseActionSupport;
-import com.zc.support.service.LogType;
+import com.zc.support.service.TextLogHelper;
 
 public class PlatformTailor extends ZCBaseActionSupport {
 
@@ -38,7 +38,7 @@ public class PlatformTailor extends ZCBaseActionSupport {
 		ERRDESC = "succ";
 		data = list.toString();
 
-		writeResp("更新平台商品列表", LogType.NORMAL);
+		writeResp("更新平台商品列表", TextLogHelper.Type.UNDEFINED);
 
 		return null;
 
@@ -54,7 +54,7 @@ public class PlatformTailor extends ZCBaseActionSupport {
 		ERRDESC = "succ";
 		data = "" + inventory;
 
-		writeResp("更新即时库存", LogType.NORMAL);
+		writeResp("更新即时库存", TextLogHelper.Type.UNDEFINED);
 
 		return null;
 	}
@@ -69,7 +69,7 @@ public class PlatformTailor extends ZCBaseActionSupport {
 		ERRDESC = "succ";
 		data = "下单成功：" + code + "共" + num + "件";
 
-		writeResp("平台商品 下单结束", LogType.NORMAL);
+		writeResp("平台商品 下单结束", TextLogHelper.Type.UNDEFINED);
 
 		return null;
 	}

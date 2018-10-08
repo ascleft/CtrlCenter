@@ -6,6 +6,7 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqProperty;
 import com.zc.support.link.ZCHttpReqSender;
+import com.zc.support.service.TextLogHelper;
 
 import net.sf.json.JSONObject;
 
@@ -73,8 +74,7 @@ public class InventoryActionMoudle extends ZCBaseActionSupportPlugin {
 
 		ZCHttpReqParam param = new ZCHttpReqParam();
 		param.addBody(req);
-		String resp = ZCHttpReqSender
-				.sendPost("http://eluthai.com/LTGlobalServices/BJYXInterface/LTGlobalServices.asmx", param, property);
+		String resp = ZCHttpReqSender.sendPost("http://eluthai.com/LTGlobalServices/BJYXInterface/LTGlobalServices.asmx", param, property, TextLogHelper.Type.UNDEFINED);
 
 		return resp;
 	}

@@ -2,13 +2,14 @@ package com.ltyx.open.ybr;
 
 import javax.servlet.http.HttpServletRequest;
 
-import net.sf.json.JSONObject;
-
 import com.zc.support.config.ConfigHelperURL;
 import com.zc.support.doman.ZCBaseActionSupportPlugin;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
+import com.zc.support.service.TextLogHelper;
+
+import net.sf.json.JSONObject;
 
 public class MoudleYBR_OBO_SubmitEC_PBYX extends ZCBaseActionSupportPlugin {
 
@@ -126,8 +127,8 @@ public class MoudleYBR_OBO_SubmitEC_PBYX extends ZCBaseActionSupportPlugin {
 		param.addParam("document_pull_date", getReqParamString("document_pull_date")); // 合同发货日期
 		param.addParam("financial_auth_time", getReqParamString("financial_auth_time")); // 财审通过时间
 
-		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_add_cart_ybr_pbyx.getUrl(), param);
-		Log.Nano.tag("衣帮人 提交 Resp From EC", httpResp);
+		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_add_cart_ybr_pbyx.getUrl(), param, TextLogHelper.Type.USKIN_YBR_NSRC);
+		Log.Nano.tag(ConfigHelperURL.Url_customshopaide_add_cart_ybr_pbyx.getDesc() + "Resp From EC", httpResp);
 
 		JSONObject jsonHttpResp;
 		String jsonERRCODE;

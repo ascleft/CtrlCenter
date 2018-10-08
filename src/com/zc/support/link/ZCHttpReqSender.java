@@ -8,7 +8,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import com.zc.support.service.LogSyncSafe;
-import com.zc.support.service.LogType;
+import com.zc.support.service.TextLogHelper;
 import com.zc.support.service.TimeHelper;
 
 public class ZCHttpReqSender {
@@ -22,10 +22,10 @@ public class ZCHttpReqSender {
 	 * @return URL 所代表远程资源的响应结果
 	 */
 	public static String sendGet(String url, ZCHttpReqParam param) {
-		return sendGet(url, param, LogType.NORMAL);
+		return sendGet(url, param, TextLogHelper.Type.UNDEFINED);
 	}
 
-	public static String sendGet(String url, ZCHttpReqParam param, String logType) {
+	public static String sendGet(String url, ZCHttpReqParam param, String[][] logType) {
 		ZCHttpReqProperty property = new ZCHttpReqProperty();
 		property.importBase(ZCHttpReqProperty.BaseProperty.TYPE_1);
 		property.importUserAgent(ZCHttpReqProperty.Terminal.PC);
@@ -33,10 +33,10 @@ public class ZCHttpReqSender {
 	}
 
 	public static String sendGet(String url, ZCHttpReqParam param, ZCHttpReqProperty property) {
-		return sendGet(url, param, property, LogType.NORMAL);
+		return sendGet(url, param, property, TextLogHelper.Type.UNDEFINED);
 	}
 
-	public static String sendGet(String url, ZCHttpReqParam param, ZCHttpReqProperty property, String logType) {
+	public static String sendGet(String url, ZCHttpReqParam param, ZCHttpReqProperty property, String[][] logType) {
 
 		TimeHelper.Timer timer = new TimeHelper.Timer();
 
@@ -109,10 +109,10 @@ public class ZCHttpReqSender {
 	 * @return 所代表远程资源的响应结果
 	 */
 	public static String sendPost(String url, ZCHttpReqParam param) {
-		return sendPost(url, param, LogType.NORMAL);
+		return sendPost(url, param, TextLogHelper.Type.UNDEFINED);
 	}
 
-	public static String sendPost(String url, ZCHttpReqParam param, String logType) {
+	public static String sendPost(String url, ZCHttpReqParam param, String logType[][]) {
 		ZCHttpReqProperty property = new ZCHttpReqProperty();
 		property.importBase(ZCHttpReqProperty.BaseProperty.TYPE_1);
 		property.importUserAgent(ZCHttpReqProperty.Terminal.PC);
@@ -120,10 +120,10 @@ public class ZCHttpReqSender {
 	}
 
 	public static String sendPost(String url, ZCHttpReqParam param, ZCHttpReqProperty property) {
-		return sendPost(url, param, property, LogType.NORMAL);
+		return sendPost(url, param, property, TextLogHelper.Type.UNDEFINED);
 	}
 
-	public static String sendPost(String url, ZCHttpReqParam param, ZCHttpReqProperty property, String logType) {
+	public static String sendPost(String url, ZCHttpReqParam param, ZCHttpReqProperty property, String[][] logType) {
 
 		TimeHelper.Timer timer = new TimeHelper.Timer();
 
@@ -139,8 +139,10 @@ public class ZCHttpReqSender {
 			URL realUrl = new URL(url);
 
 			// 代理方式打开和URL之间的连接
-			// Proxy proxy = new Proxy(java.net.Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 8888));
-			// URLConnection conn = (URLConnection)realUrl.openConnection(proxy);
+			// Proxy proxy = new Proxy(java.net.Proxy.Type.HTTP, new
+			// InetSocketAddress("127.0.0.1", 8888));
+			// URLConnection conn =
+			// (URLConnection)realUrl.openConnection(proxy);
 
 			// 打开和URL之间的连接
 			URLConnection conn = realUrl.openConnection();

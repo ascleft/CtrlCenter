@@ -74,9 +74,9 @@ public class SCAPageConfigWoman {
 
 		String list = "";
 
-		list += cooly("基础款(女装)", "true", "LZX_120", "1");
-		list += cooly("复杂款(女装)", "false", "LZX_120", "2");
-		list += cooly("客供款", "pbc", "LZX_120", "3");
+		list += cooly("基础款(女装)", "true", "LZX_120", "11");
+		list += cooly("复杂款(女装)", "false", "LZX_120", "12");
+		list += cooly("客供款", "pbc", "LZX_120", "13");
 
 		return list;
 
@@ -87,9 +87,9 @@ public class SCAPageConfigWoman {
 
 		String list = "";
 
-		list += cooly("基础款(女装)", "true", "LZX_06", "1");
-		list += cooly("复杂款(女装)", "false", "LZX_06", "2");
-		list += cooly("客供款", "pbc", "LZX_06", "3");
+		list += cooly("基础款(女装)", "true", "LZX_06", "11");
+		list += cooly("复杂款(女装)", "false", "LZX_06", "12");
+		list += cooly("客供款", "pbc", "LZX_06", "13");
 
 		return list;
 

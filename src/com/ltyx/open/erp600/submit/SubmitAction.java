@@ -2,7 +2,7 @@ package com.ltyx.open.erp600.submit;
 
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
-import com.zc.support.service.LogType;
+import com.zc.support.service.TextLogHelper;
 
 public class SubmitAction extends ZCBaseActionSupport {
 
@@ -21,11 +21,13 @@ public class SubmitAction extends ZCBaseActionSupport {
 
 		String methodName = "ERP600面料订单提交";
 
-		ZCReqIntroGetter.showParams(methodName, request, LogType.ERP600_ORDER_SUBMIT);
+		ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.ERP600_SUBMIT_NSRC);
 
-		doSubmit();
-
-		writeResp(methodName, LogType.ERP600_ORDER_SUBMIT);
+		if (doSubmit()) {
+			writeResp(methodName, TextLogHelper.Type.ERP600_SUBMIT_SUCC);
+		} else {
+			writeResp(methodName, TextLogHelper.Type.ERP600_SUBMIT_FAIL);
+		}
 
 		return null;
 
@@ -34,7 +36,7 @@ public class SubmitAction extends ZCBaseActionSupport {
 	public boolean doSubmit() {
 
 		{
-			SubmitActionMoudle2 moudle = new SubmitActionMoudle2(request);
+			SubmitActionMoudle moudle = new SubmitActionMoudle(request);
 			if (!moudle.doJobs()) {
 				addProgressFail("提交ERP600面料订单");
 				ERRCODE = moudle.getERRCODE();

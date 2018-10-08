@@ -156,11 +156,11 @@ public class TimeHelper {
 
 		public long stop(String name) {
 
-			return stop(name, LogType.NORMAL);
+			return stop(name, TextLogHelper.Type.UNDEFINED);
 
 		}
 
-		public long stop(String name, String logType) {
+		public long stop(String name, String[][] logType) {
 
 			LogSyncSafe.Pro log = new LogSyncSafe.Pro();
 			log.addStart(true);

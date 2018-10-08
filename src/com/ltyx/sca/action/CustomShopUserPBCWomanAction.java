@@ -1,18 +1,19 @@
 package com.ltyx.sca.action;
 
-import com.ltyx.sca.actionplugin.MoudleCSCheckSummaryClothes;
-import com.ltyx.sca.actionplugin.MoudleCSCheckUserInfo;
-import com.ltyx.sca.actionplugin.MoudleCSGetPriceWomanPBC;
-import com.ltyx.sca.actionplugin.MoudleCSSubmitECWomanPBC;
-import com.ltyx.sca.actionplugin.MoudleCheckMeasure;
-import com.ltyx.sca.actionplugin.MoudleCheckPrice;
-import com.ltyx.sca.actionplugin.MoudleCheckTechLZX11;
-import com.ltyx.sca.actionplugin.MoudleCheckTechLZX120;
-import com.ltyx.sca.actionplugin.MoudleCheckTechLZXNecessary;
-import com.ltyx.sca.actionplugin.MoudleCheckTechYXST2PBC;
+import com.ltyx.sca.action.plugin.MoudleCSCheckSummaryClothes;
+import com.ltyx.sca.action.plugin.MoudleCSCheckUserInfo;
+import com.ltyx.sca.action.plugin.MoudleCSUGetPriceWomanPBC;
+import com.ltyx.sca.action.plugin.MoudleCSUOrderWomanPBC;
+import com.ltyx.sca.action.plugin.MoudleCheckMeasure;
+import com.ltyx.sca.action.plugin.MoudleCheckPrice;
+import com.ltyx.sca.action.plugin.MoudleCheckTechClash;
+import com.ltyx.sca.action.plugin.MoudleCheckTechLZX11;
+import com.ltyx.sca.action.plugin.MoudleCheckTechLZX120;
+import com.ltyx.sca.action.plugin.MoudleCheckTechLZXNecessary;
+import com.ltyx.sca.action.plugin.MoudleCheckTechYXST2PBC;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
-import com.zc.support.service.LogType;
+import com.zc.support.service.TextLogHelper;
 
 public class CustomShopUserPBCWomanAction extends ZCBaseActionSupport {
 
@@ -25,7 +26,7 @@ public class CustomShopUserPBCWomanAction extends ZCBaseActionSupport {
 
 		init(true);
 
-		if (!"3071".equals(session.getAttribute("ec_user_id").toString()) && !"129".equals(session.getAttribute("ec_user_id").toString())){
+		if (!"3071".equals(session.getAttribute("ec_user_id").toString()) && !"129".equals(session.getAttribute("ec_user_id").toString())) {
 			AuthorizeAssistan.check(session.getAttribute("ec_user_rank").toString(), response, "20", "21");
 		}
 
@@ -46,15 +47,14 @@ public class CustomShopUserPBCWomanAction extends ZCBaseActionSupport {
 		init(true);
 		String methodName = "定制店 客供面料 女装 报价";
 
-
 		doGetPrice();
 
 		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_USKIN_USER_SUCC);
-			writeResp(methodName, LogType.LTYX_USKIN_USER_SUCC);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_PRICE_SUCC);
+			writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_SUCC);
 		} else {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_USKIN_USER_FAIL);
-			writeResp(methodName, LogType.LTYX_USKIN_USER_FAIL);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_PRICE_FAIL);
+			writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_FAIL);
 		}
 
 		return null;
@@ -66,15 +66,14 @@ public class CustomShopUserPBCWomanAction extends ZCBaseActionSupport {
 		init(true);
 		String methodName = "定制店 客供面料 女装 提交购物车";
 
-
 		doSubmit();
-		
+
 		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_USKIN_USER_SUCC);
-			writeResp(methodName, LogType.LTYX_USKIN_USER_SUCC);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_ORDER_SUCC);
+			writeResp(methodName, TextLogHelper.Type.USKIN_USER_ORDER_SUCC);
 		} else {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_USKIN_USER_FAIL);
-			writeResp(methodName, LogType.LTYX_USKIN_USER_FAIL);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_ORDER_FAIL);
+			writeResp(methodName, TextLogHelper.Type.USKIN_USER_ORDER_FAIL);
 		}
 
 		return null;
@@ -83,7 +82,7 @@ public class CustomShopUserPBCWomanAction extends ZCBaseActionSupport {
 
 	public boolean doGetPrice() {
 
-		MoudleCSGetPriceWomanPBC moudle = new MoudleCSGetPriceWomanPBC(request);
+		MoudleCSUGetPriceWomanPBC moudle = new MoudleCSUGetPriceWomanPBC(request);
 		moudle.doJobs();
 		ERRCODE = moudle.getERRCODE();
 		ERRDESC = moudle.getERRDESC();
@@ -179,6 +178,18 @@ public class CustomShopUserPBCWomanAction extends ZCBaseActionSupport {
 		}
 
 		{
+			MoudleCheckTechClash moudle = new MoudleCheckTechClash(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("冲突工艺校验");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("冲突工艺校验");
+		}
+
+		{
 			MoudleCheckPrice moudle = new MoudleCheckPrice(request);
 			if (!moudle.doJobs()) {
 				addProgressFail("报价核对");
@@ -191,7 +202,7 @@ public class CustomShopUserPBCWomanAction extends ZCBaseActionSupport {
 		}
 
 		{
-			MoudleCSSubmitECWomanPBC moudle = new MoudleCSSubmitECWomanPBC(request);
+			MoudleCSUOrderWomanPBC moudle = new MoudleCSUOrderWomanPBC(request);
 			if (!moudle.doJobs()) {
 				addProgressFail("提交EC");
 				ERRCODE = moudle.getERRCODE();

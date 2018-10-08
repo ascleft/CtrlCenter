@@ -13,9 +13,12 @@ import com.zc.support.service.Log;
 public abstract class ZCBaseActionSupportPlugin implements ZCImplReqParamGetter {
 
 	// 返回响应基本内容
-	protected String ERRCODE = null;
-	protected String ERRDESC = null;
-	protected String data = null;
+	protected String ERRCODE = null;// 响应码
+	protected String ERRDESC = null;// 响应描述
+	protected String data = null;// 主数据存放区
+	protected String TIP1 = null;// 贴士1
+	protected String TIP2 = null;// 贴士2
+	protected String TimeMgr = null;// 时间管理者
 
 	// 网络连接
 	protected HttpServletRequest request = null;
@@ -33,6 +36,14 @@ public abstract class ZCBaseActionSupportPlugin implements ZCImplReqParamGetter 
 
 	public String getData() {
 		return data;
+	}
+
+	public String getTIP1() {
+		return TIP1;
+	}
+
+	public String getTIP2() {
+		return TIP2;
 	}
 
 	// 数据库连接

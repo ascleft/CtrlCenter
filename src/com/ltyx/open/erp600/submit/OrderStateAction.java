@@ -2,7 +2,7 @@ package com.ltyx.open.erp600.submit;
 
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
-import com.zc.support.service.LogType;
+import com.zc.support.service.TextLogHelper;
 
 public class OrderStateAction extends ZCBaseActionSupport {
 
@@ -21,11 +21,11 @@ public class OrderStateAction extends ZCBaseActionSupport {
 
 		String methodName = "ERP600订单状态反查";
 
-		ZCReqIntroGetter.showParams(methodName, request, LogType.ERP600_ORDER_SEARCH);
+		ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.ERP600_ORDER_STATE);
 
 		doSubmit();
 
-		writeResp(methodName, LogType.ERP600_ORDER_SEARCH);
+		writeResp(methodName, TextLogHelper.Type.ERP600_ORDER_STATE);
 
 		return null;
 

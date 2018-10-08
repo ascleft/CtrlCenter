@@ -7,7 +7,7 @@ import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqProperty;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.JsonHelper;
-import com.zc.support.service.LogType;
+import com.zc.support.service.TextLogHelper;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -151,7 +151,7 @@ public class OrderStateActionMoudle extends ZCBaseActionSupportPlugin {
 
 		ZCHttpReqParam param = new ZCHttpReqParam();
 		param.addBody(req);
-		String resp = ZCHttpReqSender.sendPost("http://www.lttc.com.cn/LTGlobalServices/BJYXInterface/LTGlobalServices.asmx", param, property, LogType.ERP600_ORDER_SUBMIT);
+		String resp = ZCHttpReqSender.sendPost("http://www.lttc.com.cn/LTGlobalServices/BJYXInterface/LTGlobalServices.asmx", param, property, TextLogHelper.Type.ERP600_ORDER_STATE);
 
 		// return order.toString();
 		return resp;

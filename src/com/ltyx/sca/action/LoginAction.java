@@ -6,8 +6,8 @@ import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.Log;
-import com.zc.support.service.LogType;
 import com.zc.support.service.NumberHelper;
+import com.zc.support.service.TextLogHelper;
 
 import net.sf.json.JSONObject;
 
@@ -43,11 +43,11 @@ public class LoginAction extends ZCBaseActionSupport {
 		doLogin();
 
 		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_CSA_LOGIN);
-			writeResp(methodName, LogType.LTYX_CSA_LOGIN);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_LOGIN_SUCC);
+			writeResp(methodName, TextLogHelper.Type.USKIN_LOGIN_SUCC);
 		} else {
-			ZCReqIntroGetter.showParams(methodName, request, LogType.LTYX_CSA_LOGIN);
-			writeResp(methodName, LogType.LTYX_CSA_LOGIN);
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_LOGIN_FAIL);
+			writeResp(methodName, TextLogHelper.Type.USKIN_LOGIN_FAIL);
 		}
 
 		return null;
@@ -66,7 +66,7 @@ public class LoginAction extends ZCBaseActionSupport {
 
 		doLogout();
 
-		logProgress(methodName, LogType.LTYX_CSA_LOGIN);
+		logProgress(methodName, TextLogHelper.Type.USKIN_LOGOUT);
 
 		return "succ";
 	}
@@ -100,7 +100,7 @@ public class LoginAction extends ZCBaseActionSupport {
 			param.addParam("pwd", pwd);
 			param.addParam("role", role);
 
-			String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_LoginEC.getUrl(), param);
+			String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_LoginEC.getUrl(), param, TextLogHelper.Type.USKIN_LOGIN_NSRC);
 
 			String isOnline;
 			String ec_user_id;

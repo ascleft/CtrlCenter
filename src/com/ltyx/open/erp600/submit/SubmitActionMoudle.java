@@ -7,7 +7,7 @@ import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqProperty;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.JsonHelper;
-import com.zc.support.service.LogType;
+import com.zc.support.service.TextLogHelper;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -40,13 +40,15 @@ public class SubmitActionMoudle extends ZCBaseActionSupportPlugin {
 			JSONObject orderIdTemp = new JSONObject();
 			orderIdTemp.put("id", respString[1]);
 			data = orderIdTemp.toString();
+			return true;
 		} else {
 			ERRCODE = "0";
 			ERRDESC = "fail";
 			data = respString[1];
+			return false;
 		}
 
-		return true;
+		
 	}
 
 	public boolean checkOrderMsg() {
@@ -75,7 +77,20 @@ public class SubmitActionMoudle extends ZCBaseActionSupportPlugin {
 		String CommunicateInfo = getReqParamString("CommunicateInfo");// 通信信息 *
 		// String Email = "";// 邮箱
 		String Packing = "袋装";// 包装方式 袋装
-		String ExPaymentWay = getReqParamString("ExPaymentWay");// 运费支付方式,预付、到付、第三方到付
+		String ExpressCompany = getReqParamString("ExpressCompany");// 快递公司
+																	// 文本内容，必填。
+		String ExServiceType = getReqParamString("ExServiceType");// 快递服务类型
+																	// 标快、特惠等
+		String ExPaymentAccount = getReqParamString("ExPaymentAccount");// 运费支付账号
+																		// 文本内容，必填。
+		String ExPaymentWay = getReqParamString("ExPaymentWay");// 运费支付方式 费支付方式
+																// 预付、到付、第三方寄付。
+		String IsInvoiced = getReqParamString("IsInvoiced");// 开票标记 true或false
+		String InvoiceType = getReqParamString("InvoiceType");// 开票类型
+																// 电子普通发票，电子增值税发票，普通发票，增值税发票
+		String InvoiceTitle = getReqParamString("InvoiceTitle");// 发票抬头
+		String InvoiceNote = getReqParamString("InvoiceNote");// 发票备注
+																// 纳税人识别码|地址|电话|开户行|账户
 		String Remark = "";// 客户备注
 		String ExpressNO = "";// 运单号
 		String OPTime = "";// 操作时间
@@ -102,7 +117,16 @@ public class SubmitActionMoudle extends ZCBaseActionSupportPlugin {
 		order.put("CommunicateInfo", CommunicateInfo);
 		// order.put("Email", Email);
 		order.put("Packing", Packing);
-		order.put("ExPaymentWay", ExPaymentWay);
+
+		order.put("ExpressCompany", ExpressCompany);// 快递公司 文本内容，必填。
+		order.put("ExServiceType", ExServiceType);// 快递服务类型 标快、特惠等
+		order.put("ExPaymentAccount", ExPaymentAccount);// 运费支付账号 文本内容，必填。
+		order.put("ExPaymentWay", ExPaymentWay);// 运费支付方式 费支付方式 预付、到付、第三方寄付。
+		order.put("IsInvoiced", IsInvoiced);// 开票标记 true或false
+		order.put("InvoiceType", InvoiceType);// 开票类型 电子普通发票，电子增值税发票，普通发票，增值税发票
+		order.put("InvoiceTitle", InvoiceTitle);// 发票抬头
+		order.put("InvoiceNote", InvoiceNote);// 发票备注 纳税人识别码|地址|电话|开户行|账户
+
 		order.put("Remark", Remark);
 		order.put("ExpressNO", ExpressNO);
 		order.put("OPTime", OPTime);
@@ -190,7 +214,7 @@ public class SubmitActionMoudle extends ZCBaseActionSupportPlugin {
 
 		ZCHttpReqParam param = new ZCHttpReqParam();
 		param.addBody(req);
-		String resp = ZCHttpReqSender.sendPost("http://www.lttc.com.cn/LTGlobalServices/BJYXInterface/LTGlobalServices.asmx", param, property, LogType.ERP600_ORDER_SUBMIT);
+		String resp = ZCHttpReqSender.sendPost("http://www.lttc.com.cn/LTGlobalServices/BJYXInterface/LTGlobalServices.asmx", param, property, TextLogHelper.Type.ERP600_SUBMIT_NSRC);
 
 		// return order.toString();
 		return resp;

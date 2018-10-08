@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
-import com.zc.support.service.LogType;
+import com.zc.support.service.TextLogHelper;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -37,8 +37,8 @@ public class UnityInventoryAction extends ZCBaseActionSupport {
 
 		doGetInventory();
 
-		ZCReqIntroGetter.showParams(methodName, request, LogType.SearchUnity);
-		writeResp(methodName, LogType.SearchUnity);
+		ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.UNITY_SEARCH_NSRC);
+		writeResp(methodName, TextLogHelper.Type.UNITY_SEARCH_NSRC);
 
 		return null;
 

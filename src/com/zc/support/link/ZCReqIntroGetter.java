@@ -67,7 +67,7 @@ public class ZCReqIntroGetter {
 	 * 打印请求中的所有Param
 	 * 
 	 */
-	public static Map<String, String> showParams(String reqName, HttpServletRequest request, String logType) {
+	public static Map<String, String> showParams(String reqName, HttpServletRequest request, String[][] logType) {
 		Map<String, String> map = new TreeMap<String, String>();
 		try {
 			request.setCharacterEncoding("UTF-8");

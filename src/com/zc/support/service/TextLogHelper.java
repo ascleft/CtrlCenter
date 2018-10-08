@@ -3,305 +3,93 @@ package com.zc.support.service;
 import java.io.File;
 
 public class TextLogHelper {
+
+	public static class Type {
+
+		public static final String[][] GLOBAL = new String[][] { { "Global" } };
+
+		public static final String[][] UNDEFINED = new String[][] { { "Undefined" }, GLOBAL[0] };
+
+		public static final String[][] USKIN_LOGIN_SUCC = new String[][] { { "USKIN", "LOGIN", "SUCC" }, GLOBAL[0] };
+		public static final String[][] USKIN_LOGIN_FAIL = new String[][] { { "USKIN", "LOGIN", "FAIL" }, GLOBAL[0] };
+		public static final String[][] USKIN_LOGIN_NSRC = new String[][] { { "USKIN", "LOGIN", "NSRC" }, GLOBAL[0] };
+		public static final String[][] USKIN_LOGOUT = new String[][] { { "USKIN", "LOGOUT" }, GLOBAL[0] };
+
+		public static final String[][] USKIN_AIDE_PRICE_SUCC = new String[][] { { "USKIN", "AIDE", "PRICE", "SUCC" }, GLOBAL[0] };
+		public static final String[][] USKIN_AIDE_PRICE_FAIL = new String[][] { { "USKIN", "AIDE", "PRICE", "FAIL" }, GLOBAL[0] };
+		public static final String[][] USKIN_AIDE_PRICE_NSRC = new String[][] { { "USKIN", "AIDE", "PRICE", "NSRC" }, GLOBAL[0] };
+		public static final String[][] USKIN_AIDE_ORDER_SUCC = new String[][] { { "USKIN", "AIDE", "ORDER", "SUCC" }, GLOBAL[0] };
+		public static final String[][] USKIN_AIDE_ORDER_FAIL = new String[][] { { "USKIN", "AIDE", "ORDER", "FAIL" }, GLOBAL[0] };
+		public static final String[][] USKIN_AIDE_ORDER_NSRC = new String[][] { { "USKIN", "AIDE", "ORDER", "NSRC" }, GLOBAL[0] };
+
+		public static final String[][] USKIN_USER_PRICE_SUCC = new String[][] { { "USKIN", "USER", "PRICE", "SUCC" }, GLOBAL[0] };
+		public static final String[][] USKIN_USER_PRICE_FAIL = new String[][] { { "USKIN", "USER", "PRICE", "FAIL" }, GLOBAL[0] };
+		public static final String[][] USKIN_USER_PRICE_NSRC = new String[][] { { "USKIN", "USER", "PRICE", "NSRC" }, GLOBAL[0] };
+		public static final String[][] USKIN_USER_ORDER_SUCC = new String[][] { { "USKIN", "USER", "ORDER", "SUCC" }, GLOBAL[0] };
+		public static final String[][] USKIN_USER_ORDER_FAIL = new String[][] { { "USKIN", "USER", "ORDER", "FAIL" }, GLOBAL[0] };
+		public static final String[][] USKIN_USER_ORDER_NSRC = new String[][] { { "USKIN", "USER", "ORDER", "NSRC" }, GLOBAL[0] };
+
+		public static final String[][] USKIN_YBR_SUCC = new String[][] { { "USKIN", "YBR", "SUCC" }, GLOBAL[0] };
+		public static final String[][] USKIN_YBR_FAIL = new String[][] { { "USKIN", "YBR", "FAIL" }, GLOBAL[0] };
+		public static final String[][] USKIN_YBR_NSRC = new String[][] { { "USKIN", "YBR", "NSRC" }, GLOBAL[0] };
+
+		public static final String[][] UNITY_SEARCH_SUCC = new String[][] { { "UNITY", "SEARCH", "SUCC" }, GLOBAL[0] };
+		public static final String[][] UNITY_SEARCH_FAIL = new String[][] { { "UNITY", "SEARCH", "FAIL" }, GLOBAL[0] };
+		public static final String[][] UNITY_SEARCH_NSRC = new String[][] { { "UNITY", "SEARCH", "NSRC" }, GLOBAL[0] };
+
+		public static final String[][] ERP600_SUBMIT_SUCC = new String[][] { { "ERP600", "SUBMIT", "SUCC" }, GLOBAL[0] };
+		public static final String[][] ERP600_SUBMIT_FAIL = new String[][] { { "ERP600", "SUBMIT", "FAIL" }, GLOBAL[0] };
+		public static final String[][] ERP600_SUBMIT_NSRC = new String[][] { { "ERP600", "SUBMIT", "NSRC" }, GLOBAL[0] };
+
+		public static final String[][] ERP600_ORDER_STATE = new String[][] { { "ERP600", "ORDER_STATE" }, GLOBAL[0] };
+
+		public static final String[][] OTHER_UCSPLUS_SEARCH = new String[][] { { "OTHER", "UCSPLUS", "SEARCH" }, GLOBAL[0] };
+		public static final String[][] OTHER_UCSPLUS_INTERFACETEST = new String[][] { { "OTHER", "UCSPLUS", "INTERFACETEST" }, GLOBAL[0] };
+
+		public static final String[][] TEST_JSJ_NSRC = new String[][] { { "TEST", "JSJ", "NSRC" }, GLOBAL[0] };
+		public static final String[][] TEST_MTM_NSRC = new String[][] { { "TEST", "MTM", "NSRC" }, GLOBAL[0] };
+
+	}
+
+	public static void white(String line, String logType[][]) {
+		for (int i = 0; i < logType.length; i++) {
+			for (int j = 0; j < logType[i].length; j++) {
+
+				String[] floders_root = new String[3];
+				String[] floders_day_ = new String[j + 1 + 3];
+				String[] floders_hour = new String[j + 1 + 3];
+				for (int k = 0; k < j + 1; k++) {
+					floders_day_[k + 2] = logType[i][k];
+					floders_hour[k + 2] = logType[i][k];
+				}
+
+				floders_root[0] = "LOG2CtrlCenter";
+				floders_root[1] = TimeHelper.getDateYMD();
+				floders_root[2] = TimeHelper.getDateYMD() + ".txt";
+
+				floders_day_[0] = "LOG2CtrlCenter";
+				floders_day_[1] = TimeHelper.getDateYMD();
+				floders_day_[j + 1 + 2] = TimeHelper.getDateYMD() + ".txt";
+
+				floders_hour[0] = "LOG2CtrlCenter";
+				floders_hour[1] = TimeHelper.getDateYMD();
+				floders_hour[j + 1 + 2] = TimeHelper.getTimeH() + ".txt";
+
+				File root = FileHelper.getFile(floders_root);
+				File day_ = FileHelper.getFile(floders_day_);
+				File hour = FileHelper.getFile(floders_hour);
+				FileHelper.writeFile(root, line);
+				FileHelper.writeFile(day_, line);
+				FileHelper.writeFile(hour, line);
+
+			}
+		}
+	}
+
 	public static void white(String line) {
-		File day = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), TimeHelper.getDateYMD() + ".txt");
-		File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), TimeHelper.getTimeH() + ".txt");
-		FileHelper.writeFile(day, line);
-		FileHelper.writeFile(hour, line);
-	}
 
-	public static void white(String line, String logType) {
-		switch (logType) {
+		white(line, Type.UNDEFINED);
 
-		case LogType.NORMAL: {
-			NORMAL(line);
-		}
-			break;
-		case LogType.SearchUnity: {
-			SearchUnity(line);
-		}
-			break;
-		case LogType.YBR_ORDER_ALL: {
-			YBR_ORDER_ALL(line);
-			break;
-		}
-		case LogType.YBR_ORDER_SUCC: {
-			YBR_ORDER_SUCC(line);
-		}
-			break;
-		case LogType.YBR_ORDER_FAIL: {
-			YBR_ORDER_FAIL(line);
-		}
-			break;
-		case LogType.LTYX_UTAILOR_ALL: {
-			LTYX_UTAILOR_ALL(line);
-		}
-			break;
-		case LogType.LTYX_UTAILOR_SUCC: {
-			LTYX_UTAILOR_SUCC(line);
-		}
-			break;
-		case LogType.LTYX_UTAILOR_SUCC_ORDER: {
-			LTYX_UTAILOR_SUCC_ORDER(line);
-		}
-			break;
-		case LogType.LTYX_UTAILOR_FAIL: {
-			LTYX_UTAILOR_FAIL(line);
-		}
-			break;
-		case LogType.LTYX_USKIN_AIDE_ALL: {
-			LTYX_USKIN_AIDE_ALL(line);
-		}
-			break;
-		case LogType.LTYX_USKIN_AIDE_SUCC: {
-			LTYX_USKIN_AIDE_SUCC(line);
-		}
-			break;
-		case LogType.LTYX_USKIN_AIDE_SUCC_ORDER: {
-			LTYX_USKIN_AIDE_SUCC_ORDER(line);
-		}
-			break;
-		case LogType.LTYX_USKIN_AIDE_FAIL: {
-			LTYX_USKIN_AIDE_FAIL(line);
-		}
-			break;
-		case LogType.LTYX_USKIN_USER_ALL: {
-			LTYX_USKIN_USER_ALL(line);
-		}
-			break;
-		case LogType.LTYX_USKIN_USER_SUCC: {
-			LTYX_USKIN_USER_SUCC(line);
-		}
-			break;
-		case LogType.LTYX_USKIN_USER_FAIL: {
-			LTYX_USKIN_USER_FAIL(line);
-		}
-			break;
-		case LogType.ERP600_ORDER_SUBMIT: {
-			ERP600_ORDER_SUBMIT(line);
-		}
-			break;
-		case LogType.ERP600_ORDER_SEARCH: {
-			ERP600_ORDER_SEARCH(line);
-		}
-			break;
-		case LogType.JSJ_NOTICE: {
-			JSJ_NOTICE(line);
-		}
-			break;
-		default: {
-			Default(line);
-		}
-			break;
-		}
-	}
-
-	private static void NORMAL(String line) {
-
-		File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), TimeHelper.getDateYMD() + ".txt");
-		File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), TimeHelper.getTimeH() + ".txt");
-		FileHelper.writeFile(day_, line);
-		FileHelper.writeFile(hour, line);
-
-	}
-
-	private static void SearchUnity(String line) {
-		NORMAL(line);
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "SearchUnity", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "SearchUnity", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-
-	private static void YBR_ORDER_ALL(String line) {
-		NORMAL(line);
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "YBR", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "YBR", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-
-	private static void YBR_ORDER_SUCC(String line) {
-		YBR_ORDER_ALL(line);
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "YBR", "SUCC", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "YBR", "SUCC", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-
-	private static void YBR_ORDER_FAIL(String line) {
-		YBR_ORDER_ALL(line);
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "YBR", "FAIL", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "YBR", "FAIL", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-
-	private static void LTYX_UTAILOR_ALL(String line) {
-		NORMAL(line);
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "UTAILOR", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "UTAILOR", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-
-	private static void LTYX_UTAILOR_SUCC(String line) {
-		LTYX_UTAILOR_ALL(line);
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "UTAILOR", "SUCC", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "UTAILOR", "SUCC", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-
-	private static void LTYX_UTAILOR_SUCC_ORDER(String line) {
-		LTYX_UTAILOR_SUCC(line);
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "UTAILOR", "SUCC", "OREDR", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "UTAILOR", "SUCC", "OREDR", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-
-	private static void LTYX_UTAILOR_FAIL(String line) {
-		LTYX_UTAILOR_ALL(line);
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "UTAILOR", "FAIL", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "UTAILOR", "FAIL", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-
-	private static void LTYX_USKIN_AIDE_ALL(String line) {
-		NORMAL(line);
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", "AIDE", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", "AIDE", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-
-	private static void LTYX_USKIN_AIDE_SUCC(String line) {
-		LTYX_USKIN_AIDE_ALL(line);
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", "AIDE", "SUCC", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", "AIDE", "SUCC", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-
-	private static void LTYX_USKIN_AIDE_SUCC_ORDER(String line) {
-		LTYX_USKIN_AIDE_SUCC(line);
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", "AIDE", "SUCC", "ORDER", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", "AIDE", "SUCC", "ORDER", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-
-	private static void LTYX_USKIN_AIDE_FAIL(String line) {
-		LTYX_USKIN_AIDE_ALL(line);
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", "AIDE", "FAIL", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", "AIDE", "FAIL", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-
-	private static void LTYX_USKIN_USER_ALL(String line) {
-		NORMAL(line);
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", "USER", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", "USER", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-
-	private static void LTYX_USKIN_USER_SUCC(String line) {
-		LTYX_USKIN_USER_ALL(line);
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", "USER", "SUCC", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", "USER", "SUCC", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-
-	private static void LTYX_USKIN_USER_FAIL(String line) {
-		LTYX_USKIN_USER_ALL(line);
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", "USER", "FAIL", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "USKIN", "USER", "FAIL", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-
-	private static void ERP600_ORDER_SUBMIT(String line) {
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "ERP600", "SUBMIT", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "ERP600", "SUBMIT", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-
-	private static void ERP600_ORDER_SEARCH(String line) {
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "ERP600", "SEARCH", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "ERP600", "SEARCH", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-
-	private static void JSJ_NOTICE(String line) {
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "JSJ", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "JSJ", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
-	}
-	
-	private static void Default(String line) {
-		NORMAL(line);
-		{
-			File day_ = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "Defult", TimeHelper.getDateYMD() + ".txt");
-			File hour = FileHelper.getFile("CtrlCenterLog", TimeHelper.getDateYMD(), "Defult", TimeHelper.getTimeH() + ".txt");
-			FileHelper.writeFile(day_, line);
-			FileHelper.writeFile(hour, line);
-		}
 	}
 
 }
