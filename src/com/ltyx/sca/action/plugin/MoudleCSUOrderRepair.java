@@ -21,8 +21,8 @@ public class MoudleCSUOrderRepair extends ZCBaseActionSupportPlugin {
 
 		{
 			String FactoryID = getReqParamString("FactoryID");
-			String ExpressNO = getReqParamString("prices_now");
-			String Tips = getReqParamString("prices_desc");
+			String ExpressNO = getReqParamString("ExpressNO");
+			String Tips      = getReqParamString("Tips");
 
 			if (FactoryID.trim().length() == 0) {
 				ERRCODE = "0";

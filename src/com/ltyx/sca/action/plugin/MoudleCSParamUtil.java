@@ -291,7 +291,7 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 		return param;
 	}
 
-	// 添加工厂子订单号
+	// 查询工厂订单
 	public ZCHttpReqParam getCSUGetOrder() {
 		ZCHttpReqParam param = new ZCHttpReqParam();
 		param.addParam("operator_id", getReqParamString("operator_id"));
@@ -311,11 +311,11 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 				Types += ",";
 			}
 		}
-		param.addParam("Type", Types);
-		param.addParam("FactoryID", getReqParamString("FactoryID"));
-		param.addParam("ExpressNO", getReqParamString("ExpressNO"));
-		param.addParam("Tips", getReqParamString("Tips"));
-		param.addParam("Price", getReqParamString("prices_system"));
+		param.addParam("Type",        Types);
+		param.addParam("FactoryID",   getReqParamString("FactoryID"));
+		param.addParam("ExpressNO",   getReqParamString("ExpressNO"));
+		param.addParam("Tips",        getReqParamString("Tips"));
+		param.addParam("Price",       getReqParamString("prices_system"));
 		param.addParam("operator_id", getReqParamString("operator_id"));
 		return param;
 	}

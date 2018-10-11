@@ -56,7 +56,7 @@ public class MoudleCSUGetOrder extends ZCBaseActionSupportPlugin {
 			jsonHttpResp = JSONObject.fromObject(httpResp);
 			jsonERRCODE = jsonHttpResp.getString("ERRCODE");
 			jsonERRDESC = jsonHttpResp.getString("ERRDESC");
-			jsonData = jsonERRDESC;
+			jsonData = jsonHttpResp.getString("data");
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.Nano.tag("EC服务器响应错误，结构异常", httpResp);

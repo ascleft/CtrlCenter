@@ -401,7 +401,7 @@
 													<select id="delivery_time_table_section_4" name="order_processing_cost">
 													</select> <label>工艺类型</label>
 												</div>
-												<div class="input-field col s12 m12 l12 red-text" >
+												<div class="input-field col s12 m12 l12 red-text">
 													<p>注意：1.下单次日开始计算交期。 2.团单每加急一天加收相应加工费的5%。</p>
 												</div>
 											</div>
@@ -418,7 +418,7 @@
 													<select id="measure_type" name="measure_type">
 														<option value="成衣尺寸">成衣尺寸</option>
 														<option value="号衣尺码">号衣尺码</option>
-														<option value="量体尺寸">量体尺寸</option>
+														<option value="量体尺寸" disabled="true">量体尺寸</option>
 														<option value="needless">不新增尺寸信息</option>
 													</select> <label>尺寸类型</label>
 												</div>

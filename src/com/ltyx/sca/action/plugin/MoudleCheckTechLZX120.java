@@ -23,10 +23,10 @@ public class MoudleCheckTechLZX120 extends ZCBaseActionSupportPlugin {
 
 			// YX-00-01 短袖
 			if ("YX-00-01".equals(tailor_type)) {
-				if (!LZX_120.equals("LZX-120-00")) {// 袖口无褶
+				if (!(LZX_120.equals("LZX-120-00")||LZX_120.equals("YXL-120-00"))) {// 袖口无褶
 					ERRCODE = "0";
 					ERRDESC = "fail";
-					data = "您当前选择的是【短袖】，请在【袖褶】中选择【袖口无褶】，";
+					data = "您当前选择的是【短袖】，请在【袖褶】中选择【袖口无褶】";
 					return false;
 				}
 			}

@@ -52,20 +52,16 @@ public class TextLogHelper {
 	}
 
 	public static void white(String line, String logType[][]) {
+		
 		for (int i = 0; i < logType.length; i++) {
 			for (int j = 0; j < logType[i].length; j++) {
 
-				String[] floders_root = new String[3];
 				String[] floders_day_ = new String[j + 1 + 3];
 				String[] floders_hour = new String[j + 1 + 3];
 				for (int k = 0; k < j + 1; k++) {
 					floders_day_[k + 2] = logType[i][k];
 					floders_hour[k + 2] = logType[i][k];
 				}
-
-				floders_root[0] = "LOG2CtrlCenter";
-				floders_root[1] = TimeHelper.getDateYMD();
-				floders_root[2] = TimeHelper.getDateYMD() + ".txt";
 
 				floders_day_[0] = "LOG2CtrlCenter";
 				floders_day_[1] = TimeHelper.getDateYMD();
@@ -75,15 +71,21 @@ public class TextLogHelper {
 				floders_hour[1] = TimeHelper.getDateYMD();
 				floders_hour[j + 1 + 2] = TimeHelper.getTimeH() + ".txt";
 
-				File root = FileHelper.getFile(floders_root);
 				File day_ = FileHelper.getFile(floders_day_);
 				File hour = FileHelper.getFile(floders_hour);
-				FileHelper.writeFile(root, line);
 				FileHelper.writeFile(day_, line);
 				FileHelper.writeFile(hour, line);
 
 			}
 		}
+
+		String[] floders_root = new String[3];
+		floders_root[0] = "LOG2CtrlCenter";
+		floders_root[1] = TimeHelper.getDateYMD();
+		floders_root[2] = TimeHelper.getDateYMD() + ".txt";
+		File root = FileHelper.getFile(floders_root);
+		FileHelper.writeFile(root, line);
+
 	}
 
 	public static void white(String line) {
