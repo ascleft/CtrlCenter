@@ -101,83 +101,108 @@
 
 			//提交到购物车
 			function addShoppingCart() {
-				state_upload_ing("正在提交订单信息，请稍候");
-
-				checkLoginState();
-
-				$.ajax({
-					cache: true,
-					type: "POST",
-					url: url_addShoppingCart,
-					data: $('#mianForm').serialize(),
-					async: true,
-					error: function(request) {
-						state_upload_error("无法连接到服务器");
+				checkLoginState(
+					function prepare() {
+						state_upload_ing("正在建立安全连接");
 					},
-					success: function(data) {
-						var resp = JSON.parse(data);
-						if("0" == resp.ERRCODE) {
-							if("succ" == resp.ERRDESC) {
-								state_upload_finish("提交成功");
-							} else {
-								var desc = "提交失败<br/>智能错误分析：" + resp.data;
-								state_upload_error(desc);
+					function succ() {
+						state_upload_ing("正在将商品放入购物车，请稍候");
+						$.ajax({
+							cache: true,
+							type: "POST",
+							url: url_addShoppingCart,
+							data: $('#mianForm').serialize(),
+							async: true,
+							error: function(request) {
+								state_upload_error("无法连接到服务器");
+							},
+							success: function(data) {
+								var resp = JSON.parse(data);
+								if("0" == resp.ERRCODE) {
+									if("succ" == resp.ERRDESC) {
+										state_upload_finish("提交成功");
+									} else {
+										var desc = "提交失败<br/>智能错误分析：" + resp.data;
+										state_upload_error(desc);
+									}
+								} else {
+									state_upload_error("EC服务器通讯异常");
+								}
 							}
-						} else {
-							state_upload_error("EC服务器通讯异常");
-						}
+						})
+					},
+					function fail() {
+						state_upload_error("当前登录状态异常,请在自动弹出的登录界面中完成验证<br/>完成验证后，关闭该对话框即可继续操作");
+						Materialize.toast("登录状态异常", 1000);
+						Materialize.toast("即将自动跳转", 1000);
 					}
-				});
+				);
 			}
 
 			//获取系统报价
 			function getPrice() {
-				state_loading("");
-				$.ajax({
-					cache: true,
-					type: "POST",
-					url: url_getPrice,
-					data: $('#mianForm').serialize(),
-					async: true,
-					error: function(request) {
-						state_loaded();
-						$("#prices_system").val('999999999');
-						$("#prices_now").val('999999999');
-						$("#prices_desc").val('网络异常，请重新获取报价');
-						state_ready("n");
+				checkLoginState(
+					function prepare() {
+						state_loading("");
 					},
-					success: function(data) {
-						var resp = JSON.parse(data);
-						if("0" == resp.ERRCODE) {
-							if("succ" == resp.ERRDESC) {
-								state_loaded();
-								if("<%=ec_user_rank%>" == "21") {
-									$("#prices_system").attr("type", "password");
-									$("#prices_now").attr("type", "password");
-								}else{
-									$("#prices_system").attr("type", "number");
-									$("#prices_now").attr("type", "number");
-								}
-								$("#prices_system").val(+resp.data);
-								$("#prices_now").val(+resp.data);
-								$("#prices_desc").val('');
-								state_ready("y");
-							} else {
+					function succ() {
+						state_loading("");
+						$.ajax({
+							cache: true,
+							type: "POST",
+							url: url_getPrice,
+							data: $('#mianForm').serialize(),
+							async: true,
+							error: function(request) {
 								state_loaded();
 								$("#prices_system").val('999999999');
 								$("#prices_now").val('999999999');
-								$("#prices_desc").val('报价异常，请重试:' + resp.data);
+								$("#prices_desc").val('网络异常，请重新获取报价');
 								state_ready("n");
+							},
+							success: function(data) {
+								var resp = JSON.parse(data);
+								if("0" == resp.ERRCODE) {
+									if("succ" == resp.ERRDESC) {
+										state_loaded();
+										if("<%=ec_user_rank%>" == "21") {
+											$("#prices_system").attr("type", "password");
+											$("#prices_now").attr("type", "password");
+										} else {
+											$("#prices_system").attr("type", "number");
+											$("#prices_now").attr("type", "number");
+										}
+										$("#prices_system").val(+resp.data);
+										$("#prices_now").val(+resp.data);
+										$("#prices_desc").val('');
+										state_ready("y");
+									} else {
+										state_loaded();
+										$("#prices_system").val('999999999');
+										$("#prices_now").val('999999999');
+										$("#prices_desc").val('报价异常，请重试:' + resp.data);
+										state_ready("n");
+									}
+								} else {
+									state_loaded();
+									$("#prices_system").val('999999999');
+									$("#prices_now").val('999999999');
+									$("#prices_desc").val('EC服务器通讯异常，请重新获取报价');
+									state_ready("n");
+								}
 							}
-						} else {
-							state_loaded();
-							$("#prices_system").val('999999999');
-							$("#prices_now").val('999999999');
-							$("#prices_desc").val('EC服务器通讯异常，请重新获取报价');
-							state_ready("n");
-						}
+						})
+					},
+					function fail() {
+						state_loaded();
+						$("#prices_system").val('999999999');
+						$("#prices_now").val('999999999');
+						$("#prices_desc").val('请重新获取报价');
+						state_ready("n");
+						Materialize.toast("登录状态异常", 1000);
+						Materialize.toast("即将自动跳转", 1000);
 					}
-				});
+				)
 			}
 
 			function stopAddShoppingCart() {
@@ -403,7 +428,7 @@
 													<select id="delivery_time_table_section_4" name="order_processing_cost">
 													</select> <label>工艺类型</label>
 												</div>
-												<div class="input-field col s12 m12 l12 red-text" >
+												<div class="input-field col s12 m12 l12 red-text">
 													<p>注意：1.下单次日开始计算交期。 2.团单每加急一天加收相应加工费的5%。</p>
 												</div>
 											</div>
@@ -416,251 +441,26 @@
 										</div>
 										<div class="collapsible-body">
 											<div class="row">
-												<div class="input-field col s12 m6 l4">
-													<select id="measure_type" name="measure_type">
-														<option value="成衣尺寸">成衣尺寸</option>
-														<option value="号衣尺码">号衣尺码</option>
-														<option value="量体尺寸" disabled="true">量体尺寸</option>
-														<option value="needless">不新增尺寸信息</option>
-													</select> <label>尺寸类型</label>
-												</div>
 
-												<div class="col s12 m12 l12">
-													<div class="row" id="size_list">
-														<div class="input-field col s12 m6 l4">
-															<select name="size">
-																<option value="2176">男式衬衫紧身版38 </option>
-																<option value="2177">男式衬衫紧身版38.5</option>
-																<option value="2178">男式衬衫紧身版39 </option>
-																<option value="2179">男式衬衫紧身版39.5</option>
-																<option value="2180">男式衬衫紧身版40 </option>
-																<option value="2181">男式衬衫紧身版40.5</option>
-																<option value="2182">男式衬衫紧身版41 </option>
-																<option value="2183">男式衬衫紧身版41.5</option>
-																<option value="2184">男式衬衫紧身版42 </option>
-																<option value="2185">男式衬衫紧身版42.5</option>
-																<option value="2186">男式衬衫紧身版43 </option>
-																<option value="2187">男式衬衫紧身版43.5</option>
-																<option value="2188">男式衬衫紧身版44 </option>
-																<option value="2189">男式衬衫紧身版44.5</option>
-																<option value="2190">男式衬衫紧身版45 </option>
-																<option value="2191">男式衬衫紧身版45.5</option>
-																<option value="2192">男式衬衫紧身版46 </option>
-																<option value="2193">男式衬衫紧身版46.5</option>
-																<option value="2194">男式衬衫紧身版47 </option>
-																<option value="2276">男式衬衫修身版38 </option>
-																<option value="2277">男式衬衫修身版38.5</option>
-																<option value="2278">男式衬衫修身版39 </option>
-																<option value="2279">男式衬衫修身版39.5</option>
-																<option value="2280">男式衬衫修身版40 </option>
-																<option value="2281">男式衬衫修身版40.5</option>
-																<option value="2282">男式衬衫修身版41 </option>
-																<option value="2283">男式衬衫修身版41.5</option>
-																<option value="2284">男式衬衫修身版42 </option>
-																<option value="2285">男式衬衫修身版42.5</option>
-																<option value="2286">男式衬衫修身版43 </option>
-																<option value="2287">男式衬衫修身版43.5</option>
-																<option value="2288">男式衬衫修身版44 </option>
-																<option value="2289">男式衬衫修身版44.5</option>
-																<option value="2290">男式衬衫修身版45 </option>
-																<option value="2291">男式衬衫修身版45.5</option>
-																<option value="2292">男式衬衫修身版46 </option>
-																<option value="2293">男式衬衫修身版46.5</option>
-																<option value="2294">男式衬衫修身版47 </option>
-																<option value="2376">男式衬衫合身版38 </option>
-																<option value="2377">男式衬衫合身版38.5</option>
-																<option value="2378">男式衬衫合身版39 </option>
-																<option value="2379">男式衬衫合身版39.5</option>
-																<option value="2380">男式衬衫合身版40 </option>
-																<option value="2381">男式衬衫合身版40.5</option>
-																<option value="2382">男式衬衫合身版41 </option>
-																<option value="2383">男式衬衫合身版41.5</option>
-																<option value="2384">男式衬衫合身版42 </option>
-																<option value="2385">男式衬衫合身版42.5</option>
-																<option value="2386">男式衬衫合身版43 </option>
-																<option value="2387">男式衬衫合身版43.5</option>
-																<option value="2388">男式衬衫合身版44 </option>
-																<option value="2389">男式衬衫合身版44.5</option>
-																<option value="2390">男式衬衫合身版45 </option>
-																<option value="2391">男式衬衫合身版45.5</option>
-																<option value="2392">男式衬衫合身版46 </option>
-																<option value="2393">男式衬衫合身版46.5</option>
-																<option value="2394">男式衬衫合身版47 </option>
-																<option value="2476">男式衬衫宽松版38 </option>
-																<option value="2477">男式衬衫宽松版38.5</option>
-																<option value="2478">男式衬衫宽松版39 </option>
-																<option value="2479">男式衬衫宽松版39.5</option>
-																<option value="2480">男式衬衫宽松版40 </option>
-																<option value="2481">男式衬衫宽松版40.5</option>
-																<option value="2482">男式衬衫宽松版41 </option>
-																<option value="2483">男式衬衫宽松版41.5</option>
-																<option value="2484">男式衬衫宽松版42 </option>
-																<option value="2485">男式衬衫宽松版42.5</option>
-																<option value="2486">男式衬衫宽松版43 </option>
-																<option value="2487">男式衬衫宽松版43.5</option>
-																<option value="2488">男式衬衫宽松版44 </option>
-																<option value="2489">男式衬衫宽松版44.5</option>
-																<option value="2490">男式衬衫宽松版45 </option>
-																<option value="2491">男式衬衫宽松版45.5</option>
-																<option value="2492">男式衬衫宽松版46 </option>
-																<option value="2493">男式衬衫宽松版46.5</option>
-																<option value="2494">男式衬衫宽松版47 </option>
-															</select> <label>号衣尺码</label>
+												<div class="input-field col s12 m12 l12">
+													<div class="card-panel">
+														<div class="row">
+															<div class="input-field col s12 m12 l12">
+																<select id="measure_type" name="measure_type">
+																	<option value="成衣尺寸">成衣尺寸</option>
+																	<option value="号衣尺码">号衣尺码</option>
+																	<option value="量体尺寸" disabled="true">量体尺寸</option>
+																	<option value="needless">不新增尺寸信息</option>
+																</select> <label>尺寸类型</label>
+															</div>
 														</div>
 													</div>
-													<div class="row" id="measure_list">
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="ling_wei" value="">
-																<label>领围*</label>
-															</div>
-														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="xiong_wei" value="">
-																<label>胸围*</label>
-															</div>
-														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="yao_wei" value="">
-																<label>腰围（中腰围）*</label>
-															</div>
-														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="du_wei" value="">
-																<label>肚围</label>
-															</div>
-														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="dibian" value="">
-																<label>底边（臀围）*</label>
-															</div>
-														</div>
-
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<select name="neiwaichuan">
-																	<option value="YX-10-01">内穿</option>
-																	<option value="YX-10-02">外穿</option>
-																</select> <label>内外穿</label>
-															</div>
-														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="houshen_chang_nei" value="">
-																<label>后身长（内穿）*</label>
-															</div>
-														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="houshen_chang_wai" value="">
-																<label>后身长（外穿）*</label>
-															</div>
-														</div>
-
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="xiutouchang_zuo" value="">
-																<label>左袖头长（左腕围）*（长袖时必填）</label>
-															</div>
-														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="xiutouchang_you" value="">
-																<label>右袖头长（右腕围）*（长袖时必填）</label>
-															</div>
-														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="xiu_fei" value="">
-																<label>袖肥（大臂围）*</label>
-															</div>
-														</div>
-
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="xiuzhou_fei" value="">
-																<label>袖肘肥（小臂围）</label>
-															</div>
-														</div>
-
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="jian_kuan" value="">
-																<label>肩宽*</label>
-															</div>
-														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="xiu_chang" value="">
-																<label>长袖长*（长袖时必填）</label>
-															</div>
-														</div>
-
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="duanxiu_chang" value="">
-																<label>短袖长*（短袖时必填）</label>
-															</div>
-														</div>
-
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="duanxiu_kouwei" value="">
-																<label>短袖口围*（短袖时必填）</label>
-															</div>
-														</div>
-
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="chest_height" value="">
-																<label>胸高</label>
-															</div>
-														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="chest_distance" value="">
-																<label>胸距</label>
-															</div>
-														</div>
-
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="qianshen_chang" value="">
-																<label>前身长*</label>
-															</div>
-														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="qianxiong_kuan" value="">
-																<label>前胸宽</label>
-															</div>
-														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="houbei_kuan" value="">
-																<label>后背宽</label>
-															</div>
-														</div>
-
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="height" value="">
-																<label>身高</label>
-															</div>
-														</div>
-														<div class="col s6 m4 l3">
-															<div class="input-field">
-																<input type="number" class="validate" name="weight" value="">
-																<label>体重(kg)</label>
-															</div>
-														</div>
-
-													</div>
 												</div>
+
+												<div class="input-field col s12 m12 l12" id="measure_list"></div>
+												<div class="input-field col s12 m12 l12" id="spc_b_list"></div>
+												<div class="input-field col s12 m12 l12" id="size_list" sex="man"></div>
+
 											</div>
 										</div>
 									</li>

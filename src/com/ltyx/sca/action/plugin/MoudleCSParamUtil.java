@@ -108,6 +108,18 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 
 		param.addParam("cixiu_kegong_num", getReqParamString("cixiu_kegong_num"));// 客供图案刺绣数量
 
+		// 特体选项
+		param.addParam("spc_b_sho_f", getReqParamString("spc_b_sho_f"));// 前冲后掰肩
+		param.addParam("spc_b_sho_l", getReqParamString("spc_b_sho_l"));// 左肩型
+		param.addParam("spc_b_sho_r", getReqParamString("spc_b_sho_r"));// 右肩型
+		param.addParam("spc_b_spi_s", getReqParamString("spc_b_spi_s"));// 前弓后仰体
+		param.addParam("spc_b_spi_h", getReqParamString("spc_b_spi_h"));// 驼背
+		param.addParam("spc_b_che_n", getReqParamString("spc_b_che_n"));// 胸型
+		param.addParam("spc_b_abd_n", getReqParamString("spc_b_abd_n"));// 肚型
+		param.addParam("spc_b_sle_n", getReqParamString("spc_b_sle_n"));// 袖子臂型
+		param.addParam("spc_b_muf_d", getReqParamString("spc_b_muf_d"));// 袖窿深下挖
+		param.addParam("spc_b_muf_u", getReqParamString("spc_b_muf_u"));// 袖窿深上调
+
 		return param;
 
 	}
@@ -311,11 +323,11 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 				Types += ",";
 			}
 		}
-		param.addParam("Type",        Types);
-		param.addParam("FactoryID",   getReqParamString("FactoryID"));
-		param.addParam("ExpressNO",   getReqParamString("ExpressNO"));
-		param.addParam("Tips",        getReqParamString("Tips"));
-		param.addParam("Price",       getReqParamString("prices_system"));
+		param.addParam("Type", Types);
+		param.addParam("FactoryID", getReqParamString("FactoryID"));
+		param.addParam("ExpressNO", getReqParamString("ExpressNO"));
+		param.addParam("Tips", getReqParamString("Tips"));
+		param.addParam("Price", getReqParamString("prices_system"));
 		param.addParam("operator_id", getReqParamString("operator_id"));
 		return param;
 	}
