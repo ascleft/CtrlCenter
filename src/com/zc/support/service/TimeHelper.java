@@ -155,9 +155,12 @@ public class TimeHelper {
 		}
 
 		public long stop(String name) {
+			if (name != null) {
+				return stop(name, TextLogHelper.Type.UNDEFINED);
 
-			return stop(name, TextLogHelper.Type.UNDEFINED);
-
+			} else {
+				return stop("未命名的计时器", TextLogHelper.Type.UNDEFINED);
+			}
 		}
 
 		public long stop(String name, String[][] logType) {
@@ -195,8 +198,6 @@ public class TimeHelper {
 						list.add("第" + (i + 1) + "次" + ": " + pointList.get(i));
 					}
 				}
-				list.add("结束时间" + ": " + time_stop_stamp);
-				list.add("总时长" + interval / 1000 + "秒" + "(" + interval + "毫秒)");
 
 				if (interval < 5000) {
 
@@ -215,6 +216,9 @@ public class TimeHelper {
 					list.add("TimeOut Warning 15 ");
 					list.add("TimeOut Warning 20 " + interval / 1000 + "秒" + "(" + interval + "毫秒)");
 				}
+
+				list.add("结束时间" + ": " + time_stop_stamp);
+				list.add("总时长" + interval / 1000 + "秒" + "(" + interval + "毫秒)");
 
 				return list;
 			}

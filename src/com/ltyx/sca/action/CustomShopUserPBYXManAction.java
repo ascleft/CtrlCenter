@@ -45,14 +45,34 @@ public class CustomShopUserPBYXManAction extends ZCBaseActionSupport {
 		init(true);
 		String methodName = "定制店 优纤面料 男装 报价";
 
-		doGetPrice();
+		{
+			initDBLog(methodName, "2010", session.getAttribute("ec_user_id").toString());
+			dbLog.main.addSrcReq(ZCReqIntroGetter.getParams(request));
+		}
 
-		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_PRICE_SUCC);
-			writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_SUCC);
-		} else {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_PRICE_FAIL);
-			writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_FAIL);
+		boolean isSucc = doGetPrice();
+		
+		{
+			if (isSucc) {
+				dbLog.main.addTags("成功");
+			} else {
+				dbLog.main.addTags("失败");
+			}
+			dbLog.main.addKeys(getReqParamStrings("uskin_code"));
+			dbLog.main.addKeys(getReqParamStrings("customer_name"));
+			dbLog.main.addKeys(getReqParamStrings("LZX_13_FOR_CHAR"));
+
+		}
+		
+		{
+
+			if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
+				ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_PRICE_SUCC);
+				writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_SUCC);
+			} else {
+				ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_PRICE_FAIL);
+				writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_FAIL);
+			}
 		}
 
 		return null;
@@ -64,7 +84,23 @@ public class CustomShopUserPBYXManAction extends ZCBaseActionSupport {
 		init(true);
 		String methodName = "定制店 优纤面料 男装 提交购物车";
 
-		doSubmit();
+		{
+			initDBLog(methodName, "2010", session.getAttribute("ec_user_id").toString());
+			dbLog.main.addSrcReq(ZCReqIntroGetter.getParams(request));
+		}
+
+		boolean isSucc = doSubmit();
+
+		{
+			if (isSucc) {
+				dbLog.main.addTags("成功");
+			} else {
+				dbLog.main.addTags("失败");
+			}
+			dbLog.main.addKeys(getReqParamStrings("uskin_code"));
+			dbLog.main.addKeys(getReqParamStrings("customer_name"));
+			dbLog.main.addKeys(getReqParamStrings("LZX_13_FOR_CHAR"));
+		}
 
 		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
 			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_ORDER_SUCC);
@@ -80,147 +116,113 @@ public class CustomShopUserPBYXManAction extends ZCBaseActionSupport {
 
 	public boolean doGetPrice() {
 
-		MoudleCSUGetPriceManPBYX moudle = new MoudleCSUGetPriceManPBYX(request);
-		moudle.doJobs();
-		ERRCODE = moudle.getERRCODE();
-		ERRDESC = moudle.getERRDESC();
-		data = moudle.getData();
-		return true;
+		{// 报价
+			MoudleCSUGetPriceManPBYX moudle = new MoudleCSUGetPriceManPBYX(request);
+			moudle.prepDBLog(dbLog);
+			boolean isSucc = runMoudle(moudle);
+			dbLog = moudle.syncDBLog();
+			if (isSucc == false) {
+				return false;
+			}
+		}
+
+		{
+			return true;
+		}
 
 	}
 
 	public boolean doSubmit() {
 
-		{
+		{// 用户信息检测
 			MoudleCSCheckUserInfo moudle = new MoudleCSCheckUserInfo(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("用户信息检测");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("用户信息检测");
 		}
 
-		{
+		{// 订单摘要信息
 			MoudleCSCheckSummaryClothes moudle = new MoudleCSCheckSummaryClothes(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("订单摘要信息");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("订单摘要信息");
 		}
 
-		{
+		{// 尺寸校验
 			MoudleCheckMeasure moudle = new MoudleCheckMeasure(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("尺寸校验");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("尺寸校验");
 		}
 
-		{
+		{// 面料及特殊工艺校验
 			MoudleCheckTechYXST moudle = new MoudleCheckTechYXST(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("面料及特殊工艺校验");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("面料及特殊工艺校验");
 		}
 
-		{
+		{// 领型领插片冲突校验
 			MoudleCheckTechLZX01 moudle = new MoudleCheckTechLZX01(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("领型领插片冲突校验");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("领型领插片冲突校验");
 		}
 
-		{
+		{// 袖褶冲突校验
 			MoudleCheckTechLZX120 moudle = new MoudleCheckTechLZX120(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("袖褶冲突校验");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("袖褶冲突校验");
 		}
 
-		{
+		{// 刺绣校验
 			MoudleCheckTechLZX11 moudle = new MoudleCheckTechLZX11(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("刺绣校验");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("刺绣校验");
 		}
 
-		{
+		{// 必要工艺信息校验
 			MoudleCheckTechLZXNecessary moudle = new MoudleCheckTechLZXNecessary(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("必要工艺信息校验");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("必要工艺信息校验");
 		}
 
-		{
+		{// 冲突工艺校验
 			MoudleCheckTechClash moudle = new MoudleCheckTechClash(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("冲突工艺校验");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("冲突工艺校验");
 		}
 
-		{
+		{// 报价核对
 			MoudleCheckPrice moudle = new MoudleCheckPrice(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("报价核对");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("报价核对");
 		}
 
-		{
+		{// 提交EC
 			MoudleCSUOrderManPBYX moudle = new MoudleCSUOrderManPBYX(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("提交EC");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			moudle.prepDBLog(dbLog);
+			boolean isSucc = runMoudle(moudle);
+			dbLog = moudle.syncDBLog();
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("提交EC");
 		}
 
 		{

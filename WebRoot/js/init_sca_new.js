@@ -74,13 +74,13 @@ function initDeliveryTimeTable() {
 				}
 			}
 		},
-		//		"标准码成衣": {
-		//			"1": {
-		//				"7": {
-		//					"基础款": "105"
-		//				}
-		//			}
-		//		},
+		"标准码成衣": {
+			"1": {
+				"7": {
+					"基础款": "105"
+				}
+			}
+		},
 		"团单": {
 			"11-30": {
 				"10-15": {
@@ -1002,8 +1002,6 @@ function use_size() {
 	temp_table_3 += '	<div class="row">                                             ';
 	temp_table_3 += '		<div class="input-field col s12 m12 l12">                 ';
 	temp_table_3 += '			<select name="size">                                  ';
-	temp_table_3 += '				<option value="2174">男式衬衫紧身版37 </option>        ';
-	temp_table_3 += '				<option value="2175">男式衬衫紧身版37.5 </option>   ';
 	temp_table_3 += '				<option value="2176">男式衬衫紧身版38 </option>   ';
 	temp_table_3 += '				<option value="2177">男式衬衫紧身版38.5</option>  ';
 	temp_table_3 += '				<option value="2178">男式衬衫紧身版39 </option>   ';
@@ -1023,8 +1021,6 @@ function use_size() {
 	temp_table_3 += '				<option value="2192">男式衬衫紧身版46 </option>   ';
 	temp_table_3 += '				<option value="2193">男式衬衫紧身版46.5</option>  ';
 	temp_table_3 += '				<option value="2194">男式衬衫紧身版47 </option>   ';
-	temp_table_3 += '				<option value="2274">男式衬衫修身版37 </option>   ';
-	temp_table_3 += '				<option value="2275">男式衬衫修身版37.5 </option> ';
 	temp_table_3 += '				<option value="2276">男式衬衫修身版38 </option>   ';
 	temp_table_3 += '				<option value="2277">男式衬衫修身版38.5</option>  ';
 	temp_table_3 += '				<option value="2278">男式衬衫修身版39 </option>   ';
@@ -1044,8 +1040,6 @@ function use_size() {
 	temp_table_3 += '				<option value="2292">男式衬衫修身版46 </option>   ';
 	temp_table_3 += '				<option value="2293">男式衬衫修身版46.5</option>  ';
 	temp_table_3 += '				<option value="2294">男式衬衫修身版47 </option>   ';
-	temp_table_3 += '				<option value="2374">男式衬衫合身版37 </option>   ';
-	temp_table_3 += '				<option value="2375">男式衬衫合身版37.5 </option> ';
 	temp_table_3 += '				<option value="2376">男式衬衫合身版38 </option>   ';
 	temp_table_3 += '				<option value="2377">男式衬衫合身版38.5</option>  ';
 	temp_table_3 += '				<option value="2378">男式衬衫合身版39 </option>   ';
@@ -1065,8 +1059,6 @@ function use_size() {
 	temp_table_3 += '				<option value="2392">男式衬衫合身版46 </option>   ';
 	temp_table_3 += '				<option value="2393">男式衬衫合身版46.5</option>  ';
 	temp_table_3 += '				<option value="2394">男式衬衫合身版47 </option>   ';
-	temp_table_3 += '				<option value="2474">男式衬衫宽松版37 </option>   ';
-	temp_table_3 += '				<option value="2475">男式衬衫宽松版37.5 </option> ';
 	temp_table_3 += '				<option value="2476">男式衬衫宽松版38 </option>   ';
 	temp_table_3 += '				<option value="2477">男式衬衫宽松版38.5</option>  ';
 	temp_table_3 += '				<option value="2478">男式衬衫宽松版39 </option>   ';
@@ -1445,7 +1437,8 @@ function size_rule_base() {
 			$("#div_duanxiu_chang").hide();
 			$("#div_duanxiu_kouwei").hide();
 			console.log('长短袖异常');
-		} {
+		}
+		{
 			$("#div_xiu_chang").show();
 			$("#div_xiutouchang_zuo").show();
 			$("#div_xiutouchang_you").show();

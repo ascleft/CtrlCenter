@@ -8,6 +8,7 @@ public class MoudleCSCheckSummaryClothes extends ZCBaseActionSupportPlugin {
 
 	public MoudleCSCheckSummaryClothes(HttpServletRequest req) {
 		this.request = req;
+		this.name = "订单摘要信息";
 	}
 
 	@Override

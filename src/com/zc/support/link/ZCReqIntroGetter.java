@@ -64,10 +64,10 @@ public class ZCReqIntroGetter {
 	}
 
 	/**
-	 * 打印请求中的所有Param
+	 * 获取请求中的所有Param
 	 * 
 	 */
-	public static Map<String, String> showParams(String reqName, HttpServletRequest request, String[][] logType) {
+	public static Map<String, String> getParams(HttpServletRequest request) {
 		Map<String, String> map = new TreeMap<String, String>();
 		try {
 			request.setCharacterEncoding("UTF-8");
@@ -83,6 +83,17 @@ public class ZCReqIntroGetter {
 		}
 
 		map = MapHelper.sortMapByKey(map);
+
+		return map;
+
+	}
+
+	/**
+	 * 打印请求中的所有Param
+	 * 
+	 */
+	public static Map<String, String> showParams(String reqName, HttpServletRequest request, String[][] logType) {
+		Map<String, String> map = getParams(request);
 
 		LogSyncSafe.Pro log = new LogSyncSafe.Pro();
 		log.addStart(true);

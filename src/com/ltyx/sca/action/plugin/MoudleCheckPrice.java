@@ -8,6 +8,7 @@ public class MoudleCheckPrice extends ZCBaseActionSupportPlugin {
 
 	public MoudleCheckPrice(HttpServletRequest req) {
 		this.request = req;
+		this.name = "报价核对";
 	}
 
 	@Override

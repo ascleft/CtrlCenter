@@ -99,85 +99,111 @@
 
 			//提交到购物车
 			function addShoppingCart() {
-				state_upload_ing("正在提交订单信息，请稍候");
-
-				checkLoginState();
-
-				$.ajax({
-					cache: true,
-					type: "POST",
-					url: url_addShoppingCart,
-					data: $('#mianForm').serialize(),
-					async: true,
-					error: function(request) {
-						state_upload_error("无法连接到服务器");
+				checkLoginState(
+					function prepare() {
+						state_upload_ing("正在建立安全连接");
 					},
-					success: function(data) {
-						var resp = JSON.parse(data);
-						if("0" == resp.ERRCODE) {
-							if("succ" == resp.ERRDESC) {
-								state_upload_finish("提交成功");
-							} else {
-								var desc = "提交失败<br/>智能错误分析：" + resp.data;
-								state_upload_error(desc);
+					function succ() {
+						state_upload_ing("正在将商品放入购物车，请稍候");
+						$.ajax({
+							cache: true,
+							type: "POST",
+							url: url_addShoppingCart,
+							data: $('#mianForm').serialize(),
+							async: true,
+							error: function(request) {
+								state_upload_error("无法连接到服务器");
+							},
+							success: function(data) {
+								var resp = JSON.parse(data);
+								if("0" == resp.ERRCODE) {
+									if("succ" == resp.ERRDESC) {
+										state_upload_finish("提交成功");
+									} else {
+										var desc = "提交失败<br/>智能错误分析：" + resp.data;
+										state_upload_error(desc);
+									}
+								} else {
+									state_upload_error("EC服务器通讯异常");
+								}
 							}
-						} else {
-							state_upload_error("EC服务器通讯异常");
-						}
+						})
+					},
+					function fail() {
+						state_upload_error("当前登录状态异常,请在自动弹出的登录界面中完成验证<br/>完成验证后，关闭该对话框即可继续操作");
+						Materialize.toast("登录状态异常", 1000);
+						Materialize.toast("即将自动跳转", 1000);
 					}
-				});
+				);
+
 			}
 
 			//获取系统报价
 			function getPrice() {
-				state_loading("");
-				$.ajax({
-					cache: true,
-					type: "POST",
-					url: url_getPrice,
-					data: $('#mianForm').serialize(),
-					async: true,
-					error: function(request) {
-						state_loaded();
-						$("#prices_system").val('999999999');
-						$("#prices_now").val('999999999');
-						$("#prices_desc").val('网络异常，请重新获取报价');
-						state_ready("n");
+				checkLoginState(
+					function prepare() {
+						state_loading("");
 					},
-					success: function(data) {
-						var resp = JSON.parse(data);
-						if("0" == resp.ERRCODE) {
-							if("succ" == resp.ERRDESC) {
-								state_loaded();
-								if("<%=ec_user_rank%>" == "21") {
-									$("#prices_system").attr("type", "password");
-									$("#prices_now").attr("type", "password");
-								} else {
-									$("#prices_system").attr("type", "number");
-									$("#prices_now").attr("type", "number");
-								}
-								$("#prices_system").val(+resp.data);
-								$("#prices_now").val(+resp.data);
-								$("#prices_desc").val('');
-								state_ready("y");
-								show_TIPS1('' + resp.TIP1);
-							} else {
+					function succ() {
+						state_loading("");
+						$.ajax({
+							cache: true,
+							type: "POST",
+							url: url_getPrice,
+							data: $('#mianForm').serialize(),
+							async: true,
+							error: function(request) {
 								state_loaded();
 								$("#prices_system").val('999999999');
 								$("#prices_now").val('999999999');
-								$("#prices_desc").val('报价异常，请重试:' + resp.data);
+								$("#prices_desc").val('网络异常，请重新获取报价');
 								state_ready("n");
-								show_TIPS1('' + resp.TIP1);
+							},
+							success: function(data) {
+								var resp = JSON.parse(data);
+								if("0" == resp.ERRCODE) {
+									if("succ" == resp.ERRDESC) {
+										state_loaded();
+										if("<%=ec_user_rank%>" == "21") {
+											$("#prices_system").attr("type", "password");
+											$("#prices_now").attr("type", "password");
+										} else {
+											$("#prices_system").attr("type", "number");
+											$("#prices_now").attr("type", "number");
+										}
+										$("#prices_system").val(+resp.data);
+										$("#prices_now").val(+resp.data);
+										$("#prices_desc").val('');
+										state_ready("y");
+										show_TIPS1('' + resp.TIP1);
+									} else {
+										state_loaded();
+										$("#prices_system").val('999999999');
+										$("#prices_now").val('999999999');
+										$("#prices_desc").val('报价异常，请重试:' + resp.data);
+										state_ready("n");
+										show_TIPS1('' + resp.TIP1);
+									}
+								} else {
+									state_loaded();
+									$("#prices_system").val('999999999');
+									$("#prices_now").val('999999999');
+									$("#prices_desc").val('EC服务器通讯异常，请重新获取报价');
+									state_ready("n");
+								}
 							}
-						} else {
-							state_loaded();
-							$("#prices_system").val('999999999');
-							$("#prices_now").val('999999999');
-							$("#prices_desc").val('EC服务器通讯异常，请重新获取报价');
-							state_ready("n");
-						}
+						})
+					},
+					function fail() {
+						state_loaded();
+						$("#prices_system").val('999999999');
+						$("#prices_now").val('999999999');
+						$("#prices_desc").val('请重新获取报价');
+						state_ready("n");
+						Materialize.toast("登录状态异常", 1000);
+						Materialize.toast("即将自动跳转", 1000);
 					}
-				});
+				)
 			}
 
 			function stopAddShoppingCart() {

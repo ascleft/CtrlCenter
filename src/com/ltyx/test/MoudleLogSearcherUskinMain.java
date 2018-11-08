@@ -1,14 +1,13 @@
-package com.ltyx.sca.action.plugin;
+package com.ltyx.test;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.zc.support.doman.ZCBaseActionSupportPlugin;
 
-public class MoudleCheckTechLZX01 extends ZCBaseActionSupportPlugin {
+public class MoudleLogSearcherUskinMain extends ZCBaseActionSupportPlugin {
 
-	public MoudleCheckTechLZX01(HttpServletRequest req) {
+	public MoudleLogSearcherUskinMain(HttpServletRequest req) {
 		this.request = req;
-		this.name = "领型领插片冲突校验";
 	}
 
 	@Override

@@ -24,7 +24,7 @@ public class MoudleCSAGetPriceManPBYX extends ZCBaseActionSupportPlugin {
 		double price = 0;
 
 		MoudleCSParamUtil paramUtil = new MoudleCSParamUtil(request);
-		ZCHttpReqParam param = paramUtil.getCSAPriceWomanPBYX();
+		ZCHttpReqParam param = paramUtil.getCSAPriceManPBYX();
 
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_get_price_man_pbyx.getUrl(), param, TextLogHelper.Type.USKIN_AIDE_PRICE_NSRC);
 

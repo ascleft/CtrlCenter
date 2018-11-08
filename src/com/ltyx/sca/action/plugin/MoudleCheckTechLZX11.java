@@ -8,6 +8,7 @@ public class MoudleCheckTechLZX11 extends ZCBaseActionSupportPlugin {
 
 	public MoudleCheckTechLZX11(HttpServletRequest req) {
 		this.request = req;
+		this.name = "刺绣校验";
 	}
 
 	@Override

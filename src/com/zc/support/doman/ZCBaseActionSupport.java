@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ltyx.sca.action.log.ActionLogBeanBase;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.zc.support.link.ZCReqParamGetter;
+import com.zc.support.service.DBHelper;
 import com.zc.support.service.LogSyncSafe;
 import com.zc.support.service.StringHelper;
 import com.zc.support.service.TimeHelper;
@@ -36,6 +38,8 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 	public String TimeMgr = null;// 时间管理者
 
 	public TimeHelper.Timer timer = null;
+
+	public ActionLogBeanBase dbLog = null;
 
 	/**
 	 * 初始化ActionSupport，同时提供跨域支持（CORS）
@@ -71,27 +75,54 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 		progressLog.add(log);
 	}
 
+	@Deprecated
 	public void addProgressSucc(String log) {
 		log = StringHelper.fillRight(log, 18, "-");
 		progressLog.add(log + "--->" + "成功");
 	}
 
+	@Deprecated
 	public void addProgressFail(String log) {
 		log = StringHelper.fillRight(log, 18, "-");
 		progressLog.add(log + "--->" + "失败");
 	}
 
+	public boolean runMoudle(ZCBaseActionSupportPlugin moudle) {
+		boolean isSucc = moudle.doJobs();
+		if (isSucc) {
+			progressLog.add(moudle.name + "--->" + "成功");
+			ERRCODE = moudle.getERRCODE();
+			ERRDESC = moudle.getERRDESC();
+			data = moudle.getData();
+		} else {
+			progressLog.add(moudle.name + "--->" + "失败");
+			ERRCODE = moudle.getERRCODE();
+			ERRDESC = moudle.getERRDESC();
+			data = moudle.getData();
+		}
+		return isSucc;
+	}
+
 	public void logProgress(String title, String[][] logType) {
 		if (progressLog.size() > 0) {
-			LogSyncSafe.Pro log = new LogSyncSafe.Pro();
-			log.addStart(true);
-			log.addMsgLine(title);
-			log.addCut();
-			for (String logNow : progressLog) {
-				log.addMsgLine(logNow);
+			{// 文本日志
+				LogSyncSafe.Pro log = new LogSyncSafe.Pro();
+				log.addStart(true);
+				log.addMsgLine(title);
+				log.addCut();
+				for (String logNow : progressLog) {
+					log.addMsgLine(logNow);
+				}
+				log.addfinish();
+				log.flush(logType);
 			}
-			log.addfinish();
-			log.flush(logType);
+			{// 数据库日志
+				for (String logNow : progressLog) {
+					if (dbLog != null) {
+						dbLog.main.addTags(logNow);
+					}
+				}
+			}
 		}
 	}
 
@@ -177,6 +208,13 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		{// 数据库日志 插入响应源
+			if (dbLog != null) {
+				dbLog.main.addTimer(timer);
+				dbLog.main.addSrcResp(result.toString());
+				dbLog.doLog();
+			}
 		}
 	}
 
@@ -291,6 +329,16 @@ public class ZCBaseActionSupport extends ActionSupport implements ZCImplReqParam
 	public String[] getReqParamStringsWithLog(String key) {
 		String[] return_value = ZCReqParamGetter.getParamStrings(request, key, true);
 		return return_value;
+	}
+
+	public void initDBLog(String name, String categary, String ECid) {
+		dbLog = new ActionLogBeanBase(name, categary, ECid);
+	}
+
+	public void makeDBLog() {
+		if (dbLog != null) {
+			dbLog.doLog();
+		}
 	}
 
 }

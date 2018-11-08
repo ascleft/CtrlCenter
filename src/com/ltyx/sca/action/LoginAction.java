@@ -1,5 +1,6 @@
 package com.ltyx.sca.action;
 
+import com.ltyx.sca.action.log.ActionLogBeanLogin;
 import com.zc.support.config.ConfigHelperURL;
 import com.zc.support.doman.ZCBaseActionSupport;
 import com.zc.support.link.ZCHttpReqParam;
@@ -40,14 +41,16 @@ public class LoginAction extends ZCBaseActionSupport {
 
 		String methodName = "SCA 登录";
 
-		doLogin();
+		boolean isSucc = doLogin();
 
-		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_LOGIN_SUCC);
-			writeResp(methodName, TextLogHelper.Type.USKIN_LOGIN_SUCC);
-		} else {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_LOGIN_FAIL);
-			writeResp(methodName, TextLogHelper.Type.USKIN_LOGIN_FAIL);
+		{
+			if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
+				ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_LOGIN_SUCC);
+				writeResp(methodName, TextLogHelper.Type.USKIN_LOGIN_SUCC);
+			} else {
+				ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_LOGIN_FAIL);
+				writeResp(methodName, TextLogHelper.Type.USKIN_LOGIN_FAIL);
+			}
 		}
 
 		return null;
@@ -123,10 +126,23 @@ public class LoginAction extends ZCBaseActionSupport {
 				ec_user_name = jsonUser.getString("ec_user_name");
 				ec_user_role = jsonUser.getString("ec_user_rank");
 
+				{
+					if (NumberHelper.string2int(ec_user_id) > 20000) {
+						ERRCODE = "0";
+						ERRDESC = "fail";
+						data = "系统监测到您的账户信息存在异常，请联系客户经理进行账户维护";
+						return false;
+					}
+				}
+
 				session.setAttribute("isOnline", isOnline);
 				session.setAttribute("ec_user_id", ec_user_id);
 				session.setAttribute("ec_user_name", ec_user_name);
 				session.setAttribute("ec_user_rank", ec_user_role);
+
+				ActionLogBeanLogin moudle = new ActionLogBeanLogin(request);
+				moudle.addSrcParam(ec_user_name, role, ec_user_id, name, pwd);
+				moudle.check();
 
 				String targetUrl = "";
 				int roleCheck = NumberHelper.string2int(ec_user_role);

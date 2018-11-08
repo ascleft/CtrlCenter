@@ -8,6 +8,7 @@ import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
 import com.zc.support.service.TextLogHelper;
+import com.zc.support.service.TimeHelper;
 
 import net.sf.json.JSONObject;
 
@@ -15,20 +16,27 @@ public class MoudleCSUGetPriceManPBYX extends ZCBaseActionSupportPlugin {
 
 	public MoudleCSUGetPriceManPBYX(HttpServletRequest req) {
 		this.request = req;
+		this.name = "定制店 优纤男装 报价";
 	}
 
 	@Override
 	public boolean doJobs() {
 		// TODO Auto-generated method stub
 
+		TimeHelper.Timer timer = new TimeHelper.Timer();
+
 		double price = 0;
 
 		MoudleCSParamUtil paramUtil = new MoudleCSParamUtil(request);
-		ZCHttpReqParam param = paramUtil.getCSAPriceWomanPBYX();
+		ZCHttpReqParam param = paramUtil.getCSAPriceManPBYX();
 
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshop_get_price_man_pbyx.getUrl(), param, TextLogHelper.Type.USKIN_USER_PRICE_NSRC);
-
 		Log.Nano.tag(ConfigHelperURL.Url_customshop_get_price_man_pbyx.getDesc() + "Resp From EC", httpResp);
+
+		timer.stop(null);
+		log.ec.addSrcReq(ConfigHelperURL.Url_customshop_add_cart_man_pbyx.getUrl(), param);
+		log.ec.addSrcResp(httpResp);
+		log.ec.addTimer(timer);
 
 		JSONObject jsonHttpResp;
 		String jsonERRCODE;

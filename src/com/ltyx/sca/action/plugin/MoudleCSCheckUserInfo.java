@@ -6,8 +6,10 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 
 public class MoudleCSCheckUserInfo extends ZCBaseActionSupportPlugin {
 
+
 	public MoudleCSCheckUserInfo(HttpServletRequest req) {
 		this.request = req;
+		this.name = "用户信息检测";
 	}
 
 	@Override

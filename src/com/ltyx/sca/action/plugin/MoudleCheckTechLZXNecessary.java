@@ -8,6 +8,7 @@ public class MoudleCheckTechLZXNecessary extends ZCBaseActionSupportPlugin {
 
 	public MoudleCheckTechLZXNecessary(HttpServletRequest req) {
 		this.request = req;
+		this.name = "必要工艺信息校验";
 	}
 
 	@Override

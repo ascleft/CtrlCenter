@@ -58,12 +58,14 @@
 		<!-- Google Icon Font -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<!-- JQuery  -->
-		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<!--<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
 		<!--  Angular.js-->
 		<!--<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>-->
 
 		<!-- local html  -->
 		<link href="../../img/global/logo/icon_title_1.jpg" rel="shortcut icon" />
+
+		<script src="../../js/jquery-2.1.1.min.js"></script>
 
 		<link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
@@ -77,6 +79,8 @@
 
 		<!--local jsp   -->
 		<link href="<%=path %>/img/global/logo/icon_title_1.jpg" rel="shortcut icon">
+
+		<script src="<%=path %>/js/jquery-2.1.1.min.js"></script>
 
 		<link href="<%=path %>/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="<%=path %>/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
@@ -447,9 +451,9 @@
 															<div class="input-field col s12 m12 l12">
 																<select id="measure_type" name="measure_type">
 																	<option value="成衣尺寸">成衣尺寸</option>
+																	<option value="needless">不新增尺寸信息</option>
 																	<option value="号衣尺码">号衣尺码</option>
 																	<option value="量体尺寸" disabled="true">量体尺寸</option>
-																	<option value="needless">不新增尺寸信息</option>
 																</select> <label>尺寸类型</label>
 															</div>
 														</div>

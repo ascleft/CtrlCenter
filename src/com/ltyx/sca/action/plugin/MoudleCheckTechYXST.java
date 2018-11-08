@@ -8,6 +8,7 @@ public class MoudleCheckTechYXST extends ZCBaseActionSupportPlugin {
 
 	public MoudleCheckTechYXST(HttpServletRequest req) {
 		this.request = req;
+		this.name = "面料及特殊工艺校验";
 	}
 
 	@Override

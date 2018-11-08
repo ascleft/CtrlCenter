@@ -24,7 +24,7 @@ public class MoudleCSUGetPriceDesign extends ZCBaseActionSupportPlugin {
 		double price = 0;
 
 		MoudleCSParamUtil paramUtil = new MoudleCSParamUtil(request);
-		ZCHttpReqParam param = paramUtil.getCSAPriceWomanPBYX();
+		ZCHttpReqParam param = paramUtil.getCSUPriceDesign();
 
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshop_get_price_design.getUrl(), param, TextLogHelper.Type.USKIN_USER_PRICE_NSRC);
 

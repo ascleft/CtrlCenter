@@ -5,12 +5,16 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.ltyx.sca.action.log.ActionLogBeanBase;
 import com.mysql.jdbc.Connection;
 import com.zc.support.config.ConfigHelperDB;
 import com.zc.support.link.ZCReqParamGetter;
 import com.zc.support.service.Log;
 
 public abstract class ZCBaseActionSupportPlugin implements ZCImplReqParamGetter {
+
+	// 插件名称
+	protected String name = null;
 
 	// 返回响应基本内容
 	protected String ERRCODE = null;// 响应码
@@ -27,23 +31,43 @@ public abstract class ZCBaseActionSupportPlugin implements ZCImplReqParamGetter 
 	abstract public boolean doJobs();
 
 	public String getERRCODE() {
-		return ERRCODE;
+		if (ERRCODE == null) {
+			return "响应码未添加";
+		} else {
+			return ERRCODE;
+		}
 	}
 
 	public String getERRDESC() {
-		return ERRDESC;
+		if (ERRDESC == null) {
+			return "相应描述未添加";
+		} else {
+			return ERRDESC;
+		}
 	}
 
 	public String getData() {
-		return data;
+		if (data == null) {
+			return "主数据未添加";
+		} else {
+			return data;
+		}
 	}
 
 	public String getTIP1() {
-		return TIP1;
+		if (TIP1 == null) {
+			return "未初始化";
+		} else {
+			return TIP1;
+		}
 	}
 
 	public String getTIP2() {
-		return TIP2;
+		if (TIP2 == null) {
+			return "未初始化";
+		} else {
+			return TIP2;
+		}
 	}
 
 	// 数据库连接
@@ -148,4 +172,15 @@ public abstract class ZCBaseActionSupportPlugin implements ZCImplReqParamGetter 
 		String[] return_value = ZCReqParamGetter.getParamStrings(request, key, true);
 		return return_value;
 	}
+
+	public ActionLogBeanBase log;
+
+	public void prepDBLog(ActionLogBeanBase dbLog) {
+		log = dbLog;
+	}
+
+	public ActionLogBeanBase syncDBLog() {
+		return log;
+	}
+
 }

@@ -14,6 +14,7 @@ public class MoudleCheckMeasure extends ZCBaseActionSupportPlugin {
 
 	public MoudleCheckMeasure(HttpServletRequest req) {
 		this.request = req;
+		this.name = "尺寸校验";
 	}
 
 	@Override

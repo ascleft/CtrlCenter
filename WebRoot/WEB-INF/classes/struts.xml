@@ -34,6 +34,15 @@
 		<action name="Setting" class="com.ltyx.core.action.SettingAction"
 		method="setting"></action>
 
+
+		<!-- 日志管理 获取页面 -->
+		<action name="GetLogPage" class="com.ltyx.core.action.LogMgrtAction"
+		method="getPage">
+			<result name="succ">/html/ShoppingCartAssistant/LogMgr.jsp</result>
+		</action>
+		<action name="FindLog" class="com.ltyx.core.action.LogMgrtAction"
+		method="search"></action>
+
 	</package>
 
 	<!--衬衫下单工具SCA 2.0 登录模块 -->
@@ -216,7 +225,7 @@
 
 	<!--鲁泰优纤 衬衫下单工具 对外接口 -->
 	<package name="OpenAPI" namespace="/LTYX/OpenAPI" extends="struts-default">
-
+		
 		<!-- 衣帮人对外接口 新版 优纤面料-->
 		<action name="YBRSubmit" class="com.ltyx.open.ybr.YBR_OBO_Action"
 		method="submitPBYX">

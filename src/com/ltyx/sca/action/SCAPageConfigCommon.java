@@ -152,6 +152,7 @@ public class SCAPageConfigCommon {
 		menuList += get_menu_list_aide();
 		menuList += get_menu_list_csa();
 		menuList += get_menu_list_cs();
+		menuList += get_menu_list_log();
 
 		return menuList;
 	}
@@ -266,6 +267,20 @@ public class SCAPageConfigCommon {
 				+ "</li>"//
 				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"http://www.uskin.net.cn/index.php/wap/cart.html\" target=\"_blank\">进入USKIN购物车结算(手机版)</a>"//
+				+ "</li>";//
+
+		return menuList;
+
+	}
+
+	public static String get_menu_list_log() {
+
+		String menuList = ""//
+				+ "<li>"//
+				+ "<a class=\"subheader\">系统功能</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/Core/GetLogPage.action\">日志管理</a>"//
 				+ "</li>";//
 
 		return menuList;

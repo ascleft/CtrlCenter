@@ -451,9 +451,9 @@
 															<div class="input-field col s12 m12 l12">
 																<select id="measure_type" name="measure_type">
 																	<option value="成衣尺寸">成衣尺寸</option>
+																	<option value="needless">不新增尺寸信息</option>
 																	<option value="号衣尺码">号衣尺码</option>
 																	<option value="量体尺寸" disabled="true">量体尺寸</option>
-																	<option value="needless">不新增尺寸信息</option>
 																</select> <label>尺寸类型</label>
 															</div>
 														</div>

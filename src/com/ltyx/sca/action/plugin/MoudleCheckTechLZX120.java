@@ -8,6 +8,7 @@ public class MoudleCheckTechLZX120 extends ZCBaseActionSupportPlugin {
 
 	public MoudleCheckTechLZX120(HttpServletRequest req) {
 		this.request = req;
+		this.name = "袖褶冲突校验";
 	}
 
 	@Override

@@ -209,7 +209,7 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 	public ZCHttpReqParam getCSUPriceManPBYX() {
 
 		String customer_tel_target = getReqParamString("customer_tel_target");
-		String uskin_code = getReqParamString("uskin_code");
+		String uskin_code = getReqParamString("uskin_code").toUpperCase();
 		String kouzi = getReqParamString("kouzi");
 		String tailor_type = getReqParamString("tailor_type");
 
@@ -222,8 +222,6 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 
 		String special_technics = getReqParamString("special_technics");
 
-		ZCHttpReqParam param = new ZCHttpReqParam();
-
 		String LZX_01 = getReqParamString("LZX_01");// 领型
 		String LZX_02 = getReqParamString("LZX_02");// 袖头,短袖头
 		String LZX_03 = getReqParamString("LZX_03");// 门襟
@@ -232,8 +230,10 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 		String LZX_26 = getReqParamString("LZX_26");// 底摆配布
 		String cixiu_kegong_num = getReqParamString("cixiu_kegong_num");// 客供图案刺绣数量
 
+		ZCHttpReqParam param = new ZCHttpReqParam();
+
 		param.addParam("customer_tel_target", customer_tel_target);
-		param.addParam("uskin_code", uskin_code.toUpperCase());
+		param.addParam("uskin_code", uskin_code);
 		param.addParam("kouzi", kouzi);
 		param.addParam("tailor_type", tailor_type);
 
@@ -275,6 +275,7 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 
 	public ZCHttpReqParam getCSUPriceDesign() {
 		ZCHttpReqParam param = getCSUOrderManPBYX();
+		param.addParam("design_code", getReqParamString("design_code"));
 		return param;
 	}
 
@@ -300,6 +301,7 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 
 	public ZCHttpReqParam getCSAPriceDesign() {
 		ZCHttpReqParam param = getCSUOrderManPBYX();
+		param.addParam("design_code", getReqParamString("design_code"));
 		return param;
 	}
 
