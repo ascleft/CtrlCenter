@@ -100,7 +100,7 @@ public class ZCReqIntroGetter {
 		log.addMsgLine(reqName + " " + "Params");
 		log.addCut();
 		for (String key : map.keySet()) {
-			log.addMsgLine(StringHelper.fillRight(key, 28, "-") + "--->" + map.get(key));
+			log.addMsgLine(StringHelper.fillRightMIX(key, 28, "-") + "--->" + map.get(key));
 		}
 		log.addfinish();
 		log.flush(logType);

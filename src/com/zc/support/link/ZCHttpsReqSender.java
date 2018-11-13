@@ -45,9 +45,9 @@ public class ZCHttpsReqSender {
 		TimeHelper.Timer timer = new TimeHelper.Timer();
 
 		System.out.println(TimeHelper.getTimeHMSS());
-		System.out.println(StringHelper.fillRight("url ", 6, " ") + url + "?" + param.getParam());
+		System.out.println(StringHelper.fillRightMIX("url ", 6, " ") + url + "?" + param.getParam());
 		TextLogHelper.white(TimeHelper.getTimeHMSS());
-		TextLogHelper.white(StringHelper.fillRight("url ", 6, " ") + url + "?" + param.getParam());
+		TextLogHelper.white(StringHelper.fillRightMIX("url ", 6, " ") + url + "?" + param.getParam());
 
 		String result = "";
 		BufferedReader in = null;
@@ -129,11 +129,11 @@ public class ZCHttpsReqSender {
 		TimeHelper.Timer timer = new TimeHelper.Timer();
 
 		System.out.println(TimeHelper.getTimeHMSS());
-		System.out.println(StringHelper.fillRight("url ", 6, " ") + url);
-		System.out.println(StringHelper.fillRight("body", 6, " ") + url + param.getParam());
+		System.out.println(StringHelper.fillRightMIX("url ", 6, " ") + url);
+		System.out.println(StringHelper.fillRightMIX("body", 6, " ") + url + param.getParam());
 		TextLogHelper.white(TimeHelper.getTimeHMSS());
-		TextLogHelper.white(StringHelper.fillRight("url ", 6, " ") + url);
-		TextLogHelper.white(StringHelper.fillRight("body", 6, " ") + url + param.getParam());
+		TextLogHelper.white(StringHelper.fillRightMIX("url ", 6, " ") + url);
+		TextLogHelper.white(StringHelper.fillRightMIX("body", 6, " ") + url + param.getParam());
 
 		PrintWriter out = null;
 		BufferedReader in = null;

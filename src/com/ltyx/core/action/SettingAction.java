@@ -3,9 +3,9 @@ package com.ltyx.core.action;
 import com.zc.support.config.ConfigHelperDB;
 import com.zc.support.config.ConfigHelperURL;
 import com.zc.support.config.ConfigHelperURL.ZCUrl;
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 
-public class SettingAction extends ZCBaseActionSupport {
+public class SettingAction extends CCActionSupport {
 
 	/**
 	 * 该Action用于获取填写表单

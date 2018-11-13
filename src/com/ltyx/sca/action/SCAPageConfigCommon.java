@@ -21,8 +21,26 @@ public class SCAPageConfigCommon {
 			} else if ("20".equals(rank) || "21".equals(rank)) {// 定制店
 				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_cs());
 			}
-			if ("张弛".equals(session.getAttribute("ec_user_name")) || "zc".equals(session.getAttribute("ec_user_name"))) {
-				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_all());
+
+			String[][] dic_su = { { "129", "0", "SU 张弛-客户经理" }, //
+					{ "3071", "20", "SU 张弛-定制店" }, //
+					{ "3071", "21", "SU 张弛-定制店-独立密码" }, //
+					// { "3000", "20", "SU 顾振-定制店" }, //
+					// { "3000", "21", "SU 顾振-定制店-独立密码" }, //
+					// { "21000", "20", "SU 刘亚鹏" },//
+					// { "21000", "21", "SU 刘亚鹏-独立密码" },//
+			};
+			{
+				String idTemp = "" + session.getAttribute("ec_user_id");
+				String nameTemp = "" + session.getAttribute("ec_user_name");
+				String rankTemp = "" + session.getAttribute("ec_user_rank");
+				for (int i = 0; i < dic_su.length; i++) {
+					if (idTemp.equals(dic_su[i][0]) && rankTemp.equals(dic_su[i][1])) {
+						session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_all());
+						session.setAttribute("ec_user_name", dic_su[i][2] + "(" + nameTemp + ")");
+					}
+				}
+
 			}
 		}
 
@@ -149,10 +167,10 @@ public class SCAPageConfigCommon {
 	public static String get_menu_list_all() {
 
 		String menuList = "";//
-		menuList += get_menu_list_aide();
-		menuList += get_menu_list_csa();
-		menuList += get_menu_list_cs();
+		// menuList += get_menu_list_aide();
 		menuList += get_menu_list_log();
+		menuList += get_menu_list_cs();
+		menuList += get_menu_list_csa();
 
 		return menuList;
 	}

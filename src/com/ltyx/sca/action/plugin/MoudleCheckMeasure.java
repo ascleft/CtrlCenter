@@ -13,8 +13,8 @@ public class MoudleCheckMeasure extends ZCBaseActionSupportPlugin {
 	private Map<String, Cell> maleBodyMeasure = null;
 
 	public MoudleCheckMeasure(HttpServletRequest req) {
+		this.name = "校验 尺寸";
 		this.request = req;
-		this.name = "尺寸校验";
 	}
 
 	@Override

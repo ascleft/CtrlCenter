@@ -12,29 +12,6 @@
 
 	String menulist=(String) session.getAttribute("menulist");
 	
-	String list_LZX_01=(String) session.getAttribute("list_LZX_01");
-	String list_LZX_02=(String) session.getAttribute("list_LZX_02");
-	String list_LZX_03=(String) session.getAttribute("list_LZX_03");
-	String list_LZX_04=(String) session.getAttribute("list_LZX_04");
-	String list_LZX_08=(String) session.getAttribute("list_LZX_08");
-	String list_LZX_120=(String) session.getAttribute("list_LZX_120");
-	String list_LZX_06=(String) session.getAttribute("list_LZX_06");
-	String list_LZX_17=(String) session.getAttribute("list_LZX_17");
-	String list_LZX_26=(String) session.getAttribute("list_LZX_26");
-	String list_LZX_13=(String) session.getAttribute("list_LZX_13");
-	String list_zhidai=(String) session.getAttribute("list_zhidai");
-	String list_color=(String) session.getAttribute("list_color");
-	String list_kouzi=(String) session.getAttribute("list_kouzi");
-	String list_easytype=(String) session.getAttribute("list_easytype");
-	String list_lingcheng=(String) session.getAttribute("list_lingcheng");
-	String list_mingxian=(String) session.getAttribute("list_mingxian");
-	String list_cefeng=(String) session.getAttribute("list_cefeng");
-	String list_qiantiao=(String) session.getAttribute("list_qiantiao");
-	String list_chenbu=(String) session.getAttribute("list_chenbu");
-	String list_weizhi_zhidai=(String) session.getAttribute("list_weizhi_zhidai");
-	String list_weizhi_peise=(String) session.getAttribute("list_weizhi_peise");
-	String list_baozhuang=(String) session.getAttribute("list_baozhuang_shop");	
-	
 %>
 
 <html>
@@ -138,10 +115,9 @@
 				state_loaded();
 			}
 
-			function show_msg_new_page(msg, title) {
-				var newwindow = window.open('_black', '', '', '');
+			function show_msg_new_page(msg) {
+				var newwindow = window.open('', "_blank", '');
 				newwindow.document.write(unescape(msg));
-				newwindow.document.close();
 			}
 
 			function makeTable(logList) {
@@ -191,15 +167,15 @@
 						String_html += "<td><a>" + logList[i].m_keys.replace(/, /g, "<br /><br />") + "</a></td>";
 						//快照
 						String_html += "<td>";
-						String_html += "<a class=\"teal-text\" onclick=\"show_msg_new_page(\'" + escape(JSON.stringify(logList[i].m_snapshot.src_req)) + "\', \'入站\')\">入站</a>";
+						String_html += "<a class=\"teal-text\" onclick=\"show_msg_new_page(\'" + escape(JSON.stringify(logList[i].m_snapshot.src_req)) + "\')\">入站</a>";
 						String_html += "<br/><br/><br/>";
-						String_html += "<a class=\"blue-text\" onclick=\"show_msg_new_page(\'" + escape(JSON.stringify(logList[i].m_snapshot.src_resp)) + "\', \'出站\')\">出站</a>";
+						String_html += "<a class=\"blue-text\" onclick=\"show_msg_new_page(\'" + escape(JSON.stringify(logList[i].m_snapshot.src_resp)) + "\')\">出站</a>";
 						String_html += "</td>";
 						//流转
 						String_html += "<td>";
-						String_html += "<a class=\"teal-text\" onclick=\"show_msg_new_page(\'" + escape(JSON.stringify(logList[i].e_snapshot.src_req)) + "\', \'请求\')\">请求</a>";
+						String_html += "<a class=\"teal-text\" onclick=\"show_msg_new_page(\'" + escape(JSON.stringify(logList[i].e_snapshot.src_req)) + "\')\">请求</a>";
 						String_html += "<br/><br/><br/>";
-						String_html += "<a class=\"blue-text\" onclick=\"show_msg_new_page(\'" + escape(JSON.stringify(logList[i].e_snapshot.src_resp)) + "\', \'响应\')\">响应</a>";
+						String_html += "<a class=\"blue-text\" onclick=\"show_msg_new_page(\'" + escape(JSON.stringify(logList[i].e_snapshot.src_resp)) + "\')\">响应</a>";
 						String_html += "</td>";
 						//进度
 						String_html += "<td><a>" + logList[i].m_tags.replace(/, /g, "<br />") + "</a></td>";
@@ -294,7 +270,7 @@
 			<nav class="teal" role="navigation">
 				<div class="nav-wrapper container">
 					<!-- 页面标题 -->
-					<a id="logo-container" href="#" class="brand-logo white-text ">日志管理
+					<a id="logo-container" href="#" class="brand-logo white-text ">用户管理
 					</a>
 					<!-- 导航菜单键（运动移动设备） -->
 					<a href="#" data-activates="nav_menu_list " class="button-collapse ">
@@ -431,7 +407,7 @@
 
 							</div>
 
-							<div class="card-panel">
+							<div class="card-panel"  onclick="logSearchStart()">
 								<div class="row">
 									<div class="input-field col s12 m12 l12" id="table_log_list">
 									</div>
@@ -441,12 +417,6 @@
 						</div>
 					</div>
 				</form>
-			</div>
-
-			<div class="fixed-action-btn"  onclick="logSearchStart()">
-				<a class="btn-floating btn-large teal">
-					<i class="large material-icons">refresh</i>
-				</a>
 			</div>
 
 			<!-- 模态框 -->

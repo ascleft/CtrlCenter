@@ -14,6 +14,7 @@ import net.sf.json.JSONObject;
 public class MoudleCSAGetPriceDesign extends ZCBaseActionSupportPlugin {
 
 	public MoudleCSAGetPriceDesign(HttpServletRequest req) {
+		this.name = "客户经理 设计师款 报价";
 		this.request = req;
 	}
 

@@ -7,8 +7,8 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 public class MoudleCheckTechClash extends ZCBaseActionSupportPlugin {
 
 	public MoudleCheckTechClash(HttpServletRequest req) {
+		this.name = "校验 工艺冲突";
 		this.request = req;
-		this.name = "冲突工艺校验";
 	}
 
 	@Override

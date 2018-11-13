@@ -13,6 +13,7 @@ import com.zc.support.service.Log;
 public class MoudleAideGetPriceDesign extends ZCBaseActionSupportPlugin {
 
 	public MoudleAideGetPriceDesign(HttpServletRequest req) {
+		this.name = "定制顾问 设计师款 报价";
 		this.request = req;
 	}
 

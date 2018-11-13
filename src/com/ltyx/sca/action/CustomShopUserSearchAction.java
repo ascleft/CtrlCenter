@@ -1,8 +1,8 @@
 package com.ltyx.sca.action;
 
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 
-public class CustomShopUserSearchAction extends ZCBaseActionSupport {
+public class CustomShopUserSearchAction extends CCActionSupport {
 
 	/**
 	 *

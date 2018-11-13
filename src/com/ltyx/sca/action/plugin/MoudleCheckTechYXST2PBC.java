@@ -7,6 +7,7 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 public class MoudleCheckTechYXST2PBC extends ZCBaseActionSupportPlugin {
 
 	public MoudleCheckTechYXST2PBC(HttpServletRequest req) {
+		this.name = "校验 面料及特殊工艺(客供面料)";
 		this.request = req;
 	}
 

@@ -13,6 +13,7 @@ import com.zc.support.service.Log;
 public class MoudleAideGetPricePBYX extends ZCBaseActionSupportPlugin {
 
 	public MoudleAideGetPricePBYX(HttpServletRequest req) {
+		this.name = "定制顾问 优纤男装 报价";
 		this.request = req;
 	}
 

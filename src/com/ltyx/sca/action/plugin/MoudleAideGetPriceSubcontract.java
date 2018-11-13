@@ -20,6 +20,7 @@ public class MoudleAideGetPriceSubcontract extends ZCBaseActionSupportPlugin {
 	double subcontract_ratio;
 
 	public MoudleAideGetPriceSubcontract(HttpServletRequest req) {
+		this.name = "定制顾问 其他商品 报价";
 		this.request = req;
 	}
 

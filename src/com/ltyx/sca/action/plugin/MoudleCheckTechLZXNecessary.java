@@ -7,8 +7,8 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 public class MoudleCheckTechLZXNecessary extends ZCBaseActionSupportPlugin {
 
 	public MoudleCheckTechLZXNecessary(HttpServletRequest req) {
+		this.name = "校验 必要工艺信息";
 		this.request = req;
-		this.name = "必要工艺信息校验";
 	}
 
 	@Override

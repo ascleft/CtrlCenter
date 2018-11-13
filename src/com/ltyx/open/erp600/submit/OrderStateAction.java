@@ -1,10 +1,10 @@
 package com.ltyx.open.erp600.submit;
 
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.TextLogHelper;
 
-public class OrderStateAction extends ZCBaseActionSupport {
+public class OrderStateAction extends CCActionSupport {
 
 	/**
 	 * 

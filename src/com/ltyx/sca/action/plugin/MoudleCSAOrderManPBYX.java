@@ -14,6 +14,7 @@ import net.sf.json.JSONObject;
 public class MoudleCSAOrderManPBYX extends ZCBaseActionSupportPlugin {
 
 	public MoudleCSAOrderManPBYX(HttpServletRequest req) {
+		this.name = "客户经理 优纤男装 提交购物车";
 		this.request = req;
 	}
 

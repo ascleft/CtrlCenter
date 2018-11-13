@@ -7,8 +7,8 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 public class MoudleCheckTechLZX120 extends ZCBaseActionSupportPlugin {
 
 	public MoudleCheckTechLZX120(HttpServletRequest req) {
+		this.name = "校验 袖褶冲突";
 		this.request = req;
-		this.name = "袖褶冲突校验";
 	}
 
 	@Override

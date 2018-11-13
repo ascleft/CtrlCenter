@@ -13,6 +13,7 @@ import com.zc.support.service.Log;
 public class MoudleAideSubmitECSubcontract extends ZCBaseActionSupportPlugin {
 
 	public MoudleAideSubmitECSubcontract(HttpServletRequest req) {
+		this.name = "定制顾问 其他商品 提交购物车";
 		this.request = req;
 	}
 

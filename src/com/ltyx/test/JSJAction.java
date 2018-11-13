@@ -3,11 +3,11 @@ package com.ltyx.test;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.service.TextLogHelper;
 import com.zc.support.service.TimeHelper;
 
-public class JSJAction extends ZCBaseActionSupport {
+public class JSJAction extends CCActionSupport {
 
 	/**
 	 * 该Action用于获取填写表单

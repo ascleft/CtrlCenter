@@ -7,8 +7,8 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 public class MoudleCheckTechYXST extends ZCBaseActionSupportPlugin {
 
 	public MoudleCheckTechYXST(HttpServletRequest req) {
+		this.name = "校验 面料及特殊工艺";
 		this.request = req;
-		this.name = "面料及特殊工艺校验";
 	}
 
 	@Override

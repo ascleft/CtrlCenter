@@ -13,6 +13,7 @@ import com.zc.support.service.Log;
 public class MoudleAideSubmitECWoman extends ZCBaseActionSupportPlugin {
 
 	public MoudleAideSubmitECWoman(HttpServletRequest req) {
+		this.name = "定制顾问 优纤女装 提交购物车";
 		this.request = req;
 	}
 

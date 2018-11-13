@@ -2,7 +2,7 @@ package com.zc.support.service;
 
 public class StringHelper {
 
-	public static String fillLeft(String input, int length, String texture) {
+	public static String fillLeftMIX(String input, int length, String texture) {
 		String output = "";
 		if (length > input.length()) {
 			int time = (length - input.length()) / (texture.length()) + 1;
@@ -22,19 +22,18 @@ public class StringHelper {
 		return output;
 	}
 
-	public static String fillRight(String input, int length, String texture) {
+	public static String fillRightMIX(String input, int length, String entexture) {
 		String output = "";
-		if (length > input.length()) {
-			int time = (length - input.length()) / (texture.length()) + 1;
+		if (input.length() < length) {
+			int time = (int) Math.ceil((length - input.length()) / (entexture.length()));
 			String right = "";
 			for (int i = 0; i < time; i++) {
-				if (null == texture) {
+				if (null == entexture) {
 					right += " ";
 				} else {
-					right += texture;
+					right += entexture;
 				}
 			}
-			right = right.substring(0, length - input.length());
 			output = input + right;
 		} else {
 			output = input;
@@ -56,4 +55,12 @@ public class StringHelper {
 		}
 		return sb.toString();
 	}
+
+	public static int countChineseNums(String str) {
+		byte b[] = str.getBytes();
+		int byteLength = b.length;
+		int strLength = str.length();
+		return (byteLength - strLength) / 2;
+	}
+
 }

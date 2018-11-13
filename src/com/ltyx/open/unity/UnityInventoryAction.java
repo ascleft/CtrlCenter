@@ -2,14 +2,14 @@ package com.ltyx.open.unity;
 
 import java.util.ArrayList;
 
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.TextLogHelper;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-public class UnityInventoryAction extends ZCBaseActionSupport {
+public class UnityInventoryAction extends CCActionSupport {
 
 	/**
 	 * 

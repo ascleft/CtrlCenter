@@ -8,8 +8,8 @@ public class MoudleCSCheckUserInfo extends ZCBaseActionSupportPlugin {
 
 
 	public MoudleCSCheckUserInfo(HttpServletRequest req) {
+		this.name = "校验 用户信息";
 		this.request = req;
-		this.name = "用户信息检测";
 	}
 
 	@Override

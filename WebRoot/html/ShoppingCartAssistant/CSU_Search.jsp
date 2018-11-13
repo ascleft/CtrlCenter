@@ -108,24 +108,23 @@
 									String_html += "<h5>鲁泰仓库显示该面料无库存</h2>";
 									String_html += "</div>";
 
-									String_html += "<div class=\"col s12 m12 l12 red-text\">";
-									String_html += "<a ";
-									String_html += "style=\"color: lightpink;\" ";
-									String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBCNL.action";
-									String_html += "\">";
-									String_html += "注意！点击此处强制下【定制店 客供面料 男装】衬衫订单，工厂如未入库该面料，优纤不保证交期！";
-									String_html += "</a>";
-									String_html += "</div>";
+									//String_html += "<div class=\"col s12 m12 l12 red-text\">";
+									//String_html += "<a ";
+									//String_html += "style=\"color: lightpink;\" ";
+									//String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBCNL.action";
+									//String_html += "\">";
+									//String_html += "注意！点击此处强制下【定制店 客供面料 男装】衬衫订单，工厂如未入库该面料，优纤不保证交期！";
+									//String_html += "</a>";
+									//String_html += "</div>";
 
-									String_html += "<div class=\"col s12 m12 l12 red-text\">";
-									String_html += "<a ";
-									String_html += "style=\"color: lightpink;\" ";
-									String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopWomanPBCNL.action";
-									String_html += "\">";
-									String_html += "注意！点击此处强制下【定制店 客供面料 女装】衬衫订单，工厂如未入库该面料，优纤不保证交期！";
-									String_html += "</a>";
-
-									String_html += "</div>";
+									//String_html += "<div class=\"col s12 m12 l12 red-text\">";
+									//String_html += "<a ";
+									//String_html += "style=\"color: lightpink;\" ";
+									//String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopWomanPBCNL.action";
+									//String_html += "\">";
+									//String_html += "注意！点击此处强制下【定制店 客供面料 女装】衬衫订单，工厂如未入库该面料，优纤不保证交期！";
+									//String_html += "</a>";
+									//String_html += "</div>";
 
 								} else {
 

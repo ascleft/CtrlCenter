@@ -2,10 +2,10 @@ package com.ltyx.test;
 
 import java.util.Random;
 
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.service.TextLogHelper;
 
-public class PlatformTailor extends ZCBaseActionSupport {
+public class PlatformTailor extends CCActionSupport {
 
 	/**
 	 * 

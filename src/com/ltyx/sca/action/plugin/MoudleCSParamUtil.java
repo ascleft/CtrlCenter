@@ -8,6 +8,7 @@ import com.zc.support.link.ZCHttpReqParam;
 public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 
 	public MoudleCSParamUtil(HttpServletRequest req) {
+		this.name = "获取参数";
 		this.request = req;
 	}
 

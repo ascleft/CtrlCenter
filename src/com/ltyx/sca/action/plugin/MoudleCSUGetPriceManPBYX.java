@@ -15,8 +15,8 @@ import net.sf.json.JSONObject;
 public class MoudleCSUGetPriceManPBYX extends ZCBaseActionSupportPlugin {
 
 	public MoudleCSUGetPriceManPBYX(HttpServletRequest req) {
-		this.request = req;
 		this.name = "定制店 优纤男装 报价";
+		this.request = req;
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class MoudleCSUGetPriceManPBYX extends ZCBaseActionSupportPlugin {
 		Log.Nano.tag(ConfigHelperURL.Url_customshop_get_price_man_pbyx.getDesc() + "Resp From EC", httpResp);
 
 		timer.stop(null);
-		log.ec.addSrcReq(ConfigHelperURL.Url_customshop_add_cart_man_pbyx.getUrl(), param);
+		log.ec.addSrcReq(ConfigHelperURL.Url_customshop_get_price_man_pbyx.getUrl(), param);
 		log.ec.addSrcResp(httpResp);
 		log.ec.addTimer(timer);
 

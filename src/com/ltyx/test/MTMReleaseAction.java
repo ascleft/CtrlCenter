@@ -1,6 +1,6 @@
 package com.ltyx.test;
 
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqProperty;
 import com.zc.support.link.ZCHttpReqSender;
@@ -11,7 +11,7 @@ import com.zc.support.service.TimeHelper;
 
 import net.sf.json.JSONObject;
 
-public class MTMReleaseAction extends ZCBaseActionSupport {
+public class MTMReleaseAction extends CCActionSupport {
 
 	/**
 	 * 
@@ -114,9 +114,9 @@ public class MTMReleaseAction extends ZCBaseActionSupport {
 			String result = "";
 			int index = html.indexOf(key);
 			if (index == -1) {
-				result = StringHelper.fillRight(key, 20, "-") + ">" + "不存在";
+				result = StringHelper.fillRightMIX(key, 20, "-") + ">" + "不存在";
 			} else {
-				result = StringHelper.fillRight(key, 20, "-") + ">" + "索引位置：" + index;
+				result = StringHelper.fillRightMIX(key, 20, "-") + ">" + "索引位置：" + index;
 			}
 			log += result + "<br />";
 		}

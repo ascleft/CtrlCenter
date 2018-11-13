@@ -7,6 +7,7 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 public class MoudleCSACheckUserInfo extends ZCBaseActionSupportPlugin {
 
 	public MoudleCSACheckUserInfo(HttpServletRequest req) {
+		this.name = "校验 订单用户信息(客户经理)";
 		this.request = req;
 	}
 

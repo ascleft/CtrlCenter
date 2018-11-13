@@ -1,9 +1,9 @@
 package com.ltyx.core.action;
 
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.service.VersionHelper;
 
-public class MainAction extends ZCBaseActionSupport {
+public class MainAction extends CCActionSupport {
 
 	/**
 	 * 该Action用于非功能页面的自动跳转

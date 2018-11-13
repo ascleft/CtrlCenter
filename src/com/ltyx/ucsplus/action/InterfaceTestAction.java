@@ -1,13 +1,13 @@
 package com.ltyx.ucsplus.action;
 
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqProperty;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.TextLogHelper;
 
-public class InterfaceTestAction extends ZCBaseActionSupport {
+public class InterfaceTestAction extends CCActionSupport {
 
 	/**
 	 * 该Action用于测试并打印任意接口的输入情况

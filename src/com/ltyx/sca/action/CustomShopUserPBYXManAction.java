@@ -12,11 +12,11 @@ import com.ltyx.sca.action.plugin.MoudleCheckTechLZX11;
 import com.ltyx.sca.action.plugin.MoudleCheckTechLZX120;
 import com.ltyx.sca.action.plugin.MoudleCheckTechLZXNecessary;
 import com.ltyx.sca.action.plugin.MoudleCheckTechYXST;
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.TextLogHelper;
 
-public class CustomShopUserPBYXManAction extends ZCBaseActionSupport {
+public class CustomShopUserPBYXManAction extends CCActionSupport {
 
 	/**
 	 * 
@@ -43,27 +43,20 @@ public class CustomShopUserPBYXManAction extends ZCBaseActionSupport {
 	public String getPrice() {
 
 		init(true);
-		String methodName = "定制店 优纤面料 男装 报价";
+		String methodName = "定制店 优纤男装 报价";
 
 		{
-			initDBLog(methodName, "2010", session.getAttribute("ec_user_id").toString());
-			dbLog.main.addSrcReq(ZCReqIntroGetter.getParams(request));
-		}
+			initDBLog(methodName, "2010");
 
-		boolean isSucc = doGetPrice();
-		
-		{
+			boolean isSucc = doGetPrice();
+
 			if (isSucc) {
-				dbLog.main.addTags("成功");
+				addDBLogTags("成功");
 			} else {
-				dbLog.main.addTags("失败");
+				addDBLogTags("失败");
 			}
-			dbLog.main.addKeys(getReqParamStrings("uskin_code"));
-			dbLog.main.addKeys(getReqParamStrings("customer_name"));
-			dbLog.main.addKeys(getReqParamStrings("LZX_13_FOR_CHAR"));
-
 		}
-		
+
 		{
 
 			if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
@@ -82,24 +75,18 @@ public class CustomShopUserPBYXManAction extends ZCBaseActionSupport {
 	public String submit() {
 
 		init(true);
-		String methodName = "定制店 优纤面料 男装 提交购物车";
+		String methodName = "定制店 优纤男装 提交购物车";
 
 		{
-			initDBLog(methodName, "2010", session.getAttribute("ec_user_id").toString());
-			dbLog.main.addSrcReq(ZCReqIntroGetter.getParams(request));
-		}
+			initDBLog(methodName, "2010");
 
-		boolean isSucc = doSubmit();
+			boolean isSucc = doSubmit();
 
-		{
 			if (isSucc) {
-				dbLog.main.addTags("成功");
+				addDBLogTags("成功");
 			} else {
-				dbLog.main.addTags("失败");
+				addDBLogTags("失败");
 			}
-			dbLog.main.addKeys(getReqParamStrings("uskin_code"));
-			dbLog.main.addKeys(getReqParamStrings("customer_name"));
-			dbLog.main.addKeys(getReqParamStrings("LZX_13_FOR_CHAR"));
 		}
 
 		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {

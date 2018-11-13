@@ -7,6 +7,7 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 public class MoudleAideCheckSubcontract extends ZCBaseActionSupportPlugin {
 
 	public MoudleAideCheckSubcontract(HttpServletRequest req) {
+		this.name = "定制顾问 校验 其他商品";
 		this.request = req;
 	}
 

@@ -8,18 +8,22 @@ import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
 import com.zc.support.service.TextLogHelper;
+import com.zc.support.service.TimeHelper;
 
 import net.sf.json.JSONObject;
 
 public class MoudleCSUGetOrder extends ZCBaseActionSupportPlugin {
 
 	public MoudleCSUGetOrder(HttpServletRequest req) {
+		this.name = "定制店 历史订单 获取";
 		this.request = req;
 	}
 
 	@Override
 	public boolean doJobs() {
 		// TODO Auto-generated method stub
+
+		TimeHelper.Timer timer = new TimeHelper.Timer();
 
 		if (getReqParamString("FactoryID").trim().length() == 0) {
 			ERRCODE = "0";
@@ -39,13 +43,17 @@ public class MoudleCSUGetOrder extends ZCBaseActionSupportPlugin {
 			data = "请在【生产备注（工艺修改说明）】处填写详细的修改描述";
 			return false;
 		}
-		
+
 		MoudleCSParamUtil paramUtil = new MoudleCSParamUtil(request);
 		ZCHttpReqParam param = paramUtil.getCSUGetOrder();
 
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshop_get_factory_order.getUrl(), param, TextLogHelper.Type.USKIN_USER_PRICE_NSRC);
-
 		Log.Nano.tag(ConfigHelperURL.Url_customshop_get_factory_order.getDesc() + "Resp From EC", httpResp);
+
+		timer.stop(null);
+		log.ec.addSrcReq(ConfigHelperURL.Url_customshop_get_factory_order.getUrl(), param);
+		log.ec.addSrcResp(httpResp);
+		log.ec.addTimer(timer);
 
 		JSONObject jsonHttpResp;
 		String jsonERRCODE;

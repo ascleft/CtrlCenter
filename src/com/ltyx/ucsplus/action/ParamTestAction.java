@@ -2,13 +2,13 @@ package com.ltyx.ucsplus.action;
 
 import java.util.Map;
 
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.TextLogHelper;
 
 import net.sf.json.JSONObject;
 
-public class ParamTestAction extends ZCBaseActionSupport {
+public class ParamTestAction extends CCActionSupport {
 
 	/**
 	 * 该Action用于测试并打印任意接口的输入情况

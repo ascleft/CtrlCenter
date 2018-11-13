@@ -2,11 +2,11 @@ package com.ltyx.sca.action;
 
 import com.ltyx.sca.action.plugin.MoudleCSUGetOrder;
 import com.ltyx.sca.action.plugin.MoudleCSUOrderRepair;
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.TextLogHelper;
 
-public class CustomShopUserRepairAction extends ZCBaseActionSupport {
+public class CustomShopUserRepairAction extends CCActionSupport {
 
 	/**
 	 * 
@@ -35,7 +35,17 @@ public class CustomShopUserRepairAction extends ZCBaseActionSupport {
 		init(true);
 		String methodName = "定制店  返修订单 报价";
 
-		doGetPrice();
+		{
+			initDBLog(methodName, "2010");
+
+			boolean isSucc = doGetPrice();
+
+			if (isSucc) {
+				addDBLogTags("成功");
+			} else {
+				addDBLogTags("失败");
+			}
+		}
 
 		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
 			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_PRICE_SUCC);
@@ -52,9 +62,19 @@ public class CustomShopUserRepairAction extends ZCBaseActionSupport {
 	public String submit() {
 
 		init(true);
-		String methodName = "定制店 优纤面料 男装 提交购物车";
+		String methodName = "定制店  返修订单 提交购物车";
 
-		doSubmit();
+		{
+			initDBLog(methodName, "2010");
+
+			boolean isSucc = doSubmit();
+
+			if (isSucc) {
+				addDBLogTags("成功");
+			} else {
+				addDBLogTags("失败");
+			}
+		}
 
 		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
 			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_ORDER_SUCC);
@@ -70,40 +90,32 @@ public class CustomShopUserRepairAction extends ZCBaseActionSupport {
 
 	public boolean doGetPrice() {
 
-		{
+		{// 报价
 			MoudleCSUGetOrder moudle = new MoudleCSUGetOrder(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("返修订单合法性检测");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
-				TIP1 = moudle.getTIP1();
-				TIP2 = moudle.getTIP2();
+			moudle.prepDBLog(dbLog);
+			boolean isSucc = runMoudle(moudle);
+			dbLog = moudle.syncDBLog();
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("返修订单合法性检测");
-			ERRCODE = moudle.getERRCODE();
-			ERRDESC = moudle.getERRDESC();
-			data = moudle.getData();
-			TIP1 = moudle.getTIP1();
-			TIP2 = moudle.getTIP2();
 		}
 
-		return true;
+		{
+			return true;
+		}
+
 	}
 
 	public boolean doSubmit() {
 
-		{
+		{// 提交EC
 			MoudleCSUOrderRepair moudle = new MoudleCSUOrderRepair(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("提交EC");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			moudle.prepDBLog(dbLog);
+			boolean isSucc = runMoudle(moudle);
+			dbLog = moudle.syncDBLog();
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("提交EC");
 		}
 
 		{

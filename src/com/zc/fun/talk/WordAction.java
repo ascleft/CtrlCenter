@@ -2,9 +2,9 @@ package com.zc.fun.talk;
 
 import java.util.Random;
 
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 
-public class WordAction extends ZCBaseActionSupport {
+public class WordAction extends CCActionSupport {
 
 	private static final long serialVersionUID = 10086L;
 

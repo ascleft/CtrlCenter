@@ -12,11 +12,11 @@ import com.ltyx.sca.action.plugin.MoudleCheckTechLZX11;
 import com.ltyx.sca.action.plugin.MoudleCheckTechLZX120;
 import com.ltyx.sca.action.plugin.MoudleCheckTechLZXNecessary;
 import com.ltyx.sca.action.plugin.MoudleCheckTechYXST;
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.TextLogHelper;
 
-public class CustomShopAidePBYXDesignAction extends ZCBaseActionSupport {
+public class CustomShopAidePBYXDesignAction extends CCActionSupport {
 
 	/**
 	 * 

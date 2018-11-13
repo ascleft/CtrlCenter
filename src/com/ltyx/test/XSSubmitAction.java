@@ -1,12 +1,12 @@
 package com.ltyx.test;
 
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.JsonHelper;
 import com.zc.support.service.TextLogHelper;
 
-public class XSSubmitAction extends ZCBaseActionSupport {
+public class XSSubmitAction extends CCActionSupport {
 
 	/**
 	 * 

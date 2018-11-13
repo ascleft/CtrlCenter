@@ -14,6 +14,7 @@ import com.zc.support.service.TextLogHelper;
 public class MoudleCSAGetPriceManPBYX extends ZCBaseActionSupportPlugin {
 
 	public MoudleCSAGetPriceManPBYX(HttpServletRequest req) {
+		this.name = "客户经理 优纤男装 报价";
 		this.request = req;
 	}
 

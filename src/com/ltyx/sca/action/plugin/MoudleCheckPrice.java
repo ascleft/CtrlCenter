@@ -7,8 +7,8 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 public class MoudleCheckPrice extends ZCBaseActionSupportPlugin {
 
 	public MoudleCheckPrice(HttpServletRequest req) {
+		this.name = "校验 报价核对";
 		this.request = req;
-		this.name = "报价核对";
 	}
 
 	@Override

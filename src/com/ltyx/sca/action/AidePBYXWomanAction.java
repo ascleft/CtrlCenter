@@ -6,11 +6,11 @@ import com.ltyx.sca.action.plugin.MoudleAideGetPriceWoman;
 import com.ltyx.sca.action.plugin.MoudleAideSubmitECWoman;
 import com.ltyx.sca.action.plugin.MoudleCheckPrice;
 import com.ltyx.sca.action.plugin.MoudleCheckTechLZX11;
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.TextLogHelper;
 
-public class AidePBYXWomanAction extends ZCBaseActionSupport {
+public class AidePBYXWomanAction extends CCActionSupport {
 
 	/**
 	 * 

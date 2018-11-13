@@ -130,7 +130,7 @@ public class DBHelper {
 			Connection conn = createConn();
 			try {
 				PreparedStatement pstmt = (PreparedStatement) conn.prepareStatement(sql);
-				System.out.println(sql);
+				// System.out.println(sql);
 				pstmt.execute();
 				ResultSet rs = (ResultSet) pstmt.getGeneratedKeys();
 				while (rs.next()) {

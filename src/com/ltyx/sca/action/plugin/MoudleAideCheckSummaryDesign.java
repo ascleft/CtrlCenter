@@ -7,6 +7,7 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 public class MoudleAideCheckSummaryDesign extends ZCBaseActionSupportPlugin {
 
 	public MoudleAideCheckSummaryDesign(HttpServletRequest req) {
+		this.name = "定制顾问 校验 设计";
 		this.request = req;
 	}
 

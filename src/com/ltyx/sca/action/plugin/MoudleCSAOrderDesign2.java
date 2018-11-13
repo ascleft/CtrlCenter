@@ -14,6 +14,7 @@ import net.sf.json.JSONObject;
 public class MoudleCSAOrderDesign2 extends ZCBaseActionSupportPlugin {
 
 	public MoudleCSAOrderDesign2(HttpServletRequest req) {
+		this.name = "客户经理 设计师款 提交购物车";
 		this.request = req;
 	}
 

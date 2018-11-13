@@ -1,10 +1,10 @@
 package com.ltyx.open.erp600.search;
 
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.TextLogHelper;
 
-public class InventoryAction extends ZCBaseActionSupport {
+public class InventoryAction extends CCActionSupport {
 
 	/**
 	 * 

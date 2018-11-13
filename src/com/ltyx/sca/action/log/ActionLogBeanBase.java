@@ -83,7 +83,7 @@ public class ActionLogBeanBase {
 			_time_Total = "";
 
 			addTags(name);
-			
+
 		}
 
 		public void addTags(String... tag) {
@@ -111,14 +111,17 @@ public class ActionLogBeanBase {
 			this._src_Resp = src;
 		}
 
+		@Deprecated
 		public void addTimeBegin(String time) {
 			_time_Begin = time;
 		}
 
+		@Deprecated
 		public void addTimeEnd(String time) {
 			_time_End = time;
 		}
 
+		@Deprecated
 		public void addTimeTotal(String time) {
 			_time_Total = time;
 		}
@@ -126,8 +129,8 @@ public class ActionLogBeanBase {
 		public void addTimer(TimeHelper.Timer timer) {
 			ArrayList<String> timeList = timer.getTimerPartableList();
 			if (timeList.size() >= 3) {
-				_time_Begin = timeList.get(0);
-				_time_End = timeList.get(timeList.size() - 2);
+				_time_Begin = timeList.get(0).replace("开始时间: ", "");
+				_time_End = timeList.get(timeList.size() - 2).replace("结束时间: ", "");
 				_time_Total = timeList.get(timeList.size() - 1);
 			}
 		}
@@ -226,8 +229,8 @@ public class ActionLogBeanBase {
 
 		public void addTimer(TimeHelper.Timer timer) {
 			timer.getTimerPartableList();
-			_time_Begin = timer.getTimerPartableList().get(0);
-			_time_End = timer.getTimerPartableList().get(1);
+			_time_Begin = timer.getTimerPartableList().get(0).replace("开始时间: ", "");
+			_time_End = timer.getTimerPartableList().get(1).replace("结束时间: ", "");
 			_time_Total = timer.getTimerPartableList().get(2);
 		}
 

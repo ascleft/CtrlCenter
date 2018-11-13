@@ -7,14 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.opensymphony.xwork2.ActionContext;
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.Log;
 import com.zc.support.service.TextLogHelper;
 
 import net.sf.json.JSONObject;
 
-public class SimulatorAction extends ZCBaseActionSupport {
+public class SimulatorAction extends CCActionSupport {
 
 	/**
 	 * 该Action用于获取填写表单

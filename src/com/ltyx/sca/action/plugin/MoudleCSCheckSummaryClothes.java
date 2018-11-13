@@ -7,8 +7,8 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 public class MoudleCSCheckSummaryClothes extends ZCBaseActionSupportPlugin {
 
 	public MoudleCSCheckSummaryClothes(HttpServletRequest req) {
+		this.name = "校验 订单摘要信息";
 		this.request = req;
-		this.name = "订单摘要信息";
 	}
 
 	@Override

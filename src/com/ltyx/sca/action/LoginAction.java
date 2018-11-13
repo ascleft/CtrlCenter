@@ -2,7 +2,7 @@ package com.ltyx.sca.action;
 
 import com.ltyx.sca.action.log.ActionLogBeanLogin;
 import com.zc.support.config.ConfigHelperURL;
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.link.ZCReqIntroGetter;
@@ -12,7 +12,7 @@ import com.zc.support.service.TextLogHelper;
 
 import net.sf.json.JSONObject;
 
-public class LoginAction extends ZCBaseActionSupport {
+public class LoginAction extends CCActionSupport {
 
 	/**
 	 * 登录Action

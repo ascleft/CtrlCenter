@@ -14,6 +14,7 @@ import net.sf.json.JSONObject;
 public class MoudleCSAOrderWomanPBC extends ZCBaseActionSupportPlugin {
 
 	public MoudleCSAOrderWomanPBC(HttpServletRequest req) {
+		this.name = "客户经理 客供女装 提交购物车";
 		this.request = req;
 	}
 

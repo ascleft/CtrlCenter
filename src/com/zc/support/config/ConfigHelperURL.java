@@ -150,7 +150,7 @@ public class ConfigHelperURL {
 		}
 
 		public String getDesc() {
-			return StringHelper.fillRight(nameCH, 26, "—") + ">" + urlFull;
+			return StringHelper.fillRightMIX(nameCH, 26, "—") + ">" + urlFull;
 		}
 
 	}

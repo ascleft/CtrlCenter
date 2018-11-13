@@ -2,11 +2,11 @@ package com.ltyx.open.ybr;
 
 import com.ltyx.sca.action.plugin.MoudleCSCheckSummaryClothes;
 import com.ltyx.sca.action.plugin.MoudleCSCheckUserInfo;
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.TextLogHelper;
 
-public class YBR_OBO_Action extends ZCBaseActionSupport {
+public class YBR_OBO_Action extends CCActionSupport {
 
 	/**
 	 * 

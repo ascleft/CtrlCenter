@@ -1,6 +1,6 @@
 package com.ltyx.ucsplus.action;
 
-import com.zc.support.doman.ZCBaseActionSupport;
+import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
@@ -9,7 +9,7 @@ import com.zc.support.service.TextLogHelper;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-public class SearchAction extends ZCBaseActionSupport {
+public class SearchAction extends CCActionSupport {
 
 	/**
 	 * 搜索Action

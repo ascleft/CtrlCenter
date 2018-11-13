@@ -14,6 +14,7 @@ import net.sf.json.JSONObject;
 public class MoudleCSAGetPriceWomanPBC extends ZCBaseActionSupportPlugin {
 
 	public MoudleCSAGetPriceWomanPBC(HttpServletRequest req) {
+		this.name = "客户经理 客供女装 报价";
 		this.request = req;
 	}
 
