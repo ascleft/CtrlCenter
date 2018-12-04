@@ -4,7 +4,7 @@ import com.ltyx.sca.action.plugin.MoudleCSCheckSummaryClothes;
 import com.ltyx.sca.action.plugin.MoudleCSCheckUserInfo;
 import com.ltyx.sca.action.plugin.MoudleCSUGetPriceManPBC;
 import com.ltyx.sca.action.plugin.MoudleCSUOrderManPBC;
-import com.ltyx.sca.action.plugin.MoudleCheckMeasure;
+import com.ltyx.sca.action.plugin.MoudleCheckMeasureMan;
 import com.ltyx.sca.action.plugin.MoudleCheckPrice;
 import com.ltyx.sca.action.plugin.MoudleCheckTechClash;
 import com.ltyx.sca.action.plugin.MoudleCheckTechLZX01;
@@ -150,7 +150,7 @@ public class CustomShopUserPBCManAction extends CCActionSupport {
 		}
 
 		{// 尺寸校验
-			MoudleCheckMeasure moudle = new MoudleCheckMeasure(request);
+			MoudleCheckMeasureMan moudle = new MoudleCheckMeasureMan(request);
 			boolean isSucc = runMoudle(moudle);
 			if (isSucc == false) {
 				return false;

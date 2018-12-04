@@ -121,6 +121,10 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 		param.addParam("spc_b_muf_d", getReqParamString("spc_b_muf_d"));// 袖窿深下挖
 		param.addParam("spc_b_muf_u", getReqParamString("spc_b_muf_u"));// 袖窿深上调
 
+		param.addParam("button_decorative_num", getReqParamString("button_decorative_num"));// 装饰扣数量
+		param.addParam("button_decorative_code", getReqParamString("button_decorative_code"));// 装饰扣编号
+		param.addParam("button_decorative_pos", getReqParamString("button_decorative_pos"));// 装饰扣位置
+
 		return param;
 
 	}

@@ -63,6 +63,28 @@ public class YBR_OBO_Action extends CCActionSupport {
 
 	}
 
+	public String repair() {
+
+		init(true);
+
+		String methodName = "衣帮人 对外接口 返修订单 提交";
+
+		price = 0;
+
+		doRepair();
+
+		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_YBR_SUCC);
+			writeResp(methodName, TextLogHelper.Type.USKIN_YBR_SUCC);
+		} else {
+			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_YBR_FAIL);
+			writeResp(methodName, TextLogHelper.Type.USKIN_YBR_FAIL);
+		}
+
+		return null;
+
+	}
+
 	public boolean doSubmitPBYX() {
 
 		{
@@ -236,6 +258,29 @@ public class YBR_OBO_Action extends CCActionSupport {
 		}
 
 		return true;
+
+	}
+
+	public boolean doRepair() {
+
+		{
+			MoudleYBR_OBO_SubmitEC_Repair moudle = new MoudleYBR_OBO_SubmitEC_Repair(request);
+			if (!moudle.doJobs()) {
+				addProgressFail("提交EC");
+				ERRCODE = moudle.getERRCODE();
+				ERRDESC = moudle.getERRDESC();
+				data = moudle.getData();
+				return false;
+			}
+			addProgressSucc("提交EC");
+		}
+
+		{
+			ERRCODE = "0";
+			ERRDESC = "succ";
+			data = "提交成功";
+			return true;
+		}
 
 	}
 

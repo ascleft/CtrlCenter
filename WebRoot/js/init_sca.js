@@ -2297,3 +2297,61 @@ function use_SubcontractTable() {
 		add_repair_type_event(); //
 	});
 }
+
+//-------------------------------------------------------------------------通用模态框、进度条、悬浮提示、土司↓
+
+//导入通用进度条
+function global_progress_loading() {
+	$("#global_frame_progress_loading_bar").show();
+}
+
+function global_progress_loaded() {
+	$("#global_frame_progress_loading_bar").hide();
+}
+
+//导入通用模态框(上载)
+function global_modal_upload_start(displaywords) {
+	$("#global_frame_modal_div").modal('open');
+	$("#global_frame_modal_state_title").html(displaywords);
+	$("#global_frame_modal_progress_bar").show();
+	$("#global_frame_modal_btn_finish").hide();
+	$("#global_frame_modal_btn_cancel").hide();
+	$("#global_frame_modal_btn_terminate").hide();
+	setTimeout(function() {
+		$("#global_frame_modal_btn_terminate").show()
+	}, 20000);
+}
+
+function global_modal_upload_finish(displaywords) {
+	$("#global_frame_modal_state_title").html(displaywords);
+	$("#global_frame_modal_progress_bar").hide();
+	$("#global_frame_modal_btn_finish").show();
+	$("#global_frame_modal_btn_cancel").hide();
+	$("#global_frame_modal_btn_terminate").hide();
+}
+
+function global_modal_upload_error(displaywords) {
+	$("#global_frame_modal_state_title").html(displaywords);
+	$("#global_frame_modal_progress_bar").hide();
+	$("#global_frame_modal_btn_finish").hide();
+	$("#global_frame_modal_btn_cancel").show();
+	$("#global_frame_modal_btn_terminate").hide();
+}
+
+//导入通用提示窗
+function global_notice_show(msg) {
+	$("#global_frame_notice_div").show();
+	$("#global_frame_notice_board").html(msg);
+}
+
+function global_notice_hide() {
+	$("#global_frame_notice_div").hide();
+	$("#global_frame_notice_board").html("");
+}
+
+function global_notice_loading(msg) {
+	$("#global_frame_notice_div").show();
+	$("#global_frame_notice_board").html(msg);
+}
+
+//-------------------------------------------------------------------------通用模态框、进度条、悬浮提示、土司↑

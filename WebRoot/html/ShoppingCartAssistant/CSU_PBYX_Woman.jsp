@@ -33,7 +33,10 @@
 	String list_chenbu=(String) session.getAttribute("list_chenbu");
 	String list_weizhi_zhidai=(String) session.getAttribute("list_weizhi_zhidai");
 	String list_weizhi_peise=(String) session.getAttribute("list_weizhi_peise");
-	String list_baozhuang=(String) session.getAttribute("list_baozhuang_shop");	
+	String list_baozhuang=(String) session.getAttribute("list_baozhuang_shop");		
+	String list_button_decorative_code=(String) session.getAttribute("list_button_decorative_code");
+	String list_button_decorative_num=(String) session.getAttribute("list_button_decorative_num");
+	String list_button_decorative_pos=(String) session.getAttribute("list_button_decorative_pos");	
 	
 %>
 
@@ -659,38 +662,53 @@
 																<select id="kouzi" name="kouzi">
 																	<%=list_kouzi%>
 																	<option value="">客供</option>
-																</select> <label>纽扣类型</label>
+																</select> <label>大身纽扣</label>
 															</div>
 															<div class="input-field col s12 m12 l12" id="kouzi_div">
 																<input id="kouzi_pbc" type="text" class="validate" name="kouzi" value="">
-																<label>客供扣子</label>
+																<label>客供大身纽扣描述</label>
+															</div>
+															<div class="input-field col s6 m4 l4">
+																<select id="button_decorative_num" name="button_decorative_num">
+																	<%=list_button_decorative_num%>
+																</select> <label>装饰扣数量</label>
+															</div>
+															<div class="input-field col s6 m4 l4">
+																<select id="button_decorative_code" name="button_decorative_code">
+																	<%=list_button_decorative_code%>
+																</select> <label>装饰扣编号</label>
+															</div>
+															<div class="input-field col s6 m4 l4">
+																<select id="button_decorative_pos" name="button_decorative_pos">
+																	<%=list_button_decorative_pos%>
+																</select> <label>装饰扣位置</label>
 															</div>
 														</div>
 													</div>
 												</div>
 
-												<div class="col s12 m12 l12 teal-text" style="display: none;">
+												<div class="col s12 m12 l12 teal-text">
 													<div class="card-panel">
 														<div class="row">
 															<div class="col s12 m12 l12 teal-text">
 																<p>线材</p>
 															</div>
-															<div class="input-field col s12 m6 l4">
+															<div class="input-field col s6 m3 l3">
 																<select name="line_color_location_1">
 																	<%=list_color%>
 																</select> <label>缝制线</label>
 															</div>
-															<div class="input-field col s12 m6 l4">
+															<div class="input-field col s6 m3 l3">
 																<select name="line_color_location_2">
 																	<%=list_color%>
 																</select> <label>装饰线</label>
 															</div>
-															<div class="input-field col s12 m6 l4">
+															<div class="input-field col s6 m3 l3">
 																<select name="line_color_location_3">
 																	<%=list_color%>
 																</select> <label>钉扣线</label>
 															</div>
-															<div class="input-field col s12 m6 l4">
+															<div class="input-field col s6 m3 l3">
 																<select name="line_color_location_4">
 																	<%=list_color%>
 																</select> <label>锁眼线</label>

@@ -46,6 +46,7 @@ public class MoudleCheckTechClash extends ZCBaseActionSupportPlugin {
 				}
 			}
 		}
+
 		{
 
 			String customer_tips = getReqParamString("customer_tips");
@@ -59,6 +60,40 @@ public class MoudleCheckTechClash extends ZCBaseActionSupportPlugin {
 					return false;
 				}
 
+			}
+		}
+
+		{
+			// 装饰纽扣使用
+			String button_decorative_code = getReqParamString("button_decorative_code");
+			String button_decorative_num = getReqParamString("button_decorative_num");
+			String button_decorative_pos = getReqParamString("button_decorative_pos");
+			if ("0".equals(button_decorative_num)) {
+				if (button_decorative_code.length() > 0) {
+					ERRCODE = "0";
+					ERRDESC = "fail";
+					data = "您选择的【装饰扣数量】为0，【装饰扣编号】处的选择无效";
+					return false;
+				}
+				if (!"LZX-55-00".equals(button_decorative_pos)) {
+					ERRCODE = "0";
+					ERRDESC = "fail";
+					data = "您选择的【装饰扣数量】为0，【装饰扣位置】处的选择无效";
+					return false;
+				}
+			} else {
+				if (button_decorative_code.length() == 0) {
+					ERRCODE = "0";
+					ERRDESC = "fail";
+					data = "您选择的【装饰扣数量】不为0，请选择【装饰扣编号】";
+					return false;
+				}
+				if ("LZX-55-00".equals(button_decorative_pos)) {
+					ERRCODE = "0";
+					ERRDESC = "fail";
+					data = "您选择的【装饰扣数量】不为0，请选择【装饰扣位置】";
+					return false;
+				}
 			}
 		}
 

@@ -152,7 +152,9 @@ public class LogMgrtAction extends CCActionSupport {
 		}
 
 		sql += "ORDER BY main.id DESC LIMIT 0," + lines + "";
-
+		
+		System.out.println(sql);
+		
 		ArrayList<SelectBean> searchResult = DBHelper.select("m_keys", "m_tags", "m_snapshot", "m_time", "u_name", "u_tel", "u_ecid", "e_snapshot").condition(sql).exe();
 		JSONArray jsonArray = new JSONArray();
 		for (SelectBean bean : searchResult) {

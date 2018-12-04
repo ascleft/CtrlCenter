@@ -12,29 +12,6 @@
 
 	String menulist=(String) session.getAttribute("menulist");
 	
-	String list_LZX_01=(String) session.getAttribute("list_LZX_01");
-	String list_LZX_02=(String) session.getAttribute("list_LZX_02");
-	String list_LZX_03=(String) session.getAttribute("list_LZX_03");
-	String list_LZX_04=(String) session.getAttribute("list_LZX_04");
-	String list_LZX_08=(String) session.getAttribute("list_LZX_08");
-	String list_LZX_120=(String) session.getAttribute("list_LZX_120");
-	String list_LZX_06=(String) session.getAttribute("list_LZX_06");
-	String list_LZX_17=(String) session.getAttribute("list_LZX_17");
-	String list_LZX_26=(String) session.getAttribute("list_LZX_26");
-	String list_LZX_13=(String) session.getAttribute("list_LZX_13");
-	String list_zhidai=(String) session.getAttribute("list_zhidai");
-	String list_color=(String) session.getAttribute("list_color");
-	String list_kouzi=(String) session.getAttribute("list_kouzi");
-	String list_easytype=(String) session.getAttribute("list_easytype");
-	String list_lingcheng=(String) session.getAttribute("list_lingcheng");
-	String list_mingxian=(String) session.getAttribute("list_mingxian");
-	String list_cefeng=(String) session.getAttribute("list_cefeng");
-	String list_qiantiao=(String) session.getAttribute("list_qiantiao");
-	String list_chenbu=(String) session.getAttribute("list_chenbu");
-	String list_weizhi_zhidai=(String) session.getAttribute("list_weizhi_zhidai");
-	String list_weizhi_peise=(String) session.getAttribute("list_weizhi_peise");
-	String list_baozhuang=(String) session.getAttribute("list_baozhuang_shop");	
-	
 %>
 
 <html>
@@ -144,6 +121,18 @@
 				newwindow.document.close();
 			}
 
+			function make_button_from_json(obj, name, color) {
+				var tempHtml = "";
+				if(JSON.stringify(obj).length > 2) {
+					tempHtml += "<a class=\"" + color + "\" onclick=\"show_msg_new_page(\'";
+					tempHtml += escape(JSON.stringify(obj));
+					tempHtml += "\', \'" + name + "\')\">" + name + "</a>";
+				} else {
+					tempHtml += "<br />";
+				}
+				return tempHtml;
+			}
+
 			function makeTable(logList) {
 
 				//				var newwindow = window.open('', "_blank",'');
@@ -180,6 +169,8 @@
 						String_html += "<tr>";
 						//时间
 						String_html += "<td>"
+						String_html += "第" + (i + 1) + "条";
+						String_html += "<br /><br />";
 						String_html += logList[i].m_time.replace(/ /g, "<br />");
 						String_html += "<br /><br />";
 						String_html += "<a class=\"grey-text\">" + logList[i].m_snapshot.time_total + "</a>";
@@ -191,15 +182,16 @@
 						String_html += "<td><a>" + logList[i].m_keys.replace(/, /g, "<br /><br />") + "</a></td>";
 						//快照
 						String_html += "<td>";
-						String_html += "<a class=\"teal-text\" onclick=\"show_msg_new_page(\'" + escape(JSON.stringify(logList[i].m_snapshot.src_req)) + "\', \'入站\')\">入站</a>";
+						String_html += make_button_from_json(logList[i].m_snapshot.src_req, "入站", "teal-text")
+
 						String_html += "<br/><br/><br/>";
-						String_html += "<a class=\"blue-text\" onclick=\"show_msg_new_page(\'" + escape(JSON.stringify(logList[i].m_snapshot.src_resp)) + "\', \'出站\')\">出站</a>";
+						String_html += make_button_from_json(logList[i].m_snapshot.src_resp, "出站", "blue-text")
 						String_html += "</td>";
 						//流转
 						String_html += "<td>";
-						String_html += "<a class=\"teal-text\" onclick=\"show_msg_new_page(\'" + escape(JSON.stringify(logList[i].e_snapshot.src_req)) + "\', \'请求\')\">请求</a>";
+						String_html += make_button_from_json(logList[i].e_snapshot.src_req, "请求", "teal-text");
 						String_html += "<br/><br/><br/>";
-						String_html += "<a class=\"blue-text\" onclick=\"show_msg_new_page(\'" + escape(JSON.stringify(logList[i].e_snapshot.src_resp)) + "\', \'响应\')\">响应</a>";
+						String_html += make_button_from_json(logList[i].e_snapshot.src_resp, "响应", "blue-text");
 						String_html += "</td>";
 						//进度
 						String_html += "<td><a>" + logList[i].m_tags.replace(/, /g, "<br />") + "</a></td>";
@@ -344,7 +336,7 @@
 									<div class="col s12 m12 l12 teal-text">
 										<p>分类</p>
 									</div>
-									<div class="input-field col s6 m4 l4">
+									<div class="input-field col s4 m4 l4">
 										<select name="tag_1">
 											<option value="all">全模块</option>
 											<option value="优纤">优纤</option>
@@ -355,15 +347,15 @@
 										</select> <label>功能模块</label>
 									</div>
 
-									<div class="input-field col s6 m4 l4">
+									<div class="input-field col s4 m4 l4">
 										<select name="tag_2">
 											<option value="all">全操作</option>
-											<option value="报价">报价</option>
-											<option value="提交">提交</option>
+											<option value="提交购物车-">提交</option>
+											<option value="报价-">报价</option>
 										</select> <label>操作步骤</label>
 									</div>
 
-									<div class="input-field col s6 m4 l4">
+									<div class="input-field col s4 m4 l4">
 										<select name="tag_3">
 											<option value="all">全状态</option>
 											<option value="成功. ">成功</option>
@@ -403,18 +395,18 @@
 										<input type="text" class="validate" name="key_2" value="">
 										<label>穿衣人</label>
 									</div>
-									<div class="input-field col s6 m4 l4">
+									<div class="input-field col s12 m4 l4">
 										<input type="text" class="validate" name="key_3" value="">
 										<label>刺绣</label>
 									</div>
 
 									<div class="input-field col s12 m12 l12" name="lines">
 										<select name="lines">
-											<option value="40">50</option>
-											<option value="80">100</option>
-											<option value="120">150</option>
-											<option value="160">200</option>
-											<option value="200">500</option>
+											<option value="50">50</option>
+											<option value="100">100</option>
+											<option value="150">150</option>
+											<option value="200">200</option>
+											<option value="500">500</option>
 										</select> <label>长度</label>
 									</div>
 
@@ -443,7 +435,7 @@
 				</form>
 			</div>
 
-			<div class="fixed-action-btn"  onclick="logSearchStart()">
+			<div class="fixed-action-btn" onclick="logSearchStart()">
 				<a class="btn-floating btn-large teal">
 					<i class="large material-icons">refresh</i>
 				</a>

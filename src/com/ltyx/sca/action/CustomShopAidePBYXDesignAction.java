@@ -4,7 +4,7 @@ import com.ltyx.sca.action.plugin.MoudleCSACheckSummaryClothes;
 import com.ltyx.sca.action.plugin.MoudleCSACheckUserInfo;
 import com.ltyx.sca.action.plugin.MoudleCSAGetPriceDesign;
 import com.ltyx.sca.action.plugin.MoudleCSAOrderDesign;
-import com.ltyx.sca.action.plugin.MoudleCheckMeasure;
+import com.ltyx.sca.action.plugin.MoudleCheckMeasureDesign;
 import com.ltyx.sca.action.plugin.MoudleCheckPrice;
 import com.ltyx.sca.action.plugin.MoudleCheckTechClash;
 import com.ltyx.sca.action.plugin.MoudleCheckTechLZX01;
@@ -116,7 +116,7 @@ public class CustomShopAidePBYXDesignAction extends CCActionSupport {
 		}
 
 		{
-			MoudleCheckMeasure moudle = new MoudleCheckMeasure(request);
+			MoudleCheckMeasureDesign moudle = new MoudleCheckMeasureDesign(request);
 			if (!moudle.doJobs()) {
 				addProgressFail("尺寸校验");
 				ERRCODE = moudle.getERRCODE();

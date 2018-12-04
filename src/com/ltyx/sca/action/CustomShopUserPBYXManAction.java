@@ -4,7 +4,7 @@ import com.ltyx.sca.action.plugin.MoudleCSCheckSummaryClothes;
 import com.ltyx.sca.action.plugin.MoudleCSCheckUserInfo;
 import com.ltyx.sca.action.plugin.MoudleCSUGetPriceManPBYX;
 import com.ltyx.sca.action.plugin.MoudleCSUOrderManPBYX;
-import com.ltyx.sca.action.plugin.MoudleCheckMeasure;
+import com.ltyx.sca.action.plugin.MoudleCheckMeasureMan;
 import com.ltyx.sca.action.plugin.MoudleCheckPrice;
 import com.ltyx.sca.action.plugin.MoudleCheckTechClash;
 import com.ltyx.sca.action.plugin.MoudleCheckTechLZX01;
@@ -58,12 +58,32 @@ public class CustomShopUserPBYXManAction extends CCActionSupport {
 		}
 
 		{
-
 			if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
 				ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_PRICE_SUCC);
 				writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_SUCC);
 			} else {
 				ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_PRICE_FAIL);
+				writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_FAIL);
+			}
+		}
+
+		return null;
+
+	}
+
+	public String check() {
+
+		init(true);
+		String methodName = "定制店 优纤男装 报价";
+
+		{
+			// initDBLog(methodName, "2010");
+
+			boolean isSucc = doCheck();
+
+			if (isSucc) {
+				writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_SUCC);
+			} else {
 				writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_FAIL);
 			}
 		}
@@ -119,7 +139,7 @@ public class CustomShopUserPBYXManAction extends CCActionSupport {
 
 	}
 
-	public boolean doSubmit() {
+	public boolean doCheck() {
 
 		{// 用户信息检测
 			MoudleCSCheckUserInfo moudle = new MoudleCSCheckUserInfo(request);
@@ -138,7 +158,7 @@ public class CustomShopUserPBYXManAction extends CCActionSupport {
 		}
 
 		{// 尺寸校验
-			MoudleCheckMeasure moudle = new MoudleCheckMeasure(request);
+			MoudleCheckMeasureMan moudle = new MoudleCheckMeasureMan(request);
 			boolean isSucc = runMoudle(moudle);
 			if (isSucc == false) {
 				return false;
@@ -171,7 +191,6 @@ public class CustomShopUserPBYXManAction extends CCActionSupport {
 
 		{// 刺绣校验
 			MoudleCheckTechLZX11 moudle = new MoudleCheckTechLZX11(request);
-
 			boolean isSucc = runMoudle(moudle);
 			if (isSucc == false) {
 				return false;
@@ -192,6 +211,23 @@ public class CustomShopUserPBYXManAction extends CCActionSupport {
 			if (isSucc == false) {
 				return false;
 			}
+		}
+
+		{
+			ERRCODE = "0";
+			ERRDESC = "succ";
+			data = "校验成功";
+			return true;
+		}
+
+	}
+
+	public boolean doSubmit() {
+
+		boolean checkSucc = doCheck();
+
+		if (checkSucc == false) {
+			return false;
 		}
 
 		{// 报价核对

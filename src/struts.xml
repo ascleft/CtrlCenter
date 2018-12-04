@@ -159,6 +159,7 @@
 			<result name="succ">/html/ShoppingCartAssistant/CSU_PBYX_Man.jsp</result>
 		</action>
 		<action name="GetPriceCustomShopPBYX" class="com.ltyx.sca.action.CustomShopUserPBYXManAction" method="getPrice"></action>
+		<action name="CheckCustomShopPBYX" class="com.ltyx.sca.action.CustomShopUserPBYXManAction" method="check"></action>
 		<action name="SubmitCustomShopPBYX"   class="com.ltyx.sca.action.CustomShopUserPBYXManAction" method="submit"></action>
 
 		<!-- 定制店  客供面料 男装-->
@@ -227,13 +228,18 @@
 	<package name="OpenAPI" namespace="/LTYX/OpenAPI" extends="struts-default">
 		
 		<!-- 衣帮人对外接口 新版 优纤面料-->
-		<action name="YBRSubmit" class="com.ltyx.open.ybr.YBR_OBO_Action"
+		<action name="YBRSubmit"       class="com.ltyx.open.ybr.YBR_OBO_Action"
 		method="submitPBYX">
 		</action>
 
 		<!-- 衣帮人对外接口 新版 客供面料-->
-		<action name="YBRPBCSubmit" class="com.ltyx.open.ybr.YBR_OBO_Action"
+		<action name="YBRPBCSubmit"    class="com.ltyx.open.ybr.YBR_OBO_Action"
 		method="submitPBC">
+		</action>
+
+		<!-- 衣帮人对外接口 新版 返修-->
+		<action name="YBRRepairSubmit" class="com.ltyx.open.ybr.YBR_OBO_Action"
+		method="repair">
 		</action>
 
 		<!-- ERP600即时库存接口-->

@@ -298,6 +298,38 @@ public class SCAPageConfigWoman {
 		return list;
 
 	}
+	// 装饰扣编号
+	public static String get_list_button_decorative_code() {
+
+		String list = "";
+
+		list += cooly("基础款", "true", "button_decorative_code", "1");
+
+		return list;
+
+	}
+	// 装饰扣数量
+
+	public static String get_list_button_decorative_num() {
+
+		String list = "";
+
+		list += cooly("基础款", "true", "button_decorative_num", "1");
+
+		return list;
+
+	}
+	// 装饰扣位置
+
+	public static String get_list_button_decorative_pos() {
+
+		String list = "";
+
+		list += cooly("基础款", "true", "button_decorative_pos", "1");
+
+		return list;
+
+	}
 
 	/**
 	 * 

@@ -1,5 +1,7 @@
 package com.zc.support.service;
 
+import java.text.DecimalFormat;
+
 public class StringHelper {
 
 	public static String fillLeftMIX(String input, int length, String texture) {
@@ -61,6 +63,24 @@ public class StringHelper {
 		int byteLength = b.length;
 		int strLength = str.length();
 		return (byteLength - strLength) / 2;
+	}
+
+	public static String numWithLength(double num, int left, int right) {
+
+		// ssl dv 版1年 20个
+		// 商标周期
+		String L = "";
+		String C = ".";
+		String R = "";
+		for (int i = 0; i < left; i++) {
+			L += "0";
+		}
+		for (int i = 0; i < right; i++) {
+			R += "0";
+		}
+		DecimalFormat format = new DecimalFormat(L + C + R);
+		String numString = format.format(num);
+		return numString;
 	}
 
 }

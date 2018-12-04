@@ -4,7 +4,7 @@ import com.ltyx.sca.action.plugin.MoudleCSCheckSummaryClothes;
 import com.ltyx.sca.action.plugin.MoudleCSCheckUserInfo;
 import com.ltyx.sca.action.plugin.MoudleCSUGetPriceWomanPBYX;
 import com.ltyx.sca.action.plugin.MoudleCSUOrderWomanPBYX;
-import com.ltyx.sca.action.plugin.MoudleCheckMeasure;
+import com.ltyx.sca.action.plugin.MoudleCheckMeasureWoman;
 import com.ltyx.sca.action.plugin.MoudleCheckPrice;
 import com.ltyx.sca.action.plugin.MoudleCheckTechClash;
 import com.ltyx.sca.action.plugin.MoudleCheckTechLZX11;
@@ -134,7 +134,7 @@ public class CustomShopUserPBYXWomanAction extends CCActionSupport {
 		}
 
 		{// 尺寸校验
-			MoudleCheckMeasure moudle = new MoudleCheckMeasure(request);
+			MoudleCheckMeasureWoman moudle = new MoudleCheckMeasureWoman(request);
 			boolean isSucc = runMoudle(moudle);
 			if (isSucc == false) {
 				return false;
