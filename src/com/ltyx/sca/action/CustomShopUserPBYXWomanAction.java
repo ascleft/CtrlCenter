@@ -12,8 +12,6 @@ import com.ltyx.sca.action.plugin.MoudleCheckTechLZX120;
 import com.ltyx.sca.action.plugin.MoudleCheckTechLZXNecessary;
 import com.ltyx.sca.action.plugin.MoudleCheckTechYXST;
 import com.zc.support.doman.CCActionSupport;
-import com.zc.support.link.ZCReqIntroGetter;
-import com.zc.support.service.TextLogHelper;
 
 public class CustomShopUserPBYXWomanAction extends CCActionSupport {
 
@@ -54,15 +52,27 @@ public class CustomShopUserPBYXWomanAction extends CCActionSupport {
 			} else {
 				addDBLogTags("失败");
 			}
+
 		}
 
-		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_PRICE_SUCC);
-			writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_SUCC);
-		} else {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_PRICE_FAIL);
-			writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_FAIL);
+		writeResp();
+
+		return null;
+
+	}
+
+	public String check() {
+
+		init(true);
+
+		{
+			boolean isSucc = doCheck();
+			if (isSucc) {
+			} else {
+			}
 		}
+
+		writeResp();
 
 		return null;
 
@@ -85,13 +95,7 @@ public class CustomShopUserPBYXWomanAction extends CCActionSupport {
 			}
 		}
 
-		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_ORDER_SUCC);
-			writeResp(methodName, TextLogHelper.Type.USKIN_USER_ORDER_SUCC);
-		} else {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_ORDER_FAIL);
-			writeResp(methodName, TextLogHelper.Type.USKIN_USER_ORDER_FAIL);
-		}
+		writeResp();
 
 		return null;
 
@@ -115,7 +119,7 @@ public class CustomShopUserPBYXWomanAction extends CCActionSupport {
 
 	}
 
-	public boolean doSubmit() {
+	public boolean doCheck() {
 
 		{// 用户信息检测
 			MoudleCSCheckUserInfo moudle = new MoudleCSCheckUserInfo(request);
@@ -179,6 +183,23 @@ public class CustomShopUserPBYXWomanAction extends CCActionSupport {
 			if (isSucc == false) {
 				return false;
 			}
+		}
+
+		{
+			ERRCODE = "0";
+			ERRDESC = "succ";
+			data = "校验成功";
+			return true;
+		}
+
+	}
+
+	public boolean doSubmit() {
+
+		boolean checkSucc = doCheck();
+
+		if (checkSucc == false) {
+			return false;
 		}
 
 		{// 报价核对

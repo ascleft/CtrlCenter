@@ -94,8 +94,8 @@
 				$('#nav_menu').sideNav('show');
 			}
 			//url定义
-			var url_addShoppingCart = "/CtrlCenter/LTYX/SCA/Main/SubmitCustomShopRepair.action";
-			var url_getPrice = "/CtrlCenter/LTYX/SCA/Main/GetPriceCustomShopRepair.action";
+			var url_addShoppingCart = "/CtrlCenter/LTYX/SCA/Main/CustomShopRepairSubmit.action";
+			var url_getPrice = "/CtrlCenter/LTYX/SCA/Main/CustomShopRepairGetPrice.action";
 
 			//提交到购物车
 			function addShoppingCart() {

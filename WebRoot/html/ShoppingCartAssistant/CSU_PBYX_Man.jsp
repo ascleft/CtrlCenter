@@ -49,7 +49,7 @@
 		购物车添加工具 SCA 2.0
 		
 		定制店 优纤面料
-		
+		 
 	-->
 
 	<head>
@@ -61,7 +61,8 @@
 		<!-- Google Icon Font -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<!-- JQuery  -->
-		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<!--<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<!--  Angular.js-->
 		<!--<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>-->
 
@@ -97,13 +98,13 @@
 				$('#nav_menu').sideNav('show');
 			}
 			//url定义
-			var url_getPrice = "/CtrlCenter/LTYX/SCA/Main/GetPriceCustomShopPBYX.action";
-			var url_check = "/CtrlCenter/LTYX/SCA/Main/CheckCustomShopPBYX.action";
-			var url_addShoppingCart = "/CtrlCenter/LTYX/SCA/Main/SubmitCustomShopPBYX.action";
+			var url_price = "/CtrlCenter/LTYX/SCA/Main/CustomShopPBYXManGetPrice.action";
+			var url_check = "/CtrlCenter/LTYX/SCA/Main/CustomShopPBYXManCheck.action";
+			var url_addsc = "/CtrlCenter/LTYX/SCA/Main/CustomShopPBYXManSubmit.action";
 
-			var ajax_getPrice = null;
+			var ajax_price = null;
 			var ajax_check = null;
-			var ajax_addShopingCart = null;
+			var ajax_addsc = null;
 
 			//获取系统报价
 			function getPrice() {
@@ -113,10 +114,10 @@
 					},
 					function succ() {
 						global_progress_loading("");
-						ajax_getPrice = $.ajax({
+						ajax_price = $.ajax({
 							cache: true,
 							type: "POST",
-							url: url_getPrice,
+							url: url_price,
 							data: $('#mianForm').serialize(),
 							async: true,
 							error: function(request) {
@@ -229,10 +230,10 @@
 					},
 					function succ() {
 						global_modal_upload_start("正在将商品放入购物车，请稍候");
-						ajax_addShopingCart = $.ajax({
+						ajax_addsc = $.ajax({
 							cache: true,
 							type: "POST",
-							url: url_addShoppingCart,
+							url: url_addsc,
 							data: $('#mianForm').serialize(),
 							async: true,
 							error: function(request) {
@@ -262,8 +263,8 @@
 			}
 
 			function stopAddShoppingCart() {
-				if(ajax_addShopingCart != null) {
-					ajax_addShopingCart.abort();
+				if(ajax_addsc != null) {
+					ajax_addsc.abort();
 				}
 			}
 
@@ -299,8 +300,7 @@
 				use_pbc_kouzi();
 
 				use_custom_weizhi_peise();
-				
-				
+
 				$("div#section1 input").bind("keyup", function() {
 					state_now("lost_price");
 				});
@@ -310,6 +310,8 @@
 				$("div#section1 select").bind("change", function() {
 					state_now("lost_price");
 				});
+
+				state_now("default");
 
 			})
 		</script>
@@ -322,7 +324,7 @@
 			<nav class="teal" role="navigation">
 				<div class="nav-wrapper container">
 					<!-- 页面标题  -->
-					<a id="logo-container " href="#" class="brand-logo white-text ">定制店 优纤面料 男装</a>
+					<a id="logo-container " href="#" class="brand-logo">定制店 优纤面料 男装</a>
 					<!-- 导航菜单键（运动移动设备） -->
 					<a href="#" data-activates="nav_menu_list " class="button-collapse ">
 						<i class="material-icons white-text">menu</i>

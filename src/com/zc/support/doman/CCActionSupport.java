@@ -102,6 +102,18 @@ public class CCActionSupport extends ZCBaseActionSupport {
 		}
 	}
 
+	public void logProgress() {
+		if (progressLog.size() > 0) {
+			{// 数据库日志
+				for (String logNow : progressLog) {
+					if (dbLog != null) {
+						dbLog.main.addTags(logNow);
+					}
+				}
+			}
+		}
+	}
+
 	public void logActionResponse(String title, String[][] logType) {
 		LogSyncSafe.Pro log = new LogSyncSafe.Pro();
 		log.addStart(true);
@@ -123,6 +135,7 @@ public class CCActionSupport extends ZCBaseActionSupport {
 	}
 
 	public void writeResp() {
+		logProgress();
 
 		ERRCODE = (ERRCODE != null) ? ERRCODE : "1";
 		ERRDESC = (ERRDESC != null) ? ERRDESC : "响应描述未初始化";

@@ -388,7 +388,7 @@ public class MoudleCheckMeasureMan extends ZCBaseActionSupportPlugin {
 							"介于" + //
 							StringHelper.numWithLength(jian_kuan - 10, 0, 1) + //
 							"与" + //
-							StringHelper.numWithLength(jian_kuan + 4.5, 0, 1) + //
+							StringHelper.numWithLength(jian_kuan - 4.5, 0, 1) + //
 							"之间";//
 //					data = "肩宽前胸宽尺寸关系不合理,建议【10≥肩宽-前胸宽≥4.5】";
 					return false;

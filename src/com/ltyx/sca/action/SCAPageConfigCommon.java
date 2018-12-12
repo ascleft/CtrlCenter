@@ -273,10 +273,10 @@ public class SCAPageConfigCommon {
 				+ "<a class=\"subheader\">定制店功能</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action\">定制店 优纤面料 男装</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYXMan.action\">定制店 优纤面料 男装</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopWoman.action\">定制店 优纤面料 女装</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYXWoman.action\">定制店 优纤面料 女装</a>"//
 				+ "</li>"//
 				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">定制店 客供面料 男装</a>"//
@@ -285,7 +285,7 @@ public class SCAPageConfigCommon {
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">定制店 客供面料 女装</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopDesign.action\">定制店 优纤面料 设计师款</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYXDesign.action\">定制店 优纤面料 设计师款</a>"//
 				+ "</li>"//
 				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopRepair.action\">定制店 返修订单</a>"//

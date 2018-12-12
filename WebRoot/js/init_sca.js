@@ -228,43 +228,43 @@ function initLZX11Table() {
 				'size': '1'
 			},
 			'LZX-11-04': {
-				'name': '皇家体',
+				'name': '（不支持汉字）皇家体',
 				'size': '1'
 			},
 			'LZX-11-05': {
-				'name': '手写体',
+				'name': '（不支持汉字）手写体',
 				'size': '1'
 			},
 			'LZX-11-06': {
-				'name': '古圆体',
+				'name': '（不支持汉字）古圆体',
 				'size': '1'
 			},
 			'LZX-11-08': {
-				'name': '维体',
+				'name': '（不支持汉字）维体',
 				'size': '1'
 			},
 			'LZX-11-09': {
-				'name': '书写体',
+				'name': '（不支持汉字）书写体',
 				'size': '1'
 			},
 			'LZX-11-10': {
-				'name': '哥特体',
+				'name': '（不支持汉字）哥特体',
 				'size': '1'
 			},
 			'LZX-11-12': {
-				'name': '卡曼体',
+				'name': '（不支持汉字）卡曼体',
 				'size': '1'
 			},
 			'LZX-11-13': {
-				'name': '花体',
+				'name': '（不支持汉字）花体',
 				'size': '1'
 			},
 			'LZX-11-14': {
-				'name': '书信体',
+				'name': '（不支持汉字）书信体',
 				'size': '1'
 			},
 			'LZX-11-15': {
-				'name': '巴洛克体',
+				'name': '（不支持汉字）巴洛克体',
 				'size': '1'
 			},
 			'LZX-11-16': {
@@ -749,12 +749,22 @@ function use_size() {
 	temp_table_1 += '<div class="card-panel">                                                                   ';
 	temp_table_1 += '	<div class="row">                                                                       ';
 
-	temp_table_1 += '		<p>';
-	temp_table_1 += '			<input type="checkbox" class="filled-in" id="mode_measure_form" checked="checked" />';
-	temp_table_1 += '			<label for="mode_measure_form">精简模式（仅显示成衣尺寸的必填内容）</label>';
-	temp_table_1 += '		</p>';
+	//	temp_table_1 += '		<div class="col s12 m12 l12" >                                    ';
+	//	temp_table_1 += '		    <p>';
+	//	temp_table_1 += '			    <input type="checkbox" class="filled-in" id="mode_measure_form" checked="checked" />';
+	//	temp_table_1 += '			    <label for="mode_measure_form"> </label>               ';
+	//	temp_table_1 += '		    </p>';
+	//	temp_table_1 += '		</div>                                                                              ';
 
-	temp_table_1 += '		<div class="col s6 m4 l3" id="div_ling_wei">                                                          ';
+
+	temp_table_1 += '			<div class="input-field col s12 m12 l12">                                        ';
+	temp_table_1 += '				<select id="mode_measure_form">                              ';
+	temp_table_1 += '					<option value="mini">精简模式（仅显示成衣尺寸的必填内容）</option>                            ';
+	temp_table_1 += '					<option value="full">完整模式（提供当前系统支持的所有尺寸数据）</option>                       ';
+	temp_table_1 += '				</select> <label>数据模式</label>                                        ';
+	temp_table_1 += '			</div>                                                                         ';
+
+	temp_table_1 += '		<div class="col s6 m4 l3" id="div_ling_wei">                                       ';
 	temp_table_1 += '			<div class="input-field">                                                       ';
 	temp_table_1 += '				<input type="number" class="validate" name="ling_wei" value="">             ';
 	temp_table_1 += '				<label>领围*</label>                                                        ';
@@ -1394,8 +1404,8 @@ function size_rule_base() {
 	}
 
 	{
-		var selected_name = $("#mode_measure_form").is(':checked');
-		if(selected_name) {
+		var selected_name = $("#mode_measure_form").val();
+		if("mini"==selected_name) {
 			//精简模式
 			$("#div_du_wei").hide();
 			$("#div_xiuzhou_fei").hide();

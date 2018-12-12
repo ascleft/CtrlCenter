@@ -155,7 +155,7 @@ public class LoginAction extends CCActionSupport {
 				} else if (10 <= roleCheck && roleCheck < 20) {
 					targetUrl = "/CtrlCenter/LTYX/SCA/Main/AidePBYX.action";// 定制顾问
 				} else if (20 <= roleCheck && roleCheck < 30) {
-					targetUrl = "/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action";// 定制店
+					targetUrl = "/CtrlCenter/LTYX/SCA/Main/CustomShopPBYXMan.action";// 定制店
 				}
 
 				ERRCODE = "0";

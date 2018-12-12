@@ -115,18 +115,27 @@
 				state_loaded();
 			}
 
-			function show_msg_new_page(msg, title) {
+			function show_msg_new_page(msg, title, type) {
 				var newwindow = window.open('_black', '', '', '');
-				newwindow.document.write(unescape(msg));
+				html_material = "";
+				if(type == "link") {
+					html_material += "<p>" + unescape(msg) + "</p>";
+					html_material += "<br/>";
+					html_material += "<br/>";
+					html_material += "<a href=" + unescape(msg) + " target=\"目标\" title=\"EC请求连接\">再次提交</a>";
+				} else {
+					html_material += unescape(msg);
+				}
+				newwindow.document.write(html_material);
 				newwindow.document.close();
 			}
 
-			function make_button_from_json(obj, name, color) {
+			function make_button_from_json(obj, type, name, color) {
 				var tempHtml = "";
 				if(JSON.stringify(obj).length > 2) {
 					tempHtml += "<a class=\"" + color + "\" onclick=\"show_msg_new_page(\'";
 					tempHtml += escape(JSON.stringify(obj));
-					tempHtml += "\', \'" + name + "\')\">" + name + "</a>";
+					tempHtml += "\', \'" + name + "\', \'" + type + "\')\">" + name + "</a>";
 				} else {
 					tempHtml += "<br />";
 				}
@@ -182,16 +191,16 @@
 						String_html += "<td><a>" + logList[i].m_keys.replace(/, /g, "<br /><br />") + "</a></td>";
 						//快照
 						String_html += "<td>";
-						String_html += make_button_from_json(logList[i].m_snapshot.src_req, "入站", "teal-text")
+						String_html += make_button_from_json(logList[i].m_snapshot.src_req, "string", "入站", "teal-text")
 
 						String_html += "<br/><br/><br/>";
-						String_html += make_button_from_json(logList[i].m_snapshot.src_resp, "出站", "blue-text")
+						String_html += make_button_from_json(logList[i].m_snapshot.src_resp, "string", "出站", "blue-text")
 						String_html += "</td>";
 						//流转
 						String_html += "<td>";
-						String_html += make_button_from_json(logList[i].e_snapshot.src_req, "请求", "teal-text");
+						String_html += make_button_from_json(logList[i].e_snapshot.src_req, "link", "请求", "teal-text");
 						String_html += "<br/><br/><br/>";
-						String_html += make_button_from_json(logList[i].e_snapshot.src_resp, "响应", "blue-text");
+						String_html += make_button_from_json(logList[i].e_snapshot.src_resp, "string", "响应", "blue-text");
 						String_html += "</td>";
 						//进度
 						String_html += "<td><a>" + logList[i].m_tags.replace(/, /g, "<br />") + "</a></td>";

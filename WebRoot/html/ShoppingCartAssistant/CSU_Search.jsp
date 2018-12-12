@@ -176,7 +176,7 @@
 
 												String_html += "<a ";
 												String_html += "style=\"color: lightskyblue;\" ";
-												String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBC.action?code=";
+												String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBCMan.action?code=";
 												String_html += resp.data[i].list[j].LuthaiCode;
 												String_html += "\">";
 												String_html += "建立男装客供";
@@ -188,20 +188,20 @@
 
 												String_html += "<a ";
 												String_html += "style=\"color: lightpink;\" ";
-												String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopWomanPBC.action?code=";
+												String_html += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBCWoman.action?code=";
 												String_html += resp.data[i].list[j].LuthaiCode;
 												String_html += "\">";
 												String_html += "建立女装客供";
 												String_html += "</a>";
 											} else if("MLCK037" == resp.data[i].list[j].Warehouse) {
-												String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action?code=";
+												String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYXMan.action?code=";
 												String_html += resp.data[i].list[j].UskinCode;
 												String_html += "\">";
 												String_html += resp.data[i].list[j].UskinCode;
 												String_html += "(报喜鸟仓库)";
 												String_html += "</a>";
 											} else {
-												String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYX.action?code=";
+												String_html += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYXMan.action?code=";
 												String_html += resp.data[i].list[j].UskinCode;
 												String_html += "\">";
 												String_html += resp.data[i].list[j].UskinCode;

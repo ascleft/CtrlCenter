@@ -13,8 +13,6 @@ import com.ltyx.sca.action.plugin.MoudleCheckTechLZX120;
 import com.ltyx.sca.action.plugin.MoudleCheckTechLZXNecessary;
 import com.ltyx.sca.action.plugin.MoudleCheckTechYXST;
 import com.zc.support.doman.CCActionSupport;
-import com.zc.support.link.ZCReqIntroGetter;
-import com.zc.support.service.TextLogHelper;
 
 public class CustomShopUserPBYXManAction extends CCActionSupport {
 
@@ -55,17 +53,10 @@ public class CustomShopUserPBYXManAction extends CCActionSupport {
 			} else {
 				addDBLogTags("失败");
 			}
+
 		}
 
-		{
-			if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-				ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_PRICE_SUCC);
-				writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_SUCC);
-			} else {
-				ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_PRICE_FAIL);
-				writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_FAIL);
-			}
-		}
+		writeResp();
 
 		return null;
 
@@ -74,19 +65,15 @@ public class CustomShopUserPBYXManAction extends CCActionSupport {
 	public String check() {
 
 		init(true);
-		String methodName = "定制店 优纤男装 报价";
 
 		{
-			// initDBLog(methodName, "2010");
-
 			boolean isSucc = doCheck();
-
 			if (isSucc) {
-				writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_SUCC);
 			} else {
-				writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_FAIL);
 			}
 		}
+
+		writeResp();
 
 		return null;
 
@@ -108,14 +95,17 @@ public class CustomShopUserPBYXManAction extends CCActionSupport {
 				addDBLogTags("失败");
 			}
 		}
+		
 
-		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_ORDER_SUCC);
-			writeResp(methodName, TextLogHelper.Type.USKIN_USER_ORDER_SUCC);
-		} else {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_ORDER_FAIL);
-			writeResp(methodName, TextLogHelper.Type.USKIN_USER_ORDER_FAIL);
-		}
+		writeResp();
+
+//		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
+//			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_ORDER_SUCC);
+//			writeResp(methodName, TextLogHelper.Type.USKIN_USER_ORDER_SUCC);
+//		} else {
+//			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_ORDER_FAIL);
+//			writeResp(methodName, TextLogHelper.Type.USKIN_USER_ORDER_FAIL);
+//		}
 
 		return null;
 
