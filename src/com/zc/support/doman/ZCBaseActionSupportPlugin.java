@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.ltyx.sca.action.log.ActionLogBeanBase;
+import com.ltyx.sca.log.ActionLogBeanBase;
 import com.mysql.jdbc.Connection;
 import com.zc.support.config.ConfigHelperDB;
 import com.zc.support.link.ZCReqParamGetter;

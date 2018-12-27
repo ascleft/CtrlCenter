@@ -63,9 +63,14 @@
 		<!-- Google Icon Font -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<!-- JQuery  -->
-		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<!--<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
+		<!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
 		<!--  Angular.js-->
 		<!--<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>-->
+
+		<!-- YXN  -->
+		<script src="../../js/jquery-3.2.1.min.js"></script>
+		<script src="<%=path %>/js/jquery-3.2.1.min.js"></script>
 
 		<!-- local html  -->
 		<link href="../../img/global/logo/icon_title_1.jpg" rel="shortcut icon" />
@@ -314,6 +319,9 @@
 
 				state_now("default");
 
+				$("div#section_loading").hide();
+				Materialize.fadeInImage('#section_content');
+
 			})
 		</script>
 
@@ -366,14 +374,34 @@
 			<div class="container">
 				<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons white-text">menu</i></a>
 				<form method="post" id="mianForm">
-					<div class="section">
+
+					<div class="section" id="section_loading">
+						<div class="row">
+							<div class="col s3">
+							</div>
+							<div class="col s2">
+								<div class="preloader-wrapper small active">
+									<div class="spinner-layer spinner-green-only">
+										<div class="circle-clipper left">
+											<div class="circle"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col s7">
+								<h6>页面构建中,请稍候...</h6>
+							</div>
+						</div>
+					</div>
+					
+					<div class="section" id="section_content" style="opacity: 0;">
 						<div class="row">
 							<div class="col s12 m12 l12" id="section1">
 								<!-- <ul class="collapsible popout"data-collapsible="accordion"> -->
 								<ul class="collapsible teal lighten-5" data-collapsible="accordion">
 									<li>
-										<div class="collapsible-header">
-											<i class="material-icons">perm_identity</i>用户信息
+										<div class="collapsible-header active">
+											<i class="material-icons">perm_identity</i>用户
 										</div>
 										<div class="collapsible-body">
 											<div class="row">
@@ -410,7 +438,7 @@
 									</li>
 									<li>
 										<div class="collapsible-header">
-											<i class="material-icons">view_carousel</i>面料 主唛 包装
+											<i class="material-icons">view_carousel</i>摘要
 										</div>
 										<div class="collapsible-body">
 											<div class="row">
@@ -456,7 +484,7 @@
 												</div>
 												<div class="input-field col s6 m6 l4">
 													<select id="delivery_time_table_section_3" name="order_delivery_time">
-													</select> <label>交期（工作日）（单量单裁DP衬衫加工费在原基础上加20元/件，交期顺延1个工作日）</label>
+													</select> <label>交期(工作日)(DP/水洗衬衫加工费在原基础上加20元/件，交期顺延1个工作日)</label>
 												</div>
 												<div class="input-field col s6 m6 l4">
 													<select id="delivery_time_table_section_4" name="order_processing_cost">
@@ -471,7 +499,7 @@
 
 									<li>
 										<div class="collapsible-header">
-											<i class="material-icons">settings_overscan</i>成衣尺寸
+											<i class="material-icons">settings_overscan</i>尺寸
 										</div>
 										<div class="collapsible-body">
 											<div class="row">

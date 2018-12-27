@@ -1,7 +1,7 @@
 package com.ltyx.sca.action;
 
-import com.ltyx.sca.action.plugin.MoudleCSUGetOrder;
-import com.ltyx.sca.action.plugin.MoudleCSUOrderRepair;
+import com.ltyx.sca.moudle.MoudleCSUGetOrder;
+import com.ltyx.sca.moudle.MoudleCSUOrderRepair;
 import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.TextLogHelper;

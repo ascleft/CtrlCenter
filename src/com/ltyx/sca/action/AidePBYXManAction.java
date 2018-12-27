@@ -1,12 +1,12 @@
 package com.ltyx.sca.action;
 
-import com.ltyx.sca.action.plugin.MoudleAideCheckSummaryClothes;
-import com.ltyx.sca.action.plugin.MoudleAideCheckUserInfo;
-import com.ltyx.sca.action.plugin.MoudleAideGetPricePBYX;
-import com.ltyx.sca.action.plugin.MoudleAideSubmitECPBYX;
-import com.ltyx.sca.action.plugin.MoudleCheckPrice;
-import com.ltyx.sca.action.plugin.MoudleCheckTechLZX01;
-import com.ltyx.sca.action.plugin.MoudleCheckTechLZX11;
+import com.ltyx.sca.moudle.MoudleAideCheckSummaryClothes;
+import com.ltyx.sca.moudle.MoudleAideCheckUserInfo;
+import com.ltyx.sca.moudle.MoudleAideGetPricePBYX;
+import com.ltyx.sca.moudle.MoudleAideSubmitECPBYX;
+import com.ltyx.sca.moudle.MoudleCheckPrice;
+import com.ltyx.sca.moudle.MoudleCheckTechLZX01;
+import com.ltyx.sca.moudle.MoudleCheckTechLZX11;
 import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.TextLogHelper;

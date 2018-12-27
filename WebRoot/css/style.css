@@ -58,3 +58,14 @@ footer.page-footer {
   margin: 0;
   color: #0089EC;
 }
+
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }

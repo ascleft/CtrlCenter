@@ -1,6 +1,8 @@
 package com.ltyx.sca.action;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.zc.support.service.DBHelper;
 
@@ -342,22 +344,41 @@ public class SCAPageConfigMan {
 	 * @param state
 	 * @return
 	 */
+	private static Map<String, String> coolyCache = new HashMap<String, String>();
 	public static String cooly(String label, String stylebase, String name, String state) {
-
+		
 		String list = "";
-
-		ArrayList<DBHelper.SelectBean> al_temp = DBHelper.select("code", "ch").from("technology").where("name1 = '" + name + "'", "state = " + state).exe();
-
-		if (al_temp.size() > 0) {
-			list += "<optgroup label=\"" + label + "\">";
-			for (int i = 0; i < al_temp.size(); i++) {
-				list += "<option value=\"" + al_temp.get(i).get("code");
-				list += "\" stylebase=\"" + stylebase + "\">";
-				list += al_temp.get(i).get("code") + " " + al_temp.get(i).get("ch");
-				list += "</option>";
+		
+		String coolyCacheKey = label + "_Cache_" + stylebase + "_Cache_" + name + "_Cache_" + state;
+		if(coolyCache.get(coolyCacheKey)==null){
+			ArrayList<DBHelper.SelectBean> al_temp = DBHelper.select("code", "ch").from("technology").where("name1 = '" + name + "'", "state = " + state).exe();
+			if (al_temp.size() > 0) {
+				list += "<optgroup label=\"" + label + "\">";
+				for (int i = 0; i < al_temp.size(); i++) {
+					list += "<option value=\"" + al_temp.get(i).get("code");
+					list += "\" stylebase=\"" + stylebase + "\">";
+					list += al_temp.get(i).get("code") + " " + al_temp.get(i).get("ch");
+					list += "</option>";
+				}
+				list += "</optgroup>";
 			}
-			list += "</optgroup>";
-		}
+			coolyCache.put(coolyCacheKey, list);
+		}else{
+			list= coolyCache.get(coolyCacheKey);
+//			ArrayList<DBHelper.SelectBean> al_temp = DBHelper.select("code", "ch").from("technology").where("name1 = '" + name + "'", "state = " + state).exe();
+//			if (al_temp.size() > 0) {
+//				list += "<optgroup label=\"" + label + "\">";
+//				for (int i = 0; i < al_temp.size(); i++) {
+//					list += "<option value=\"" + al_temp.get(i).get("code");
+//					list += "\" stylebase=\"" + stylebase + "\">";
+//					list += al_temp.get(i).get("code") + " " + al_temp.get(i).get("ch");
+//					list += "</option>";
+//				}
+//				list += "</optgroup>";
+//			}
+//			coolyCache.put(coolyCacheKey, list);
+		};
+
 
 		return list;
 

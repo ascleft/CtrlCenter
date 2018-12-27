@@ -21,7 +21,9 @@ public class LogMgrtAction extends CCActionSupport {
 
 		init(true);
 
-		return "succ";
+		String pageType = getReqParamString("type");
+
+		return pageType;
 
 	}
 
@@ -40,6 +42,8 @@ public class LogMgrtAction extends CCActionSupport {
 	}
 
 	public String type_1() {
+
+		String tags_0 = getReqParamString("tag_0");
 
 		String tags_1 = getReqParamString("tag_1");
 		String tags_2 = getReqParamString("tag_2");
@@ -104,6 +108,10 @@ public class LogMgrtAction extends CCActionSupport {
 				sql += "u.name like '%" + id_code + "%' ";
 			}
 
+			if (!tags_0.equals("all")) {// 根
+				sql += "AND main.tags like '%" + tags_0 + "%' ";
+			}
+
 			if (!tags_1.equals("all")) {// 模块
 				sql += "AND main.tags like '%" + tags_1 + "%' ";
 			}
@@ -130,6 +138,10 @@ public class LogMgrtAction extends CCActionSupport {
 
 			sql += "main.tags like '%" + " " + "%' ";
 
+			if (!tags_0.equals("all")) {// 根
+				sql += "AND main.tags like '%" + tags_0 + "%' ";
+			}
+
 			if (!tags_1.equals("all")) {// 模块
 				sql += "AND main.tags like '%" + tags_1 + "%' ";
 			}
@@ -152,9 +164,9 @@ public class LogMgrtAction extends CCActionSupport {
 		}
 
 		sql += "ORDER BY main.id DESC LIMIT 0," + lines + "";
-		
+
 		System.out.println(sql);
-		
+
 		ArrayList<SelectBean> searchResult = DBHelper.select("m_keys", "m_tags", "m_snapshot", "m_time", "u_name", "u_tel", "u_ecid", "e_snapshot").condition(sql).exe();
 		JSONArray jsonArray = new JSONArray();
 		for (SelectBean bean : searchResult) {

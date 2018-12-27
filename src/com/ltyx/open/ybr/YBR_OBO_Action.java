@@ -1,10 +1,13 @@
 package com.ltyx.open.ybr;
 
-import com.ltyx.sca.action.plugin.MoudleCSCheckSummaryClothes;
-import com.ltyx.sca.action.plugin.MoudleCSCheckUserInfo;
+import com.ltyx.open.ybr.moudle.MoudleYBR_OBO_Check;
+import com.ltyx.open.ybr.moudle.MoudleYBR_OBO_CheckMeasure;
+import com.ltyx.open.ybr.moudle.MoudleYBR_OBO_SubmitEC_PBC;
+import com.ltyx.open.ybr.moudle.MoudleYBR_OBO_SubmitEC_PBYX;
+import com.ltyx.open.ybr.moudle.MoudleYBR_OBO_SubmitEC_Repair;
+import com.ltyx.sca.moudle.MoudleCSCheckSummaryClothes;
+import com.ltyx.sca.moudle.MoudleCSCheckUserInfo;
 import com.zc.support.doman.CCActionSupport;
-import com.zc.support.link.ZCReqIntroGetter;
-import com.zc.support.service.TextLogHelper;
 
 public class YBR_OBO_Action extends CCActionSupport {
 
@@ -18,22 +21,32 @@ public class YBR_OBO_Action extends CCActionSupport {
 	public String submitPBYX() {
 
 		init(true);
+		String methodName = "对外接口 衣邦人 优纤面料 提交";
 
-		String methodName = "衣帮人 对外接口 优纤面料 提交";
+		System.out.println("1");
 
-		price = 0;
+		{
+			initDBLog(methodName, "2010");
 
-		if (doGetPrice()) {
-			doSubmitPBYX();
+			System.out.println("1.5");
+
+			boolean isSucc = doSubmitPBYX();
+
+			System.out.println("8");
+
+			if (isSucc) {
+				addDBLogTags("成功");
+			} else {
+				addDBLogTags("失败");
+			}
+
 		}
 
-		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_YBR_SUCC);
-			writeResp(methodName, TextLogHelper.Type.USKIN_YBR_SUCC);
-		} else {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_YBR_FAIL);
-			writeResp(methodName, TextLogHelper.Type.USKIN_YBR_FAIL);
-		}
+		System.out.println("9");
+
+		writeResp();
+
+		System.out.println("0");
 
 		return null;
 
@@ -42,22 +55,22 @@ public class YBR_OBO_Action extends CCActionSupport {
 	public String submitPBC() {
 
 		init(true);
+		String methodName = "对外接口 衣邦人 客供面料 提交";
 
-		String methodName = "衣帮人 对外接口 客供面料 提交";
+		{
+			initDBLog(methodName, "2010");
 
-		price = 0;
+			boolean isSucc = doSubmitPBC();
 
-		if (doGetPrice()) {
-			doSubmitPBC();
+			if (isSucc) {
+				addDBLogTags("成功");
+			} else {
+				addDBLogTags("失败");
+			}
+
 		}
 
-		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_YBR_SUCC);
-			writeResp(methodName, TextLogHelper.Type.USKIN_YBR_SUCC);
-		} else {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_YBR_FAIL);
-			writeResp(methodName, TextLogHelper.Type.USKIN_YBR_FAIL);
-		}
+		writeResp();
 
 		return null;
 
@@ -66,20 +79,22 @@ public class YBR_OBO_Action extends CCActionSupport {
 	public String repair() {
 
 		init(true);
+		String methodName = "对外接口 衣邦人 返修订单 提交";
 
-		String methodName = "衣帮人 对外接口 返修订单 提交";
+		{
+			initDBLog(methodName, "2010");
 
-		price = 0;
+			boolean isSucc = doRepair();
 
-		doRepair();
+			if (isSucc) {
+				addDBLogTags("成功");
+			} else {
+				addDBLogTags("失败");
+			}
 
-		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_YBR_SUCC);
-			writeResp(methodName, TextLogHelper.Type.USKIN_YBR_SUCC);
-		} else {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_YBR_FAIL);
-			writeResp(methodName, TextLogHelper.Type.USKIN_YBR_FAIL);
 		}
+
+		writeResp();
 
 		return null;
 
@@ -89,75 +104,44 @@ public class YBR_OBO_Action extends CCActionSupport {
 
 		{
 			MoudleCSCheckUserInfo moudle = new MoudleCSCheckUserInfo(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("用户信息检测");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("用户信息检测");
 		}
 
 		{
 			MoudleCSCheckSummaryClothes moudle = new MoudleCSCheckSummaryClothes(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("订单摘要信息");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("订单摘要信息");
 		}
-
-		// {
-		// MoudleCheckPrice moudle = new MoudleCheckPrice(request);
-		// if (!moudle.doJobs()) {
-		// addProgressFail("报价核对");
-		// ERRCODE = moudle.getERRCODE();
-		// ERRDESC = moudle.getERRDESC();
-		// data = moudle.getData();
-		// return false;
-		// }
-		// addProgressSucc("报价核对");
-		// }
 
 		{
 			MoudleYBR_OBO_CheckMeasure moudle = new MoudleYBR_OBO_CheckMeasure(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("尺寸校验");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("尺寸校验");
 		}
 
 		{
 			MoudleYBR_OBO_Check moudle = new MoudleYBR_OBO_Check(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("衣帮人日期校验");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("衣帮人日期校验");
 		}
 
 		{
 			MoudleYBR_OBO_SubmitEC_PBYX moudle = new MoudleYBR_OBO_SubmitEC_PBYX(request);
-			moudle.setPrice(price);
-			if (!moudle.doJobs()) {
-				addProgressFail("提交EC");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			moudle.prepDBLog(dbLog);
+			boolean isSucc = runMoudle(moudle);
+			dbLog = moudle.syncDBLog();
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("提交EC");
 		}
 
 		{
@@ -173,63 +157,41 @@ public class YBR_OBO_Action extends CCActionSupport {
 
 		{
 			MoudleCSCheckUserInfo moudle = new MoudleCSCheckUserInfo(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("用户信息检测");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("用户信息检测");
 		}
-
 		{
 			MoudleCSCheckSummaryClothes moudle = new MoudleCSCheckSummaryClothes(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("订单摘要信息");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("订单摘要信息");
 		}
-
 		{
 			MoudleYBR_OBO_CheckMeasure moudle = new MoudleYBR_OBO_CheckMeasure(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("尺寸校验");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("尺寸校验");
 		}
-
 		{
 			MoudleYBR_OBO_Check moudle = new MoudleYBR_OBO_Check(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("衣帮人日期校验");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("衣帮人日期校验");
 		}
 
 		{
 			MoudleYBR_OBO_SubmitEC_PBC moudle = new MoudleYBR_OBO_SubmitEC_PBC(request);
-			moudle.setPrice(price);
-			if (!moudle.doJobs()) {
-				addProgressFail("提交EC");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			moudle.prepDBLog(dbLog);
+			boolean isSucc = runMoudle(moudle);
+			dbLog = moudle.syncDBLog();
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("提交EC");
 		}
 
 		{
@@ -241,38 +203,16 @@ public class YBR_OBO_Action extends CCActionSupport {
 
 	}
 
-	public boolean doGetPrice() {
-
-		{
-			MoudleYBR_OBO_GetPrice moudle = new MoudleYBR_OBO_GetPrice(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("计算报价");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
-				return false;
-			} else {
-				price = moudle.getPrice();
-			}
-			addProgressSucc("计算报价");
-		}
-
-		return true;
-
-	}
-
 	public boolean doRepair() {
 
 		{
 			MoudleYBR_OBO_SubmitEC_Repair moudle = new MoudleYBR_OBO_SubmitEC_Repair(request);
-			if (!moudle.doJobs()) {
-				addProgressFail("提交EC");
-				ERRCODE = moudle.getERRCODE();
-				ERRDESC = moudle.getERRDESC();
-				data = moudle.getData();
+			moudle.prepDBLog(dbLog);
+			boolean isSucc = runMoudle(moudle);
+			dbLog = moudle.syncDBLog();
+			if (isSucc == false) {
 				return false;
 			}
-			addProgressSucc("提交EC");
 		}
 
 		{

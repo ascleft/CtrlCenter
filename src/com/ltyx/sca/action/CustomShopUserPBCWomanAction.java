@@ -1,16 +1,16 @@
 package com.ltyx.sca.action;
 
-import com.ltyx.sca.action.plugin.MoudleCSCheckSummaryClothes;
-import com.ltyx.sca.action.plugin.MoudleCSCheckUserInfo;
-import com.ltyx.sca.action.plugin.MoudleCSUGetPriceWomanPBC;
-import com.ltyx.sca.action.plugin.MoudleCSUOrderWomanPBC;
-import com.ltyx.sca.action.plugin.MoudleCheckMeasureWoman;
-import com.ltyx.sca.action.plugin.MoudleCheckPrice;
-import com.ltyx.sca.action.plugin.MoudleCheckTechClash;
-import com.ltyx.sca.action.plugin.MoudleCheckTechLZX11;
-import com.ltyx.sca.action.plugin.MoudleCheckTechLZX120;
-import com.ltyx.sca.action.plugin.MoudleCheckTechLZXNecessary;
-import com.ltyx.sca.action.plugin.MoudleCheckTechYXST2PBC;
+import com.ltyx.sca.moudle.MoudleCSCheckSummaryClothes;
+import com.ltyx.sca.moudle.MoudleCSCheckUserInfo;
+import com.ltyx.sca.moudle.MoudleCSUGetPriceWomanPBC;
+import com.ltyx.sca.moudle.MoudleCSUOrderWomanPBC;
+import com.ltyx.sca.moudle.MoudleCheckMeasureWoman;
+import com.ltyx.sca.moudle.MoudleCheckPrice;
+import com.ltyx.sca.moudle.MoudleCheckTechClash;
+import com.ltyx.sca.moudle.MoudleCheckTechLZX11;
+import com.ltyx.sca.moudle.MoudleCheckTechLZX120;
+import com.ltyx.sca.moudle.MoudleCheckTechLZXNecessary;
+import com.ltyx.sca.moudle.MoudleCheckTechYXST2PBC;
 import com.zc.support.doman.CCActionSupport;
 
 public class CustomShopUserPBCWomanAction extends CCActionSupport {

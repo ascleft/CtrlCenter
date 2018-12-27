@@ -38,7 +38,8 @@
 		<!-- 日志管理 获取页面 -->
 		<action name="GetLogPage" class="com.ltyx.core.action.LogMgrtAction"
 		method="getPage">
-			<result name="succ">/html/ShoppingCartAssistant/LogMgr.jsp</result>
+			<result name="csu">/html/ShoppingCartAssistant/LogMgr_CSU.jsp</result>
+			<result name="ybr">/html/ShoppingCartAssistant/LogMgr_YBR.jsp</result>
 		</action>
 		<action name="FindLog" class="com.ltyx.core.action.LogMgrtAction"
 		method="search"></action>
@@ -177,9 +178,6 @@
 		<action name="CustomShopPBCMan"                 class="com.ltyx.sca.action.CustomShopUserPBCManAction"      method="getFormWithCode">
 			<result name="succ">/html/ShoppingCartAssistant/CSU_PBC_Man.jsp</result>
 		</action>
-		<action name="CustomShopPBCManNL"               class="com.ltyx.sca.action.CustomShopUserPBCManAction"      method="getFormWithCode">
-			<result name="succ">/html/ShoppingCartAssistant/CSU_PBC_Man_NL.jsp</result>
-		</action>
 		<action name="CustomShopPBCManGetPrice"         class="com.ltyx.sca.action.CustomShopUserPBCManAction"      method="getPrice"></action>
 		<action name="CustomShopPBCManCheck"            class="com.ltyx.sca.action.CustomShopUserPBCManAction"      method="check"></action>
 		<action name="CustomShopPBCManSubmit"           class="com.ltyx.sca.action.CustomShopUserPBCManAction"      method="submit"></action>
@@ -187,9 +185,6 @@
 		<!-- 定制店 客供面料 女装 -->
 		<action name="CustomShopPBCWoman"               class="com.ltyx.sca.action.CustomShopUserPBCWomanAction"    method="getPage">
 			<result name="succ">/html/ShoppingCartAssistant/CSU_PBC_Woman.jsp</result>
-		</action>
-		<action name="CustomShopPBCWomanNL"             class="com.ltyx.sca.action.CustomShopUserPBCWomanAction"    method="getPage">
-			<result name="succ">/html/ShoppingCartAssistant/CSU_PBC_Woman_NL.jsp</result>
 		</action>
 		<action name="CustomShopPBCWomanGetPrice"       class="com.ltyx.sca.action.CustomShopUserPBCWomanAction"    method="getPrice"></action>
 		<action name="CustomShopPBCWomanCheck"          class="com.ltyx.sca.action.CustomShopUserPBCWomanAction"    method="check"></action>
@@ -249,18 +244,14 @@
 		method="repair">
 		</action>
 
-		<!-- ERP600即时库存接口-->
-		<action name="ERP600Inventory" class="com.ltyx.open.erp600.search.InventoryAction"
+		
+		<!-- ERP600订单提交接口-->
+		<action name="ERP600OrderSubmit" class="com.ltyx.open.prod.erp600.action.OrderSubmitAction"
 		method="submit">
 		</action>
 		
-		<!-- ERP600订单提交接口-->
-		<action name="ERP600OrderSubmit" class="com.ltyx.open.erp600.submit.SubmitAction"
-		method="submit">
-		</action>
-		
-		<!-- ERP600订单提交接口-->
-		<action name="ERP600OrderState" class="com.ltyx.open.erp600.submit.OrderStateAction"
+		<!-- ERP600订单查询接口-->
+		<action name="ERP600OrderState" class="com.ltyx.open.prod.erp600.action.OrderStateAction"
 		method="submit">
 		</action>
 
@@ -291,6 +282,20 @@
 		</action>
 
 	</package>
+	
+	
+	<!--鲁泰优纤 衬衫下单工具 对外接口 -->
+	<package name="OpenAPIDEV" namespace="/LTYX/OpenAPI/DEV" extends="struts-default">
+		
+	
+		<!-- ERP600即时库存接口-->
+		<action name="ERP600Inventory" class="com.ltyx.open.dev.erp600.search.InventoryAction"
+		method="submit">
+		</action>
+		
+		
+	</package>
+	
 
 	<!--鲁泰优纤 测试接口 -->
 	<package name="Test" namespace="/LTYX/Test" extends="struts-default">

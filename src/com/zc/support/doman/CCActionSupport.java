@@ -2,7 +2,7 @@ package com.zc.support.doman;
 
 import java.util.ArrayList;
 
-import com.ltyx.sca.action.log.ActionLogBeanBase;
+import com.ltyx.sca.log.ActionLogBeanBase;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.LogSyncSafe;
 import com.zc.support.service.StringHelper;
@@ -180,7 +180,10 @@ public class CCActionSupport extends ZCBaseActionSupport {
 	}
 
 	public void initDBLog(String name, String categary) {
-		String ECid = session.getAttribute("ec_user_id").toString();
+		String ECid = (String) session.getAttribute("ec_user_id");
+		if (ECid == null) {
+			ECid = getReqParamString("operator_id");
+		}
 		dbLog = new ActionLogBeanBase(name, categary, ECid);
 		addDBLogSrcReq();
 		addDBLogKeys();

@@ -1,16 +1,16 @@
 package com.ltyx.sca.action;
 
-import com.ltyx.sca.action.plugin.MoudleCSACheckSummaryClothes;
-import com.ltyx.sca.action.plugin.MoudleCSACheckUserInfo;
-import com.ltyx.sca.action.plugin.MoudleCSAGetPriceWomanPBC;
-import com.ltyx.sca.action.plugin.MoudleCSAOrderWomanPBC;
-import com.ltyx.sca.action.plugin.MoudleCheckMeasureWoman;
-import com.ltyx.sca.action.plugin.MoudleCheckPrice;
-import com.ltyx.sca.action.plugin.MoudleCheckTechClash;
-import com.ltyx.sca.action.plugin.MoudleCheckTechLZX11;
-import com.ltyx.sca.action.plugin.MoudleCheckTechLZX120;
-import com.ltyx.sca.action.plugin.MoudleCheckTechLZXNecessary;
-import com.ltyx.sca.action.plugin.MoudleCheckTechYXST2PBC;
+import com.ltyx.sca.moudle.MoudleCSACheckSummaryClothes;
+import com.ltyx.sca.moudle.MoudleCSACheckUserInfo;
+import com.ltyx.sca.moudle.MoudleCSAGetPriceWomanPBC;
+import com.ltyx.sca.moudle.MoudleCSAOrderWomanPBC;
+import com.ltyx.sca.moudle.MoudleCheckMeasureWoman;
+import com.ltyx.sca.moudle.MoudleCheckPrice;
+import com.ltyx.sca.moudle.MoudleCheckTechClash;
+import com.ltyx.sca.moudle.MoudleCheckTechLZX11;
+import com.ltyx.sca.moudle.MoudleCheckTechLZX120;
+import com.ltyx.sca.moudle.MoudleCheckTechLZXNecessary;
+import com.ltyx.sca.moudle.MoudleCheckTechYXST2PBC;
 import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.TextLogHelper;

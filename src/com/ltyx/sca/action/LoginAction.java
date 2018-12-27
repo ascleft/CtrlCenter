@@ -1,6 +1,6 @@
 package com.ltyx.sca.action;
 
-import com.ltyx.sca.action.log.ActionLogBeanLogin;
+import com.ltyx.sca.log.ActionLogBeanLogin;
 import com.zc.support.config.ConfigHelperURL;
 import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCHttpReqParam;

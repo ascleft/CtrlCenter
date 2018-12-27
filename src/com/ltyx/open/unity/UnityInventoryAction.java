@@ -2,6 +2,9 @@ package com.ltyx.open.unity;
 
 import java.util.ArrayList;
 
+import com.ltyx.open.unity.bean.UnityInventoryCell;
+import com.ltyx.open.unity.moudle.UnityInventoryERP600Moudle;
+import com.ltyx.open.unity.moudle.UnityInventoryK3Moudle;
 import com.zc.support.doman.CCActionSupport;
 import com.zc.support.link.ZCReqIntroGetter;
 import com.zc.support.service.TextLogHelper;

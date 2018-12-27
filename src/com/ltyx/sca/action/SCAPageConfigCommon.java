@@ -154,11 +154,11 @@ public class SCAPageConfigCommon {
 
 			session.setAttribute("list_baozhuang_aide", SCAPageConfigMix.get_list_baozhuang_aide());
 			session.setAttribute("list_baozhuang_shop", SCAPageConfigMix.get_list_baozhuang_shop());
-			
+
 			session.setAttribute("list_button_decorative_code", SCAPageConfigMix.get_list_button_decorative_code());
 			session.setAttribute("list_button_decorative_num", SCAPageConfigMix.get_list_button_decorative_num());
 			session.setAttribute("list_button_decorative_pos", SCAPageConfigMix.get_list_button_decorative_pos());
-			                      
+
 		}
 
 		return session;
@@ -311,7 +311,10 @@ public class SCAPageConfigCommon {
 				+ "<a class=\"subheader\">系统功能</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/Core/GetLogPage.action\">日志管理</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/Core/GetLogPage.action?type=csu\">日志管理-定制店</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/Core/GetLogPage.action?type=ybr\">日志管理-衣帮人(alpha)</a>"//
 				+ "</li>";//
 
 		return menuList;
