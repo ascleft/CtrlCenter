@@ -5,6 +5,9 @@ import javax.servlet.http.HttpServletRequest;
 import com.zc.support.doman.ZCBaseActionSupportPlugin;
 import com.zc.support.link.ZCHttpReqParam;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 
 	public MoudleCSParamUtil(HttpServletRequest req) {
@@ -28,19 +31,26 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 		param.addParam("LZX_03", getReqParamString("LZX_03"));
 		param.addParam("LZX_04", getReqParamString("LZX_04"));
 		param.addParam("LZX_06", getReqParamString("LZX_06"));
-		param.addParam("LZX_11_CHAR_COLOR", getReqParamString("LZX_11_CHAR_COLOR"));
-		param.addParam("LZX_11_CHAR_SIZE", getReqParamString("LZX_11_CHAR_SIZE"));
-		param.addParam("LZX_11_CHAR_TYPE", getReqParamString("LZX_11_CHAR_TYPE"));
-		param.addParam("LZX_11_CHAR_WORD", getReqParamString("LZX_11_CHAR_WORD"));
+
+		// 文字刺绣
 		param.addParam("LZX_11_FOR_CHAR_SWITCH", getReqParamString("LZX_11_FOR_CHAR_SWITCH"));
+		param.addParam("LZX_11_CHAR_TYPE", getReqParamString("LZX_11_CHAR_TYPE"));
+		param.addParam("LZX_13_FOR_CHAR", getReqParamString("LZX_13_FOR_CHAR"));
+		param.addParam("LZX_11_CHAR_SIZE", getReqParamString("LZX_11_CHAR_SIZE"));
+		param.addParam("LZX_11_CHAR_COLOR", getReqParamString("LZX_11_CHAR_COLOR"));
+		param.addParam("LZX_11_CHAR_WORD", getReqParamString("LZX_11_CHAR_WORD"));
+		// 图案刺绣
 		param.addParam("LZX_11_FOR_PIC_SWITCH", getReqParamString("LZX_11_FOR_PIC_SWITCH"));
+		param.addParam("LZX_11_PIC_TYPE", getReqParamString("LZX_11_PIC_TYPE"));
+		param.addParam("LZX_11_PIC_SIZE", getReqParamString("LZX_11_PIC_SIZE"));
+		param.addParam("LZX_13_FOR_PIC", getReqParamString("LZX_13_FOR_PIC"));
 		param.addParam("LZX_11_PIC_COLOR", getReqParamString("LZX_11_PIC_COLOR"));
 		param.addParam("LZX_11_PIC_NUM", getReqParamString("LZX_11_PIC_NUM"));
-		param.addParam("LZX_11_PIC_SIZE", getReqParamString("LZX_11_PIC_SIZE"));
-		param.addParam("LZX_11_PIC_TYPE", getReqParamString("LZX_11_PIC_TYPE"));
+
+		// 新版刺绣参数
+		param.addParam("embroidery", getEmbroideryPackage());
+
 		param.addParam("LZX_120", getReqParamString("LZX_120"));
-		param.addParam("LZX_13_FOR_CHAR", getReqParamString("LZX_13_FOR_CHAR"));
-		param.addParam("LZX_13_FOR_PIC", getReqParamString("LZX_13_FOR_PIC"));
 		param.addParam("LZX_17", getReqParamString("LZX_17"));
 		param.addParam("LZX_26", getReqParamString("LZX_26"));
 		param.addParam("YX_08", getReqParamString("YX_08", ""));
@@ -125,6 +135,8 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 		param.addParam("button_decorative_code", getReqParamString("button_decorative_code"));// 装饰扣编号
 		param.addParam("button_decorative_pos", getReqParamString("button_decorative_pos"));// 装饰扣位置
 
+		param.addParam("ExpressNO", getReqParamString("ExpressNO"));// 客供物料单号
+
 		return param;
 
 	}
@@ -208,6 +220,63 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 		}
 
 		return numberInt;
+
+	}
+
+	private String getEmbroideryPackage() {
+
+		JSONArray embroidery_list = new JSONArray();
+
+		JSONObject embroidery_section_1 = new JSONObject();
+		String embroidery_section_1_type = getReqParamString("embroidery_section_1_type");
+		if ("char".equals(embroidery_section_1_type)) {
+			embroidery_section_1 = new JSONObject();
+			embroidery_section_1.put("type", "char");
+			embroidery_section_1.put("font", getReqParamString("embroidery_section_1_char_font"));
+			embroidery_section_1.put("size", getReqParamString("embroidery_section_1_char_size"));
+			embroidery_section_1.put("location", getReqParamString("embroidery_section_1_char_location"));
+			embroidery_section_1.put("color", getReqParamString("embroidery_section_1_char_color"));
+			embroidery_section_1.put("content", getReqParamString("embroidery_section_1_char_content"));
+		}
+		if ("pic".equals(embroidery_section_1_type)) {
+			embroidery_section_1 = new JSONObject();
+			embroidery_section_1.put("type", "pic");
+			embroidery_section_1.put("font", getReqParamString("embroidery_section_1_pic_font"));
+			embroidery_section_1.put("size", getReqParamString("embroidery_section_1_pic_size"));
+			embroidery_section_1.put("location", getReqParamString("embroidery_section_1_pic_location"));
+			embroidery_section_1.put("color", getReqParamString("embroidery_section_1_pic_color"));
+			embroidery_section_1.put("content", getReqParamString("embroidery_section_1_pic_content"));
+		}
+
+		JSONObject embroidery_section_2 = new JSONObject();
+		String embroidery_section_2_type = getReqParamString("embroidery_section_2_type");
+		if ("char".equals(embroidery_section_2_type)) {
+			embroidery_section_2 = new JSONObject();
+			embroidery_section_2.put("type", "char");
+			embroidery_section_2.put("font", getReqParamString("embroidery_section_2_char_font"));
+			embroidery_section_2.put("size", getReqParamString("embroidery_section_2_char_size"));
+			embroidery_section_2.put("location", getReqParamString("embroidery_section_2_char_location"));
+			embroidery_section_2.put("color", getReqParamString("embroidery_section_2_char_color"));
+			embroidery_section_2.put("content", getReqParamString("embroidery_section_2_char_content"));
+		}
+		if ("pic".equals(embroidery_section_2_type)) {
+			embroidery_section_2 = new JSONObject();
+			embroidery_section_2.put("type", "pic");
+			embroidery_section_2.put("font", getReqParamString("embroidery_section_2_pic_font"));
+			embroidery_section_2.put("size", getReqParamString("embroidery_section_2_pic_size"));
+			embroidery_section_2.put("location", getReqParamString("embroidery_section_2_pic_location"));
+			embroidery_section_2.put("color", getReqParamString("embroidery_section_2_pic_color"));
+			embroidery_section_2.put("content", getReqParamString("embroidery_section_2_pic_content"));
+		}
+
+		if (embroidery_section_1 != null) {
+			embroidery_list.add(embroidery_section_1);
+		}
+		if (embroidery_section_2 != null) {
+			embroidery_list.add(embroidery_section_2);
+		}
+
+		return embroidery_list.toString();
 
 	}
 

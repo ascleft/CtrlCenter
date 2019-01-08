@@ -256,22 +256,13 @@
 					$("#getPrice").hide();
 					$("#addShoppingCart").show();
 				}
-			}
+			};
 
 			$(document).ready(function() {
 
 				state_now("default");
 
-				use_lzx11();
-
-				use_DeliveryTime();
-				use_stylebase_check();
-				use_size();
-
-				use_pbc_YX_08();
-				use_pbc_kouzi();
-
-				use_custom_weizhi_peise();
+				use_embroidery_new();
 
 				$("div#section1 input").bind("keyup", function() {
 					state_now("lost_price");
@@ -285,7 +276,7 @@
 
 				state_now("default");
 
-			})
+			});
 		</script>
 
 	</head>
@@ -340,79 +331,149 @@
 						<div class="row">
 							<div class="col s12 m12 l12" id="section1">
 								<!-- <ul class="collapsible popout"data-collapsible="expandable"> -->
-								<ul class="collapsible teal lighten-5" data-collapsible="accordion">
+								<ul class="collapsible teal lighten-5" data-collapsible="accordion ">
 									<li>
-										<div class="collapsible-header">
+										<div class="collapsible-header active">
 											<i class="material-icons">mode_edit</i>刺绣
 										</div>
 										<div class="collapsible-body">
 											<div class="row">
 												<div class="card-panel">
 													<div class="row">
-														<div class="col s12 m12 l12 teal-text">
-															<p>刺绣文字</p>
+														<div class="input-field col s12">
+															<select name="embroidery_section_1_type">
+																<option value="needless">不使用刺绣</option>
+																<option value="char">文字刺绣</option>
+																<option value="pic">图案刺绣</option>
+															</select> <label>刺绣位置1</label>
 														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_FOR_CHAR_SWITCH">
-																<option value="0">不使用文字刺绣</option>
-																<option value="1">使用文字刺绣</option>
-															</select> <label>是否使用文字刺绣</label>
-														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_13_FOR_CHAR">
-															</select> <label>刺绣文字位置</label>
-														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_CHAR_COLOR">
-															</select> <label>刺绣文字颜色</label>
-														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_CHAR_TYPE">
-															</select> <label>刺绣文字字体</label>
-														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_CHAR_SIZE">
-															</select> <label>刺绣文字高度</label>
-														</div>
-														<div class="col s12 m6 l4">
-															<div class="input-field">
-																<input type="text" class="validate" name="LZX_11_CHAR_WORD" value="">
-																<label>刺绣文字内容</label>
+														<div class="col s12 m12 l12" id="embroidery_section_1_char_div">
+															<div class="row">
+
+																<div class="col s12 teal-text">
+																	<p>刺绣文字</p>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_char_font">
+																	</select> <label>刺绣文字字体</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_char_size">
+																	</select> <label>刺绣文字高度</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_char_location">
+																	</select> <label>刺绣文字位置</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_char_color">
+																	</select> <label>刺绣文字颜色</label>
+																</div>
+																<div class="col s12 m6 l4">
+																	<div class="input-field validate">
+																		<input type="text" name="embroidery_section_1_char_content" value="">
+																		<label>刺绣文字内容</label>
+																	</div>
+																</div>
 															</div>
 														</div>
+														<div class="col s12 m12 l12" id="embroidery_section_1_pic_div">
+															<div class="row">
+																<div class="col s12 m12 l12 teal-text">
+																	<p>刺绣图案</p>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_pic_font">
+																	</select> <label>刺绣图案系列</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_pic_size">
+																	</select> <label>刺绣图案高度</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_pic_location">
+																	</select> <label>刺绣图案位置</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_pic_color">
+																	</select> <label>刺绣图案颜色</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_pic_content">
+																	</select> <label>刺绣图案编号</label>
+																</div>
+															</div>
+														</div>
+
 													</div>
 												</div>
 												<div class="card-panel">
 													<div class="row">
-														<div class="col s12 m12 l12 teal-text">
-															<p>刺绣图案</p>
+														<div class="input-field col s12">
+															<select name="embroidery_section_2_type">
+																<option value="needless">不使用刺绣</option>
+																<option value="char">文字刺绣</option>
+																<option value="pic">图案刺绣</option>
+															</select> <label>刺绣位置2</label>
 														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_FOR_PIC_SWITCH">
-																<option value="0">不使用图案刺绣</option>
-																<option value="1">使用图案刺绣</option>
-															</select> <label>是否使用图案刺绣</label>
+														<div class="col s12 m12 l12" id="embroidery_section_2_char_div">
+															<div class="row">
+
+																<div class="col s12 teal-text">
+																	<p>刺绣文字</p>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_char_font">
+																	</select> <label>刺绣文字字体</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_char_size">
+																	</select> <label>刺绣文字高度</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_char_location">
+																	</select> <label>刺绣文字位置</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_char_color">
+																	</select> <label>刺绣文字颜色</label>
+																</div>
+																<div class="col s12 m6 l4">
+																	<div class="input-field validate">
+																		<input type="text" name="embroidery_section_2_char_content" value="">
+																		<label>刺绣文字内容</label>
+																	</div>
+																</div>
+															</div>
 														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_13_FOR_PIC">
-															</select> <label>刺绣图案位置</label>
+														<div class="col s12 m12 l12" id="embroidery_section_2_pic_div">
+															<div class="row">
+																<div class="col s12 m12 l12 teal-text">
+																	<p>刺绣图案</p>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_pic_font">
+																	</select> <label>刺绣图案系列</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_pic_size">
+																	</select> <label>刺绣图案高度</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_pic_location">
+																	</select> <label>刺绣图案位置</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_pic_color">
+																	</select> <label>刺绣图案颜色</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_pic_content">
+																	</select> <label>刺绣图案编号</label>
+																</div>
+															</div>
 														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_PIC_COLOR">
-															</select> <label>刺绣图案颜色</label>
-														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_PIC_TYPE">
-															</select> <label>刺绣图案系列</label>
-														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_PIC_SIZE">
-															</select> <label>刺绣图案高度</label>
-														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_PIC_NUM">
-															</select> <label>刺绣图案编号</label>
-														</div>
+
 													</div>
 												</div>
 												<div class="card-panel">

@@ -377,10 +377,19 @@
 
 					<div class="section" id="section_loading">
 						<div class="row">
-							<div class="col s3">
+							
+							<div class="col s12">
+								<div class="progress">
+									<div id="section_loading_determinate" class="determinate" style="width: 82%"></div>
+								</div>
 							</div>
-							<div class="col s2">
-								<div class="preloader-wrapper small active">
+							
+							<div class="col s12 center">
+								<h6 id="section_loading_title">页面构建中,请稍候...</h6>
+							</div>
+							
+							<div class="col s12 center">
+								<div class="preloader-wrapper small active" style="display: none;">
 									<div class="spinner-layer spinner-green-only">
 										<div class="circle-clipper left">
 											<div class="circle"></div>
@@ -388,9 +397,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col s7">
-								<h6>页面构建中,请稍候...</h6>
-							</div>
+							
 						</div>
 					</div>
 
@@ -411,6 +418,17 @@
 														<label>穿衣人姓名（必填）</label>
 													</div>
 												</div>
+												<div class="col s12 m6 l8">
+													<div class="input-field">
+														<input type="text" class="validate" name="ExpressNO" value=""> <label>客供物料寄厂单号</label>
+													</div>
+												</div>
+												<div class="col s12 m12 l12">
+													<div class="input-field">
+														<input type="text" class="validate" name="customer_tips" value="">
+														<label>生产备注</label>
+													</div>
+												</div>
 												<div class="col s12 m6 l4" style="display: none;">
 													<div class="input-field">
 														<input type="text" class="validate" name="customer_tel" value="">
@@ -421,12 +439,6 @@
 													<div class="input-field">
 														<input type="text" class="validate" name="customer_address" value="">
 														<label>收货地址</label>
-													</div>
-												</div>
-												<div class="col s12 m12 l12">
-													<div class="input-field">
-														<input type="text" class="validate" name="customer_tips" value="">
-														<label>生产备注</label>
 													</div>
 												</div>
 											</div>
@@ -776,6 +788,7 @@
 															</div>
 															<div class="input-field col s6 m3 l3">
 																<select name="line_color_location_3">
+																	<option value="UKKKK">顺纽扣色</option>
 																	<%=list_color%>
 																</select> <label>钉扣线</label>
 															</div>

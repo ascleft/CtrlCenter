@@ -75,34 +75,6 @@
 
 		<!-- 定制顾问  -->
 
-		<!-- 定制顾问  优纤面料 男装  -->
-		<action name="AidePBYX"         class="com.ltyx.sca.action.AidePBYXManAction" method="getPage">
-			<result name="succ">/html/ShoppingCartAssistant/Aide_PBYX_Man.jsp</result>
-		</action>
-		<action name="GetPriceAidePBYX" class="com.ltyx.sca.action.AidePBYXManAction" method="getPrice"></action>
-		<action name="SubmitAidePBYX"   class="com.ltyx.sca.action.AidePBYXManAction" method="submit"></action>
-
-		<!-- 定制顾问 优纤面料 设计师款 -->
-		<action name="AideDesign"         class="com.ltyx.sca.action.AidePBYXDesignAction" method="getPage">
-			<result name="succ">/html/ShoppingCartAssistant/Aide_PBYX_Design.jsp</result>
-		</action>
-		<action name="GetPriceAideDesign" class="com.ltyx.sca.action.AidePBYXDesignAction" method="getPrice"></action>
-		<action name="SubmitAideDesign"   class="com.ltyx.sca.action.AidePBYXDesignAction" method="submit"></action>
-
-		<!-- 定制顾问 优纤面料 女装 -->
-		<action name="AideWoman"         class="com.ltyx.sca.action.AidePBYXWomanAction" method="getPage">
-			<result name="succ">/html/ShoppingCartAssistant/Aide_PBYX_Woman.jsp</result>
-		</action>
-		<action name="GetPriceAideWoman" class="com.ltyx.sca.action.AidePBYXWomanAction" method="getPrice"></action>
-		<action name="SubmitAideWoman"   class="com.ltyx.sca.action.AidePBYXWomanAction" method="submit"></action>
-
-		<!-- 定制顾问 其他商品 -->
-		<action name="AideSubcontract"         class="com.ltyx.sca.action.AidePBOSubcontractAction" method="getPage">
-			<result name="succ">/html/ShoppingCartAssistant/Aide_PBO_Subcontract.jsp</result>
-		</action>
-		<action name="GetPriceAideSubcontract" class="com.ltyx.sca.action.AidePBOSubcontractAction" method="getPrice"></action>
-		<action name="SubmitAideSubcontract"   class="com.ltyx.sca.action.AidePBOSubcontractAction" method="submit"></action>
-
 		<!-- 获取页面 即时库存 定制顾问 -->
 		<action name="AideSearch" class="com.ltyx.sca.action.SearchAction" method="getPage">
 			<result name="succ">/html/ShoppingCartAssistant/Aide_Search.jsp</result>
@@ -118,7 +90,7 @@
 		<action name="SubmitCustomShopAidePBYX"   class="com.ltyx.sca.action.CustomShopAidePBYXManAction" method="submit"></action>
 
 		<!-- 客户经理 客供面料 男装-->
-		<action name="CustomShopAidePBC"         class="com.ltyx.sca.action.CustomShopAidePBCManAction" method="getFormWithCode">
+		<action name="CustomShopAidePBC"          class="com.ltyx.sca.action.CustomShopAidePBCManAction" method="getFormWithCode">
 			<result name="succ">/html/ShoppingCartAssistant/CSA_PBC_Man.jsp</result>
 		</action>
 		<action name="GetPriceCustomShopAidePBC" class="com.ltyx.sca.action.CustomShopAidePBCManAction" method="getPrice"></action>
@@ -260,6 +232,17 @@
 		method="submit">
 		</action>
 
+	</package>
+	
+	
+	<!--鲁泰优纤 衬衫下单工具 对外接口 -->
+	<package name="OpenAPIDEV" namespace="/LTYX/OpenAPI/DEV" extends="struts-default">
+		
+		<!-- ERP600即时库存接口-->
+		<action name="ERP600Inventory" class="com.ltyx.open.dev.erp600.search.InventoryAction"
+		method="submit">
+		</action>
+		
 		<!-- 通用工具 接口连通性测试 获取页面 -->
 		<action name="GetInterfaceTestPage" class="com.ltyx.ucsplus.action.InterfaceTestAction"
 		method="getPage">
@@ -280,19 +263,6 @@
 		<action name="coin" class="com.ltyx.test.XSSubmitAction"
 		method="submit">
 		</action>
-
-	</package>
-	
-	
-	<!--鲁泰优纤 衬衫下单工具 对外接口 -->
-	<package name="OpenAPIDEV" namespace="/LTYX/OpenAPI/DEV" extends="struts-default">
-		
-	
-		<!-- ERP600即时库存接口-->
-		<action name="ERP600Inventory" class="com.ltyx.open.dev.erp600.search.InventoryAction"
-		method="submit">
-		</action>
-		
 		
 	</package>
 	

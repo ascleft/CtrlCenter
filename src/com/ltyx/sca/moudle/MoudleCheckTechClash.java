@@ -109,16 +109,16 @@ public class MoudleCheckTechClash extends ZCBaseActionSupportPlugin {
 				return false;
 			}
 
-			// 礼服拼贴款做法一 LZX-20-01 门襟要求LZX-03-06/07 GZ开头面料
+			// 礼服拼贴款做法一 LZX-20-01 门襟要求LZX-03-12/07 GZ开头面料
 			// 礼服拼贴款做法二 LZX-20-02 门襟要求LZX-03-04 除GZ开头的以外
-			// 礼服拼贴款做法三 LZX-20-03 门襟要求LZX-03-06/07 GZ开头面料
-			// 礼服拼贴款做法四 LZX-20-04 门襟要求LZX-03-06/07 GZ开头面料
+			// 礼服拼贴款做法三 LZX-20-03 门襟要求LZX-03-12/07 GZ开头面料
+			// 礼服拼贴款做法四 LZX-20-04 门襟要求LZX-03-12/07 GZ开头面料
 
 			if (weizhi_peise.equals("LZX-20-01")) {
-				if (!(LZX_03.equals("LZX-03-06") || LZX_03.equals("LZX-03-07"))) {
+				if (!(LZX_03.equals("LZX-03-12") || LZX_03.equals("LZX-03-07"))) {
 					ERRCODE = "0";
 					ERRDESC = "fail";
-					data = "仅当【门襟】为【LZX-03-06】或【LZX-03-07】时才可选用【礼服拼贴款做法一】";
+					data = "仅当【门襟】为【LZX-03-12】或【LZX-03-07】时才可选用【礼服拼贴款做法一】";
 					return false;
 				}
 				if (!isGZ(uskin_code_2)) {
@@ -143,10 +143,10 @@ public class MoudleCheckTechClash extends ZCBaseActionSupportPlugin {
 				}
 			}
 			if (weizhi_peise.equals("LZX-20-03")) {
-				if (!(LZX_03.equals("LZX-03-06") || LZX_03.equals("LZX-03-07"))) {
+				if (!(LZX_03.equals("LZX-03-12") || LZX_03.equals("LZX-03-07"))) {
 					ERRCODE = "0";
 					ERRDESC = "fail";
-					data = "仅当【门襟】为【LZX-03-06】或【LZX-03-07】时才可选用【礼服拼贴款做法三】";
+					data = "仅当【门襟】为【LZX-03-12】或【LZX-03-07】时才可选用【礼服拼贴款做法三】";
 					return false;
 				}
 				if (!isGZ(uskin_code_2)) {
@@ -157,10 +157,10 @@ public class MoudleCheckTechClash extends ZCBaseActionSupportPlugin {
 				}
 			}
 			if (weizhi_peise.equals("LZX-20-04")) {
-				if (!(LZX_03.equals("LZX-03-06") || LZX_03.equals("LZX-03-07"))) {
+				if (!(LZX_03.equals("LZX-03-12") || LZX_03.equals("LZX-03-07"))) {
 					ERRCODE = "0";
 					ERRDESC = "fail";
-					data = "仅当【门襟】为【LZX-03-06】或【LZX-03-07】时才可选用【礼服拼贴款做法四】";
+					data = "仅当【门襟】为【LZX-03-12】或【LZX-03-07】时才可选用【礼服拼贴款做法四】";
 					return false;
 				}
 				if (!isGZ(uskin_code_2)) {
@@ -168,6 +168,23 @@ public class MoudleCheckTechClash extends ZCBaseActionSupportPlugin {
 					ERRDESC = "fail";
 					data = "仅当【配色面料】为【GZ开头面料】才可选用【礼服拼贴款做法四】";
 					return false;
+				}
+			}
+		}
+
+		{
+			// 团单限制
+			String order_mtm_type = getReqParamString("order_mtm_type");
+			String measure_type = getReqParamString("measure_type");
+			String size = getReqParamString("size");
+			if ("3".equals(size)) {
+				if ("号衣尺码".equals(measure_type)) {
+					if (!"团单".equals(order_mtm_type)) {
+						ERRCODE = "0";
+						ERRDESC = "fail";
+						data = "仅当【订单类型】为【团单】时，您才可以使用【号衣尺码】中的【团单专用】选项";
+						return false;
+					}
 				}
 			}
 		}

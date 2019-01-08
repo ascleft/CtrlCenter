@@ -196,6 +196,8 @@ function set_delivery_time_table_section_4() {
 }
 //初始化交期系统
 function use_DeliveryTime() {
+	global_page_loading("初始化交期系统");
+
 	initDeliveryTimeTable();
 	set_delivery_time_table_section_1();
 	$("#delivery_time_table_section_1").bind("change", function() {
@@ -663,6 +665,8 @@ function set_lzx11_pic_section_3() {
 }
 //初始化刺绣模块
 function use_lzx11() {
+	global_page_loading("初始化刺绣模块");
+
 	initLZX11Table();
 	set_lzx11_char_section_1();
 	set_lzx11_pic_section_1();
@@ -682,6 +686,8 @@ function use_lzx11() {
 //-------------------------------------------------------------------------客供专项↓
 //客供扣子
 function use_pbc_kouzi() {
+	global_page_loading("启用客供扣子");
+
 	$("#kouzi_div").hide();
 	$("#kouzi").bind("change", function() {
 		var selected_name = "" + $("#kouzi option:selected ").text();
@@ -698,6 +704,8 @@ function use_pbc_kouzi() {
 }
 //启用客供主唛
 function use_pbc_YX_08() {
+	global_page_loading("启用客供主唛");
+
 	$("#YX_08_div").hide();
 	$("#YX_08").bind("change", function() {
 		var selected_name = "" + $("#YX_08 option:selected").text();
@@ -717,6 +725,8 @@ function use_pbc_YX_08() {
 //-------------------------------------------------------------------------手动专项↓
 //自定义配色部位
 function use_custom_weizhi_peise() {
+	global_page_loading("启用自定义配色部位");
+
 	$("#weizhi_peise_div").hide();
 	$("#weizhi_peise").bind("change", function() {
 		var selected_name = "" + $("#weizhi_peise option:selected").text();
@@ -736,6 +746,7 @@ function use_custom_weizhi_peise() {
 //-------------------------------------------------------------------------尺寸专项↓
 //启用尺寸选择
 function use_size() {
+	global_page_loading("启用尺寸选择");
 
 	size_table = [{
 		'name_param': 'xiongwei',
@@ -755,7 +766,6 @@ function use_size() {
 	//	temp_table_1 += '			    <label for="mode_measure_form"> </label>               ';
 	//	temp_table_1 += '		    </p>';
 	//	temp_table_1 += '		</div>                                                                              ';
-
 
 	temp_table_1 += '			<div class="input-field col s12 m12 l12">                                        ';
 	temp_table_1 += '				<select id="mode_measure_form">                              ';
@@ -1012,6 +1022,7 @@ function use_size() {
 	temp_table_3 += '	<div class="row">                                             ';
 	temp_table_3 += '		<div class="input-field col s12 m12 l12">                 ';
 	temp_table_3 += '			<select name="size">                                  ';
+	temp_table_3 += '				<option value="3">团单专用（号型分布另附） </option>   ';
 	temp_table_3 += '				<option value="2174">男式衬衫紧身版37 </option>        ';
 	temp_table_3 += '				<option value="2175">男式衬衫紧身版37.5 </option>   ';
 	temp_table_3 += '				<option value="2176">男式衬衫紧身版38 </option>   ';
@@ -1106,6 +1117,7 @@ function use_size() {
 	temp_table_4 += '	<div class="row">                                            ';
 	temp_table_4 += '		<div class="input-field col s12 m12 l12">                ';
 	temp_table_4 += '			<select name="size">                                 ';
+	temp_table_4 += '				<option value="3"   >团单专用（号型分布另附） </option>   ';
 	temp_table_4 += '				<option value="2570">女式衬衫修身版35</option>   ';
 	temp_table_4 += '				<option value="2571">女式衬衫修身版35.5</option> ';
 	temp_table_4 += '				<option value="2572">女式衬衫修身版36</option>   ';
@@ -1179,6 +1191,9 @@ function use_size() {
 	temp_table_5 += '	<div class="row">                                             ';
 	temp_table_5 += '		<div class="input-field col s12 m12 l12">                 ';
 	temp_table_5 += '			<select name="size">                                  ';
+	temp_table_5 += '				<option value="3"   >团单专用（号型分布另附） </option>   ';
+	temp_table_5 += '				<option value="2174">男式衬衫紧身版37 </option>        ';
+	temp_table_5 += '				<option value="2175">男式衬衫紧身版37.5 </option>   ';
 	temp_table_5 += '				<option value="2176">男式衬衫紧身版38 </option>   ';
 	temp_table_5 += '				<option value="2177">男式衬衫紧身版38.5</option>  ';
 	temp_table_5 += '				<option value="2178">男式衬衫紧身版39 </option>   ';
@@ -1405,7 +1420,7 @@ function size_rule_base() {
 
 	{
 		var selected_name = $("#mode_measure_form").val();
-		if("mini"==selected_name) {
+		if("mini" == selected_name) {
 			//精简模式
 			$("#div_du_wei").hide();
 			$("#div_xiuzhou_fei").hide();
@@ -1489,6 +1504,8 @@ function use_size_change() {
 //-------------------------------------------------------------------------款式工艺校验↓
 //启用特殊款校验
 function use_stylebase_check() {
+	global_page_loading("启用特殊款校验");
+
 	stylebase_check();
 	$("#delivery_time_table_section_4").bind("change", function() {
 		stylebase_check();
@@ -1920,6 +1937,17 @@ function jsonSort(array, field, reverse) {
 		array.reverse();
 	}
 	return array;
+}
+/*
+ * @numberMillis    休眠毫秒
+ */
+function sleep(numberMillis) {
+	var now = new Date();
+	var exitTime = now.getTime() + numberMillis;
+	while(true) {
+		now = new Date();
+		if(now.getTime() > exitTime)　　 return;
+	}
 }
 //-------------------------------------------------------------------------辅助JS↑
 
@@ -2364,4 +2392,647 @@ function global_notice_loading(msg) {
 	$("#global_frame_notice_board").html(msg);
 }
 
+function global_page_loading(msg) {
+	$("#section_loading_title").html(msg);
+}
+
+function global_page_loading_determinate(msg) {
+	var loading_func = "global_page_loading_determinate_inside(\"" + msg + "\")";
+	setTimeout("loading_func(\"" + msg + "\")", 1); //
+}
+
+function global_page_loading_determinate_inside(msg) {
+	$("#section_loading_determinate").width(msg);
+}
+
+function global_page_loaded() {
+	$("div#section_loading").hide();
+	Materialize.fadeInImage('#section_content');
+}
+
 //-------------------------------------------------------------------------通用模态框、进度条、悬浮提示、土司↑
+
+//-------------------------------------------------------------------------新刺绣模块↓
+//定义刺绣文字字典
+var embroidery_char_table;
+//定义刺绣图片字典
+var embroidery_pic_table;
+//初始化刺绣图片和文字字典
+function init_embroidery_table() {
+
+	console.log("刺绣字典初始化完成");
+
+	embroidery_char_table = {
+		'map': {
+			'LZX-11-01': {
+				'name': '英文中宋',
+				'size': '1'
+			},
+			'LZX-11-02': {
+				'name': '舒体',
+				'size': '1'
+			},
+			'LZX-11-04': {
+				'name': '（不支持汉字）皇家体',
+				'size': '1'
+			},
+			'LZX-11-05': {
+				'name': '（不支持汉字）手写体',
+				'size': '1'
+			},
+			'LZX-11-06': {
+				'name': '（不支持汉字）古圆体',
+				'size': '1'
+			},
+			'LZX-11-08': {
+				'name': '（不支持汉字）维体',
+				'size': '1'
+			},
+			'LZX-11-09': {
+				'name': '（不支持汉字）书写体',
+				'size': '1'
+			},
+			'LZX-11-10': {
+				'name': '（不支持汉字）哥特体',
+				'size': '1'
+			},
+			'LZX-11-12': {
+				'name': '（不支持汉字）卡曼体',
+				'size': '1'
+			},
+			'LZX-11-13': {
+				'name': '（不支持汉字）花体',
+				'size': '1'
+			},
+			'LZX-11-14': {
+				'name': '（不支持汉字）书信体',
+				'size': '1'
+			},
+			'LZX-11-15': {
+				'name': '（不支持汉字）巴洛克体',
+				'size': '1'
+			},
+			'LZX-11-16': {
+				'name': '英文行楷',
+				'size': '1'
+			},
+			'LZX-11-17': {
+				'name': '黑体',
+				'size': '1'
+			},
+			'LZX-11-18': {
+				'name': '隶属',
+				'size': '1'
+			},
+			'LZX-11-19': {
+				'name': '毛体',
+				'size': '1'
+			},
+			'LZX-11-20': {
+				'name': '草书',
+				'size': '1'
+			},
+			'LZX-11-21': {
+				'name': '中文行楷',
+				'size': '1'
+			},
+			'LZX-11-22': {
+				'name': '中文中宋',
+				'size': '1'
+			},
+		},
+		'size': {
+			'1': {
+				'YX-12-07': '0.7cm',
+				'YX-12-08': '0.8cm',
+				'YX-12-09': '0.9cm',
+				'YX-12-10': '1.0cm',
+				'YX-12-11': '1.1cm',
+				'YX-12-12': '1.2cm',
+				'YX-12-13': '1.3cm',
+				'YX-12-14': '1.4cm',
+				'YX-12-15': '1.5cm',
+				'YX-12-16': '1.6cm',
+				'YX-12-17': '1.7cm',
+				'YX-12-18': '1.8cm',
+				'YX-12-19': '1.9cm',
+				'YX-12-20': '2.0cm',
+				'YX-12-21': '2.1cm',
+				'YX-12-22': '2.2cm',
+				'YX-12-23': '2.3cm',
+				'YX-12-24': '2.4cm',
+				'YX-12-25': '2.5cm',
+				'YX-12-26': '2.6cm',
+				'YX-12-27': '2.7cm',
+				'YX-12-28': '2.8cm',
+				'YX-12-29': '2.9cm',
+				'YX-12-30': '3.0cm',
+			}
+		}
+	};
+	embroidery_pic_table = {
+		'LZX-11-23': {
+			'name': 'LZX-11-23',
+			'map': {
+				'01': '2',
+				'02': '2',
+				'03': '3',
+				'04': '2',
+				'05': '3',
+				'06': '2',
+				'07': '3',
+				'08': '2',
+				'09': '3',
+				'10': '3',
+				'11': '2',
+				'12': '2',
+				'13': '1',
+				'14': '1',
+				'15': '1',
+				'16': '1',
+				'17': '1',
+				'18': '1',
+				'19': '1',
+				'20': '1',
+				'21': '1',
+				'22': '1',
+				'23': '1',
+				'24': '1',
+			},
+			'size': {
+				'1': {
+					'YX-12-10': '1.0cm',
+					'YX-12-11': '1.1cm',
+					'YX-12-12': '1.2cm',
+					'YX-12-13': '1.3cm',
+					'YX-12-14': '1.4cm',
+					'YX-12-15': '1.5cm',
+					'YX-12-16': '1.6cm',
+					'YX-12-17': '1.7cm',
+					'YX-12-18': '1.8cm',
+					'YX-12-19': '1.9cm',
+					'YX-12-20': '2.0cm',
+					'YX-12-21': '2.1cm',
+					'YX-12-22': '2.2cm',
+					'YX-12-23': '2.3cm',
+					'YX-12-24': '2.4cm',
+					'YX-12-25': '2.5cm',
+					'YX-12-26': '2.6cm',
+					'YX-12-27': '2.7cm',
+					'YX-12-28': '2.8cm',
+					'YX-12-29': '2.9cm',
+					'YX-12-30': '3.0cm',
+				},
+				'2': {
+					'YX-12-15': '1.5cm',
+					'YX-12-16': '1.6cm',
+					'YX-12-17': '1.7cm',
+					'YX-12-18': '1.8cm',
+					'YX-12-19': '1.9cm',
+					'YX-12-20': '2.0cm',
+					'YX-12-21': '2.1cm',
+					'YX-12-22': '2.2cm',
+					'YX-12-23': '2.3cm',
+					'YX-12-24': '2.4cm',
+					'YX-12-25': '2.5cm',
+					'YX-12-26': '2.6cm',
+					'YX-12-27': '2.7cm',
+					'YX-12-28': '2.8cm',
+					'YX-12-29': '2.9cm',
+					'YX-12-30': '3.0cm',
+				},
+				'3': {
+					'YX-12-20': '2.0cm',
+					'YX-12-21': '2.1cm',
+					'YX-12-22': '2.2cm',
+					'YX-12-23': '2.3cm',
+					'YX-12-24': '2.4cm',
+					'YX-12-25': '2.5cm',
+					'YX-12-26': '2.6cm',
+					'YX-12-27': '2.7cm',
+					'YX-12-28': '2.8cm',
+					'YX-12-29': '2.9cm',
+					'YX-12-30': '3.0cm',
+				},
+			}
+
+		},
+		'LZX-11-24': {
+			'name': 'LZX-11-24',
+			'map': {
+				'01': '1',
+				'02': '1',
+				'03': '1',
+				'04': '1',
+				'05': '1',
+				'06': '1',
+				'07': '1',
+				'08': '1',
+				'09': '1',
+				'10': '1',
+				'11': '1',
+				'12': '1',
+				'13': '1',
+				'14': '1',
+				'15': '1',
+				'16': '1',
+				'17': '1',
+				'18': '1',
+				'19': '1',
+				'20': '1',
+				'21': '1',
+				'22': '1',
+				'23': '1',
+				'24': '1',
+			},
+			'size': {
+				'1': {
+					'YX-12-10': '1.0cm',
+					'YX-12-11': '1.1cm',
+					'YX-12-12': '1.2cm',
+					'YX-12-13': '1.3cm',
+					'YX-12-14': '1.4cm',
+					'YX-12-15': '1.5cm',
+					'YX-12-16': '1.6cm',
+					'YX-12-17': '1.7cm',
+					'YX-12-18': '1.8cm',
+					'YX-12-19': '1.9cm',
+					'YX-12-20': '2.0cm',
+					'YX-12-21': '2.1cm',
+					'YX-12-22': '2.2cm',
+					'YX-12-23': '2.3cm',
+					'YX-12-24': '2.4cm',
+					'YX-12-25': '2.5cm',
+					'YX-12-26': '2.6cm',
+					'YX-12-27': '2.7cm',
+					'YX-12-28': '2.8cm',
+					'YX-12-29': '2.9cm',
+					'YX-12-30': '3.0cm',
+				},
+			},
+		},
+		'LZX-11-25': {
+			'name': 'LZX-11-25',
+			'map': {
+				'01': '1',
+				'02': '1',
+				'03': '1',
+				'04': '1',
+				'05': '1',
+				'06': '1',
+				'07': '1',
+				'08': '1',
+				'09': '1',
+				'10': '1',
+				'11': '1',
+				'12': '1'
+			},
+			'size': {
+				'1': {
+					'YX-12-10': '1.0cm',
+					'YX-12-11': '1.1cm',
+					'YX-12-12': '1.2cm',
+					'YX-12-13': '1.3cm',
+					'YX-12-14': '1.4cm',
+					'YX-12-15': '1.5cm',
+					'YX-12-16': '1.6cm',
+					'YX-12-17': '1.7cm',
+					'YX-12-18': '1.8cm',
+					'YX-12-19': '1.9cm',
+					'YX-12-20': '2.0cm',
+					'YX-12-21': '2.1cm',
+					'YX-12-22': '2.2cm',
+					'YX-12-23': '2.3cm',
+					'YX-12-24': '2.4cm',
+					'YX-12-25': '2.5cm',
+					'YX-12-26': '2.6cm',
+					'YX-12-27': '2.7cm',
+					'YX-12-28': '2.8cm',
+					'YX-12-29': '2.9cm',
+					'YX-12-30': '3.0cm',
+				},
+			},
+		},
+		'LZX-11-26': {
+			'name': 'LZX-11-26',
+			'map': {
+				'01': '1',
+				'02': '1',
+				'03': '1',
+				'04': '1',
+				'05': '1'
+			},
+			'size': {
+				'1': {
+					'YX-12-10': '1.0cm',
+					'YX-12-11': '1.1cm',
+					'YX-12-12': '1.2cm',
+					'YX-12-13': '1.3cm',
+					'YX-12-14': '1.4cm',
+					'YX-12-15': '1.5cm',
+					'YX-12-16': '1.6cm',
+					'YX-12-17': '1.7cm',
+					'YX-12-18': '1.8cm',
+					'YX-12-19': '1.9cm',
+					'YX-12-20': '2.0cm',
+					'YX-12-21': '2.1cm',
+					'YX-12-22': '2.2cm',
+					'YX-12-23': '2.3cm',
+					'YX-12-24': '2.4cm',
+					'YX-12-25': '2.5cm',
+					'YX-12-26': '2.6cm',
+					'YX-12-27': '2.7cm',
+					'YX-12-28': '2.8cm',
+					'YX-12-29': '2.9cm',
+					'YX-12-30': '3.0cm',
+				},
+			},
+		},
+		'LZX-11-27': {
+			'name': 'LZX-11-27',
+			'map': {
+				'01': '1',
+				'02': '1',
+				'03': '1',
+				'04': '1',
+				'05': '1',
+				'06': '1',
+				'07': '1',
+				'08': '1',
+				'09': '1',
+				'10': '1'
+			},
+			'size': {
+				'1': {
+					'YX-12-10': '1.0cm',
+					'YX-12-11': '1.1cm',
+					'YX-12-12': '1.2cm',
+					'YX-12-13': '1.3cm',
+					'YX-12-14': '1.4cm',
+					'YX-12-15': '1.5cm',
+					'YX-12-16': '1.6cm',
+					'YX-12-17': '1.7cm',
+					'YX-12-18': '1.8cm',
+					'YX-12-19': '1.9cm',
+					'YX-12-20': '2.0cm',
+					'YX-12-21': '2.1cm',
+					'YX-12-22': '2.2cm',
+					'YX-12-23': '2.3cm',
+					'YX-12-24': '2.4cm',
+					'YX-12-25': '2.5cm',
+					'YX-12-26': '2.6cm',
+					'YX-12-27': '2.7cm',
+					'YX-12-28': '2.8cm',
+					'YX-12-29': '2.9cm',
+					'YX-12-30': '3.0cm',
+				},
+			},
+		},
+		'LZX-11-FF': {
+			'name': '客供图案',
+			'map': {
+				'客供图案': '1'
+			},
+			'size': {
+				'1': {
+					'LZX-12-FF': '客供大小'
+				},
+			},
+		}
+	};
+	console.log("刺绣字典初始化完成");
+}
+
+//填充文字刺绣第一部分 
+//embroidery_section_1_type 
+//embroidery_section_1_char_div
+//embroidery_section_1_char_font
+//embroidery_section_1_char_size
+//embroidery_section_1_char_location
+//embroidery_section_1_char_color
+//embroidery_section_1_char_content 
+//embroidery_section_1_pic_div
+//embroidery_section_1_pic_font
+//embroidery_section_1_pic_size
+//embroidery_section_1_pic_location
+//embroidery_section_1_pic_color
+//embroidery_section_1_pic_content 
+
+//embroidery_section_2_type 
+//embroidery_section_2_char_div
+//embroidery_section_2_char_font
+//embroidery_section_2_char_size
+//embroidery_section_2_char_location
+//embroidery_section_2_char_color
+//embroidery_section_2_char_content
+//embroidery_section_2_pic_div
+//embroidery_section_2_pic_font
+//embroidery_section_2_pic_size
+//embroidery_section_2_pic_location
+//embroidery_section_2_pic_color
+//embroidery_section_2_pic_content 
+
+//var embroidery_char_table;
+//var embroidery_pic_table;
+
+//填充刺绣第一部分
+function set_embroidery_section_1_char_1() {
+	var list_1 = ""
+	for(var prop1 in embroidery_char_table["map"]) {
+		list_1 += "<option value=\"" + prop1 + "\">";
+		list_1 += prop1 + " " + embroidery_char_table['map'][prop1]['name'];
+		list_1 += "</option>";
+	}
+	$("select[name$='embroidery_section_1_char_font']").html(list_1);
+	$('select').material_select();
+	set_embroidery_section_1_char_2();
+}
+
+function set_embroidery_section_1_char_2() {
+	selected_1 = "" + $("select[name$='embroidery_section_1_char_font'] option:selected").val();
+	selected_1_size = "" + embroidery_char_table['map'][selected_1]['size'];
+	var list_2 = ""
+	for(var prop2 in embroidery_char_table['size'][selected_1_size]) {
+		list_2 += "<option value=\"" + prop2 + "\">";
+		list_2 += embroidery_char_table['size'][selected_1_size][prop2];
+		list_2 += "</option>";
+	}
+	$("select[name$='embroidery_section_1_char_size']").html(list_2);
+	$('select').material_select();
+}
+
+function set_embroidery_section_1_pic_1() {
+	var list_1 = ""
+	for(var prop1 in embroidery_pic_table) {
+		list_1 += "<option value=\"" + prop1 + "\">";
+		list_1 += embroidery_pic_table[prop1].name;
+		list_1 += "</option>";
+	}
+	$("select[name$='embroidery_section_1_pic_font']").html(list_1);
+	$('select').material_select();
+	set_embroidery_section_1_pic_2();
+}
+
+function set_embroidery_section_1_pic_2() {
+	selected_1 = "" + $("select[name$='embroidery_section_1_pic_font'] option:selected").val();
+	var list_2 = ""
+	for(var prop2 in embroidery_pic_table[selected_1]['map']) {
+		list_2 += "<option value=\"" + prop2 + "\">";
+		list_2 += selected_1 + " " + prop2;
+		list_2 += "</option>";
+	}
+	$("select[name$='embroidery_section_1_pic_content']").html(list_2);
+	$('select').material_select();
+	set_embroidery_section_1_pic_3();
+}
+
+function set_embroidery_section_1_pic_3() {
+	selected_1 = "" + $("select[name$='embroidery_section_1_pic_font'] option:selected").val();
+	selected_2 = "" + $("select[name$='embroidery_section_1_pic_content'] option:selected").val();
+	selected_2_size = "" + embroidery_pic_table[selected_1]['map'][selected_2];
+	var list_3 = "";
+	for(var prop3 in embroidery_pic_table[selected_1]['size'][selected_2_size]) {
+		list_3 += "<option value=\"" + prop3 + "\">";
+		list_3 += embroidery_pic_table[selected_1]['size'][selected_2_size][prop3];
+		list_3 += "</option>";
+	}
+	$("select[name$='embroidery_section_1_pic_size']").html(list_3);
+	$('select').material_select();
+}
+
+function set_embroidery_section_1_div() {
+	selected_1 = "" + $("select[name$='embroidery_section_1_type'] option:selected").val();
+	if(selected_1 == "needless") {
+		$("#embroidery_section_1_char_div").hide();
+		$("#embroidery_section_1_pic_div").hide();
+	}
+	if(selected_1 == "char") {
+		$("#embroidery_section_1_char_div").show();
+		$("#embroidery_section_1_pic_div").hide();
+	}
+	if(selected_1 == "pic") {
+		$("#embroidery_section_1_char_div").hide();
+		$("#embroidery_section_1_pic_div").show();
+	}
+}
+//填充刺绣第二部分
+function set_embroidery_section_2_char_1() {
+	var list_1 = ""
+	for(var prop1 in embroidery_char_table["map"]) {
+		list_1 += "<option value=\"" + prop1 + "\">";
+		list_1 += prop1 + " " + embroidery_char_table['map'][prop1]['name'];
+		list_1 += "</option>";
+	}
+	$("select[name$='embroidery_section_2_char_font']").html(list_1);
+	$('select').material_select();
+	set_embroidery_section_2_char_2();
+}
+
+function set_embroidery_section_2_char_2() {
+	selected_1 = "" + $("select[name$='embroidery_section_2_char_font'] option:selected").val();
+	selected_1_size = "" + embroidery_char_table['map'][selected_1]['size'];
+	var list_2 = ""
+	for(var prop2 in embroidery_char_table['size'][selected_1_size]) {
+		list_2 += "<option value=\"" + prop2 + "\">";
+		list_2 += embroidery_char_table['size'][selected_1_size][prop2];
+		list_2 += "</option>";
+	}
+	$("select[name$='embroidery_section_2_char_size']").html(list_2);
+	$('select').material_select();
+}
+
+function set_embroidery_section_2_pic_1() {
+	var list_1 = ""
+	for(var prop1 in embroidery_pic_table) {
+		list_1 += "<option value=\"" + prop1 + "\">";
+		list_1 += embroidery_pic_table[prop1].name;
+		list_1 += "</option>";
+	}
+	$("select[name$='embroidery_section_2_pic_font']").html(list_1);
+	$('select').material_select();
+	set_embroidery_section_2_pic_2();
+}
+
+function set_embroidery_section_2_pic_2() {
+	selected_1 = "" + $("select[name$='embroidery_section_2_pic_font'] option:selected").val();
+	var list_2 = ""
+	for(var prop2 in embroidery_pic_table[selected_1]['map']) {
+		list_2 += "<option value=\"" + prop2 + "\">";
+		list_2 += selected_1 + " " + prop2;
+		list_2 += "</option>";
+	}
+	$("select[name$='embroidery_section_2_pic_content']").html(list_2);
+	$('select').material_select();
+	set_embroidery_section_2_pic_3();
+}
+
+function set_embroidery_section_2_pic_3() {
+	selected_1 = "" + $("select[name$='embroidery_section_2_pic_font'] option:selected").val();
+	selected_2 = "" + $("select[name$='embroidery_section_2_pic_content'] option:selected").val();
+	selected_2_size = "" + embroidery_pic_table[selected_1]['map'][selected_2];
+	var list_3 = "";
+	for(var prop3 in embroidery_pic_table[selected_1]['size'][selected_2_size]) {
+		list_3 += "<option value=\"" + prop3 + "\">";
+		list_3 += embroidery_pic_table[selected_1]['size'][selected_2_size][prop3];
+		list_3 += "</option>";
+	}
+	$("select[name$='embroidery_section_2_pic_size']").html(list_3);
+	$('select').material_select();
+}
+
+function set_embroidery_section_2_div() {
+	selected_1 = "" + $("select[name$='embroidery_section_2_type'] option:selected").val();
+	if(selected_1 == "needless") {
+		$("#embroidery_section_2_char_div").hide();
+		$("#embroidery_section_2_pic_div").hide();
+	}
+	if(selected_1 == "char") {
+		$("#embroidery_section_2_char_div").show();
+		$("#embroidery_section_2_pic_div").hide();
+	}
+	if(selected_1 == "pic") {
+		$("#embroidery_section_2_char_div").hide();
+		$("#embroidery_section_2_pic_div").show();
+	}
+}
+
+//初始化刺绣模块
+function use_embroidery_new() {
+
+	init_embroidery_table();
+	
+	set_embroidery_section_1_div();
+	set_embroidery_section_1_char_1();
+	set_embroidery_section_1_pic_1();
+	$("select[name$='embroidery_section_1_type']").bind("change", function() {
+		set_embroidery_section_1_div();
+	});
+	$("select[name$='embroidery_section_1_char_font']").bind("change", function() {
+		set_embroidery_section_1_char_2();
+	});
+	$("select[name$='embroidery_section_1_pic_font']").bind("change", function() {
+		set_embroidery_section_1_pic_2();
+	});
+	$("select[name$='embroidery_section_1_pic_content']").bind("change", function() {
+		set_embroidery_section_1_pic_3();
+	});
+	
+	
+	set_embroidery_section_2_div();
+	set_embroidery_section_2_char_1();
+	set_embroidery_section_2_pic_1();
+	$("select[name$='embroidery_section_2_type']").bind("change", function() {
+		set_embroidery_section_2_div();
+	});
+	$("select[name$='embroidery_section_2_char_font']").bind("change", function() {
+		set_embroidery_section_2_char_2();
+	});
+	$("select[name$='embroidery_section_2_pic_font']").bind("change", function() {
+		set_embroidery_section_2_pic_2();
+	});
+	$("select[name$='embroidery_section_2_pic_content']").bind("change", function() {
+		set_embroidery_section_2_pic_3();
+	});
+
+}
+//-------------------------------------------------------------------------刺绣模块↑

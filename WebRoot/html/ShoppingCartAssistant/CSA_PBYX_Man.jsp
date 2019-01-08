@@ -699,6 +699,7 @@
 															</div>
 															<div class="input-field col s6 m3 l3">
 																<select name="line_color_location_3">
+																	<option value="UKKKK">顺纽扣色</option>
 																	<%=list_color%>
 																</select> <label>钉扣线</label>
 															</div>
