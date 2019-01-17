@@ -2,7 +2,7 @@ package com.ltyx.sca.moudle;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class MoudleCSACheckSummaryClothes extends MoudleCSCheckSummaryClothes {
+public class MoudleCSACheckSummaryClothes extends MoudleCSDCheckSummaryClothes {
 
 	public MoudleCSACheckSummaryClothes(HttpServletRequest req) {
 		super(req);

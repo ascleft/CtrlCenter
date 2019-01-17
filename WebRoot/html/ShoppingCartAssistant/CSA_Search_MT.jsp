@@ -8,6 +8,8 @@
 	String ec_user_name=(String) session.getAttribute("ec_user_name");
 	String ec_user_rank=(String) session.getAttribute("ec_user_rank");
 	
+	String su=(String) session.getAttribute("su");
+	
 	String QRurl=(String) session.getAttribute("QRurl");
 
 	String menulist=(String) session.getAttribute("menulist");
@@ -15,10 +17,10 @@
 <html>
 	<!--
 		
-		作者：ascleft@163.com
-		时间：2018-05-25
-		描述：
-		SCA 2.0
+		作者:鸿安Adrian
+		邮箱:ascleft@163.com
+		时间:2019-01-16
+		描述:购物车添加工具 SCA 3.0
 		
 		客户经理 即时库存联合查询
 		
@@ -33,34 +35,30 @@
 		<!-- Google Icon Font -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<!-- JQuery  -->
-		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
 		<!--  Angular.js-->
 		<!--<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>-->
+		<!-- Vue.js  -->
+		<!--<script src="../../js/vue.min.js"></script>-->
+
+		<!-- YXN  -->
+		<script src="../../js/jquery-3.2.1.min.js"></script>
+		<script src="<%=path %>/js/jquery-3.2.1.min.js"></script>
 
 		<!-- local html  -->
-		<link href="../../img/global/logo/icon_title_1.jpg" rel="shortcut icon" />
-
-		<link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="../../css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-
 		<script src="../../js/materialize.js"></script>
 		<script src="../../js/init.js"></script>
-
-		<script src="../../js/vue.min.js"></script>
-
+		
 		<script src="../../js/init_sca.js"></script>
 
 		<!--local jsp   -->
-		<link href="<%=path %>/img/global/logo/icon_title_1.jpg" rel="shortcut icon">
-
-		<link href="<%=path %>/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="<%=path %>/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="<%=path %>/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-
 		<script src="<%=path %>/js/materialize.js"></script>
 		<script src="<%=path %>/js/init.js"></script>
-
-		<script src="<%=path %>/js/vue.min.js"></script>
-
+		
 		<script src="<%=path %>/js/init_sca.js"></script>
 
 		<script type="application/javascript">
@@ -299,7 +297,7 @@
 
 							board_table_lines += "<a ";
 							board_table_lines += "style=\"color: lightskyblue;\" ";
-							board_table_lines += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBC.action?code=";
+							board_table_lines += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBCMan.action?code=";
 							board_table_lines += targetJson.list[j].LuthaiCode;
 							board_table_lines += "\">";
 							board_table_lines += "男装客供";
@@ -311,14 +309,14 @@
 
 							board_table_lines += "<a ";
 							board_table_lines += "style=\"color: lightpink;\" ";
-							board_table_lines += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideWomanPBC.action?code=";
+							board_table_lines += "href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBCWoman.action?code=";
 							board_table_lines += targetJson.list[j].LuthaiCode;
 							board_table_lines += "\">";
 							board_table_lines += "女装客供";
 							board_table_lines += "</a>";
 
 						} else if("MLCK037" == targetJson.list[j].Warehouse) {
-							board_table_lines += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action?code=";
+							board_table_lines += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYXMain.action?code=";
 							board_table_lines += targetJson.list[j].UskinCode;
 							board_table_lines += "\">";
 							board_table_lines += targetJson.list[j].UskinCode;
@@ -326,7 +324,7 @@
 							board_table_lines += "</a>";
 
 						} else {
-							board_table_lines += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action?code=";
+							board_table_lines += "<a href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYXMan.action?code=";
 							board_table_lines += targetJson.list[j].UskinCode;
 							board_table_lines += "\">";
 							board_table_lines += targetJson.list[j].UskinCode;
@@ -348,12 +346,21 @@
 							board_table_lines += "*";
 							board_table_lines += "</td>";
 						} else {
-							board_table_lines += "<td class=\"hide-on-small-only\">";
-							board_table_lines += "*";
-							board_table_lines += "</td>";
-							board_table_lines += "<td class=\"hide-on-small-only\">";
-							board_table_lines += "*";
-							board_table_lines += "</td>";
+							if("<%=su%>" == "true") {
+								board_table_lines += "<td class=\"hide-on-small-only\">";
+								board_table_lines += targetJson.list[j].Department;
+								board_table_lines += "</td>";
+								board_table_lines += "<td class=\"hide-on-small-only\">";
+								board_table_lines += targetJson.list[j].LuthaiCode;
+								board_table_lines += "</td>";
+							} else {
+								board_table_lines += "<td class=\"hide-on-small-only\">";
+								board_table_lines += "*";
+								board_table_lines += "</td>";
+								board_table_lines += "<td class=\"hide-on-small-only\">";
+								board_table_lines += "*";
+								board_table_lines += "</td>";
+							}
 						}
 						board_table_lines += "<td>";
 						board_table_lines += targetJson.list[j].All;
@@ -650,17 +657,34 @@
 			</div>
 		</main>
 
-		<footer class="page-footer teal ">
-			<div class="container ">
-				<div class="row " style="display: none; ">
-					<h5 class="center-align">					
-						<img class="hoverable " src="<%=QRurl%>"/>
-					</h5>
+		<footer class="page-footer teal">
+			<div class="container">
+				<div class="row" style="display:; text-align:center">
 				</div>
 			</div>
 			<div class="footer-copyright">
-				<div class="container">Made By ZhangChi 2017</div>
+				<div class="container">Powered by ZhangChi 2019</div>
 			</div>
+			<div class="fixed-action-btn toolbar">
+				<a class="btn-floating  teal darken-1">
+					<i class="large material-icons">shopping_cart</i>
+				</a>
+				<ul>
+					<li class="waves-effect waves-light">
+						<a href="http://www.uskin.net.cn/index.php/cart.html">USKIN电脑版</a>
+					</li>
+					<li class="waves-effect waves-light">
+						<a href="http://www.uskin.net.cn/index.php/wap/cart.html">USKIN手机版 </a>
+					</li>
+					<li class="waves-effect waves-light">
+						<a href="http://www.utailor.com.cn/index.php/cart.html">君奕电脑版</a>
+					</li>
+					<li class="waves-effect waves-light">
+						<a href="http://www.utailor.com.cn/index.php/wap/cart.html">君奕手机版</a>
+					</li>
+				</ul>
+			</div>
+
 		</footer>
 
 	</body>

@@ -148,7 +148,7 @@ public class LoginAction extends CCActionSupport {
 				int roleCheck = NumberHelper.string2int(ec_user_role);
 				if (0 <= roleCheck && roleCheck < 10) {
 					if (roleCheck == 0) {
-						targetUrl = "/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action";// 客户经理
+						targetUrl = "/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYXMan.action";// 客户经理
 					} else {
 						targetUrl = "/CtrlCenter/LTYX/SCA/Main/UnitySearch.action";// 客户经理
 					}

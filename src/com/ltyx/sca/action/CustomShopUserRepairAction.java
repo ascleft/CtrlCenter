@@ -3,8 +3,6 @@ package com.ltyx.sca.action;
 import com.ltyx.sca.moudle.MoudleCSUGetOrder;
 import com.ltyx.sca.moudle.MoudleCSUOrderRepair;
 import com.zc.support.doman.CCActionSupport;
-import com.zc.support.link.ZCReqIntroGetter;
-import com.zc.support.service.TextLogHelper;
 
 public class CustomShopUserRepairAction extends CCActionSupport {
 
@@ -17,9 +15,7 @@ public class CustomShopUserRepairAction extends CCActionSupport {
 
 		init(true);
 
-		if (!"3071".equals(session.getAttribute("ec_user_id").toString()) && !"129".equals(session.getAttribute("ec_user_id").toString())) {
-			AuthorizeAssistan.check(session.getAttribute("ec_user_rank").toString(), response, "20", "21");
-		}
+		AuthorizeAssistan.check(session, response, "20", "21");
 
 		session = SCAPageConfigCommon.manageMenu(session);
 		session = SCAPageConfigCommon.manageTechnologyMan(session);
@@ -45,15 +41,27 @@ public class CustomShopUserRepairAction extends CCActionSupport {
 			} else {
 				addDBLogTags("失败");
 			}
+
 		}
 
-		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_PRICE_SUCC);
-			writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_SUCC);
-		} else {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_PRICE_FAIL);
-			writeResp(methodName, TextLogHelper.Type.USKIN_USER_PRICE_FAIL);
+		writeResp();
+
+		return null;
+
+	}
+
+	public String check() {
+
+		init(true);
+
+		{
+			boolean isSucc = doCheck();
+			if (isSucc) {
+			} else {
+			}
 		}
+
+		writeResp();
 
 		return null;
 
@@ -76,13 +84,7 @@ public class CustomShopUserRepairAction extends CCActionSupport {
 			}
 		}
 
-		if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_ORDER_SUCC);
-			writeResp(methodName, TextLogHelper.Type.USKIN_USER_ORDER_SUCC);
-		} else {
-			ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_USER_ORDER_FAIL);
-			writeResp(methodName, TextLogHelper.Type.USKIN_USER_ORDER_FAIL);
-		}
+		writeResp();
 
 		return null;
 
@@ -104,6 +106,10 @@ public class CustomShopUserRepairAction extends CCActionSupport {
 			return true;
 		}
 
+	}
+
+	public boolean doCheck() {
+		return true;
 	}
 
 	public boolean doSubmit() {

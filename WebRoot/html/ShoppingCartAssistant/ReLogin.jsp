@@ -7,12 +7,12 @@
 <html>
 	<!--
 		
-		作者：ascleft@163.com
-		时间：2017-11-20
-		描述：
-		购物车添加工具 SCA 2.0
+		作者:鸿安Adrian
+		邮箱:ascleft@163.com
+		时间:2019-01-16
+		描述:购物车添加工具 SCA 3.0
 		
-		登录
+		二次登录
 		
 	-->
 
@@ -25,34 +25,30 @@
 		<!-- Google Icon Font -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<!-- JQuery  -->
-		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
 		<!--  Angular.js-->
 		<!--<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>-->
+		<!-- Vue.js  -->
+		<!--<script src="../../js/vue.min.js"></script>-->
+
+		<!-- YXN  -->
+		<script src="../../js/jquery-3.2.1.min.js"></script>
+		<script src="<%=path %>/js/jquery-3.2.1.min.js"></script>
 
 		<!-- local html  -->
-		<link href="../../img/global/logo/icon_title_1.jpg" rel="shortcut icon" />
-
-		<link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="../../css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-
 		<script src="../../js/materialize.js"></script>
 		<script src="../../js/init.js"></script>
-
-		<script src="../../js/vue.min.js"></script>
-
+		
 		<script src="../../js/init_sca.js"></script>
 
 		<!--local jsp   -->
-		<link href="<%=path %>/img/global/logo/icon_title_1.jpg" rel="shortcut icon">
-
-		<link href="<%=path %>/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="<%=path %>/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="<%=path %>/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-
 		<script src="<%=path %>/js/materialize.js"></script>
 		<script src="<%=path %>/js/init.js"></script>
-
-		<script src="<%=path %>/js/vue.min.js"></script>
-
+		
 		<script src="<%=path %>/js/init_sca.js"></script>
 
 		<script type="application/javascript">
@@ -162,6 +158,22 @@
 				</div>
 			</div>
 		</main>
+
+		<footer class="page-footer teal">
+			<div class="container">
+				<div class="row" style="display:; text-align:center">
+					<div class="col s6 m6 l6">
+						<h6><a href="http://www.uskin.net.cn/index.php/wap/cart.html" target="_blank" class="white-text">进入USKIN购物车结算(手机版)</a></h6>
+					</div>
+					<div class="col s6 m6 l6">
+						<h6><a href="http://www.uskin.net.cn/index.php/cart.html" target="_blank" class="white-text">进入USKIN购物车结算(电脑版)</a></h6>
+					</div>
+				</div>
+			</div>
+			<div class="footer-copyright">
+				<div class="container">Powered by ZhangChi 2019</div>
+			</div>
+		</footer>
 
 	</body>
 

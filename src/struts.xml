@@ -39,6 +39,7 @@
 		<action name="GetLogPage" class="com.ltyx.core.action.LogMgrtAction"
 		method="getPage">
 			<result name="csu">/html/ShoppingCartAssistant/LogMgr_CSU.jsp</result>
+			<result name="csa">/html/ShoppingCartAssistant/LogMgr_CSA.jsp</result>
 			<result name="ybr">/html/ShoppingCartAssistant/LogMgr_YBR.jsp</result>
 		</action>
 		<action name="FindLog" class="com.ltyx.core.action.LogMgrtAction"
@@ -83,39 +84,44 @@
 		<!-- 客户经理-->
 
 		<!-- 客户经理 优纤面料 男装-->
-		<action name="CustomShopAidePBYX"         class="com.ltyx.sca.action.CustomShopAidePBYXManAction" method="getPage">
+		<action name="CustomShopAidePBYXMan"                class="com.ltyx.sca.action.CustomShopAidePBYXManAction"     method="getPage">
 			<result name="succ">/html/ShoppingCartAssistant/CSA_PBYX_Man.jsp</result>
 		</action>
-		<action name="GetPriceCustomShopAidePBYX" class="com.ltyx.sca.action.CustomShopAidePBYXManAction" method="getPrice"></action>
-		<action name="SubmitCustomShopAidePBYX"   class="com.ltyx.sca.action.CustomShopAidePBYXManAction" method="submit"></action>
-
-		<!-- 客户经理 客供面料 男装-->
-		<action name="CustomShopAidePBC"          class="com.ltyx.sca.action.CustomShopAidePBCManAction" method="getFormWithCode">
-			<result name="succ">/html/ShoppingCartAssistant/CSA_PBC_Man.jsp</result>
-		</action>
-		<action name="GetPriceCustomShopAidePBC" class="com.ltyx.sca.action.CustomShopAidePBCManAction" method="getPrice"></action>
-		<action name="SubmitCustomShopAidePBC"   class="com.ltyx.sca.action.CustomShopAidePBCManAction" method="submit"></action>
+		<action name="CustomShopAidePBYXManGetPrice"        class="com.ltyx.sca.action.CustomShopAidePBYXManAction"     method="getPrice"></action>
+		<action name="CustomShopAidePBYXManCheck"           class="com.ltyx.sca.action.CustomShopAidePBYXManAction"     method="check"></action>
+		<action name="CustomShopAidePBYXManSubmit"          class="com.ltyx.sca.action.CustomShopAidePBYXManAction"     method="submit"></action>
 
 		<!-- 客户经理 优纤面料 女装 -->
-		<action name="CustomShopAideWoman"         class="com.ltyx.sca.action.CustomShopAidePBYXWomanAction" method="getPage">
+		<action name="CustomShopAidePBYXWoman"              class="com.ltyx.sca.action.CustomShopAidePBYXWomanAction"    method="getPage">
 			<result name="succ">/html/ShoppingCartAssistant/CSA_PBYX_Woman.jsp</result>
 		</action>
-		<action name="GetPriceCustomShopAideWoman" class="com.ltyx.sca.action.CustomShopAidePBYXWomanAction" method="getPrice"></action>
-		<action name="SubmitCustomShopAideWoman"   class="com.ltyx.sca.action.CustomShopAidePBYXWomanAction" method="submit"></action>
-
-		<!-- 客户经理 客供面料 女装 -->
-		<action name="CustomShopAideWomanPBC"         class="com.ltyx.sca.action.CustomShopAidePBCWomanAction" method="getPage">
-			<result name="succ">/html/ShoppingCartAssistant/CSA_PBC_Woman.jsp</result>
-		</action>
-		<action name="GetPriceCustomShopAideWomanPBC" class="com.ltyx.sca.action.CustomShopAidePBCWomanAction" method="getPrice"></action>
-		<action name="SubmitCustomShopAideWomanPBC"   class="com.ltyx.sca.action.CustomShopAidePBCWomanAction" method="submit"></action>
+		<action name="CustomShopAidePBYXWomanGetPrice"      class="com.ltyx.sca.action.CustomShopAidePBYXWomanAction"    method="getPrice"></action>
+		<action name="CustomShopAidePBYXWomanCheck"         class="com.ltyx.sca.action.CustomShopAidePBYXWomanAction"    method="check"></action>
+		<action name="CustomShopAidePBYXWomanSubmit"        class="com.ltyx.sca.action.CustomShopAidePBYXWomanAction"    method="submit"></action>
 
 		<!-- 客户经理 优纤面料 设计师款-->
-		<action name="CustomShopAideDesign"         class="com.ltyx.sca.action.CustomShopAidePBYXDesignAction" method="getPage">
+		<action name="CustomShopAidePBYXDesign"             class="com.ltyx.sca.action.CustomShopAidePBYXDesignAction"   method="getPage">
 			<result name="succ">/html/ShoppingCartAssistant/CSA_PBYX_Design.jsp</result>
 		</action>
-		<action name="GetPriceCustomShopAideDesign" class="com.ltyx.sca.action.CustomShopAidePBYXDesignAction" method="getPrice"></action>
-		<action name="SubmitCustomShopAideDesign"   class="com.ltyx.sca.action.CustomShopAidePBYXDesignAction" method="submit"></action>
+		<action name="CustomShopAidePBYXDesignGetPrice"     class="com.ltyx.sca.action.CustomShopAidePBYXDesignAction"   method="getPrice"></action>
+		<action name="CustomShopAidePBYXDesignCheck"        class="com.ltyx.sca.action.CustomShopAidePBYXDesignAction"   method="check"></action>
+		<action name="CustomShopAidePBYXDesignSubmit"       class="com.ltyx.sca.action.CustomShopAidePBYXDesignAction"   method="submit"></action>
+
+		<!-- 客户经理 客供面料 男装-->
+		<action name="CustomShopAidePBCMan"                 class="com.ltyx.sca.action.CustomShopAidePBCManAction"       method="getFormWithCode">
+			<result name="succ">/html/ShoppingCartAssistant/CSA_PBC_Man.jsp</result>
+		</action>
+		<action name="CustomShopAidePBCManGetPrice"         class="com.ltyx.sca.action.CustomShopAidePBCManAction"       method="getPrice"></action>
+		<action name="CustomShopAidePBCManCheck"            class="com.ltyx.sca.action.CustomShopAidePBCManAction"       method="check"></action>
+		<action name="CustomShopAidePBCManSubmit"           class="com.ltyx.sca.action.CustomShopAidePBCManAction"       method="submit"></action>
+
+		<!-- 客户经理 客供面料 女装 -->
+		<action name="CustomShopAidePBCWoman"               class="com.ltyx.sca.action.CustomShopAidePBCWomanAction"     method="getPage">
+			<result name="succ">/html/ShoppingCartAssistant/CSA_PBC_Woman.jsp</result>
+		</action>
+		<action name="CustomShopAidePBCWomanGetPrice"       class="com.ltyx.sca.action.CustomShopAidePBCWomanAction"     method="getPrice"></action>
+		<action name="CustomShopAidePBCWomanCheck"          class="com.ltyx.sca.action.CustomShopAidePBCWomanAction"     method="check"></action>
+		<action name="CustomShopAidePBCWomanSubmit"         class="com.ltyx.sca.action.CustomShopAidePBCWomanAction"     method="submit"></action>
 
 		<!-- 客户经理 即时库存  -->
 		<action name="CustomShopAideSearch" class="com.ltyx.sca.action.CustomShopAideSearchAction" method="getPage">
@@ -175,6 +181,7 @@
 			<result name="succ">/html/ShoppingCartAssistant/CSU_Repair.jsp</result>
 		</action>
 		<action name="CustomShopRepairGetPrice"         class="com.ltyx.sca.action.CustomShopUserRepairAction"      method="getPrice"></action>
+		<action name="CustomShopRepairCheck"            class="com.ltyx.sca.action.CustomShopUserRepairAction"      method="check"></action>
 		<action name="CustomShopRepairSubmit"           class="com.ltyx.sca.action.CustomShopUserRepairAction"      method="submit"></action>
 
 		<!-- 获取页面 即时库存 定制店 -->

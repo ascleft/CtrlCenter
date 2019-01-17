@@ -22,26 +22,37 @@ public class SCAPageConfigCommon {
 				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_cs());
 			}
 
-			String[][] dic_su = { //
-					{ "129", "0", "SU 张弛-客户经理" }, //
-					{ "3071", "20", "SU 张弛-定制店" }, //
-					{ "3071", "21", "SU 张弛-定制店-独立密码" }, //
-					{ "3000", "20", "SU 顾振-定制店" }, //
-					{ "3000", "21", "SU 顾振-定制店-独立密码" }, //
-					{ "21000", "20", "SU 刘亚朋" }, //
-					{ "21000", "21", "SU 刘亚朋-独立密码" },//
-			};
+//			String[][] dic_su = { //
+//					{ "129", "0", "SU 张弛-客户经理" }, //
+//					{ "3071", "20", "SU 张弛-定制店" }, //
+//					{ "3071", "21", "SU 张弛-定制店-独立密码" }, //
+//					{ "3000", "20", "SU 顾振-定制店" }, //
+//					{ "3000", "21", "SU 顾振-定制店-独立密码" }, //
+//					{ "21000", "20", "SU 刘亚朋" }, //
+//					{ "21000", "21", "SU 刘亚朋-独立密码" },//
+//			};
+//
+//			{
+//				String idTemp = "" + session.getAttribute("ec_user_id");
+//				String rankTemp = "" + session.getAttribute("ec_user_rank");
+//				for (int i = 0; i < dic_su.length; i++) {
+//					if (idTemp.equals(dic_su[i][0]) && rankTemp.equals(dic_su[i][1])) {
+//						session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_all());
+//						session.setAttribute("ec_user_name", dic_su[i][2]);
+//					}
+//				}
+//			}
 
-			{
-				String idTemp = "" + session.getAttribute("ec_user_id");
-				String rankTemp = "" + session.getAttribute("ec_user_rank");
-				for (int i = 0; i < dic_su.length; i++) {
-					if (idTemp.equals(dic_su[i][0]) && rankTemp.equals(dic_su[i][1])) {
-						session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_all());
-						session.setAttribute("ec_user_name", dic_su[i][2]);
-					}
+			if (AuthorizeAssistan.isSU(session)) {
+				session.setAttribute("su", "true");
+				{
+					session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_all());
+					session.setAttribute("ec_user_name", AuthorizeAssistan.getSU(session));
 				}
+			} else {
+				session.setAttribute("su", "false");
 			}
+			
 
 		}
 
@@ -51,7 +62,7 @@ public class SCAPageConfigCommon {
 	synchronized public static HttpSession manageTechnologyMan(HttpSession session) {
 
 		{
-			session.setAttribute("list_LZX_01", SCAPageConfigMan.get_list_LZX_01());
+			session.setAttribute("list_tech_collar_full", SCAPageConfigMan.get_list_tech_collar_full());
 			session.setAttribute("list_LZX_02", SCAPageConfigMan.get_list_LZX_02());
 			session.setAttribute("list_LZX_03", SCAPageConfigMan.get_list_LZX_03());
 			session.setAttribute("list_LZX_04", SCAPageConfigMan.get_list_LZX_04());
@@ -63,7 +74,7 @@ public class SCAPageConfigCommon {
 			session.setAttribute("list_LZX_13", SCAPageConfigMan.get_list_LZX_13());
 			session.setAttribute("list_zhidai", SCAPageConfigMan.get_list_zhidai());
 			session.setAttribute("list_color", SCAPageConfigMan.get_list_color());
-			session.setAttribute("list_kouzi", SCAPageConfigMan.get_list_kouzi());
+			session.setAttribute("list_button_default", SCAPageConfigMan.list_button_default());
 			session.setAttribute("list_easytype", SCAPageConfigMan.get_list_easy_type());
 			session.setAttribute("list_lingcheng", SCAPageConfigMan.get_list_lingcheng());
 			session.setAttribute("list_mingxian", SCAPageConfigMan.get_list_mingxian());
@@ -89,7 +100,7 @@ public class SCAPageConfigCommon {
 	synchronized public static HttpSession manageTechnologyWoman(HttpSession session) {
 
 		{
-			session.setAttribute("list_LZX_01", SCAPageConfigWoman.get_list_LZX_01());
+			session.setAttribute("list_tech_collar_full", SCAPageConfigWoman.get_list_tech_collar_full());
 			session.setAttribute("list_LZX_02", SCAPageConfigWoman.get_list_LZX_02());
 			session.setAttribute("list_LZX_03", SCAPageConfigWoman.get_list_LZX_03());
 			session.setAttribute("list_LZX_04", SCAPageConfigWoman.get_list_LZX_04());
@@ -101,7 +112,7 @@ public class SCAPageConfigCommon {
 			session.setAttribute("list_LZX_13", SCAPageConfigWoman.get_list_LZX_13());
 			session.setAttribute("list_zhidai", SCAPageConfigWoman.get_list_zhidai());
 			session.setAttribute("list_color", SCAPageConfigWoman.get_list_color());
-			session.setAttribute("list_kouzi", SCAPageConfigWoman.get_list_kouzi());
+			session.setAttribute("list_button_default", SCAPageConfigWoman.list_button_default());
 			session.setAttribute("list_easytype", SCAPageConfigWoman.get_list_easy_type());
 			session.setAttribute("list_lingcheng", SCAPageConfigWoman.get_list_lingcheng());
 			session.setAttribute("list_mingxian", SCAPageConfigWoman.get_list_mingxian());
@@ -127,7 +138,7 @@ public class SCAPageConfigCommon {
 	synchronized public static HttpSession manageTechnologyMix(HttpSession session) {
 
 		{
-			session.setAttribute("list_LZX_01", SCAPageConfigMix.get_list_LZX_01());
+			session.setAttribute("list_tech_collar_full", SCAPageConfigMix.get_list_tech_collar_full());
 			session.setAttribute("list_LZX_02", SCAPageConfigMix.get_list_LZX_02());
 			session.setAttribute("list_LZX_03", SCAPageConfigMix.get_list_LZX_03());
 			session.setAttribute("list_LZX_04", SCAPageConfigMix.get_list_LZX_04());
@@ -139,7 +150,7 @@ public class SCAPageConfigCommon {
 			session.setAttribute("list_LZX_13", SCAPageConfigMix.get_list_LZX_13());
 			session.setAttribute("list_zhidai", SCAPageConfigMix.get_list_zhidai());
 			session.setAttribute("list_color", SCAPageConfigMix.get_list_color());
-			session.setAttribute("list_kouzi", SCAPageConfigMix.get_list_kouzi());
+			session.setAttribute("list_button_default", SCAPageConfigMix.list_button_default());
 			session.setAttribute("list_easytype", SCAPageConfigMix.get_list_easy_type());
 			session.setAttribute("list_lingcheng", SCAPageConfigMix.get_list_lingcheng());
 			session.setAttribute("list_mingxian", SCAPageConfigMix.get_list_mingxian());
@@ -206,24 +217,6 @@ public class SCAPageConfigCommon {
 		String menuList = ""//
 				+ "<li>"//
 				+ "<a class=\"subheader\">定制顾问功能</a>"//
-				+ "</li>"//
-				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/AidePBYX.action\">定制顾问 衬衫</a>"//
-				+ "</li>"//
-				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/AideDesign.action\">定制顾问 设计师款</a>"//
-				+ "</li>"//
-				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/AideWoman.action\">定制顾问 女装</a>"//
-				+ "</li>"//
-				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/AideSubcontract.action\">定制顾问 其他商品</a>"//
-				+ "</li>"//
-				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/AideSearch.action\">定制顾问 即时库存查询</a>"//
-				+ "</li>"//
-				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"http://www.utailor.com.cn/\">登录UTAILOR官网</a>"//
 				+ "</li>";//
 
 		return menuList;
@@ -236,29 +229,30 @@ public class SCAPageConfigCommon {
 				+ "<a class=\"subheader\">客户经理功能</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYX.action\">客户经理 优纤面料 男装</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYXMan.action\"   >客户经理 优纤面料 男装</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideWoman.action\">客户经理 优纤面料 女装</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYXWoman.action\" >客户经理 优纤面料 女装</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearch.action\">客户经理 客供面料 男装</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearch.action\"    >客户经理 客供面料 男装</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearch.action\">客户经理 客供面料 女装</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearch.action\"    >客户经理 客供面料 女装</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideDesign.action\">客户经理 优纤面料 设计师款</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYXDesign.action\">客户经理 优纤面料 设计师款</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearch.action\">客户经理 即时库存查询</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearch.action\"    >客户经理 即时库存查询</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearchMT.action\">客户经理 即时库存查询(多线程)</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearchMT.action\"  >客户经理 即时库存查询(多线程)</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"http://www.uskin.net.cn/index.php/cart.html\" target=\"_blank\">进入USKIN购物车结算(电脑版)</a>"//
-				+ "</li>" + "<li>"//
+				+ "<a class=\"waves-effect\" href=\"http://www.uskin.net.cn/index.php/cart.html\"     target=\"_blank\">进入USKIN购物车结算(电脑版)</a>"//
+				+ "</li>"// 
+				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"http://www.uskin.net.cn/index.php/wap/cart.html\" target=\"_blank\">进入USKIN购物车结算(手机版)</a>"//
 				+ "</li>";//
 
@@ -311,10 +305,16 @@ public class SCAPageConfigCommon {
 				+ "<a class=\"subheader\">系统功能</a>"//
 				+ "</li>"//
 				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearchMT.action\">客户经理 即时库存查询(多线程)</a>"//
+				+ "</li>"//
+				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/Core/GetLogPage.action?type=csu\">日志管理-定制店</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/Core/GetLogPage.action?type=ybr\">日志管理-衣帮人(alpha)</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/Core/GetLogPage.action?type=csa\">日志管理-客户经理</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/Core/GetLogPage.action?type=ybr\">日志管理-衣帮人</a>"//
 				+ "</li>";//
 
 		return menuList;

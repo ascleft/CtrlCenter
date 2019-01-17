@@ -4,9 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.zc.support.doman.ZCBaseActionSupportPlugin;
 
-public class MoudleCSCheckSummaryClothes extends ZCBaseActionSupportPlugin {
+public class MoudleCSDCheckSummaryClothes extends ZCBaseActionSupportPlugin {
 
-	public MoudleCSCheckSummaryClothes(HttpServletRequest req) {
+	public MoudleCSDCheckSummaryClothes(HttpServletRequest req) {
 		this.name = "校验 订单摘要信息";
 		this.request = req;
 	}

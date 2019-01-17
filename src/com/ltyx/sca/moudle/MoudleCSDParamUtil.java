@@ -8,9 +8,9 @@ import com.zc.support.link.ZCHttpReqParam;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
+public class MoudleCSDParamUtil extends ZCBaseActionSupportPlugin {
 
-	public MoudleCSParamUtil(HttpServletRequest req) {
+	public MoudleCSDParamUtil(HttpServletRequest req) {
 		this.name = "获取参数";
 		this.request = req;
 	}
@@ -33,19 +33,19 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 		param.addParam("LZX_06", getReqParamString("LZX_06"));
 
 		// 文字刺绣
-		param.addParam("LZX_11_FOR_CHAR_SWITCH", getReqParamString("LZX_11_FOR_CHAR_SWITCH"));
-		param.addParam("LZX_11_CHAR_TYPE", getReqParamString("LZX_11_CHAR_TYPE"));
-		param.addParam("LZX_13_FOR_CHAR", getReqParamString("LZX_13_FOR_CHAR"));
-		param.addParam("LZX_11_CHAR_SIZE", getReqParamString("LZX_11_CHAR_SIZE"));
-		param.addParam("LZX_11_CHAR_COLOR", getReqParamString("LZX_11_CHAR_COLOR"));
-		param.addParam("LZX_11_CHAR_WORD", getReqParamString("LZX_11_CHAR_WORD"));
+//		param.addParam("LZX_11_FOR_CHAR_SWITCH", getReqParamString("LZX_11_FOR_CHAR_SWITCH"));
+//		param.addParam("LZX_11_CHAR_TYPE", getReqParamString("LZX_11_CHAR_TYPE"));
+//		param.addParam("LZX_13_FOR_CHAR", getReqParamString("LZX_13_FOR_CHAR"));
+//		param.addParam("LZX_11_CHAR_SIZE", getReqParamString("LZX_11_CHAR_SIZE"));
+//		param.addParam("LZX_11_CHAR_COLOR", getReqParamString("LZX_11_CHAR_COLOR"));
+//		param.addParam("LZX_11_CHAR_WORD", getReqParamString("LZX_11_CHAR_WORD"));
 		// 图案刺绣
-		param.addParam("LZX_11_FOR_PIC_SWITCH", getReqParamString("LZX_11_FOR_PIC_SWITCH"));
-		param.addParam("LZX_11_PIC_TYPE", getReqParamString("LZX_11_PIC_TYPE"));
-		param.addParam("LZX_11_PIC_SIZE", getReqParamString("LZX_11_PIC_SIZE"));
-		param.addParam("LZX_13_FOR_PIC", getReqParamString("LZX_13_FOR_PIC"));
-		param.addParam("LZX_11_PIC_COLOR", getReqParamString("LZX_11_PIC_COLOR"));
-		param.addParam("LZX_11_PIC_NUM", getReqParamString("LZX_11_PIC_NUM"));
+//		param.addParam("LZX_11_FOR_PIC_SWITCH", getReqParamString("LZX_11_FOR_PIC_SWITCH"));
+//		param.addParam("LZX_11_PIC_TYPE", getReqParamString("LZX_11_PIC_TYPE"));
+//		param.addParam("LZX_11_PIC_SIZE", getReqParamString("LZX_11_PIC_SIZE"));
+//		param.addParam("LZX_13_FOR_PIC", getReqParamString("LZX_13_FOR_PIC"));
+//		param.addParam("LZX_11_PIC_COLOR", getReqParamString("LZX_11_PIC_COLOR"));
+//		param.addParam("LZX_11_PIC_NUM", getReqParamString("LZX_11_PIC_NUM"));
 
 		// 新版刺绣参数
 		param.addParam("embroidery", getEmbroideryPackage());
@@ -66,6 +66,7 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 		// param.addParam("design_code", getReqParamString("design_code"));
 		param.addParam("easy_type", getReqParamString("easy_type"));
 		param.addParam("kouzi", getReqParamString("kouzi", ""));
+		param.addParam("button_main_ft1", getReqParamString("kouzi", ""));	//锁钉位置
 		param.addParam("line_color_location_1", getReqParamString("line_color_location_1"));
 		param.addParam("line_color_location_2", getReqParamString("line_color_location_2"));
 		param.addParam("line_color_location_3", getReqParamString("line_color_location_3"));
@@ -130,6 +131,7 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 		param.addParam("spc_b_sle_n", getReqParamString("spc_b_sle_n"));// 袖子臂型
 		param.addParam("spc_b_muf_d", getReqParamString("spc_b_muf_d"));// 袖窿深下挖
 		param.addParam("spc_b_muf_u", getReqParamString("spc_b_muf_u"));// 袖窿深上调
+		param.addParam("spc_c_nec_f", getReqParamString("spc_c_nec_f"));// 前领窝下挖
 
 		param.addParam("button_decorative_num", getReqParamString("button_decorative_num"));// 装饰扣数量
 		param.addParam("button_decorative_code", getReqParamString("button_decorative_code"));// 装饰扣编号
@@ -227,7 +229,7 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 
 		JSONArray embroidery_list = new JSONArray();
 
-		JSONObject embroidery_section_1 = new JSONObject();
+		JSONObject embroidery_section_1 = null;
 		String embroidery_section_1_type = getReqParamString("embroidery_section_1_type");
 		if ("char".equals(embroidery_section_1_type)) {
 			embroidery_section_1 = new JSONObject();
@@ -248,7 +250,7 @@ public class MoudleCSParamUtil extends ZCBaseActionSupportPlugin {
 			embroidery_section_1.put("content", getReqParamString("embroidery_section_1_pic_content"));
 		}
 
-		JSONObject embroidery_section_2 = new JSONObject();
+		JSONObject embroidery_section_2 = null;
 		String embroidery_section_2_type = getReqParamString("embroidery_section_2_type");
 		if ("char".equals(embroidery_section_2_type)) {
 			embroidery_section_2 = new JSONObject();

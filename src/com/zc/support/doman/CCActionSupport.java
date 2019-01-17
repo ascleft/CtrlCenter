@@ -207,7 +207,18 @@ public class CCActionSupport extends ZCBaseActionSupport {
 		if (dbLog != null) {
 			dbLog.main.addKeys(getReqParamStrings("uskin_code"));
 			dbLog.main.addKeys(getReqParamStrings("customer_name"));
-			dbLog.main.addKeys(getReqParamStrings("LZX_11_CHAR_WORD"));
+			// 老刺绣
+			if (getReqParamString("LZX_11_CHAR_WORD").length() > 0) {
+				dbLog.main.addKeys("绣" + getReqParamString("LZX_11_CHAR_WORD"));
+			}
+			// 新刺绣1
+			if (getReqParamString("embroidery_section_1_char_content").length() > 0 && getReqParamString("embroidery_section_1_type").equals("char")) {
+				dbLog.main.addKeys("绣1" + getReqParamString("embroidery_section_1_char_content"));
+			}
+			// 新刺绣2
+			if (getReqParamString("embroidery_section_2_char_content").length() > 0 && getReqParamString("embroidery_section_2_type").equals("char")) {
+				dbLog.main.addKeys("绣2" + getReqParamString("embroidery_section_2_char_content"));
+			}
 		}
 	}
 

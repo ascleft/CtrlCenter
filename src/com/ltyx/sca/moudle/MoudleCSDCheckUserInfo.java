@@ -4,10 +4,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.zc.support.doman.ZCBaseActionSupportPlugin;
 
-public class MoudleCSCheckUserInfo extends ZCBaseActionSupportPlugin {
+public class MoudleCSDCheckUserInfo extends ZCBaseActionSupportPlugin {
 
 
-	public MoudleCSCheckUserInfo(HttpServletRequest req) {
+	public MoudleCSDCheckUserInfo(HttpServletRequest req) {
 		this.name = "校验 用户信息";
 		this.request = req;
 	}

@@ -23,7 +23,7 @@ public class MoudleCSUOrderWomanPBYX extends ZCBaseActionSupportPlugin {
 
 		TimeHelper.Timer timer = new TimeHelper.Timer();
 
-		MoudleCSParamUtil paramUtil = new MoudleCSParamUtil(request);
+		MoudleCSDParamUtil paramUtil = new MoudleCSDParamUtil(request);
 		ZCHttpReqParam param = paramUtil.getCSUOrderWomanPBYX();
 
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshop_add_cart_woman_pbyx.getUrl(), param, TextLogHelper.Type.USKIN_USER_ORDER_NSRC);

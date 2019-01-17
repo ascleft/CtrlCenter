@@ -14,10 +14,8 @@ public class CustomShopAideSearchAction extends CCActionSupport {
 
 		init(true);
 
-		if (!"3071".equals(session.getAttribute("ec_user_id").toString()) && !"129".equals(session.getAttribute("ec_user_id").toString())){
-			AuthorizeAssistan.check(session.getAttribute("ec_user_rank").toString(), response, "0");
-		}
-		
+		AuthorizeAssistan.check(session, response, "0");
+
 		session = SCAPageConfigCommon.manageMenu(session);
 		session = SCAPageConfigCommon.manageTechnologyMan(session);
 

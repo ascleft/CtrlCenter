@@ -5,8 +5,8 @@ import com.ltyx.open.ybr.moudle.MoudleYBR_OBO_CheckMeasure;
 import com.ltyx.open.ybr.moudle.MoudleYBR_OBO_SubmitEC_PBC;
 import com.ltyx.open.ybr.moudle.MoudleYBR_OBO_SubmitEC_PBYX;
 import com.ltyx.open.ybr.moudle.MoudleYBR_OBO_SubmitEC_Repair;
-import com.ltyx.sca.moudle.MoudleCSCheckSummaryClothes;
-import com.ltyx.sca.moudle.MoudleCSCheckUserInfo;
+import com.ltyx.sca.moudle.MoudleCSDCheckSummaryClothes;
+import com.ltyx.sca.moudle.MoudleCSDCheckUserInfo;
 import com.zc.support.doman.CCActionSupport;
 
 public class YBR_OBO_Action extends CCActionSupport {
@@ -103,7 +103,7 @@ public class YBR_OBO_Action extends CCActionSupport {
 	public boolean doSubmitPBYX() {
 
 		{
-			MoudleCSCheckUserInfo moudle = new MoudleCSCheckUserInfo(request);
+			MoudleCSDCheckUserInfo moudle = new MoudleCSDCheckUserInfo(request);
 			boolean isSucc = runMoudle(moudle);
 			if (isSucc == false) {
 				return false;
@@ -111,7 +111,7 @@ public class YBR_OBO_Action extends CCActionSupport {
 		}
 
 		{
-			MoudleCSCheckSummaryClothes moudle = new MoudleCSCheckSummaryClothes(request);
+			MoudleCSDCheckSummaryClothes moudle = new MoudleCSDCheckSummaryClothes(request);
 			boolean isSucc = runMoudle(moudle);
 			if (isSucc == false) {
 				return false;
@@ -156,14 +156,14 @@ public class YBR_OBO_Action extends CCActionSupport {
 	public boolean doSubmitPBC() {
 
 		{
-			MoudleCSCheckUserInfo moudle = new MoudleCSCheckUserInfo(request);
+			MoudleCSDCheckUserInfo moudle = new MoudleCSDCheckUserInfo(request);
 			boolean isSucc = runMoudle(moudle);
 			if (isSucc == false) {
 				return false;
 			}
 		}
 		{
-			MoudleCSCheckSummaryClothes moudle = new MoudleCSCheckSummaryClothes(request);
+			MoudleCSDCheckSummaryClothes moudle = new MoudleCSDCheckSummaryClothes(request);
 			boolean isSucc = runMoudle(moudle);
 			if (isSucc == false) {
 				return false;

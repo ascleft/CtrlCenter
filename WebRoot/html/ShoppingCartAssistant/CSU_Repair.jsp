@@ -12,38 +12,15 @@
 
 	String menulist=(String) session.getAttribute("menulist");
 	
-	String list_LZX_01=(String) session.getAttribute("list_LZX_01");
-	String list_LZX_02=(String) session.getAttribute("list_LZX_02");
-	String list_LZX_03=(String) session.getAttribute("list_LZX_03");
-	String list_LZX_04=(String) session.getAttribute("list_LZX_04");
-	String list_LZX_08=(String) session.getAttribute("list_LZX_08");
-	String list_LZX_120=(String) session.getAttribute("list_LZX_120");
-	String list_LZX_06=(String) session.getAttribute("list_LZX_06");
-	String list_LZX_17=(String) session.getAttribute("list_LZX_17");
-	String list_LZX_26=(String) session.getAttribute("list_LZX_26");
-	String list_LZX_13=(String) session.getAttribute("list_LZX_13");
-	String list_zhidai=(String) session.getAttribute("list_zhidai");
-	String list_color=(String) session.getAttribute("list_color");
-	String list_kouzi=(String) session.getAttribute("list_kouzi");
-	String list_easytype=(String) session.getAttribute("list_easytype");
-	String list_lingcheng=(String) session.getAttribute("list_lingcheng");
-	String list_mingxian=(String) session.getAttribute("list_mingxian");
-	String list_cefeng=(String) session.getAttribute("list_cefeng");
-	String list_qiantiao=(String) session.getAttribute("list_qiantiao");
-	String list_chenbu=(String) session.getAttribute("list_chenbu");
-	String list_weizhi_zhidai=(String) session.getAttribute("list_weizhi_zhidai");
-	String list_weizhi_peise=(String) session.getAttribute("list_weizhi_peise");
-	String list_baozhuang=(String) session.getAttribute("list_baozhuang_shop");	
-	
 %>
 
 <html>
 	<!--
 		
-		作者：ascleft@163.com
-		时间：2017-11-20
-		描述：
-		购物车添加工具 SCA 2.0
+		作者:鸿安Adrian
+		邮箱:ascleft@163.com
+		时间:2019-01-17
+		描述:购物车添加工具 SCA 3.0
 		
 		定制店 优纤面料
 		
@@ -58,34 +35,30 @@
 		<!-- Google Icon Font -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<!-- JQuery  -->
-		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
 		<!--  Angular.js-->
 		<!--<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>-->
+		<!-- Vue.js  -->
+		<!--<script src="../../js/vue.min.js"></script>-->
+
+		<!-- YXN  -->
+		<script src="../../js/jquery-3.2.1.min.js"></script>
+		<script src="<%=path %>/js/jquery-3.2.1.min.js"></script>
 
 		<!-- local html  -->
-		<link href="../../img/global/logo/icon_title_1.jpg" rel="shortcut icon" />
-
-		<link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="../../css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-
 		<script src="../../js/materialize.js"></script>
 		<script src="../../js/init.js"></script>
-
-		<script src="../../js/vue.min.js"></script>
-
+		
 		<script src="../../js/init_sca.js"></script>
 
 		<!--local jsp   -->
-		<link href="<%=path %>/img/global/logo/icon_title_1.jpg" rel="shortcut icon">
-
-		<link href="<%=path %>/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="<%=path %>/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="<%=path %>/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-
 		<script src="<%=path %>/js/materialize.js"></script>
 		<script src="<%=path %>/js/init.js"></script>
-
-		<script src="<%=path %>/js/vue.min.js"></script>
-
+		
 		<script src="<%=path %>/js/init_sca.js"></script>
 
 		<script type="application/javascript">
@@ -94,76 +67,41 @@
 				$('#nav_menu').sideNav('show');
 			}
 			//url定义
-			var url_addShoppingCart = "/CtrlCenter/LTYX/SCA/Main/CustomShopRepairSubmit.action";
-			var url_getPrice = "/CtrlCenter/LTYX/SCA/Main/CustomShopRepairGetPrice.action";
+			var url_price = "/CtrlCenter/LTYX/SCA/Main/CustomShopRepairGetPrice.action";
+			var url_check = "/CtrlCenter/LTYX/SCA/Main/CustomShopRepairCheck.action";
+			var url_addsc = "/CtrlCenter/LTYX/SCA/Main/CustomShopRepairSubmit.action";
 
-			//提交到购物车
-			function addShoppingCart() {
-				checkLoginState(
-					function prepare() {
-						state_upload_ing("正在建立安全连接");
-					},
-					function succ() {
-						state_upload_ing("正在将商品放入购物车，请稍候");
-						$.ajax({
-							cache: true,
-							type: "POST",
-							url: url_addShoppingCart,
-							data: $('#mianForm').serialize(),
-							async: true,
-							error: function(request) {
-								state_upload_error("无法连接到服务器");
-							},
-							success: function(data) {
-								var resp = JSON.parse(data);
-								if("0" == resp.ERRCODE) {
-									if("succ" == resp.ERRDESC) {
-										state_upload_finish("提交成功");
-									} else {
-										var desc = "提交失败<br/>智能错误分析：" + resp.data;
-										state_upload_error(desc);
-									}
-								} else {
-									state_upload_error("EC服务器通讯异常");
-								}
-							}
-						})
-					},
-					function fail() {
-						state_upload_error("当前登录状态异常,请在自动弹出的登录界面中完成验证<br/>完成验证后，关闭该对话框即可继续操作");
-						Materialize.toast("登录状态异常", 1000);
-						Materialize.toast("即将自动跳转", 1000);
-					}
-				);
-
-			}
+			var ajax_price = null;
+			var ajax_check = null;
+			var ajax_addsc = null;
 
 			//获取系统报价
 			function getPrice() {
 				checkLoginState(
 					function prepare() {
-						state_loading("");
+						global_progress_loading("");
 					},
 					function succ() {
-						state_loading("");
-						$.ajax({
+						global_progress_loading("");
+						ajax_price = $.ajax({
 							cache: true,
 							type: "POST",
-							url: url_getPrice,
+							url: url_price,
 							data: $('#mianForm').serialize(),
 							async: true,
 							error: function(request) {
-								state_loaded();
+								global_progress_loaded();
 								$("#prices_system").val('999999999');
 								$("#prices_now").val('999999999');
 								$("#prices_desc").val('网络异常，请重新获取报价');
-								state_ready("n");
+								state_now("lost_price")
+
 							},
 							success: function(data) {
 								var resp = JSON.parse(data);
 								if("0" == resp.ERRCODE) {
 									if("succ" == resp.ERRDESC) {
-										state_loaded();
+										global_progress_loaded();
 										if("<%=ec_user_rank%>" == "21") {
 											$("#prices_system").attr("type", "password");
 											$("#prices_now").attr("type", "password");
@@ -174,122 +112,174 @@
 										$("#prices_system").val(+resp.data);
 										$("#prices_now").val(+resp.data);
 										$("#prices_desc").val('');
-										state_ready("y");
-										show_TIPS1('' + resp.TIP1);
+										state_now("got_price")
+
 									} else {
-										state_loaded();
+										global_progress_loaded();
 										$("#prices_system").val('999999999');
 										$("#prices_now").val('999999999');
 										$("#prices_desc").val('报价异常，请重试:' + resp.data);
-										state_ready("n");
-										show_TIPS1('' + resp.TIP1);
+										state_now("lost_price")
+
 									}
 								} else {
-									state_loaded();
+									global_progress_loaded();
 									$("#prices_system").val('999999999');
 									$("#prices_now").val('999999999');
 									$("#prices_desc").val('EC服务器通讯异常，请重新获取报价');
-									state_ready("n");
+									state_now("lost_price")
+
 								}
 							}
 						})
 					},
 					function fail() {
-						state_loaded();
+						global_progress_loaded();
 						$("#prices_system").val('999999999');
 						$("#prices_now").val('999999999');
 						$("#prices_desc").val('请重新获取报价');
-						state_ready("n");
+						state_now("lost_price")
+
 						Materialize.toast("登录状态异常", 1000);
 						Materialize.toast("即将自动跳转", 1000);
 					}
 				)
 			}
 
+			//表单内容校验
+			function check() {
+				if(ajax_check != null) {
+					ajax_check.abort();
+				}
+				checkLoginState(
+					function prepare() {
+						global_notice_loading("正在建立安全连接");
+					},
+					function succ() {
+						global_notice_loading("云端数据分析中");
+						ajax_check = $.ajax({
+							cache: true,
+							type: "POST",
+							url: url_check,
+							data: $('#mianForm').serialize(),
+							async: true,
+							error: function(request) {
+								global_notice_show("无法连接到服务器");
+							},
+							success: function(data) {
+								var resp = JSON.parse(data);
+								if("0" == resp.ERRCODE) {
+									if("succ" == resp.ERRDESC) {
+										global_notice_hide();
+									} else {
+										var desc = "智能分析:<br/>" + resp.data;
+										global_notice_show(desc);
+										console.log("else");
+									}
+									console.log("0");
+								} else {
+									global_notice_show("EC服务器通讯异常");
+								}
+							}
+						})
+					},
+					function fail() {
+						global_notice_show("当前登录状态异常,请在自动弹出的登录界面中完成验证<br/>完成验证后，关闭该对话框即可继续操作");
+						Materialize.toast("登录状态异常", 1000);
+						Materialize.toast("即将自动跳转", 1000);
+					}
+				);
+			}
+
+			//提交到购物车
+			function addShoppingCart() {
+				checkLoginState(
+					function prepare() {
+						global_modal_upload_start("正在建立安全连接");
+					},
+					function succ() {
+						global_modal_upload_start("正在将商品放入购物车，请稍候");
+						ajax_addsc = $.ajax({
+							cache: true,
+							type: "POST",
+							url: url_addsc,
+							data: $('#mianForm').serialize(),
+							async: true,
+							error: function(request) {
+								global_modal_upload_error("无法连接到服务器");
+							},
+							success: function(data) {
+								var resp = JSON.parse(data);
+								if("0" == resp.ERRCODE) {
+									if("succ" == resp.ERRDESC) {
+										global_modal_upload_finish("提交成功");
+									} else {
+										var desc = "提交失败<br/>智能错误分析：" + resp.data;
+										global_modal_upload_error(desc);
+									}
+								} else {
+									global_modal_upload_error("EC服务器通讯异常");
+								}
+							}
+						})
+					},
+					function fail() {
+						global_modal_upload_error("当前登录状态异常,请在自动弹出的登录界面中完成验证<br/>完成验证后，关闭该对话框即可继续操作");
+						Materialize.toast("登录状态异常", 1000);
+						Materialize.toast("即将自动跳转", 1000);
+					}
+				);
+			}
+
 			function stopAddShoppingCart() {
-				ajax_addShopingCart.abort();
+				if(ajax_addsc != null) {
+					ajax_addsc.abort();
+				}
 			}
 
-			function state_upload_ing(displaywords) {
-				$("#modal_state").modal('open');
-				$("#modal_state_title").html(displaywords);
-				$("#modal_state_progress_bar").show();
-				$("#btn_finish").hide();
-				$("#btn_cancel").hide();
-				$("#btn_stop").hide();
-
-				setTimeout(function() {
-					$("#btn_stop").show()
-				}, 20000);
-			}
-
-			function state_upload_finish(displaywords) {
-				$("#modal_state_title").html(displaywords);
-				$("#modal_state_progress_bar").hide();
-				$("#btn_finish").show();
-				$("#btn_cancel").hide();
-				$("#btn_stop").hide();
-			}
-
-			function state_upload_error(displaywords) {
-				$("#modal_state_title").html(displaywords);
-				$("#modal_state_progress_bar").hide();
-				$("#btn_finish").hide();
-				$("#btn_cancel").show();
-				$("#btn_stop").hide();
-			}
-
-			function state_loading(displaywords) {
-				$("#load_state_progress_bar").show();
-			}
-
-			function state_loaded(displaywords) {
-				$("#load_state_progress_bar").hide();
-			}
-
-			function state_ready(state) {
-				if(state == "y") {
+			function state_now(state) {
+				if(state == "default") {
 					$("#getPrice").show();
 					$("#addShoppingCart").hide();
-				} else {
+					global_progress_loaded();
+					global_notice_hide();
+				}
+				if(state == "lost_price") {
+					$("#getPrice").show();
+					$("#addShoppingCart").hide();
+					check();
+				}
+				if(state == "got_price") {
 					$("#getPrice").hide();
 					$("#addShoppingCart").show();
 				}
 			}
 
-			function show_TIPS1(msg) {
-				if(msg == "" || msg == null) {
-					$("#TIP1").html('');
-					$("#TIP1").hide();
-				} else {
-					$("#TIP1").html('' + msg);
-					$("#TIP1").show();
-				}
-			}
-
 			$(document).ready(function() {
+
+				package_page();
+
+			});
+
+			function package_page() {
+
+				state_now("default");
+
 				$("div#section1 input").bind("keyup", function() {
-					state_ready("n");
+					state_now("lost_price");
 				});
 				$("div#section1 input").bind("change", function() {
-					state_ready("n");
-				});
-				$("div#section1 textarea").bind("keyup", function() {
-					state_ready("n");
-				});
-				$("div#section1 textarea").bind("change", function() {
-					state_ready("n");
+					state_now("lost_price");
 				});
 				$("div#section1 select").bind("change", function() {
-					state_ready("n");
+					state_now("lost_price");
 				});
 
-				state_loaded();
-				state_ready("n");
+				state_now("default");
 
-				use_SubcontractTable();
+				global_page_loaded();
 
-			})
+			};
 		</script>
 
 	</head>
@@ -341,7 +331,34 @@
 			<div class="container">
 				<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons white-text">menu</i></a>
 				<form method="post" id="mianForm">
-					<div class="section">
+
+					<div class="section" id="section_loading">
+						<div class="row">
+
+							<div class="col s12">
+								<div class="progress">
+									<div id="section_loading_determinate" class="determinate" style="width: 82%"></div>
+								</div>
+							</div>
+
+							<div class="col s12 center">
+								<h6 id="section_loading_title">页面构建中,请稍候...</h6>
+							</div>
+
+							<div class="col s12 center">
+								<div class="preloader-wrapper small active" style="display: none;">
+									<div class="spinner-layer spinner-green-only">
+										<div class="circle-clipper left">
+											<div class="circle"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="section" id="section_content" style="opacity: 0;">
 						<div class="row">
 
 							<div class="col s12 m12 l12" id="section1">
@@ -450,39 +467,46 @@
 													<label>报价说明</label>
 												</div>
 											</div>
-											<div class="col s12 m12 l12">
-												<div class="progress" id="load_state_progress_bar">
+
+											<!--进度条-->
+											<div id="global_frame_progress_div" class="col s12 m12 l12">
+												<div class="progress" id="global_frame_progress_loading_bar">
 													<div class="indeterminate"></div>
 												</div>
 											</div>
+											<!--提示-->
+											<div id="global_frame_notice_div" class="col s12 m12 l12">
+												<p id="global_frame_notice_board" class="grey-text">
+												</p>
+											</div>
+
 											<div class="col s12 m12 l12">
-												<a class="col s12 m12 l12 btn" onclick="getPrice()" id="addShoppingCart">获取报价</a>
+												<a class="col s12 m12 l12 btn" onclick="getPrice()" id="getPrice">获取报价</a>
 											</div>
 											<div class="col s12 m12 l12">
-												<a class="col s12 m12 l12 btn" onclick="addShoppingCart()" id="getPrice">提交到USKIN购物车</a>
+												<a class="col s12 m12 l12 btn" onclick="addShoppingCart()" id="addShoppingCart">提交到USKIN购物车</a>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-
 						</div>
 					</div>
 				</form>
 			</div>
 
 			<!--  模态框 -->
-			<div id="modal_state" class="modal">
+			<div id="global_frame_modal_div" class="modal">
 				<div class="modal-content">
-					<h4 id="modal_state_title">信息</h4>
-					<div class="progress" id="modal_state_progress_bar">
+					<h4 id="global_frame_modal_state_title">信息</h4>
+					<div class="progress" id="global_frame_modal_progress_bar">
 						<div class="indeterminate"></div>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<a id="btn_finish" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">确定</a>
-					<a id="btn_cancel" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">取消</a>
-					<a id="btn_stop" onclick="stopAddShoppingCart()" class="modal-action modal-close waves-effect waves-green btn-flat">停止</a>
+					<a id="global_frame_modal_btn_finish" onclick="modal_fun_finish()" class="modal-action modal-close waves-effect waves-green btn-flat">确定</a>
+					<a id="global_frame_modal_btn_cancel" onclick="modal_fun_cancel()" class="modal-action modal-close waves-effect waves-green btn-flat">取消</a>
+					<a id="global_frame_modal_btn_terminate" onclick="modal_fun_terminate()" class="modal-action modal-close waves-effect waves-green btn-flat">终止</a>
 				</div>
 			</div>
 
@@ -500,7 +524,7 @@
 				</div>
 			</div>
 			<div class="footer-copyright">
-				<div class="container">Made By ZhangChi 2018</div>
+				<div class="container">Powered by ZhangChi 2019</div>
 			</div>
 		</footer>
 

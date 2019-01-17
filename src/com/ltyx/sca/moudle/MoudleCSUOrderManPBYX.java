@@ -21,10 +21,11 @@ public class MoudleCSUOrderManPBYX extends ZCBaseActionSupportPlugin {
 
 	@Override
 	public boolean doJobs() {
+		// TODO Auto-generated method stub
 
 		TimeHelper.Timer timer = new TimeHelper.Timer();
 
-		MoudleCSParamUtil paramUtil = new MoudleCSParamUtil(request);
+		MoudleCSDParamUtil paramUtil = new MoudleCSDParamUtil(request);
 		ZCHttpReqParam param = paramUtil.getCSUOrderManPBYX();
 
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshop_add_cart_man_pbyx.getUrl(), param, TextLogHelper.Type.USKIN_USER_ORDER_NSRC);
@@ -62,6 +63,5 @@ public class MoudleCSUOrderManPBYX extends ZCBaseActionSupportPlugin {
 		}
 
 	}
-	
 
 }

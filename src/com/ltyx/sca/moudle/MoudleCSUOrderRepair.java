@@ -48,7 +48,7 @@ public class MoudleCSUOrderRepair extends ZCBaseActionSupportPlugin {
 			}
 		}
 
-		MoudleCSParamUtil paramUtil = new MoudleCSParamUtil(request);
+		MoudleCSDParamUtil paramUtil = new MoudleCSDParamUtil(request);
 		ZCHttpReqParam param = paramUtil.getCSURepair();
 
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshop_add_cart_repair.getUrl(), param, TextLogHelper.Type.USKIN_USER_ORDER_NSRC);

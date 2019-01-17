@@ -1,7 +1,7 @@
 package com.ltyx.sca.action;
 
-import com.ltyx.sca.moudle.MoudleCSCheckSummaryClothes;
-import com.ltyx.sca.moudle.MoudleCSCheckUserInfo;
+import com.ltyx.sca.moudle.MoudleCSDCheckSummaryClothes;
+import com.ltyx.sca.moudle.MoudleCSDCheckUserInfo;
 import com.ltyx.sca.moudle.MoudleCSUGetPriceManPBC;
 import com.ltyx.sca.moudle.MoudleCSUOrderManPBC;
 import com.ltyx.sca.moudle.MoudleCheckMeasureMan;
@@ -25,9 +25,7 @@ public class CustomShopUserPBCManAction extends CCActionSupport {
 
 		init(true);
 
-		if (!"3071".equals(session.getAttribute("ec_user_id").toString()) && !"129".equals(session.getAttribute("ec_user_id").toString())) {
-			AuthorizeAssistan.check(session.getAttribute("ec_user_rank").toString(), response, "20", "21");
-		}
+		AuthorizeAssistan.check(session, response, "20", "21");
 
 		session = SCAPageConfigCommon.manageMenu(session);
 		session = SCAPageConfigCommon.manageTechnologyMan(session);
@@ -138,7 +136,7 @@ public class CustomShopUserPBCManAction extends CCActionSupport {
 	public boolean doCheck() {
 
 		{// 用户信息检测
-			MoudleCSCheckUserInfo moudle = new MoudleCSCheckUserInfo(request);
+			MoudleCSDCheckUserInfo moudle = new MoudleCSDCheckUserInfo(request);
 			boolean isSucc = runMoudle(moudle);
 			if (isSucc == false) {
 				return false;
@@ -146,7 +144,7 @@ public class CustomShopUserPBCManAction extends CCActionSupport {
 		}
 
 		{// 订单摘要信息
-			MoudleCSCheckSummaryClothes moudle = new MoudleCSCheckSummaryClothes(request);
+			MoudleCSDCheckSummaryClothes moudle = new MoudleCSDCheckSummaryClothes(request);
 			boolean isSucc = runMoudle(moudle);
 			if (isSucc == false) {
 				return false;

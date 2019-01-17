@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import com.ltyx.sca.moudle.MoudleCSCheckUserInfo;
+import com.ltyx.sca.moudle.MoudleCSDCheckUserInfo;
 import com.zc.support.doman.CCActionSupport;
 import com.zc.support.service.DBHelper;
 import com.zc.support.service.StringHelper;
@@ -48,7 +48,7 @@ public class LogMgrtAction extends CCActionSupport {
 	public boolean doSearchYBR() {
 
 		{
-			MoudleCSCheckUserInfo moudle = new MoudleCSCheckUserInfo(request);
+			MoudleCSDCheckUserInfo moudle = new MoudleCSDCheckUserInfo(request);
 			boolean isSucc = runMoudle(moudle);
 			if (isSucc == false) {
 				return false;
@@ -60,7 +60,7 @@ public class LogMgrtAction extends CCActionSupport {
 	public boolean doSearchCSU() {
 
 		{
-			MoudleCSCheckUserInfo moudle = new MoudleCSCheckUserInfo(request);
+			MoudleCSDCheckUserInfo moudle = new MoudleCSDCheckUserInfo(request);
 			boolean isSucc = runMoudle(moudle);
 			if (isSucc == false) {
 				return false;
@@ -223,7 +223,8 @@ public class LogMgrtAction extends CCActionSupport {
 				{ "1", "收货人手机号（已隐藏）", "customer_tel", "" }, //
 				{ "1", "收货地址（已隐藏）", "customer_address", "" }, //
 				{ "1", "账户手机号（客户经理使用）", "customer_tel_target", "" }, //
-				{ "1", "订单备注", "customer_tips", "" }, //
+				{ "1", "寄厂单号", "ExpressNO", "" }, //
+				{ "1", "生产备注", "customer_tips", "" }, //
 				{ "1", "操作员ＩＤ（已隐藏）", "operator_id", "" }, //
 				{ "1", "操作员姓名（已隐藏）", "operator_name", "" }, //
 				//
@@ -309,19 +310,31 @@ public class LogMgrtAction extends CCActionSupport {
 				{ "1", "装饰扣位置", "button_decorative_pos", "" }, //
 				//
 				{ "0", "刺绣", "", "" }, //
-				{ "1", "是否使用文字刺绣", "LZX_11_FOR_CHAR_SWITCH", "" }, //
-				{ "1", "刺绣文字位置", "LZX_13_FOR_CHAR", "" }, //
-				{ "1", "刺绣文字颜色", "LZX_11_CHAR_COLOR", "" }, //
-				{ "1", "刺绣文字字体", "LZX_11_CHAR_TYPE", "" }, //
-				{ "1", "刺绣文字高度", "LZX_11_CHAR_SIZE", "" }, //
-				{ "1", "刺绣文字内容", "LZX_11_CHAR_WORD", "" }, //
-				{ "1", "是否使用图片刺绣", "LZX_11_FOR_PIC_SWITCH", "" }, //
-				{ "1", "刺绣图案位置", "LZX_13_FOR_PIC", "" }, //
-				{ "1", "刺绣图案颜色", "LZX_11_PIC_COLOR", "" }, //
-				{ "1", "刺绣图案系列", "LZX_11_PIC_TYPE", "" }, //
-				{ "1", "刺绣图案高度", "LZX_11_PIC_SIZE", "" }, //
-				{ "1", "刺绣图案编号", "LZX_11_PIC_NUM", "" }, //
-				{ "1", "客供图案刺绣数量", "cixiu_kegong_num", "" }, //
+				{ "1", "刺绣位置１", "embroidery_section_1_type", "" }, //
+				{ "1", "刺绣位置１字体", "embroidery_section_1_char_font", "" }, //
+				{ "1", "刺绣位置１尺寸", "embroidery_section_1_char_size", "" }, //
+				{ "1", "刺绣位置１位置", "embroidery_section_1_char_location", "" }, //
+				{ "1", "刺绣位置１颜色", "embroidery_section_1_char_color", "" }, //
+				{ "1", "刺绣位置１内容", "embroidery_section_1_char_content", "" }, //
+				{ "1", "刺绣位置２", "embroidery_section_2_type", "" }, //
+				{ "1", "刺绣位置２字体", "embroidery_section_2_char_font", "" }, //
+				{ "1", "刺绣位置２尺寸", "embroidery_section_2_char_size", "" }, //
+				{ "1", "刺绣位置２位置", "embroidery_section_2_char_location", "" }, //
+				{ "1", "刺绣位置２颜色", "embroidery_section_2_char_color", "" }, //
+				{ "1", "刺绣位置２内容", "embroidery_section_2_char_content", "" }, //				
+				{ "1", "旧　是否使用文字刺绣", "LZX_11_FOR_CHAR_SWITCH", "" }, //
+				{ "1", "旧　刺绣文字位置", "LZX_13_FOR_CHAR", "" }, //
+				{ "1", "旧　刺绣文字颜色", "LZX_11_CHAR_COLOR", "" }, //
+				{ "1", "旧　刺绣文字字体", "LZX_11_CHAR_TYPE", "" }, //
+				{ "1", "旧　刺绣文字高度", "LZX_11_CHAR_SIZE", "" }, //
+				{ "1", "旧　刺绣文字内容", "LZX_11_CHAR_WORD", "" }, //
+				{ "1", "旧　是否使用图片刺绣", "LZX_11_FOR_PIC_SWITCH", "" }, //
+				{ "1", "旧　刺绣图案位置", "LZX_13_FOR_PIC", "" }, //
+				{ "1", "旧　刺绣图案颜色", "LZX_11_PIC_COLOR", "" }, //
+				{ "1", "旧　刺绣图案系列", "LZX_11_PIC_TYPE", "" }, //
+				{ "1", "旧　刺绣图案高度", "LZX_11_PIC_SIZE", "" }, //
+				{ "1", "旧　刺绣图案编号", "LZX_11_PIC_NUM", "" }, //
+				{ "1", "旧　客供图案刺绣数量", "cixiu_kegong_num", "" }, //
 				//
 				{ "0", "配色", "", "" }, //
 				{ "1", "配色面料", "uskin_code_2", "" }, //
@@ -339,8 +352,8 @@ public class LogMgrtAction extends CCActionSupport {
 				{ "1", "财审时间", "financial_auth_time", "" }, //
 				//
 				{ "0", "衣邦人", "", "" }, //
-				{ "1", "衣帮人客户订单号", "ybr_ono_cust", "" }, //
-				{ "1", "衣帮人接口单号", "ybr_ono_api", "" }, //
+				{ "1", "衣帮人　客户订单号", "ybr_ono_cust", "" }, //
+				{ "1", "衣帮人　接口单号", "ybr_ono_api", "" }, //
 				{ "1", "衣帮人　面料用率", "ybr_fabric_using", "" }, //
 				{ "1", "衣帮人　地址　姓名", "ybr_addr_name", "" }, //
 				{ "1", "衣帮人　地址　手机", "ybr_addr_mobile", "" }, //

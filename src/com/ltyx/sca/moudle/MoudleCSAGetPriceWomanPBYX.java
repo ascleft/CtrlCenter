@@ -8,6 +8,7 @@ import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
 import com.zc.support.service.TextLogHelper;
+import com.zc.support.service.TimeHelper;
 
 import net.sf.json.JSONObject;
 
@@ -22,14 +23,20 @@ public class MoudleCSAGetPriceWomanPBYX extends ZCBaseActionSupportPlugin {
 	public boolean doJobs() {
 		// TODO Auto-generated method stub
 
+		TimeHelper.Timer timer = new TimeHelper.Timer();
+
 		double price = 0;
 
-		MoudleCSParamUtil paramUtil = new MoudleCSParamUtil(request);
+		MoudleCSDParamUtil paramUtil = new MoudleCSDParamUtil(request);
 		ZCHttpReqParam param = paramUtil.getCSAPriceWomanPBYX();
 
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_get_price_woman_pbyx.getUrl(), param, TextLogHelper.Type.USKIN_AIDE_PRICE_NSRC);
-
 		Log.Nano.tag(ConfigHelperURL.Url_customshopaide_get_price_woman_pbyx.getDesc() + "Resp From EC", httpResp);
+
+		timer.stop(null);
+		log.ec.addSrcReq(ConfigHelperURL.Url_customshop_get_price_design.getUrl(), param);
+		log.ec.addSrcResp(httpResp);
+		log.ec.addTimer(timer);
 
 		JSONObject jsonHttpResp;
 		String jsonERRCODE;

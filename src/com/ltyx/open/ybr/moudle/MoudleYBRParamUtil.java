@@ -54,6 +54,7 @@ public class MoudleYBRParamUtil extends ZCBaseActionSupportPlugin {
 		param.addParam("customer_tips", getReqParamString("customer_tips"));
 		param.addParam("easy_type", getReqParamString("easy_type"));
 		param.addParam("kouzi", getReqParamString("kouzi", ""));
+		param.addParam("button_main_ft1", getReqParamString("kouzi", ""));	//锁钉位置
 		param.addParam("line_color_location_1", getReqParamString("line_color_location_1"));
 		param.addParam("line_color_location_2", getReqParamString("line_color_location_2"));
 		param.addParam("line_color_location_3", getReqParamString("line_color_location_3"));
@@ -121,6 +122,19 @@ public class MoudleYBRParamUtil extends ZCBaseActionSupportPlugin {
 		param.addParam("tag_price", getReqParamString("tag_price")); // 吊牌价
 		param.addParam("document_pull_date", getReqParamString("document_pull_date")); // 合同发货日期
 		param.addParam("financial_auth_time", getReqParamString("financial_auth_time")); // 财审通过时间
+
+		// 特体选项
+		param.addParam("spc_b_sho_f", getReqParamString("spc_b_sho_f"));// 前冲后掰肩
+		param.addParam("spc_b_sho_l", getReqParamString("spc_b_sho_l"));// 左肩型
+		param.addParam("spc_b_sho_r", getReqParamString("spc_b_sho_r"));// 右肩型
+		param.addParam("spc_b_spi_s", getReqParamString("spc_b_spi_s"));// 前弓后仰体
+		param.addParam("spc_b_spi_h", getReqParamString("spc_b_spi_h"));// 驼背
+		param.addParam("spc_b_che_n", getReqParamString("spc_b_che_n"));// 胸型
+		param.addParam("spc_b_abd_n", getReqParamString("spc_b_abd_n"));// 肚型
+		param.addParam("spc_b_sle_n", getReqParamString("spc_b_sle_n"));// 袖子臂型
+		param.addParam("spc_b_muf_d", getReqParamString("spc_b_muf_d"));// 袖窿深下挖
+		param.addParam("spc_b_muf_u", getReqParamString("spc_b_muf_u"));// 袖窿深上调
+		param.addParam("spc_c_nec_f", getReqParamString("spc_c_nec_f"));// 前领窝下挖
 
 		return param;
 

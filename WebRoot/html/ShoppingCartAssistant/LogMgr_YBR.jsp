@@ -17,12 +17,12 @@
 <html>
 	<!--
 		
-		作者：ascleft@163.com
-		时间：2017-11-20
-		描述：
-		购物车添加工具 SCA 2.0
+		作者:鸿安Adrian
+		邮箱:ascleft@163.com
+		时间:2019-01-16
+		描述:购物车添加工具 SCA 3.0
 		
-		客户经理 优纤面料
+		衣帮人 日志管理
 		
 	-->
 
@@ -31,38 +31,34 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
 		<title>定制商品创建工具</title>
 
-		<!-- CDN -->
+		<!-- CDN  -->
 		<!-- Google Icon Font -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-		<!-- JQuery -->
-		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<!-- Angular.js-->
+		<!-- JQuery  -->
+		<!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
+		<!--  Angular.js-->
 		<!--<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>-->
+		<!-- Vue.js  -->
+		<!--<script src="../../js/vue.min.js"></script>-->
 
-		<!-- local html -->
-		<link href="../../img/global/logo/icon_title_1.jpg" rel="shortcut icon" />
+		<!-- YXN  -->
+		<script src="../../js/jquery-3.2.1.min.js"></script>
+		<script src="<%=path %>/js/jquery-3.2.1.min.js"></script>
 
-		<link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<!-- local html  -->
+		<link href="../../css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-
 		<script src="../../js/materialize.js"></script>
 		<script src="../../js/init.js"></script>
-
-		<script src="../../js/vue.min.js"></script>
-
+		
 		<script src="../../js/init_sca.js"></script>
 
-		<!--local jsp -->
-		<link href="<%=path %>/img/global/logo/icon_title_1.jpg" rel="shortcut icon">
-
-		<link href="<%=path %>/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<!--local jsp   -->
+		<link href="<%=path %>/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="<%=path %>/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-
 		<script src="<%=path %>/js/materialize.js"></script>
 		<script src="<%=path %>/js/init.js"></script>
-
-		<script src="<%=path %>/js/vue.min.js"></script>
-
+		
 		<script src="<%=path %>/js/init_sca.js"></script>
 
 		<script type="application/javascript">
@@ -71,83 +67,117 @@
 				$('#nav_menu').sideNav('show');
 			}
 			//url定义
-			//			var url_search = "http://localhost:8080/CtrlCenter/LTYX/Core/FindLog.action";
+			//						var url_search = "http://www.uskin.net.cn:8080/CtrlCenter/LTYX/Core/FindLog.action";
 			var url_search = "/CtrlCenter/LTYX/Core/FindLog.action";
-			var searchAjax = null;
+			var ajax_search = null;
+			var ajax_resubmit = null;
 
-			//提交到购物车
-			function logSearchStart() {
+			var logList = null;
 
-				logSearchStop();
-				state_loading();
-				searchAjax = $.ajax({
+			//搜索日志
+			function searchLog() {
+
+				if(ajax_search != null) {
+					ajax_search.abort();
+				}
+
+				global_progress_loading();
+				global_notice_loading("查询中,请稍候");
+
+				ajax_search = $.ajax({
 					cache: true,
 					type: "POST",
 					url: url_search,
 					data: $('#mianForm').serialize(),
 					async: true,
 					error: function(request) {
-						state_upload_error("无法连接到服务器");
-						state_loaded();
+						global_notice_show("无法连接到服务器");
+						global_progress_loaded();
 					},
 					success: function(data) {
 						var resp = JSON.parse(data);
 						if("0" == resp.ERRCODE) {
 							if("succ" == resp.ERRDESC) {
-								makeTable(resp.data);
+								logList = resp.data;
+								makeTable();
+								global_notice_hide();
 							} else {
 								var desc = "查询失败<br/>智能错误分析：" + resp.data;
-								state_upload_error(desc);
+								global_notice_show(desc);
 							}
 						} else {
-							state_upload_error("EC服务器通讯异常");
+							global_notice_show("EC服务器通讯异常");
 						}
-						state_loaded();
+						global_progress_loaded();
 					}
 				});
 			}
 
-			//提交到购物车
-			function logSearchStop() {
-				if(searchAjax != null) {
-					searchAjax.abort();
+			function stopSearchLog() {
+				if(ajax_search != null) {
+					ajax_search.abort();
 				}
-				state_loaded();
 			}
 
-			function show_msg_new_page(msg, title, type) {
-				var newwindow = window.open('_black', '', '', '');
-				html_material = "";
-				if(type == "link") {
-					html_material += "<p>" + unescape(msg) + "</p>";
-					html_material += "<br/>";
-					html_material += "<br/>";
-					html_material += "<a href=" + unescape(msg) + " target=\"目标\" title=\"EC请求连接\">再次提交</a>";
-				} else {
-					html_material += unescape(msg);
+			function button_packager(list_index, button_name, function_name, color) {
+				var btn_html = "";
+				if(function_name == "请求") {
+					if(logList[list_index].e_snapshot.src_req.length > 0) {
+						return btn_html;
+					}
 				}
-				newwindow.document.write(html_material);
+				if(function_name == "响应") {
+					if(logList[list_index].e_snapshot.src_resp.length > 0) {
+						return btn_html;
+					}
+				}
+				btn_html += "<a class=\"" + color + "\" onclick=\"" + function_name + "(\'";
+				btn_html += list_index;
+				btn_html += "\', \'";
+				btn_html += button_name;
+				btn_html += "\')\">" + button_name + "</a>";
+				return btn_html;
+			}
+
+			function active_button_json_2_page_show(list_index, perception) {
+				var tempHtml = "";
+				if(perception == "入站") {
+					tempHtml += logList[list_index].m_snapshot.src_req;
+				}
+				if(perception == "出站") {
+					tempHtml += JSON.stringify(logList[list_index].m_snapshot.src_resp);
+				}
+				if(perception == "请求") {
+					tempHtml += "<p>";
+					tempHtml += logList[list_index].e_snapshot.src_req;
+					tempHtml += "</p>";
+					tempHtml += "<br/><br/>";
+					tempHtml += logList[list_index].m_time;
+					tempHtml += "<br/><br/>";
+					tempHtml += logList[list_index].m_keys;
+					tempHtml += "<br/><br/>";
+					tempHtml += "<a href=" + logList[list_index].e_snapshot.src_req + " target=\"目标\" title=\"EC请求连接\">再次提交" + logList[list_index].m_time + "</a>";
+				}
+				if(perception == "响应") {
+					tempHtml += JSON.stringify(logList[list_index].e_snapshot.src_resp);
+				}
+				var newwindow = window.open('_black', '', '', '');
+				newwindow.document.write(tempHtml);
 				newwindow.document.close();
 			}
 
-			function make_button_from_json(obj, type, name, color) {
-				var tempHtml = "";
-				if(JSON.stringify(obj).length > 2) {
-					tempHtml += "<a class=\"" + color + "\" onclick=\"show_msg_new_page(\'";
-					tempHtml += escape(JSON.stringify(obj));
-					tempHtml += "\', \'" + name + "\', \'" + type + "\')\">" + name + "</a>";
-				} else {
-					tempHtml += "<br />";
-				}
-				return tempHtml;
+			function active_button_json_2_action_resubmit(list_index) {
+				var tmp_url = logList[list_index].e_snapshot.src_req;
+				//				resubmit_ajax(tmp_url);
+				window.open(tmp_url, '', 'width=300,height=400');
 			}
 
-			function makeTable(logList) {
+			//再次提交到购物车
+			function resubmit_ajax(tmp_url) {
 
-				//				var newwindow = window.open('', "_blank",'');
-				//				newwindow.document.write("Hello World!");
+			}
 
-				//window.open('', "_blank",'').document.write("");
+			function makeTable() {
 
 				logList = jsonSort(logList, 'sortKeyWord', false);
 
@@ -191,17 +221,29 @@
 						String_html += "<td><a>" + logList[i].m_keys.replace(/, /g, "<br /><br />") + "</a></td>";
 						//快照
 						String_html += "<td>";
-						String_html += make_button_from_json(logList[i].m_snapshot.src_req, "string", "入站", "teal-text")
+						String_html += button_packager(i, "入站", "active_button_json_2_page_show", "teal-text");
 
 						String_html += "<br/><br/><br/>";
-						String_html += make_button_from_json(logList[i].m_snapshot.src_resp, "string", "出站", "blue-text")
+						String_html += button_packager(i, "出站", "active_button_json_2_page_show", "blue-text")
 						String_html += "</td>";
 						//流转
 						String_html += "<td>";
-						String_html += make_button_from_json(logList[i].e_snapshot.src_req, "link", "请求", "teal-text");
+
+						var temp_tips = "";
+						temp_tips += logList[i].m_time;
+
+						String_html += button_packager(i, "请求", "active_button_json_2_page_show", "teal-text");
 						String_html += "<br/><br/><br/>";
-						String_html += make_button_from_json(logList[i].e_snapshot.src_resp, "string", "响应", "blue-text");
+						String_html += button_packager(i, "响应", "active_button_json_2_page_show", "blue-text");
+
+						if($("#quick_resubmit").val() == "Y") {
+							String_html += "<br/><br/><br/>";
+							String_html += button_packager(i, "快速提交", "active_button_json_2_action_resubmit", "red-text");
+							String_html += "<br/>";
+						}
+
 						String_html += "</td>";
+
 						//进度
 						String_html += "<td><a>" + logList[i].m_tags.replace(/, /g, "<br />") + "</a></td>";
 
@@ -215,76 +257,24 @@
 
 				$("#table_log_list").html(String_html);
 
-			}
-
-			function stopAddShoppingCart() {
-				ajax_addShopingCart.abort();
-			}
-
-			function state_upload_ing(displaywords) {
-				$("#modal_state").modal('open');
-				$("#modal_state_title").html(displaywords);
-				$("#modal_state_progress_bar").show();
-				$("#btn_finish").hide();
-				$("#btn_cancel").hide();
-				$("#btn_stop").hide();
-
-				setTimeout(function() {
-					$("#btn_stop").show()
-				}, 20000);
-			}
-
-			function state_upload_finish(displaywords) {
-				$("#modal_state_title").html(displaywords);
-				$("#modal_state_progress_bar").hide();
-				$("#btn_finish").show();
-				$("#btn_cancel").hide();
-				$("#btn_stop").hide();
-			}
-
-			function state_upload_error(displaywords) {
-				$("#modal_state_title").html(displaywords);
-				$("#modal_state_progress_bar").hide();
-				$("#btn_finish").hide();
-				$("#btn_cancel").show();
-				$("#btn_stop").hide();
-			}
-
-			function state_loading(displaywords) {
-				$("#load_state_progress_bar").show();
-			}
-
-			function state_loaded(displaywords) {
-				$("#load_state_progress_bar").hide();
-			}
-
-			function state_ready(state) {
-				if(state == "y") {
-					$("#getPrice").show();
-					$("#addShoppingCart").hide();
-				} else {
-					$("#getPrice").hide();
-					$("#addShoppingCart").show();
-				}
-			}
+			};
 
 			$(document).ready(function() {
 				$("div#section1 input").bind("keyup", function() {
-					state_ready("n");
-					logSearchStart();
+					searchLog();
 				});
 				$("div#section1 input").bind("change", function() {
-					state_ready("n");
-					logSearchStart();
+					searchLog();
 				});
 				$("div#section1 select").bind("change", function() {
-					state_ready("n");
-					logSearchStart();
+					searchLog();
 				});
-				state_loaded();
-				state_ready("n");
 
-			})
+				global_progress_loaded();
+
+				searchLog();
+
+			});
 		</script>
 
 	</head>
@@ -295,7 +285,7 @@
 			<nav class="teal" role="navigation">
 				<div class="nav-wrapper container">
 					<!-- 页面标题 -->
-					<a id="logo-container" href="#" class="brand-logo white-text ">日志管理
+					<a id="logo-container" href="#" class="brand-logo white-text ">日志管理 衣邦人
 					</a>
 					<!-- 导航菜单键（运动移动设备） -->
 					<a href="#" data-activates="nav_menu_list " class="button-collapse ">
@@ -410,7 +400,7 @@
 										<label>刺绣</label>
 									</div>
 
-									<div class="input-field col s12 m12 l12" name="lines">
+									<div class="input-field col s10 m10 l10" name="lines">
 										<select name="lines">
 											<option value="50">50</option>
 											<option value="100">100</option>
@@ -419,14 +409,23 @@
 											<option value="500">500</option>
 										</select> <label>长度</label>
 									</div>
-
-									<div class="col s12 m12 l12" style="display: none;">
-										<a class="col s12 m12 l12 btn" onclick="logSearchStart()">搜索</a>
+									<div class="input-field col s2 m2 l2">
+										<select id="quick_resubmit">
+											<option value="N">关闭</option>
+											<option value="Y" disabled="disabled">开启</option>
+										</select> <label>快速提交</label>
 									</div>
-									<div class="col s12 m12 l12">
-										<div class="progress" id="load_state_progress_bar">
+
+									<!--进度条-->
+									<div id="global_frame_progress_div" class="col s12 m12 l12">
+										<div class="progress" id="global_frame_progress_loading_bar">
 											<div class="indeterminate"></div>
 										</div>
+									</div>
+									<!--提示-->
+									<div id="global_frame_notice_div" class="col s12 m12 l12">
+										<p id="global_frame_notice_board" class="grey-text">
+										</p>
 									</div>
 
 								</div>
@@ -445,24 +444,24 @@
 				</form>
 			</div>
 
-			<div class="fixed-action-btn" onclick="logSearchStart()">
+			<div class="fixed-action-btn" onclick="searchLog()">
 				<a class="btn-floating btn-large teal">
 					<i class="large material-icons">refresh</i>
 				</a>
 			</div>
 
-			<!-- 模态框 -->
-			<div id="modal_state" class="modal">
+			<!--  模态框 -->
+			<div id="global_frame_modal_div" class="modal">
 				<div class="modal-content">
-					<h4 id="modal_state_title">信息</h4>
-					<div class="progress" id="modal_state_progress_bar">
+					<h4 id="global_frame_modal_state_title">信息</h4>
+					<div class="progress" id="global_frame_modal_progress_bar">
 						<div class="indeterminate"></div>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<a id="btn_finish" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">确定</a>
-					<a id="btn_cancel" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">取消</a>
-					<a id="btn_stop" onclick="stopAddShoppingCart()" class="modal-action modal-close waves-effect waves-green btn-flat">停止</a>
+					<a id="global_frame_modal_btn_finish" onclick="modal_fun_finish()" class="modal-action modal-close waves-effect waves-green btn-flat">确定</a>
+					<a id="global_frame_modal_btn_cancel" onclick="modal_fun_cancel()" class="modal-action modal-close waves-effect waves-green btn-flat">取消</a>
+					<a id="global_frame_modal_btn_terminate" onclick="modal_fun_terminate()" class="modal-action modal-close waves-effect waves-green btn-flat">终止</a>
 				</div>
 			</div>
 
@@ -480,7 +479,7 @@
 				</div>
 			</div>
 			<div class="footer-copyright">
-				<div class="container">Made By ZhangChi 2018</div>
+				<div class="container">Powered by ZhangChi 2019</div>
 			</div>
 		</footer>
 

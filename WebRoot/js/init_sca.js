@@ -1014,6 +1014,13 @@ function use_size() {
 	temp_table_2 += '					<option value="LZX-TT-64-61">袖窿深上调1.5</option>                     ';
 	temp_table_2 += '				</select> <label>袖窿深上调</label>                                         ';
 	temp_table_2 += '			</div>                                                                         ';
+	temp_table_2 += '			<div class="input-field col s6 m4 l3">                                         ';
+	temp_table_2 += '				<select name="spc_b_muf_u" id="spc_c_nec_f">                               ';
+	temp_table_2 += '					<option value="LZX-TT-73-62">正常</option>                             ';
+	temp_table_2 += '					<option value="LZX-TT-73-63">前领窝下挖0.5</option>                     ';
+	temp_table_2 += '					<option value="LZX-TT-73-64">前领窝下挖1</option>                       ';
+	temp_table_2 += '				</select> <label>前领窝下挖</label>                                             ';
+	temp_table_2 += '			</div>                                                                         ';
 	temp_table_2 += '		</div>                                                                             ';
 	temp_table_2 += '	</div>                                                                                 ';
 

@@ -12,7 +12,7 @@
 
 	String menulist=(String) session.getAttribute("menulist");
 	
-	String list_LZX_01=(String) session.getAttribute("list_LZX_01");
+	String list_tech_collar_full=(String) session.getAttribute("list_tech_collar_full");
 	String list_LZX_02=(String) session.getAttribute("list_LZX_02");
 	String list_LZX_03=(String) session.getAttribute("list_LZX_03");
 	String list_LZX_04=(String) session.getAttribute("list_LZX_04");
@@ -24,7 +24,7 @@
 	String list_LZX_13=(String) session.getAttribute("list_LZX_13");
 	String list_zhidai=(String) session.getAttribute("list_zhidai");
 	String list_color=(String) session.getAttribute("list_color");
-	String list_kouzi=(String) session.getAttribute("list_kouzi");
+	String list_button_default=(String) session.getAttribute("list_button_default");
 	String list_easytype=(String) session.getAttribute("list_easytype");
 	String list_lingcheng=(String) session.getAttribute("list_lingcheng");
 	String list_mingxian=(String) session.getAttribute("list_mingxian");
@@ -43,10 +43,10 @@
 <html>
 	<!--
 		
-		作者：ascleft@163.com
-		时间：2017-11-20
-		描述：
-		购物车添加工具 SCA 2.0
+		作者:鸿安Adrian
+		邮箱:ascleft@163.com
+		时间:2019-01-16
+		描述:购物车添加工具 SCA 3.0
 		
 		定制店 优纤面料
 		 
@@ -61,39 +61,30 @@
 		<!-- Google Icon Font -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<!-- JQuery  -->
-		<!--<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
 		<!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
 		<!--  Angular.js-->
 		<!--<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>-->
+		<!-- Vue.js  -->
+		<!--<script src="../../js/vue.min.js"></script>-->
 
 		<!-- YXN  -->
 		<script src="../../js/jquery-3.2.1.min.js"></script>
 		<script src="<%=path %>/js/jquery-3.2.1.min.js"></script>
 
 		<!-- local html  -->
-		<link href="../../img/global/logo/icon_title_1.jpg" rel="shortcut icon" />
-
-		<link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="../../css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-
 		<script src="../../js/materialize.js"></script>
 		<script src="../../js/init.js"></script>
-
-		<script src="../../js/vue.min.js"></script>
-
+		
 		<script src="../../js/init_sca.js"></script>
 
 		<!--local jsp   -->
-		<link href="<%=path %>/img/global/logo/icon_title_1.jpg" rel="shortcut icon">
-
-		<link href="<%=path %>/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="<%=path %>/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="<%=path %>/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-
 		<script src="<%=path %>/js/materialize.js"></script>
 		<script src="<%=path %>/js/init.js"></script>
-
-		<script src="<%=path %>/js/vue.min.js"></script>
-
+		
 		<script src="<%=path %>/js/init_sca.js"></script>
 
 		<script type="application/javascript">
@@ -300,7 +291,7 @@
 
 				state_now("default");
 
-				use_lzx11();
+				use_embroidery_new();
 
 				use_DeliveryTime();
 				use_stylebase_check();
@@ -423,7 +414,8 @@
 												</div>
 												<div class="col s12 m6 l8">
 													<div class="input-field">
-														<input type="text" class="validate" name="ExpressNO" value=""> <label>客供物料寄厂单号</label>
+														<input type="text" class="validate" name="ExpressNO" value="">
+														<label>客供物料寄厂单号</label>
 													</div>
 												</div>
 												<div class="col s12 m12 l12">
@@ -451,6 +443,7 @@
 											</div>
 										</div>
 									</li>
+
 									<li>
 										<div class="collapsible-header">
 											<i class="material-icons">view_carousel</i>摘要
@@ -556,7 +549,7 @@
 															</div>
 															<div class="input-field col s8 m8 l8">
 																<select name="LZX_01">
-																	<%=list_LZX_01%>
+																	<%=list_tech_collar_full%>
 																</select> <label>领型</label>
 															</div>
 															<div class="input-field col s4 m4 l4">
@@ -731,13 +724,20 @@
 															</div>
 															<div class="input-field col s12 m12 l12">
 																<select id="kouzi" name="kouzi">
-																	<%=list_kouzi%>
+																	<%=list_button_default%>
 																	<option value="">客供</option>
 																</select> <label>大身纽扣</label>
 															</div>
 															<div class="input-field col s12 m12 l12" id="kouzi_div">
 																<input id="kouzi_pbc" type="text" class="validate" name="kouzi" value="">
 																<label>客供大身纽扣描述</label>
+															</div>
+															<div class="input-field col s12 m12 l12">
+																<select id="button_main_ft1" name="button_main_ft1">
+																	<option value="LZX-90-02">底领边距第一粒扣5.5cm(默认)</option>
+																	<option value="LZX-90-01">底领边距第一粒扣4.5cm</option>
+																	<option value="LZX-90-03">底领边距第一粒扣6.5cm</option>
+																</select> <label>锁钉位置</label>
 															</div>
 															<div class="input-field col s6 m4 l4">
 																<select id="button_decorative_num" name="button_decorative_num">
@@ -851,76 +851,147 @@
 											<div class="row">
 												<div class="card-panel">
 													<div class="row">
-														<div class="col s12 m12 l12 teal-text">
-															<p>刺绣文字</p>
+														<div class="input-field col s12">
+															<select name="embroidery_section_1_type">
+																<option value="needless">不使用刺绣</option>
+																<option value="char">文字刺绣</option>
+																<option value="pic">图案刺绣</option>
+															</select> <label>刺绣位置1</label>
 														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_FOR_CHAR_SWITCH">
-																<option value="0">不使用文字刺绣</option>
-																<option value="1">使用文字刺绣</option>
-															</select> <label>是否使用文字刺绣</label>
+														<div class="col s12 m12 l12" id="embroidery_section_1_char_div">
+															<div class="row">
+																<div class="col s12 teal-text">
+																	<p>刺绣文字</p>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_char_font">
+																	</select> <label>刺绣文字字体</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_char_size">
+																	</select> <label>刺绣文字高度</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_char_location">
+																		<%=list_LZX_13%>
+																	</select> <label>刺绣文字位置</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_char_color">
+																		<%=list_color%>
+																	</select> <label>刺绣文字颜色</label>
+																</div>
+																<div class="col s12 m6 l4">
+																	<div class="input-field validate">
+																		<input type="text" name="embroidery_section_1_char_content" value="">
+																		<label>刺绣文字内容</label>
+																	</div>
+																</div>
+															</div>
 														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_13_FOR_CHAR">
-																<%=list_LZX_13%>
-															</select> <label>刺绣文字位置</label>
-														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_CHAR_COLOR">
-																<%=list_color%>
-															</select> <label>刺绣文字颜色</label>
-														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_CHAR_TYPE">
-															</select> <label>刺绣文字字体</label>
-														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_CHAR_SIZE">
-															</select> <label>刺绣文字高度</label>
-														</div>
-														<div class="col s12 m6 l4">
-															<div class="input-field">
-																<input type="text" class="validate" name="LZX_11_CHAR_WORD" value="">
-																<label>刺绣文字内容</label>
+														<div class="col s12 m12 l12" id="embroidery_section_1_pic_div">
+															<div class="row">
+																<div class="col s12 m12 l12 teal-text">
+																	<p>刺绣图案</p>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_pic_font">
+																	</select> <label>刺绣图案系列</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_pic_size">
+																	</select> <label>刺绣图案高度</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_pic_location">
+																		<%=list_LZX_13%>
+																	</select> <label>刺绣图案位置</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_pic_color">
+																		<%=list_color%>
+																	</select> <label>刺绣图案颜色</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_1_pic_content">
+																	</select> <label>刺绣图案编号</label>
+																</div>
 															</div>
 														</div>
 													</div>
 												</div>
 												<div class="card-panel">
 													<div class="row">
-														<div class="col s12 m12 l12 teal-text">
-															<p>刺绣图案</p>
+														<div class="input-field col s12">
+															<select name="embroidery_section_2_type">
+																<option value="needless">不使用刺绣</option>
+																<option value="char">文字刺绣</option>
+																<option value="pic">图案刺绣</option>
+															</select> <label>刺绣位置2</label>
 														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_FOR_PIC_SWITCH">
-																<option value="0">不使用图案刺绣</option>
-																<option value="1">使用图案刺绣</option>
-															</select> <label>是否使用图案刺绣</label>
+														<div class="col s12 m12 l12" id="embroidery_section_2_char_div">
+															<div class="row">
+																<div class="col s12 teal-text">
+																	<p>刺绣文字</p>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_char_font">
+																	</select> <label>刺绣文字字体</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_char_size">
+																	</select> <label>刺绣文字高度</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_char_location">
+																		<%=list_LZX_13%>
+																	</select> <label>刺绣文字位置</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_char_color">
+																		<%=list_color%>
+																	</select> <label>刺绣文字颜色</label>
+																</div>
+																<div class="col s12 m6 l4">
+																	<div class="input-field validate">
+																		<input type="text" name="embroidery_section_2_char_content" value="">
+																		<label>刺绣文字内容</label>
+																	</div>
+																</div>
+															</div>
 														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_13_FOR_PIC">
-																<%=list_LZX_13%>
-															</select> <label>刺绣图案位置</label>
-														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_PIC_COLOR">
-																<%=list_color%>
-															</select> <label>刺绣图案颜色</label>
-														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_PIC_TYPE">
-															</select> <label>刺绣图案系列</label>
-														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_PIC_SIZE">
-															</select> <label>刺绣图案高度</label>
-														</div>
-														<div class="input-field col s12 m6 l4">
-															<select name="LZX_11_PIC_NUM">
-															</select> <label>刺绣图案编号</label>
+														<div class="col s12 m12 l12" id="embroidery_section_2_pic_div">
+															<div class="row">
+																<div class="col s12 m12 l12 teal-text">
+																	<p>刺绣图案</p>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_pic_font">
+																	</select> <label>刺绣图案系列</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_pic_size">
+																	</select> <label>刺绣图案高度</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_pic_location">
+																		<%=list_LZX_13%>
+																	</select> <label>刺绣图案位置</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_pic_color">
+																		<%=list_color%>
+																	</select> <label>刺绣图案颜色</label>
+																</div>
+																<div class="input-field col s12 m6 l4">
+																	<select name="embroidery_section_2_pic_content">
+																	</select> <label>刺绣图案编号</label>
+																</div>
+															</div>
 														</div>
 													</div>
 												</div>
+
 												<div class="card-panel">
 													<div class="row">
 														<div class="col s12 m12 l12 teal-text">
@@ -1054,7 +1125,7 @@
 				</div>
 			</div>
 			<div class="footer-copyright">
-				<div class="container">Made By ZhangChi 2018</div>
+				<div class="container">Powered by ZhangChi 2019</div>
 			</div>
 		</footer>
 

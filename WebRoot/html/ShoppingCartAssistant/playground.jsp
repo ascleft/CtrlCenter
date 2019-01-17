@@ -22,7 +22,7 @@
 		时间:2019-01-16
 		描述:购物车添加工具 SCA 3.0
 		
-		定制店 日志管理
+		playground
 		
 	-->
 
@@ -175,34 +175,6 @@
 			//再次提交到购物车
 			function resubmit_ajax(tmp_url) {
 
-				//				global_modal_upload_start("正在将商品放入购物车，请稍候");
-				//				tmp_url =
-				//					"http://www.uskin.net.cn:8080/CtrlCenter/LTYX/Core/FindLog.action?tag_0=%E5%AE%9A%E5%88%B6%E5%BA%97&tag_1=all&tag_2=all&tag_3=all&id_type=tel&id_code=18678133546&key_1=&key_2=&key_3=&lines=50&";
-				//				ajax_resubmit = $.ajax({
-				//					cache: true,
-				//					type: "GET",
-				//					url: tmp_url,
-				//					data: $('#mianForm').serialize(),
-				//					dataType: 'text',
-				//					async: true,
-				//					error: function(request) {
-				//						global_modal_upload_error(JSON.stringify(request) + "无法连接到服务器");
-				//					},
-				//					success: function(data) {
-				//						var resp = JSON.parse(data);
-				//						if("0" == resp.ERRCODE) {
-				//							if("succ" == resp.ERRDESC) {
-				//								global_modal_upload_finish("提交成功");
-				//							} else {
-				//								var desc = "提交失败<br/>智能错误分析：" + resp.data;
-				//								global_modal_upload_error(desc);
-				//							}
-				//						} else {
-				//							global_modal_upload_error("EC服务器通讯异常");
-				//						}
-				//					}
-				//				});
-
 			}
 
 			function makeTable() {
@@ -302,6 +274,8 @@
 
 				searchLog();
 
+				$('.carousel').carousel();
+
 			});
 		</script>
 
@@ -313,7 +287,7 @@
 			<nav class="teal" role="navigation">
 				<div class="nav-wrapper container">
 					<!-- 页面标题 -->
-					<a id="logo-container" href="#" class="brand-logo white-text ">日志管理 定制店
+					<a id="logo-container" href="#" class="brand-logo white-text ">日志管理 客户经理
 					</a>
 					<!-- 导航菜单键（运动移动设备） -->
 					<a href="#" data-activates="nav_menu_list " class="button-collapse ">
@@ -365,7 +339,7 @@
 									</div>
 									<div class="input-field col s4 m4 l4" style="display: none;">
 										<select name="tag_0">
-											<option value="定制店">定制店</option>
+											<option value="客户经理">客户经理</option>
 										</select> <label>根</label>
 									</div>
 									<div class="input-field col s4 m4 l4">
@@ -444,7 +418,7 @@
 									<div class="input-field col s2 m2 l2">
 										<select id="quick_resubmit">
 											<option value="N">关闭</option>
-											<option value="Y">开启</option>
+											<option value="Y" disabled="disabled">开启</option>
 										</select> <label>快速提交</label>
 									</div>
 
@@ -467,6 +441,20 @@
 							<div class="card-panel">
 								<div class="row">
 									<div class="input-field col s12 m12 l12" id="table_log_list">
+									</div>
+								</div>
+							</div>
+
+							<div class="card-panel">
+								<div class="row">
+									<div class="carousel col s12 m12 l12" id="table_log_list">
+
+										<a class="carousel-item" href="#one!"><img src="https://lorempixel.com/250/250/nature/1"></a>
+										<a class="carousel-item" href="#two!"><img src="https://lorempixel.com/250/250/nature/2"></a>
+										<a class="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"></a>
+										<a class="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"></a>
+										<a class="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"></a>
+
 									</div>
 								</div>
 							</div>

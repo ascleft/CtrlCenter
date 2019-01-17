@@ -8,7 +8,7 @@ import com.zc.support.service.DBHelper;
 
 public class SCAPageConfigMan {
 	// 领型
-	public static String get_list_LZX_01() {
+	public static String get_list_tech_collar_full() {
 
 		String list = "";
 
@@ -163,7 +163,7 @@ public class SCAPageConfigMan {
 	}
 
 	// 扣子
-	public static String get_list_kouzi() {
+	public static String list_button_default() {
 
 		String list = "";
 

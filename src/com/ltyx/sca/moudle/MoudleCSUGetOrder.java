@@ -44,7 +44,7 @@ public class MoudleCSUGetOrder extends ZCBaseActionSupportPlugin {
 			return false;
 		}
 
-		MoudleCSParamUtil paramUtil = new MoudleCSParamUtil(request);
+		MoudleCSDParamUtil paramUtil = new MoudleCSDParamUtil(request);
 		ZCHttpReqParam param = paramUtil.getCSUGetOrder();
 
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshop_get_factory_order.getUrl(), param, TextLogHelper.Type.USKIN_USER_PRICE_NSRC);

@@ -27,7 +27,7 @@ public class MoudleCSUGetPriceWomanPBYX extends ZCBaseActionSupportPlugin {
 
 		double price = 0;
 
-		MoudleCSParamUtil paramUtil = new MoudleCSParamUtil(request);
+		MoudleCSDParamUtil paramUtil = new MoudleCSDParamUtil(request);
 		ZCHttpReqParam param = paramUtil.getCSAPriceWomanPBYX();
 
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_get_price_woman_pbyx.getUrl(), param, TextLogHelper.Type.USKIN_USER_PRICE_NSRC);
