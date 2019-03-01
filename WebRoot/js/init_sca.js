@@ -125,6 +125,7 @@ function set_delivery_time_table_section_1() {
 	$("#delivery_time_table_section_1").html(list_1);
 	$('select').material_select();
 	set_delivery_time_table_section_2();
+	set_delivery_time_table_section_extra();
 }
 //填充可选件数区间
 function set_delivery_time_table_section_2() {
@@ -194,14 +195,27 @@ function set_delivery_time_table_section_4() {
 	$("#delivery_time_table_section_4").html(list_4);
 	$('select').material_select();
 }
+
+//控制数量显示框
+function set_delivery_time_table_section_extra() {
+	selected_1 = "" + $("#delivery_time_table_section_1 option:selected").text();
+	if("团单" == selected_1) {
+		$("#delivery_time_table_section_2_add_1").show();
+	} else {
+		$("#delivery_time_table_section_2_add_1").hide();
+	}
+}
+
 //初始化交期系统
-function use_DeliveryTime() {
-	global_page_loading("初始化交期系统");
+function use_tabel_delivery_time() {
+	var moudle_name = "交期系统1.0";
+	console.log(moudle_name + "开始加载");
 
 	initDeliveryTimeTable();
 	set_delivery_time_table_section_1();
 	$("#delivery_time_table_section_1").bind("change", function() {
 		set_delivery_time_table_section_2();
+		set_delivery_time_table_section_extra();
 	});
 	$("#delivery_time_table_section_2").bind("change", function() {
 		set_delivery_time_table_section_3();
@@ -209,484 +223,17 @@ function use_DeliveryTime() {
 	$("#delivery_time_table_section_3").bind("change", function() {
 		set_delivery_time_table_section_4();
 	});
+
+	console.log(moudle_name + "加载完成");
+	return moudle_name;
 }
 //-------------------------------------------------------------------------交期报价模块↑
 
-//-------------------------------------------------------------------------刺绣模块↓
-//定义刺绣文字字典
-var LZX_11_Char_Table;
-//定义刺绣图片字典
-var LZX_11_Pic_Table;
-//初始化刺绣图片和文字字典
-function initLZX11Table() {
-	LZX_11_Char_Table = {
-		'map': {
-			'LZX-11-01': {
-				'name': '英文中宋',
-				'size': '1'
-			},
-			'LZX-11-02': {
-				'name': '舒体',
-				'size': '1'
-			},
-			'LZX-11-04': {
-				'name': '（不支持汉字）皇家体',
-				'size': '1'
-			},
-			'LZX-11-05': {
-				'name': '（不支持汉字）手写体',
-				'size': '1'
-			},
-			'LZX-11-06': {
-				'name': '（不支持汉字）古圆体',
-				'size': '1'
-			},
-			'LZX-11-08': {
-				'name': '（不支持汉字）维体',
-				'size': '1'
-			},
-			'LZX-11-09': {
-				'name': '（不支持汉字）书写体',
-				'size': '1'
-			},
-			'LZX-11-10': {
-				'name': '（不支持汉字）哥特体',
-				'size': '1'
-			},
-			'LZX-11-12': {
-				'name': '（不支持汉字）卡曼体',
-				'size': '1'
-			},
-			'LZX-11-13': {
-				'name': '（不支持汉字）花体',
-				'size': '1'
-			},
-			'LZX-11-14': {
-				'name': '（不支持汉字）书信体',
-				'size': '1'
-			},
-			'LZX-11-15': {
-				'name': '（不支持汉字）巴洛克体',
-				'size': '1'
-			},
-			'LZX-11-16': {
-				'name': '英文行楷',
-				'size': '1'
-			},
-			'LZX-11-17': {
-				'name': '黑体',
-				'size': '1'
-			},
-			'LZX-11-18': {
-				'name': '隶属',
-				'size': '1'
-			},
-			'LZX-11-19': {
-				'name': '毛体',
-				'size': '1'
-			},
-			'LZX-11-20': {
-				'name': '草书',
-				'size': '1'
-			},
-			'LZX-11-21': {
-				'name': '中文行楷',
-				'size': '1'
-			},
-			'LZX-11-22': {
-				'name': '中文中宋',
-				'size': '1'
-			},
-		},
-		'size': {
-			'1': {
-				'YX-12-07': '0.7cm',
-				'YX-12-08': '0.8cm',
-				'YX-12-09': '0.9cm',
-				'YX-12-10': '1.0cm',
-				'YX-12-11': '1.1cm',
-				'YX-12-12': '1.2cm',
-				'YX-12-13': '1.3cm',
-				'YX-12-14': '1.4cm',
-				'YX-12-15': '1.5cm',
-				'YX-12-16': '1.6cm',
-				'YX-12-17': '1.7cm',
-				'YX-12-18': '1.8cm',
-				'YX-12-19': '1.9cm',
-				'YX-12-20': '2.0cm',
-				'YX-12-21': '2.1cm',
-				'YX-12-22': '2.2cm',
-				'YX-12-23': '2.3cm',
-				'YX-12-24': '2.4cm',
-				'YX-12-25': '2.5cm',
-				'YX-12-26': '2.6cm',
-				'YX-12-27': '2.7cm',
-				'YX-12-28': '2.8cm',
-				'YX-12-29': '2.9cm',
-				'YX-12-30': '3.0cm',
-			}
-		}
-	};
-	LZX_11_Pic_Table = {
-		'LZX-11-23': {
-			'name': 'LZX-11-23',
-			'map': {
-				'01': '2',
-				'02': '2',
-				'03': '3',
-				'04': '2',
-				'05': '3',
-				'06': '2',
-				'07': '3',
-				'08': '2',
-				'09': '3',
-				'10': '3',
-				'11': '2',
-				'12': '2',
-				'13': '1',
-				'14': '1',
-				'15': '1',
-				'16': '1',
-				'17': '1',
-				'18': '1',
-				'19': '1',
-				'20': '1',
-				'21': '1',
-				'22': '1',
-				'23': '1',
-				'24': '1',
-			},
-			'size': {
-				'1': {
-					'YX-12-10': '1.0cm',
-					'YX-12-11': '1.1cm',
-					'YX-12-12': '1.2cm',
-					'YX-12-13': '1.3cm',
-					'YX-12-14': '1.4cm',
-					'YX-12-15': '1.5cm',
-					'YX-12-16': '1.6cm',
-					'YX-12-17': '1.7cm',
-					'YX-12-18': '1.8cm',
-					'YX-12-19': '1.9cm',
-					'YX-12-20': '2.0cm',
-					'YX-12-21': '2.1cm',
-					'YX-12-22': '2.2cm',
-					'YX-12-23': '2.3cm',
-					'YX-12-24': '2.4cm',
-					'YX-12-25': '2.5cm',
-					'YX-12-26': '2.6cm',
-					'YX-12-27': '2.7cm',
-					'YX-12-28': '2.8cm',
-					'YX-12-29': '2.9cm',
-					'YX-12-30': '3.0cm',
-				},
-				'2': {
-					'YX-12-15': '1.5cm',
-					'YX-12-16': '1.6cm',
-					'YX-12-17': '1.7cm',
-					'YX-12-18': '1.8cm',
-					'YX-12-19': '1.9cm',
-					'YX-12-20': '2.0cm',
-					'YX-12-21': '2.1cm',
-					'YX-12-22': '2.2cm',
-					'YX-12-23': '2.3cm',
-					'YX-12-24': '2.4cm',
-					'YX-12-25': '2.5cm',
-					'YX-12-26': '2.6cm',
-					'YX-12-27': '2.7cm',
-					'YX-12-28': '2.8cm',
-					'YX-12-29': '2.9cm',
-					'YX-12-30': '3.0cm',
-				},
-				'3': {
-					'YX-12-20': '2.0cm',
-					'YX-12-21': '2.1cm',
-					'YX-12-22': '2.2cm',
-					'YX-12-23': '2.3cm',
-					'YX-12-24': '2.4cm',
-					'YX-12-25': '2.5cm',
-					'YX-12-26': '2.6cm',
-					'YX-12-27': '2.7cm',
-					'YX-12-28': '2.8cm',
-					'YX-12-29': '2.9cm',
-					'YX-12-30': '3.0cm',
-				},
-			}
-
-		},
-		'LZX-11-24': {
-			'name': 'LZX-11-24',
-			'map': {
-				'01': '1',
-				'02': '1',
-				'03': '1',
-				'04': '1',
-				'05': '1',
-				'06': '1',
-				'07': '1',
-				'08': '1',
-				'09': '1',
-				'10': '1',
-				'11': '1',
-				'12': '1',
-				'13': '1',
-				'14': '1',
-				'15': '1',
-				'16': '1',
-				'17': '1',
-				'18': '1',
-				'19': '1',
-				'20': '1',
-				'21': '1',
-				'22': '1',
-				'23': '1',
-				'24': '1',
-			},
-			'size': {
-				'1': {
-					'YX-12-10': '1.0cm',
-					'YX-12-11': '1.1cm',
-					'YX-12-12': '1.2cm',
-					'YX-12-13': '1.3cm',
-					'YX-12-14': '1.4cm',
-					'YX-12-15': '1.5cm',
-					'YX-12-16': '1.6cm',
-					'YX-12-17': '1.7cm',
-					'YX-12-18': '1.8cm',
-					'YX-12-19': '1.9cm',
-					'YX-12-20': '2.0cm',
-					'YX-12-21': '2.1cm',
-					'YX-12-22': '2.2cm',
-					'YX-12-23': '2.3cm',
-					'YX-12-24': '2.4cm',
-					'YX-12-25': '2.5cm',
-					'YX-12-26': '2.6cm',
-					'YX-12-27': '2.7cm',
-					'YX-12-28': '2.8cm',
-					'YX-12-29': '2.9cm',
-					'YX-12-30': '3.0cm',
-				},
-			},
-		},
-		'LZX-11-25': {
-			'name': 'LZX-11-25',
-			'map': {
-				'01': '1',
-				'02': '1',
-				'03': '1',
-				'04': '1',
-				'05': '1',
-				'06': '1',
-				'07': '1',
-				'08': '1',
-				'09': '1',
-				'10': '1',
-				'11': '1',
-				'12': '1'
-			},
-			'size': {
-				'1': {
-					'YX-12-10': '1.0cm',
-					'YX-12-11': '1.1cm',
-					'YX-12-12': '1.2cm',
-					'YX-12-13': '1.3cm',
-					'YX-12-14': '1.4cm',
-					'YX-12-15': '1.5cm',
-					'YX-12-16': '1.6cm',
-					'YX-12-17': '1.7cm',
-					'YX-12-18': '1.8cm',
-					'YX-12-19': '1.9cm',
-					'YX-12-20': '2.0cm',
-					'YX-12-21': '2.1cm',
-					'YX-12-22': '2.2cm',
-					'YX-12-23': '2.3cm',
-					'YX-12-24': '2.4cm',
-					'YX-12-25': '2.5cm',
-					'YX-12-26': '2.6cm',
-					'YX-12-27': '2.7cm',
-					'YX-12-28': '2.8cm',
-					'YX-12-29': '2.9cm',
-					'YX-12-30': '3.0cm',
-				},
-			},
-		},
-		'LZX-11-26': {
-			'name': 'LZX-11-26',
-			'map': {
-				'01': '1',
-				'02': '1',
-				'03': '1',
-				'04': '1',
-				'05': '1'
-			},
-			'size': {
-				'1': {
-					'YX-12-10': '1.0cm',
-					'YX-12-11': '1.1cm',
-					'YX-12-12': '1.2cm',
-					'YX-12-13': '1.3cm',
-					'YX-12-14': '1.4cm',
-					'YX-12-15': '1.5cm',
-					'YX-12-16': '1.6cm',
-					'YX-12-17': '1.7cm',
-					'YX-12-18': '1.8cm',
-					'YX-12-19': '1.9cm',
-					'YX-12-20': '2.0cm',
-					'YX-12-21': '2.1cm',
-					'YX-12-22': '2.2cm',
-					'YX-12-23': '2.3cm',
-					'YX-12-24': '2.4cm',
-					'YX-12-25': '2.5cm',
-					'YX-12-26': '2.6cm',
-					'YX-12-27': '2.7cm',
-					'YX-12-28': '2.8cm',
-					'YX-12-29': '2.9cm',
-					'YX-12-30': '3.0cm',
-				},
-			},
-		},
-		'LZX-11-27': {
-			'name': 'LZX-11-27',
-			'map': {
-				'01': '1',
-				'02': '1',
-				'03': '1',
-				'04': '1',
-				'05': '1',
-				'06': '1',
-				'07': '1',
-				'08': '1',
-				'09': '1',
-				'10': '1'
-			},
-			'size': {
-				'1': {
-					'YX-12-10': '1.0cm',
-					'YX-12-11': '1.1cm',
-					'YX-12-12': '1.2cm',
-					'YX-12-13': '1.3cm',
-					'YX-12-14': '1.4cm',
-					'YX-12-15': '1.5cm',
-					'YX-12-16': '1.6cm',
-					'YX-12-17': '1.7cm',
-					'YX-12-18': '1.8cm',
-					'YX-12-19': '1.9cm',
-					'YX-12-20': '2.0cm',
-					'YX-12-21': '2.1cm',
-					'YX-12-22': '2.2cm',
-					'YX-12-23': '2.3cm',
-					'YX-12-24': '2.4cm',
-					'YX-12-25': '2.5cm',
-					'YX-12-26': '2.6cm',
-					'YX-12-27': '2.7cm',
-					'YX-12-28': '2.8cm',
-					'YX-12-29': '2.9cm',
-					'YX-12-30': '3.0cm',
-				},
-			},
-		},
-		'LZX-11-FF': {
-			'name': '客供图案',
-			'map': {
-				'客供图案': '1'
-			},
-			'size': {
-				'1': {
-					'LZX-12-FF': '客供大小'
-				},
-			},
-		}
-	};
-}
-//填充文字刺绣第一部分
-function set_lzx11_char_section_1() {
-	var list_1 = ""
-	for(var prop1 in LZX_11_Char_Table['map']) {
-		list_1 += "<option value=\"" + prop1 + "\">";
-		list_1 += prop1 + " " + LZX_11_Char_Table['map'][prop1]['name'];
-		list_1 += "</option>";
-	}
-	$("select[name$='LZX_11_CHAR_TYPE']").html(list_1);
-	$('select').material_select();
-	set_lzx11_char_section_2();
-}
-//填充文字刺绣第二部分
-function set_lzx11_char_section_2() {
-	selected_1 = "" + $("select[name$='LZX_11_CHAR_TYPE'] option:selected").val();
-	selected_1_size = "" + LZX_11_Char_Table['map'][selected_1]['size'];
-	var list_2 = ""
-	for(var prop2 in LZX_11_Char_Table['size'][selected_1_size]) {
-		list_2 += "<option value=\"" + prop2 + "\">";
-		list_2 += LZX_11_Char_Table['size'][selected_1_size][prop2];
-		list_2 += "</option>";
-	}
-	$("select[name$='LZX_11_CHAR_SIZE']").html(list_2);
-	$('select').material_select();
-}
-
-//填充图片刺绣第一部分
-function set_lzx11_pic_section_1() {
-	var list_1 = ""
-	for(var prop1 in LZX_11_Pic_Table) {
-		list_1 += "<option value=\"" + prop1 + "\">";
-		list_1 += LZX_11_Pic_Table[prop1].name;
-		list_1 += "</option>";
-	}
-	$("select[name$='LZX_11_PIC_TYPE']").html(list_1);
-	$('select').material_select();
-	set_lzx11_pic_section_2();
-}
-//填充图片刺绣第二部分
-function set_lzx11_pic_section_2() {
-	selected_1 = "" + $("select[name$='LZX_11_PIC_TYPE'] option:selected").val();
-	var list_2 = ""
-	for(var prop2 in LZX_11_Pic_Table[selected_1]['map']) {
-		list_2 += "<option value=\"" + prop2 + "\">";
-		list_2 += selected_1 + " " + prop2;
-		list_2 += "</option>";
-	}
-	$("select[name$='LZX_11_PIC_NUM']").html(list_2);
-	$('select').material_select();
-	set_lzx11_pic_section_3();
-}
-//填充图片刺绣第三部分
-function set_lzx11_pic_section_3() {
-	selected_1 = "" + $("select[name$='LZX_11_PIC_TYPE'] option:selected").val();
-	selected_2 = "" + $("select[name$='LZX_11_PIC_NUM'] option:selected").val();
-	selected_2_size = "" + LZX_11_Pic_Table[selected_1]['map'][selected_2];
-	var list_3 = ""
-	for(var prop3 in LZX_11_Pic_Table[selected_1]['size'][selected_2_size]) {
-		list_3 += "<option value=\"" + prop3 + "\">";
-		list_3 += LZX_11_Pic_Table[selected_1]['size'][selected_2_size][prop3];
-		list_3 += "</option>";
-	}
-	$("select[name$='LZX_11_PIC_SIZE']").html(list_3);
-	$('select').material_select();
-}
-//初始化刺绣模块
-function use_lzx11() {
-	global_page_loading("初始化刺绣模块");
-
-	initLZX11Table();
-	set_lzx11_char_section_1();
-	set_lzx11_pic_section_1();
-	$("select[name$='LZX_11_CHAR_TYPE']").bind("change", function() {
-		set_lzx11_char_section_2();
-	});
-	$("select[name$='LZX_11_PIC_TYPE']").bind("change", function() {
-		set_lzx11_pic_section_2();
-	});
-	$("select[name$='LZX_11_PIC_NUM']").bind("change", function() {
-		set_lzx11_pic_section_3();
-	});
-	console.log("已启用刺绣字典");
-}
-//-------------------------------------------------------------------------刺绣模块↑
-
 //-------------------------------------------------------------------------客供专项↓
 //客供扣子
-function use_pbc_kouzi() {
-	global_page_loading("启用客供扣子");
+function use_pbc_button() {
+	var moudle_name = "客供纽扣模块 1.0";
+	console.log(moudle_name + "开始加载");
 
 	$("#kouzi_div").hide();
 	$("#kouzi").bind("change", function() {
@@ -700,11 +247,14 @@ function use_pbc_kouzi() {
 		}
 		Materialize.updateTextFields();
 	});
-	console.log("已启用客供扣子");
+
+	console.log(moudle_name + "加载完成");
+	return moudle_name;
 }
 //启用客供主唛
-function use_pbc_YX_08() {
-	global_page_loading("启用客供主唛");
+function use_pbc_mark() {
+	var moudle_name = "客供主唛模块 1.0";
+	console.log(moudle_name + "开始加载");
 
 	$("#YX_08_div").hide();
 	$("#YX_08").bind("change", function() {
@@ -718,14 +268,17 @@ function use_pbc_YX_08() {
 		}
 		Materialize.updateTextFields();
 	});
-	console.log("已启用客供主唛");
+
+	console.log(moudle_name + "加载完成");
+	return moudle_name;
 }
 //-------------------------------------------------------------------------客供专项↑
 
 //-------------------------------------------------------------------------手动专项↓
 //自定义配色部位
-function use_custom_weizhi_peise() {
-	global_page_loading("启用自定义配色部位");
+function use_pbc_matchcolor_position() {
+	var moudle_name = "自定义配色部位模块 1.0";
+	console.log(moudle_name + "开始加载");
 
 	$("#weizhi_peise_div").hide();
 	$("#weizhi_peise").bind("change", function() {
@@ -739,14 +292,26 @@ function use_custom_weizhi_peise() {
 		}
 		Materialize.updateTextFields();
 	});
-	console.log("已启用手动填写配色部位");
+
+	console.log(moudle_name + "加载完成");
+	return moudle_name;
 }
 //-------------------------------------------------------------------------手动专项↑
 
 //-------------------------------------------------------------------------尺寸专项↓
+
+function use_table_size() {
+	var moudle_name = "尺寸选择模块 2.0";
+	console.log(moudle_name + "开始加载");
+
+	init_size_table();
+
+	console.log(moudle_name + "加载完成");
+	return moudle_name;
+
+}
 //启用尺寸选择
-function use_size() {
-	global_page_loading("启用尺寸选择");
+function init_size_table() {
 
 	size_table = [{
 		'name_param': 'xiongwei',
@@ -1015,7 +580,7 @@ function use_size() {
 	temp_table_2 += '				</select> <label>袖窿深上调</label>                                         ';
 	temp_table_2 += '			</div>                                                                         ';
 	temp_table_2 += '			<div class="input-field col s6 m4 l3">                                         ';
-	temp_table_2 += '				<select name="spc_b_muf_u" id="spc_c_nec_f">                               ';
+	temp_table_2 += '				<select name="spc_c_nec_f" id="spc_c_nec_f">                               ';
 	temp_table_2 += '					<option value="LZX-TT-73-62">正常</option>                             ';
 	temp_table_2 += '					<option value="LZX-TT-73-63">前领窝下挖0.5</option>                     ';
 	temp_table_2 += '					<option value="LZX-TT-73-64">前领窝下挖1</option>                       ';
@@ -1027,7 +592,7 @@ function use_size() {
 	var temp_table_3 = '';
 	temp_table_3 += '<div class="card-panel">                                         ';
 	temp_table_3 += '	<div class="row">                                             ';
-	temp_table_3 += '		<div class="input-field col s12 m12 l12">                 ';
+	temp_table_3 += '		<div class="input-field col s12 m6 l6">                 ';
 	temp_table_3 += '			<select name="size">                                  ';
 	temp_table_3 += '				<option value="3">团单专用（号型分布另附） </option>   ';
 	temp_table_3 += '				<option value="2174">男式衬衫紧身版37 </option>        ';
@@ -1115,14 +680,29 @@ function use_size() {
 	temp_table_3 += '				<option value="2493">男式衬衫宽松版46.5</option>  ';
 	temp_table_3 += '				<option value="2494">男式衬衫宽松版47 </option>   ';
 	temp_table_3 += '			</select> <label>号衣尺码</label>                     ';
-	temp_table_3 += '		</div>                                                    ';
-	temp_table_3 += '	</div>                                                        ';
-	temp_table_3 += '</div>                                                           ';
+	temp_table_3 += '		</div>                                              ';
+	temp_table_3 += '		<div class="input-field col s12 m6 l6">             ';
+	temp_table_3 += '			<select name="adjunct_mark_size">                ';
+	temp_table_3 += '				<option value="YX-LM-00">无尺码唛</option>     ';
+	temp_table_3 += '				<option value="YX-LM-01">仅领围    </option>     ';
+	temp_table_3 += '				<option value="YX-LM-FF">客供尺码唛</option>    ';
+	temp_table_3 += '			</select> <label>尺码唛</label>                    ';
+	temp_table_3 += '		</div>                                                ';
+
+	temp_table_3 += '		<div class="input-field col s12 m12 l12">             ';
+	temp_table_3 += '			<a href=\"http://www.uskin.net.cn/link/excel/%E7%94%B7%E5%9B%A2%E9%95%BF%E8%A2%96.xlsx" target=\"view_window\">团单号型分布表（男长袖）</a>';
+	temp_table_3 += '			<br \>                                           ';
+	temp_table_3 += '			<a href=\"http://www.uskin.net.cn/link/excel/%E7%94%B7%E5%9B%A2%E7%9F%AD%E8%A2%96.xlsx\" target=\"view_window\">团单号型分布表（男短袖）</a>';
+	temp_table_3 += '			<br \>                                           ';                                        
+	temp_table_3 += '		</div>                                                ';
+
+	temp_table_3 += '	</div>                                                  ';
+	temp_table_3 += '</div>                                                     ';
 
 	var temp_table_4 = '';
 	temp_table_4 += '<div class="card-panel">                                        ';
 	temp_table_4 += '	<div class="row">                                            ';
-	temp_table_4 += '		<div class="input-field col s12 m12 l12">                ';
+	temp_table_4 += '		<div class="input-field col s12 m6 l6">                ';
 	temp_table_4 += '			<select name="size">                                 ';
 	temp_table_4 += '				<option value="3"   >团单专用（号型分布另附） </option>   ';
 	temp_table_4 += '				<option value="2570">女式衬衫修身版35</option>   ';
@@ -1188,15 +768,30 @@ function use_size() {
 	temp_table_4 += '				<option value="2788">女式衬衫宽松版44</option>   ';
 	temp_table_4 += '				<option value="2789">女式衬衫宽松版44.5</option> ';
 	temp_table_4 += '				<option value="2790">女式衬衫宽松版45</option>   ';
-	temp_table_4 += '			</select> <label>号衣尺码</label>                    ';
-	temp_table_4 += '		</div>                                                   ';
-	temp_table_4 += '	</div>                                                       ';
-	temp_table_4 += '</div>                                                          ';
+	temp_table_4 += '			</select> <label>号衣尺码</label>                  ';
+	temp_table_4 += '		</div>                                              ';
+	temp_table_4 += '		<div class="input-field col s12 m6 l6">             ';
+	temp_table_4 += '			<select name="adjunct_mark_size">                ';
+	temp_table_4 += '				<option value="YX-LM-00">无尺码唛</option>     ';
+	temp_table_4 += '				<option value="YX-LM-01">仅领围    </option>     ';
+	temp_table_4 += '				<option value="YX-LM-FF">客供尺码唛</option>    ';
+	temp_table_4 += '			</select> <label>尺码唛</label>                    ';
+	temp_table_4 += '		</div>                                                ';
+
+	temp_table_4 += '		<div class="input-field col s12 m12 l12">             ';
+	temp_table_4 += '			<a href=\"http://www.uskin.net.cn/link/excel/%E5%A5%B3%E5%9B%A2%E9%95%BF%E8%A2%96.xlsx\" target=\"view_window\">团单号型分布表（女长袖）</a>';
+	temp_table_4 += '			<br \>                                           ';
+	temp_table_4 += '			<a href=\"http://www.uskin.net.cn/link/excel/%E5%A5%B3%E5%9B%A2%E7%9F%AD%E8%A2%96.xlsx\" target=\"view_window\">团单号型分布表（女短袖）</a>';
+	temp_table_4 += '			<br \>                                           ';
+	temp_table_4 += '		</div>                                                ';
+
+	temp_table_4 += '	</div>                                                  ';
+	temp_table_4 += '</div>                                                     ';
 
 	var temp_table_5 = '';
 	temp_table_5 += '<div class="card-panel">                                         ';
 	temp_table_5 += '	<div class="row">                                             ';
-	temp_table_5 += '		<div class="input-field col s12 m12 l12">                 ';
+	temp_table_5 += '		<div class="input-field col s12 m6 l6">                 ';
 	temp_table_5 += '			<select name="size">                                  ';
 	temp_table_5 += '				<option value="3"   >团单专用（号型分布另附） </option>   ';
 	temp_table_5 += '				<option value="2174">男式衬衫紧身版37 </option>        ';
@@ -1340,26 +935,45 @@ function use_size() {
 	temp_table_5 += '				<option value="2788">女式衬衫宽松版44</option>   ';
 	temp_table_5 += '				<option value="2789">女式衬衫宽松版44.5</option> ';
 	temp_table_5 += '				<option value="2790">女式衬衫宽松版45</option>   ';
-	temp_table_5 += '			</select> <label>号衣尺码</label>                    ';
-	temp_table_5 += '		</div>                                                   ';
-	temp_table_5 += '	</div>                                                       ';
-	temp_table_5 += '</div>                                                          ';
+	temp_table_5 += '			</select> <label>号衣尺码</label>                  ';
+	temp_table_5 += '		</div>                                              ';
+	temp_table_5 += '		<div class="input-field col s12 m6 l6">             ';
+	temp_table_5 += '			<select name="adjunct_mark_size">                            ';
+	temp_table_5 += '				<option value="YX-LM-00">无尺码唛</option>     ';
+	temp_table_5 += '				<option value="YX-LM-01">仅领围    </option>     ';
+	temp_table_5 += '				<option value="YX-LM-FF">客供尺码唛</option>   ';
+	temp_table_5 += '			</select> <label>尺码唛</label>                   ';
+	temp_table_5 += '		</div>                                              ';
+
+	temp_table_5 += '		<div class="input-field col s12 m12 l12">             ';
+	temp_table_5 += '			<a href=\"http://www.uskin.net.cn/link/excel/%E7%94%B7%E5%9B%A2%E9%95%BF%E8%A2%96.xlsx" target=\"view_window\">团单号型分布表（男长袖）</a>';
+	temp_table_5 += '			<br \>                                           ';
+	temp_table_5 += '			<a href=\"http://www.uskin.net.cn/link/excel/%E7%94%B7%E5%9B%A2%E7%9F%AD%E8%A2%96.xlsx\" target=\"view_window\">团单号型分布表（男短袖）</a>';
+	temp_table_5 += '			<br \>                                           ';
+	temp_table_5 += '			<a href=\"http://www.uskin.net.cn/link/excel/%E5%A5%B3%E5%9B%A2%E9%95%BF%E8%A2%96.xlsx\" target=\"view_window\">团单号型分布表（女长袖）</a>';
+	temp_table_5 += '			<br \>                                           ';
+	temp_table_5 += '			<a href=\"http://www.uskin.net.cn/link/excel/%E5%A5%B3%E5%9B%A2%E7%9F%AD%E8%A2%96.xlsx\" target=\"view_window\">团单号型分布表（女短袖）</a>';
+	temp_table_5 += '			<br \>                                           ';
+	temp_table_5 += '		</div>                                                ';
+
+	temp_table_5 += '	</div>                                                  ';
+	temp_table_5 += '</div>                                                     ';
 
 	$("#measure_list").html(temp_table_1);
-	console.log('已填充量体字段');
+	//	console.log('已填充量体字段');
 	$("#spc_b_list").html(temp_table_2);
-	console.log('已填充特体字段');
+	//	console.log('已填充特体字段');
 	if($("#size_list").attr("sex") == 'man') {
 		$("#size_list").html(temp_table_3);
-		console.log('已填充男装号衣尺码列表');
+		//		console.log('已填充男装号衣尺码列表');
 	} else if($("#size_list").attr("sex") == 'woman') {
 		$("#size_list").html(temp_table_4);
-		console.log('已填充女装号衣尺码列表');
+		//		console.log('已填充女装号衣尺码列表');
 	} else if($("#size_list").attr("sex") == 'all') {
 		$("#size_list").html(temp_table_5);
-		console.log('已填充女装号衣尺码列表');
+		//		console.log('已填充女装号衣尺码列表');
 	} else {
-		console.log('列表性别指定异常');
+		//		console.log('列表性别指定异常');
 	}
 
 	$("#measure_type").bind("change", function() {
@@ -1390,24 +1004,25 @@ function size_rule_base() {
 			$("#measure_list").show();
 			$("#spc_b_list").show();
 			$("#size_list").hide();
-			console.log("--->成衣尺寸")
+			//			console.log("--->成衣尺寸")
 		} else if(selected_name == "号衣尺码") {
 			$("#measure_list").hide();
 			$("#spc_b_list").hide();
 			$("#size_list").show();
-			console.log("--->号衣尺码")
+			//			console.log("--->号衣尺码")
 		} else if(selected_name == "不新增尺寸信息") {
 			$("#measure_list").hide();
 			$("#spc_b_list").hide();
 			$("#size_list").hide();
-			console.log("--->不新增尺寸信息")
+			//			console.log("--->不新增尺寸信息")
 		} else {
 			$("#measure_list").show();
 			$("#size_list").show();
 			$("#spc_b_list").show();
-			console.log("--->尺寸选项异常")
+			//			console.log("--->尺寸选项异常")
 		}
 		Materialize.updateTextFields();
+		$('select').material_select();
 	}
 
 	{
@@ -1423,6 +1038,7 @@ function size_rule_base() {
 			$("#div_houshen_chang_wai").show();
 		}
 		Materialize.updateTextFields();
+		$('select').material_select();
 	}
 
 	{
@@ -1449,6 +1065,7 @@ function size_rule_base() {
 			$("#div_weight").show();
 		}
 		Materialize.updateTextFields();
+		$('select').material_select();
 	}
 
 	{
@@ -1460,7 +1077,7 @@ function size_rule_base() {
 			$("#div_xiutouchang_you").show();
 			$("#div_duanxiu_chang").hide();
 			$("#div_duanxiu_kouwei").hide();
-			console.log('长袖模式');
+			//			console.log('长袖模式');
 		} else if(selected_name == "YX-00-01") {
 			//短
 			$("#div_xiu_chang").hide();
@@ -1485,6 +1102,7 @@ function size_rule_base() {
 			$("#div_duanxiu_kouwei").show();
 		}
 		Materialize.updateTextFields();
+		$('select').material_select();
 	}
 
 }
@@ -1510,14 +1128,17 @@ function use_size_change() {
 
 //-------------------------------------------------------------------------款式工艺校验↓
 //启用特殊款校验
-function use_stylebase_check() {
-	global_page_loading("启用特殊款校验");
+function use_check_stylebase() {
+	var moudle_name = "特殊款校验1.0";
+	console.log(moudle_name + "开始加载");
 
 	stylebase_check();
 	$("#delivery_time_table_section_4").bind("change", function() {
 		stylebase_check();
 	});
-	console.log("已启用特殊工艺校验");
+
+	console.log(moudle_name + "加载完成");
+	return moudle_name;
 }
 //特殊款校验
 function stylebase_check() {
@@ -1903,7 +1524,12 @@ function set_subcontract_ratio() {
 	$("#subcontract_ratio").val(SubcontractTable[selected_1].type[selected_2].ratio);
 }
 //启用其他商品报价
-function use_SubcontractTable() {
+function use_table_subcontract() {
+
+	var moudle_name = "启用其他商品报价 2.0";
+	console.log(moudle_name + "开始加载");
+
+	console.log("启用商品报价");
 	initSubcontractTable();
 	set_subcontract_design_code_list();
 	$("#subcontract_design_code").bind("change", function() {
@@ -1912,7 +1538,9 @@ function use_SubcontractTable() {
 	$("#subcontract_price_type").bind("change", function() {
 		dispose_subcontract_price_type(); //
 	});
-	console.log("已启用商品报价");
+
+	console.log(moudle_name + "加载完成");
+	return moudle_name;
 }
 //-------------------------------------------------------------------------委外商品报价模块↑
 
@@ -2343,81 +1971,44 @@ function use_SubcontractTable() {
 	});
 }
 
-//-------------------------------------------------------------------------通用模态框、进度条、悬浮提示、土司↓
+function use_sample_tech_table() {
+	var moudle_name = "领袖样模块 1.0";
+	console.log(moudle_name + "开始加载");
 
-//导入通用进度条
-function global_progress_loading() {
-	$("#global_frame_progress_loading_bar").show();
+	init_sample_tech_table();
+	update_sample_tech_table();
+
+	console.log(moudle_name + "加载完成");
+	return moudle_name;
 }
 
-function global_progress_loaded() {
-	$("#global_frame_progress_loading_bar").hide();
+function init_sample_tech_table() {
+	$("select[name$='tech_sample_type']").bind("change", function() {
+		update_sample_tech_table();
+	});
 }
 
-//导入通用模态框(上载)
-function global_modal_upload_start(displaywords) {
-	$("#global_frame_modal_div").modal('open');
-	$("#global_frame_modal_state_title").html(displaywords);
-	$("#global_frame_modal_progress_bar").show();
-	$("#global_frame_modal_btn_finish").hide();
-	$("#global_frame_modal_btn_cancel").hide();
-	$("#global_frame_modal_btn_terminate").hide();
-	setTimeout(function() {
-		$("#global_frame_modal_btn_terminate").show()
-	}, 20000);
+function update_sample_tech_table() {
+	$("#div_tech_sample_type_01").hide();
+	$("#div_tech_sample_type_02").hide();
+	$("#div_tech_sample_type_03").hide();
+	$("#div_tech_sample_type_04").hide();
+	//	if($("select[name$='tech_sample_type']").val() == "type_01") {
+	//		$("#div_tech_sample_type_01").show();
+	//		$("#div_tech_sample_type_02").hide();
+	//		$("#div_tech_sample_type_03").hide();
+	//	}
+	//	if($("select[name$='tech_sample_type']").val() == "type_02") {
+	//		$("#div_tech_sample_type_01").hide();
+	//		$("#div_tech_sample_type_02").show();
+	//		$("#div_tech_sample_type_03").hide();
+	//	}
+	//	if($("select[name$='tech_sample_type']").val() == "type_03") {
+	//		$("#div_tech_sample_type_01").hide();
+	//		$("#div_tech_sample_type_02").hide();
+	//		$("#div_tech_sample_type_03").show();
+	//	}
 }
-
-function global_modal_upload_finish(displaywords) {
-	$("#global_frame_modal_state_title").html(displaywords);
-	$("#global_frame_modal_progress_bar").hide();
-	$("#global_frame_modal_btn_finish").show();
-	$("#global_frame_modal_btn_cancel").hide();
-	$("#global_frame_modal_btn_terminate").hide();
-}
-
-function global_modal_upload_error(displaywords) {
-	$("#global_frame_modal_state_title").html(displaywords);
-	$("#global_frame_modal_progress_bar").hide();
-	$("#global_frame_modal_btn_finish").hide();
-	$("#global_frame_modal_btn_cancel").show();
-	$("#global_frame_modal_btn_terminate").hide();
-}
-
-//导入通用提示窗
-function global_notice_show(msg) {
-	$("#global_frame_notice_div").show();
-	$("#global_frame_notice_board").html(msg);
-}
-
-function global_notice_hide() {
-	$("#global_frame_notice_div").hide();
-	$("#global_frame_notice_board").html("");
-}
-
-function global_notice_loading(msg) {
-	$("#global_frame_notice_div").show();
-	$("#global_frame_notice_board").html(msg);
-}
-
-function global_page_loading(msg) {
-	$("#section_loading_title").html(msg);
-}
-
-function global_page_loading_determinate(msg) {
-	var loading_func = "global_page_loading_determinate_inside(\"" + msg + "\")";
-	setTimeout("loading_func(\"" + msg + "\")", 1); //
-}
-
-function global_page_loading_determinate_inside(msg) {
-	$("#section_loading_determinate").width(msg);
-}
-
-function global_page_loaded() {
-	$("div#section_loading").hide();
-	Materialize.fadeInImage('#section_content');
-}
-
-//-------------------------------------------------------------------------通用模态框、进度条、悬浮提示、土司↑
 
 //-------------------------------------------------------------------------新刺绣模块↓
 //定义刺绣文字字典
@@ -2426,9 +2017,6 @@ var embroidery_char_table;
 var embroidery_pic_table;
 //初始化刺绣图片和文字字典
 function init_embroidery_table() {
-
-	console.log("刺绣字典初始化完成");
-
 	embroidery_char_table = {
 		'map': {
 			'LZX-11-01': {
@@ -2807,7 +2395,6 @@ function init_embroidery_table() {
 			},
 		}
 	};
-	console.log("刺绣字典初始化完成");
 }
 
 //填充文字刺绣第一部分 
@@ -3004,10 +2591,12 @@ function set_embroidery_section_2_div() {
 }
 
 //初始化刺绣模块
-function use_embroidery_new() {
+function use_table_embroidery() {
+	var moudle_name = "刺绣模块 2.0";
+	console.log(moudle_name + "开始加载");
 
 	init_embroidery_table();
-	
+
 	set_embroidery_section_1_div();
 	set_embroidery_section_1_char_1();
 	set_embroidery_section_1_pic_1();
@@ -3023,8 +2612,7 @@ function use_embroidery_new() {
 	$("select[name$='embroidery_section_1_pic_content']").bind("change", function() {
 		set_embroidery_section_1_pic_3();
 	});
-	
-	
+
 	set_embroidery_section_2_div();
 	set_embroidery_section_2_char_1();
 	set_embroidery_section_2_pic_1();
@@ -3041,5 +2629,80 @@ function use_embroidery_new() {
 		set_embroidery_section_2_pic_3();
 	});
 
+	console.log(moudle_name + "加载完成");
+	return moudle_name;
 }
 //-------------------------------------------------------------------------刺绣模块↑
+
+//-------------------------------------------------------------------------通用模态框、进度条、悬浮提示、土司↓
+
+//导入通用进度条
+function global_progress_loading() {
+	$("#global_frame_progress_loading_bar").show();
+}
+
+function global_progress_loaded() {
+	$("#global_frame_progress_loading_bar").hide();
+}
+
+//导入通用模态框(上载)
+function global_modal_upload_start(displaywords) {
+	$("#global_frame_modal_div").modal('open');
+	$("#global_frame_modal_state_title").html(displaywords);
+	$("#global_frame_modal_progress_bar").show();
+	$("#global_frame_modal_btn_finish").hide();
+	$("#global_frame_modal_btn_cancel").hide();
+	$("#global_frame_modal_btn_terminate").hide();
+	setTimeout(function() {
+		$("#global_frame_modal_btn_terminate").show()
+	}, 20000);
+}
+
+function global_modal_upload_finish(displaywords) {
+	$("#global_frame_modal_state_title").html(displaywords);
+	$("#global_frame_modal_progress_bar").hide();
+	$("#global_frame_modal_btn_finish").show();
+	$("#global_frame_modal_btn_cancel").hide();
+	$("#global_frame_modal_btn_terminate").hide();
+}
+
+function global_modal_upload_error(displaywords) {
+	$("#global_frame_modal_state_title").html(displaywords);
+	$("#global_frame_modal_progress_bar").hide();
+	$("#global_frame_modal_btn_finish").hide();
+	$("#global_frame_modal_btn_cancel").show();
+	$("#global_frame_modal_btn_terminate").hide();
+}
+
+//导入通用提示窗
+function global_notice_show(msg) {
+	$("#global_frame_notice_div").show();
+	$("#global_frame_notice_board").html(msg);
+}
+
+function global_notice_hide() {
+	$("#global_frame_notice_div").hide();
+	$("#global_frame_notice_board").html("");
+}
+
+function global_page_loading_indeterminate(msg) {
+	$("div#section_loading").show();
+	$("#section_loading_determinate").hide();
+	$("#section_loading_indeterminate").show();
+	$("#section_loading_title").html(msg);
+}
+
+function global_page_loading_determinate(progress, msg) {
+	$("div#section_loading").show();
+	$("#section_loading_determinate").show();
+	$("#section_loading_indeterminate").hide();
+	$("#section_loading_determinate").width((progress * 100) + "%");
+	$("#section_loading_title").html(msg);
+}
+
+function global_page_loaded() {
+	$("div#section_loading").hide();
+	Materialize.fadeInImage('#section_content');
+}
+
+//-------------------------------------------------------------------------通用模态框、进度条、悬浮提示、土司↑

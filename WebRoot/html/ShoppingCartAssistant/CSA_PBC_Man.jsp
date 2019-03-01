@@ -78,7 +78,7 @@
 		<link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<script src="../../js/materialize.js"></script>
 		<script src="../../js/init.js"></script>
-		
+
 		<script src="../../js/init_sca.js"></script>
 
 		<!--local jsp   -->
@@ -86,7 +86,7 @@
 		<link href="<%=path %>/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<script src="<%=path %>/js/materialize.js"></script>
 		<script src="<%=path %>/js/init.js"></script>
-		
+
 		<script src="<%=path %>/js/init_sca.js"></script>
 
 		<script type="application/javascript">
@@ -181,10 +181,10 @@
 				}
 				checkLoginState(
 					function prepare() {
-						global_notice_loading("正在建立安全连接");
+						global_notice_show("正在建立安全连接");
 					},
 					function succ() {
-						global_notice_loading("云端数据分析中");
+						global_notice_show("云端数据分析中");
 						ajax_check = $.ajax({
 							cache: true,
 							type: "POST",
@@ -282,28 +282,53 @@
 					$("#addShoppingCart").show();
 				}
 			}
-
+			
 			$(document).ready(function() {
-
 				package_page();
-
 			});
 
 			function package_page() {
+				page_build_timer = setInterval(page_build, 200);
+				page_flush_timer = setInterval(page_flush, 200);
+			}
 
-				state_now("default");
+			var page_build_timer;
+			var page_flush_timer;
+			var page_loader_func_list = [];
+			var page_loader_func_state = [0, "开始构建页面", 0, "done"];
 
-				use_embroidery_new();
+			function page_flush() {
+				global_page_loading_determinate(page_loader_func_state[0], page_loader_func_state[1]);
+				if(page_loader_func_state[0] > 1) {
+					clearInterval(page_build_timer);
+					clearInterval(page_flush_timer);
+					state_now("default");
+					global_page_loaded();
+				}
+			}
 
-				use_DeliveryTime();
-				use_stylebase_check();
-				use_size();
+			function page_build() {
+				if(page_loader_func_list.length == 0) {
+					page_loader_func_list.push(use_tabel_delivery_time);
+					page_loader_func_list.push(use_table_size);
+					page_loader_func_list.push(use_table_embroidery);
+					page_loader_func_list.push(use_check_stylebase);
+					page_loader_func_list.push(use_pbc_mark);
+					page_loader_func_list.push(use_pbc_button);
+					page_loader_func_list.push(use_pbc_matchcolor_position);
+					page_loader_func_list.push(page_input_binder);
+				}
+				if(page_loader_func_state[3] == "done") {
+					page_loader_func_state[3] = "doing";
+					var fn = page_loader_func_list[page_loader_func_state[2]];
+					page_loader_func_state[1] = fn() + "加载完成";
+					page_loader_func_state[2]++;
+					page_loader_func_state[3] = "done";
+				}
+				page_loader_func_state[0] = (page_loader_func_state[2] + 1) / page_loader_func_list.length;
+			}
 
-				use_pbc_YX_08();
-				use_pbc_kouzi();
-
-				use_custom_weizhi_peise();
-
+			function page_input_binder() {
 				$("div#section1 input").bind("keyup", function() {
 					state_now("lost_price");
 				});
@@ -314,11 +339,11 @@
 					state_now("lost_price");
 				});
 
-				state_now("default");
+				console.log("finish bind");
 
-				global_page_loaded();
-
+				return "绑定页面输入事件";
 			};
+			
 		</script>
 
 	</head>
@@ -376,7 +401,7 @@
 
 							<div class="col s12">
 								<div class="progress">
-									<div id="section_loading_determinate" class="determinate" style="width: 82%"></div>
+									<div id="section_loading_determinate" class="determinate" style="width: 0%"></div>
 								</div>
 							</div>
 
@@ -497,6 +522,10 @@
 												<div class="input-field col s6 m6 l4">
 													<select id="delivery_time_table_section_2" name="order_production_count">
 													</select> <label>起订量（件）</label>
+												</div>
+												<div class="input-field col s12 m12 l8" id="delivery_time_table_section_2_add_1">
+													<input  type="text" class="validate" name="order_production_count_real" value="">
+													<label>衬衫总数(因团单件数与价格相关,系统不允许后期修改,请如实填写,否则系统将作废此商品)</label>
 												</div>
 												<div class="input-field col s6 m6 l4">
 													<select id="delivery_time_table_section_3" name="order_delivery_time">
@@ -743,8 +772,8 @@
 															<div class="input-field col s12 m12 l12">
 																<select id="button_main_ft1" name="button_main_ft1">
 																	<option value="LZX-90-02">底领边距第一粒扣5.5cm(默认)</option>
-																	<option value="LZX-90-01">底领边距第一粒扣4.5cm</option>
-																	<option value="LZX-90-03">底领边距第一粒扣6.5cm</option>
+																	<option value="LZX-90-01" disabled="disabled">底领边距第一粒扣4.5cm</option>
+																	<option value="LZX-90-03" disabled="disabled">底领边距第一粒扣6.5cm</option>
 																</select> <label>锁钉位置</label>
 															</div>
 															<div class="input-field col s6 m4 l4">
@@ -1000,7 +1029,7 @@
 													</div>
 												</div>
 
-												<div class="card-panel">
+												<div class="card-panel" style="display: none;">
 													<div class="row">
 														<div class="col s12 m12 l12 teal-text">
 															<p>客供刺绣</p>

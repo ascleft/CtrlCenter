@@ -22,26 +22,28 @@ public class SCAPageConfigCommon {
 				session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_cs());
 			}
 
-//			String[][] dic_su = { //
-//					{ "129", "0", "SU 张弛-客户经理" }, //
-//					{ "3071", "20", "SU 张弛-定制店" }, //
-//					{ "3071", "21", "SU 张弛-定制店-独立密码" }, //
-//					{ "3000", "20", "SU 顾振-定制店" }, //
-//					{ "3000", "21", "SU 顾振-定制店-独立密码" }, //
-//					{ "21000", "20", "SU 刘亚朋" }, //
-//					{ "21000", "21", "SU 刘亚朋-独立密码" },//
-//			};
-//
-//			{
-//				String idTemp = "" + session.getAttribute("ec_user_id");
-//				String rankTemp = "" + session.getAttribute("ec_user_rank");
-//				for (int i = 0; i < dic_su.length; i++) {
-//					if (idTemp.equals(dic_su[i][0]) && rankTemp.equals(dic_su[i][1])) {
-//						session.setAttribute("menulist", SCAPageConfigCommon.get_menu_list_all());
-//						session.setAttribute("ec_user_name", dic_su[i][2]);
-//					}
-//				}
-//			}
+			// String[][] dic_su = { //
+			// { "129", "0", "SU 张弛-客户经理" }, //
+			// { "3071", "20", "SU 张弛-定制店" }, //
+			// { "3071", "21", "SU 张弛-定制店-独立密码" }, //
+			// { "3000", "20", "SU 顾振-定制店" }, //
+			// { "3000", "21", "SU 顾振-定制店-独立密码" }, //
+			// { "21000", "20", "SU 刘亚朋" }, //
+			// { "21000", "21", "SU 刘亚朋-独立密码" },//
+			// };
+			//
+			// {
+			// String idTemp = "" + session.getAttribute("ec_user_id");
+			// String rankTemp = "" + session.getAttribute("ec_user_rank");
+			// for (int i = 0; i < dic_su.length; i++) {
+			// if (idTemp.equals(dic_su[i][0]) && rankTemp.equals(dic_su[i][1]))
+			// {
+			// session.setAttribute("menulist",
+			// SCAPageConfigCommon.get_menu_list_all());
+			// session.setAttribute("ec_user_name", dic_su[i][2]);
+			// }
+			// }
+			// }
 
 			if (AuthorizeAssistan.isSU(session)) {
 				session.setAttribute("su", "true");
@@ -52,7 +54,6 @@ public class SCAPageConfigCommon {
 			} else {
 				session.setAttribute("su", "false");
 			}
-			
 
 		}
 
@@ -244,6 +245,9 @@ public class SCAPageConfigCommon {
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYXDesign.action\">客户经理 优纤面料 设计师款</a>"//
 				+ "</li>"//
 				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYXSubcontract.action\">客户经理 其他商品</a>"//
+				+ "</li>"//
+				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopAideSearch.action\"    >客户经理 即时库存查询</a>"//
 				+ "</li>"//
 				+ "<li>"//
@@ -251,7 +255,7 @@ public class SCAPageConfigCommon {
 				+ "</li>"//
 				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"http://www.uskin.net.cn/index.php/cart.html\"     target=\"_blank\">进入USKIN购物车结算(电脑版)</a>"//
-				+ "</li>"// 
+				+ "</li>"//
 				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"http://www.uskin.net.cn/index.php/wap/cart.html\" target=\"_blank\">进入USKIN购物车结算(手机版)</a>"//
 				+ "</li>";//
@@ -267,28 +271,31 @@ public class SCAPageConfigCommon {
 				+ "<a class=\"subheader\">定制店功能</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYXMan.action\">定制店 优纤面料 男装</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYXMan.action\"     >定制店 优纤面料 男装</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYXWoman.action\">定制店 优纤面料 女装</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYXWoman.action\"   >定制店 优纤面料 女装</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">定制店 客供面料 男装</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\"      >定制店 客供面料 男装</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">定制店 客供面料 女装</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\"      >定制店 客供面料 女装</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYXDesign.action\">定制店 优纤面料 设计师款</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopPBYXDesign.action\"  >定制店 优纤面料 设计师款</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopRepair.action\">定制店 返修订单</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopRepair.action\"      >定制店 返修订单</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\">定制店 即时库存查询</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSample.action\"      >定制店 工艺部件</a>"//
 				+ "</li>"//
 				+ "<li>"//
-				+ "<a class=\"waves-effect\" href=\"http://www.uskin.net.cn/index.php/cart.html\" target=\"_blank\">进入USKIN购物车结算(电脑版)</a>"//
+				+ "<a class=\"waves-effect\" href=\"/CtrlCenter/LTYX/SCA/Main/CustomShopSearch.action\"      >定制店 即时库存查询</a>"//
+				+ "</li>"//
+				+ "<li>"//
+				+ "<a class=\"waves-effect\" href=\"http://www.uskin.net.cn/index.php/cart.html\" target=\"_blank\"    >进入USKIN购物车结算(电脑版)</a>"//
 				+ "</li>"//
 				+ "<li>"//
 				+ "<a class=\"waves-effect\" href=\"http://www.uskin.net.cn/index.php/wap/cart.html\" target=\"_blank\">进入USKIN购物车结算(手机版)</a>"//

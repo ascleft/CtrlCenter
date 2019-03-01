@@ -11,10 +11,10 @@ import com.zc.support.service.TimeHelper;
 
 import net.sf.json.JSONObject;
 
-public class MoudleCSAGetPriceManPBC extends ZCBaseActionSupportPlugin {
+public class MoudleCSUGetPriceSample extends ZCBaseActionSupportPlugin {
 
-	public MoudleCSAGetPriceManPBC(HttpServletRequest req) {
-		this.name = "客户经理 客供男装 报价";
+	public MoudleCSUGetPriceSample(HttpServletRequest req) {
+		this.name = "定制店 工艺部件 报价";
 		this.request = req;
 	}
 
@@ -27,12 +27,12 @@ public class MoudleCSAGetPriceManPBC extends ZCBaseActionSupportPlugin {
 		double price = 0;
 
 		MoudleCSDParamUtil paramUtil = new MoudleCSDParamUtil(request);
-		ZCHttpReqParam param = paramUtil.getCSAPriceManPBC();
+		ZCHttpReqParam param = paramUtil.getCSUSample();
 
-		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_get_price_man_pbc.getUrl(), param);
+		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshop_get_price_pbyx_sample.getUrl(), param);
 
 		timer.stop(null);
-		log.ec.addSrcReq(ConfigHelperURL.Url_customshop_get_price_design.getUrl(), param);
+		log.ec.addSrcReq(ConfigHelperURL.Url_customshop_get_price_pbyx_sample.getUrl(), param);
 		log.ec.addSrcResp(httpResp);
 		log.ec.addTimer(timer);
 
@@ -50,7 +50,7 @@ public class MoudleCSAGetPriceManPBC extends ZCBaseActionSupportPlugin {
 			jsonData = jsonERRDESC;
 		} catch (Exception e) {
 			// TODO: handle exception
-			Log.Nano.tag(ConfigHelperURL.Url_customshopaide_get_price_man_pbc.getDesc() + "Resp From EC", httpResp);
+			Log.Nano.tag(ConfigHelperURL.Url_customshop_get_price_pbyx_sample.getDesc() + "Resp From EC", httpResp);
 			Log.Nano.tag("EC服务器响应错误，结构异常", httpResp);
 			jsonHttpResp = null;
 			jsonERRCODE = "0";
@@ -84,8 +84,10 @@ public class MoudleCSAGetPriceManPBC extends ZCBaseActionSupportPlugin {
 
 			} catch (Exception e) {
 				// TODO: handle exception
-				Log.Nano.tag(ConfigHelperURL.Url_customshopaide_get_price_man_pbc.getDesc() + "Resp From EC", httpResp);
+				Log.Nano.tag(ConfigHelperURL.Url_customshop_get_price_pbyx_sample.getDesc() + "Resp From EC", httpResp);
 				Log.Nano.tag("EC服务器响应错误，第二级格式异常", httpResp);
+
+				e.printStackTrace();
 
 				ERRCODE = "0";
 				ERRDESC = "fail";
@@ -93,6 +95,7 @@ public class MoudleCSAGetPriceManPBC extends ZCBaseActionSupportPlugin {
 			}
 
 			return true;
+
 		} else {
 
 			ERRCODE = "0";

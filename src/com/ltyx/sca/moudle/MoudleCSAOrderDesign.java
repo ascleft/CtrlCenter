@@ -31,7 +31,7 @@ public class MoudleCSAOrderDesign extends ZCBaseActionSupportPlugin {
 		Log.Nano.tag(ConfigHelperURL.Url_customshopaide_add_cart_design.getDesc() + "Resp From EC", httpResp);
 
 		timer.stop(null);
-		log.ec.addSrcReq(ConfigHelperURL.Url_customshop_get_price_design.getUrl(), param);
+		log.ec.addSrcReq(ConfigHelperURL.Url_customshopaide_add_cart_design.getUrl(), param);
 		log.ec.addSrcResp(httpResp);
 		log.ec.addTimer(timer);
 

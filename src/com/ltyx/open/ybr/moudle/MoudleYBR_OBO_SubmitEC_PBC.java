@@ -7,7 +7,6 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
-import com.zc.support.service.TextLogHelper;
 import com.zc.support.service.TimeHelper;
 
 import net.sf.json.JSONObject;
@@ -26,8 +25,7 @@ public class MoudleYBR_OBO_SubmitEC_PBC extends ZCBaseActionSupportPlugin {
 		MoudleYBRParamUtil paramUtil = new MoudleYBRParamUtil(request);
 		ZCHttpReqParam param = paramUtil.getYBROrderManPBC();
 
-		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_add_cart_ybr_pbc.getUrl(), param, TextLogHelper.Type.USKIN_YBR_NSRC);
-		//Log.Nano.tag(ConfigHelperURL.Url_customshopaide_add_cart_ybr_pbc.getDesc() + "Resp From EC", httpResp);
+		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_add_cart_ybr_pbc.getUrl(), param);
 
 		timer.stop(null);
 		log.ec.addSrcReq(ConfigHelperURL.Url_customshopaide_add_cart_ybr_pbc.getUrl(), param);
@@ -45,6 +43,7 @@ public class MoudleYBR_OBO_SubmitEC_PBC extends ZCBaseActionSupportPlugin {
 			jsonData = jsonERRDESC;
 		} catch (Exception e) {
 			// TODO: handle exception
+			Log.Nano.tag(ConfigHelperURL.Url_customshopaide_add_cart_ybr_pbc.getDesc() + "Resp From EC", httpResp);
 			Log.Nano.tag("EC服务器响应错误", httpResp);
 			jsonERRCODE = "0";
 			jsonERRDESC = "fail";

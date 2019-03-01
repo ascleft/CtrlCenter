@@ -12,26 +12,42 @@ import com.zc.support.service.TimeHelper;
 
 import net.sf.json.JSONObject;
 
-public class MoudleCSAOrderDesign2 extends ZCBaseActionSupportPlugin {
+public class MoudleCSUOrderSample extends ZCBaseActionSupportPlugin {
 
-	public MoudleCSAOrderDesign2(HttpServletRequest req) {
-		this.name = "客户经理 设计师款 提交购物车";
+	public MoudleCSUOrderSample(HttpServletRequest req) {
+		this.name = "定制店 工艺部件 提交购物车";
 		this.request = req;
 	}
 
 	public boolean doJobs() {
-		// TODO Auto-generated method stub
 
 		TimeHelper.Timer timer = new TimeHelper.Timer();
 
-		MoudleCSDParamUtil paramUtil = new MoudleCSDParamUtil(request);
-		ZCHttpReqParam param = paramUtil.getCSAOrderDesign();
+		{
 
-		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_add_cart_design.getUrl(), param, TextLogHelper.Type.USKIN_AIDE_ORDER_NSRC);
-		Log.Nano.tag(ConfigHelperURL.Url_customshopaide_add_cart_design.getDesc() + "Resp From EC", httpResp);
+			// String tech_sample_type = getReqParamString("tech_sample_type");
+			// String tech_sample_code = getReqParamString("tech_sample_code");
+			String uskin_code = getReqParamString("uskin_code");
+			// String measure = getReqParamString("measure");
+			// String prices_now = getReqParamString("prices_now");
+			// String operator_id = getReqParamString("operator_id");
+
+			if (uskin_code.trim().length() == 0) {
+				ERRCODE = "0";
+				ERRDESC = "fail";
+				data = "面料编号不得为空";
+				return false;
+			}
+		}
+
+		MoudleCSDParamUtil paramUtil = new MoudleCSDParamUtil(request);
+		ZCHttpReqParam param = paramUtil.getCSUSample();
+
+		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshop_add_cart_pbyx_sample.getUrl(), param, TextLogHelper.Type.USKIN_USER_ORDER_NSRC);
+		Log.Nano.tag(ConfigHelperURL.Url_customshop_add_cart_pbyx_sample.getDesc() + "Resp From EC", httpResp);
 
 		timer.stop(null);
-		log.ec.addSrcReq(ConfigHelperURL.Url_customshop_get_price_design.getUrl(), param);
+		log.ec.addSrcReq(ConfigHelperURL.Url_customshop_add_cart_pbyx_sample.getUrl(), param);
 		log.ec.addSrcResp(httpResp);
 		log.ec.addTimer(timer);
 
@@ -43,7 +59,7 @@ public class MoudleCSAOrderDesign2 extends ZCBaseActionSupportPlugin {
 			jsonHttpResp = JSONObject.fromObject(httpResp);
 			jsonERRCODE = jsonHttpResp.getString("ERRCODE");
 			jsonERRDESC = jsonHttpResp.getString("ERRDESC");
-			jsonData = jsonERRDESC;
+			jsonData = jsonHttpResp.getString("data");
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.Nano.tag("EC服务器响应错误", httpResp);

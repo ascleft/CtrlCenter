@@ -1,10 +1,11 @@
 package com.ltyx.sca.action;
 
-import com.ltyx.sca.moudle.MoudleCSUGetOrder;
-import com.ltyx.sca.moudle.MoudleCSUOrderRepair;
+import com.ltyx.sca.moudle.MoudleCSDCheckUserInfo;
+import com.ltyx.sca.moudle.MoudleCSUGetPriceSample;
+import com.ltyx.sca.moudle.MoudleCSUOrderSample;
 import com.zc.support.doman.CCActionSupport;
 
-public class CustomShopUserRepairAction extends CCActionSupport {
+public class CustomShopUserSampleAction extends CCActionSupport {
 
 	/**
 	 * 
@@ -29,7 +30,7 @@ public class CustomShopUserRepairAction extends CCActionSupport {
 	public String getPrice() {
 
 		init(true);
-		String methodName = "定制店  返修订单 报价";
+		String methodName = "定制店  工艺部件 报价";
 
 		{
 			initDBLog(methodName, "2010");
@@ -70,7 +71,7 @@ public class CustomShopUserRepairAction extends CCActionSupport {
 	public String submit() {
 
 		init(true);
-		String methodName = "定制店  返修订单 提交购物车";
+		String methodName = "定制店  工艺部件 提交购物车";
 
 		{
 			initDBLog(methodName, "2010");
@@ -93,7 +94,7 @@ public class CustomShopUserRepairAction extends CCActionSupport {
 	public boolean doGetPrice() {
 
 		{// 报价
-			MoudleCSUGetOrder moudle = new MoudleCSUGetOrder(request);
+			MoudleCSUGetPriceSample moudle = new MoudleCSUGetPriceSample(request);
 			moudle.prepDBLog(dbLog);
 			boolean isSucc = runMoudle(moudle);
 			dbLog = moudle.syncDBLog();
@@ -109,6 +110,15 @@ public class CustomShopUserRepairAction extends CCActionSupport {
 	}
 
 	public boolean doCheck() {
+
+		{// 用户信息检测
+			MoudleCSDCheckUserInfo moudle = new MoudleCSDCheckUserInfo(request);
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
+				return false;
+			}
+		}
+
 		{
 			ERRCODE = "0";
 			ERRDESC = "succ";
@@ -120,7 +130,7 @@ public class CustomShopUserRepairAction extends CCActionSupport {
 	public boolean doSubmit() {
 
 		{// 提交EC
-			MoudleCSUOrderRepair moudle = new MoudleCSUOrderRepair(request);
+			MoudleCSUOrderSample moudle = new MoudleCSUOrderSample(request);
 			moudle.prepDBLog(dbLog);
 			boolean isSucc = runMoudle(moudle);
 			dbLog = moudle.syncDBLog();

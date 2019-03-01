@@ -1,10 +1,13 @@
 package com.ltyx.sca.action;
 
-import com.ltyx.sca.moudle.MoudleCSUGetOrder;
-import com.ltyx.sca.moudle.MoudleCSUOrderRepair;
+import com.ltyx.sca.moudle.MoudleAideCheckSubcontract;
+import com.ltyx.sca.moudle.MoudleAideCheckUserInfo;
+import com.ltyx.sca.moudle.MoudleAideGetPriceSubcontract;
+import com.ltyx.sca.moudle.MoudleAideSubmitECSubcontract;
+import com.ltyx.sca.moudle.MoudleCheckPrice;
 import com.zc.support.doman.CCActionSupport;
 
-public class CustomShopUserRepairAction extends CCActionSupport {
+public class CustomShopAidePBYXSubcontractAction extends CCActionSupport {
 
 	/**
 	 * 
@@ -15,7 +18,7 @@ public class CustomShopUserRepairAction extends CCActionSupport {
 
 		init(true);
 
-		AuthorizeAssistan.check(session, response, "20", "21");
+		AuthorizeAssistan.check(session, response, "0");
 
 		session = SCAPageConfigCommon.manageMenu(session);
 		session = SCAPageConfigCommon.manageTechnologyMan(session);
@@ -29,7 +32,7 @@ public class CustomShopUserRepairAction extends CCActionSupport {
 	public String getPrice() {
 
 		init(true);
-		String methodName = "定制店  返修订单 报价";
+		String methodName = "客户经理 优纤男装 报价";
 
 		{
 			initDBLog(methodName, "2010");
@@ -70,7 +73,7 @@ public class CustomShopUserRepairAction extends CCActionSupport {
 	public String submit() {
 
 		init(true);
-		String methodName = "定制店  返修订单 提交购物车";
+		String methodName = "客户经理 优纤男装 提交购物车";
 
 		{
 			initDBLog(methodName, "2010");
@@ -93,7 +96,7 @@ public class CustomShopUserRepairAction extends CCActionSupport {
 	public boolean doGetPrice() {
 
 		{// 报价
-			MoudleCSUGetOrder moudle = new MoudleCSUGetOrder(request);
+			MoudleAideGetPriceSubcontract moudle = new MoudleAideGetPriceSubcontract(request);
 			moudle.prepDBLog(dbLog);
 			boolean isSucc = runMoudle(moudle);
 			dbLog = moudle.syncDBLog();
@@ -109,6 +112,23 @@ public class CustomShopUserRepairAction extends CCActionSupport {
 	}
 
 	public boolean doCheck() {
+
+		{// 用户信息检测
+			MoudleAideCheckUserInfo moudle = new MoudleAideCheckUserInfo(request);
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
+				return false;
+			}
+		}
+
+		{// 订单摘要信息
+			MoudleAideCheckSubcontract moudle = new MoudleAideCheckSubcontract(request);
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
+				return false;
+			}
+		}
+
 		{
 			ERRCODE = "0";
 			ERRDESC = "succ";
@@ -119,8 +139,22 @@ public class CustomShopUserRepairAction extends CCActionSupport {
 
 	public boolean doSubmit() {
 
+		boolean checkSucc = doCheck();
+
+		if (checkSucc == false) {
+			return false;
+		}
+
+		{// 报价核对
+			MoudleCheckPrice moudle = new MoudleCheckPrice(request);
+			boolean isSucc = runMoudle(moudle);
+			if (isSucc == false) {
+				return false;
+			}
+		}
+
 		{// 提交EC
-			MoudleCSUOrderRepair moudle = new MoudleCSUOrderRepair(request);
+			MoudleAideSubmitECSubcontract moudle = new MoudleAideSubmitECSubcontract(request);
 			moudle.prepDBLog(dbLog);
 			boolean isSucc = runMoudle(moudle);
 			dbLog = moudle.syncDBLog();

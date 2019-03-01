@@ -66,7 +66,7 @@ public class MoudleCheckMeasureMan extends ZCBaseActionSupportPlugin {
 				if (houshen_chang_nei == 0) {
 					ERRCODE = "0";
 					ERRDESC = "fail";
-					data = "您当前选择的是【内穿】,请补全【后身长（内穿）】尺寸";
+					data = "您当前选择的是【内穿】,请补全【后身长(内穿)】尺寸";
 					return false;
 				}
 			}
@@ -76,7 +76,7 @@ public class MoudleCheckMeasureMan extends ZCBaseActionSupportPlugin {
 				if (houshen_chang_wai == 0) {
 					ERRCODE = "0";
 					ERRDESC = "fail";
-					data = "您当前选择的是【外穿】,请补全【后身长（外穿）】尺寸";
+					data = "您当前选择的是【外穿】,请补全【后身长(外穿)】尺寸";
 					return false;
 				}
 			}
@@ -122,13 +122,13 @@ public class MoudleCheckMeasureMan extends ZCBaseActionSupportPlugin {
 				if (xiutouchang_zuo == 0) {
 					ERRCODE = "0";
 					ERRDESC = "fail";
-					data = "您当前选择的是【长袖】,请补全【左袖头长（左腕围）】尺寸";
+					data = "您当前选择的是【长袖】,请补全【左袖头长(左腕围)】尺寸";
 					return false;
 				}
 				if (xiutouchang_you == 0) {
 					ERRCODE = "0";
 					ERRDESC = "fail";
-					data = "您当前选择的是【长袖】,请补全【右袖头长（右腕围）】尺寸";
+					data = "您当前选择的是【长袖】,请补全【右袖头长(右腕围)】尺寸";
 					return false;
 				}
 			}
@@ -441,17 +441,17 @@ public class MoudleCheckMeasureMan extends ZCBaseActionSupportPlugin {
 		//maleBodyMeasure.put("du_wei",            new Cell(false, "du_wei",     "肚围", 66, 173));// 20180614耍赖改的//20181020已经确认
 		maleBodyMeasure.put("dibian",              new Cell(true,  "dibian",       "底边(臀围)", 70, 180));//20181020已经确认
 		maleBodyMeasure.put("ling_wei",            new Cell(true,  "ling_wei",     "领围", 31, 60));// 20180614耍赖改的//20181020已经确认
-		maleBodyMeasure.put("houshen_chang_nei",   new Cell(false, "houshen_chang_nei", "后身长（内穿）", 56, 95));//20181020已经确认
-		maleBodyMeasure.put("houshen_chang_wai",   new Cell(false, "houshen_chang_wai", "后身长（外穿）", 56, 95));//20181020已经确认
+		maleBodyMeasure.put("houshen_chang_nei",   new Cell(false, "houshen_chang_nei", "后身长(内穿)", 56, 95));//20181020已经确认
+		maleBodyMeasure.put("houshen_chang_wai",   new Cell(false, "houshen_chang_wai", "后身长(外穿)", 56, 95));//20181020已经确认
 		maleBodyMeasure.put("jian_kuan",           new Cell(true,  "jian_kuan", "肩宽", 34, 62.5));//20181020已经确认
 		maleBodyMeasure.put("xiutouchang_zuo",     new Cell(false, "xiutouchang_zuo", "长袖长", 18, 78));//20181020已经确认
 		maleBodyMeasure.put("xiutouchang_you",     new Cell(false, "xiutouchang_you", "长袖长", 18, 78));//20181020已经确认
 		maleBodyMeasure.put("duanxiu_chang",       new Cell(false, "duanxiu_chang", "短袖长", 14, 55));////20181020已经确认
 		//maleBodyMeasure.put("xiu_fei",           new Cell(true,  "xiu_fei", "袖肥(大臂围)", 22.5, 65));// 20180614耍赖改的//20181020已经确认
 		//maleBodyMeasure.put("duanxiu_kouwei",    new Cell(false, "duanxiu_kouwei", "短袖口围", 33, 42));//20181020已经确认
-		maleBodyMeasure.put("xiutouchang_zuo",     new Cell(false, "xiutouchang_zuo", "左袖头长（左腕围）", 15, 50));//20181020已经确认
-		maleBodyMeasure.put("xiutouchang_you",     new Cell(false, "xiutouchang_you", "右袖头长（右腕围）", 15, 50));//20181020已经确认
-		//maleBodyMeasure.put("qianshen_chang",    new Cell(true,  "qianshen_chang", "前身长", 67, 76.5));// 20180614耍赖改的//20181020已经确认
+		maleBodyMeasure.put("xiutouchang_zuo",     new Cell(false, "xiutouchang_zuo", "左袖头长(左腕围)", 15, 50));//20181020已经确认
+		maleBodyMeasure.put("xiutouchang_you",     new Cell(false, "xiutouchang_you", "右袖头长(右腕围)", 15, 50));//20181020已经确认
+		maleBodyMeasure.put("qianshen_chang",      new Cell(true,  "qianshen_chang", "前身长", 56, 95));// 20180614耍赖改的//20181020已经确认//20190122坚决不承认，还说要录音，又改成必填了
 		//maleBodyMeasure.put("height",            new Cell(false, "height", "身高", 145, 201));//20181020已经确认
 		//maleBodyMeasure.put("weight",            new Cell(false, "weight", "体重", 39, 190));//20181020已经确认
 

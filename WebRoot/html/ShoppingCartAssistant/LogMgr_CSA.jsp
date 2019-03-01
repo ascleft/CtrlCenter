@@ -82,7 +82,7 @@
 				}
 
 				global_progress_loading();
-				global_notice_loading("查询中,请稍候");
+				global_notice_show("查询中,请稍候");
 
 				ajax_search = $.ajax({
 					cache: true,

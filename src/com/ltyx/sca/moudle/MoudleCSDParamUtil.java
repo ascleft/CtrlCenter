@@ -33,19 +33,31 @@ public class MoudleCSDParamUtil extends ZCBaseActionSupportPlugin {
 		param.addParam("LZX_06", getReqParamString("LZX_06"));
 
 		// 文字刺绣
-//		param.addParam("LZX_11_FOR_CHAR_SWITCH", getReqParamString("LZX_11_FOR_CHAR_SWITCH"));
-//		param.addParam("LZX_11_CHAR_TYPE", getReqParamString("LZX_11_CHAR_TYPE"));
-//		param.addParam("LZX_13_FOR_CHAR", getReqParamString("LZX_13_FOR_CHAR"));
-//		param.addParam("LZX_11_CHAR_SIZE", getReqParamString("LZX_11_CHAR_SIZE"));
-//		param.addParam("LZX_11_CHAR_COLOR", getReqParamString("LZX_11_CHAR_COLOR"));
-//		param.addParam("LZX_11_CHAR_WORD", getReqParamString("LZX_11_CHAR_WORD"));
+		// param.addParam("LZX_11_FOR_CHAR_SWITCH",
+		// getReqParamString("LZX_11_FOR_CHAR_SWITCH"));
+		// param.addParam("LZX_11_CHAR_TYPE",
+		// getReqParamString("LZX_11_CHAR_TYPE"));
+		// param.addParam("LZX_13_FOR_CHAR",
+		// getReqParamString("LZX_13_FOR_CHAR"));
+		// param.addParam("LZX_11_CHAR_SIZE",
+		// getReqParamString("LZX_11_CHAR_SIZE"));
+		// param.addParam("LZX_11_CHAR_COLOR",
+		// getReqParamString("LZX_11_CHAR_COLOR"));
+		// param.addParam("LZX_11_CHAR_WORD",
+		// getReqParamString("LZX_11_CHAR_WORD"));
 		// 图案刺绣
-//		param.addParam("LZX_11_FOR_PIC_SWITCH", getReqParamString("LZX_11_FOR_PIC_SWITCH"));
-//		param.addParam("LZX_11_PIC_TYPE", getReqParamString("LZX_11_PIC_TYPE"));
-//		param.addParam("LZX_11_PIC_SIZE", getReqParamString("LZX_11_PIC_SIZE"));
-//		param.addParam("LZX_13_FOR_PIC", getReqParamString("LZX_13_FOR_PIC"));
-//		param.addParam("LZX_11_PIC_COLOR", getReqParamString("LZX_11_PIC_COLOR"));
-//		param.addParam("LZX_11_PIC_NUM", getReqParamString("LZX_11_PIC_NUM"));
+		// param.addParam("LZX_11_FOR_PIC_SWITCH",
+		// getReqParamString("LZX_11_FOR_PIC_SWITCH"));
+		// param.addParam("LZX_11_PIC_TYPE",
+		// getReqParamString("LZX_11_PIC_TYPE"));
+		// param.addParam("LZX_11_PIC_SIZE",
+		// getReqParamString("LZX_11_PIC_SIZE"));
+		// param.addParam("LZX_13_FOR_PIC",
+		// getReqParamString("LZX_13_FOR_PIC"));
+		// param.addParam("LZX_11_PIC_COLOR",
+		// getReqParamString("LZX_11_PIC_COLOR"));
+		// param.addParam("LZX_11_PIC_NUM",
+		// getReqParamString("LZX_11_PIC_NUM"));
 
 		// 新版刺绣参数
 		param.addParam("embroidery", getEmbroideryPackage());
@@ -66,7 +78,7 @@ public class MoudleCSDParamUtil extends ZCBaseActionSupportPlugin {
 		// param.addParam("design_code", getReqParamString("design_code"));
 		param.addParam("easy_type", getReqParamString("easy_type"));
 		param.addParam("kouzi", getReqParamString("kouzi", ""));
-		param.addParam("button_main_ft1", getReqParamString("kouzi", ""));	//锁钉位置
+		param.addParam("button_main_ft1", getReqParamString("button_main_ft1", "")); // 锁钉位置
 		param.addParam("line_color_location_1", getReqParamString("line_color_location_1"));
 		param.addParam("line_color_location_2", getReqParamString("line_color_location_2"));
 		param.addParam("line_color_location_3", getReqParamString("line_color_location_3"));
@@ -78,7 +90,8 @@ public class MoudleCSDParamUtil extends ZCBaseActionSupportPlugin {
 		param.addParam("order_delivery_time", chooseNumber(getReqParamString("order_delivery_time")));// -----------
 		param.addParam("order_mtm_type", getReqParamString("order_mtm_type"));// ---------------------
 		param.addParam("order_processing_cost", getReqParamString("order_processing_cost"));// -------
-		param.addParam("order_production_count", chooseNumber(getReqParamString("order_production_count")));// -----
+		param.addParam("order_production_count", chooseNumber(getReqParamString("order_production_count")));
+		param.addParam("order_production_count_real", getReqParamString("order_production_count_real"));// -----
 		param.addParam("prices_desc", getReqParamString("prices_desc"));
 		param.addParam("prices_now", getReqParamString("prices_now"));
 		param.addParam("prices_system", getReqParamString("prices_system"));
@@ -139,6 +152,8 @@ public class MoudleCSDParamUtil extends ZCBaseActionSupportPlugin {
 
 		param.addParam("ExpressNO", getReqParamString("ExpressNO"));// 客供物料单号
 
+		param.addParam("adjunct_mark_size", getReqParamString("adjunct_mark_size"));// 客供物料单号
+
 		return param;
 
 	}
@@ -185,6 +200,28 @@ public class MoudleCSDParamUtil extends ZCBaseActionSupportPlugin {
 	public ZCHttpReqParam getCSAOrderWomanPBC() {
 		ZCHttpReqParam param = getCSUOrderManPBYX();
 		param.addParam("customer_tel_target", getReqParamString("customer_tel_target"));
+		return param;
+	}
+
+	public ZCHttpReqParam getCSAOrderSubcontract() {
+		ZCHttpReqParam param = new ZCHttpReqParam();
+		param.addParam("customer_address", getReqParamString("customer_address"));
+		param.addParam("customer_name", getReqParamString("customer_name"));
+		param.addParam("customer_tel", getReqParamString("customer_tel"));
+		param.addParam("customer_tel_target", getReqParamString("customer_tel_target"));
+		param.addParam("customer_tips", getReqParamString("customer_tips"));
+		param.addParam("design_code", getReqParamString("design_code"));
+		param.addParam("operator_id", getReqParamString("operator_id"));
+		param.addParam("operator_name", getReqParamString("operator_name"));
+		param.addParam("prices_desc", getReqParamString("prices_desc"));
+		param.addParam("prices_now", getReqParamString("prices_now"));
+		param.addParam("prices_system", getReqParamString("prices_system"));
+		if ("计算价格".equals("subcontract_price_type")) {
+			param.addParam("subcontract_fabric_unit_cost", getReqParamString("subcontract_fabric_unit_cost"));
+		} else {
+			param.addParam("subcontract_fabric_unit_cost", "0");
+		}
+		param.addParam("uskin_code", getReqParamString("uskin_code"));
 		return param;
 	}
 
@@ -317,6 +354,7 @@ public class MoudleCSDParamUtil extends ZCBaseActionSupportPlugin {
 		param.addParam("order_processing_cost", order_processing_cost);
 		param.addParam("order_mtm_type", order_mtm_type);
 		param.addParam("order_production_count", chooseNumber(order_production_count));
+		param.addParam("order_production_count_real", getReqParamString("order_production_count_real"));
 		param.addParam("LZX_11_FOR_CHAR_SWITCH", LZX_11_FOR_CHAR_SWITCH);
 		param.addParam("LZX_11_FOR_PIC_SWITCH", LZX_11_FOR_PIC_SWITCH);
 
@@ -329,6 +367,8 @@ public class MoudleCSDParamUtil extends ZCBaseActionSupportPlugin {
 		param.addParam("weizhi_zhidai", weizhi_zhidai);// 织带位置
 		param.addParam("LZX_26", LZX_26);// 底摆配布
 		param.addParam("cixiu_kegong_num", cixiu_kegong_num);// 客供图案刺绣数量
+
+		param.addParam("adjunct_mark_size", getReqParamString("adjunct_mark_size"));// 客供物料单号
 
 		return param;
 
@@ -407,6 +447,22 @@ public class MoudleCSDParamUtil extends ZCBaseActionSupportPlugin {
 		param.addParam("Tips", getReqParamString("Tips"));
 		param.addParam("Price", getReqParamString("prices_system"));
 		param.addParam("operator_id", getReqParamString("operator_id"));
+		return param;
+	}
+
+	// 提交样例订单
+	public ZCHttpReqParam getCSUSample() {
+		ZCHttpReqParam param = new ZCHttpReqParam();
+		param.addParam("operator_id", getReqParamString("operator_id"));
+		param.addParam("customer_name", getReqParamString("customer_name"));// 客供物料单号
+		param.addParam("ExpressNO", getReqParamString("ExpressNO"));// 客供物料单号
+		param.addParam("customer_tips", getReqParamString("customer_tips"));// 客供物料单号
+		param.addParam("tech_sample_type", getReqParamString("tech_sample_type"));
+		param.addParam("tech_sample_code", getReqParamString("tech_sample_code"));
+		param.addParam("uskin_code", getReqParamString("uskin_code"));
+		param.addParam("measure", getReqParamString("measure"));
+		param.addParam("prices_now", getReqParamString("prices_now"));
+		param.addParam("fuck_eclipse", getReqParamString("mmp,打包出故障了"));
 		return param;
 	}
 

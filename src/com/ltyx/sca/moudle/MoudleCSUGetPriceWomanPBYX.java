@@ -7,7 +7,6 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
-import com.zc.support.service.TextLogHelper;
 import com.zc.support.service.TimeHelper;
 
 import net.sf.json.JSONObject;
@@ -30,8 +29,7 @@ public class MoudleCSUGetPriceWomanPBYX extends ZCBaseActionSupportPlugin {
 		MoudleCSDParamUtil paramUtil = new MoudleCSDParamUtil(request);
 		ZCHttpReqParam param = paramUtil.getCSAPriceWomanPBYX();
 
-		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_get_price_woman_pbyx.getUrl(), param, TextLogHelper.Type.USKIN_USER_PRICE_NSRC);
-		Log.Nano.tag(ConfigHelperURL.Url_customshopaide_get_price_woman_pbyx.getDesc() + "Resp From EC", httpResp);
+		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_customshopaide_get_price_woman_pbyx.getUrl(), param);
 
 		timer.stop(null);
 		log.ec.addSrcReq(ConfigHelperURL.Url_customshopaide_get_price_woman_pbyx.getUrl(), param);
@@ -52,6 +50,7 @@ public class MoudleCSUGetPriceWomanPBYX extends ZCBaseActionSupportPlugin {
 			jsonData = jsonERRDESC;
 		} catch (Exception e) {
 			// TODO: handle exception
+			Log.Nano.tag(ConfigHelperURL.Url_customshopaide_get_price_woman_pbyx.getDesc() + "Resp From EC", httpResp);
 			Log.Nano.tag("EC服务器响应错误，结构异常", httpResp);
 			jsonHttpResp = null;
 			jsonERRCODE = "0";
@@ -85,6 +84,7 @@ public class MoudleCSUGetPriceWomanPBYX extends ZCBaseActionSupportPlugin {
 
 			} catch (Exception e) {
 				// TODO: handle exception
+				Log.Nano.tag(ConfigHelperURL.Url_customshopaide_get_price_woman_pbyx.getDesc() + "Resp From EC", httpResp);
 				Log.Nano.tag("EC服务器响应错误，第二级格式异常", httpResp);
 
 				e.printStackTrace();

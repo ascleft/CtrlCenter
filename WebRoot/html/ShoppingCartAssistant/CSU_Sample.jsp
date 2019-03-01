@@ -12,6 +12,32 @@
 
 	String menulist=(String) session.getAttribute("menulist");
 	
+	String list_tech_collar_full=(String) session.getAttribute("list_tech_collar_full");
+	String list_LZX_02=(String) session.getAttribute("list_LZX_02");
+	String list_LZX_03=(String) session.getAttribute("list_LZX_03");
+	String list_LZX_04=(String) session.getAttribute("list_LZX_04");
+	String list_LZX_08=(String) session.getAttribute("list_LZX_08");
+	String list_LZX_120=(String) session.getAttribute("list_LZX_120");
+	String list_LZX_06=(String) session.getAttribute("list_LZX_06");
+	String list_LZX_17=(String) session.getAttribute("list_LZX_17");
+	String list_LZX_26=(String) session.getAttribute("list_LZX_26");
+	String list_LZX_13=(String) session.getAttribute("list_LZX_13");
+	String list_zhidai=(String) session.getAttribute("list_zhidai");
+	String list_color=(String) session.getAttribute("list_color");
+	String list_button_default=(String) session.getAttribute("list_button_default");
+	String list_easytype=(String) session.getAttribute("list_easytype");
+	String list_lingcheng=(String) session.getAttribute("list_lingcheng");
+	String list_mingxian=(String) session.getAttribute("list_mingxian");
+	String list_cefeng=(String) session.getAttribute("list_cefeng");
+	String list_qiantiao=(String) session.getAttribute("list_qiantiao");
+	String list_chenbu=(String) session.getAttribute("list_chenbu");
+	String list_weizhi_zhidai=(String) session.getAttribute("list_weizhi_zhidai");
+	String list_weizhi_peise=(String) session.getAttribute("list_weizhi_peise");
+	String list_baozhuang=(String) session.getAttribute("list_baozhuang_shop");	
+	String list_button_decorative_code=(String) session.getAttribute("list_button_decorative_code");
+	String list_button_decorative_num=(String) session.getAttribute("list_button_decorative_num");
+	String list_button_decorative_pos=(String) session.getAttribute("list_button_decorative_pos");	
+	
 %>
 
 <html>
@@ -19,11 +45,11 @@
 		
 		作者:鸿安Adrian
 		邮箱:ascleft@163.com
-		时间:2019-01-17
+		时间:2019-01-16
 		描述:购物车添加工具 SCA 3.0
 		
 		定制店 优纤面料
-		
+		 
 	-->
 
 	<head>
@@ -67,9 +93,9 @@
 				$('#nav_menu').sideNav('show');
 			}
 			//url定义
-			var url_price = "/CtrlCenter/LTYX/SCA/Main/CustomShopRepairGetPrice.action";
-			var url_check = "/CtrlCenter/LTYX/SCA/Main/CustomShopRepairCheck.action";
-			var url_addsc = "/CtrlCenter/LTYX/SCA/Main/CustomShopRepairSubmit.action";
+			var url_price = "/CtrlCenter/LTYX/SCA/Main/CustomShopSampleGetPrice.action";
+			var url_check = "/CtrlCenter/LTYX/SCA/Main/CustomShopSampleCheck.action";
+			var url_addsc = "/CtrlCenter/LTYX/SCA/Main/CustomShopSampleSubmit.action";
 
 			var ajax_price = null;
 			var ajax_check = null;
@@ -247,7 +273,7 @@
 				if(state == "lost_price") {
 					$("#getPrice").show();
 					$("#addShoppingCart").hide();
-					//check();
+					check();
 				}
 				if(state == "got_price") {
 					$("#getPrice").hide();
@@ -256,17 +282,45 @@
 			}
 
 			$(document).ready(function() {
-
 				package_page();
-
 			});
 
 			function package_page() {
+				page_build_timer = setInterval(page_build, 200);
+				page_flush_timer = setInterval(page_flush, 200);
+			}
 
-				state_now("default");
+			var page_build_timer;
+			var page_flush_timer;
+			var page_loader_func_list = [];
+			var page_loader_func_state = [0, "开始构建页面", 0, "done"];
 
-				use_SubcontractTable();
+			function page_flush() {
+				global_page_loading_determinate(page_loader_func_state[0], page_loader_func_state[1]);
+				if(page_loader_func_state[0] > 1) {
+					clearInterval(page_build_timer);
+					clearInterval(page_flush_timer);
+					state_now("default");
+					global_page_loaded();
+				}
+			}
 
+			function page_build() {
+				if(page_loader_func_list.length == 0) {
+					page_loader_func_list.push(use_sample_tech_table);
+					page_loader_func_list.push(page_input_binder);
+				}
+				if(page_loader_func_state[3] == "done") {
+					page_loader_func_state[3] = "doing";
+					var fn = page_loader_func_list[page_loader_func_state[2]];
+					page_loader_func_state[1] = fn() + "加载完成";
+					page_loader_func_state[2]++;
+					page_loader_func_state[3] = "done";
+				}
+				page_loader_func_state[0] = (page_loader_func_state[2] + 1) / page_loader_func_list.length;
+			}
+
+			function page_input_binder() {
 				$("div#section1 input").bind("keyup", function() {
 					state_now("lost_price");
 				});
@@ -277,10 +331,25 @@
 					state_now("lost_price");
 				});
 
-				state_now("default");
+				console.log("finish bind");
 
-				global_page_loaded();
+				return "绑定页面输入事件";
+			};
 
+			function page_input_binder() {
+				$("div#section1 input").bind("keyup", function() {
+					state_now("lost_price");
+				});
+				$("div#section1 input").bind("change", function() {
+					state_now("lost_price");
+				});
+				$("div#section1 select").bind("change", function() {
+					state_now("lost_price");
+				});
+
+				console.log("finish bind");
+
+				return "绑定页面输入事件";
 			};
 		</script>
 
@@ -292,7 +361,7 @@
 			<nav class="teal" role="navigation">
 				<div class="nav-wrapper container">
 					<!-- 页面标题  -->
-					<a id="logo-container " href="#" class="brand-logo white-text ">定制店 返修订单</a>
+					<a id="logo-container " href="#" class="brand-logo">定制店 工艺部件</a>
 					<!-- 导航菜单键（运动移动设备） -->
 					<a href="#" data-activates="nav_menu_list " class="button-collapse ">
 						<i class="material-icons white-text">menu</i>
@@ -339,7 +408,10 @@
 
 							<div class="col s12">
 								<div class="progress">
-									<div id="section_loading_determinate" class="determinate" style="width: 82%"></div>
+									<div id="section_loading_determinate" class="determinate" style="width: 0%"></div>
+								</div>
+								<div class="progress" style="display: none;">
+									<div id="section_loading_indeterminate" class="indeterminate"></div>
 								</div>
 							</div>
 
@@ -362,95 +434,118 @@
 
 					<div class="section" id="section_content" style="opacity: 0;">
 						<div class="row">
-
 							<div class="col s12 m12 l12" id="section1">
-
-								<div class="card-panel hoverable">
-									<div class="card-content grey-text">
-										<div class="row">
-
-											<div class="input-field col s12 m12 l12">
-												<select id="Type" name="Type" multiple>
-
-												</select> <label>修改项目（取工厂报价文件选项）</label>
+								<!-- <ul class="collapsible popout"data-collapsible="expandable"> -->
+								<ul class="collapsible teal lighten-5" data-collapsible="accordion">
+									<li>
+										<div class="collapsible-header active">
+											<i class="material-icons">perm_identity</i>用户
+										</div>
+										<div class="collapsible-body">
+											<div class="row">
+												<div class="col s12 m6 l4">
+													<div class="input-field">
+														<input type="text" class="validate" name="customer_name" value="">
+														<label>穿衣人姓名（必填）</label>
+													</div>
+												</div>
+												<div class="col s12 m6 l8">
+													<div class="input-field">
+														<input type="text" class="validate" name="ExpressNO" value="">
+														<label>客供物料寄厂单号</label>
+													</div>
+												</div>
+												<div class="col s12 m12 l12">
+													<div class="input-field">
+														<input type="text" class="validate" name="customer_tips" value="">
+														<label>生产备注</label>
+													</div>
+												</div>
+												<div class="col s12 m6 l4" style="display: none;">
+													<div class="input-field">
+														<input type="text" class="validate" name="customer_tel" value="">
+														<label>穿衣人电话</label>
+													</div>
+												</div>
+												<div class="col s12 m6 l4" style="display: none;">
+													<div class="input-field">
+														<input type="text" class="validate" name="customer_address" value="">
+														<label>收货地址</label>
+													</div>
+												</div>
 											</div>
+											<div style="display: none;">
+												<input type="text" class="validate" name="operator_id" value="<%=ec_user_id%>"><label>操作人ID</label>
+												<input type="text" class="validate" name="operator_name" value="<%=ec_user_name%>"><label>操作人名称</label>
+											</div>
+										</div>
+									</li>
 
-											<div class="col s12 m12 l12" style="display: none;">
-												<div class="card-panel hoverable">
-													<div class="row">
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="name_c" name="name_c" value="">
-															<label>C端项目</label>
+									<li>
+										<div class="collapsible-header active">
+											<i class="material-icons">playlist_add</i>商品
+										</div>
+										<div class="collapsible-body">
+											<div class="row">
+												<div class="input-field col s12 m12 l12">
+													<div class="card-panel">
+														<div class="row">
+															<div class="input-field col s12 m12 l12">
+																<select name="tech_sample_code">
+																	<option value="YX-PS-01">领样</option>
+																	<option value="YX-PS-02">袖样</option>
+																	<option value="YX-PS-03">门襟样</option>
+																	<option value="YX-PS-04">口袋样</option>
+																	<option value="YX-PS-10">刺绣样</option>
+																</select> <label>商品类型</label>
+															</div>
 														</div>
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="price_c" name="price_c" value="">
-															<label>C端价格</label>
-														</div>
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="time_c" name="time_c" value="">
-															<label>C端工期</label>
-														</div>
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="tips_c" name="tips_c" value="">
-															<label>C端项目描述</label>
-														</div>
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="name_f" name="name_f" value="">
-															<label>F端项目</label>
-														</div>
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="price_f" name="price_f" value="">
-															<label>F端价格</label>
-														</div>
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="time_f" name="time_f" value="">
-															<label>F端工期</label>
-														</div>
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="tips_f" name="tips_f" value="">
-															<label>F端项目描述</label>
-														</div>
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="operator_id" name="operator_id" value="<%=ec_user_id%>">
-															<label>操作人ID</label>
+													</div>
+												</div>
+												<div class="input-field col s12 m12 l12">
+													<div class="card-panel">
+														<div class="row">
+															<div class="col s12 m12 l12 teal-text">
+																<p>详情</p>
+															</div>
+															<div class="input-field col s12 m8 l8" id="div_tech_sample_type_01">
+																<select name="type_01">
+																	<%=list_tech_collar_full%>
+																</select> <label>领样</label>
+															</div>
+															<div class="input-field col s12 m8 l8" id="div_tech_sample_type_02">
+																<select name="type_02">
+																	<%=list_LZX_02%>
+																</select> <label>袖样</label>
+															</div>
+															<div class="input-field col s12 m8 l8" id="div_tech_sample_type_03">
+																<select name="type_03">
+																	<%=list_LZX_03%>
+																</select> <label>门襟样</label>
+															</div>
+															<div class="input-field col s12 m8 l8" id="div_tech_sample_type_04">
+																<select name="type_04">
+																	<%=list_LZX_04%>
+																</select> <label>口袋样</label>
+															</div>
+															<div class="input-field col s12 m4 l4 ">
+																<input type="text" class="validate" name="uskin_code" value="" />
+																<label>面料编号（USKIN 编号）</label>
+															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-
-											<div class="col s12 m6 l6">
-												<div class="input-field">
-													<input type="text" class="validate" name="FactoryID" value="">
-													<label>原订单号</label>
-												</div>
-											</div>
-											<div class="col s12 m6 l6">
-												<div class="input-field">
-													<input type="text" class="validate" name="ExpressNO" value=""> <label>寄厂单号（修改衬衫物流单号）</label>
-												</div>
-											</div>
-											<div class="col s12 m12 l12">
-												<div class="input-field">
-													<textarea type="text" class="materialize-textarea" name="Tips" value=""></textarea>
-													<label>生产备注（工艺修改说明）</label>
-												</div>
-											</div>
 										</div>
+									</li>
 
-									</div>
-								</div>
+								</ul>
 							</div>
 
 							<div class="col s12 m12 l12" id="section2">
 								<div class="card-panel hoverable">
 									<div class="card-content grey-text">
 										<div class="row">
-
-											<div class="col s12 m12 l12">
-												<div class="card-panel hoverable" id="TIP1" style="display: none;">
-												</div>
-											</div>
-
 											<div class="col s12 m12 l4">
 												<div class="input-field">
 													<input type="number" class="validate" name="prices_system" value="0" id="prices_system" readonly="true">

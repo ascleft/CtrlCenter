@@ -9,6 +9,7 @@ import com.zc.support.doman.ZCBaseActionSupportPlugin;
 import com.zc.support.link.ZCHttpReqParam;
 import com.zc.support.link.ZCHttpReqSender;
 import com.zc.support.service.Log;
+import com.zc.support.service.TimeHelper;
 
 public class MoudleAideSubmitECSubcontract extends ZCBaseActionSupportPlugin {
 
@@ -19,29 +20,17 @@ public class MoudleAideSubmitECSubcontract extends ZCBaseActionSupportPlugin {
 
 	public boolean doJobs() {
 
-		ZCHttpReqParam param = new ZCHttpReqParam();
+		TimeHelper.Timer timer = new TimeHelper.Timer();
 
-		param.addParam("customer_address", getReqParamString("customer_address"));
-		param.addParam("customer_name", getReqParamString("customer_name"));
-		param.addParam("customer_tel", getReqParamString("customer_tel"));
-		param.addParam("customer_tel_target", getReqParamString("customer_tel_target"));
-		param.addParam("customer_tips", getReqParamString("customer_tips"));
-		param.addParam("design_code", getReqParamString("design_code"));
-		param.addParam("operator_id", getReqParamString("operator_id"));
-		param.addParam("operator_name", getReqParamString("operator_name"));
-		param.addParam("prices_desc", getReqParamString("prices_desc"));
-		param.addParam("prices_now", getReqParamString("prices_now"));
-		param.addParam("prices_system", getReqParamString("prices_system"));
-
-		if ("计算价格".equals("subcontract_price_type")) {
-			param.addParam("subcontract_fabric_unit_cost", getReqParamString("subcontract_fabric_unit_cost"));
-		} else {
-			param.addParam("subcontract_fabric_unit_cost", "0");
-		}
-		param.addParam("uskin_code", getReqParamString("uskin_code"));
+		MoudleCSDParamUtil paramUtil = new MoudleCSDParamUtil(request);
+		ZCHttpReqParam param = paramUtil.getCSAOrderSubcontract();
 
 		String httpResp = ZCHttpReqSender.sendGet(ConfigHelperURL.Url_aide_add_cart_subcontract.getUrl(), param);
-		Log.Nano.tag("定制顾问 提交 其他商品 Resp From EC", httpResp);
+
+		timer.stop(null);
+		log.ec.addSrcReq(ConfigHelperURL.Url_aide_add_cart_subcontract.getUrl(), param);
+		log.ec.addSrcResp(httpResp);
+		log.ec.addTimer(timer);
 
 		JSONObject jsonHttpResp;
 		String jsonERRCODE;

@@ -1,10 +1,10 @@
 package com.ltyx.sca.action;
 
-import com.ltyx.sca.moudle.MoudleCSACheckSummaryClothes;
-import com.ltyx.sca.moudle.MoudleCSACheckUserInfo;
-import com.ltyx.sca.moudle.MoudleCSAGetPriceDesign;
-import com.ltyx.sca.moudle.MoudleCSAOrderDesign;
-import com.ltyx.sca.moudle.MoudleCheckMeasureDesign;
+import com.ltyx.sca.moudle.MoudleCSDCheckSummaryClothes;
+import com.ltyx.sca.moudle.MoudleCSDCheckUserInfo;
+import com.ltyx.sca.moudle.MoudleCSUGetPriceManPBYX;
+import com.ltyx.sca.moudle.MoudleCSUOrderManPBYX;
+import com.ltyx.sca.moudle.MoudleCheckMeasureMan;
 import com.ltyx.sca.moudle.MoudleCheckPrice;
 import com.ltyx.sca.moudle.MoudleCheckTechClash;
 import com.ltyx.sca.moudle.MoudleCheckTechLZX01;
@@ -14,7 +14,7 @@ import com.ltyx.sca.moudle.MoudleCheckTechLZXNecessary;
 import com.ltyx.sca.moudle.MoudleCheckTechYXST;
 import com.zc.support.doman.CCActionSupport;
 
-public class CustomShopAidePBYXDesignAction extends CCActionSupport {
+public class Next_CustomShopUserFushionAction extends CCActionSupport {
 
 	/**
 	 * 
@@ -25,10 +25,10 @@ public class CustomShopAidePBYXDesignAction extends CCActionSupport {
 
 		init(true);
 
-		AuthorizeAssistan.check(session, response, "0");
+		AuthorizeAssistan.check(session, response, "20", "21");
 
 		session = SCAPageConfigCommon.manageMenu(session);
-		session = SCAPageConfigCommon.manageTechnologyMix(session);
+		session = SCAPageConfigCommon.manageTechnologyMan(session);
 
 		session.setAttribute("QRurl", SCAPageConfigCommon.get_QR_url(request));
 
@@ -39,7 +39,7 @@ public class CustomShopAidePBYXDesignAction extends CCActionSupport {
 	public String getPrice() {
 
 		init(true);
-		String methodName = "客户经理 优纤面料 设计师款 报价";
+		String methodName = "定制店 优纤男装 报价";
 
 		{
 			initDBLog(methodName, "2010");
@@ -80,7 +80,7 @@ public class CustomShopAidePBYXDesignAction extends CCActionSupport {
 	public String submit() {
 
 		init(true);
-		String methodName = "客户经理 优纤面料 设计师款 提交购物车";
+		String methodName = "定制店 优纤男装 提交购物车";
 
 		{
 			initDBLog(methodName, "2010");
@@ -96,6 +96,16 @@ public class CustomShopAidePBYXDesignAction extends CCActionSupport {
 
 		writeResp();
 
+		// if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
+		// ZCReqIntroGetter.showParams(methodName, request,
+		// TextLogHelper.Type.USKIN_USER_ORDER_SUCC);
+		// writeResp(methodName, TextLogHelper.Type.USKIN_USER_ORDER_SUCC);
+		// } else {
+		// ZCReqIntroGetter.showParams(methodName, request,
+		// TextLogHelper.Type.USKIN_USER_ORDER_FAIL);
+		// writeResp(methodName, TextLogHelper.Type.USKIN_USER_ORDER_FAIL);
+		// }
+
 		return null;
 
 	}
@@ -103,7 +113,7 @@ public class CustomShopAidePBYXDesignAction extends CCActionSupport {
 	public boolean doGetPrice() {
 
 		{// 报价
-			MoudleCSAGetPriceDesign moudle = new MoudleCSAGetPriceDesign(request);
+			MoudleCSUGetPriceManPBYX moudle = new MoudleCSUGetPriceManPBYX(request);
 			moudle.prepDBLog(dbLog);
 			boolean isSucc = runMoudle(moudle);
 			dbLog = moudle.syncDBLog();
@@ -121,7 +131,7 @@ public class CustomShopAidePBYXDesignAction extends CCActionSupport {
 	public boolean doCheck() {
 
 		{// 用户信息检测
-			MoudleCSACheckUserInfo moudle = new MoudleCSACheckUserInfo(request);
+			MoudleCSDCheckUserInfo moudle = new MoudleCSDCheckUserInfo(request);
 			boolean isSucc = runMoudle(moudle);
 			if (isSucc == false) {
 				return false;
@@ -129,7 +139,7 @@ public class CustomShopAidePBYXDesignAction extends CCActionSupport {
 		}
 
 		{// 订单摘要信息
-			MoudleCSACheckSummaryClothes moudle = new MoudleCSACheckSummaryClothes(request);
+			MoudleCSDCheckSummaryClothes moudle = new MoudleCSDCheckSummaryClothes(request);
 			boolean isSucc = runMoudle(moudle);
 			if (isSucc == false) {
 				return false;
@@ -137,7 +147,7 @@ public class CustomShopAidePBYXDesignAction extends CCActionSupport {
 		}
 
 		{// 尺寸校验
-			MoudleCheckMeasureDesign moudle = new MoudleCheckMeasureDesign(request);
+			MoudleCheckMeasureMan moudle = new MoudleCheckMeasureMan(request);
 			boolean isSucc = runMoudle(moudle);
 			if (isSucc == false) {
 				return false;
@@ -218,7 +228,7 @@ public class CustomShopAidePBYXDesignAction extends CCActionSupport {
 		}
 
 		{// 提交EC
-			MoudleCSAOrderDesign moudle = new MoudleCSAOrderDesign(request);
+			MoudleCSUOrderManPBYX moudle = new MoudleCSUOrderManPBYX(request);
 			moudle.prepDBLog(dbLog);
 			boolean isSucc = runMoudle(moudle);
 			dbLog = moudle.syncDBLog();

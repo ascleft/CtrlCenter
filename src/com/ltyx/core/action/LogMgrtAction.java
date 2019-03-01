@@ -278,6 +278,7 @@ public class LogMgrtAction extends CCActionSupport {
 				{ "1", "袖子臂型", "spc_b_sle_n", "" }, //
 				{ "1", "袖窿深下挖", "spc_b_muf_d", "" }, //
 				{ "1", "袖窿深上调", "spc_b_muf_u", "" }, //
+				{ "1", "前领窝下挖", "spc_c_nec_f", "" }, //
 				//
 				{ "0", "工艺", "", "" }, //
 				{ "1", "领型", "LZX_01", "" }, //
@@ -295,6 +296,7 @@ public class LogMgrtAction extends CCActionSupport {
 				//
 				{ "0", "辅料", "", "" }, //
 				{ "1", "纽扣", "kouzi", "" }, //
+				{ "1", "锁钉位置", "button_main_ft1", "" }, //
 				{ "1", "织带", "zhidai", "" }, //
 				{ "1", "织带位置", "weizhi_zhidai", "" }, //
 				{ "1", "缝制线（已隐藏）", "line_color_location_1", "" }, //
@@ -310,18 +312,31 @@ public class LogMgrtAction extends CCActionSupport {
 				{ "1", "装饰扣位置", "button_decorative_pos", "" }, //
 				//
 				{ "0", "刺绣", "", "" }, //
+
 				{ "1", "刺绣位置１", "embroidery_section_1_type", "" }, //
-				{ "1", "刺绣位置１字体", "embroidery_section_1_char_font", "" }, //
-				{ "1", "刺绣位置１尺寸", "embroidery_section_1_char_size", "" }, //
-				{ "1", "刺绣位置１位置", "embroidery_section_1_char_location", "" }, //
-				{ "1", "刺绣位置１颜色", "embroidery_section_1_char_color", "" }, //
-				{ "1", "刺绣位置１内容", "embroidery_section_1_char_content", "" }, //
+				{ "1", "刺绣位置１字字体", "embroidery_section_1_char_font", "" }, //
+				{ "1", "刺绣位置１字尺寸", "embroidery_section_1_char_size", "" }, //
+				{ "1", "刺绣位置１字位置", "embroidery_section_1_char_location", "" }, //
+				{ "1", "刺绣位置１字颜色", "embroidery_section_1_char_color", "" }, //
+				{ "1", "刺绣位置１字内容", "embroidery_section_1_char_content", "" }, //
+				{ "1", "刺绣位置１图字体", "embroidery_section_1_pic_font", "" }, //
+				{ "1", "刺绣位置１图尺寸", "embroidery_section_1_pic_size", "" }, //
+				{ "1", "刺绣位置１图位置", "embroidery_section_1_pic_location", "" }, //
+				{ "1", "刺绣位置１图颜色", "embroidery_section_1_pic_color", "" }, //
+				{ "1", "刺绣位置１图内容", "embroidery_section_1_pic_content", "" }, //
+
 				{ "1", "刺绣位置２", "embroidery_section_2_type", "" }, //
-				{ "1", "刺绣位置２字体", "embroidery_section_2_char_font", "" }, //
-				{ "1", "刺绣位置２尺寸", "embroidery_section_2_char_size", "" }, //
-				{ "1", "刺绣位置２位置", "embroidery_section_2_char_location", "" }, //
-				{ "1", "刺绣位置２颜色", "embroidery_section_2_char_color", "" }, //
-				{ "1", "刺绣位置２内容", "embroidery_section_2_char_content", "" }, //				
+				{ "1", "刺绣位置２字字体", "embroidery_section_2_char_font", "" }, //
+				{ "1", "刺绣位置２字尺寸", "embroidery_section_2_char_size", "" }, //
+				{ "1", "刺绣位置２字位置", "embroidery_section_2_char_location", "" }, //
+				{ "1", "刺绣位置２字颜色", "embroidery_section_2_char_color", "" }, //
+				{ "1", "刺绣位置２字内容", "embroidery_section_2_char_content", "" }, //
+				{ "1", "刺绣位置２图字体", "embroidery_section_2_pic_font", "" }, //
+				{ "1", "刺绣位置２图尺寸", "embroidery_section_2_pic_size", "" }, //
+				{ "1", "刺绣位置２图位置", "embroidery_section_2_pic_location", "" }, //
+				{ "1", "刺绣位置２图颜色", "embroidery_section_2_pic_color", "" }, //
+				{ "1", "刺绣位置２图内容", "embroidery_section_2_pic_content", "" }, //
+
 				{ "1", "旧　是否使用文字刺绣", "LZX_11_FOR_CHAR_SWITCH", "" }, //
 				{ "1", "旧　刺绣文字位置", "LZX_13_FOR_CHAR", "" }, //
 				{ "1", "旧　刺绣文字颜色", "LZX_11_CHAR_COLOR", "" }, //

@@ -44,7 +44,7 @@ public class LoginAction extends CCActionSupport {
 		boolean isSucc = doLogin();
 
 		{
-			if ("succ".equals(ERRDESC) && "0".equals(ERRCODE)) {
+			if (isSucc) {
 				ZCReqIntroGetter.showParams(methodName, request, TextLogHelper.Type.USKIN_LOGIN_SUCC);
 				writeResp(methodName, TextLogHelper.Type.USKIN_LOGIN_SUCC);
 			} else {
@@ -91,12 +91,14 @@ public class LoginAction extends CCActionSupport {
 			ERRCODE = "1";
 			ERRDESC = "fail";
 			data = "弱鸡，少特么调戏接口";
-			addProgressFail("登录状态权限丢失");
+			// addProgressFail("登录状态权限丢失");
+			return false;
 		} else if (null == name || null == pwd) {
 			ERRCODE = "1";
 			ERRDESC = "fail";
 			data = "请输入完整的用户名和密码";
-			addProgressFail("登录状态用户信息丢失");
+			// addProgressFail("登录状态用户信息丢失");
+			return false;
 		} else {
 			ZCHttpReqParam param = new ZCHttpReqParam();
 			param.addParam("name", name);
@@ -161,13 +163,15 @@ public class LoginAction extends CCActionSupport {
 				ERRCODE = "0";
 				ERRDESC = "succ";
 				data = targetUrl;
-				addProgressSucc("登录成功:" + " name:" + ec_user_name + " id:" + ec_user_id + " role:" + ec_user_role);
+				// addProgressSucc("登录成功:" + " name:" + ec_user_name + " id:" +
+				// ec_user_id + " role:" + ec_user_role);
 
 			} else {
 				ERRCODE = "0";
 				ERRDESC = "fail";
 				data = "EC错误码：" + jsonERRCODE + " EC错误描述：" + jsonERRDESC;
-				addProgressFail(data);
+				// addProgressFail(data);
+				return false;
 			}
 		}
 
@@ -179,7 +183,7 @@ public class LoginAction extends CCActionSupport {
 		session.setAttribute("ec_user_id", null);
 		session.setAttribute("ec_user_name", null);
 		session.setAttribute("ec_user_role", null);
-		addProgressSucc("注销完成");
+		// addProgressSucc("注销完成");
 		return true;
 	}
 

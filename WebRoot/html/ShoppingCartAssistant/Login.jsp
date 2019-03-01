@@ -43,7 +43,7 @@
 		<link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<script src="../../js/materialize.js"></script>
 		<script src="../../js/init.js"></script>
-		
+
 		<script src="../../js/init_sca.js"></script>
 
 		<!--local jsp   -->
@@ -51,13 +51,15 @@
 		<link href="<%=path %>/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<script src="<%=path %>/js/materialize.js"></script>
 		<script src="<%=path %>/js/init.js"></script>
-		
+
 		<script src="<%=path %>/js/init_sca.js"></script>
 
 		<script type="application/javascript">
 			var url_login = "/CtrlCenter/LTYX/SCA/Login.action";
 
-			function checkFormInput() {
+			var ajax_login = null;
+
+			function login() {
 				if($('#name').val().length == 0) {
 					Materialize.toast('请输入账户', 1000);
 				} else if($('#pwd').val().length == 0) {
@@ -68,30 +70,74 @@
 			}
 
 			function submit() {
-				$.ajax({
+
+				state_now("checking");
+
+				ajax_login = $.ajax({
 					cache: true,
 					type: "POST",
 					url: url_login,
 					data: $('#userform').serialize(),
 					async: true,
 					error: function(request) {
+						state_now("fail");
 						Materialize.toast('网络异常，无法连接到服务器', 1000);
 					},
 					success: function(data) {
 						var resp = JSON.parse(data);
 						if("0" == resp.ERRCODE) {
 							if("succ" == resp.ERRDESC) {
+								state_now("succ");
 								Materialize.toast("登录成功", 1000);
 								setTimeout("javascript:location.href='" + resp.data + "'", 1000);
 							} else {
+								state_now("fail");
 								Materialize.toast(resp.data, 1000);
 							}
 						} else {
+							state_now("fail");
 							Materialize.toast("EC服务器通讯异常", 1000);
 						}
 					}
 				});
 			}
+
+			function cancel() {
+				if(ajax_login != null) {
+					ajax_login.abort();
+				}
+			}
+
+			function state_now(state) {
+				if(state == "default") {
+					$("#btn_login").show();
+					$("#btn_cancel").hide();
+					global_progress_loaded();
+					global_notice_hide();
+				}
+				if(state == "checking") {
+					$("#btn_login").hide();
+					$("#btn_cancel").show();
+					global_progress_loading();
+					global_notice_show("云端比对中，请稍候");
+				}
+				if(state == "succ") {
+					$("#btn_login").hide();
+					$("#btn_cancel").hide();
+					global_progress_loaded();
+					global_notice_hide();
+				}
+				if(state == "fail") {
+					$("#btn_login").show();
+					$("#btn_cancel").hide();
+					global_progress_loaded();
+					global_notice_hide();
+				}
+			}
+
+			$(document).ready(function() {
+				state_now("default");
+			});
 		</script>
 
 	</head>
@@ -142,18 +188,52 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col s12 m12 l12 center">
-								<a class="col s12 m8 l6 offset-l3 offset-m2 btn" onclick="checkFormInput()">登录</a>
+
+							<!--进度条-->
+							<div id="global_frame_progress_div" class="col s12 m12 l12">
+								<div class="progress" id="global_frame_progress_loading_bar">
+									<div class="indeterminate"></div>
+								</div>
 							</div>
+							<!--提示-->
+							<div id="global_frame_notice_div" class="col s12 m12 l12">
+								<p id="global_frame_notice_board" class="grey-text">
+								</p>
+							</div>
+
+							<div class="col s12 m12 l12 center">
+								<a class="col s12 m8 l6 offset-l3 offset-m2 btn" id="btn_login" onclick="login()" style="display: none;">登录</a>
+							</div>
+							<div class="col s12 m12 l12 center">
+								<a class="col s12 m8 l6 offset-l3 offset-m2 btn" id="btn_cancel" onclick="cancel()" style="display: none;">取消</a>
+							</div>
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</main>
 
+		<!--  模态框 -->
+		<div id="global_frame_modal_div" class="modal">
+			<div class="modal-content">
+				<h4 id="global_frame_modal_state_title">信息</h4>
+				<div class="progress" id="global_frame_modal_progress_bar">
+					<div class="indeterminate"></div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a id="global_frame_modal_btn_finish" onclick="modal_fun_finish()" class="modal-action modal-close waves-effect waves-green btn-flat">确定</a>
+				<a id="global_frame_modal_btn_cancel" onclick="modal_fun_cancel()" class="modal-action modal-close waves-effect waves-green btn-flat">取消</a>
+				<a id="global_frame_modal_btn_terminate" onclick="modal_fun_terminate()" class="modal-action modal-close waves-effect waves-green btn-flat">终止</a>
+			</div>
+		</div>
+
+		</main>
+
 		<footer class="page-footer teal">
 			<div class="container">
-				<div class="row" style="display:; text-align:center">
+				<div class="row" style="display:none; text-align:center">
 					<div class="col s6 m6 l6">
 						<h6><a href="http://www.uskin.net.cn/index.php/wap/cart.html" target="_blank" class="white-text">进入USKIN购物车结算(手机版)</a></h6>
 					</div>

@@ -20,7 +20,7 @@ public class MoudleAideCheckUserInfo extends ZCBaseActionSupportPlugin {
 			if (customer_name.length() < 1) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "请填写正确的收货人姓名";
+				data = "请填写正确的穿衣人姓名";
 				return false;
 			}
 		}
@@ -30,7 +30,7 @@ public class MoudleAideCheckUserInfo extends ZCBaseActionSupportPlugin {
 			if (customer_tel.length() != 11) {
 				ERRCODE = "0";
 				ERRDESC = "fail";
-				data = "请填写正确的收货人手机号";
+				data = "请填写正确的穿衣人手机号";
 				return false;
 			}
 		}

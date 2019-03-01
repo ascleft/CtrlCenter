@@ -9,27 +9,49 @@
 	String ec_user_rank=(String) session.getAttribute("ec_user_rank");
 	
 	String QRurl=(String) session.getAttribute("QRurl");
-
 	String menulist=(String) session.getAttribute("menulist");
+	
+	String list_LZX_01=(String) session.getAttribute("list_LZX_01");
+	String list_LZX_02=(String) session.getAttribute("list_LZX_02");
+	String list_LZX_03=(String) session.getAttribute("list_LZX_03");
+	String list_LZX_04=(String) session.getAttribute("list_LZX_04");
+	String list_LZX_08=(String) session.getAttribute("list_LZX_08");
+	String list_LZX_120=(String) session.getAttribute("list_LZX_120");
+	String list_LZX_06=(String) session.getAttribute("list_LZX_06");
+	String list_LZX_17=(String) session.getAttribute("list_LZX_17");
+	String list_LZX_26=(String) session.getAttribute("list_LZX_26");
+	String list_LZX_13=(String) session.getAttribute("list_LZX_13");
+	String list_zhidai=(String) session.getAttribute("list_zhidai");
+	String list_color=(String) session.getAttribute("list_color");
+	String list_kouzi=(String) session.getAttribute("list_kouzi");
+	String list_easytype=(String) session.getAttribute("list_easytype");
+	String list_lingcheng=(String) session.getAttribute("list_lingcheng");
+	String list_mingxian=(String) session.getAttribute("list_mingxian");
+	String list_cefeng=(String) session.getAttribute("list_cefeng");
+	String list_qiantiao=(String) session.getAttribute("list_qiantiao");
+	String list_chenbu=(String) session.getAttribute("list_chenbu");
+	String list_weizhi_zhidai=(String) session.getAttribute("list_weizhi_zhidai");
+	String list_weizhi_peise=(String) session.getAttribute("list_weizhi_peise");
+	String list_baozhuang=(String) session.getAttribute("list_baozhuang_aide");	
 	
 %>
 
 <html>
 	<!--
 		
-		作者:鸿安Adrian
-		邮箱:ascleft@163.com
-		时间:2019-01-17
-		描述:购物车添加工具 SCA 3.0
+		作者：ascleft@163.com
+		时间：2017-11-20
+		描述：
+		购物车添加工具 SCA 2.0
 		
-		定制店 优纤面料
+		定制顾问 其他商品
 		
 	-->
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-		<title>定制商品创建工具</title>
+		<title>优纤下单工具</title>
 
 		<!-- CDN  -->
 		<!-- Google Icon Font -->
@@ -67,9 +89,9 @@
 				$('#nav_menu').sideNav('show');
 			}
 			//url定义
-			var url_price = "/CtrlCenter/LTYX/SCA/Main/CustomShopRepairGetPrice.action";
-			var url_check = "/CtrlCenter/LTYX/SCA/Main/CustomShopRepairCheck.action";
-			var url_addsc = "/CtrlCenter/LTYX/SCA/Main/CustomShopRepairSubmit.action";
+			var url_price = "/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYXSubcontractGetPrice.action";
+			var url_check = "/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYXSubcontractCheck.action";
+			var url_addsc = "/CtrlCenter/LTYX/SCA/Main/CustomShopAidePBYXSubcontractSubmit.action";
 
 			var ajax_price = null;
 			var ajax_check = null;
@@ -247,7 +269,7 @@
 				if(state == "lost_price") {
 					$("#getPrice").show();
 					$("#addShoppingCart").hide();
-					//check();
+					check();
 				}
 				if(state == "got_price") {
 					$("#getPrice").hide();
@@ -256,17 +278,45 @@
 			}
 
 			$(document).ready(function() {
-
 				package_page();
-
 			});
 
 			function package_page() {
+				page_build_timer = setInterval(page_build, 200);
+				page_flush_timer = setInterval(page_flush, 200);
+			}
 
-				state_now("default");
+			var page_build_timer;
+			var page_flush_timer;
+			var page_loader_func_list = [];
+			var page_loader_func_state = [0, "开始构建页面", 0, "done"];
 
-				use_SubcontractTable();
+			function page_flush() {
+				global_page_loading_determinate(page_loader_func_state[0], page_loader_func_state[1]);
+				if(page_loader_func_state[0] > 1) {
+					clearInterval(page_build_timer);
+					clearInterval(page_flush_timer);
+					state_now("default");
+					global_page_loaded();
+				}
+			}
 
+			function page_build() {
+				if(page_loader_func_list.length == 0) {
+					page_loader_func_list.push(use_table_subcontract);
+					page_loader_func_list.push(page_input_binder);
+				}
+				if(page_loader_func_state[3] == "done") {
+					page_loader_func_state[3] = "doing";
+					var fn = page_loader_func_list[page_loader_func_state[2]];
+					page_loader_func_state[1] = fn() + "加载完成";
+					page_loader_func_state[2]++;
+					page_loader_func_state[3] = "done";
+				}
+				page_loader_func_state[0] = (page_loader_func_state[2] + 1) / page_loader_func_list.length;
+			}
+
+			function page_input_binder() {
 				$("div#section1 input").bind("keyup", function() {
 					state_now("lost_price");
 				});
@@ -277,10 +327,9 @@
 					state_now("lost_price");
 				});
 
-				state_now("default");
+				console.log("finish bind");
 
-				global_page_loaded();
-
+				return "绑定页面输入事件";
 			};
 		</script>
 
@@ -292,7 +341,7 @@
 			<nav class="teal" role="navigation">
 				<div class="nav-wrapper container">
 					<!-- 页面标题  -->
-					<a id="logo-container " href="#" class="brand-logo white-text ">定制店 返修订单</a>
+					<a id="logo-container " href="#" class="brand-logo white-text ">客户经理 其他商品</a>
 					<!-- 导航菜单键（运动移动设备） -->
 					<a href="#" data-activates="nav_menu_list " class="button-collapse ">
 						<i class="material-icons white-text">menu</i>
@@ -329,7 +378,6 @@
 		</header>
 
 		<main>
-
 			<div class="container">
 				<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons white-text">menu</i></a>
 				<form method="post" id="mianForm">
@@ -339,7 +387,7 @@
 
 							<div class="col s12">
 								<div class="progress">
-									<div id="section_loading_determinate" class="determinate" style="width: 82%"></div>
+									<div id="section_loading_determinate" class="determinate" style="width: 0%"></div>
 								</div>
 							</div>
 
@@ -362,111 +410,116 @@
 
 					<div class="section" id="section_content" style="opacity: 0;">
 						<div class="row">
-
 							<div class="col s12 m12 l12" id="section1">
-
-								<div class="card-panel hoverable">
-									<div class="card-content grey-text">
-										<div class="row">
-
-											<div class="input-field col s12 m12 l12">
-												<select id="Type" name="Type" multiple>
-
-												</select> <label>修改项目（取工厂报价文件选项）</label>
-											</div>
-
-											<div class="col s12 m12 l12" style="display: none;">
-												<div class="card-panel hoverable">
-													<div class="row">
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="name_c" name="name_c" value="">
-															<label>C端项目</label>
-														</div>
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="price_c" name="price_c" value="">
-															<label>C端价格</label>
-														</div>
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="time_c" name="time_c" value="">
-															<label>C端工期</label>
-														</div>
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="tips_c" name="tips_c" value="">
-															<label>C端项目描述</label>
-														</div>
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="name_f" name="name_f" value="">
-															<label>F端项目</label>
-														</div>
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="price_f" name="price_f" value="">
-															<label>F端价格</label>
-														</div>
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="time_f" name="time_f" value="">
-															<label>F端工期</label>
-														</div>
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="tips_f" name="tips_f" value="">
-															<label>F端项目描述</label>
-														</div>
-														<div class="input-field col s4 m3 l2">
-															<input type="text" class="validate" id="operator_id" name="operator_id" value="<%=ec_user_id%>">
-															<label>操作人ID</label>
-														</div>
+								<!-- <ul class="collapsible popout"data-collapsible="accordion"> -->
+								<ul class="collapsible teal lighten-5" data-collapsible="accordion">
+									<li>
+										<div class="collapsible-header active">
+											<i class="material-icons">perm_identity</i>用户信息
+										</div>
+										<div class="collapsible-body">
+											<div class="row">
+												<div class="col s12 m6 l4">
+													<div class="input-field">
+														<input type="text" class="validate" name="customer_name" value="">
+														<label>穿衣人姓名（必填）</label>
+													</div>
+												</div>
+												<div class="col s12 m6 l4">
+													<div class="input-field">
+														<input type="text" class="validate" name="customer_tel" value="">
+														<label>穿衣人电话（必填）</label>
+													</div>
+												</div>
+												<div class="col s12 m6 l4" style="display: none;">
+													<div class="input-field">
+														<input type="text" class="validate" name="customer_address" value="">
+														<label>收货地址</label>
+													</div>
+												</div>
+												<div class="col s12 m6 l4">
+													<div class="input-field">
+														<input type="text" class="validate" name="customer_tel_target" value="">
+														<label>会员帐号（电话）（必填）</label>
+													</div>
+												</div>
+												<div class="col s12 m12 l4">
+													<div class="input-field">
+														<input type="text" class="validate" name="customer_tips" value="">
+														<label>生产备注</label>
 													</div>
 												</div>
 											</div>
-
-											<div class="col s12 m6 l6">
-												<div class="input-field">
-													<input type="text" class="validate" name="FactoryID" value="">
-													<label>原订单号</label>
-												</div>
+											<div style="display: none;">
+												<input type="text" class="validate" name="operator_id" value="<%=ec_user_id%>"><label>操作人ID</label>
+												<input type="text" class="validate" name="operator_name" value="<%=ec_user_name%>"><label>操作人名称</label>
 											</div>
-											<div class="col s12 m6 l6">
-												<div class="input-field">
-													<input type="text" class="validate" name="ExpressNO" value=""> <label>寄厂单号（修改衬衫物流单号）</label>
+										</div>
+									</li>
+									<li>
+										<div class="collapsible-header">
+											<i class="material-icons">view_carousel</i>商品类型
+										</div>
+										<div class="collapsible-body">
+											<div class="row">
+												<div class="input-field col s12 m6 l4" id="subcontract_design_code_div">
+													<select name="design_code" id="subcontract_design_code">
+													</select> <label>商品编号</label>
 												</div>
-											</div>
-											<div class="col s12 m12 l12">
-												<div class="input-field">
-													<textarea type="text" class="materialize-textarea" name="Tips" value=""></textarea>
-													<label>生产备注（工艺修改说明）</label>
+												<div class="input-field col s12 m6 l4">
+													<input name="uskin_code" type="text" class="validate">
+													<label>面料编号</label>
+												</div>
+												<div class="input-field col s12 m6 l4" id="subcontract_price_type_div">
+													<select name="subcontract_price_type" id="subcontract_price_type">
+													</select> <label>价格类型</label>
+												</div>
+												<div class="input-field col s12 m6 l4" id="subcontract_peice_final_div">
+													<select name="subcontract_peice_final" id="subcontract_peice_final">
+													</select> <label>价格</label>
+												</div>
+												<div class="input-field col s12 m6 l4" id="subcontract_fabric_unit_cost_div">
+													<select name="subcontract_fabric_unit_cost" id="subcontract_fabric_unit_cost">
+													</select> <label>面料价位</label>
+												</div>
+												<div class="input-field col s12 m6 l4" id="subcontract_process_cost_div">
+													<select name="subcontract_process_cost" id="subcontract_process_cost">
+													</select> <label>工艺类型</label>
+												</div>
+												<div class="input-field col s6 m3 l2" id="subcontract_fabric_length_div">
+													<input name="subcontract_fabric_length" id="subcontract_fabric_length" type="number" class="validate" value="0" readonly="true">
+													<label>面料用量</label>
+												</div>
+												<div class="input-field col s6 m3 l2" id="subcontract_ratio_div">
+													<input name="subcontract_ratio" id="subcontract_ratio" type="number" class="validate" value="0" readonly="true">
+													<label>辅助参数</label>
 												</div>
 											</div>
 										</div>
-
-									</div>
-								</div>
+									</li>
+								</ul>
 							</div>
 
 							<div class="col s12 m12 l12" id="section2">
 								<div class="card-panel hoverable">
 									<div class="card-content grey-text">
 										<div class="row">
-
-											<div class="col s12 m12 l12">
-												<div class="card-panel hoverable" id="TIP1" style="display: none;">
-												</div>
-											</div>
-
-											<div class="col s12 m12 l4">
+											<div class="col s6 m6 l4">
 												<div class="input-field">
 													<input type="number" class="validate" name="prices_system" value="0" id="prices_system" readonly="true">
 													<label>系统报价</label>
 												</div>
 											</div>
-											<div class="col s6 m6 l4" style="display: none;">
+											<div class="col s6 m6 l4">
 												<div class="input-field">
-													<input type="number" class="validate" name="prices_now" value="0" id="prices_now" readonly="true">
+													<input type="number" class="validate" name="prices_now" value="0" id="prices_now">
 													<label>自主报价</label>
 												</div>
 											</div>
-											<div class="col s12 m12 l8">
+											<div class="col s12 m12 l4">
 												<div class="input-field">
-													<input type="text" class="validate" name="prices_desc" value="点击获取报价" id="prices_desc" readonly="true">
-													<label>报价说明</label>
+													<input type="text" class="validate" name="prices_desc" value="点击获取报价" id="prices_desc">
+													<label>差价说明</label>
 												</div>
 											</div>
 
@@ -517,19 +570,31 @@
 		<footer class="page-footer teal">
 			<div class="container">
 				<div class="row" style="display:; text-align:center">
-					<div class="col s6 m6 l6">
-						<h6><a href="http://www.uskin.net.cn/index.php/wap/cart.html" target="_blank" class="white-text">进入USKIN购物车结算(手机版)</a></h6>
-					</div>
-					<div class="col s6 m6 l6">
-						<h6><a href="http://www.uskin.net.cn/index.php/cart.html" target="_blank" class="white-text">进入USKIN购物车结算(电脑版)</a></h6>
-					</div>
 				</div>
 			</div>
 			<div class="footer-copyright">
 				<div class="container">Powered by ZhangChi 2019</div>
 			</div>
+			<div class="fixed-action-btn toolbar">
+				<a class="btn-floating  teal darken-1">
+					<i class="large material-icons">shopping_cart</i>
+				</a>
+				<ul>
+					<li class="waves-effect waves-light">
+						<a href="http://www.uskin.net.cn/index.php/cart.html">USKIN电脑版</a>
+					</li>
+					<li class="waves-effect waves-light">
+						<a href="http://www.uskin.net.cn/index.php/wap/cart.html">USKIN手机版 </a>
+					</li>
+					<li class="waves-effect waves-light">
+						<a href="http://www.utailor.com.cn/index.php/cart.html">君奕电脑版</a>
+					</li>
+					<li class="waves-effect waves-light">
+						<a href="http://www.utailor.com.cn/index.php/wap/cart.html">君奕手机版</a>
+					</li>
+				</ul>
+			</div>
+
 		</footer>
 
 	</body>
-
-</html>
